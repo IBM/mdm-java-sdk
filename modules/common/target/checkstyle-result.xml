@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<checkstyle version="8.19">
-<file name="/Users/chitra/Documents/GitHub/mdm-java-sdk/modules/common/src/main/java/com/ibm/analytics/common/SdkCommon.java">
-</file>
-<file name="/Users/chitra/Documents/GitHub/mdm-java-sdk/modules/common/src/main/resources/mdm.properties">
-</file>
-</checkstyle>
