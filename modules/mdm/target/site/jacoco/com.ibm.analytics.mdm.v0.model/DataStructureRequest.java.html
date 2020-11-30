@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataStructureRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">DataStructureRequest.java</span></div><h1>DataStructureRequest.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * Information about how the data is structured on the storage system.
+ */
+public class DataStructureRequest extends GenericModel {
+
+  @SerializedName(&quot;record_path&quot;)
+  protected String recordPath;
+  @SerializedName(&quot;record_properties&quot;)
+  protected String recordProperties;
+  @SerializedName(&quot;relationship_path&quot;)
+  protected String relationshipPath;
+  @SerializedName(&quot;relationship_properties&quot;)
+  protected String relationshipProperties;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String recordPath;
+    private String recordProperties;
+    private String relationshipPath;
+    private String relationshipProperties;
+
+<span class="nc" id="L41">    private Builder(DataStructureRequest dataStructureRequest) {</span>
+<span class="nc" id="L42">      this.recordPath = dataStructureRequest.recordPath;</span>
+<span class="nc" id="L43">      this.recordProperties = dataStructureRequest.recordProperties;</span>
+<span class="nc" id="L44">      this.relationshipPath = dataStructureRequest.relationshipPath;</span>
+<span class="nc" id="L45">      this.relationshipProperties = dataStructureRequest.relationshipProperties;</span>
+<span class="nc" id="L46">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L51">    public Builder() {</span>
+<span class="fc" id="L52">    }</span>
+
+    /**
+     * Builds a DataStructureRequest.
+     *
+     * @return the new DataStructureRequest instance
+     */
+    public DataStructureRequest build() {
+<span class="fc" id="L60">      return new DataStructureRequest(this);</span>
+    }
+
+    /**
+     * Set the recordPath.
+     *
+     * @param recordPath the recordPath
+     * @return the DataStructureRequest builder
+     */
+    public Builder recordPath(String recordPath) {
+<span class="fc" id="L70">      this.recordPath = recordPath;</span>
+<span class="fc" id="L71">      return this;</span>
+    }
+
+    /**
+     * Set the recordProperties.
+     *
+     * @param recordProperties the recordProperties
+     * @return the DataStructureRequest builder
+     */
+    public Builder recordProperties(String recordProperties) {
+<span class="fc" id="L81">      this.recordProperties = recordProperties;</span>
+<span class="fc" id="L82">      return this;</span>
+    }
+
+    /**
+     * Set the relationshipPath.
+     *
+     * @param relationshipPath the relationshipPath
+     * @return the DataStructureRequest builder
+     */
+    public Builder relationshipPath(String relationshipPath) {
+<span class="fc" id="L92">      this.relationshipPath = relationshipPath;</span>
+<span class="fc" id="L93">      return this;</span>
+    }
+
+    /**
+     * Set the relationshipProperties.
+     *
+     * @param relationshipProperties the relationshipProperties
+     * @return the DataStructureRequest builder
+     */
+    public Builder relationshipProperties(String relationshipProperties) {
+<span class="fc" id="L103">      this.relationshipProperties = relationshipProperties;</span>
+<span class="fc" id="L104">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L108">  protected DataStructureRequest(Builder builder) {</span>
+<span class="fc" id="L109">    recordPath = builder.recordPath;</span>
+<span class="fc" id="L110">    recordProperties = builder.recordProperties;</span>
+<span class="fc" id="L111">    relationshipPath = builder.relationshipPath;</span>
+<span class="fc" id="L112">    relationshipProperties = builder.relationshipProperties;</span>
+<span class="fc" id="L113">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a DataStructureRequest builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L121">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the recordPath.
+   *
+   * The relative path from directory_path to the file or directory containing record data.
+   *
+   * @return the recordPath
+   */
+  public String recordPath() {
+<span class="fc" id="L132">    return recordPath;</span>
+  }
+
+  /**
+   * Gets the recordProperties.
+   *
+   * The relative path from directory_path to the record properties file.
+   *
+   * @return the recordProperties
+   */
+  public String recordProperties() {
+<span class="fc" id="L143">    return recordProperties;</span>
+  }
+
+  /**
+   * Gets the relationshipPath.
+   *
+   * The relative path from directory_path to the file or directory containing relationship data.
+   *
+   * @return the relationshipPath
+   */
+  public String relationshipPath() {
+<span class="fc" id="L154">    return relationshipPath;</span>
+  }
+
+  /**
+   * Gets the relationshipProperties.
+   *
+   * The relative path from directory_path to the relationship properties file.
+   *
+   * @return the relationshipProperties
+   */
+  public String relationshipProperties() {
+<span class="fc" id="L165">    return relationshipProperties;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataModelRecordTypeSystemProperties.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">DataModelRecordTypeSystemProperties.java</span></div><h1>DataModelRecordTypeSystemProperties.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * Defines metadata of system properties of record types.
+ */
+public class DataModelRecordTypeSystemProperties extends GenericModel {
+
+  @SerializedName(&quot;record_last_updated&quot;)
+  protected DataModelSystemProperty recordLastUpdated;
+  @SerializedName(&quot;record_source&quot;)
+  protected DataModelSystemProperty recordSource;
+  @SerializedName(&quot;collection_id&quot;)
+  protected DataModelSystemProperty collectionId;
+  @SerializedName(&quot;record_number&quot;)
+  protected DataModelSystemProperty recordNumber;
+  @SerializedName(&quot;record_id&quot;)
+  protected DataModelSystemProperty recordId;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private DataModelSystemProperty recordLastUpdated;
+    private DataModelSystemProperty recordSource;
+    private DataModelSystemProperty collectionId;
+    private DataModelSystemProperty recordNumber;
+    private DataModelSystemProperty recordId;
+
+<span class="nc" id="L44">    private Builder(DataModelRecordTypeSystemProperties dataModelRecordTypeSystemProperties) {</span>
+<span class="nc" id="L45">      this.recordLastUpdated = dataModelRecordTypeSystemProperties.recordLastUpdated;</span>
+<span class="nc" id="L46">      this.recordSource = dataModelRecordTypeSystemProperties.recordSource;</span>
+<span class="nc" id="L47">      this.collectionId = dataModelRecordTypeSystemProperties.collectionId;</span>
+<span class="nc" id="L48">      this.recordNumber = dataModelRecordTypeSystemProperties.recordNumber;</span>
+<span class="nc" id="L49">      this.recordId = dataModelRecordTypeSystemProperties.recordId;</span>
+<span class="nc" id="L50">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L55">    public Builder() {</span>
+<span class="fc" id="L56">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param recordLastUpdated the recordLastUpdated
+     * @param recordSource the recordSource
+     * @param collectionId the collectionId
+     * @param recordNumber the recordNumber
+     * @param recordId the recordId
+     */
+<span class="nc" id="L67">    public Builder(DataModelSystemProperty recordLastUpdated, DataModelSystemProperty recordSource, DataModelSystemProperty collectionId, DataModelSystemProperty recordNumber, DataModelSystemProperty recordId) {</span>
+<span class="nc" id="L68">      this.recordLastUpdated = recordLastUpdated;</span>
+<span class="nc" id="L69">      this.recordSource = recordSource;</span>
+<span class="nc" id="L70">      this.collectionId = collectionId;</span>
+<span class="nc" id="L71">      this.recordNumber = recordNumber;</span>
+<span class="nc" id="L72">      this.recordId = recordId;</span>
+<span class="nc" id="L73">    }</span>
+
+    /**
+     * Builds a DataModelRecordTypeSystemProperties.
+     *
+     * @return the new DataModelRecordTypeSystemProperties instance
+     */
+    public DataModelRecordTypeSystemProperties build() {
+<span class="fc" id="L81">      return new DataModelRecordTypeSystemProperties(this);</span>
+    }
+
+    /**
+     * Set the recordLastUpdated.
+     *
+     * @param recordLastUpdated the recordLastUpdated
+     * @return the DataModelRecordTypeSystemProperties builder
+     */
+    public Builder recordLastUpdated(DataModelSystemProperty recordLastUpdated) {
+<span class="fc" id="L91">      this.recordLastUpdated = recordLastUpdated;</span>
+<span class="fc" id="L92">      return this;</span>
+    }
+
+    /**
+     * Set the recordSource.
+     *
+     * @param recordSource the recordSource
+     * @return the DataModelRecordTypeSystemProperties builder
+     */
+    public Builder recordSource(DataModelSystemProperty recordSource) {
+<span class="fc" id="L102">      this.recordSource = recordSource;</span>
+<span class="fc" id="L103">      return this;</span>
+    }
+
+    /**
+     * Set the collectionId.
+     *
+     * @param collectionId the collectionId
+     * @return the DataModelRecordTypeSystemProperties builder
+     */
+    public Builder collectionId(DataModelSystemProperty collectionId) {
+<span class="fc" id="L113">      this.collectionId = collectionId;</span>
+<span class="fc" id="L114">      return this;</span>
+    }
+
+    /**
+     * Set the recordNumber.
+     *
+     * @param recordNumber the recordNumber
+     * @return the DataModelRecordTypeSystemProperties builder
+     */
+    public Builder recordNumber(DataModelSystemProperty recordNumber) {
+<span class="fc" id="L124">      this.recordNumber = recordNumber;</span>
+<span class="fc" id="L125">      return this;</span>
+    }
+
+    /**
+     * Set the recordId.
+     *
+     * @param recordId the recordId
+     * @return the DataModelRecordTypeSystemProperties builder
+     */
+    public Builder recordId(DataModelSystemProperty recordId) {
+<span class="fc" id="L135">      this.recordId = recordId;</span>
+<span class="fc" id="L136">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L140">  protected DataModelRecordTypeSystemProperties(Builder builder) {</span>
+<span class="fc" id="L141">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordLastUpdated,</span>
+      &quot;recordLastUpdated cannot be null&quot;);
+<span class="fc" id="L143">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordSource,</span>
+      &quot;recordSource cannot be null&quot;);
+<span class="fc" id="L145">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.collectionId,</span>
+      &quot;collectionId cannot be null&quot;);
+<span class="fc" id="L147">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordNumber,</span>
+      &quot;recordNumber cannot be null&quot;);
+<span class="fc" id="L149">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordId,</span>
+      &quot;recordId cannot be null&quot;);
+<span class="fc" id="L151">    recordLastUpdated = builder.recordLastUpdated;</span>
+<span class="fc" id="L152">    recordSource = builder.recordSource;</span>
+<span class="fc" id="L153">    collectionId = builder.collectionId;</span>
+<span class="fc" id="L154">    recordNumber = builder.recordNumber;</span>
+<span class="fc" id="L155">    recordId = builder.recordId;</span>
+<span class="fc" id="L156">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a DataModelRecordTypeSystemProperties builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L164">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the recordLastUpdated.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the recordLastUpdated
+   */
+  public DataModelSystemProperty recordLastUpdated() {
+<span class="fc" id="L175">    return recordLastUpdated;</span>
+  }
+
+  /**
+   * Gets the recordSource.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the recordSource
+   */
+  public DataModelSystemProperty recordSource() {
+<span class="fc" id="L186">    return recordSource;</span>
+  }
+
+  /**
+   * Gets the collectionId.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the collectionId
+   */
+  public DataModelSystemProperty collectionId() {
+<span class="fc" id="L197">    return collectionId;</span>
+  }
+
+  /**
+   * Gets the recordNumber.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the recordNumber
+   */
+  public DataModelSystemProperty recordNumber() {
+<span class="fc" id="L208">    return recordNumber;</span>
+  }
+
+  /**
+   * Gets the recordId.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the recordId
+   */
+  public DataModelSystemProperty recordId() {
+<span class="fc" id="L219">    return recordId;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

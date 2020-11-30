@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataGetSubgraphOptions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">DataGetSubgraphOptions.java</span></div><h1>DataGetSubgraphOptions.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * The dataGetSubgraph options.
+ */
+public class DataGetSubgraphOptions extends GenericModel {
+
+  protected Long distance;
+  protected List&lt;String&gt; vertexIds;
+  protected Map&lt;String, List&lt;String&gt;&gt; include;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private Long distance;
+    private List&lt;String&gt; vertexIds;
+    private Map&lt;String, List&lt;String&gt;&gt; include;
+
+<span class="nc" id="L38">    private Builder(DataGetSubgraphOptions dataGetSubgraphOptions) {</span>
+<span class="nc" id="L39">      this.distance = dataGetSubgraphOptions.distance;</span>
+<span class="nc" id="L40">      this.vertexIds = dataGetSubgraphOptions.vertexIds;</span>
+<span class="nc" id="L41">      this.include = dataGetSubgraphOptions.include;</span>
+<span class="nc" id="L42">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L47">    public Builder() {</span>
+<span class="fc" id="L48">    }</span>
+
+    /**
+     * Builds a DataGetSubgraphOptions.
+     *
+     * @return the new DataGetSubgraphOptions instance
+     */
+    public DataGetSubgraphOptions build() {
+<span class="fc" id="L56">      return new DataGetSubgraphOptions(this);</span>
+    }
+
+    /**
+     * Adds an vertexIds to vertexIds.
+     *
+     * @param vertexIds the new vertexIds
+     * @return the DataGetSubgraphOptions builder
+     */
+    public Builder addVertexIds(String vertexIds) {
+<span class="nc" id="L66">      com.ibm.cloud.sdk.core.util.Validator.notNull(vertexIds,</span>
+        &quot;vertexIds cannot be null&quot;);
+<span class="nc bnc" id="L68" title="All 2 branches missed.">      if (this.vertexIds == null) {</span>
+<span class="nc" id="L69">        this.vertexIds = new ArrayList&lt;String&gt;();</span>
+      }
+<span class="nc" id="L71">      this.vertexIds.add(vertexIds);</span>
+<span class="nc" id="L72">      return this;</span>
+    }
+
+    /**
+     * Set the distance.
+     *
+     * @param distance the distance
+     * @return the DataGetSubgraphOptions builder
+     */
+    public Builder distance(long distance) {
+<span class="fc" id="L82">      this.distance = distance;</span>
+<span class="fc" id="L83">      return this;</span>
+    }
+
+    /**
+     * Set the vertexIds.
+     * Existing vertexIds will be replaced.
+     *
+     * @param vertexIds the vertexIds
+     * @return the DataGetSubgraphOptions builder
+     */
+    public Builder vertexIds(List&lt;String&gt; vertexIds) {
+<span class="fc" id="L94">      this.vertexIds = vertexIds;</span>
+<span class="fc" id="L95">      return this;</span>
+    }
+
+    /**
+     * Set the include.
+     *
+     * @param include the include
+     * @return the DataGetSubgraphOptions builder
+     */
+    public Builder include(Map&lt;String, List&lt;String&gt;&gt; include) {
+<span class="fc" id="L105">      this.include = include;</span>
+<span class="fc" id="L106">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L110">  protected DataGetSubgraphOptions(Builder builder) {</span>
+<span class="fc" id="L111">    distance = builder.distance;</span>
+<span class="fc" id="L112">    vertexIds = builder.vertexIds;</span>
+<span class="fc" id="L113">    include = builder.include;</span>
+<span class="fc" id="L114">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a DataGetSubgraphOptions builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L122">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the distance.
+   *
+   * The maximum number of hops from initial vertices.
+   *
+   * @return the distance
+   */
+  public Long distance() {
+<span class="fc" id="L133">    return distance;</span>
+  }
+
+  /**
+   * Gets the vertexIds.
+   *
+   * The list of identifiers of initial vertices from which to build the subgraph.
+   *
+   * @return the vertexIds
+   */
+  public List&lt;String&gt; vertexIds() {
+<span class="fc" id="L144">    return vertexIds;</span>
+  }
+
+  /**
+   * Gets the include.
+   *
+   * The attributes to be included in the response.
+   *
+   * @return the include
+   */
+  public Map&lt;String, List&lt;String&gt;&gt; include() {
+<span class="fc" id="L155">    return include;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

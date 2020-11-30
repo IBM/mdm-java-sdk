@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ModelReplaceSpecResourceOptions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">ModelReplaceSpecResourceOptions.java</span></div><h1>ModelReplaceSpecResourceOptions.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.Map;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * The modelReplaceSpecResource options.
+ */
+public class ModelReplaceSpecResourceOptions extends GenericModel {
+
+  protected String crn;
+  protected String resourceName;
+  protected Float typoDistance;
+  protected Map&lt;String, CompareSpecResourceFeatureCategory&gt; featureCategories;
+  protected Map&lt;String, Float&gt; featureCoefficients;
+  protected String similarCharactersMapResource;
+  protected Float similarCharactersDistance;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String crn;
+    private String resourceName;
+    private Float typoDistance;
+    private Map&lt;String, CompareSpecResourceFeatureCategory&gt; featureCategories;
+    private Map&lt;String, Float&gt; featureCoefficients;
+    private String similarCharactersMapResource;
+    private Float similarCharactersDistance;
+
+<span class="nc" id="L44">    private Builder(ModelReplaceSpecResourceOptions modelReplaceSpecResourceOptions) {</span>
+<span class="nc" id="L45">      this.crn = modelReplaceSpecResourceOptions.crn;</span>
+<span class="nc" id="L46">      this.resourceName = modelReplaceSpecResourceOptions.resourceName;</span>
+<span class="nc" id="L47">      this.typoDistance = modelReplaceSpecResourceOptions.typoDistance;</span>
+<span class="nc" id="L48">      this.featureCategories = modelReplaceSpecResourceOptions.featureCategories;</span>
+<span class="nc" id="L49">      this.featureCoefficients = modelReplaceSpecResourceOptions.featureCoefficients;</span>
+<span class="nc" id="L50">      this.similarCharactersMapResource = modelReplaceSpecResourceOptions.similarCharactersMapResource;</span>
+<span class="nc" id="L51">      this.similarCharactersDistance = modelReplaceSpecResourceOptions.similarCharactersDistance;</span>
+<span class="nc" id="L52">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L57">    public Builder() {</span>
+<span class="fc" id="L58">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param crn the crn
+     * @param resourceName the resourceName
+     * @param typoDistance the typoDistance
+     * @param featureCategories the featureCategories
+     * @param featureCoefficients the featureCoefficients
+     */
+<span class="nc" id="L69">    public Builder(String crn, String resourceName, Float typoDistance, Map&lt;String, CompareSpecResourceFeatureCategory&gt; featureCategories, Map&lt;String, Float&gt; featureCoefficients) {</span>
+<span class="nc" id="L70">      this.crn = crn;</span>
+<span class="nc" id="L71">      this.resourceName = resourceName;</span>
+<span class="nc" id="L72">      this.typoDistance = typoDistance;</span>
+<span class="nc" id="L73">      this.featureCategories = featureCategories;</span>
+<span class="nc" id="L74">      this.featureCoefficients = featureCoefficients;</span>
+<span class="nc" id="L75">    }</span>
+
+    /**
+     * Builds a ModelReplaceSpecResourceOptions.
+     *
+     * @return the new ModelReplaceSpecResourceOptions instance
+     */
+    public ModelReplaceSpecResourceOptions build() {
+<span class="fc" id="L83">      return new ModelReplaceSpecResourceOptions(this);</span>
+    }
+
+    /**
+     * Set the crn.
+     *
+     * @param crn the crn
+     * @return the ModelReplaceSpecResourceOptions builder
+     */
+    public Builder crn(String crn) {
+<span class="fc" id="L93">      this.crn = crn;</span>
+<span class="fc" id="L94">      return this;</span>
+    }
+
+    /**
+     * Set the resourceName.
+     *
+     * @param resourceName the resourceName
+     * @return the ModelReplaceSpecResourceOptions builder
+     */
+    public Builder resourceName(String resourceName) {
+<span class="fc" id="L104">      this.resourceName = resourceName;</span>
+<span class="fc" id="L105">      return this;</span>
+    }
+
+    /**
+     * Set the typoDistance.
+     *
+     * @param typoDistance the typoDistance
+     * @return the ModelReplaceSpecResourceOptions builder
+     */
+    public Builder typoDistance(Float typoDistance) {
+<span class="fc" id="L115">      this.typoDistance = typoDistance;</span>
+<span class="fc" id="L116">      return this;</span>
+    }
+
+    /**
+     * Set the featureCategories.
+     *
+     * @param featureCategories the featureCategories
+     * @return the ModelReplaceSpecResourceOptions builder
+     */
+    public Builder featureCategories(Map&lt;String, CompareSpecResourceFeatureCategory&gt; featureCategories) {
+<span class="fc" id="L126">      this.featureCategories = featureCategories;</span>
+<span class="fc" id="L127">      return this;</span>
+    }
+
+    /**
+     * Set the featureCoefficients.
+     *
+     * @param featureCoefficients the featureCoefficients
+     * @return the ModelReplaceSpecResourceOptions builder
+     */
+    public Builder featureCoefficients(Map&lt;String, Float&gt; featureCoefficients) {
+<span class="fc" id="L137">      this.featureCoefficients = featureCoefficients;</span>
+<span class="fc" id="L138">      return this;</span>
+    }
+
+    /**
+     * Set the similarCharactersMapResource.
+     *
+     * @param similarCharactersMapResource the similarCharactersMapResource
+     * @return the ModelReplaceSpecResourceOptions builder
+     */
+    public Builder similarCharactersMapResource(String similarCharactersMapResource) {
+<span class="fc" id="L148">      this.similarCharactersMapResource = similarCharactersMapResource;</span>
+<span class="fc" id="L149">      return this;</span>
+    }
+
+    /**
+     * Set the similarCharactersDistance.
+     *
+     * @param similarCharactersDistance the similarCharactersDistance
+     * @return the ModelReplaceSpecResourceOptions builder
+     */
+    public Builder similarCharactersDistance(Float similarCharactersDistance) {
+<span class="fc" id="L159">      this.similarCharactersDistance = similarCharactersDistance;</span>
+<span class="fc" id="L160">      return this;</span>
+    }
+
+    /**
+     * Set the compareSpecResource.
+     *
+     * @param compareSpecResource the compareSpecResource
+     * @return the ModelReplaceSpecResourceOptions builder
+     */
+    public Builder compareSpecResource(CompareSpecResource compareSpecResource) {
+<span class="nc" id="L170">      this.typoDistance = compareSpecResource.typoDistance();</span>
+<span class="nc" id="L171">      this.featureCategories = compareSpecResource.featureCategories();</span>
+<span class="nc" id="L172">      this.featureCoefficients = compareSpecResource.featureCoefficients();</span>
+<span class="nc" id="L173">      this.similarCharactersMapResource = compareSpecResource.similarCharactersMapResource();</span>
+<span class="nc" id="L174">      this.similarCharactersDistance = compareSpecResource.similarCharactersDistance();</span>
+<span class="nc" id="L175">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L179">  protected ModelReplaceSpecResourceOptions(Builder builder) {</span>
+<span class="fc" id="L180">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,</span>
+      &quot;crn cannot be null&quot;);
+<span class="fc" id="L182">    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.resourceName,</span>
+      &quot;resourceName cannot be empty&quot;);
+<span class="fc" id="L184">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typoDistance,</span>
+      &quot;typoDistance cannot be null&quot;);
+<span class="fc" id="L186">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCategories,</span>
+      &quot;featureCategories cannot be null&quot;);
+<span class="fc" id="L188">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCoefficients,</span>
+      &quot;featureCoefficients cannot be null&quot;);
+<span class="fc" id="L190">    crn = builder.crn;</span>
+<span class="fc" id="L191">    resourceName = builder.resourceName;</span>
+<span class="fc" id="L192">    typoDistance = builder.typoDistance;</span>
+<span class="fc" id="L193">    featureCategories = builder.featureCategories;</span>
+<span class="fc" id="L194">    featureCoefficients = builder.featureCoefficients;</span>
+<span class="fc" id="L195">    similarCharactersMapResource = builder.similarCharactersMapResource;</span>
+<span class="fc" id="L196">    similarCharactersDistance = builder.similarCharactersDistance;</span>
+<span class="fc" id="L197">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a ModelReplaceSpecResourceOptions builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L205">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
+   *
+   * @return the crn
+   */
+  public String crn() {
+<span class="fc" id="L216">    return crn;</span>
+  }
+
+  /**
+   * Gets the resourceName.
+   *
+   * The unique identifier for the comparison parameters.
+   *
+   * @return the resourceName
+   */
+  public String resourceName() {
+<span class="fc" id="L227">    return resourceName;</span>
+  }
+
+  /**
+   * Gets the typoDistance.
+   *
+   * The distance factor for each occurence of typographical error. The value must be between 0 to 1.
+   *
+   * @return the typoDistance
+   */
+  public Float typoDistance() {
+<span class="fc" id="L238">    return typoDistance;</span>
+  }
+
+  /**
+   * Gets the featureCategories.
+   *
+   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
+   *
+   * @return the featureCategories
+   */
+  public Map&lt;String, CompareSpecResourceFeatureCategory&gt; featureCategories() {
+<span class="fc" id="L249">    return featureCategories;</span>
+  }
+
+  /**
+   * Gets the featureCoefficients.
+   *
+   * Collection of feature coefficients used for distance measurement. The feature coefficient key must be lower snake
+   * case (i.e. name_similar90, name_exact).
+   *
+   * @return the featureCoefficients
+   */
+  public Map&lt;String, Float&gt; featureCoefficients() {
+<span class="fc" id="L261">    return featureCoefficients;</span>
+  }
+
+  /**
+   * Gets the similarCharactersMapResource.
+   *
+   * An existing map resource name for lookalike characters.
+   *
+   * @return the similarCharactersMapResource
+   */
+  public String similarCharactersMapResource() {
+<span class="fc" id="L272">    return similarCharactersMapResource;</span>
+  }
+
+  /**
+   * Gets the similarCharactersDistance.
+   *
+   * The distance factor for each occurence of lookalike characters (i.e. 8 vs B, 0 vs O). The value must be between 0
+   * to 1.
+   *
+   * @return the similarCharactersDistance
+   */
+  public Float similarCharactersDistance() {
+<span class="fc" id="L284">    return similarCharactersDistance;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

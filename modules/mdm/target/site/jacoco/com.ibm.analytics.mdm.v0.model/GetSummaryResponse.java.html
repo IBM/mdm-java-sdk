@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GetSummaryResponse.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">GetSummaryResponse.java</span></div><h1>GetSummaryResponse.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * Response wrapper object for summary of derived matching data.
+ */
+<span class="fc" id="L21">public class GetSummaryResponse extends GenericModel {</span>
+
+  @SerializedName(&quot;singleton_entity_count&quot;)
+  protected Long singletonEntityCount;
+  @SerializedName(&quot;stats_and_entities&quot;)
+  protected GetSummaryResponseStatsAndEntities statsAndEntities;
+  @SerializedName(&quot;unique_source_count&quot;)
+  protected Long uniqueSourceCount;
+  @SerializedName(&quot;total_records&quot;)
+  protected Long totalRecords;
+
+  /**
+   * Gets the singletonEntityCount.
+   *
+   * The number of entities consisting of a single record.
+   *
+   * @return the singletonEntityCount
+   */
+  public Long getSingletonEntityCount() {
+<span class="fc" id="L40">    return singletonEntityCount;</span>
+  }
+
+  /**
+   * Gets the statsAndEntities.
+   *
+   * Statistical information of entities.
+   *
+   * @return the statsAndEntities
+   */
+  public GetSummaryResponseStatsAndEntities getStatsAndEntities() {
+<span class="fc" id="L51">    return statsAndEntities;</span>
+  }
+
+  /**
+   * Gets the uniqueSourceCount.
+   *
+   * The number of source systems in the derived matching data.
+   *
+   * @return the uniqueSourceCount
+   */
+  public Long getUniqueSourceCount() {
+<span class="fc" id="L62">    return uniqueSourceCount;</span>
+  }
+
+  /**
+   * Gets the totalRecords.
+   *
+   * Total number of records with derived matching data.
+   *
+   * @return the totalRecords
+   */
+  public Long getTotalRecords() {
+<span class="fc" id="L73">    return totalRecords;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

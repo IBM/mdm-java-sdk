@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CriteriaRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">CriteriaRequest.java</span></div><h1>CriteriaRequest.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A set of criteria for a search.
+ */
+public class CriteriaRequest extends GenericModel {
+
+  /**
+   * The type of data to search against. Search type of 'ENTITY' is not supported.
+   */
+  public interface SearchType {
+    /** record. */
+    String RECORD = &quot;record&quot;;
+    /** entity. */
+    String ENTITY = &quot;entity&quot;;
+  }
+
+  @SerializedName(&quot;search_type&quot;)
+  protected String searchType;
+  protected SearchQueryRequest query;
+  protected List&lt;SearchFilterRequest&gt; filters;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String searchType;
+    private SearchQueryRequest query;
+    private List&lt;SearchFilterRequest&gt; filters;
+
+<span class="nc" id="L49">    private Builder(CriteriaRequest criteriaRequest) {</span>
+<span class="nc" id="L50">      this.searchType = criteriaRequest.searchType;</span>
+<span class="nc" id="L51">      this.query = criteriaRequest.query;</span>
+<span class="nc" id="L52">      this.filters = criteriaRequest.filters;</span>
+<span class="nc" id="L53">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L58">    public Builder() {</span>
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * Builds a CriteriaRequest.
+     *
+     * @return the new CriteriaRequest instance
+     */
+    public CriteriaRequest build() {
+<span class="fc" id="L67">      return new CriteriaRequest(this);</span>
+    }
+
+    /**
+     * Adds an filters to filters.
+     *
+     * @param filters the new filters
+     * @return the CriteriaRequest builder
+     */
+    public Builder addFilters(SearchFilterRequest filters) {
+<span class="nc" id="L77">      com.ibm.cloud.sdk.core.util.Validator.notNull(filters,</span>
+        &quot;filters cannot be null&quot;);
+<span class="nc bnc" id="L79" title="All 2 branches missed.">      if (this.filters == null) {</span>
+<span class="nc" id="L80">        this.filters = new ArrayList&lt;SearchFilterRequest&gt;();</span>
+      }
+<span class="nc" id="L82">      this.filters.add(filters);</span>
+<span class="nc" id="L83">      return this;</span>
+    }
+
+    /**
+     * Set the searchType.
+     *
+     * @param searchType the searchType
+     * @return the CriteriaRequest builder
+     */
+    public Builder searchType(String searchType) {
+<span class="fc" id="L93">      this.searchType = searchType;</span>
+<span class="fc" id="L94">      return this;</span>
+    }
+
+    /**
+     * Set the query.
+     *
+     * @param query the query
+     * @return the CriteriaRequest builder
+     */
+    public Builder query(SearchQueryRequest query) {
+<span class="fc" id="L104">      this.query = query;</span>
+<span class="fc" id="L105">      return this;</span>
+    }
+
+    /**
+     * Set the filters.
+     * Existing filters will be replaced.
+     *
+     * @param filters the filters
+     * @return the CriteriaRequest builder
+     */
+    public Builder filters(List&lt;SearchFilterRequest&gt; filters) {
+<span class="fc" id="L116">      this.filters = filters;</span>
+<span class="fc" id="L117">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L121">  protected CriteriaRequest(Builder builder) {</span>
+<span class="fc" id="L122">    searchType = builder.searchType;</span>
+<span class="fc" id="L123">    query = builder.query;</span>
+<span class="fc" id="L124">    filters = builder.filters;</span>
+<span class="fc" id="L125">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a CriteriaRequest builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L133">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the searchType.
+   *
+   * The type of data to search against. Search type of 'ENTITY' is not supported.
+   *
+   * @return the searchType
+   */
+  public String searchType() {
+<span class="fc" id="L144">    return searchType;</span>
+  }
+
+  /**
+   * Gets the query.
+   *
+   * A search query.
+   *
+   * @return the query
+   */
+  public SearchQueryRequest query() {
+<span class="fc" id="L155">    return query;</span>
+  }
+
+  /**
+   * Gets the filters.
+   *
+   * The search filters to apply to the results of the query.
+   *
+   * @return the filters
+   */
+  public List&lt;SearchFilterRequest&gt; filters() {
+<span class="fc" id="L166">    return filters;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataMapping.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">DataMapping.java</span></div><h1>DataMapping.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * Data mapping object for column in asset.
+ */
+public class DataMapping extends GenericModel {
+
+  @SerializedName(&quot;data_mapping_default_display_name&quot;)
+  protected String dataMappingDefaultDisplayName;
+  @SerializedName(&quot;classified_class&quot;)
+  protected String classifiedClass;
+  @SerializedName(&quot;data_mapping_name&quot;)
+  protected String dataMappingName;
+  protected String key;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String classifiedClass;
+    private String key;
+
+<span class="nc" id="L38">    private Builder(DataMapping dataMapping) {</span>
+<span class="nc" id="L39">      this.classifiedClass = dataMapping.classifiedClass;</span>
+<span class="nc" id="L40">      this.key = dataMapping.key;</span>
+<span class="nc" id="L41">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L46">    public Builder() {</span>
+<span class="fc" id="L47">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param classifiedClass the classifiedClass
+     * @param key the key
+     */
+<span class="nc" id="L55">    public Builder(String classifiedClass, String key) {</span>
+<span class="nc" id="L56">      this.classifiedClass = classifiedClass;</span>
+<span class="nc" id="L57">      this.key = key;</span>
+<span class="nc" id="L58">    }</span>
+
+    /**
+     * Builds a DataMapping.
+     *
+     * @return the new DataMapping instance
+     */
+    public DataMapping build() {
+<span class="fc" id="L66">      return new DataMapping(this);</span>
+    }
+
+    /**
+     * Set the classifiedClass.
+     *
+     * @param classifiedClass the classifiedClass
+     * @return the DataMapping builder
+     */
+    public Builder classifiedClass(String classifiedClass) {
+<span class="fc" id="L76">      this.classifiedClass = classifiedClass;</span>
+<span class="fc" id="L77">      return this;</span>
+    }
+
+    /**
+     * Set the key.
+     *
+     * @param key the key
+     * @return the DataMapping builder
+     */
+    public Builder key(String key) {
+<span class="fc" id="L87">      this.key = key;</span>
+<span class="fc" id="L88">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L92">  protected DataMapping(Builder builder) {</span>
+<span class="fc" id="L93">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.classifiedClass,</span>
+      &quot;classifiedClass cannot be null&quot;);
+<span class="fc" id="L95">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.key,</span>
+      &quot;key cannot be null&quot;);
+<span class="fc" id="L97">    classifiedClass = builder.classifiedClass;</span>
+<span class="fc" id="L98">    key = builder.key;</span>
+<span class="fc" id="L99">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a DataMapping builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L107">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the dataMappingDefaultDisplayName.
+   *
+   * display name of data attribute.
+   *
+   * @return the dataMappingDefaultDisplayName
+   */
+  public String dataMappingDefaultDisplayName() {
+<span class="nc" id="L118">    return dataMappingDefaultDisplayName;</span>
+  }
+
+  /**
+   * Gets the classifiedClass.
+   *
+   * classified class.
+   *
+   * @return the classifiedClass
+   */
+  public String classifiedClass() {
+<span class="fc" id="L129">    return classifiedClass;</span>
+  }
+
+  /**
+   * Gets the dataMappingName.
+   *
+   * attribute name.
+   *
+   * @return the dataMappingName
+   */
+  public String dataMappingName() {
+<span class="nc" id="L140">    return dataMappingName;</span>
+  }
+
+  /**
+   * Gets the key.
+   *
+   * key.
+   *
+   * @return the key
+   */
+  public String key() {
+<span class="fc" id="L151">    return key;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

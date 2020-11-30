@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReplaceProjectAssetOptions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">ReplaceProjectAssetOptions.java</span></div><h1>ReplaceProjectAssetOptions.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * The replaceProjectAsset options.
+ */
+public class ReplaceProjectAssetOptions extends GenericModel {
+
+  protected String projectId;
+  protected String assetId;
+  protected String crn;
+  protected String assetName;
+  protected String assetStatus;
+  protected String assetCreatedDate;
+  protected List&lt;AssetMapping&gt; assetMappings;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String projectId;
+    private String assetId;
+    private String crn;
+    private String assetName;
+    private String assetStatus;
+    private String assetCreatedDate;
+    private List&lt;AssetMapping&gt; assetMappings;
+
+<span class="nc" id="L45">    private Builder(ReplaceProjectAssetOptions replaceProjectAssetOptions) {</span>
+<span class="nc" id="L46">      this.projectId = replaceProjectAssetOptions.projectId;</span>
+<span class="nc" id="L47">      this.assetId = replaceProjectAssetOptions.assetId;</span>
+<span class="nc" id="L48">      this.crn = replaceProjectAssetOptions.crn;</span>
+<span class="nc" id="L49">      this.assetName = replaceProjectAssetOptions.assetName;</span>
+<span class="nc" id="L50">      this.assetStatus = replaceProjectAssetOptions.assetStatus;</span>
+<span class="nc" id="L51">      this.assetCreatedDate = replaceProjectAssetOptions.assetCreatedDate;</span>
+<span class="nc" id="L52">      this.assetMappings = replaceProjectAssetOptions.assetMappings;</span>
+<span class="nc" id="L53">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L58">    public Builder() {</span>
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param projectId the projectId
+     * @param assetId the assetId
+     * @param crn the crn
+     * @param assetName the assetName
+     * @param assetStatus the assetStatus
+     */
+<span class="nc" id="L70">    public Builder(String projectId, String assetId, String crn, String assetName, String assetStatus) {</span>
+<span class="nc" id="L71">      this.projectId = projectId;</span>
+<span class="nc" id="L72">      this.assetId = assetId;</span>
+<span class="nc" id="L73">      this.crn = crn;</span>
+<span class="nc" id="L74">      this.assetName = assetName;</span>
+<span class="nc" id="L75">      this.assetStatus = assetStatus;</span>
+<span class="nc" id="L76">    }</span>
+
+    /**
+     * Builds a ReplaceProjectAssetOptions.
+     *
+     * @return the new ReplaceProjectAssetOptions instance
+     */
+    public ReplaceProjectAssetOptions build() {
+<span class="fc" id="L84">      return new ReplaceProjectAssetOptions(this);</span>
+    }
+
+    /**
+     * Adds an assetMappings to assetMappings.
+     *
+     * @param assetMappings the new assetMappings
+     * @return the ReplaceProjectAssetOptions builder
+     */
+    public Builder addAssetMappings(AssetMapping assetMappings) {
+<span class="nc" id="L94">      com.ibm.cloud.sdk.core.util.Validator.notNull(assetMappings,</span>
+        &quot;assetMappings cannot be null&quot;);
+<span class="nc bnc" id="L96" title="All 2 branches missed.">      if (this.assetMappings == null) {</span>
+<span class="nc" id="L97">        this.assetMappings = new ArrayList&lt;AssetMapping&gt;();</span>
+      }
+<span class="nc" id="L99">      this.assetMappings.add(assetMappings);</span>
+<span class="nc" id="L100">      return this;</span>
+    }
+
+    /**
+     * Set the projectId.
+     *
+     * @param projectId the projectId
+     * @return the ReplaceProjectAssetOptions builder
+     */
+    public Builder projectId(String projectId) {
+<span class="fc" id="L110">      this.projectId = projectId;</span>
+<span class="fc" id="L111">      return this;</span>
+    }
+
+    /**
+     * Set the assetId.
+     *
+     * @param assetId the assetId
+     * @return the ReplaceProjectAssetOptions builder
+     */
+    public Builder assetId(String assetId) {
+<span class="fc" id="L121">      this.assetId = assetId;</span>
+<span class="fc" id="L122">      return this;</span>
+    }
+
+    /**
+     * Set the crn.
+     *
+     * @param crn the crn
+     * @return the ReplaceProjectAssetOptions builder
+     */
+    public Builder crn(String crn) {
+<span class="fc" id="L132">      this.crn = crn;</span>
+<span class="fc" id="L133">      return this;</span>
+    }
+
+    /**
+     * Set the assetName.
+     *
+     * @param assetName the assetName
+     * @return the ReplaceProjectAssetOptions builder
+     */
+    public Builder assetName(String assetName) {
+<span class="fc" id="L143">      this.assetName = assetName;</span>
+<span class="fc" id="L144">      return this;</span>
+    }
+
+    /**
+     * Set the assetStatus.
+     *
+     * @param assetStatus the assetStatus
+     * @return the ReplaceProjectAssetOptions builder
+     */
+    public Builder assetStatus(String assetStatus) {
+<span class="fc" id="L154">      this.assetStatus = assetStatus;</span>
+<span class="fc" id="L155">      return this;</span>
+    }
+
+    /**
+     * Set the assetCreatedDate.
+     *
+     * @param assetCreatedDate the assetCreatedDate
+     * @return the ReplaceProjectAssetOptions builder
+     */
+    public Builder assetCreatedDate(String assetCreatedDate) {
+<span class="fc" id="L165">      this.assetCreatedDate = assetCreatedDate;</span>
+<span class="fc" id="L166">      return this;</span>
+    }
+
+    /**
+     * Set the assetMappings.
+     * Existing assetMappings will be replaced.
+     *
+     * @param assetMappings the assetMappings
+     * @return the ReplaceProjectAssetOptions builder
+     */
+    public Builder assetMappings(List&lt;AssetMapping&gt; assetMappings) {
+<span class="fc" id="L177">      this.assetMappings = assetMappings;</span>
+<span class="fc" id="L178">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L182">  protected ReplaceProjectAssetOptions(Builder builder) {</span>
+<span class="fc" id="L183">    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.projectId,</span>
+      &quot;projectId cannot be empty&quot;);
+<span class="fc" id="L185">    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.assetId,</span>
+      &quot;assetId cannot be empty&quot;);
+<span class="fc" id="L187">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,</span>
+      &quot;crn cannot be null&quot;);
+<span class="fc" id="L189">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetName,</span>
+      &quot;assetName cannot be null&quot;);
+<span class="fc" id="L191">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetStatus,</span>
+      &quot;assetStatus cannot be null&quot;);
+<span class="fc" id="L193">    projectId = builder.projectId;</span>
+<span class="fc" id="L194">    assetId = builder.assetId;</span>
+<span class="fc" id="L195">    crn = builder.crn;</span>
+<span class="fc" id="L196">    assetName = builder.assetName;</span>
+<span class="fc" id="L197">    assetStatus = builder.assetStatus;</span>
+<span class="fc" id="L198">    assetCreatedDate = builder.assetCreatedDate;</span>
+<span class="fc" id="L199">    assetMappings = builder.assetMappings;</span>
+<span class="fc" id="L200">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a ReplaceProjectAssetOptions builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L208">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the projectId.
+   *
+   * Unique identifier of project_metadata.
+   *
+   * @return the projectId
+   */
+  public String projectId() {
+<span class="fc" id="L219">    return projectId;</span>
+  }
+
+  /**
+   * Gets the assetId.
+   *
+   * Unique identifier of project asset.
+   *
+   * @return the assetId
+   */
+  public String assetId() {
+<span class="fc" id="L230">    return assetId;</span>
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The cloud resource name of the service.
+   *
+   * @return the crn
+   */
+  public String crn() {
+<span class="fc" id="L241">    return crn;</span>
+  }
+
+  /**
+   * Gets the assetName.
+   *
+   * asse name.
+   *
+   * @return the assetName
+   */
+  public String assetName() {
+<span class="fc" id="L252">    return assetName;</span>
+  }
+
+  /**
+   * Gets the assetStatus.
+   *
+   * asset status.
+   *
+   * @return the assetStatus
+   */
+  public String assetStatus() {
+<span class="fc" id="L263">    return assetStatus;</span>
+  }
+
+  /**
+   * Gets the assetCreatedDate.
+   *
+   * asset created date.
+   *
+   * @return the assetCreatedDate
+   */
+  public String assetCreatedDate() {
+<span class="fc" id="L274">    return assetCreatedDate;</span>
+  }
+
+  /**
+   * Gets the assetMappings.
+   *
+   * list of columns mapped with data model.
+   *
+   * @return the assetMappings
+   */
+  public List&lt;AssetMapping&gt; assetMappings() {
+<span class="fc" id="L285">    return assetMappings;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

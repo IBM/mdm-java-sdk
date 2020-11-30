@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RulesResponseEntityRule.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">RulesResponseEntityRule.java</span></div><h1>RulesResponseEntityRule.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A single linkage rule for a given entity.
+ */
+<span class="fc" id="L21">public class RulesResponseEntityRule extends GenericModel {</span>
+
+  @SerializedName(&quot;rule_type&quot;)
+  protected String ruleType;
+  @SerializedName(&quot;src_recno&quot;)
+  protected String srcRecno;
+  @SerializedName(&quot;target_recno&quot;)
+  protected String targetRecno;
+  @SerializedName(&quot;last_updated&quot;)
+  protected Long lastUpdated;
+  protected String user;
+  protected String description;
+
+  /**
+   * Gets the ruleType.
+   *
+   * User specified rule type. One Of: link, unlink.
+   *
+   * @return the ruleType
+   */
+  public String getRuleType() {
+<span class="fc" id="L42">    return ruleType;</span>
+  }
+
+  /**
+   * Gets the srcRecno.
+   *
+   * One of the record numbers in linkage rule.
+   *
+   * @return the srcRecno
+   */
+  public String getSrcRecno() {
+<span class="fc" id="L53">    return srcRecno;</span>
+  }
+
+  /**
+   * Gets the targetRecno.
+   *
+   * The other record number in linkage rule.
+   *
+   * @return the targetRecno
+   */
+  public String getTargetRecno() {
+<span class="fc" id="L64">    return targetRecno;</span>
+  }
+
+  /**
+   * Gets the lastUpdated.
+   *
+   * System generated timestamp when the linkage rule was last updated.
+   *
+   * @return the lastUpdated
+   */
+  public Long getLastUpdated() {
+<span class="fc" id="L75">    return lastUpdated;</span>
+  }
+
+  /**
+   * Gets the user.
+   *
+   * Creator of the linkage rule.
+   *
+   * @return the user
+   */
+  public String getUser() {
+<span class="fc" id="L86">    return user;</span>
+  }
+
+  /**
+   * Gets the description.
+   *
+   * User defined description for the linkage rule.
+   *
+   * @return the description
+   */
+  public String getDescription() {
+<span class="fc" id="L97">    return description;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

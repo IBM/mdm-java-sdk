@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataUpdateRecordOptions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">DataUpdateRecordOptions.java</span></div><h1>DataUpdateRecordOptions.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.Map;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * The dataUpdateRecord options.
+ */
+public class DataUpdateRecordOptions extends GenericModel {
+
+  protected Long id;
+  protected Map&lt;String, Object&gt; newAttributes;
+  protected String newType;
+  protected String newId;
+  protected String newTypeName;
+  protected Long newEntityCount;
+  protected Long newRecordNumber;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private Long id;
+    private Map&lt;String, Object&gt; newAttributes;
+    private String newType;
+    private String newId;
+    private String newTypeName;
+    private Long newEntityCount;
+    private Long newRecordNumber;
+
+<span class="nc" id="L44">    private Builder(DataUpdateRecordOptions dataUpdateRecordOptions) {</span>
+<span class="nc" id="L45">      this.id = dataUpdateRecordOptions.id;</span>
+<span class="nc" id="L46">      this.newAttributes = dataUpdateRecordOptions.newAttributes;</span>
+<span class="nc" id="L47">      this.newType = dataUpdateRecordOptions.newType;</span>
+<span class="nc" id="L48">      this.newId = dataUpdateRecordOptions.newId;</span>
+<span class="nc" id="L49">      this.newTypeName = dataUpdateRecordOptions.newTypeName;</span>
+<span class="nc" id="L50">      this.newEntityCount = dataUpdateRecordOptions.newEntityCount;</span>
+<span class="nc" id="L51">      this.newRecordNumber = dataUpdateRecordOptions.newRecordNumber;</span>
+<span class="nc" id="L52">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L57">    public Builder() {</span>
+<span class="fc" id="L58">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param id the id
+     * @param newAttributes the newAttributes
+     */
+<span class="nc" id="L66">    public Builder(Long id, Map&lt;String, Object&gt; newAttributes) {</span>
+<span class="nc" id="L67">      this.id = id;</span>
+<span class="nc" id="L68">      this.newAttributes = newAttributes;</span>
+<span class="nc" id="L69">    }</span>
+
+    /**
+     * Builds a DataUpdateRecordOptions.
+     *
+     * @return the new DataUpdateRecordOptions instance
+     */
+    public DataUpdateRecordOptions build() {
+<span class="fc" id="L77">      return new DataUpdateRecordOptions(this);</span>
+    }
+
+    /**
+     * Set the id.
+     *
+     * @param id the id
+     * @return the DataUpdateRecordOptions builder
+     */
+    public Builder id(long id) {
+<span class="fc" id="L87">      this.id = id;</span>
+<span class="fc" id="L88">      return this;</span>
+    }
+
+    /**
+     * Set the newAttributes.
+     *
+     * @param newAttributes the newAttributes
+     * @return the DataUpdateRecordOptions builder
+     */
+    public Builder newAttributes(Map&lt;String, Object&gt; newAttributes) {
+<span class="fc" id="L98">      this.newAttributes = newAttributes;</span>
+<span class="fc" id="L99">      return this;</span>
+    }
+
+    /**
+     * Set the newType.
+     *
+     * @param newType the newType
+     * @return the DataUpdateRecordOptions builder
+     */
+    public Builder newType(String newType) {
+<span class="fc" id="L109">      this.newType = newType;</span>
+<span class="fc" id="L110">      return this;</span>
+    }
+
+    /**
+     * Set the newId.
+     *
+     * @param newId the newId
+     * @return the DataUpdateRecordOptions builder
+     */
+    public Builder newId(String newId) {
+<span class="fc" id="L120">      this.newId = newId;</span>
+<span class="fc" id="L121">      return this;</span>
+    }
+
+    /**
+     * Set the newTypeName.
+     *
+     * @param newTypeName the newTypeName
+     * @return the DataUpdateRecordOptions builder
+     */
+    public Builder newTypeName(String newTypeName) {
+<span class="fc" id="L131">      this.newTypeName = newTypeName;</span>
+<span class="fc" id="L132">      return this;</span>
+    }
+
+    /**
+     * Set the newEntityCount.
+     *
+     * @param newEntityCount the newEntityCount
+     * @return the DataUpdateRecordOptions builder
+     */
+    public Builder newEntityCount(long newEntityCount) {
+<span class="fc" id="L142">      this.newEntityCount = newEntityCount;</span>
+<span class="fc" id="L143">      return this;</span>
+    }
+
+    /**
+     * Set the newRecordNumber.
+     *
+     * @param newRecordNumber the newRecordNumber
+     * @return the DataUpdateRecordOptions builder
+     */
+    public Builder newRecordNumber(long newRecordNumber) {
+<span class="fc" id="L153">      this.newRecordNumber = newRecordNumber;</span>
+<span class="fc" id="L154">      return this;</span>
+    }
+
+    /**
+     * Set the record.
+     *
+     * @param record the record
+     * @return the DataUpdateRecordOptions builder
+     */
+    public Builder record(Record record) {
+<span class="nc" id="L164">      this.newAttributes = record.attributes();</span>
+<span class="nc" id="L165">      this.newType = record.type();</span>
+<span class="nc" id="L166">      this.newId = record.id();</span>
+<span class="nc" id="L167">      this.newTypeName = record.typeName();</span>
+<span class="nc" id="L168">      this.newEntityCount = record.entityCount();</span>
+<span class="nc" id="L169">      this.newRecordNumber = record.recordNumber();</span>
+<span class="nc" id="L170">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L174">  protected DataUpdateRecordOptions(Builder builder) {</span>
+<span class="fc" id="L175">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,</span>
+      &quot;id cannot be num&quot;);
+<span class="fc" id="L177">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.newAttributes,</span>
+      &quot;newAttributes cannot be null&quot;);
+<span class="fc" id="L179">    id = builder.id;</span>
+<span class="fc" id="L180">    newAttributes = builder.newAttributes;</span>
+<span class="fc" id="L181">    newType = builder.newType;</span>
+<span class="fc" id="L182">    newId = builder.newId;</span>
+<span class="fc" id="L183">    newTypeName = builder.newTypeName;</span>
+<span class="fc" id="L184">    newEntityCount = builder.newEntityCount;</span>
+<span class="fc" id="L185">    newRecordNumber = builder.newRecordNumber;</span>
+<span class="fc" id="L186">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a DataUpdateRecordOptions builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L194">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The ID of the record.
+   *
+   * @return the id
+   */
+  public Long id() {
+<span class="fc" id="L205">    return id;</span>
+  }
+
+  /**
+   * Gets the newAttributes.
+   *
+   * list of the attributes of the element.
+   *
+   * @return the newAttributes
+   */
+  public Map&lt;String, Object&gt; newAttributes() {
+<span class="fc" id="L216">    return newAttributes;</span>
+  }
+
+  /**
+   * Gets the newType.
+   *
+   * The type of the element.
+   *
+   * @return the newType
+   */
+  public String newType() {
+<span class="fc" id="L227">    return newType;</span>
+  }
+
+  /**
+   * Gets the newId.
+   *
+   * The id of the element.
+   *
+   * @return the newId
+   */
+  public String newId() {
+<span class="fc" id="L238">    return newId;</span>
+  }
+
+  /**
+   * Gets the newTypeName.
+   *
+   * The name of the record type.
+   *
+   * @return the newTypeName
+   */
+  public String newTypeName() {
+<span class="fc" id="L249">    return newTypeName;</span>
+  }
+
+  /**
+   * Gets the newEntityCount.
+   *
+   * The number of entities derived and linked from the record.
+   *
+   * @return the newEntityCount
+   */
+  public Long newEntityCount() {
+<span class="fc" id="L260">    return newEntityCount;</span>
+  }
+
+  /**
+   * Gets the newRecordNumber.
+   *
+   * @return the newRecordNumber
+   */
+  public Long newRecordNumber() {
+<span class="fc" id="L269">    return newRecordNumber;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

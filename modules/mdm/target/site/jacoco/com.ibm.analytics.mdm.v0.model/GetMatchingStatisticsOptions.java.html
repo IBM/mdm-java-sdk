@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GetMatchingStatisticsOptions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">GetMatchingStatisticsOptions.java</span></div><h1>GetMatchingStatisticsOptions.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * The getMatchingStatistics options.
+ */
+public class GetMatchingStatisticsOptions extends GenericModel {
+
+  protected String projectId;
+  protected String recordType;
+  protected String crn;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String projectId;
+    private String recordType;
+    private String crn;
+
+<span class="nc" id="L34">    private Builder(GetMatchingStatisticsOptions getMatchingStatisticsOptions) {</span>
+<span class="nc" id="L35">      this.projectId = getMatchingStatisticsOptions.projectId;</span>
+<span class="nc" id="L36">      this.recordType = getMatchingStatisticsOptions.recordType;</span>
+<span class="nc" id="L37">      this.crn = getMatchingStatisticsOptions.crn;</span>
+<span class="nc" id="L38">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L43">    public Builder() {</span>
+<span class="fc" id="L44">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param projectId the projectId
+     * @param recordType the recordType
+     * @param crn the crn
+     */
+<span class="nc" id="L53">    public Builder(String projectId, String recordType, String crn) {</span>
+<span class="nc" id="L54">      this.projectId = projectId;</span>
+<span class="nc" id="L55">      this.recordType = recordType;</span>
+<span class="nc" id="L56">      this.crn = crn;</span>
+<span class="nc" id="L57">    }</span>
+
+    /**
+     * Builds a GetMatchingStatisticsOptions.
+     *
+     * @return the new GetMatchingStatisticsOptions instance
+     */
+    public GetMatchingStatisticsOptions build() {
+<span class="fc" id="L65">      return new GetMatchingStatisticsOptions(this);</span>
+    }
+
+    /**
+     * Set the projectId.
+     *
+     * @param projectId the projectId
+     * @return the GetMatchingStatisticsOptions builder
+     */
+    public Builder projectId(String projectId) {
+<span class="fc" id="L75">      this.projectId = projectId;</span>
+<span class="fc" id="L76">      return this;</span>
+    }
+
+    /**
+     * Set the recordType.
+     *
+     * @param recordType the recordType
+     * @return the GetMatchingStatisticsOptions builder
+     */
+    public Builder recordType(String recordType) {
+<span class="fc" id="L86">      this.recordType = recordType;</span>
+<span class="fc" id="L87">      return this;</span>
+    }
+
+    /**
+     * Set the crn.
+     *
+     * @param crn the crn
+     * @return the GetMatchingStatisticsOptions builder
+     */
+    public Builder crn(String crn) {
+<span class="fc" id="L97">      this.crn = crn;</span>
+<span class="fc" id="L98">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L102">  protected GetMatchingStatisticsOptions(Builder builder) {</span>
+<span class="fc" id="L103">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.projectId,</span>
+      &quot;projectId cannot be null&quot;);
+<span class="fc" id="L105">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,</span>
+      &quot;recordType cannot be null&quot;);
+<span class="fc" id="L107">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,</span>
+      &quot;crn cannot be null&quot;);
+<span class="fc" id="L109">    projectId = builder.projectId;</span>
+<span class="fc" id="L110">    recordType = builder.recordType;</span>
+<span class="fc" id="L111">    crn = builder.crn;</span>
+<span class="fc" id="L112">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a GetMatchingStatisticsOptions builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L120">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the projectId.
+   *
+   * Unique identifier of project_metadata.
+   *
+   * @return the projectId
+   */
+  public String projectId() {
+<span class="fc" id="L131">    return projectId;</span>
+  }
+
+  /**
+   * Gets the recordType.
+   *
+   * Record type of match statistics.
+   *
+   * @return the recordType
+   */
+  public String recordType() {
+<span class="fc" id="L142">    return recordType;</span>
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The cloud resource name of the service.
+   *
+   * @return the crn
+   */
+  public String crn() {
+<span class="fc" id="L153">    return crn;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

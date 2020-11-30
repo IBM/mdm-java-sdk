@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CompareSpecResourceFeatureCategory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">CompareSpecResourceFeatureCategory.java</span></div><h1>CompareSpecResourceFeatureCategory.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A single feature category definition.
+ */
+public class CompareSpecResourceFeatureCategory extends GenericModel {
+
+  @SerializedName(&quot;equivalency_map_resource&quot;)
+  protected String equivalencyMapResource;
+  protected List&lt;String&gt; features;
+  protected List&lt;String&gt; fields;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String equivalencyMapResource;
+    private List&lt;String&gt; features;
+    private List&lt;String&gt; fields;
+
+<span class="nc" id="L39">    private Builder(CompareSpecResourceFeatureCategory compareSpecResourceFeatureCategory) {</span>
+<span class="nc" id="L40">      this.equivalencyMapResource = compareSpecResourceFeatureCategory.equivalencyMapResource;</span>
+<span class="nc" id="L41">      this.features = compareSpecResourceFeatureCategory.features;</span>
+<span class="nc" id="L42">      this.fields = compareSpecResourceFeatureCategory.fields;</span>
+<span class="nc" id="L43">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L48">    public Builder() {</span>
+<span class="fc" id="L49">    }</span>
+
+    /**
+     * Builds a CompareSpecResourceFeatureCategory.
+     *
+     * @return the new CompareSpecResourceFeatureCategory instance
+     */
+    public CompareSpecResourceFeatureCategory build() {
+<span class="fc" id="L57">      return new CompareSpecResourceFeatureCategory(this);</span>
+    }
+
+    /**
+     * Adds an features to features.
+     *
+     * @param features the new features
+     * @return the CompareSpecResourceFeatureCategory builder
+     */
+    public Builder addFeatures(String features) {
+<span class="nc" id="L67">      com.ibm.cloud.sdk.core.util.Validator.notNull(features,</span>
+        &quot;features cannot be null&quot;);
+<span class="nc bnc" id="L69" title="All 2 branches missed.">      if (this.features == null) {</span>
+<span class="nc" id="L70">        this.features = new ArrayList&lt;String&gt;();</span>
+      }
+<span class="nc" id="L72">      this.features.add(features);</span>
+<span class="nc" id="L73">      return this;</span>
+    }
+
+    /**
+     * Adds an fields to fields.
+     *
+     * @param fields the new fields
+     * @return the CompareSpecResourceFeatureCategory builder
+     */
+    public Builder addFields(String fields) {
+<span class="nc" id="L83">      com.ibm.cloud.sdk.core.util.Validator.notNull(fields,</span>
+        &quot;fields cannot be null&quot;);
+<span class="nc bnc" id="L85" title="All 2 branches missed.">      if (this.fields == null) {</span>
+<span class="nc" id="L86">        this.fields = new ArrayList&lt;String&gt;();</span>
+      }
+<span class="nc" id="L88">      this.fields.add(fields);</span>
+<span class="nc" id="L89">      return this;</span>
+    }
+
+    /**
+     * Set the equivalencyMapResource.
+     *
+     * @param equivalencyMapResource the equivalencyMapResource
+     * @return the CompareSpecResourceFeatureCategory builder
+     */
+    public Builder equivalencyMapResource(String equivalencyMapResource) {
+<span class="fc" id="L99">      this.equivalencyMapResource = equivalencyMapResource;</span>
+<span class="fc" id="L100">      return this;</span>
+    }
+
+    /**
+     * Set the features.
+     * Existing features will be replaced.
+     *
+     * @param features the features
+     * @return the CompareSpecResourceFeatureCategory builder
+     */
+    public Builder features(List&lt;String&gt; features) {
+<span class="fc" id="L111">      this.features = features;</span>
+<span class="fc" id="L112">      return this;</span>
+    }
+
+    /**
+     * Set the fields.
+     * Existing fields will be replaced.
+     *
+     * @param fields the fields
+     * @return the CompareSpecResourceFeatureCategory builder
+     */
+    public Builder fields(List&lt;String&gt; fields) {
+<span class="fc" id="L123">      this.fields = fields;</span>
+<span class="fc" id="L124">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L128">  protected CompareSpecResourceFeatureCategory(Builder builder) {</span>
+<span class="fc" id="L129">    equivalencyMapResource = builder.equivalencyMapResource;</span>
+<span class="fc" id="L130">    features = builder.features;</span>
+<span class="fc" id="L131">    fields = builder.fields;</span>
+<span class="fc" id="L132">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a CompareSpecResourceFeatureCategory builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L140">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the equivalencyMapResource.
+   *
+   * An existing map resource name for equivalent tokens.
+   *
+   * @return the equivalencyMapResource
+   */
+  public String equivalencyMapResource() {
+<span class="fc" id="L151">    return equivalencyMapResource;</span>
+  }
+
+  /**
+   * Gets the features.
+   *
+   * Collection of applicable comparison categories in a preferred order. A subset of: exact, equivalent, similar,
+   * initials, metaphone, normphone, unmatched, misplaced, leftout, missing, gnm or similarity.
+   *
+   * @return the features
+   */
+  public List&lt;String&gt; features() {
+<span class="fc" id="L163">    return features;</span>
+  }
+
+  /**
+   * Gets the fields.
+   *
+   * Collection of fields consider for the current feature category.
+   *
+   * @return the fields
+   */
+  public List&lt;String&gt; fields() {
+<span class="fc" id="L174">    return fields;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

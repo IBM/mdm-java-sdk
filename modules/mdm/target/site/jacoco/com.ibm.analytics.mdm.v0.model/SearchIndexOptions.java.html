@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SearchIndexOptions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">SearchIndexOptions.java</span></div><h1>SearchIndexOptions.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * The searchIndex options.
+ */
+public class SearchIndexOptions extends GenericModel {
+
+  protected String crn;
+  protected String recordType;
+  protected CompareRecordsRequestRecordAttributes attributes;
+  protected String details;
+  protected String minScore;
+  protected String maxScore;
+  protected String offset;
+  protected String entityType;
+  protected String limit;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String crn;
+    private String recordType;
+    private CompareRecordsRequestRecordAttributes attributes;
+    private String details;
+    private String minScore;
+    private String maxScore;
+    private String offset;
+    private String entityType;
+    private String limit;
+
+<span class="nc" id="L46">    private Builder(SearchIndexOptions searchIndexOptions) {</span>
+<span class="nc" id="L47">      this.crn = searchIndexOptions.crn;</span>
+<span class="nc" id="L48">      this.recordType = searchIndexOptions.recordType;</span>
+<span class="nc" id="L49">      this.attributes = searchIndexOptions.attributes;</span>
+<span class="nc" id="L50">      this.details = searchIndexOptions.details;</span>
+<span class="nc" id="L51">      this.minScore = searchIndexOptions.minScore;</span>
+<span class="nc" id="L52">      this.maxScore = searchIndexOptions.maxScore;</span>
+<span class="nc" id="L53">      this.offset = searchIndexOptions.offset;</span>
+<span class="nc" id="L54">      this.entityType = searchIndexOptions.entityType;</span>
+<span class="nc" id="L55">      this.limit = searchIndexOptions.limit;</span>
+<span class="nc" id="L56">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L61">    public Builder() {</span>
+<span class="fc" id="L62">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param crn the crn
+     * @param recordType the recordType
+     */
+<span class="nc" id="L70">    public Builder(String crn, String recordType) {</span>
+<span class="nc" id="L71">      this.crn = crn;</span>
+<span class="nc" id="L72">      this.recordType = recordType;</span>
+<span class="nc" id="L73">    }</span>
+
+    /**
+     * Builds a SearchIndexOptions.
+     *
+     * @return the new SearchIndexOptions instance
+     */
+    public SearchIndexOptions build() {
+<span class="fc" id="L81">      return new SearchIndexOptions(this);</span>
+    }
+
+    /**
+     * Set the crn.
+     *
+     * @param crn the crn
+     * @return the SearchIndexOptions builder
+     */
+    public Builder crn(String crn) {
+<span class="fc" id="L91">      this.crn = crn;</span>
+<span class="fc" id="L92">      return this;</span>
+    }
+
+    /**
+     * Set the recordType.
+     *
+     * @param recordType the recordType
+     * @return the SearchIndexOptions builder
+     */
+    public Builder recordType(String recordType) {
+<span class="fc" id="L102">      this.recordType = recordType;</span>
+<span class="fc" id="L103">      return this;</span>
+    }
+
+    /**
+     * Set the attributes.
+     *
+     * @param attributes the attributes
+     * @return the SearchIndexOptions builder
+     */
+    public Builder attributes(CompareRecordsRequestRecordAttributes attributes) {
+<span class="fc" id="L113">      this.attributes = attributes;</span>
+<span class="fc" id="L114">      return this;</span>
+    }
+
+    /**
+     * Set the details.
+     *
+     * @param details the details
+     * @return the SearchIndexOptions builder
+     */
+    public Builder details(String details) {
+<span class="fc" id="L124">      this.details = details;</span>
+<span class="fc" id="L125">      return this;</span>
+    }
+
+    /**
+     * Set the minScore.
+     *
+     * @param minScore the minScore
+     * @return the SearchIndexOptions builder
+     */
+    public Builder minScore(String minScore) {
+<span class="fc" id="L135">      this.minScore = minScore;</span>
+<span class="fc" id="L136">      return this;</span>
+    }
+
+    /**
+     * Set the maxScore.
+     *
+     * @param maxScore the maxScore
+     * @return the SearchIndexOptions builder
+     */
+    public Builder maxScore(String maxScore) {
+<span class="fc" id="L146">      this.maxScore = maxScore;</span>
+<span class="fc" id="L147">      return this;</span>
+    }
+
+    /**
+     * Set the offset.
+     *
+     * @param offset the offset
+     * @return the SearchIndexOptions builder
+     */
+    public Builder offset(String offset) {
+<span class="fc" id="L157">      this.offset = offset;</span>
+<span class="fc" id="L158">      return this;</span>
+    }
+
+    /**
+     * Set the entityType.
+     *
+     * @param entityType the entityType
+     * @return the SearchIndexOptions builder
+     */
+    public Builder entityType(String entityType) {
+<span class="fc" id="L168">      this.entityType = entityType;</span>
+<span class="fc" id="L169">      return this;</span>
+    }
+
+    /**
+     * Set the limit.
+     *
+     * @param limit the limit
+     * @return the SearchIndexOptions builder
+     */
+    public Builder limit(String limit) {
+<span class="fc" id="L179">      this.limit = limit;</span>
+<span class="fc" id="L180">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L184">  protected SearchIndexOptions(Builder builder) {</span>
+<span class="fc" id="L185">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,</span>
+      &quot;crn cannot be null&quot;);
+<span class="fc" id="L187">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,</span>
+      &quot;recordType cannot be null&quot;);
+<span class="fc" id="L189">    crn = builder.crn;</span>
+<span class="fc" id="L190">    recordType = builder.recordType;</span>
+<span class="fc" id="L191">    attributes = builder.attributes;</span>
+<span class="fc" id="L192">    details = builder.details;</span>
+<span class="fc" id="L193">    minScore = builder.minScore;</span>
+<span class="fc" id="L194">    maxScore = builder.maxScore;</span>
+<span class="fc" id="L195">    offset = builder.offset;</span>
+<span class="fc" id="L196">    entityType = builder.entityType;</span>
+<span class="fc" id="L197">    limit = builder.limit;</span>
+<span class="fc" id="L198">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a SearchIndexOptions builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L206">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
+   *
+   * @return the crn
+   */
+  public String crn() {
+<span class="fc" id="L217">    return crn;</span>
+  }
+
+  /**
+   * Gets the recordType.
+   *
+   * The data type identifier of the record, ie. person, organization.
+   *
+   * @return the recordType
+   */
+  public String recordType() {
+<span class="fc" id="L228">    return recordType;</span>
+  }
+
+  /**
+   * Gets the attributes.
+   *
+   * Details of a single record.
+   *
+   * @return the attributes
+   */
+  public CompareRecordsRequestRecordAttributes attributes() {
+<span class="fc" id="L239">    return attributes;</span>
+  }
+
+  /**
+   * Gets the details.
+   *
+   * The level of information detail in response, ie. low, high, debug.
+   *
+   * @return the details
+   */
+  public String details() {
+<span class="fc" id="L250">    return details;</span>
+  }
+
+  /**
+   * Gets the minScore.
+   *
+   * The minimum score to filter the matching records in the results. The default min_score is 0.
+   *
+   * @return the minScore
+   */
+  public String minScore() {
+<span class="fc" id="L261">    return minScore;</span>
+  }
+
+  /**
+   * Gets the maxScore.
+   *
+   * The maximum score to filter the matching records in the results. The default max_score is 32767.
+   *
+   * @return the maxScore
+   */
+  public String maxScore() {
+<span class="fc" id="L272">    return maxScore;</span>
+  }
+
+  /**
+   * Gets the offset.
+   *
+   * The number of entries to skip before returning a page of results. The default offset is 0.
+   *
+   * @return the offset
+   */
+  public String offset() {
+<span class="fc" id="L283">    return offset;</span>
+  }
+
+  /**
+   * Gets the entityType.
+   *
+   * The data type identifier of entity, ie. person_entity, organization_entity, household_entity.
+   *
+   * @return the entityType
+   */
+  public String entityType() {
+<span class="fc" id="L294">    return entityType;</span>
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The maximum expected number of entries in each page of results. The default limit is 20.
+   *
+   * @return the limit
+   */
+  public String limit() {
+<span class="fc" id="L305">    return limit;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

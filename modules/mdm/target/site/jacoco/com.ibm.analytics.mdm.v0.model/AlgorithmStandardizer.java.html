@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlgorithmStandardizer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">AlgorithmStandardizer.java</span></div><h1>AlgorithmStandardizer.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A single standardizer definition.
+ */
+public class AlgorithmStandardizer extends GenericModel {
+
+  @SerializedName(&quot;standardizer_recipe&quot;)
+  protected List&lt;AlgorithmStandardizerStep&gt; standardizerRecipe;
+  protected List&lt;AlgorithmInput&gt; inputs;
+  protected String label;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private List&lt;AlgorithmStandardizerStep&gt; standardizerRecipe;
+    private List&lt;AlgorithmInput&gt; inputs;
+    private String label;
+
+<span class="nc" id="L39">    private Builder(AlgorithmStandardizer algorithmStandardizer) {</span>
+<span class="nc" id="L40">      this.standardizerRecipe = algorithmStandardizer.standardizerRecipe;</span>
+<span class="nc" id="L41">      this.inputs = algorithmStandardizer.inputs;</span>
+<span class="nc" id="L42">      this.label = algorithmStandardizer.label;</span>
+<span class="nc" id="L43">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L48">    public Builder() {</span>
+<span class="fc" id="L49">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param standardizerRecipe the standardizerRecipe
+     * @param inputs the inputs
+     * @param label the label
+     */
+<span class="nc" id="L58">    public Builder(List&lt;AlgorithmStandardizerStep&gt; standardizerRecipe, List&lt;AlgorithmInput&gt; inputs, String label) {</span>
+<span class="nc" id="L59">      this.standardizerRecipe = standardizerRecipe;</span>
+<span class="nc" id="L60">      this.inputs = inputs;</span>
+<span class="nc" id="L61">      this.label = label;</span>
+<span class="nc" id="L62">    }</span>
+
+    /**
+     * Builds a AlgorithmStandardizer.
+     *
+     * @return the new AlgorithmStandardizer instance
+     */
+    public AlgorithmStandardizer build() {
+<span class="fc" id="L70">      return new AlgorithmStandardizer(this);</span>
+    }
+
+    /**
+     * Adds an standardizerRecipe to standardizerRecipe.
+     *
+     * @param standardizerRecipe the new standardizerRecipe
+     * @return the AlgorithmStandardizer builder
+     */
+    public Builder addStandardizerRecipe(AlgorithmStandardizerStep standardizerRecipe) {
+<span class="nc" id="L80">      com.ibm.cloud.sdk.core.util.Validator.notNull(standardizerRecipe,</span>
+        &quot;standardizerRecipe cannot be null&quot;);
+<span class="nc bnc" id="L82" title="All 2 branches missed.">      if (this.standardizerRecipe == null) {</span>
+<span class="nc" id="L83">        this.standardizerRecipe = new ArrayList&lt;AlgorithmStandardizerStep&gt;();</span>
+      }
+<span class="nc" id="L85">      this.standardizerRecipe.add(standardizerRecipe);</span>
+<span class="nc" id="L86">      return this;</span>
+    }
+
+    /**
+     * Adds an inputs to inputs.
+     *
+     * @param inputs the new inputs
+     * @return the AlgorithmStandardizer builder
+     */
+    public Builder addInputs(AlgorithmInput inputs) {
+<span class="nc" id="L96">      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,</span>
+        &quot;inputs cannot be null&quot;);
+<span class="nc bnc" id="L98" title="All 2 branches missed.">      if (this.inputs == null) {</span>
+<span class="nc" id="L99">        this.inputs = new ArrayList&lt;AlgorithmInput&gt;();</span>
+      }
+<span class="nc" id="L101">      this.inputs.add(inputs);</span>
+<span class="nc" id="L102">      return this;</span>
+    }
+
+    /**
+     * Set the standardizerRecipe.
+     * Existing standardizerRecipe will be replaced.
+     *
+     * @param standardizerRecipe the standardizerRecipe
+     * @return the AlgorithmStandardizer builder
+     */
+    public Builder standardizerRecipe(List&lt;AlgorithmStandardizerStep&gt; standardizerRecipe) {
+<span class="fc" id="L113">      this.standardizerRecipe = standardizerRecipe;</span>
+<span class="fc" id="L114">      return this;</span>
+    }
+
+    /**
+     * Set the inputs.
+     * Existing inputs will be replaced.
+     *
+     * @param inputs the inputs
+     * @return the AlgorithmStandardizer builder
+     */
+    public Builder inputs(List&lt;AlgorithmInput&gt; inputs) {
+<span class="fc" id="L125">      this.inputs = inputs;</span>
+<span class="fc" id="L126">      return this;</span>
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the AlgorithmStandardizer builder
+     */
+    public Builder label(String label) {
+<span class="fc" id="L136">      this.label = label;</span>
+<span class="fc" id="L137">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L141">  protected AlgorithmStandardizer(Builder builder) {</span>
+<span class="fc" id="L142">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.standardizerRecipe,</span>
+      &quot;standardizerRecipe cannot be null&quot;);
+<span class="fc" id="L144">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.inputs,</span>
+      &quot;inputs cannot be null&quot;);
+<span class="fc" id="L146">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,</span>
+      &quot;label cannot be null&quot;);
+<span class="fc" id="L148">    standardizerRecipe = builder.standardizerRecipe;</span>
+<span class="fc" id="L149">    inputs = builder.inputs;</span>
+<span class="fc" id="L150">    label = builder.label;</span>
+<span class="fc" id="L151">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a AlgorithmStandardizer builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L159">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the standardizerRecipe.
+   *
+   * Collection of standardizer steps.
+   *
+   * @return the standardizerRecipe
+   */
+  public List&lt;AlgorithmStandardizerStep&gt; standardizerRecipe() {
+<span class="fc" id="L170">    return standardizerRecipe;</span>
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of input definitions used for standardization.
+   *
+   * @return the inputs
+   */
+  public List&lt;AlgorithmInput&gt; inputs() {
+<span class="fc" id="L181">    return inputs;</span>
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+<span class="fc" id="L192">    return label;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

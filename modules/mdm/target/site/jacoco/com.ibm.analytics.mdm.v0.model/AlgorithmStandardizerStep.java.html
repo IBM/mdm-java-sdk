@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlgorithmStandardizerStep.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">AlgorithmStandardizerStep.java</span></div><h1>AlgorithmStandardizerStep.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A single standardizer step.
+ */
+public class AlgorithmStandardizerStep extends GenericModel {
+
+  @SerializedName(&quot;map_resource&quot;)
+  protected String mapResource;
+  @SerializedName(&quot;comparison_resource&quot;)
+  protected String comparisonResource;
+  protected List&lt;Long&gt; inputs;
+  @SerializedName(&quot;set_resource&quot;)
+  protected String setResource;
+  protected String method;
+  protected List&lt;String&gt; fields;
+  protected String label;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String mapResource;
+    private String comparisonResource;
+    private List&lt;Long&gt; inputs;
+    private String setResource;
+    private String method;
+    private List&lt;String&gt; fields;
+    private String label;
+
+<span class="nc" id="L49">    private Builder(AlgorithmStandardizerStep algorithmStandardizerStep) {</span>
+<span class="nc" id="L50">      this.mapResource = algorithmStandardizerStep.mapResource;</span>
+<span class="nc" id="L51">      this.comparisonResource = algorithmStandardizerStep.comparisonResource;</span>
+<span class="nc" id="L52">      this.inputs = algorithmStandardizerStep.inputs;</span>
+<span class="nc" id="L53">      this.setResource = algorithmStandardizerStep.setResource;</span>
+<span class="nc" id="L54">      this.method = algorithmStandardizerStep.method;</span>
+<span class="nc" id="L55">      this.fields = algorithmStandardizerStep.fields;</span>
+<span class="nc" id="L56">      this.label = algorithmStandardizerStep.label;</span>
+<span class="nc" id="L57">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L62">    public Builder() {</span>
+<span class="fc" id="L63">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param method the method
+     * @param label the label
+     */
+<span class="nc" id="L71">    public Builder(String method, String label) {</span>
+<span class="nc" id="L72">      this.method = method;</span>
+<span class="nc" id="L73">      this.label = label;</span>
+<span class="nc" id="L74">    }</span>
+
+    /**
+     * Builds a AlgorithmStandardizerStep.
+     *
+     * @return the new AlgorithmStandardizerStep instance
+     */
+    public AlgorithmStandardizerStep build() {
+<span class="fc" id="L82">      return new AlgorithmStandardizerStep(this);</span>
+    }
+
+    /**
+     * Adds an inputs to inputs.
+     *
+     * @param inputs the new inputs
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder addInputs(Long inputs) {
+<span class="nc" id="L92">      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,</span>
+        &quot;inputs cannot be null&quot;);
+<span class="nc bnc" id="L94" title="All 2 branches missed.">      if (this.inputs == null) {</span>
+<span class="nc" id="L95">        this.inputs = new ArrayList&lt;Long&gt;();</span>
+      }
+<span class="nc" id="L97">      this.inputs.add(inputs);</span>
+<span class="nc" id="L98">      return this;</span>
+    }
+
+    /**
+     * Adds an fields to fields.
+     *
+     * @param fields the new fields
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder addFields(String fields) {
+<span class="nc" id="L108">      com.ibm.cloud.sdk.core.util.Validator.notNull(fields,</span>
+        &quot;fields cannot be null&quot;);
+<span class="nc bnc" id="L110" title="All 2 branches missed.">      if (this.fields == null) {</span>
+<span class="nc" id="L111">        this.fields = new ArrayList&lt;String&gt;();</span>
+      }
+<span class="nc" id="L113">      this.fields.add(fields);</span>
+<span class="nc" id="L114">      return this;</span>
+    }
+
+    /**
+     * Set the mapResource.
+     *
+     * @param mapResource the mapResource
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder mapResource(String mapResource) {
+<span class="fc" id="L124">      this.mapResource = mapResource;</span>
+<span class="fc" id="L125">      return this;</span>
+    }
+
+    /**
+     * Set the comparisonResource.
+     *
+     * @param comparisonResource the comparisonResource
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder comparisonResource(String comparisonResource) {
+<span class="fc" id="L135">      this.comparisonResource = comparisonResource;</span>
+<span class="fc" id="L136">      return this;</span>
+    }
+
+    /**
+     * Set the inputs.
+     * Existing inputs will be replaced.
+     *
+     * @param inputs the inputs
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder inputs(List&lt;Long&gt; inputs) {
+<span class="fc" id="L147">      this.inputs = inputs;</span>
+<span class="fc" id="L148">      return this;</span>
+    }
+
+    /**
+     * Set the setResource.
+     *
+     * @param setResource the setResource
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder setResource(String setResource) {
+<span class="fc" id="L158">      this.setResource = setResource;</span>
+<span class="fc" id="L159">      return this;</span>
+    }
+
+    /**
+     * Set the method.
+     *
+     * @param method the method
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder method(String method) {
+<span class="fc" id="L169">      this.method = method;</span>
+<span class="fc" id="L170">      return this;</span>
+    }
+
+    /**
+     * Set the fields.
+     * Existing fields will be replaced.
+     *
+     * @param fields the fields
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder fields(List&lt;String&gt; fields) {
+<span class="fc" id="L181">      this.fields = fields;</span>
+<span class="fc" id="L182">      return this;</span>
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder label(String label) {
+<span class="fc" id="L192">      this.label = label;</span>
+<span class="fc" id="L193">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L197">  protected AlgorithmStandardizerStep(Builder builder) {</span>
+<span class="fc" id="L198">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,</span>
+      &quot;method cannot be null&quot;);
+<span class="fc" id="L200">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,</span>
+      &quot;label cannot be null&quot;);
+<span class="fc" id="L202">    mapResource = builder.mapResource;</span>
+<span class="fc" id="L203">    comparisonResource = builder.comparisonResource;</span>
+<span class="fc" id="L204">    inputs = builder.inputs;</span>
+<span class="fc" id="L205">    setResource = builder.setResource;</span>
+<span class="fc" id="L206">    method = builder.method;</span>
+<span class="fc" id="L207">    fields = builder.fields;</span>
+<span class="fc" id="L208">    label = builder.label;</span>
+<span class="fc" id="L209">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a AlgorithmStandardizerStep builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L217">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the mapResource.
+   *
+   * An existing map resource name, if applicable.
+   *
+   * @return the mapResource
+   */
+  public String mapResource() {
+<span class="fc" id="L228">    return mapResource;</span>
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String comparisonResource() {
+<span class="fc" id="L239">    return comparisonResource;</span>
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   *
+   * @return the inputs
+   */
+  public List&lt;Long&gt; inputs() {
+<span class="fc" id="L250">    return inputs;</span>
+  }
+
+  /**
+   * Gets the setResource.
+   *
+   * An existing set resource name, if applicable.
+   *
+   * @return the setResource
+   */
+  public String setResource() {
+<span class="fc" id="L261">    return setResource;</span>
+  }
+
+  /**
+   * Gets the method.
+   *
+   * A standardizer method. One of: Standardizer.UpperCase, Standardizer.Tokenizer, Standardizer.StopToken,
+   * Standardizer.StopCharacter, Standardizer.PickToken, Standardizer.Phone, Standardizer.ParseToken,
+   * Standardizer.MapToken, Standardizer.MapCharacter, Standardizer.LowerCase, Standardizer.Length,
+   * Standardizer.KeepToken, Standardizer.JoinToken, Standardizer.GNM, Standardizer.Date or Standardizer.Acronym.
+   *
+   * @return the method
+   */
+  public String method() {
+<span class="fc" id="L275">    return method;</span>
+  }
+
+  /**
+   * Gets the fields.
+   *
+   * Collection of field names. The default values are all fields in the given inputs.
+   *
+   * @return the fields
+   */
+  public List&lt;String&gt; fields() {
+<span class="fc" id="L286">    return fields;</span>
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+<span class="fc" id="L297">    return label;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InstanceMetadataCatalog.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">InstanceMetadataCatalog.java</span></div><h1>InstanceMetadataCatalog.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A single catalog as available in WKC.
+ */
+public class InstanceMetadataCatalog extends GenericModel {
+
+  @SerializedName(&quot;catalog_instance&quot;)
+  protected String catalogInstance;
+  @SerializedName(&quot;catalog_id&quot;)
+  protected String catalogId;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String catalogInstance;
+    private String catalogId;
+
+<span class="nc" id="L35">    private Builder(InstanceMetadataCatalog instanceMetadataCatalog) {</span>
+<span class="nc" id="L36">      this.catalogInstance = instanceMetadataCatalog.catalogInstance;</span>
+<span class="nc" id="L37">      this.catalogId = instanceMetadataCatalog.catalogId;</span>
+<span class="nc" id="L38">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L43">    public Builder() {</span>
+<span class="fc" id="L44">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param catalogId the catalogId
+     */
+<span class="nc" id="L51">    public Builder(String catalogId) {</span>
+<span class="nc" id="L52">      this.catalogId = catalogId;</span>
+<span class="nc" id="L53">    }</span>
+
+    /**
+     * Builds a InstanceMetadataCatalog.
+     *
+     * @return the new InstanceMetadataCatalog instance
+     */
+    public InstanceMetadataCatalog build() {
+<span class="fc" id="L61">      return new InstanceMetadataCatalog(this);</span>
+    }
+
+    /**
+     * Set the catalogInstance.
+     *
+     * @param catalogInstance the catalogInstance
+     * @return the InstanceMetadataCatalog builder
+     */
+    public Builder catalogInstance(String catalogInstance) {
+<span class="fc" id="L71">      this.catalogInstance = catalogInstance;</span>
+<span class="fc" id="L72">      return this;</span>
+    }
+
+    /**
+     * Set the catalogId.
+     *
+     * @param catalogId the catalogId
+     * @return the InstanceMetadataCatalog builder
+     */
+    public Builder catalogId(String catalogId) {
+<span class="fc" id="L82">      this.catalogId = catalogId;</span>
+<span class="fc" id="L83">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L87">  protected InstanceMetadataCatalog(Builder builder) {</span>
+<span class="fc" id="L88">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.catalogId,</span>
+      &quot;catalogId cannot be null&quot;);
+<span class="fc" id="L90">    catalogInstance = builder.catalogInstance;</span>
+<span class="fc" id="L91">    catalogId = builder.catalogId;</span>
+<span class="fc" id="L92">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a InstanceMetadataCatalog builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L100">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the catalogInstance.
+   *
+   * Name of the catalog associated with instance.
+   *
+   * @return the catalogInstance
+   */
+  public String catalogInstance() {
+<span class="fc" id="L111">    return catalogInstance;</span>
+  }
+
+  /**
+   * Gets the catalogId.
+   *
+   * Unique Identifier of the catalog associated with instance.
+   *
+   * @return the catalogId
+   */
+  public String catalogId() {
+<span class="fc" id="L122">    return catalogId;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

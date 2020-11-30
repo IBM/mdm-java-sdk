@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlgorithmBucketGenerator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">AlgorithmBucketGenerator.java</span></div><h1>AlgorithmBucketGenerator.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A single bucket generator.
+ */
+public class AlgorithmBucketGenerator extends GenericModel {
+
+  protected List&lt;AlgorithmInput&gt; inputs;
+  @SerializedName(&quot;bucket_recipe&quot;)
+  protected List&lt;AlgorithmBucketStep&gt; bucketRecipe;
+  @SerializedName(&quot;bucket_group_recipe&quot;)
+  protected List&lt;AlgorithmBucketGroupStep&gt; bucketGroupRecipe;
+  @SerializedName(&quot;maximum_bucket_size&quot;)
+  protected Long maximumBucketSize;
+  protected String label;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private List&lt;AlgorithmInput&gt; inputs;
+    private List&lt;AlgorithmBucketStep&gt; bucketRecipe;
+    private List&lt;AlgorithmBucketGroupStep&gt; bucketGroupRecipe;
+    private Long maximumBucketSize;
+    private String label;
+
+<span class="nc" id="L45">    private Builder(AlgorithmBucketGenerator algorithmBucketGenerator) {</span>
+<span class="nc" id="L46">      this.inputs = algorithmBucketGenerator.inputs;</span>
+<span class="nc" id="L47">      this.bucketRecipe = algorithmBucketGenerator.bucketRecipe;</span>
+<span class="nc" id="L48">      this.bucketGroupRecipe = algorithmBucketGenerator.bucketGroupRecipe;</span>
+<span class="nc" id="L49">      this.maximumBucketSize = algorithmBucketGenerator.maximumBucketSize;</span>
+<span class="nc" id="L50">      this.label = algorithmBucketGenerator.label;</span>
+<span class="nc" id="L51">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L56">    public Builder() {</span>
+<span class="fc" id="L57">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param maximumBucketSize the maximumBucketSize
+     * @param label the label
+     */
+<span class="nc" id="L65">    public Builder(Long maximumBucketSize, String label) {</span>
+<span class="nc" id="L66">      this.maximumBucketSize = maximumBucketSize;</span>
+<span class="nc" id="L67">      this.label = label;</span>
+<span class="nc" id="L68">    }</span>
+
+    /**
+     * Builds a AlgorithmBucketGenerator.
+     *
+     * @return the new AlgorithmBucketGenerator instance
+     */
+    public AlgorithmBucketGenerator build() {
+<span class="fc" id="L76">      return new AlgorithmBucketGenerator(this);</span>
+    }
+
+    /**
+     * Adds an inputs to inputs.
+     *
+     * @param inputs the new inputs
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder addInputs(AlgorithmInput inputs) {
+<span class="nc" id="L86">      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,</span>
+        &quot;inputs cannot be null&quot;);
+<span class="nc bnc" id="L88" title="All 2 branches missed.">      if (this.inputs == null) {</span>
+<span class="nc" id="L89">        this.inputs = new ArrayList&lt;AlgorithmInput&gt;();</span>
+      }
+<span class="nc" id="L91">      this.inputs.add(inputs);</span>
+<span class="nc" id="L92">      return this;</span>
+    }
+
+    /**
+     * Adds an bucketRecipe to bucketRecipe.
+     *
+     * @param bucketRecipe the new bucketRecipe
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder addBucketRecipe(AlgorithmBucketStep bucketRecipe) {
+<span class="nc" id="L102">      com.ibm.cloud.sdk.core.util.Validator.notNull(bucketRecipe,</span>
+        &quot;bucketRecipe cannot be null&quot;);
+<span class="nc bnc" id="L104" title="All 2 branches missed.">      if (this.bucketRecipe == null) {</span>
+<span class="nc" id="L105">        this.bucketRecipe = new ArrayList&lt;AlgorithmBucketStep&gt;();</span>
+      }
+<span class="nc" id="L107">      this.bucketRecipe.add(bucketRecipe);</span>
+<span class="nc" id="L108">      return this;</span>
+    }
+
+    /**
+     * Adds an bucketGroupRecipe to bucketGroupRecipe.
+     *
+     * @param bucketGroupRecipe the new bucketGroupRecipe
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder addBucketGroupRecipe(AlgorithmBucketGroupStep bucketGroupRecipe) {
+<span class="nc" id="L118">      com.ibm.cloud.sdk.core.util.Validator.notNull(bucketGroupRecipe,</span>
+        &quot;bucketGroupRecipe cannot be null&quot;);
+<span class="nc bnc" id="L120" title="All 2 branches missed.">      if (this.bucketGroupRecipe == null) {</span>
+<span class="nc" id="L121">        this.bucketGroupRecipe = new ArrayList&lt;AlgorithmBucketGroupStep&gt;();</span>
+      }
+<span class="nc" id="L123">      this.bucketGroupRecipe.add(bucketGroupRecipe);</span>
+<span class="nc" id="L124">      return this;</span>
+    }
+
+    /**
+     * Set the inputs.
+     * Existing inputs will be replaced.
+     *
+     * @param inputs the inputs
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder inputs(List&lt;AlgorithmInput&gt; inputs) {
+<span class="fc" id="L135">      this.inputs = inputs;</span>
+<span class="fc" id="L136">      return this;</span>
+    }
+
+    /**
+     * Set the bucketRecipe.
+     * Existing bucketRecipe will be replaced.
+     *
+     * @param bucketRecipe the bucketRecipe
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder bucketRecipe(List&lt;AlgorithmBucketStep&gt; bucketRecipe) {
+<span class="fc" id="L147">      this.bucketRecipe = bucketRecipe;</span>
+<span class="fc" id="L148">      return this;</span>
+    }
+
+    /**
+     * Set the bucketGroupRecipe.
+     * Existing bucketGroupRecipe will be replaced.
+     *
+     * @param bucketGroupRecipe the bucketGroupRecipe
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder bucketGroupRecipe(List&lt;AlgorithmBucketGroupStep&gt; bucketGroupRecipe) {
+<span class="fc" id="L159">      this.bucketGroupRecipe = bucketGroupRecipe;</span>
+<span class="fc" id="L160">      return this;</span>
+    }
+
+    /**
+     * Set the maximumBucketSize.
+     *
+     * @param maximumBucketSize the maximumBucketSize
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder maximumBucketSize(long maximumBucketSize) {
+<span class="fc" id="L170">      this.maximumBucketSize = maximumBucketSize;</span>
+<span class="fc" id="L171">      return this;</span>
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder label(String label) {
+<span class="fc" id="L181">      this.label = label;</span>
+<span class="fc" id="L182">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L186">  protected AlgorithmBucketGenerator(Builder builder) {</span>
+<span class="fc" id="L187">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.maximumBucketSize,</span>
+      &quot;maximumBucketSize cannot be null&quot;);
+<span class="fc" id="L189">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,</span>
+      &quot;label cannot be null&quot;);
+<span class="fc" id="L191">    inputs = builder.inputs;</span>
+<span class="fc" id="L192">    bucketRecipe = builder.bucketRecipe;</span>
+<span class="fc" id="L193">    bucketGroupRecipe = builder.bucketGroupRecipe;</span>
+<span class="fc" id="L194">    maximumBucketSize = builder.maximumBucketSize;</span>
+<span class="fc" id="L195">    label = builder.label;</span>
+<span class="fc" id="L196">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a AlgorithmBucketGenerator builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L204">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of input definitions used for bucket generator.
+   *
+   * @return the inputs
+   */
+  public List&lt;AlgorithmInput&gt; inputs() {
+<span class="fc" id="L215">    return inputs;</span>
+  }
+
+  /**
+   * Gets the bucketRecipe.
+   *
+   * Collection of bucket generator steps.
+   *
+   * @return the bucketRecipe
+   */
+  public List&lt;AlgorithmBucketStep&gt; bucketRecipe() {
+<span class="fc" id="L226">    return bucketRecipe;</span>
+  }
+
+  /**
+   * Gets the bucketGroupRecipe.
+   *
+   * Collection of bucket group generator steps.
+   *
+   * @return the bucketGroupRecipe
+   */
+  public List&lt;AlgorithmBucketGroupStep&gt; bucketGroupRecipe() {
+<span class="fc" id="L237">    return bucketGroupRecipe;</span>
+  }
+
+  /**
+   * Gets the maximumBucketSize.
+   *
+   * An integer value indicating maximum size of any buckets of this type.
+   *
+   * @return the maximumBucketSize
+   */
+  public Long maximumBucketSize() {
+<span class="fc" id="L248">    return maximumBucketSize;</span>
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+<span class="fc" id="L259">    return label;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

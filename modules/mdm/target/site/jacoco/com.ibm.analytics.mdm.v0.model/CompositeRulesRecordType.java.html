@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CompositeRulesRecordType.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">CompositeRulesRecordType.java</span></div><h1>CompositeRulesRecordType.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.Map;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * Collection of composite rule definitions for the record type.
+ */
+public class CompositeRulesRecordType extends GenericModel {
+
+  @SerializedName(&quot;attribute_rules&quot;)
+  protected Map&lt;String, CompositeRulesRule&gt; attributeRules;
+  @SerializedName(&quot;record_type_rule&quot;)
+  protected CompositeRulesRule recordTypeRule;
+  @SerializedName(&quot;entity_rules&quot;)
+  protected Map&lt;String, CompositeRulesRule&gt; entityRules;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private Map&lt;String, CompositeRulesRule&gt; attributeRules;
+    private CompositeRulesRule recordTypeRule;
+    private Map&lt;String, CompositeRulesRule&gt; entityRules;
+
+<span class="nc" id="L40">    private Builder(CompositeRulesRecordType compositeRulesRecordType) {</span>
+<span class="nc" id="L41">      this.attributeRules = compositeRulesRecordType.attributeRules;</span>
+<span class="nc" id="L42">      this.recordTypeRule = compositeRulesRecordType.recordTypeRule;</span>
+<span class="nc" id="L43">      this.entityRules = compositeRulesRecordType.entityRules;</span>
+<span class="nc" id="L44">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L49">    public Builder() {</span>
+<span class="fc" id="L50">    }</span>
+
+    /**
+     * Builds a CompositeRulesRecordType.
+     *
+     * @return the new CompositeRulesRecordType instance
+     */
+    public CompositeRulesRecordType build() {
+<span class="fc" id="L58">      return new CompositeRulesRecordType(this);</span>
+    }
+
+    /**
+     * Set the attributeRules.
+     *
+     * @param attributeRules the attributeRules
+     * @return the CompositeRulesRecordType builder
+     */
+    public Builder attributeRules(Map&lt;String, CompositeRulesRule&gt; attributeRules) {
+<span class="fc" id="L68">      this.attributeRules = attributeRules;</span>
+<span class="fc" id="L69">      return this;</span>
+    }
+
+    /**
+     * Set the recordTypeRule.
+     *
+     * @param recordTypeRule the recordTypeRule
+     * @return the CompositeRulesRecordType builder
+     */
+    public Builder recordTypeRule(CompositeRulesRule recordTypeRule) {
+<span class="fc" id="L79">      this.recordTypeRule = recordTypeRule;</span>
+<span class="fc" id="L80">      return this;</span>
+    }
+
+    /**
+     * Set the entityRules.
+     *
+     * @param entityRules the entityRules
+     * @return the CompositeRulesRecordType builder
+     */
+    public Builder entityRules(Map&lt;String, CompositeRulesRule&gt; entityRules) {
+<span class="fc" id="L90">      this.entityRules = entityRules;</span>
+<span class="fc" id="L91">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L95">  protected CompositeRulesRecordType(Builder builder) {</span>
+<span class="fc" id="L96">    attributeRules = builder.attributeRules;</span>
+<span class="fc" id="L97">    recordTypeRule = builder.recordTypeRule;</span>
+<span class="fc" id="L98">    entityRules = builder.entityRules;</span>
+<span class="fc" id="L99">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a CompositeRulesRecordType builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L107">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the attributeRules.
+   *
+   * Collection of composite rule definitions at attribute level.
+   *
+   * @return the attributeRules
+   */
+  public Map&lt;String, CompositeRulesRule&gt; attributeRules() {
+<span class="fc" id="L118">    return attributeRules;</span>
+  }
+
+  /**
+   * Gets the recordTypeRule.
+   *
+   * A single composite rule definition.
+   *
+   * @return the recordTypeRule
+   */
+  public CompositeRulesRule recordTypeRule() {
+<span class="fc" id="L129">    return recordTypeRule;</span>
+  }
+
+  /**
+   * Gets the entityRules.
+   *
+   * Collection of composite rule definitions at entity level.
+   *
+   * @return the entityRules
+   */
+  public Map&lt;String, CompositeRulesRule&gt; entityRules() {
+<span class="fc" id="L140">    return entityRules;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

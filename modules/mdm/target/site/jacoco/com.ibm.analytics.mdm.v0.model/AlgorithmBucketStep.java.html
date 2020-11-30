@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlgorithmBucketStep.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">AlgorithmBucketStep.java</span></div><h1>AlgorithmBucketStep.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A single bucket generator step.
+ */
+public class AlgorithmBucketStep extends GenericModel {
+
+  @SerializedName(&quot;map_resource&quot;)
+  protected String mapResource;
+  protected Boolean order;
+  @SerializedName(&quot;comparison_resource&quot;)
+  protected String comparisonResource;
+  protected List&lt;Long&gt; inputs;
+  @SerializedName(&quot;set_resource&quot;)
+  protected String setResource;
+  protected String method;
+  protected List&lt;String&gt; fields;
+  protected String label;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String mapResource;
+    private Boolean order;
+    private String comparisonResource;
+    private List&lt;Long&gt; inputs;
+    private String setResource;
+    private String method;
+    private List&lt;String&gt; fields;
+    private String label;
+
+<span class="nc" id="L51">    private Builder(AlgorithmBucketStep algorithmBucketStep) {</span>
+<span class="nc" id="L52">      this.mapResource = algorithmBucketStep.mapResource;</span>
+<span class="nc" id="L53">      this.order = algorithmBucketStep.order;</span>
+<span class="nc" id="L54">      this.comparisonResource = algorithmBucketStep.comparisonResource;</span>
+<span class="nc" id="L55">      this.inputs = algorithmBucketStep.inputs;</span>
+<span class="nc" id="L56">      this.setResource = algorithmBucketStep.setResource;</span>
+<span class="nc" id="L57">      this.method = algorithmBucketStep.method;</span>
+<span class="nc" id="L58">      this.fields = algorithmBucketStep.fields;</span>
+<span class="nc" id="L59">      this.label = algorithmBucketStep.label;</span>
+<span class="nc" id="L60">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L65">    public Builder() {</span>
+<span class="fc" id="L66">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param method the method
+     * @param label the label
+     */
+<span class="nc" id="L74">    public Builder(String method, String label) {</span>
+<span class="nc" id="L75">      this.method = method;</span>
+<span class="nc" id="L76">      this.label = label;</span>
+<span class="nc" id="L77">    }</span>
+
+    /**
+     * Builds a AlgorithmBucketStep.
+     *
+     * @return the new AlgorithmBucketStep instance
+     */
+    public AlgorithmBucketStep build() {
+<span class="fc" id="L85">      return new AlgorithmBucketStep(this);</span>
+    }
+
+    /**
+     * Adds an inputs to inputs.
+     *
+     * @param inputs the new inputs
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder addInputs(Long inputs) {
+<span class="nc" id="L95">      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,</span>
+        &quot;inputs cannot be null&quot;);
+<span class="nc bnc" id="L97" title="All 2 branches missed.">      if (this.inputs == null) {</span>
+<span class="nc" id="L98">        this.inputs = new ArrayList&lt;Long&gt;();</span>
+      }
+<span class="nc" id="L100">      this.inputs.add(inputs);</span>
+<span class="nc" id="L101">      return this;</span>
+    }
+
+    /**
+     * Adds an fields to fields.
+     *
+     * @param fields the new fields
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder addFields(String fields) {
+<span class="nc" id="L111">      com.ibm.cloud.sdk.core.util.Validator.notNull(fields,</span>
+        &quot;fields cannot be null&quot;);
+<span class="nc bnc" id="L113" title="All 2 branches missed.">      if (this.fields == null) {</span>
+<span class="nc" id="L114">        this.fields = new ArrayList&lt;String&gt;();</span>
+      }
+<span class="nc" id="L116">      this.fields.add(fields);</span>
+<span class="nc" id="L117">      return this;</span>
+    }
+
+    /**
+     * Set the mapResource.
+     *
+     * @param mapResource the mapResource
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder mapResource(String mapResource) {
+<span class="fc" id="L127">      this.mapResource = mapResource;</span>
+<span class="fc" id="L128">      return this;</span>
+    }
+
+    /**
+     * Set the order.
+     *
+     * @param order the order
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder order(Boolean order) {
+<span class="fc" id="L138">      this.order = order;</span>
+<span class="fc" id="L139">      return this;</span>
+    }
+
+    /**
+     * Set the comparisonResource.
+     *
+     * @param comparisonResource the comparisonResource
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder comparisonResource(String comparisonResource) {
+<span class="fc" id="L149">      this.comparisonResource = comparisonResource;</span>
+<span class="fc" id="L150">      return this;</span>
+    }
+
+    /**
+     * Set the inputs.
+     * Existing inputs will be replaced.
+     *
+     * @param inputs the inputs
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder inputs(List&lt;Long&gt; inputs) {
+<span class="fc" id="L161">      this.inputs = inputs;</span>
+<span class="fc" id="L162">      return this;</span>
+    }
+
+    /**
+     * Set the setResource.
+     *
+     * @param setResource the setResource
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder setResource(String setResource) {
+<span class="fc" id="L172">      this.setResource = setResource;</span>
+<span class="fc" id="L173">      return this;</span>
+    }
+
+    /**
+     * Set the method.
+     *
+     * @param method the method
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder method(String method) {
+<span class="fc" id="L183">      this.method = method;</span>
+<span class="fc" id="L184">      return this;</span>
+    }
+
+    /**
+     * Set the fields.
+     * Existing fields will be replaced.
+     *
+     * @param fields the fields
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder fields(List&lt;String&gt; fields) {
+<span class="fc" id="L195">      this.fields = fields;</span>
+<span class="fc" id="L196">      return this;</span>
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder label(String label) {
+<span class="fc" id="L206">      this.label = label;</span>
+<span class="fc" id="L207">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L211">  protected AlgorithmBucketStep(Builder builder) {</span>
+<span class="fc" id="L212">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,</span>
+      &quot;method cannot be null&quot;);
+<span class="fc" id="L214">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,</span>
+      &quot;label cannot be null&quot;);
+<span class="fc" id="L216">    mapResource = builder.mapResource;</span>
+<span class="fc" id="L217">    order = builder.order;</span>
+<span class="fc" id="L218">    comparisonResource = builder.comparisonResource;</span>
+<span class="fc" id="L219">    inputs = builder.inputs;</span>
+<span class="fc" id="L220">    setResource = builder.setResource;</span>
+<span class="fc" id="L221">    method = builder.method;</span>
+<span class="fc" id="L222">    fields = builder.fields;</span>
+<span class="fc" id="L223">    label = builder.label;</span>
+<span class="fc" id="L224">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a AlgorithmBucketStep builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L232">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the mapResource.
+   *
+   * An existing map resource name, if applicable.
+   *
+   * @return the mapResource
+   */
+  public String mapResource() {
+<span class="fc" id="L243">    return mapResource;</span>
+  }
+
+  /**
+   * Gets the order.
+   *
+   * True the tokens within the same input will be pre-sorted alphabetically.
+   *
+   * @return the order
+   */
+  public Boolean order() {
+<span class="fc" id="L254">    return order;</span>
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String comparisonResource() {
+<span class="fc" id="L265">    return comparisonResource;</span>
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   *
+   * @return the inputs
+   */
+  public List&lt;Long&gt; inputs() {
+<span class="fc" id="L276">    return inputs;</span>
+  }
+
+  /**
+   * Gets the setResource.
+   *
+   * An existing set resource name, if applicable.
+   *
+   * @return the setResource
+   */
+  public String setResource() {
+<span class="fc" id="L287">    return setResource;</span>
+  }
+
+  /**
+   * Gets the method.
+   *
+   * A bucket generator method. One of: BucketGenerator.StopToken, BucketGenerator.NGram, BucketGenerator.Normphone,
+   * BucketGenerator.PickToken or BucketGenerator.MapToken.
+   *
+   * @return the method
+   */
+  public String method() {
+<span class="fc" id="L299">    return method;</span>
+  }
+
+  /**
+   * Gets the fields.
+   *
+   * Collection of field names.
+   *
+   * @return the fields
+   */
+  public List&lt;String&gt; fields() {
+<span class="fc" id="L310">    return fields;</span>
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+<span class="fc" id="L321">    return label;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

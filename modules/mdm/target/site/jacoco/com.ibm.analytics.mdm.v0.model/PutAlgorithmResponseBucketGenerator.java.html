@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PutAlgorithmResponseBucketGenerator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">PutAlgorithmResponseBucketGenerator.java</span></div><h1>PutAlgorithmResponseBucketGenerator.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A single bucket generator.
+ */
+<span class="fc" id="L23">public class PutAlgorithmResponseBucketGenerator extends GenericModel {</span>
+
+  protected List&lt;PutAlgorithmResponseInput&gt; inputs;
+  @SerializedName(&quot;bucket_recipe&quot;)
+  protected List&lt;PutAlgorithmResponseBucketStep&gt; bucketRecipe;
+  @SerializedName(&quot;bucket_group_recipe&quot;)
+  protected List&lt;PutAlgorithmResponseBucketGroupStep&gt; bucketGroupRecipe;
+  @SerializedName(&quot;maximum_bucket_size&quot;)
+  protected Long maximumBucketSize;
+  protected String label;
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of input definitions used for bucket generator.
+   *
+   * @return the inputs
+   */
+  public List&lt;PutAlgorithmResponseInput&gt; getInputs() {
+<span class="fc" id="L42">    return inputs;</span>
+  }
+
+  /**
+   * Gets the bucketRecipe.
+   *
+   * Collection of bucket generator steps.
+   *
+   * @return the bucketRecipe
+   */
+  public List&lt;PutAlgorithmResponseBucketStep&gt; getBucketRecipe() {
+<span class="fc" id="L53">    return bucketRecipe;</span>
+  }
+
+  /**
+   * Gets the bucketGroupRecipe.
+   *
+   * Collection of bucket group generator steps.
+   *
+   * @return the bucketGroupRecipe
+   */
+  public List&lt;PutAlgorithmResponseBucketGroupStep&gt; getBucketGroupRecipe() {
+<span class="fc" id="L64">    return bucketGroupRecipe;</span>
+  }
+
+  /**
+   * Gets the maximumBucketSize.
+   *
+   * An integer value indicating maximum size of any buckets of this type.
+   *
+   * @return the maximumBucketSize
+   */
+  public Long getMaximumBucketSize() {
+<span class="fc" id="L75">    return maximumBucketSize;</span>
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String getLabel() {
+<span class="fc" id="L86">    return label;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

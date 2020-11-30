@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Relationship.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">Relationship.java</span></div><h1>Relationship.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.Map;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * Information about a relationship.
+ */
+public class Relationship extends GenericModel {
+
+  protected String type;
+  protected String id;
+  protected Map&lt;String, Object&gt; attributes;
+  @SerializedName(&quot;type_name&quot;)
+  protected String typeName;
+  @SerializedName(&quot;from_record_id&quot;)
+  protected String fromRecordId;
+  @SerializedName(&quot;from_record_source&quot;)
+  protected String fromRecordSource;
+  @SerializedName(&quot;from_record_number&quot;)
+  protected String fromRecordNumber;
+  @SerializedName(&quot;from_record_type&quot;)
+  protected String fromRecordType;
+  @SerializedName(&quot;to_record_id&quot;)
+  protected String toRecordId;
+  @SerializedName(&quot;to_record_source&quot;)
+  protected String toRecordSource;
+  @SerializedName(&quot;to_record_type&quot;)
+  protected String toRecordType;
+  @SerializedName(&quot;to_record_number&quot;)
+  protected String toRecordNumber;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String type;
+    private String id;
+    private Map&lt;String, Object&gt; attributes;
+    private String typeName;
+    private String fromRecordId;
+    private String fromRecordSource;
+    private String fromRecordNumber;
+    private String fromRecordType;
+    private String toRecordId;
+    private String toRecordSource;
+    private String toRecordType;
+    private String toRecordNumber;
+
+<span class="nc" id="L64">    private Builder(Relationship relationship) {</span>
+<span class="nc" id="L65">      this.type = relationship.type;</span>
+<span class="nc" id="L66">      this.id = relationship.id;</span>
+<span class="nc" id="L67">      this.attributes = relationship.attributes;</span>
+<span class="nc" id="L68">      this.typeName = relationship.typeName;</span>
+<span class="nc" id="L69">      this.fromRecordId = relationship.fromRecordId;</span>
+<span class="nc" id="L70">      this.fromRecordSource = relationship.fromRecordSource;</span>
+<span class="nc" id="L71">      this.fromRecordNumber = relationship.fromRecordNumber;</span>
+<span class="nc" id="L72">      this.fromRecordType = relationship.fromRecordType;</span>
+<span class="nc" id="L73">      this.toRecordId = relationship.toRecordId;</span>
+<span class="nc" id="L74">      this.toRecordSource = relationship.toRecordSource;</span>
+<span class="nc" id="L75">      this.toRecordType = relationship.toRecordType;</span>
+<span class="nc" id="L76">      this.toRecordNumber = relationship.toRecordNumber;</span>
+<span class="nc" id="L77">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L82">    public Builder() {</span>
+<span class="fc" id="L83">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param attributes the attributes
+     */
+<span class="nc" id="L90">    public Builder(Map&lt;String, Object&gt; attributes) {</span>
+<span class="nc" id="L91">      this.attributes = attributes;</span>
+<span class="nc" id="L92">    }</span>
+
+    /**
+     * Builds a Relationship.
+     *
+     * @return the new Relationship instance
+     */
+    public Relationship build() {
+<span class="fc" id="L100">      return new Relationship(this);</span>
+    }
+
+    /**
+     * Set the type.
+     *
+     * @param type the type
+     * @return the Relationship builder
+     */
+    public Builder type(String type) {
+<span class="fc" id="L110">      this.type = type;</span>
+<span class="fc" id="L111">      return this;</span>
+    }
+
+    /**
+     * Set the id.
+     *
+     * @param id the id
+     * @return the Relationship builder
+     */
+    public Builder id(String id) {
+<span class="fc" id="L121">      this.id = id;</span>
+<span class="fc" id="L122">      return this;</span>
+    }
+
+    /**
+     * Set the attributes.
+     *
+     * @param attributes the attributes
+     * @return the Relationship builder
+     */
+    public Builder attributes(Map&lt;String, Object&gt; attributes) {
+<span class="fc" id="L132">      this.attributes = attributes;</span>
+<span class="fc" id="L133">      return this;</span>
+    }
+
+    /**
+     * Set the typeName.
+     *
+     * @param typeName the typeName
+     * @return the Relationship builder
+     */
+    public Builder typeName(String typeName) {
+<span class="fc" id="L143">      this.typeName = typeName;</span>
+<span class="fc" id="L144">      return this;</span>
+    }
+
+    /**
+     * Set the fromRecordId.
+     *
+     * @param fromRecordId the fromRecordId
+     * @return the Relationship builder
+     */
+    public Builder fromRecordId(String fromRecordId) {
+<span class="fc" id="L154">      this.fromRecordId = fromRecordId;</span>
+<span class="fc" id="L155">      return this;</span>
+    }
+
+    /**
+     * Set the fromRecordSource.
+     *
+     * @param fromRecordSource the fromRecordSource
+     * @return the Relationship builder
+     */
+    public Builder fromRecordSource(String fromRecordSource) {
+<span class="fc" id="L165">      this.fromRecordSource = fromRecordSource;</span>
+<span class="fc" id="L166">      return this;</span>
+    }
+
+    /**
+     * Set the fromRecordNumber.
+     *
+     * @param fromRecordNumber the fromRecordNumber
+     * @return the Relationship builder
+     */
+    public Builder fromRecordNumber(String fromRecordNumber) {
+<span class="fc" id="L176">      this.fromRecordNumber = fromRecordNumber;</span>
+<span class="fc" id="L177">      return this;</span>
+    }
+
+    /**
+     * Set the fromRecordType.
+     *
+     * @param fromRecordType the fromRecordType
+     * @return the Relationship builder
+     */
+    public Builder fromRecordType(String fromRecordType) {
+<span class="fc" id="L187">      this.fromRecordType = fromRecordType;</span>
+<span class="fc" id="L188">      return this;</span>
+    }
+
+    /**
+     * Set the toRecordId.
+     *
+     * @param toRecordId the toRecordId
+     * @return the Relationship builder
+     */
+    public Builder toRecordId(String toRecordId) {
+<span class="fc" id="L198">      this.toRecordId = toRecordId;</span>
+<span class="fc" id="L199">      return this;</span>
+    }
+
+    /**
+     * Set the toRecordSource.
+     *
+     * @param toRecordSource the toRecordSource
+     * @return the Relationship builder
+     */
+    public Builder toRecordSource(String toRecordSource) {
+<span class="fc" id="L209">      this.toRecordSource = toRecordSource;</span>
+<span class="fc" id="L210">      return this;</span>
+    }
+
+    /**
+     * Set the toRecordType.
+     *
+     * @param toRecordType the toRecordType
+     * @return the Relationship builder
+     */
+    public Builder toRecordType(String toRecordType) {
+<span class="fc" id="L220">      this.toRecordType = toRecordType;</span>
+<span class="fc" id="L221">      return this;</span>
+    }
+
+    /**
+     * Set the toRecordNumber.
+     *
+     * @param toRecordNumber the toRecordNumber
+     * @return the Relationship builder
+     */
+    public Builder toRecordNumber(String toRecordNumber) {
+<span class="fc" id="L231">      this.toRecordNumber = toRecordNumber;</span>
+<span class="fc" id="L232">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L236">  protected Relationship(Builder builder) {</span>
+<span class="fc" id="L237">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,</span>
+      &quot;attributes cannot be null&quot;);
+<span class="fc" id="L239">    type = builder.type;</span>
+<span class="fc" id="L240">    id = builder.id;</span>
+<span class="fc" id="L241">    attributes = builder.attributes;</span>
+<span class="fc" id="L242">    typeName = builder.typeName;</span>
+<span class="fc" id="L243">    fromRecordId = builder.fromRecordId;</span>
+<span class="fc" id="L244">    fromRecordSource = builder.fromRecordSource;</span>
+<span class="fc" id="L245">    fromRecordNumber = builder.fromRecordNumber;</span>
+<span class="fc" id="L246">    fromRecordType = builder.fromRecordType;</span>
+<span class="fc" id="L247">    toRecordId = builder.toRecordId;</span>
+<span class="fc" id="L248">    toRecordSource = builder.toRecordSource;</span>
+<span class="fc" id="L249">    toRecordType = builder.toRecordType;</span>
+<span class="fc" id="L250">    toRecordNumber = builder.toRecordNumber;</span>
+<span class="fc" id="L251">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a Relationship builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L259">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the type.
+   *
+   * The type of the element.
+   *
+   * @return the type
+   */
+  public String type() {
+<span class="fc" id="L270">    return type;</span>
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The id of the element.
+   *
+   * @return the id
+   */
+  public String id() {
+<span class="fc" id="L281">    return id;</span>
+  }
+
+  /**
+   * Gets the attributes.
+   *
+   * list of the attributes of the element.
+   *
+   * @return the attributes
+   */
+  public Map&lt;String, Object&gt; attributes() {
+<span class="fc" id="L292">    return attributes;</span>
+  }
+
+  /**
+   * Gets the typeName.
+   *
+   * The name of the relationship type.
+   *
+   * @return the typeName
+   */
+  public String typeName() {
+<span class="fc" id="L303">    return typeName;</span>
+  }
+
+  /**
+   * Gets the fromRecordId.
+   *
+   * The record id of the source record.
+   *
+   * @return the fromRecordId
+   */
+  public String fromRecordId() {
+<span class="fc" id="L314">    return fromRecordId;</span>
+  }
+
+  /**
+   * Gets the fromRecordSource.
+   *
+   * The source name of the source record.
+   *
+   * @return the fromRecordSource
+   */
+  public String fromRecordSource() {
+<span class="fc" id="L325">    return fromRecordSource;</span>
+  }
+
+  /**
+   * Gets the fromRecordNumber.
+   *
+   * The unique id of the source record.
+   *
+   * @return the fromRecordNumber
+   */
+  public String fromRecordNumber() {
+<span class="fc" id="L336">    return fromRecordNumber;</span>
+  }
+
+  /**
+   * Gets the fromRecordType.
+   *
+   * The name of the source record type.
+   *
+   * @return the fromRecordType
+   */
+  public String fromRecordType() {
+<span class="fc" id="L347">    return fromRecordType;</span>
+  }
+
+  /**
+   * Gets the toRecordId.
+   *
+   * The id of the target record.
+   *
+   * @return the toRecordId
+   */
+  public String toRecordId() {
+<span class="fc" id="L358">    return toRecordId;</span>
+  }
+
+  /**
+   * Gets the toRecordSource.
+   *
+   * The source name of the target record.
+   *
+   * @return the toRecordSource
+   */
+  public String toRecordSource() {
+<span class="fc" id="L369">    return toRecordSource;</span>
+  }
+
+  /**
+   * Gets the toRecordType.
+   *
+   * The name of the target record type.
+   *
+   * @return the toRecordType
+   */
+  public String toRecordType() {
+<span class="fc" id="L380">    return toRecordType;</span>
+  }
+
+  /**
+   * Gets the toRecordNumber.
+   *
+   * The unique id of the target record.
+   *
+   * @return the toRecordNumber
+   */
+  public String toRecordNumber() {
+<span class="fc" id="L391">    return toRecordNumber;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

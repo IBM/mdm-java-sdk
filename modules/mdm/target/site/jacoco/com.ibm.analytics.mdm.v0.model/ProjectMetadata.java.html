@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProjectMetadata.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">ProjectMetadata.java</span></div><h1>ProjectMetadata.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * Project metadata object.
+ */
+public class ProjectMetadata extends GenericModel {
+
+  @SerializedName(&quot;project_id&quot;)
+  protected String projectId;
+  @SerializedName(&quot;catalog_id&quot;)
+  protected String catalogId;
+  protected String collaborators;
+  @SerializedName(&quot;created_date&quot;)
+  protected String createdDate;
+  @SerializedName(&quot;storage_type&quot;)
+  protected String storageType;
+  @SerializedName(&quot;last_update_date&quot;)
+  protected String lastUpdateDate;
+  protected String description;
+  protected String role;
+  protected String name;
+  protected String id;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String projectId;
+    private String catalogId;
+    private String collaborators;
+    private String storageType;
+    private String description;
+    private String role;
+    private String name;
+
+<span class="nc" id="L51">    private Builder(ProjectMetadata projectMetadata) {</span>
+<span class="nc" id="L52">      this.projectId = projectMetadata.projectId;</span>
+<span class="nc" id="L53">      this.catalogId = projectMetadata.catalogId;</span>
+<span class="nc" id="L54">      this.collaborators = projectMetadata.collaborators;</span>
+<span class="nc" id="L55">      this.storageType = projectMetadata.storageType;</span>
+<span class="nc" id="L56">      this.description = projectMetadata.description;</span>
+<span class="nc" id="L57">      this.role = projectMetadata.role;</span>
+<span class="nc" id="L58">      this.name = projectMetadata.name;</span>
+<span class="nc" id="L59">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L64">    public Builder() {</span>
+<span class="fc" id="L65">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param description the description
+     * @param name the name
+     */
+<span class="nc" id="L73">    public Builder(String description, String name) {</span>
+<span class="nc" id="L74">      this.description = description;</span>
+<span class="nc" id="L75">      this.name = name;</span>
+<span class="nc" id="L76">    }</span>
+
+    /**
+     * Builds a ProjectMetadata.
+     *
+     * @return the new ProjectMetadata instance
+     */
+    public ProjectMetadata build() {
+<span class="fc" id="L84">      return new ProjectMetadata(this);</span>
+    }
+
+    /**
+     * Set the projectId.
+     *
+     * @param projectId the projectId
+     * @return the ProjectMetadata builder
+     */
+    public Builder projectId(String projectId) {
+<span class="fc" id="L94">      this.projectId = projectId;</span>
+<span class="fc" id="L95">      return this;</span>
+    }
+
+    /**
+     * Set the catalogId.
+     *
+     * @param catalogId the catalogId
+     * @return the ProjectMetadata builder
+     */
+    public Builder catalogId(String catalogId) {
+<span class="fc" id="L105">      this.catalogId = catalogId;</span>
+<span class="fc" id="L106">      return this;</span>
+    }
+
+    /**
+     * Set the collaborators.
+     *
+     * @param collaborators the collaborators
+     * @return the ProjectMetadata builder
+     */
+    public Builder collaborators(String collaborators) {
+<span class="fc" id="L116">      this.collaborators = collaborators;</span>
+<span class="fc" id="L117">      return this;</span>
+    }
+
+    /**
+     * Set the storageType.
+     *
+     * @param storageType the storageType
+     * @return the ProjectMetadata builder
+     */
+    public Builder storageType(String storageType) {
+<span class="fc" id="L127">      this.storageType = storageType;</span>
+<span class="fc" id="L128">      return this;</span>
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the ProjectMetadata builder
+     */
+    public Builder description(String description) {
+<span class="fc" id="L138">      this.description = description;</span>
+<span class="fc" id="L139">      return this;</span>
+    }
+
+    /**
+     * Set the role.
+     *
+     * @param role the role
+     * @return the ProjectMetadata builder
+     */
+    public Builder role(String role) {
+<span class="fc" id="L149">      this.role = role;</span>
+<span class="fc" id="L150">      return this;</span>
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the ProjectMetadata builder
+     */
+    public Builder name(String name) {
+<span class="fc" id="L160">      this.name = name;</span>
+<span class="fc" id="L161">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L165">  protected ProjectMetadata(Builder builder) {</span>
+<span class="fc" id="L166">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.description,</span>
+      &quot;description cannot be null&quot;);
+<span class="fc" id="L168">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,</span>
+      &quot;name cannot be null&quot;);
+<span class="fc" id="L170">    projectId = builder.projectId;</span>
+<span class="fc" id="L171">    catalogId = builder.catalogId;</span>
+<span class="fc" id="L172">    collaborators = builder.collaborators;</span>
+<span class="fc" id="L173">    storageType = builder.storageType;</span>
+<span class="fc" id="L174">    description = builder.description;</span>
+<span class="fc" id="L175">    role = builder.role;</span>
+<span class="fc" id="L176">    name = builder.name;</span>
+<span class="fc" id="L177">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a ProjectMetadata builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L185">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the projectId.
+   *
+   * project id of the corresponding wkc project.
+   *
+   * @return the projectId
+   */
+  public String projectId() {
+<span class="fc" id="L196">    return projectId;</span>
+  }
+
+  /**
+   * Gets the catalogId.
+   *
+   * catalog id of the corresponding wkc project.
+   *
+   * @return the catalogId
+   */
+  public String catalogId() {
+<span class="fc" id="L207">    return catalogId;</span>
+  }
+
+  /**
+   * Gets the collaborators.
+   *
+   * collaborators.
+   *
+   * @return the collaborators
+   */
+  public String collaborators() {
+<span class="fc" id="L218">    return collaborators;</span>
+  }
+
+  /**
+   * Gets the createdDate.
+   *
+   * created date of project metadata.
+   *
+   * @return the createdDate
+   */
+  public String createdDate() {
+<span class="nc" id="L229">    return createdDate;</span>
+  }
+
+  /**
+   * Gets the storageType.
+   *
+   * storage type of the project.
+   *
+   * @return the storageType
+   */
+  public String storageType() {
+<span class="fc" id="L240">    return storageType;</span>
+  }
+
+  /**
+   * Gets the lastUpdateDate.
+   *
+   * last update date of project metadata.
+   *
+   * @return the lastUpdateDate
+   */
+  public String lastUpdateDate() {
+<span class="nc" id="L251">    return lastUpdateDate;</span>
+  }
+
+  /**
+   * Gets the description.
+   *
+   * description of the project.
+   *
+   * @return the description
+   */
+  public String description() {
+<span class="fc" id="L262">    return description;</span>
+  }
+
+  /**
+   * Gets the role.
+   *
+   * role.
+   *
+   * @return the role
+   */
+  public String role() {
+<span class="fc" id="L273">    return role;</span>
+  }
+
+  /**
+   * Gets the name.
+   *
+   * name of the project.
+   *
+   * @return the name
+   */
+  public String name() {
+<span class="fc" id="L284">    return name;</span>
+  }
+
+  /**
+   * Gets the id.
+   *
+   * id of this project metadata.
+   *
+   * @return the id
+   */
+  public String id() {
+<span class="nc" id="L295">    return id;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

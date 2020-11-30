@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ModelReplaceMapResourceOptions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">ModelReplaceMapResourceOptions.java</span></div><h1>ModelReplaceMapResourceOptions.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.List;
+import java.util.Map;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * The modelReplaceMapResource options.
+ */
+public class ModelReplaceMapResourceOptions extends GenericModel {
+
+  protected String crn;
+  protected String resourceName;
+  protected Map&lt;String, List&lt;MapResourceMapResourceEntry&gt;&gt; requestBody;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String crn;
+    private String resourceName;
+    private Map&lt;String, List&lt;MapResourceMapResourceEntry&gt;&gt; requestBody;
+
+<span class="nc" id="L37">    private Builder(ModelReplaceMapResourceOptions modelReplaceMapResourceOptions) {</span>
+<span class="nc" id="L38">      this.crn = modelReplaceMapResourceOptions.crn;</span>
+<span class="nc" id="L39">      this.resourceName = modelReplaceMapResourceOptions.resourceName;</span>
+<span class="nc" id="L40">      this.requestBody = modelReplaceMapResourceOptions.requestBody;</span>
+<span class="nc" id="L41">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L46">    public Builder() {</span>
+<span class="fc" id="L47">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param crn the crn
+     * @param resourceName the resourceName
+     * @param requestBody the requestBody
+     */
+<span class="nc" id="L56">    public Builder(String crn, String resourceName, Map&lt;String, List&lt;MapResourceMapResourceEntry&gt;&gt; requestBody) {</span>
+<span class="nc" id="L57">      this.crn = crn;</span>
+<span class="nc" id="L58">      this.resourceName = resourceName;</span>
+<span class="nc" id="L59">      this.requestBody = requestBody;</span>
+<span class="nc" id="L60">    }</span>
+
+    /**
+     * Builds a ModelReplaceMapResourceOptions.
+     *
+     * @return the new ModelReplaceMapResourceOptions instance
+     */
+    public ModelReplaceMapResourceOptions build() {
+<span class="fc" id="L68">      return new ModelReplaceMapResourceOptions(this);</span>
+    }
+
+    /**
+     * Set the crn.
+     *
+     * @param crn the crn
+     * @return the ModelReplaceMapResourceOptions builder
+     */
+    public Builder crn(String crn) {
+<span class="fc" id="L78">      this.crn = crn;</span>
+<span class="fc" id="L79">      return this;</span>
+    }
+
+    /**
+     * Set the resourceName.
+     *
+     * @param resourceName the resourceName
+     * @return the ModelReplaceMapResourceOptions builder
+     */
+    public Builder resourceName(String resourceName) {
+<span class="fc" id="L89">      this.resourceName = resourceName;</span>
+<span class="fc" id="L90">      return this;</span>
+    }
+
+    /**
+     * Set the requestBody.
+     *
+     * @param requestBody the requestBody
+     * @return the ModelReplaceMapResourceOptions builder
+     */
+    public Builder requestBody(Map&lt;String, List&lt;MapResourceMapResourceEntry&gt;&gt; requestBody) {
+<span class="fc" id="L100">      this.requestBody = requestBody;</span>
+<span class="fc" id="L101">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L105">  protected ModelReplaceMapResourceOptions(Builder builder) {</span>
+<span class="fc" id="L106">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,</span>
+      &quot;crn cannot be null&quot;);
+<span class="fc" id="L108">    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.resourceName,</span>
+      &quot;resourceName cannot be empty&quot;);
+<span class="fc" id="L110">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.requestBody,</span>
+      &quot;requestBody cannot be null&quot;);
+<span class="fc" id="L112">    crn = builder.crn;</span>
+<span class="fc" id="L113">    resourceName = builder.resourceName;</span>
+<span class="fc" id="L114">    requestBody = builder.requestBody;</span>
+<span class="fc" id="L115">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a ModelReplaceMapResourceOptions builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L123">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
+   *
+   * @return the crn
+   */
+  public String crn() {
+<span class="fc" id="L134">    return crn;</span>
+  }
+
+  /**
+   * Gets the resourceName.
+   *
+   * The unique identifier for the configuration for the equivalent words.
+   *
+   * @return the resourceName
+   */
+  public String resourceName() {
+<span class="fc" id="L145">    return resourceName;</span>
+  }
+
+  /**
+   * Gets the requestBody.
+   *
+   * A single map resource used for matching algorithm like for handling equivalent values. Map resource key must be
+   * lower snake case (i.e. nickname).
+   *
+   * @return the requestBody
+   */
+  public Map&lt;String, List&lt;MapResourceMapResourceEntry&gt;&gt; requestBody() {
+<span class="fc" id="L157">    return requestBody;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

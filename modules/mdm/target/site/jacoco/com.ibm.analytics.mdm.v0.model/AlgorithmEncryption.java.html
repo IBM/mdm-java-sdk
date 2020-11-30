@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlgorithmEncryption.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">AlgorithmEncryption.java</span></div><h1>AlgorithmEncryption.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * Asymmetric encryption configuration.
+ */
+public class AlgorithmEncryption extends GenericModel {
+
+  @SerializedName(&quot;pub_key&quot;)
+  protected List&lt;String&gt; pubKey;
+  @SerializedName(&quot;sub_type&quot;)
+  protected String subType;
+  protected Boolean enabled;
+  protected String type;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private List&lt;String&gt; pubKey;
+    private String subType;
+    private Boolean enabled;
+    private String type;
+
+<span class="nc" id="L42">    private Builder(AlgorithmEncryption algorithmEncryption) {</span>
+<span class="nc" id="L43">      this.pubKey = algorithmEncryption.pubKey;</span>
+<span class="nc" id="L44">      this.subType = algorithmEncryption.subType;</span>
+<span class="nc" id="L45">      this.enabled = algorithmEncryption.enabled;</span>
+<span class="nc" id="L46">      this.type = algorithmEncryption.type;</span>
+<span class="nc" id="L47">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L52">    public Builder() {</span>
+<span class="fc" id="L53">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param pubKey the pubKey
+     * @param subType the subType
+     * @param enabled the enabled
+     * @param type the type
+     */
+<span class="nc" id="L63">    public Builder(List&lt;String&gt; pubKey, String subType, Boolean enabled, String type) {</span>
+<span class="nc" id="L64">      this.pubKey = pubKey;</span>
+<span class="nc" id="L65">      this.subType = subType;</span>
+<span class="nc" id="L66">      this.enabled = enabled;</span>
+<span class="nc" id="L67">      this.type = type;</span>
+<span class="nc" id="L68">    }</span>
+
+    /**
+     * Builds a AlgorithmEncryption.
+     *
+     * @return the new AlgorithmEncryption instance
+     */
+    public AlgorithmEncryption build() {
+<span class="fc" id="L76">      return new AlgorithmEncryption(this);</span>
+    }
+
+    /**
+     * Adds an pubKey to pubKey.
+     *
+     * @param pubKey the new pubKey
+     * @return the AlgorithmEncryption builder
+     */
+    public Builder addPubKey(String pubKey) {
+<span class="nc" id="L86">      com.ibm.cloud.sdk.core.util.Validator.notNull(pubKey,</span>
+        &quot;pubKey cannot be null&quot;);
+<span class="nc bnc" id="L88" title="All 2 branches missed.">      if (this.pubKey == null) {</span>
+<span class="nc" id="L89">        this.pubKey = new ArrayList&lt;String&gt;();</span>
+      }
+<span class="nc" id="L91">      this.pubKey.add(pubKey);</span>
+<span class="nc" id="L92">      return this;</span>
+    }
+
+    /**
+     * Set the pubKey.
+     * Existing pubKey will be replaced.
+     *
+     * @param pubKey the pubKey
+     * @return the AlgorithmEncryption builder
+     */
+    public Builder pubKey(List&lt;String&gt; pubKey) {
+<span class="fc" id="L103">      this.pubKey = pubKey;</span>
+<span class="fc" id="L104">      return this;</span>
+    }
+
+    /**
+     * Set the subType.
+     *
+     * @param subType the subType
+     * @return the AlgorithmEncryption builder
+     */
+    public Builder subType(String subType) {
+<span class="fc" id="L114">      this.subType = subType;</span>
+<span class="fc" id="L115">      return this;</span>
+    }
+
+    /**
+     * Set the enabled.
+     *
+     * @param enabled the enabled
+     * @return the AlgorithmEncryption builder
+     */
+    public Builder enabled(Boolean enabled) {
+<span class="fc" id="L125">      this.enabled = enabled;</span>
+<span class="fc" id="L126">      return this;</span>
+    }
+
+    /**
+     * Set the type.
+     *
+     * @param type the type
+     * @return the AlgorithmEncryption builder
+     */
+    public Builder type(String type) {
+<span class="fc" id="L136">      this.type = type;</span>
+<span class="fc" id="L137">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L141">  protected AlgorithmEncryption(Builder builder) {</span>
+<span class="fc" id="L142">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.pubKey,</span>
+      &quot;pubKey cannot be null&quot;);
+<span class="fc" id="L144">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subType,</span>
+      &quot;subType cannot be null&quot;);
+<span class="fc" id="L146">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.enabled,</span>
+      &quot;enabled cannot be null&quot;);
+<span class="fc" id="L148">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,</span>
+      &quot;type cannot be null&quot;);
+<span class="fc" id="L150">    pubKey = builder.pubKey;</span>
+<span class="fc" id="L151">    subType = builder.subType;</span>
+<span class="fc" id="L152">    enabled = builder.enabled;</span>
+<span class="fc" id="L153">    type = builder.type;</span>
+<span class="fc" id="L154">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a AlgorithmEncryption builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L162">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the pubKey.
+   *
+   * Asymmetric encryption public keys.
+   *
+   * @return the pubKey
+   */
+  public List&lt;String&gt; pubKey() {
+<span class="fc" id="L173">    return pubKey;</span>
+  }
+
+  /**
+   * Gets the subType.
+   *
+   * Asymmetric encryption sub type (i.e. Deterministic).
+   *
+   * @return the subType
+   */
+  public String subType() {
+<span class="fc" id="L184">    return subType;</span>
+  }
+
+  /**
+   * Gets the enabled.
+   *
+   * Asymmetric encryption enabled indicator, true or false.
+   *
+   * @return the enabled
+   */
+  public Boolean enabled() {
+<span class="fc" id="L195">    return enabled;</span>
+  }
+
+  /**
+   * Gets the type.
+   *
+   * Asymmetric encryption type (i.e. RSA).
+   *
+   * @return the type
+   */
+  public String type() {
+<span class="fc" id="L206">    return type;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

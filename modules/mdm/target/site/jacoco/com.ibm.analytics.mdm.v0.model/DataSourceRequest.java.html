@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataSourceRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">DataSourceRequest.java</span></div><h1>DataSourceRequest.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * The data source request.
+ */
+public class DataSourceRequest extends GenericModel {
+
+  /**
+   * The type of data being bulk-loaded.
+   */
+  public interface Type {
+    /** dfs. */
+    String DFS = &quot;dfs&quot;;
+    /** sample. */
+    String SAMPLE = &quot;sample&quot;;
+  }
+
+  /**
+   * The directory containing sample bulk load data.
+   */
+  public interface DirectoryRef {
+    /** sample_contract_small. */
+    String SAMPLE_CONTRACT_SMALL = &quot;sample_contract_small&quot;;
+    /** sample_consent_small. */
+    String SAMPLE_CONSENT_SMALL = &quot;sample_consent_small&quot;;
+    /** sample_contract. */
+    String SAMPLE_CONTRACT = &quot;sample_contract&quot;;
+    /** sample_consent. */
+    String SAMPLE_CONSENT = &quot;sample_consent&quot;;
+  }
+
+  protected String type;
+  @SerializedName(&quot;directory_path&quot;)
+  protected String directoryPath;
+  @SerializedName(&quot;directory_ref&quot;)
+  protected String directoryRef;
+  protected DataSourceDetailsRequest details;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String type;
+    private String directoryPath;
+    private String directoryRef;
+    private DataSourceDetailsRequest details;
+
+<span class="nc" id="L63">    private Builder(DataSourceRequest dataSourceRequest) {</span>
+<span class="nc" id="L64">      this.type = dataSourceRequest.type;</span>
+<span class="nc" id="L65">      this.directoryPath = dataSourceRequest.directoryPath;</span>
+<span class="nc" id="L66">      this.directoryRef = dataSourceRequest.directoryRef;</span>
+<span class="nc" id="L67">      this.details = dataSourceRequest.details;</span>
+<span class="nc" id="L68">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L73">    public Builder() {</span>
+<span class="fc" id="L74">    }</span>
+
+    /**
+     * Builds a DataSourceRequest.
+     *
+     * @return the new DataSourceRequest instance
+     */
+    public DataSourceRequest build() {
+<span class="fc" id="L82">      return new DataSourceRequest(this);</span>
+    }
+
+    /**
+     * Set the type.
+     *
+     * @param type the type
+     * @return the DataSourceRequest builder
+     */
+    public Builder type(String type) {
+<span class="fc" id="L92">      this.type = type;</span>
+<span class="fc" id="L93">      return this;</span>
+    }
+
+    /**
+     * Set the directoryPath.
+     *
+     * @param directoryPath the directoryPath
+     * @return the DataSourceRequest builder
+     */
+    public Builder directoryPath(String directoryPath) {
+<span class="fc" id="L103">      this.directoryPath = directoryPath;</span>
+<span class="fc" id="L104">      return this;</span>
+    }
+
+    /**
+     * Set the directoryRef.
+     *
+     * @param directoryRef the directoryRef
+     * @return the DataSourceRequest builder
+     */
+    public Builder directoryRef(String directoryRef) {
+<span class="fc" id="L114">      this.directoryRef = directoryRef;</span>
+<span class="fc" id="L115">      return this;</span>
+    }
+
+    /**
+     * Set the details.
+     *
+     * @param details the details
+     * @return the DataSourceRequest builder
+     */
+    public Builder details(DataSourceDetailsRequest details) {
+<span class="fc" id="L125">      this.details = details;</span>
+<span class="fc" id="L126">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L130">  protected DataSourceRequest(Builder builder) {</span>
+<span class="fc" id="L131">    type = builder.type;</span>
+<span class="fc" id="L132">    directoryPath = builder.directoryPath;</span>
+<span class="fc" id="L133">    directoryRef = builder.directoryRef;</span>
+<span class="fc" id="L134">    details = builder.details;</span>
+<span class="fc" id="L135">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a DataSourceRequest builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L143">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the type.
+   *
+   * The type of data being bulk-loaded.
+   *
+   * @return the type
+   */
+  public String type() {
+<span class="fc" id="L154">    return type;</span>
+  }
+
+  /**
+   * Gets the directoryPath.
+   *
+   * The absolute path to the directory containing bulk load data.
+   *
+   * @return the directoryPath
+   */
+  public String directoryPath() {
+<span class="fc" id="L165">    return directoryPath;</span>
+  }
+
+  /**
+   * Gets the directoryRef.
+   *
+   * The directory containing sample bulk load data.
+   *
+   * @return the directoryRef
+   */
+  public String directoryRef() {
+<span class="fc" id="L176">    return directoryRef;</span>
+  }
+
+  /**
+   * Gets the details.
+   *
+   * The details of a data source.
+   *
+   * @return the details
+   */
+  public DataSourceDetailsRequest details() {
+<span class="fc" id="L187">    return details;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

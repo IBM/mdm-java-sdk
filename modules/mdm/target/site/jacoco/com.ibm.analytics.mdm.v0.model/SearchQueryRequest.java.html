@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SearchQueryRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">SearchQueryRequest.java</span></div><h1>SearchQueryRequest.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A search query.
+ */
+public class SearchQueryRequest extends GenericModel {
+
+  /**
+   * The operation to apply to the expressions.
+   */
+  public interface Operation {
+    /** and. */
+    String AND = &quot;and&quot;;
+    /** or. */
+    String OR = &quot;or&quot;;
+  }
+
+  protected String operation;
+  protected List&lt;ExpressionRequest&gt; expressions;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String operation;
+    private List&lt;ExpressionRequest&gt; expressions;
+
+<span class="nc" id="L45">    private Builder(SearchQueryRequest searchQueryRequest) {</span>
+<span class="nc" id="L46">      this.operation = searchQueryRequest.operation;</span>
+<span class="nc" id="L47">      this.expressions = searchQueryRequest.expressions;</span>
+<span class="nc" id="L48">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L53">    public Builder() {</span>
+<span class="fc" id="L54">    }</span>
+
+    /**
+     * Builds a SearchQueryRequest.
+     *
+     * @return the new SearchQueryRequest instance
+     */
+    public SearchQueryRequest build() {
+<span class="fc" id="L62">      return new SearchQueryRequest(this);</span>
+    }
+
+    /**
+     * Adds an expressions to expressions.
+     *
+     * @param expressions the new expressions
+     * @return the SearchQueryRequest builder
+     */
+    public Builder addExpressions(ExpressionRequest expressions) {
+<span class="nc" id="L72">      com.ibm.cloud.sdk.core.util.Validator.notNull(expressions,</span>
+        &quot;expressions cannot be null&quot;);
+<span class="nc bnc" id="L74" title="All 2 branches missed.">      if (this.expressions == null) {</span>
+<span class="nc" id="L75">        this.expressions = new ArrayList&lt;ExpressionRequest&gt;();</span>
+      }
+<span class="nc" id="L77">      this.expressions.add(expressions);</span>
+<span class="nc" id="L78">      return this;</span>
+    }
+
+    /**
+     * Set the operation.
+     *
+     * @param operation the operation
+     * @return the SearchQueryRequest builder
+     */
+    public Builder operation(String operation) {
+<span class="fc" id="L88">      this.operation = operation;</span>
+<span class="fc" id="L89">      return this;</span>
+    }
+
+    /**
+     * Set the expressions.
+     * Existing expressions will be replaced.
+     *
+     * @param expressions the expressions
+     * @return the SearchQueryRequest builder
+     */
+    public Builder expressions(List&lt;ExpressionRequest&gt; expressions) {
+<span class="fc" id="L100">      this.expressions = expressions;</span>
+<span class="fc" id="L101">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L105">  protected SearchQueryRequest(Builder builder) {</span>
+<span class="fc" id="L106">    operation = builder.operation;</span>
+<span class="fc" id="L107">    expressions = builder.expressions;</span>
+<span class="fc" id="L108">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a SearchQueryRequest builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L116">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the operation.
+   *
+   * The operation to apply to the expressions.
+   *
+   * @return the operation
+   */
+  public String operation() {
+<span class="fc" id="L127">    return operation;</span>
+  }
+
+  /**
+   * Gets the expressions.
+   *
+   * The list of expressions.
+   *
+   * @return the expressions
+   */
+  public List&lt;ExpressionRequest&gt; expressions() {
+<span class="fc" id="L138">    return expressions;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

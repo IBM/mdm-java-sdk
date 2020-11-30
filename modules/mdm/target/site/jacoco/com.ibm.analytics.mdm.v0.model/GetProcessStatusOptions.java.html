@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GetProcessStatusOptions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">GetProcessStatusOptions.java</span></div><h1>GetProcessStatusOptions.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * The getProcessStatus options.
+ */
+public class GetProcessStatusOptions extends GenericModel {
+
+  protected String projectId;
+  protected String status;
+  protected String crn;
+  protected String recordType;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String projectId;
+    private String status;
+    private String crn;
+    private String recordType;
+
+<span class="nc" id="L36">    private Builder(GetProcessStatusOptions getProcessStatusOptions) {</span>
+<span class="nc" id="L37">      this.projectId = getProcessStatusOptions.projectId;</span>
+<span class="nc" id="L38">      this.status = getProcessStatusOptions.status;</span>
+<span class="nc" id="L39">      this.crn = getProcessStatusOptions.crn;</span>
+<span class="nc" id="L40">      this.recordType = getProcessStatusOptions.recordType;</span>
+<span class="nc" id="L41">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L46">    public Builder() {</span>
+<span class="fc" id="L47">    }</span>
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param projectId the projectId
+     * @param status the status
+     * @param crn the crn
+     */
+<span class="nc" id="L56">    public Builder(String projectId, String status, String crn) {</span>
+<span class="nc" id="L57">      this.projectId = projectId;</span>
+<span class="nc" id="L58">      this.status = status;</span>
+<span class="nc" id="L59">      this.crn = crn;</span>
+<span class="nc" id="L60">    }</span>
+
+    /**
+     * Builds a GetProcessStatusOptions.
+     *
+     * @return the new GetProcessStatusOptions instance
+     */
+    public GetProcessStatusOptions build() {
+<span class="fc" id="L68">      return new GetProcessStatusOptions(this);</span>
+    }
+
+    /**
+     * Set the projectId.
+     *
+     * @param projectId the projectId
+     * @return the GetProcessStatusOptions builder
+     */
+    public Builder projectId(String projectId) {
+<span class="fc" id="L78">      this.projectId = projectId;</span>
+<span class="fc" id="L79">      return this;</span>
+    }
+
+    /**
+     * Set the status.
+     *
+     * @param status the status
+     * @return the GetProcessStatusOptions builder
+     */
+    public Builder status(String status) {
+<span class="fc" id="L89">      this.status = status;</span>
+<span class="fc" id="L90">      return this;</span>
+    }
+
+    /**
+     * Set the crn.
+     *
+     * @param crn the crn
+     * @return the GetProcessStatusOptions builder
+     */
+    public Builder crn(String crn) {
+<span class="fc" id="L100">      this.crn = crn;</span>
+<span class="fc" id="L101">      return this;</span>
+    }
+
+    /**
+     * Set the recordType.
+     *
+     * @param recordType the recordType
+     * @return the GetProcessStatusOptions builder
+     */
+    public Builder recordType(String recordType) {
+<span class="fc" id="L111">      this.recordType = recordType;</span>
+<span class="fc" id="L112">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L116">  protected GetProcessStatusOptions(Builder builder) {</span>
+<span class="fc" id="L117">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.projectId,</span>
+      &quot;projectId cannot be null&quot;);
+<span class="fc" id="L119">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.status,</span>
+      &quot;status cannot be null&quot;);
+<span class="fc" id="L121">    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,</span>
+      &quot;crn cannot be null&quot;);
+<span class="fc" id="L123">    projectId = builder.projectId;</span>
+<span class="fc" id="L124">    status = builder.status;</span>
+<span class="fc" id="L125">    crn = builder.crn;</span>
+<span class="fc" id="L126">    recordType = builder.recordType;</span>
+<span class="fc" id="L127">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a GetProcessStatusOptions builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L135">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the projectId.
+   *
+   * Unique identifier of project_metadata.
+   *
+   * @return the projectId
+   */
+  public String projectId() {
+<span class="fc" id="L146">    return projectId;</span>
+  }
+
+  /**
+   * Gets the status.
+   *
+   * Unique status to identify the status type to be returned.
+   *
+   * @return the status
+   */
+  public String status() {
+<span class="fc" id="L157">    return status;</span>
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The cloud resource name of the service.
+   *
+   * @return the crn
+   */
+  public String crn() {
+<span class="fc" id="L168">    return crn;</span>
+  }
+
+  /**
+   * Gets the recordType.
+   *
+   * Unique record type to identify data model attributes.
+   *
+   * @return the recordType
+   */
+  public String recordType() {
+<span class="fc" id="L179">    return recordType;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

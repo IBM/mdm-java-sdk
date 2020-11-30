@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SubgraphEdge.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">SubgraphEdge.java</span></div><h1>SubgraphEdge.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A high-level view of an edge on a subgraph.
+ */
+<span class="fc" id="L21">public class SubgraphEdge extends GenericModel {</span>
+
+  /**
+   * The type of edge.
+   */
+  public interface Type {
+    /** relationship. */
+    String RELATIONSHIP = &quot;relationship&quot;;
+  }
+
+  protected String id;
+  protected String type;
+  @SerializedName(&quot;type_name&quot;)
+  protected String typeName;
+  @SerializedName(&quot;display_name&quot;)
+  protected String displayName;
+  @SerializedName(&quot;source_id&quot;)
+  protected String sourceId;
+  @SerializedName(&quot;target_id&quot;)
+  protected String targetId;
+
+  /**
+   * Gets the id.
+   *
+   * The identifier of the edge.
+   *
+   * @return the id
+   */
+  public String getId() {
+<span class="fc" id="L50">    return id;</span>
+  }
+
+  /**
+   * Gets the type.
+   *
+   * The type of edge.
+   *
+   * @return the type
+   */
+  public String getType() {
+<span class="fc" id="L61">    return type;</span>
+  }
+
+  /**
+   * Gets the typeName.
+   *
+   * The name of the relationship type as defined in the logical model.
+   *
+   * @return the typeName
+   */
+  public String getTypeName() {
+<span class="fc" id="L72">    return typeName;</span>
+  }
+
+  /**
+   * Gets the displayName.
+   *
+   * The name to be displayed on a graph view.
+   *
+   * @return the displayName
+   */
+  public String getDisplayName() {
+<span class="fc" id="L83">    return displayName;</span>
+  }
+
+  /**
+   * Gets the sourceId.
+   *
+   * The identifier of the source vertex.
+   *
+   * @return the sourceId
+   */
+  public String getSourceId() {
+<span class="fc" id="L94">    return sourceId;</span>
+  }
+
+  /**
+   * Gets the targetId.
+   *
+   * The identifier of the target vertex.
+   *
+   * @return the targetId
+   */
+  public String getTargetId() {
+<span class="fc" id="L105">    return targetId;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

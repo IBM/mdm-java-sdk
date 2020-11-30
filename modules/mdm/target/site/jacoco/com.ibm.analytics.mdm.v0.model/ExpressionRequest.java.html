@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExpressionRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Master Data Management</a> &gt; <a href="index.source.html" class="el_package">com.ibm.analytics.mdm.v0.model</a> &gt; <span class="el_source">ExpressionRequest.java</span></div><h1>ExpressionRequest.java</h1><pre class="source lang-java linenums">/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.analytics.mdm.v0.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * An expression used to describe what to search for.
+ */
+public class ExpressionRequest extends GenericModel {
+
+  /**
+   * The condition for the expressions.
+   */
+  public interface Condition {
+    /** equal. */
+    String EQUAL = &quot;equal&quot;;
+    /** not_equal. */
+    String NOT_EQUAL = &quot;not_equal&quot;;
+    /** greater_than. */
+    String GREATER_THAN = &quot;greater_than&quot;;
+    /** greater_than_equal. */
+    String GREATER_THAN_EQUAL = &quot;greater_than_equal&quot;;
+    /** less_than. */
+    String LESS_THAN = &quot;less_than&quot;;
+    /** less_than_equal. */
+    String LESS_THAN_EQUAL = &quot;less_than_equal&quot;;
+    /** starts_with. */
+    String STARTS_WITH = &quot;starts_with&quot;;
+    /** ends_with. */
+    String ENDS_WITH = &quot;ends_with&quot;;
+    /** contains. */
+    String CONTAINS = &quot;contains&quot;;
+    /** not_contains. */
+    String NOT_CONTAINS = &quot;not_contains&quot;;
+    /** fuzzy. */
+    String FUZZY = &quot;fuzzy&quot;;
+    /** has_value. */
+    String HAS_VALUE = &quot;has_value&quot;;
+    /** has_no_value. */
+    String HAS_NO_VALUE = &quot;has_no_value&quot;;
+  }
+
+  /**
+   * The comparison operation to use.
+   */
+  public interface Operation {
+    /** and. */
+    String AND = &quot;and&quot;;
+    /** or. */
+    String OR = &quot;or&quot;;
+  }
+
+  protected String property;
+  protected String value;
+  protected String condition;
+  protected String operation;
+  protected List&lt;ExpressionRequest&gt; expressions;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String property;
+    private String value;
+    private String condition;
+    private String operation;
+    private List&lt;ExpressionRequest&gt; expressions;
+
+<span class="nc" id="L83">    private Builder(ExpressionRequest expressionRequest) {</span>
+<span class="nc" id="L84">      this.property = expressionRequest.property;</span>
+<span class="nc" id="L85">      this.value = expressionRequest.value;</span>
+<span class="nc" id="L86">      this.condition = expressionRequest.condition;</span>
+<span class="nc" id="L87">      this.operation = expressionRequest.operation;</span>
+<span class="nc" id="L88">      this.expressions = expressionRequest.expressions;</span>
+<span class="nc" id="L89">    }</span>
+
+    /**
+     * Instantiates a new builder.
+     */
+<span class="fc" id="L94">    public Builder() {</span>
+<span class="fc" id="L95">    }</span>
+
+    /**
+     * Builds a ExpressionRequest.
+     *
+     * @return the new ExpressionRequest instance
+     */
+    public ExpressionRequest build() {
+<span class="fc" id="L103">      return new ExpressionRequest(this);</span>
+    }
+
+    /**
+     * Adds an expressions to expressions.
+     *
+     * @param expressions the new expressions
+     * @return the ExpressionRequest builder
+     */
+    public Builder addExpressions(ExpressionRequest expressions) {
+<span class="nc" id="L113">      com.ibm.cloud.sdk.core.util.Validator.notNull(expressions,</span>
+        &quot;expressions cannot be null&quot;);
+<span class="nc bnc" id="L115" title="All 2 branches missed.">      if (this.expressions == null) {</span>
+<span class="nc" id="L116">        this.expressions = new ArrayList&lt;ExpressionRequest&gt;();</span>
+      }
+<span class="nc" id="L118">      this.expressions.add(expressions);</span>
+<span class="nc" id="L119">      return this;</span>
+    }
+
+    /**
+     * Set the property.
+     *
+     * @param property the property
+     * @return the ExpressionRequest builder
+     */
+    public Builder property(String property) {
+<span class="fc" id="L129">      this.property = property;</span>
+<span class="fc" id="L130">      return this;</span>
+    }
+
+    /**
+     * Set the value.
+     *
+     * @param value the value
+     * @return the ExpressionRequest builder
+     */
+    public Builder value(String value) {
+<span class="fc" id="L140">      this.value = value;</span>
+<span class="fc" id="L141">      return this;</span>
+    }
+
+    /**
+     * Set the condition.
+     *
+     * @param condition the condition
+     * @return the ExpressionRequest builder
+     */
+    public Builder condition(String condition) {
+<span class="fc" id="L151">      this.condition = condition;</span>
+<span class="fc" id="L152">      return this;</span>
+    }
+
+    /**
+     * Set the operation.
+     *
+     * @param operation the operation
+     * @return the ExpressionRequest builder
+     */
+    public Builder operation(String operation) {
+<span class="fc" id="L162">      this.operation = operation;</span>
+<span class="fc" id="L163">      return this;</span>
+    }
+
+    /**
+     * Set the expressions.
+     * Existing expressions will be replaced.
+     *
+     * @param expressions the expressions
+     * @return the ExpressionRequest builder
+     */
+    public Builder expressions(List&lt;ExpressionRequest&gt; expressions) {
+<span class="nc" id="L174">      this.expressions = expressions;</span>
+<span class="nc" id="L175">      return this;</span>
+    }
+  }
+
+<span class="fc" id="L179">  protected ExpressionRequest(Builder builder) {</span>
+<span class="fc" id="L180">    property = builder.property;</span>
+<span class="fc" id="L181">    value = builder.value;</span>
+<span class="fc" id="L182">    condition = builder.condition;</span>
+<span class="fc" id="L183">    operation = builder.operation;</span>
+<span class="fc" id="L184">    expressions = builder.expressions;</span>
+<span class="fc" id="L185">  }</span>
+
+  /**
+   * New builder.
+   *
+   * @return a ExpressionRequest builder
+   */
+  public Builder newBuilder() {
+<span class="nc" id="L193">    return new Builder(this);</span>
+  }
+
+  /**
+   * Gets the property.
+   *
+   * The property you want to search on.
+   *
+   * @return the property
+   */
+  public String property() {
+<span class="fc" id="L204">    return property;</span>
+  }
+
+  /**
+   * Gets the value.
+   *
+   * The value of the property you want to find results for.
+   *
+   * @return the value
+   */
+  public String value() {
+<span class="fc" id="L215">    return value;</span>
+  }
+
+  /**
+   * Gets the condition.
+   *
+   * The condition for the expressions.
+   *
+   * @return the condition
+   */
+  public String condition() {
+<span class="fc" id="L226">    return condition;</span>
+  }
+
+  /**
+   * Gets the operation.
+   *
+   * The comparison operation to use.
+   *
+   * @return the operation
+   */
+  public String operation() {
+<span class="fc" id="L237">    return operation;</span>
+  }
+
+  /**
+   * Gets the expressions.
+   *
+   * The list of expressions.
+   *
+   * @return the expressions
+   */
+  public List&lt;ExpressionRequest&gt; expressions() {
+<span class="nc" id="L248">    return expressions;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
