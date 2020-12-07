@@ -10,7 +10,7 @@
         <relativePath>../..</relativePath>
     </parent>
 
-    <artifactId>my-services-examples</artifactId>
+    <artifactId>mdm-examples</artifactId>
     <packaging>jar</packaging>
     <name>Code Examples</name>
 
