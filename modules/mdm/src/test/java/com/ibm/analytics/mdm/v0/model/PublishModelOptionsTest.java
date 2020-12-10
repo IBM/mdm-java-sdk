@@ -32,10 +32,8 @@ public class PublishModelOptionsTest {
   @Test
   public void testPublishModelOptions() throws Throwable {
     PublishModelOptions publishModelOptionsModel = new PublishModelOptions.Builder()
-      .projectId("testString")
       .crn("testString")
       .build();
-    assertEquals(publishModelOptionsModel.projectId(), "testString");
     assertEquals(publishModelOptionsModel.crn(), "testString");
   }
 

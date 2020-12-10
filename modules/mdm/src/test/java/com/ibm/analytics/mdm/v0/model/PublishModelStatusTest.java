@@ -14,7 +14,6 @@
 package com.ibm.analytics.mdm.v0.model;
 
 import com.ibm.analytics.mdm.v0.model.PublishModelStatus;
-import com.ibm.analytics.mdm.v0.model.PublishModelStatusPublishModelStatus;
 import com.ibm.analytics.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,6 +32,7 @@ public class PublishModelStatusTest {
   @Test
   public void testPublishModelStatus() throws Throwable {
     PublishModelStatus publishModelStatusModel = new PublishModelStatus();
-    assertNull(publishModelStatusModel.getPublishModelStatus());
+    assertNull(publishModelStatusModel.getStatus());
+    assertNull(publishModelStatusModel.getMessage());
   }
 }

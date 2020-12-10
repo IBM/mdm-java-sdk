@@ -22,26 +22,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseCompareStep extends GenericModel {
 
-  @SerializedName("map_resource")
-  protected String mapResource;
+  protected List<Long> inputs;
   @SerializedName("comparison_resource")
   protected String comparisonResource;
-  protected List<Long> inputs;
   @SerializedName("set_resource")
   protected String setResource;
+  @SerializedName("map_resource")
+  protected String mapResource;
   protected String method;
   protected List<String> fields;
   protected String label;
 
   /**
-   * Gets the mapResource.
+   * Gets the inputs.
    *
-   * An existing map resource name, if applicable.
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
-   * @return the mapResource
+   * @return the inputs
    */
-  public String getMapResource() {
-    return mapResource;
+  public List<Long> getInputs() {
+    return inputs;
   }
 
   /**
@@ -56,17 +56,6 @@ public class PutAlgorithmResponseCompareStep extends GenericModel {
   }
 
   /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> getInputs() {
-    return inputs;
-  }
-
-  /**
    * Gets the setResource.
    *
    * An existing set resource name, if applicable.
@@ -75,6 +64,17 @@ public class PutAlgorithmResponseCompareStep extends GenericModel {
    */
   public String getSetResource() {
     return setResource;
+  }
+
+  /**
+   * Gets the mapResource.
+   *
+   * An existing map resource name, if applicable.
+   *
+   * @return the mapResource
+   */
+  public String getMapResource() {
+    return mapResource;
   }
 
   /**

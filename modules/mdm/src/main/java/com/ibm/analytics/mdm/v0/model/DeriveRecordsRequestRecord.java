@@ -22,14 +22,14 @@ public class DeriveRecordsRequestRecord extends GenericModel {
 
   @SerializedName("record_type")
   protected String recordType;
-  protected DeriveRecordsRequestRecordAttributes attributes;
+  protected DeriveRecordsRequestAttributes attributes;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String recordType;
-    private DeriveRecordsRequestRecordAttributes attributes;
+    private DeriveRecordsRequestAttributes attributes;
 
     private Builder(DeriveRecordsRequestRecord deriveRecordsRequestRecord) {
       this.recordType = deriveRecordsRequestRecord.recordType;
@@ -77,7 +77,7 @@ public class DeriveRecordsRequestRecord extends GenericModel {
      * @param attributes the attributes
      * @return the DeriveRecordsRequestRecord builder
      */
-    public Builder attributes(DeriveRecordsRequestRecordAttributes attributes) {
+    public Builder attributes(DeriveRecordsRequestAttributes attributes) {
       this.attributes = attributes;
       return this;
     }
@@ -113,11 +113,11 @@ public class DeriveRecordsRequestRecord extends GenericModel {
   /**
    * Gets the attributes.
    *
-   * Details of a single record.
+   * Details of a single record including external record reference and record attributes.
    *
    * @return the attributes
    */
-  public DeriveRecordsRequestRecordAttributes attributes() {
+  public DeriveRecordsRequestAttributes attributes() {
     return attributes;
   }
 }

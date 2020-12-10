@@ -22,14 +22,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseEntityType extends GenericModel {
 
+  @SerializedName("bucket_generators")
+  protected Map<String, PutAlgorithmResponseBucketGenerator> bucketGenerators;
   @SerializedName("clerical_review_threshold")
   protected Float clericalReviewThreshold;
   @SerializedName("auto_link_threshold")
   protected Float autoLinkThreshold;
   @SerializedName("compare_methods")
   protected Map<String, PutAlgorithmResponseCompareMethod> compareMethods;
-  @SerializedName("bucket_generators")
-  protected Map<String, PutAlgorithmResponseBucketGenerator> bucketGenerators;
+
+  /**
+   * Gets the bucketGenerators.
+   *
+   * Collection of bucket generators.
+   *
+   * @return the bucketGenerators
+   */
+  public Map<String, PutAlgorithmResponseBucketGenerator> getBucketGenerators() {
+    return bucketGenerators;
+  }
 
   /**
    * Gets the clericalReviewThreshold.
@@ -62,17 +73,6 @@ public class PutAlgorithmResponseEntityType extends GenericModel {
    */
   public Map<String, PutAlgorithmResponseCompareMethod> getCompareMethods() {
     return compareMethods;
-  }
-
-  /**
-   * Gets the bucketGenerators.
-   *
-   * Collection of bucket generators.
-   *
-   * @return the bucketGenerators
-   */
-  public Map<String, PutAlgorithmResponseBucketGenerator> getBucketGenerators() {
-    return bucketGenerators;
   }
 }
 

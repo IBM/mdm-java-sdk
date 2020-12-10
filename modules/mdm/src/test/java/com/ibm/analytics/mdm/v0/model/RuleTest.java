@@ -36,18 +36,18 @@ public class RuleTest {
   @Test
   public void testRule() throws Throwable {
     TargetObject targetObjectModel = new TargetObject.Builder()
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(targetObjectModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(targetObjectModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(targetObjectModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     SourceObject sourceObjectModel = new SourceObject.Builder()
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(sourceObjectModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(sourceObjectModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(sourceObjectModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     Rule ruleModel = new Rule.Builder()
       .target(targetObjectModel)

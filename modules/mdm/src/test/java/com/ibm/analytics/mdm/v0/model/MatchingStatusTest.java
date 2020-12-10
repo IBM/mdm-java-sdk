@@ -14,7 +14,6 @@
 package com.ibm.analytics.mdm.v0.model;
 
 import com.ibm.analytics.mdm.v0.model.MatchingStatus;
-import com.ibm.analytics.mdm.v0.model.MatchingStatusMatchingStatus;
 import com.ibm.analytics.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,6 +32,7 @@ public class MatchingStatusTest {
   @Test
   public void testMatchingStatus() throws Throwable {
     MatchingStatus matchingStatusModel = new MatchingStatus();
-    assertNull(matchingStatusModel.getMatchingStatus());
+    assertNull(matchingStatusModel.getStatus());
+    assertNull(matchingStatusModel.getMessage());
   }
 }

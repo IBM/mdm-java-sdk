@@ -32,32 +32,32 @@ public class AssetMappingTest {
   @Test
   public void testAssetMapping() throws Throwable {
     AssetMapping assetMappingModel = new AssetMapping.Builder()
+      .completenessPercent("string")
+      .dataMappingAttributeType("string")
       .classifiedClass("GEN")
       .dataMappingName("gender")
       .excludeColumn(false)
       .autoMapped(true)
-      .completenessPercent("string")
-      .dataMappingAttributeType("string")
       .key("COLUMN 1")
       .build();
+    assertEquals(assetMappingModel.completenessPercent(), "string");
+    assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.classifiedClass(), "GEN");
     assertEquals(assetMappingModel.dataMappingName(), "gender");
     assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
-    assertEquals(assetMappingModel.completenessPercent(), "string");
-    assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.key(), "COLUMN 1");
 
     String json = TestUtilities.serialize(assetMappingModel);
 
     AssetMapping assetMappingModelNew = TestUtilities.deserialize(json, AssetMapping.class);
     assertTrue(assetMappingModelNew instanceof AssetMapping);
+    assertEquals(assetMappingModelNew.completenessPercent(), "string");
+    assertEquals(assetMappingModelNew.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModelNew.classifiedClass(), "GEN");
     assertEquals(assetMappingModelNew.dataMappingName(), "gender");
     assertEquals(assetMappingModelNew.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModelNew.autoMapped(), Boolean.valueOf(true));
-    assertEquals(assetMappingModelNew.completenessPercent(), "string");
-    assertEquals(assetMappingModelNew.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModelNew.key(), "COLUMN 1");
   }
 }

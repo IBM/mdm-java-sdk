@@ -22,21 +22,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseStandardizer extends GenericModel {
 
+  protected List<PutAlgorithmResponseInput> inputs;
   @SerializedName("standardizer_recipe")
   protected List<PutAlgorithmResponseStandardizerStep> standardizerRecipe;
-  protected List<PutAlgorithmResponseInput> inputs;
   protected String label;
-
-  /**
-   * Gets the standardizerRecipe.
-   *
-   * Collection of standardizer steps.
-   *
-   * @return the standardizerRecipe
-   */
-  public List<PutAlgorithmResponseStandardizerStep> getStandardizerRecipe() {
-    return standardizerRecipe;
-  }
 
   /**
    * Gets the inputs.
@@ -47,6 +36,17 @@ public class PutAlgorithmResponseStandardizer extends GenericModel {
    */
   public List<PutAlgorithmResponseInput> getInputs() {
     return inputs;
+  }
+
+  /**
+   * Gets the standardizerRecipe.
+   *
+   * Collection of standardizer steps.
+   *
+   * @return the standardizerRecipe
+   */
+  public List<PutAlgorithmResponseStandardizerStep> getStandardizerRecipe() {
+    return standardizerRecipe;
   }
 
   /**

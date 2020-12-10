@@ -21,8 +21,8 @@ public class ModelPatchFlowOptions extends GenericModel {
 
   protected String crn;
   protected String flowId;
-  protected String action;
   protected String approverName;
+  protected String action;
   protected String message;
 
   /**
@@ -31,15 +31,15 @@ public class ModelPatchFlowOptions extends GenericModel {
   public static class Builder {
     private String crn;
     private String flowId;
-    private String action;
     private String approverName;
+    private String action;
     private String message;
 
     private Builder(ModelPatchFlowOptions modelPatchFlowOptions) {
       this.crn = modelPatchFlowOptions.crn;
       this.flowId = modelPatchFlowOptions.flowId;
-      this.action = modelPatchFlowOptions.action;
       this.approverName = modelPatchFlowOptions.approverName;
+      this.action = modelPatchFlowOptions.action;
       this.message = modelPatchFlowOptions.message;
     }
 
@@ -54,14 +54,14 @@ public class ModelPatchFlowOptions extends GenericModel {
      *
      * @param crn the crn
      * @param flowId the flowId
-     * @param action the action
      * @param approverName the approverName
+     * @param action the action
      */
-    public Builder(String crn, String flowId, String action, String approverName) {
+    public Builder(String crn, String flowId, String approverName, String action) {
       this.crn = crn;
       this.flowId = flowId;
-      this.action = action;
       this.approverName = approverName;
+      this.action = action;
     }
 
     /**
@@ -96,17 +96,6 @@ public class ModelPatchFlowOptions extends GenericModel {
     }
 
     /**
-     * Set the action.
-     *
-     * @param action the action
-     * @return the ModelPatchFlowOptions builder
-     */
-    public Builder action(String action) {
-      this.action = action;
-      return this;
-    }
-
-    /**
      * Set the approverName.
      *
      * @param approverName the approverName
@@ -114,6 +103,17 @@ public class ModelPatchFlowOptions extends GenericModel {
      */
     public Builder approverName(String approverName) {
       this.approverName = approverName;
+      return this;
+    }
+
+    /**
+     * Set the action.
+     *
+     * @param action the action
+     * @return the ModelPatchFlowOptions builder
+     */
+    public Builder action(String action) {
+      this.action = action;
       return this;
     }
 
@@ -134,14 +134,14 @@ public class ModelPatchFlowOptions extends GenericModel {
       "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.flowId,
       "flowId cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.action,
-      "action cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.approverName,
       "approverName cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.action,
+      "action cannot be null");
     crn = builder.crn;
     flowId = builder.flowId;
-    action = builder.action;
     approverName = builder.approverName;
+    action = builder.action;
     message = builder.message;
   }
 
@@ -177,17 +177,6 @@ public class ModelPatchFlowOptions extends GenericModel {
   }
 
   /**
-   * Gets the action.
-   *
-   * One of: approve or reject.
-   *
-   * @return the action
-   */
-  public String action() {
-    return action;
-  }
-
-  /**
    * Gets the approverName.
    *
    * Authorized approver name who invokes the action.
@@ -196,6 +185,17 @@ public class ModelPatchFlowOptions extends GenericModel {
    */
   public String approverName() {
     return approverName;
+  }
+
+  /**
+   * Gets the action.
+   *
+   * One of: approve or reject.
+   *
+   * @return the action
+   */
+  public String action() {
+    return action;
   }
 
   /**

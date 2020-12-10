@@ -21,7 +21,7 @@ public class SearchIndexOptions extends GenericModel {
 
   protected String crn;
   protected String recordType;
-  protected CompareRecordsRequestRecordAttributes attributes;
+  protected CompareRecordsRequestAttributes attributes;
   protected String details;
   protected String minScore;
   protected String maxScore;
@@ -35,7 +35,7 @@ public class SearchIndexOptions extends GenericModel {
   public static class Builder {
     private String crn;
     private String recordType;
-    private CompareRecordsRequestRecordAttributes attributes;
+    private CompareRecordsRequestAttributes attributes;
     private String details;
     private String minScore;
     private String maxScore;
@@ -109,7 +109,7 @@ public class SearchIndexOptions extends GenericModel {
      * @param attributes the attributes
      * @return the SearchIndexOptions builder
      */
-    public Builder attributes(CompareRecordsRequestRecordAttributes attributes) {
+    public Builder attributes(CompareRecordsRequestAttributes attributes) {
       this.attributes = attributes;
       return this;
     }
@@ -231,11 +231,11 @@ public class SearchIndexOptions extends GenericModel {
   /**
    * Gets the attributes.
    *
-   * Details of a single record.
+   * Details of a single record including external record reference and record attributes.
    *
    * @return the attributes
    */
-  public CompareRecordsRequestRecordAttributes attributes() {
+  public CompareRecordsRequestAttributes attributes() {
     return attributes;
   }
 

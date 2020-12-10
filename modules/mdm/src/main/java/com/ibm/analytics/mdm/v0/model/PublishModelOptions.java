@@ -19,18 +19,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PublishModelOptions extends GenericModel {
 
-  protected String projectId;
   protected String crn;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String projectId;
     private String crn;
 
     private Builder(PublishModelOptions publishModelOptions) {
-      this.projectId = publishModelOptions.projectId;
       this.crn = publishModelOptions.crn;
     }
 
@@ -43,11 +40,9 @@ public class PublishModelOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param projectId the projectId
      * @param crn the crn
      */
-    public Builder(String projectId, String crn) {
-      this.projectId = projectId;
+    public Builder(String crn) {
       this.crn = crn;
     }
 
@@ -58,17 +53,6 @@ public class PublishModelOptions extends GenericModel {
      */
     public PublishModelOptions build() {
       return new PublishModelOptions(this);
-    }
-
-    /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the PublishModelOptions builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
     }
 
     /**
@@ -84,11 +68,8 @@ public class PublishModelOptions extends GenericModel {
   }
 
   protected PublishModelOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.projectId,
-      "projectId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
       "crn cannot be null");
-    projectId = builder.projectId;
     crn = builder.crn;
   }
 
@@ -99,17 +80,6 @@ public class PublishModelOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * Unique identifier of project_metadata.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
   }
 
   /**

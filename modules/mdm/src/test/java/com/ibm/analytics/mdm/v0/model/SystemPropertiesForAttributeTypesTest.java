@@ -33,26 +33,26 @@ public class SystemPropertiesForAttributeTypesTest {
   public void testSystemPropertiesForAttributeTypes() throws Throwable {
     SystemPropertiesForAttributeTypes systemPropertiesForAttributeTypesModel = new SystemPropertiesForAttributeTypes.Builder()
       .label("testString")
-      .description("testString")
       .dataType("testString")
-      .indexed(true)
       .editable(true)
+      .description("testString")
+      .indexed(true)
       .build();
     assertEquals(systemPropertiesForAttributeTypesModel.label(), "testString");
-    assertEquals(systemPropertiesForAttributeTypesModel.description(), "testString");
     assertEquals(systemPropertiesForAttributeTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesForAttributeTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(systemPropertiesForAttributeTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForAttributeTypesModel.description(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModel.indexed(), Boolean.valueOf(true));
 
     String json = TestUtilities.serialize(systemPropertiesForAttributeTypesModel);
 
     SystemPropertiesForAttributeTypes systemPropertiesForAttributeTypesModelNew = TestUtilities.deserialize(json, SystemPropertiesForAttributeTypes.class);
     assertTrue(systemPropertiesForAttributeTypesModelNew instanceof SystemPropertiesForAttributeTypes);
     assertEquals(systemPropertiesForAttributeTypesModelNew.label(), "testString");
-    assertEquals(systemPropertiesForAttributeTypesModelNew.description(), "testString");
     assertEquals(systemPropertiesForAttributeTypesModelNew.dataType(), "testString");
-    assertEquals(systemPropertiesForAttributeTypesModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(systemPropertiesForAttributeTypesModelNew.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForAttributeTypesModelNew.description(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModelNew.indexed(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

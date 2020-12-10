@@ -21,28 +21,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class SystemPropertiesForRecordTypes extends GenericModel {
 
   protected String label;
-  protected String description;
   @SerializedName("data_type")
   protected String dataType;
-  protected Boolean indexed;
   protected Boolean editable;
+  protected String description;
+  protected Boolean indexed;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String label;
-    private String description;
     private String dataType;
-    private Boolean indexed;
     private Boolean editable;
+    private String description;
+    private Boolean indexed;
 
     private Builder(SystemPropertiesForRecordTypes systemPropertiesForRecordTypes) {
       this.label = systemPropertiesForRecordTypes.label;
-      this.description = systemPropertiesForRecordTypes.description;
       this.dataType = systemPropertiesForRecordTypes.dataType;
-      this.indexed = systemPropertiesForRecordTypes.indexed;
       this.editable = systemPropertiesForRecordTypes.editable;
+      this.description = systemPropertiesForRecordTypes.description;
+      this.indexed = systemPropertiesForRecordTypes.indexed;
     }
 
     /**
@@ -83,17 +83,6 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
     }
 
     /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the SystemPropertiesForRecordTypes builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
      * Set the dataType.
      *
      * @param dataType the dataType
@@ -101,17 +90,6 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
      */
     public Builder dataType(String dataType) {
       this.dataType = dataType;
-      return this;
-    }
-
-    /**
-     * Set the indexed.
-     *
-     * @param indexed the indexed
-     * @return the SystemPropertiesForRecordTypes builder
-     */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
       return this;
     }
 
@@ -125,6 +103,28 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
       this.editable = editable;
       return this;
     }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the SystemPropertiesForRecordTypes builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+
+    /**
+     * Set the indexed.
+     *
+     * @param indexed the indexed
+     * @return the SystemPropertiesForRecordTypes builder
+     */
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
+      return this;
+    }
   }
 
   protected SystemPropertiesForRecordTypes(Builder builder) {
@@ -133,10 +133,10 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
       "dataType cannot be null");
     label = builder.label;
-    description = builder.description;
     dataType = builder.dataType;
-    indexed = builder.indexed;
     editable = builder.editable;
+    description = builder.description;
+    indexed = builder.indexed;
   }
 
   /**
@@ -160,17 +160,6 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
   }
 
   /**
-   * Gets the description.
-   *
-   * system description.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
    * Gets the dataType.
    *
    * data type.
@@ -182,17 +171,6 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
   }
 
   /**
-   * Gets the indexed.
-   *
-   * indexed.
-   *
-   * @return the indexed
-   */
-  public Boolean indexed() {
-    return indexed;
-  }
-
-  /**
    * Gets the editable.
    *
    * editable.
@@ -201,6 +179,28 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
    */
   public Boolean editable() {
     return editable;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * system description.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
+  }
+
+  /**
+   * Gets the indexed.
+   *
+   * indexed.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
   }
 }
 

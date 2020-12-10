@@ -24,12 +24,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRelationshipType extends GenericModel {
 
-  protected Boolean directional;
+  protected List<DataModelRelationshipRule> rules;
   @SerializedName("label_from_source")
   protected String labelFromSource;
-  protected List<DataModelRelationshipRule> rules;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
+  protected Boolean directional;
   protected String description;
   protected String cardinality;
   protected Map<String, DataModelAttribute> attributes;
@@ -39,20 +39,20 @@ public class DataModelRelationshipType extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private Boolean directional;
-    private String labelFromSource;
     private List<DataModelRelationshipRule> rules;
+    private String labelFromSource;
     private String labelFromTarget;
+    private Boolean directional;
     private String description;
     private String cardinality;
     private Map<String, DataModelAttribute> attributes;
     private String label;
 
     private Builder(DataModelRelationshipType dataModelRelationshipType) {
-      this.directional = dataModelRelationshipType.directional;
-      this.labelFromSource = dataModelRelationshipType.labelFromSource;
       this.rules = dataModelRelationshipType.rules;
+      this.labelFromSource = dataModelRelationshipType.labelFromSource;
       this.labelFromTarget = dataModelRelationshipType.labelFromTarget;
+      this.directional = dataModelRelationshipType.directional;
       this.description = dataModelRelationshipType.description;
       this.cardinality = dataModelRelationshipType.cardinality;
       this.attributes = dataModelRelationshipType.attributes;
@@ -100,13 +100,14 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the directional.
+     * Set the rules.
+     * Existing rules will be replaced.
      *
-     * @param directional the directional
+     * @param rules the rules
      * @return the DataModelRelationshipType builder
      */
-    public Builder directional(Boolean directional) {
-      this.directional = directional;
+    public Builder rules(List<DataModelRelationshipRule> rules) {
+      this.rules = rules;
       return this;
     }
 
@@ -122,18 +123,6 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the rules.
-     * Existing rules will be replaced.
-     *
-     * @param rules the rules
-     * @return the DataModelRelationshipType builder
-     */
-    public Builder rules(List<DataModelRelationshipRule> rules) {
-      this.rules = rules;
-      return this;
-    }
-
-    /**
      * Set the labelFromTarget.
      *
      * @param labelFromTarget the labelFromTarget
@@ -141,6 +130,17 @@ public class DataModelRelationshipType extends GenericModel {
      */
     public Builder labelFromTarget(String labelFromTarget) {
       this.labelFromTarget = labelFromTarget;
+      return this;
+    }
+
+    /**
+     * Set the directional.
+     *
+     * @param directional the directional
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder directional(Boolean directional) {
+      this.directional = directional;
       return this;
     }
 
@@ -192,10 +192,10 @@ public class DataModelRelationshipType extends GenericModel {
   protected DataModelRelationshipType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    directional = builder.directional;
-    labelFromSource = builder.labelFromSource;
     rules = builder.rules;
+    labelFromSource = builder.labelFromSource;
     labelFromTarget = builder.labelFromTarget;
+    directional = builder.directional;
     description = builder.description;
     cardinality = builder.cardinality;
     attributes = builder.attributes;
@@ -212,14 +212,14 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the directional.
+   * Gets the rules.
    *
-   * True if the relationship is directional, otherwise false. The default value is true.
+   * Collection of defined relationship rules.
    *
-   * @return the directional
+   * @return the rules
    */
-  public Boolean directional() {
-    return directional;
+  public List<DataModelRelationshipRule> rules() {
+    return rules;
   }
 
   /**
@@ -234,17 +234,6 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the rules.
-   *
-   * Collection of defined relationship rules.
-   *
-   * @return the rules
-   */
-  public List<DataModelRelationshipRule> rules() {
-    return rules;
-  }
-
-  /**
    * Gets the labelFromTarget.
    *
    * User defined translatable label of 'to' endpoint in the relationship.
@@ -253,6 +242,17 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public String labelFromTarget() {
     return labelFromTarget;
+  }
+
+  /**
+   * Gets the directional.
+   *
+   * True if the relationship is directional, otherwise false. The default value is true.
+   *
+   * @return the directional
+   */
+  public Boolean directional() {
+    return directional;
   }
 
   /**

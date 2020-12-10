@@ -23,23 +23,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PostSearchResponseComparison extends GenericModel {
 
-  protected Map<String, Object> details;
-  protected Long distance;
-  protected Float score;
   @SerializedName("feature_vector")
   protected Map<String, Object> featureVector;
+  protected Long distance;
+  protected Float score;
+  protected Map<String, Object> details;
   protected List<String> values;
   protected List<String> types;
 
   /**
-   * Gets the details.
+   * Gets the featureVector.
    *
-   * Collection of details of compared tokens.
+   * Collection of feature outcomes of the current compared values.
    *
-   * @return the details
+   * @return the featureVector
    */
-  public Map<String, Object> getDetails() {
-    return details;
+  public Map<String, Object> getFeatureVector() {
+    return featureVector;
   }
 
   /**
@@ -65,14 +65,14 @@ public class PostSearchResponseComparison extends GenericModel {
   }
 
   /**
-   * Gets the featureVector.
+   * Gets the details.
    *
-   * Collection of feature outcomes of the current compared values.
+   * Collection of details of compared tokens.
    *
-   * @return the featureVector
+   * @return the details
    */
-  public Map<String, Object> getFeatureVector() {
-    return featureVector;
+  public Map<String, Object> getDetails() {
+    return details;
   }
 
   /**

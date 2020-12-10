@@ -32,7 +32,7 @@ public class PutCompositeRulesResponseRuleTest {
   @Test
   public void testPutCompositeRulesResponseRule() throws Throwable {
     PutCompositeRulesResponseRule putCompositeRulesResponseRuleModel = new PutCompositeRulesResponseRule();
-    assertNull(putCompositeRulesResponseRuleModel.getSources());
     assertNull(putCompositeRulesResponseRuleModel.getChoices());
+    assertNull(putCompositeRulesResponseRuleModel.getSources());
   }
 }

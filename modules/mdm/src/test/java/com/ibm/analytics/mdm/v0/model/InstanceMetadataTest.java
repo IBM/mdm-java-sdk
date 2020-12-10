@@ -45,20 +45,20 @@ public class InstanceMetadataTest {
     assertEquals(instanceMetadataProjectModel.projectName(), "testString");
 
     InstanceMetadataCatalog instanceMetadataCatalogModel = new InstanceMetadataCatalog.Builder()
-      .catalogInstance("testString")
       .catalogId("testString")
+      .catalogInstance("testString")
       .build();
-    assertEquals(instanceMetadataCatalogModel.catalogInstance(), "testString");
     assertEquals(instanceMetadataCatalogModel.catalogId(), "testString");
+    assertEquals(instanceMetadataCatalogModel.catalogInstance(), "testString");
 
     InstanceMetadata instanceMetadataModel = new InstanceMetadata.Builder()
-      .jobProjectId("testString")
       .projects(new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)))
+      .jobProjectId("testString")
       .catalogs(new java.util.ArrayList<InstanceMetadataCatalog>(java.util.Arrays.asList(instanceMetadataCatalogModel)))
       .label("testString")
       .build();
-    assertEquals(instanceMetadataModel.jobProjectId(), "testString");
     assertEquals(instanceMetadataModel.projects(), new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)));
+    assertEquals(instanceMetadataModel.jobProjectId(), "testString");
     assertEquals(instanceMetadataModel.catalogs(), new java.util.ArrayList<InstanceMetadataCatalog>(java.util.Arrays.asList(instanceMetadataCatalogModel)));
     assertEquals(instanceMetadataModel.label(), "testString");
 

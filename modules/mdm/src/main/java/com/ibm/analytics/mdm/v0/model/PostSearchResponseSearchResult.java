@@ -23,12 +23,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class PostSearchResponseSearchResult extends GenericModel {
 
   protected Float score;
-  @SerializedName("compare_methods")
-  protected List<PostSearchResponseCompareMethod> compareMethods;
   @SerializedName("record_id")
   protected String recordId;
   @SerializedName("record_source")
   protected String recordSource;
+  @SerializedName("compare_methods")
+  protected List<PostSearchResponseCompareMethod> compareMethods;
 
   /**
    * Gets the score.
@@ -39,17 +39,6 @@ public class PostSearchResponseSearchResult extends GenericModel {
    */
   public Float getScore() {
     return score;
-  }
-
-  /**
-   * Gets the compareMethods.
-   *
-   * Collection of comparators for a potential match record.
-   *
-   * @return the compareMethods
-   */
-  public List<PostSearchResponseCompareMethod> getCompareMethods() {
-    return compareMethods;
   }
 
   /**
@@ -72,6 +61,17 @@ public class PostSearchResponseSearchResult extends GenericModel {
    */
   public String getRecordSource() {
     return recordSource;
+  }
+
+  /**
+   * Gets the compareMethods.
+   *
+   * Collection of comparators for a potential match record.
+   *
+   * @return the compareMethods
+   */
+  public List<PostSearchResponseCompareMethod> getCompareMethods() {
+    return compareMethods;
   }
 }
 

@@ -33,13 +33,13 @@ public class MatchIndexOptionsTest {
   @Test
   public void testMatchIndexOptions() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
-      .recordLastUpdated("testString")
       .recordId("testString")
       .recordSource("testString")
+      .recordLastUpdated("testString")
       .build();
-    assertEquals(singleRecordRequestAttributesModel.recordLastUpdated(), "testString");
     assertEquals(singleRecordRequestAttributesModel.recordId(), "testString");
     assertEquals(singleRecordRequestAttributesModel.recordSource(), "testString");
+    assertEquals(singleRecordRequestAttributesModel.recordLastUpdated(), "testString");
 
     MatchIndexOptions matchIndexOptionsModel = new MatchIndexOptions.Builder()
       .crn("testString")

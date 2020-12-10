@@ -23,26 +23,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseRelationshipType extends GenericModel {
 
-  protected Boolean directional;
+  protected List<PutDataModelResponseRelationshipRule> rules;
   @SerializedName("label_from_source")
   protected String labelFromSource;
-  protected List<PutDataModelResponseRelationshipRule> rules;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
+  protected Boolean directional;
   protected String description;
   protected String cardinality;
   protected Map<String, PutDataModelResponseAttribute> attributes;
   protected String label;
 
   /**
-   * Gets the directional.
+   * Gets the rules.
    *
-   * True if the relationship is directional, otherwise false. The default value is true.
+   * Collection of defined relationship rules.
    *
-   * @return the directional
+   * @return the rules
    */
-  public Boolean isDirectional() {
-    return directional;
+  public List<PutDataModelResponseRelationshipRule> getRules() {
+    return rules;
   }
 
   /**
@@ -57,17 +57,6 @@ public class PutDataModelResponseRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the rules.
-   *
-   * Collection of defined relationship rules.
-   *
-   * @return the rules
-   */
-  public List<PutDataModelResponseRelationshipRule> getRules() {
-    return rules;
-  }
-
-  /**
    * Gets the labelFromTarget.
    *
    * User defined translatable label of 'to' endpoint in the relationship.
@@ -76,6 +65,17 @@ public class PutDataModelResponseRelationshipType extends GenericModel {
    */
   public String getLabelFromTarget() {
     return labelFromTarget;
+  }
+
+  /**
+   * Gets the directional.
+   *
+   * True if the relationship is directional, otherwise false. The default value is true.
+   *
+   * @return the directional
+   */
+  public Boolean isDirectional() {
+    return directional;
   }
 
   /**

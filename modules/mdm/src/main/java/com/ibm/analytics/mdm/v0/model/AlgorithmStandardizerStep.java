@@ -23,13 +23,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmStandardizerStep extends GenericModel {
 
-  @SerializedName("map_resource")
-  protected String mapResource;
+  protected List<Long> inputs;
   @SerializedName("comparison_resource")
   protected String comparisonResource;
-  protected List<Long> inputs;
   @SerializedName("set_resource")
   protected String setResource;
+  @SerializedName("map_resource")
+  protected String mapResource;
   protected String method;
   protected List<String> fields;
   protected String label;
@@ -38,19 +38,19 @@ public class AlgorithmStandardizerStep extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String mapResource;
-    private String comparisonResource;
     private List<Long> inputs;
+    private String comparisonResource;
     private String setResource;
+    private String mapResource;
     private String method;
     private List<String> fields;
     private String label;
 
     private Builder(AlgorithmStandardizerStep algorithmStandardizerStep) {
-      this.mapResource = algorithmStandardizerStep.mapResource;
-      this.comparisonResource = algorithmStandardizerStep.comparisonResource;
       this.inputs = algorithmStandardizerStep.inputs;
+      this.comparisonResource = algorithmStandardizerStep.comparisonResource;
       this.setResource = algorithmStandardizerStep.setResource;
+      this.mapResource = algorithmStandardizerStep.mapResource;
       this.method = algorithmStandardizerStep.method;
       this.fields = algorithmStandardizerStep.fields;
       this.label = algorithmStandardizerStep.label;
@@ -115,13 +115,14 @@ public class AlgorithmStandardizerStep extends GenericModel {
     }
 
     /**
-     * Set the mapResource.
+     * Set the inputs.
+     * Existing inputs will be replaced.
      *
-     * @param mapResource the mapResource
+     * @param inputs the inputs
      * @return the AlgorithmStandardizerStep builder
      */
-    public Builder mapResource(String mapResource) {
-      this.mapResource = mapResource;
+    public Builder inputs(List<Long> inputs) {
+      this.inputs = inputs;
       return this;
     }
 
@@ -137,18 +138,6 @@ public class AlgorithmStandardizerStep extends GenericModel {
     }
 
     /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
-     *
-     * @param inputs the inputs
-     * @return the AlgorithmStandardizerStep builder
-     */
-    public Builder inputs(List<Long> inputs) {
-      this.inputs = inputs;
-      return this;
-    }
-
-    /**
      * Set the setResource.
      *
      * @param setResource the setResource
@@ -156,6 +145,17 @@ public class AlgorithmStandardizerStep extends GenericModel {
      */
     public Builder setResource(String setResource) {
       this.setResource = setResource;
+      return this;
+    }
+
+    /**
+     * Set the mapResource.
+     *
+     * @param mapResource the mapResource
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder mapResource(String mapResource) {
+      this.mapResource = mapResource;
       return this;
     }
 
@@ -199,10 +199,10 @@ public class AlgorithmStandardizerStep extends GenericModel {
       "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    mapResource = builder.mapResource;
-    comparisonResource = builder.comparisonResource;
     inputs = builder.inputs;
+    comparisonResource = builder.comparisonResource;
     setResource = builder.setResource;
+    mapResource = builder.mapResource;
     method = builder.method;
     fields = builder.fields;
     label = builder.label;
@@ -218,14 +218,14 @@ public class AlgorithmStandardizerStep extends GenericModel {
   }
 
   /**
-   * Gets the mapResource.
+   * Gets the inputs.
    *
-   * An existing map resource name, if applicable.
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
-   * @return the mapResource
+   * @return the inputs
    */
-  public String mapResource() {
-    return mapResource;
+  public List<Long> inputs() {
+    return inputs;
   }
 
   /**
@@ -240,17 +240,6 @@ public class AlgorithmStandardizerStep extends GenericModel {
   }
 
   /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> inputs() {
-    return inputs;
-  }
-
-  /**
    * Gets the setResource.
    *
    * An existing set resource name, if applicable.
@@ -259,6 +248,17 @@ public class AlgorithmStandardizerStep extends GenericModel {
    */
   public String setResource() {
     return setResource;
+  }
+
+  /**
+   * Gets the mapResource.
+   *
+   * An existing map resource name, if applicable.
+   *
+   * @return the mapResource
+   */
+  public String mapResource() {
+    return mapResource;
   }
 
   /**

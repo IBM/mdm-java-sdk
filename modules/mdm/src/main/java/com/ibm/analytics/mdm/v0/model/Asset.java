@@ -22,40 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Asset extends GenericModel {
 
-  @SerializedName("asset_last_updated_date")
-  protected String assetLastUpdatedDate;
-  @SerializedName("asset_created_date")
-  protected String assetCreatedDate;
   @SerializedName("asset_mappings")
   protected List<AssetMapping> assetMappings;
   @SerializedName("asset_id")
   protected String assetId;
+  @SerializedName("asset_last_updated_date")
+  protected String assetLastUpdatedDate;
   @SerializedName("asset_status")
   protected String assetStatus;
+  @SerializedName("asset_created_date")
+  protected String assetCreatedDate;
   @SerializedName("asset_name")
   protected String assetName;
-
-  /**
-   * Gets the assetLastUpdatedDate.
-   *
-   * asset last updated date.
-   *
-   * @return the assetLastUpdatedDate
-   */
-  public String getAssetLastUpdatedDate() {
-    return assetLastUpdatedDate;
-  }
-
-  /**
-   * Gets the assetCreatedDate.
-   *
-   * asset created date.
-   *
-   * @return the assetCreatedDate
-   */
-  public String getAssetCreatedDate() {
-    return assetCreatedDate;
-  }
 
   /**
    * Gets the assetMappings.
@@ -80,6 +58,17 @@ public class Asset extends GenericModel {
   }
 
   /**
+   * Gets the assetLastUpdatedDate.
+   *
+   * asset last updated date.
+   *
+   * @return the assetLastUpdatedDate
+   */
+  public String getAssetLastUpdatedDate() {
+    return assetLastUpdatedDate;
+  }
+
+  /**
    * Gets the assetStatus.
    *
    * asset status.
@@ -88,6 +77,17 @@ public class Asset extends GenericModel {
    */
   public String getAssetStatus() {
     return assetStatus;
+  }
+
+  /**
+   * Gets the assetCreatedDate.
+   *
+   * asset created date.
+   *
+   * @return the assetCreatedDate
+   */
+  public String getAssetCreatedDate() {
+    return assetCreatedDate;
   }
 
   /**

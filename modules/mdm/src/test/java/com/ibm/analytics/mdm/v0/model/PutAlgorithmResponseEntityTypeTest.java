@@ -41,9 +41,9 @@ public class PutAlgorithmResponseEntityTypeTest {
   @Test
   public void testPutAlgorithmResponseEntityType() throws Throwable {
     PutAlgorithmResponseEntityType putAlgorithmResponseEntityTypeModel = new PutAlgorithmResponseEntityType();
+    assertNull(putAlgorithmResponseEntityTypeModel.getBucketGenerators());
     assertNull(putAlgorithmResponseEntityTypeModel.getClericalReviewThreshold());
     assertNull(putAlgorithmResponseEntityTypeModel.getAutoLinkThreshold());
     assertNull(putAlgorithmResponseEntityTypeModel.getCompareMethods());
-    assertNull(putAlgorithmResponseEntityTypeModel.getBucketGenerators());
   }
 }

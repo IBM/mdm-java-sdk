@@ -14,8 +14,6 @@
 package com.ibm.analytics.mdm.v0.model;
 
 import com.ibm.analytics.mdm.v0.model.ProcessStatus;
-import com.ibm.analytics.mdm.v0.model.ProcessStatusStatus;
-import com.ibm.analytics.mdm.v0.model.ProcessStatusStatusPublishModelStatus;
 import com.ibm.analytics.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -34,6 +32,9 @@ public class ProcessStatusTest {
   @Test
   public void testProcessStatus() throws Throwable {
     ProcessStatus processStatusModel = new ProcessStatus();
+    assertNull(processStatusModel.getRecordType());
     assertNull(processStatusModel.getStatus());
+    assertNull(processStatusModel.getProcessName());
+    assertNull(processStatusModel.getMessage());
   }
 }

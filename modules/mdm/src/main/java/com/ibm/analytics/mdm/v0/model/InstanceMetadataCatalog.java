@@ -20,21 +20,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataCatalog extends GenericModel {
 
-  @SerializedName("catalog_instance")
-  protected String catalogInstance;
   @SerializedName("catalog_id")
   protected String catalogId;
+  @SerializedName("catalog_instance")
+  protected String catalogInstance;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String catalogInstance;
     private String catalogId;
+    private String catalogInstance;
 
     private Builder(InstanceMetadataCatalog instanceMetadataCatalog) {
-      this.catalogInstance = instanceMetadataCatalog.catalogInstance;
       this.catalogId = instanceMetadataCatalog.catalogId;
+      this.catalogInstance = instanceMetadataCatalog.catalogInstance;
     }
 
     /**
@@ -62,17 +62,6 @@ public class InstanceMetadataCatalog extends GenericModel {
     }
 
     /**
-     * Set the catalogInstance.
-     *
-     * @param catalogInstance the catalogInstance
-     * @return the InstanceMetadataCatalog builder
-     */
-    public Builder catalogInstance(String catalogInstance) {
-      this.catalogInstance = catalogInstance;
-      return this;
-    }
-
-    /**
      * Set the catalogId.
      *
      * @param catalogId the catalogId
@@ -82,13 +71,24 @@ public class InstanceMetadataCatalog extends GenericModel {
       this.catalogId = catalogId;
       return this;
     }
+
+    /**
+     * Set the catalogInstance.
+     *
+     * @param catalogInstance the catalogInstance
+     * @return the InstanceMetadataCatalog builder
+     */
+    public Builder catalogInstance(String catalogInstance) {
+      this.catalogInstance = catalogInstance;
+      return this;
+    }
   }
 
   protected InstanceMetadataCatalog(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.catalogId,
       "catalogId cannot be null");
-    catalogInstance = builder.catalogInstance;
     catalogId = builder.catalogId;
+    catalogInstance = builder.catalogInstance;
   }
 
   /**
@@ -101,17 +101,6 @@ public class InstanceMetadataCatalog extends GenericModel {
   }
 
   /**
-   * Gets the catalogInstance.
-   *
-   * Name of the catalog associated with instance.
-   *
-   * @return the catalogInstance
-   */
-  public String catalogInstance() {
-    return catalogInstance;
-  }
-
-  /**
    * Gets the catalogId.
    *
    * Unique Identifier of the catalog associated with instance.
@@ -120,6 +109,17 @@ public class InstanceMetadataCatalog extends GenericModel {
    */
   public String catalogId() {
     return catalogId;
+  }
+
+  /**
+   * Gets the catalogInstance.
+   *
+   * Name of the catalog associated with instance.
+   *
+   * @return the catalogInstance
+   */
+  public String catalogInstance() {
+    return catalogInstance;
   }
 }
 

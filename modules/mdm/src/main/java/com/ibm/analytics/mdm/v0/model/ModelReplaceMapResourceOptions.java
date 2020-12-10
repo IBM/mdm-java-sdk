@@ -24,7 +24,7 @@ public class ModelReplaceMapResourceOptions extends GenericModel {
 
   protected String crn;
   protected String resourceName;
-  protected Map<String, List<MapResourceMapResourceEntry>> requestBody;
+  protected Map<String, List<MapResourceEntry>> requestBody;
 
   /**
    * Builder.
@@ -32,7 +32,7 @@ public class ModelReplaceMapResourceOptions extends GenericModel {
   public static class Builder {
     private String crn;
     private String resourceName;
-    private Map<String, List<MapResourceMapResourceEntry>> requestBody;
+    private Map<String, List<MapResourceEntry>> requestBody;
 
     private Builder(ModelReplaceMapResourceOptions modelReplaceMapResourceOptions) {
       this.crn = modelReplaceMapResourceOptions.crn;
@@ -53,7 +53,7 @@ public class ModelReplaceMapResourceOptions extends GenericModel {
      * @param resourceName the resourceName
      * @param requestBody the requestBody
      */
-    public Builder(String crn, String resourceName, Map<String, List<MapResourceMapResourceEntry>> requestBody) {
+    public Builder(String crn, String resourceName, Map<String, List<MapResourceEntry>> requestBody) {
       this.crn = crn;
       this.resourceName = resourceName;
       this.requestBody = requestBody;
@@ -96,7 +96,7 @@ public class ModelReplaceMapResourceOptions extends GenericModel {
      * @param requestBody the requestBody
      * @return the ModelReplaceMapResourceOptions builder
      */
-    public Builder requestBody(Map<String, List<MapResourceMapResourceEntry>> requestBody) {
+    public Builder requestBody(Map<String, List<MapResourceEntry>> requestBody) {
       this.requestBody = requestBody;
       return this;
     }
@@ -153,7 +153,7 @@ public class ModelReplaceMapResourceOptions extends GenericModel {
    *
    * @return the requestBody
    */
-  public Map<String, List<MapResourceMapResourceEntry>> requestBody() {
+  public Map<String, List<MapResourceEntry>> requestBody() {
     return requestBody;
   }
 }

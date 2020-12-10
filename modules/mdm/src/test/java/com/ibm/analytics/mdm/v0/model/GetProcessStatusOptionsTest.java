@@ -32,12 +32,10 @@ public class GetProcessStatusOptionsTest {
   @Test
   public void testGetProcessStatusOptions() throws Throwable {
     GetProcessStatusOptions getProcessStatusOptionsModel = new GetProcessStatusOptions.Builder()
-      .projectId("testString")
       .status("loading_status")
       .crn("testString")
       .recordType("person")
       .build();
-    assertEquals(getProcessStatusOptionsModel.projectId(), "testString");
     assertEquals(getProcessStatusOptionsModel.status(), "loading_status");
     assertEquals(getProcessStatusOptionsModel.crn(), "testString");
     assertEquals(getProcessStatusOptionsModel.recordType(), "person");

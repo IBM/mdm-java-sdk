@@ -12,7 +12,6 @@
  */
 package com.ibm.analytics.mdm.v0.model;
 
-import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +19,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PublishModelStatus extends GenericModel {
 
-  @SerializedName("publish_model_status")
-  protected PublishModelStatusPublishModelStatus publishModelStatus;
+  protected String status;
+  protected String message;
 
   /**
-   * Gets the publishModelStatus.
+   * Gets the status.
    *
-   * publish model status.
+   * status.
    *
-   * @return the publishModelStatus
+   * @return the status
    */
-  public PublishModelStatusPublishModelStatus getPublishModelStatus() {
-    return publishModelStatus;
+  public String getStatus() {
+    return status;
+  }
+
+  /**
+   * Gets the message.
+   *
+   * message.
+   *
+   * @return the message
+   */
+  public String getMessage() {
+    return message;
   }
 }
 

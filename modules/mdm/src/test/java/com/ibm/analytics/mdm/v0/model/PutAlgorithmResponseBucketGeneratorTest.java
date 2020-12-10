@@ -38,9 +38,9 @@ public class PutAlgorithmResponseBucketGeneratorTest {
   public void testPutAlgorithmResponseBucketGenerator() throws Throwable {
     PutAlgorithmResponseBucketGenerator putAlgorithmResponseBucketGeneratorModel = new PutAlgorithmResponseBucketGenerator();
     assertNull(putAlgorithmResponseBucketGeneratorModel.getInputs());
-    assertNull(putAlgorithmResponseBucketGeneratorModel.getBucketRecipe());
     assertNull(putAlgorithmResponseBucketGeneratorModel.getBucketGroupRecipe());
     assertNull(putAlgorithmResponseBucketGeneratorModel.getMaximumBucketSize());
+    assertNull(putAlgorithmResponseBucketGeneratorModel.getBucketRecipe());
     assertNull(putAlgorithmResponseBucketGeneratorModel.getLabel());
   }
 }

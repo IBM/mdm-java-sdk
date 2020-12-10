@@ -20,25 +20,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutIndexResponseRecordinfo extends GenericModel {
 
-  @SerializedName("record_number")
-  protected Long recordNumber;
   @SerializedName("record_id")
   protected String recordId;
+  @SerializedName("record_number")
+  protected Long recordNumber;
   @SerializedName("entity_id")
   protected Long entityId;
   @SerializedName("record_source")
   protected String recordSource;
-
-  /**
-   * Gets the recordNumber.
-   *
-   * The unique identifier of a source record as assigned by the system.
-   *
-   * @return the recordNumber
-   */
-  public Long getRecordNumber() {
-    return recordNumber;
-  }
 
   /**
    * Gets the recordId.
@@ -49,6 +38,17 @@ public class PutIndexResponseRecordinfo extends GenericModel {
    */
   public String getRecordId() {
     return recordId;
+  }
+
+  /**
+   * Gets the recordNumber.
+   *
+   * The unique identifier of a source record as assigned by the system.
+   *
+   * @return the recordNumber
+   */
+  public Long getRecordNumber() {
+    return recordNumber;
   }
 
   /**

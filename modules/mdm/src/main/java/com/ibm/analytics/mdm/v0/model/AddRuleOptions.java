@@ -165,6 +165,8 @@ public class AddRuleOptions extends GenericModel {
   /**
    * Gets the entityType.
    *
+   * The data type identifier of entity, ie. person_entity, organization_entity, household_entity.
+   *
    * @return the entityType
    */
   public String entityType() {

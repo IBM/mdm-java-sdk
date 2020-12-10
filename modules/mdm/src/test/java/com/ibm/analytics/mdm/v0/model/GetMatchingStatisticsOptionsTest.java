@@ -32,11 +32,9 @@ public class GetMatchingStatisticsOptionsTest {
   @Test
   public void testGetMatchingStatisticsOptions() throws Throwable {
     GetMatchingStatisticsOptions getMatchingStatisticsOptionsModel = new GetMatchingStatisticsOptions.Builder()
-      .projectId("testString")
       .recordType("testString")
       .crn("testString")
       .build();
-    assertEquals(getMatchingStatisticsOptionsModel.projectId(), "testString");
     assertEquals(getMatchingStatisticsOptionsModel.recordType(), "testString");
     assertEquals(getMatchingStatisticsOptionsModel.crn(), "testString");
   }

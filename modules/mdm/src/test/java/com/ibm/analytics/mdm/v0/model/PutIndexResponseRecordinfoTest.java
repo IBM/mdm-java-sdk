@@ -32,8 +32,8 @@ public class PutIndexResponseRecordinfoTest {
   @Test
   public void testPutIndexResponseRecordinfo() throws Throwable {
     PutIndexResponseRecordinfo putIndexResponseRecordinfoModel = new PutIndexResponseRecordinfo();
-    assertNull(putIndexResponseRecordinfoModel.getRecordNumber());
     assertNull(putIndexResponseRecordinfoModel.getRecordId());
+    assertNull(putIndexResponseRecordinfoModel.getRecordNumber());
     assertNull(putIndexResponseRecordinfoModel.getEntityId());
     assertNull(putIndexResponseRecordinfoModel.getRecordSource());
   }

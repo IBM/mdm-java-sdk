@@ -14,8 +14,8 @@
 package com.ibm.analytics.mdm.v0.model;
 
 import com.ibm.analytics.mdm.v0.model.CompareIndexOptions;
+import com.ibm.analytics.mdm.v0.model.CompareRecordsRequestAttributes;
 import com.ibm.analytics.mdm.v0.model.CompareRecordsRequestRecord;
-import com.ibm.analytics.mdm.v0.model.CompareRecordsRequestRecordAttributes;
 import com.ibm.analytics.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -35,21 +35,21 @@ public class CompareIndexOptionsTest {
 
   @Test
   public void testCompareIndexOptions() throws Throwable {
-    CompareRecordsRequestRecordAttributes compareRecordsRequestRecordAttributesModel = new CompareRecordsRequestRecordAttributes.Builder()
-      .recordLastUpdated("testString")
+    CompareRecordsRequestAttributes compareRecordsRequestAttributesModel = new CompareRecordsRequestAttributes.Builder()
       .recordId("testString")
       .recordSource("testString")
+      .recordLastUpdated("testString")
       .build();
-    assertEquals(compareRecordsRequestRecordAttributesModel.recordLastUpdated(), "testString");
-    assertEquals(compareRecordsRequestRecordAttributesModel.recordId(), "testString");
-    assertEquals(compareRecordsRequestRecordAttributesModel.recordSource(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.recordId(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.recordSource(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.recordLastUpdated(), "testString");
 
     CompareRecordsRequestRecord compareRecordsRequestRecordModel = new CompareRecordsRequestRecord.Builder()
       .recordType("testString")
-      .attributes(compareRecordsRequestRecordAttributesModel)
+      .attributes(compareRecordsRequestAttributesModel)
       .build();
     assertEquals(compareRecordsRequestRecordModel.recordType(), "testString");
-    assertEquals(compareRecordsRequestRecordModel.attributes(), compareRecordsRequestRecordAttributesModel);
+    assertEquals(compareRecordsRequestRecordModel.attributes(), compareRecordsRequestAttributesModel);
 
     CompareIndexOptions compareIndexOptionsModel = new CompareIndexOptions.Builder()
       .crn("testString")

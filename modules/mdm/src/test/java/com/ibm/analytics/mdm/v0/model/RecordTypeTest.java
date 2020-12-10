@@ -34,11 +34,11 @@ public class RecordTypeTest {
   @Test
   public void testRecordType() throws Throwable {
     EntityType entityTypeModel = new EntityType.Builder()
-      .description("testString")
       .label("testString")
+      .description("testString")
       .build();
-    assertEquals(entityTypeModel.description(), "testString");
     assertEquals(entityTypeModel.label(), "testString");
+    assertEquals(entityTypeModel.description(), "testString");
 
     Attribute attributeModel = new Attribute.Builder()
       .label("testString")

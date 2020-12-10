@@ -34,23 +34,23 @@ public class AlgorithmEncryptionTest {
   @Test
   public void testAlgorithmEncryption() throws Throwable {
     AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
-      .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .subType("testString")
-      .enabled(true)
+      .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .type("testString")
+      .enabled(true)
       .build();
-    assertEquals(algorithmEncryptionModel.pubKey(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmEncryptionModel.subType(), "testString");
-    assertEquals(algorithmEncryptionModel.enabled(), Boolean.valueOf(true));
+    assertEquals(algorithmEncryptionModel.pubKey(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmEncryptionModel.type(), "testString");
+    assertEquals(algorithmEncryptionModel.enabled(), Boolean.valueOf(true));
 
     String json = TestUtilities.serialize(algorithmEncryptionModel);
 
     AlgorithmEncryption algorithmEncryptionModelNew = TestUtilities.deserialize(json, AlgorithmEncryption.class);
     assertTrue(algorithmEncryptionModelNew instanceof AlgorithmEncryption);
     assertEquals(algorithmEncryptionModelNew.subType(), "testString");
-    assertEquals(algorithmEncryptionModelNew.enabled(), Boolean.valueOf(true));
     assertEquals(algorithmEncryptionModelNew.type(), "testString");
+    assertEquals(algorithmEncryptionModelNew.enabled(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

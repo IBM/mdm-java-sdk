@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetMatchingStatisticsOptions extends GenericModel {
 
-  protected String projectId;
   protected String recordType;
   protected String crn;
 
@@ -27,12 +26,10 @@ public class GetMatchingStatisticsOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String projectId;
     private String recordType;
     private String crn;
 
     private Builder(GetMatchingStatisticsOptions getMatchingStatisticsOptions) {
-      this.projectId = getMatchingStatisticsOptions.projectId;
       this.recordType = getMatchingStatisticsOptions.recordType;
       this.crn = getMatchingStatisticsOptions.crn;
     }
@@ -46,12 +43,10 @@ public class GetMatchingStatisticsOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param projectId the projectId
      * @param recordType the recordType
      * @param crn the crn
      */
-    public Builder(String projectId, String recordType, String crn) {
-      this.projectId = projectId;
+    public Builder(String recordType, String crn) {
       this.recordType = recordType;
       this.crn = crn;
     }
@@ -63,17 +58,6 @@ public class GetMatchingStatisticsOptions extends GenericModel {
      */
     public GetMatchingStatisticsOptions build() {
       return new GetMatchingStatisticsOptions(this);
-    }
-
-    /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the GetMatchingStatisticsOptions builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
     }
 
     /**
@@ -100,13 +84,10 @@ public class GetMatchingStatisticsOptions extends GenericModel {
   }
 
   protected GetMatchingStatisticsOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.projectId,
-      "projectId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
       "recordType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
       "crn cannot be null");
-    projectId = builder.projectId;
     recordType = builder.recordType;
     crn = builder.crn;
   }
@@ -118,17 +99,6 @@ public class GetMatchingStatisticsOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * Unique identifier of project_metadata.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
   }
 
   /**

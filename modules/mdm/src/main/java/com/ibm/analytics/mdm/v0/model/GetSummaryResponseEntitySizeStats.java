@@ -21,12 +21,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class GetSummaryResponseEntitySizeStats extends GenericModel {
 
   protected Float average;
-  protected Long min;
-  protected Long max;
   protected Float variance;
   @SerializedName("standard_deviation")
   protected Float standardDeviation;
   protected Long count;
+  protected Long min;
+  protected Long max;
 
   /**
    * Gets the average.
@@ -37,28 +37,6 @@ public class GetSummaryResponseEntitySizeStats extends GenericModel {
    */
   public Float getAverage() {
     return average;
-  }
-
-  /**
-   * Gets the min.
-   *
-   * Size of the smallest entity.
-   *
-   * @return the min
-   */
-  public Long getMin() {
-    return min;
-  }
-
-  /**
-   * Gets the max.
-   *
-   * Size of the largest entity.
-   *
-   * @return the max
-   */
-  public Long getMax() {
-    return max;
   }
 
   /**
@@ -92,6 +70,28 @@ public class GetSummaryResponseEntitySizeStats extends GenericModel {
    */
   public Long getCount() {
     return count;
+  }
+
+  /**
+   * Gets the min.
+   *
+   * Size of the smallest entity.
+   *
+   * @return the min
+   */
+  public Long getMin() {
+    return min;
+  }
+
+  /**
+   * Gets the max.
+   *
+   * Size of the largest entity.
+   *
+   * @return the max
+   */
+  public Long getMax() {
+    return max;
   }
 }
 
