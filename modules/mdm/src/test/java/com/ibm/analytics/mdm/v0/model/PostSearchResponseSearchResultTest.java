@@ -38,8 +38,8 @@ public class PostSearchResponseSearchResultTest {
   public void testPostSearchResponseSearchResult() throws Throwable {
     PostSearchResponseSearchResult postSearchResponseSearchResultModel = new PostSearchResponseSearchResult();
     assertNull(postSearchResponseSearchResultModel.getScore());
-    assertNull(postSearchResponseSearchResultModel.getCompareMethods());
     assertNull(postSearchResponseSearchResultModel.getRecordId());
     assertNull(postSearchResponseSearchResultModel.getRecordSource());
+    assertNull(postSearchResponseSearchResultModel.getCompareMethods());
   }
 }

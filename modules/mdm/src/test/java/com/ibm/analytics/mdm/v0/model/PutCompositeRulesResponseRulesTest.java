@@ -36,7 +36,7 @@ public class PutCompositeRulesResponseRulesTest {
   @Test
   public void testPutCompositeRulesResponseRules() throws Throwable {
     PutCompositeRulesResponseRules putCompositeRulesResponseRulesModel = new PutCompositeRulesResponseRules();
-    assertNull(putCompositeRulesResponseRulesModel.getGlobal());
     assertNull(putCompositeRulesResponseRulesModel.getRecordTypes());
+    assertNull(putCompositeRulesResponseRulesModel.getGlobal());
   }
 }

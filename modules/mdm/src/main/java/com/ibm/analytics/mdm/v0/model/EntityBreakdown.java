@@ -24,9 +24,9 @@ public class EntityBreakdown extends GenericModel {
   @SerializedName("standard_deviation")
   protected String standardDeviation;
   protected String variance;
-  protected String max;
-  protected String min;
   protected String count;
+  protected String min;
+  protected String max;
 
   /**
    * Gets the average.
@@ -62,14 +62,14 @@ public class EntityBreakdown extends GenericModel {
   }
 
   /**
-   * Gets the max.
+   * Gets the count.
    *
-   * max.
+   * count.
    *
-   * @return the max
+   * @return the count
    */
-  public String getMax() {
-    return max;
+  public String getCount() {
+    return count;
   }
 
   /**
@@ -84,14 +84,14 @@ public class EntityBreakdown extends GenericModel {
   }
 
   /**
-   * Gets the count.
+   * Gets the max.
    *
-   * count.
+   * max.
    *
-   * @return the count
+   * @return the max
    */
-  public String getCount() {
-    return count;
+  public String getMax() {
+    return max;
   }
 }
 

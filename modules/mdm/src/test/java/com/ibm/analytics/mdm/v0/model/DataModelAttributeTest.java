@@ -32,18 +32,18 @@ public class DataModelAttributeTest {
   @Test
   public void testDataModelAttribute() throws Throwable {
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
-      .attributeType("testString")
+      .classification("testString")
       .indexed(true)
       .matchingType("testString")
-      .classification("testString")
+      .attributeType("testString")
       .description("testString")
       .cardinality("testString")
       .label("testString")
       .build();
-    assertEquals(dataModelAttributeModel.attributeType(), "testString");
+    assertEquals(dataModelAttributeModel.classification(), "testString");
     assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelAttributeModel.matchingType(), "testString");
-    assertEquals(dataModelAttributeModel.classification(), "testString");
+    assertEquals(dataModelAttributeModel.attributeType(), "testString");
     assertEquals(dataModelAttributeModel.description(), "testString");
     assertEquals(dataModelAttributeModel.cardinality(), "testString");
     assertEquals(dataModelAttributeModel.label(), "testString");
@@ -52,10 +52,10 @@ public class DataModelAttributeTest {
 
     DataModelAttribute dataModelAttributeModelNew = TestUtilities.deserialize(json, DataModelAttribute.class);
     assertTrue(dataModelAttributeModelNew instanceof DataModelAttribute);
-    assertEquals(dataModelAttributeModelNew.attributeType(), "testString");
+    assertEquals(dataModelAttributeModelNew.classification(), "testString");
     assertEquals(dataModelAttributeModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelAttributeModelNew.matchingType(), "testString");
-    assertEquals(dataModelAttributeModelNew.classification(), "testString");
+    assertEquals(dataModelAttributeModelNew.attributeType(), "testString");
     assertEquals(dataModelAttributeModelNew.description(), "testString");
     assertEquals(dataModelAttributeModelNew.cardinality(), "testString");
     assertEquals(dataModelAttributeModelNew.label(), "testString");

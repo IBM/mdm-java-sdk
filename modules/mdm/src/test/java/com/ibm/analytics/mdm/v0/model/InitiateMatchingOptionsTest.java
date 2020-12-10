@@ -32,12 +32,10 @@ public class InitiateMatchingOptionsTest {
   @Test
   public void testInitiateMatchingOptions() throws Throwable {
     InitiateMatchingOptions initiateMatchingOptionsModel = new InitiateMatchingOptions.Builder()
-      .projectId("testString")
       .recordType("testString")
       .entityType("person_entity")
       .crn("testString")
       .build();
-    assertEquals(initiateMatchingOptionsModel.projectId(), "testString");
     assertEquals(initiateMatchingOptionsModel.recordType(), "testString");
     assertEquals(initiateMatchingOptionsModel.entityType(), "person_entity");
     assertEquals(initiateMatchingOptionsModel.crn(), "testString");

@@ -12,26 +12,36 @@
  */
 package com.ibm.analytics.mdm.v0.model;
 
-import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * matching status.
+ * Matching Status object.
  */
 public class MatchingStatus extends GenericModel {
 
-  @SerializedName("matching_status")
-  protected MatchingStatusMatchingStatus matchingStatus;
+  protected String status;
+  protected String message;
 
   /**
-   * Gets the matchingStatus.
+   * Gets the status.
    *
-   * returns status of match job.
+   * status of match.
    *
-   * @return the matchingStatus
+   * @return the status
    */
-  public MatchingStatusMatchingStatus getMatchingStatus() {
-    return matchingStatus;
+  public String getStatus() {
+    return status;
+  }
+
+  /**
+   * Gets the message.
+   *
+   * message.
+   *
+   * @return the message
+   */
+  public String getMessage() {
+    return message;
   }
 }
 

@@ -46,18 +46,18 @@ public class AlgorithmCompareMethodTest {
     assertEquals(algorithmInputModel.attributes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-      .mapResource("testString")
-      .comparisonResource("testString")
       .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .comparisonResource("testString")
       .setResource("testString")
+      .mapResource("testString")
       .method("testString")
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .label("testString")
       .build();
-    assertEquals(algorithmCompareStepModel.mapResource(), "testString");
-    assertEquals(algorithmCompareStepModel.comparisonResource(), "testString");
     assertEquals(algorithmCompareStepModel.inputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
+    assertEquals(algorithmCompareStepModel.comparisonResource(), "testString");
     assertEquals(algorithmCompareStepModel.setResource(), "testString");
+    assertEquals(algorithmCompareStepModel.mapResource(), "testString");
     assertEquals(algorithmCompareStepModel.method(), "testString");
     assertEquals(algorithmCompareStepModel.fields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmCompareStepModel.label(), "testString");

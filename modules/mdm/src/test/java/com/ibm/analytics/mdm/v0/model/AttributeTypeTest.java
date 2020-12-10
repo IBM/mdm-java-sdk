@@ -34,25 +34,25 @@ public class AttributeTypeTest {
   public void testAttributeType() throws Throwable {
     FieldType fieldTypeModel = new FieldType.Builder()
       .label("testString")
-      .indexed(true)
       .description("testString")
       .classification("testString")
+      .indexed(true)
       .build();
     assertEquals(fieldTypeModel.label(), "testString");
-    assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
     assertEquals(fieldTypeModel.description(), "testString");
     assertEquals(fieldTypeModel.classification(), "testString");
+    assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
 
     AttributeType attributeTypeModel = new AttributeType.Builder()
+      .fields(new java.util.HashMap<String, FieldType>() { { put("foo", fieldTypeModel); } })
       .label("testString")
       .description("testString")
       .classification("testString")
-      .fields(new java.util.HashMap<String, FieldType>() { { put("foo", fieldTypeModel); } })
       .build();
+    assertEquals(attributeTypeModel.fields(), new java.util.HashMap<String, FieldType>() { { put("foo", fieldTypeModel); } });
     assertEquals(attributeTypeModel.label(), "testString");
     assertEquals(attributeTypeModel.description(), "testString");
     assertEquals(attributeTypeModel.classification(), "testString");
-    assertEquals(attributeTypeModel.fields(), new java.util.HashMap<String, FieldType>() { { put("foo", fieldTypeModel); } });
 
     String json = TestUtilities.serialize(attributeTypeModel);
 

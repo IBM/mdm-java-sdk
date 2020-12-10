@@ -32,20 +32,20 @@ public class SingleRecordRequestAttributesTest {
   @Test
   public void testSingleRecordRequestAttributes() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
-      .recordLastUpdated("testString")
       .recordId("testString")
       .recordSource("testString")
+      .recordLastUpdated("testString")
       .build();
-    assertEquals(singleRecordRequestAttributesModel.recordLastUpdated(), "testString");
     assertEquals(singleRecordRequestAttributesModel.recordId(), "testString");
     assertEquals(singleRecordRequestAttributesModel.recordSource(), "testString");
+    assertEquals(singleRecordRequestAttributesModel.recordLastUpdated(), "testString");
 
     String json = TestUtilities.serialize(singleRecordRequestAttributesModel);
 
     SingleRecordRequestAttributes singleRecordRequestAttributesModelNew = TestUtilities.deserialize(json, SingleRecordRequestAttributes.class);
     assertTrue(singleRecordRequestAttributesModelNew instanceof SingleRecordRequestAttributes);
-    assertEquals(singleRecordRequestAttributesModelNew.recordLastUpdated(), "testString");
     assertEquals(singleRecordRequestAttributesModelNew.recordId(), "testString");
     assertEquals(singleRecordRequestAttributesModelNew.recordSource(), "testString");
+    assertEquals(singleRecordRequestAttributesModelNew.recordLastUpdated(), "testString");
   }
 }

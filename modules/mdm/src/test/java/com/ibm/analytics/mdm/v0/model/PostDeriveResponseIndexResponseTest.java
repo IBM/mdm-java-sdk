@@ -33,8 +33,8 @@ public class PostDeriveResponseIndexResponseTest {
   public void testPostDeriveResponseIndexResponse() throws Throwable {
     PostDeriveResponseIndexResponse postDeriveResponseIndexResponseModel = new PostDeriveResponseIndexResponse();
     assertNull(postDeriveResponseIndexResponseModel.getStandardizedValues());
-    assertNull(postDeriveResponseIndexResponseModel.getRecordType());
     assertNull(postDeriveResponseIndexResponseModel.getBuckets());
+    assertNull(postDeriveResponseIndexResponseModel.getRecordType());
     assertNull(postDeriveResponseIndexResponseModel.getRecordId());
     assertNull(postDeriveResponseIndexResponseModel.getRecordSource());
   }

@@ -23,14 +23,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmBucketStep extends GenericModel {
 
+  protected List<Long> inputs;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
+  @SerializedName("set_resource")
+  protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
   protected Boolean order;
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
-  protected List<Long> inputs;
-  @SerializedName("set_resource")
-  protected String setResource;
   protected String method;
   protected List<String> fields;
   protected String label;
@@ -39,21 +39,21 @@ public class AlgorithmBucketStep extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private List<Long> inputs;
+    private String comparisonResource;
+    private String setResource;
     private String mapResource;
     private Boolean order;
-    private String comparisonResource;
-    private List<Long> inputs;
-    private String setResource;
     private String method;
     private List<String> fields;
     private String label;
 
     private Builder(AlgorithmBucketStep algorithmBucketStep) {
+      this.inputs = algorithmBucketStep.inputs;
+      this.comparisonResource = algorithmBucketStep.comparisonResource;
+      this.setResource = algorithmBucketStep.setResource;
       this.mapResource = algorithmBucketStep.mapResource;
       this.order = algorithmBucketStep.order;
-      this.comparisonResource = algorithmBucketStep.comparisonResource;
-      this.inputs = algorithmBucketStep.inputs;
-      this.setResource = algorithmBucketStep.setResource;
       this.method = algorithmBucketStep.method;
       this.fields = algorithmBucketStep.fields;
       this.label = algorithmBucketStep.label;
@@ -118,6 +118,40 @@ public class AlgorithmBucketStep extends GenericModel {
     }
 
     /**
+     * Set the inputs.
+     * Existing inputs will be replaced.
+     *
+     * @param inputs the inputs
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder inputs(List<Long> inputs) {
+      this.inputs = inputs;
+      return this;
+    }
+
+    /**
+     * Set the comparisonResource.
+     *
+     * @param comparisonResource the comparisonResource
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder comparisonResource(String comparisonResource) {
+      this.comparisonResource = comparisonResource;
+      return this;
+    }
+
+    /**
+     * Set the setResource.
+     *
+     * @param setResource the setResource
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder setResource(String setResource) {
+      this.setResource = setResource;
+      return this;
+    }
+
+    /**
      * Set the mapResource.
      *
      * @param mapResource the mapResource
@@ -136,40 +170,6 @@ public class AlgorithmBucketStep extends GenericModel {
      */
     public Builder order(Boolean order) {
       this.order = order;
-      return this;
-    }
-
-    /**
-     * Set the comparisonResource.
-     *
-     * @param comparisonResource the comparisonResource
-     * @return the AlgorithmBucketStep builder
-     */
-    public Builder comparisonResource(String comparisonResource) {
-      this.comparisonResource = comparisonResource;
-      return this;
-    }
-
-    /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
-     *
-     * @param inputs the inputs
-     * @return the AlgorithmBucketStep builder
-     */
-    public Builder inputs(List<Long> inputs) {
-      this.inputs = inputs;
-      return this;
-    }
-
-    /**
-     * Set the setResource.
-     *
-     * @param setResource the setResource
-     * @return the AlgorithmBucketStep builder
-     */
-    public Builder setResource(String setResource) {
-      this.setResource = setResource;
       return this;
     }
 
@@ -213,11 +213,11 @@ public class AlgorithmBucketStep extends GenericModel {
       "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    inputs = builder.inputs;
+    comparisonResource = builder.comparisonResource;
+    setResource = builder.setResource;
     mapResource = builder.mapResource;
     order = builder.order;
-    comparisonResource = builder.comparisonResource;
-    inputs = builder.inputs;
-    setResource = builder.setResource;
     method = builder.method;
     fields = builder.fields;
     label = builder.label;
@@ -230,6 +230,39 @@ public class AlgorithmBucketStep extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   *
+   * @return the inputs
+   */
+  public List<Long> inputs() {
+    return inputs;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String comparisonResource() {
+    return comparisonResource;
+  }
+
+  /**
+   * Gets the setResource.
+   *
+   * An existing set resource name, if applicable.
+   *
+   * @return the setResource
+   */
+  public String setResource() {
+    return setResource;
   }
 
   /**
@@ -252,39 +285,6 @@ public class AlgorithmBucketStep extends GenericModel {
    */
   public Boolean order() {
     return order;
-  }
-
-  /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String comparisonResource() {
-    return comparisonResource;
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> inputs() {
-    return inputs;
-  }
-
-  /**
-   * Gets the setResource.
-   *
-   * An existing set resource name, if applicable.
-   *
-   * @return the setResource
-   */
-  public String setResource() {
-    return setResource;
   }
 
   /**

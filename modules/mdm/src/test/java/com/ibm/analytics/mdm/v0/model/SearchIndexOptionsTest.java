@@ -13,7 +13,7 @@
 
 package com.ibm.analytics.mdm.v0.model;
 
-import com.ibm.analytics.mdm.v0.model.CompareRecordsRequestRecordAttributes;
+import com.ibm.analytics.mdm.v0.model.CompareRecordsRequestAttributes;
 import com.ibm.analytics.mdm.v0.model.SearchIndexOptions;
 import com.ibm.analytics.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -32,19 +32,19 @@ public class SearchIndexOptionsTest {
 
   @Test
   public void testSearchIndexOptions() throws Throwable {
-    CompareRecordsRequestRecordAttributes compareRecordsRequestRecordAttributesModel = new CompareRecordsRequestRecordAttributes.Builder()
-      .recordLastUpdated("testString")
+    CompareRecordsRequestAttributes compareRecordsRequestAttributesModel = new CompareRecordsRequestAttributes.Builder()
       .recordId("testString")
       .recordSource("testString")
+      .recordLastUpdated("testString")
       .build();
-    assertEquals(compareRecordsRequestRecordAttributesModel.recordLastUpdated(), "testString");
-    assertEquals(compareRecordsRequestRecordAttributesModel.recordId(), "testString");
-    assertEquals(compareRecordsRequestRecordAttributesModel.recordSource(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.recordId(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.recordSource(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.recordLastUpdated(), "testString");
 
     SearchIndexOptions searchIndexOptionsModel = new SearchIndexOptions.Builder()
       .crn("testString")
       .recordType("testString")
-      .attributes(compareRecordsRequestRecordAttributesModel)
+      .attributes(compareRecordsRequestAttributesModel)
       .details("testString")
       .minScore("testString")
       .maxScore("testString")
@@ -54,7 +54,7 @@ public class SearchIndexOptionsTest {
       .build();
     assertEquals(searchIndexOptionsModel.crn(), "testString");
     assertEquals(searchIndexOptionsModel.recordType(), "testString");
-    assertEquals(searchIndexOptionsModel.attributes(), compareRecordsRequestRecordAttributesModel);
+    assertEquals(searchIndexOptionsModel.attributes(), compareRecordsRequestAttributesModel);
     assertEquals(searchIndexOptionsModel.details(), "testString");
     assertEquals(searchIndexOptionsModel.minScore(), "testString");
     assertEquals(searchIndexOptionsModel.maxScore(), "testString");

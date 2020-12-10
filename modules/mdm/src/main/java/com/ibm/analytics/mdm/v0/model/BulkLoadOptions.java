@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class BulkLoadOptions extends GenericModel {
 
-  protected String projectId;
   protected String crn;
   protected PublishDataRequestCosDetails cosDetails;
 
@@ -27,12 +26,10 @@ public class BulkLoadOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String projectId;
     private String crn;
     private PublishDataRequestCosDetails cosDetails;
 
     private Builder(BulkLoadOptions bulkLoadOptions) {
-      this.projectId = bulkLoadOptions.projectId;
       this.crn = bulkLoadOptions.crn;
       this.cosDetails = bulkLoadOptions.cosDetails;
     }
@@ -46,12 +43,10 @@ public class BulkLoadOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param projectId the projectId
      * @param crn the crn
      * @param cosDetails the cosDetails
      */
-    public Builder(String projectId, String crn, PublishDataRequestCosDetails cosDetails) {
-      this.projectId = projectId;
+    public Builder(String crn, PublishDataRequestCosDetails cosDetails) {
       this.crn = crn;
       this.cosDetails = cosDetails;
     }
@@ -63,17 +58,6 @@ public class BulkLoadOptions extends GenericModel {
      */
     public BulkLoadOptions build() {
       return new BulkLoadOptions(this);
-    }
-
-    /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the BulkLoadOptions builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
     }
 
     /**
@@ -100,13 +84,10 @@ public class BulkLoadOptions extends GenericModel {
   }
 
   protected BulkLoadOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.projectId,
-      "projectId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
       "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cosDetails,
       "cosDetails cannot be null");
-    projectId = builder.projectId;
     crn = builder.crn;
     cosDetails = builder.cosDetails;
   }
@@ -118,17 +99,6 @@ public class BulkLoadOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * Unique identifier of project_metadata.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
   }
 
   /**

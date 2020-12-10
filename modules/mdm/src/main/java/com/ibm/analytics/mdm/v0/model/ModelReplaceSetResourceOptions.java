@@ -23,7 +23,7 @@ public class ModelReplaceSetResourceOptions extends GenericModel {
 
   protected String crn;
   protected String resourceName;
-  protected Map<String, SetResourceSetResourceEntry> requestBody;
+  protected Map<String, SetResourceEntry> requestBody;
 
   /**
    * Builder.
@@ -31,7 +31,7 @@ public class ModelReplaceSetResourceOptions extends GenericModel {
   public static class Builder {
     private String crn;
     private String resourceName;
-    private Map<String, SetResourceSetResourceEntry> requestBody;
+    private Map<String, SetResourceEntry> requestBody;
 
     private Builder(ModelReplaceSetResourceOptions modelReplaceSetResourceOptions) {
       this.crn = modelReplaceSetResourceOptions.crn;
@@ -52,7 +52,7 @@ public class ModelReplaceSetResourceOptions extends GenericModel {
      * @param resourceName the resourceName
      * @param requestBody the requestBody
      */
-    public Builder(String crn, String resourceName, Map<String, SetResourceSetResourceEntry> requestBody) {
+    public Builder(String crn, String resourceName, Map<String, SetResourceEntry> requestBody) {
       this.crn = crn;
       this.resourceName = resourceName;
       this.requestBody = requestBody;
@@ -95,7 +95,7 @@ public class ModelReplaceSetResourceOptions extends GenericModel {
      * @param requestBody the requestBody
      * @return the ModelReplaceSetResourceOptions builder
      */
-    public Builder requestBody(Map<String, SetResourceSetResourceEntry> requestBody) {
+    public Builder requestBody(Map<String, SetResourceEntry> requestBody) {
       this.requestBody = requestBody;
       return this;
     }
@@ -152,7 +152,7 @@ public class ModelReplaceSetResourceOptions extends GenericModel {
    *
    * @return the requestBody
    */
-  public Map<String, SetResourceSetResourceEntry> requestBody() {
+  public Map<String, SetResourceEntry> requestBody() {
     return requestBody;
   }
 }

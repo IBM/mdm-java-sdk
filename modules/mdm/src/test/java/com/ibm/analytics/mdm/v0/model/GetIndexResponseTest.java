@@ -33,8 +33,8 @@ public class GetIndexResponseTest {
   public void testGetIndexResponse() throws Throwable {
     GetIndexResponse getIndexResponseModel = new GetIndexResponse();
     assertNull(getIndexResponseModel.getStandardizedValues());
-    assertNull(getIndexResponseModel.getRecordNumber());
     assertNull(getIndexResponseModel.getSelfScores());
     assertNull(getIndexResponseModel.getBuckets());
+    assertNull(getIndexResponseModel.getRecordNumber());
   }
 }

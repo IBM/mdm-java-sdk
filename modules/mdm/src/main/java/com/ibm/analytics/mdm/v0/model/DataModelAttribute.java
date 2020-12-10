@@ -20,12 +20,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelAttribute extends GenericModel {
 
-  @SerializedName("attribute_type")
-  protected String attributeType;
+  protected String classification;
   protected Boolean indexed;
   @SerializedName("matching_type")
   protected String matchingType;
-  protected String classification;
+  @SerializedName("attribute_type")
+  protected String attributeType;
   protected String description;
   protected String cardinality;
   protected String label;
@@ -34,19 +34,19 @@ public class DataModelAttribute extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String attributeType;
+    private String classification;
     private Boolean indexed;
     private String matchingType;
-    private String classification;
+    private String attributeType;
     private String description;
     private String cardinality;
     private String label;
 
     private Builder(DataModelAttribute dataModelAttribute) {
-      this.attributeType = dataModelAttribute.attributeType;
+      this.classification = dataModelAttribute.classification;
       this.indexed = dataModelAttribute.indexed;
       this.matchingType = dataModelAttribute.matchingType;
-      this.classification = dataModelAttribute.classification;
+      this.attributeType = dataModelAttribute.attributeType;
       this.description = dataModelAttribute.description;
       this.cardinality = dataModelAttribute.cardinality;
       this.label = dataModelAttribute.label;
@@ -79,13 +79,13 @@ public class DataModelAttribute extends GenericModel {
     }
 
     /**
-     * Set the attributeType.
+     * Set the classification.
      *
-     * @param attributeType the attributeType
+     * @param classification the classification
      * @return the DataModelAttribute builder
      */
-    public Builder attributeType(String attributeType) {
-      this.attributeType = attributeType;
+    public Builder classification(String classification) {
+      this.classification = classification;
       return this;
     }
 
@@ -112,13 +112,13 @@ public class DataModelAttribute extends GenericModel {
     }
 
     /**
-     * Set the classification.
+     * Set the attributeType.
      *
-     * @param classification the classification
+     * @param attributeType the attributeType
      * @return the DataModelAttribute builder
      */
-    public Builder classification(String classification) {
-      this.classification = classification;
+    public Builder attributeType(String attributeType) {
+      this.attributeType = attributeType;
       return this;
     }
 
@@ -161,10 +161,10 @@ public class DataModelAttribute extends GenericModel {
       "attributeType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    attributeType = builder.attributeType;
+    classification = builder.classification;
     indexed = builder.indexed;
     matchingType = builder.matchingType;
-    classification = builder.classification;
+    attributeType = builder.attributeType;
     description = builder.description;
     cardinality = builder.cardinality;
     label = builder.label;
@@ -180,14 +180,14 @@ public class DataModelAttribute extends GenericModel {
   }
 
   /**
-   * Gets the attributeType.
+   * Gets the classification.
    *
-   * The type of attribute (i.e. address).
+   * User defined classification.
    *
-   * @return the attributeType
+   * @return the classification
    */
-  public String attributeType() {
-    return attributeType;
+  public String classification() {
+    return classification;
   }
 
   /**
@@ -214,14 +214,14 @@ public class DataModelAttribute extends GenericModel {
   }
 
   /**
-   * Gets the classification.
+   * Gets the attributeType.
    *
-   * User defined classification.
+   * The type of attribute (i.e. address).
    *
-   * @return the classification
+   * @return the attributeType
    */
-  public String classification() {
-    return classification;
+  public String attributeType() {
+    return attributeType;
   }
 
   /**

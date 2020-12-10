@@ -24,12 +24,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class AlgorithmBucketGenerator extends GenericModel {
 
   protected List<AlgorithmInput> inputs;
-  @SerializedName("bucket_recipe")
-  protected List<AlgorithmBucketStep> bucketRecipe;
   @SerializedName("bucket_group_recipe")
   protected List<AlgorithmBucketGroupStep> bucketGroupRecipe;
   @SerializedName("maximum_bucket_size")
   protected Long maximumBucketSize;
+  @SerializedName("bucket_recipe")
+  protected List<AlgorithmBucketStep> bucketRecipe;
   protected String label;
 
   /**
@@ -37,16 +37,16 @@ public class AlgorithmBucketGenerator extends GenericModel {
    */
   public static class Builder {
     private List<AlgorithmInput> inputs;
-    private List<AlgorithmBucketStep> bucketRecipe;
     private List<AlgorithmBucketGroupStep> bucketGroupRecipe;
     private Long maximumBucketSize;
+    private List<AlgorithmBucketStep> bucketRecipe;
     private String label;
 
     private Builder(AlgorithmBucketGenerator algorithmBucketGenerator) {
       this.inputs = algorithmBucketGenerator.inputs;
-      this.bucketRecipe = algorithmBucketGenerator.bucketRecipe;
       this.bucketGroupRecipe = algorithmBucketGenerator.bucketGroupRecipe;
       this.maximumBucketSize = algorithmBucketGenerator.maximumBucketSize;
+      this.bucketRecipe = algorithmBucketGenerator.bucketRecipe;
       this.label = algorithmBucketGenerator.label;
     }
 
@@ -93,22 +93,6 @@ public class AlgorithmBucketGenerator extends GenericModel {
     }
 
     /**
-     * Adds an bucketRecipe to bucketRecipe.
-     *
-     * @param bucketRecipe the new bucketRecipe
-     * @return the AlgorithmBucketGenerator builder
-     */
-    public Builder addBucketRecipe(AlgorithmBucketStep bucketRecipe) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(bucketRecipe,
-        "bucketRecipe cannot be null");
-      if (this.bucketRecipe == null) {
-        this.bucketRecipe = new ArrayList<AlgorithmBucketStep>();
-      }
-      this.bucketRecipe.add(bucketRecipe);
-      return this;
-    }
-
-    /**
      * Adds an bucketGroupRecipe to bucketGroupRecipe.
      *
      * @param bucketGroupRecipe the new bucketGroupRecipe
@@ -125,6 +109,22 @@ public class AlgorithmBucketGenerator extends GenericModel {
     }
 
     /**
+     * Adds an bucketRecipe to bucketRecipe.
+     *
+     * @param bucketRecipe the new bucketRecipe
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder addBucketRecipe(AlgorithmBucketStep bucketRecipe) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(bucketRecipe,
+        "bucketRecipe cannot be null");
+      if (this.bucketRecipe == null) {
+        this.bucketRecipe = new ArrayList<AlgorithmBucketStep>();
+      }
+      this.bucketRecipe.add(bucketRecipe);
+      return this;
+    }
+
+    /**
      * Set the inputs.
      * Existing inputs will be replaced.
      *
@@ -133,18 +133,6 @@ public class AlgorithmBucketGenerator extends GenericModel {
      */
     public Builder inputs(List<AlgorithmInput> inputs) {
       this.inputs = inputs;
-      return this;
-    }
-
-    /**
-     * Set the bucketRecipe.
-     * Existing bucketRecipe will be replaced.
-     *
-     * @param bucketRecipe the bucketRecipe
-     * @return the AlgorithmBucketGenerator builder
-     */
-    public Builder bucketRecipe(List<AlgorithmBucketStep> bucketRecipe) {
-      this.bucketRecipe = bucketRecipe;
       return this;
     }
 
@@ -172,6 +160,18 @@ public class AlgorithmBucketGenerator extends GenericModel {
     }
 
     /**
+     * Set the bucketRecipe.
+     * Existing bucketRecipe will be replaced.
+     *
+     * @param bucketRecipe the bucketRecipe
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder bucketRecipe(List<AlgorithmBucketStep> bucketRecipe) {
+      this.bucketRecipe = bucketRecipe;
+      return this;
+    }
+
+    /**
      * Set the label.
      *
      * @param label the label
@@ -189,9 +189,9 @@ public class AlgorithmBucketGenerator extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
     inputs = builder.inputs;
-    bucketRecipe = builder.bucketRecipe;
     bucketGroupRecipe = builder.bucketGroupRecipe;
     maximumBucketSize = builder.maximumBucketSize;
+    bucketRecipe = builder.bucketRecipe;
     label = builder.label;
   }
 
@@ -216,17 +216,6 @@ public class AlgorithmBucketGenerator extends GenericModel {
   }
 
   /**
-   * Gets the bucketRecipe.
-   *
-   * Collection of bucket generator steps.
-   *
-   * @return the bucketRecipe
-   */
-  public List<AlgorithmBucketStep> bucketRecipe() {
-    return bucketRecipe;
-  }
-
-  /**
    * Gets the bucketGroupRecipe.
    *
    * Collection of bucket group generator steps.
@@ -246,6 +235,17 @@ public class AlgorithmBucketGenerator extends GenericModel {
    */
   public Long maximumBucketSize() {
     return maximumBucketSize;
+  }
+
+  /**
+   * Gets the bucketRecipe.
+   *
+   * Collection of bucket generator steps.
+   *
+   * @return the bucketRecipe
+   */
+  public List<AlgorithmBucketStep> bucketRecipe() {
+    return bucketRecipe;
   }
 
   /**

@@ -22,14 +22,14 @@ public class CompareRecordsRequestRecord extends GenericModel {
 
   @SerializedName("record_type")
   protected String recordType;
-  protected CompareRecordsRequestRecordAttributes attributes;
+  protected CompareRecordsRequestAttributes attributes;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String recordType;
-    private CompareRecordsRequestRecordAttributes attributes;
+    private CompareRecordsRequestAttributes attributes;
 
     private Builder(CompareRecordsRequestRecord compareRecordsRequestRecord) {
       this.recordType = compareRecordsRequestRecord.recordType;
@@ -77,7 +77,7 @@ public class CompareRecordsRequestRecord extends GenericModel {
      * @param attributes the attributes
      * @return the CompareRecordsRequestRecord builder
      */
-    public Builder attributes(CompareRecordsRequestRecordAttributes attributes) {
+    public Builder attributes(CompareRecordsRequestAttributes attributes) {
       this.attributes = attributes;
       return this;
     }
@@ -113,11 +113,11 @@ public class CompareRecordsRequestRecord extends GenericModel {
   /**
    * Gets the attributes.
    *
-   * Details of a single record.
+   * Details of a single record including external record reference and record attributes.
    *
    * @return the attributes
    */
-  public CompareRecordsRequestRecordAttributes attributes() {
+  public CompareRecordsRequestAttributes attributes() {
     return attributes;
   }
 }

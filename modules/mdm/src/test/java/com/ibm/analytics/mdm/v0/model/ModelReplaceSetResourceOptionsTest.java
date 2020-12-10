@@ -14,7 +14,7 @@
 package com.ibm.analytics.mdm.v0.model;
 
 import com.ibm.analytics.mdm.v0.model.ModelReplaceSetResourceOptions;
-import com.ibm.analytics.mdm.v0.model.SetResourceSetResourceEntry;
+import com.ibm.analytics.mdm.v0.model.SetResourceEntry;
 import com.ibm.analytics.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -34,25 +34,25 @@ public class ModelReplaceSetResourceOptionsTest {
 
   @Test
   public void testModelReplaceSetResourceOptions() throws Throwable {
-    SetResourceSetResourceEntry setResourceSetResourceEntryModel = new SetResourceSetResourceEntry.Builder()
+    SetResourceEntry setResourceEntryModel = new SetResourceEntry.Builder()
       .dataType("testString")
       .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .category("testString")
       .build();
-    assertEquals(setResourceSetResourceEntryModel.dataType(), "testString");
-    assertEquals(setResourceSetResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(setResourceSetResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(setResourceSetResourceEntryModel.category(), "testString");
+    assertEquals(setResourceEntryModel.dataType(), "testString");
+    assertEquals(setResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(setResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(setResourceEntryModel.category(), "testString");
 
     ModelReplaceSetResourceOptions modelReplaceSetResourceOptionsModel = new ModelReplaceSetResourceOptions.Builder()
       .crn("testString")
       .resourceName("testString")
-      .requestBody(new java.util.HashMap<String, SetResourceSetResourceEntry>() { { put("foo", setResourceSetResourceEntryModel); } })
+      .requestBody(new java.util.HashMap<String, SetResourceEntry>() { { put("foo", setResourceEntryModel); } })
       .build();
     assertEquals(modelReplaceSetResourceOptionsModel.crn(), "testString");
     assertEquals(modelReplaceSetResourceOptionsModel.resourceName(), "testString");
-    assertEquals(modelReplaceSetResourceOptionsModel.requestBody(), new java.util.HashMap<String, SetResourceSetResourceEntry>() { { put("foo", setResourceSetResourceEntryModel); } });
+    assertEquals(modelReplaceSetResourceOptionsModel.requestBody(), new java.util.HashMap<String, SetResourceEntry>() { { put("foo", setResourceEntryModel); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

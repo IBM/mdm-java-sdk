@@ -12,26 +12,78 @@
  */
 package com.ibm.analytics.mdm.v0.model;
 
+import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * match statistics.
+ * Match statistics.
  */
 public class MatchStatistics extends GenericModel {
 
-  @SerializedName("match_statistics")
-  protected MatchStatisticsMatchStatistics matchStatistics;
+  @SerializedName("largest_entities")
+  protected List<MatchEntitySizeStats> largestEntities;
+  @SerializedName("entity_size_distribution")
+  protected List<MatchEntityCountStats> entitySizeDistribution;
+  @SerializedName("entity_breakdown")
+  protected EntityBreakdown entityBreakdown;
+  protected Summary summary;
+  protected Status status;
 
   /**
-   * Gets the matchStatistics.
+   * Gets the largestEntities.
    *
-   * returns match statistics.
+   * largest entities.
    *
-   * @return the matchStatistics
+   * @return the largestEntities
    */
-  public MatchStatisticsMatchStatistics getMatchStatistics() {
-    return matchStatistics;
+  public List<MatchEntitySizeStats> getLargestEntities() {
+    return largestEntities;
+  }
+
+  /**
+   * Gets the entitySizeDistribution.
+   *
+   * entity size distribution.
+   *
+   * @return the entitySizeDistribution
+   */
+  public List<MatchEntityCountStats> getEntitySizeDistribution() {
+    return entitySizeDistribution;
+  }
+
+  /**
+   * Gets the entityBreakdown.
+   *
+   * entity breakdown.
+   *
+   * @return the entityBreakdown
+   */
+  public EntityBreakdown getEntityBreakdown() {
+    return entityBreakdown;
+  }
+
+  /**
+   * Gets the summary.
+   *
+   * summary.
+   *
+   * @return the summary
+   */
+  public Summary getSummary() {
+    return summary;
+  }
+
+  /**
+   * Gets the status.
+   *
+   * status.
+   *
+   * @return the status
+   */
+  public Status getStatus() {
+    return status;
   }
 }
 

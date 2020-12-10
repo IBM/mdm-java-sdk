@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetProcessStatusOptions extends GenericModel {
 
-  protected String projectId;
   protected String status;
   protected String crn;
   protected String recordType;
@@ -28,13 +27,11 @@ public class GetProcessStatusOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String projectId;
     private String status;
     private String crn;
     private String recordType;
 
     private Builder(GetProcessStatusOptions getProcessStatusOptions) {
-      this.projectId = getProcessStatusOptions.projectId;
       this.status = getProcessStatusOptions.status;
       this.crn = getProcessStatusOptions.crn;
       this.recordType = getProcessStatusOptions.recordType;
@@ -49,12 +46,10 @@ public class GetProcessStatusOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param projectId the projectId
      * @param status the status
      * @param crn the crn
      */
-    public Builder(String projectId, String status, String crn) {
-      this.projectId = projectId;
+    public Builder(String status, String crn) {
       this.status = status;
       this.crn = crn;
     }
@@ -66,17 +61,6 @@ public class GetProcessStatusOptions extends GenericModel {
      */
     public GetProcessStatusOptions build() {
       return new GetProcessStatusOptions(this);
-    }
-
-    /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the GetProcessStatusOptions builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
     }
 
     /**
@@ -114,13 +98,10 @@ public class GetProcessStatusOptions extends GenericModel {
   }
 
   protected GetProcessStatusOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.projectId,
-      "projectId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.status,
       "status cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
       "crn cannot be null");
-    projectId = builder.projectId;
     status = builder.status;
     crn = builder.crn;
     recordType = builder.recordType;
@@ -133,17 +114,6 @@ public class GetProcessStatusOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * Unique identifier of project_metadata.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
   }
 
   /**

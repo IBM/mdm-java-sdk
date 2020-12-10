@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InitiateMatchingOptions extends GenericModel {
 
-  protected String projectId;
   protected String recordType;
   protected String entityType;
   protected String crn;
@@ -28,13 +27,11 @@ public class InitiateMatchingOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String projectId;
     private String recordType;
     private String entityType;
     private String crn;
 
     private Builder(InitiateMatchingOptions initiateMatchingOptions) {
-      this.projectId = initiateMatchingOptions.projectId;
       this.recordType = initiateMatchingOptions.recordType;
       this.entityType = initiateMatchingOptions.entityType;
       this.crn = initiateMatchingOptions.crn;
@@ -49,13 +46,11 @@ public class InitiateMatchingOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param projectId the projectId
      * @param recordType the recordType
      * @param entityType the entityType
      * @param crn the crn
      */
-    public Builder(String projectId, String recordType, String entityType, String crn) {
-      this.projectId = projectId;
+    public Builder(String recordType, String entityType, String crn) {
       this.recordType = recordType;
       this.entityType = entityType;
       this.crn = crn;
@@ -68,17 +63,6 @@ public class InitiateMatchingOptions extends GenericModel {
      */
     public InitiateMatchingOptions build() {
       return new InitiateMatchingOptions(this);
-    }
-
-    /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the InitiateMatchingOptions builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
     }
 
     /**
@@ -116,15 +100,12 @@ public class InitiateMatchingOptions extends GenericModel {
   }
 
   protected InitiateMatchingOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.projectId,
-      "projectId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
       "recordType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityType,
       "entityType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
       "crn cannot be null");
-    projectId = builder.projectId;
     recordType = builder.recordType;
     entityType = builder.entityType;
     crn = builder.crn;
@@ -137,17 +118,6 @@ public class InitiateMatchingOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * Unique identifier of project_metadata.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
   }
 
   /**

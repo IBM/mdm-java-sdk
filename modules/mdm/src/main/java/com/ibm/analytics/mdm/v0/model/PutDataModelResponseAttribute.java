@@ -20,25 +20,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseAttribute extends GenericModel {
 
-  @SerializedName("attribute_type")
-  protected String attributeType;
+  protected String classification;
   protected Boolean indexed;
   @SerializedName("matching_type")
   protected String matchingType;
-  protected String classification;
+  @SerializedName("attribute_type")
+  protected String attributeType;
   protected String description;
   protected String cardinality;
   protected String label;
 
   /**
-   * Gets the attributeType.
+   * Gets the classification.
    *
-   * The type of attribute (i.e. address).
+   * User defined classification.
    *
-   * @return the attributeType
+   * @return the classification
    */
-  public String getAttributeType() {
-    return attributeType;
+  public String getClassification() {
+    return classification;
   }
 
   /**
@@ -65,14 +65,14 @@ public class PutDataModelResponseAttribute extends GenericModel {
   }
 
   /**
-   * Gets the classification.
+   * Gets the attributeType.
    *
-   * User defined classification.
+   * The type of attribute (i.e. address).
    *
-   * @return the classification
+   * @return the attributeType
    */
-  public String getClassification() {
-    return classification;
+  public String getAttributeType() {
+    return attributeType;
   }
 
   /**

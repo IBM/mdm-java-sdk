@@ -21,19 +21,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutCompositeRulesResponseRule extends GenericModel {
 
-  protected List<String> sources;
   protected List<String> choices;
-
-  /**
-   * Gets the sources.
-   *
-   * Collection of sources ordered by prefered priorties.
-   *
-   * @return the sources
-   */
-  public List<String> getSources() {
-    return sources;
-  }
+  protected List<String> sources;
 
   /**
    * Gets the choices.
@@ -45,6 +34,17 @@ public class PutCompositeRulesResponseRule extends GenericModel {
    */
   public List<String> getChoices() {
     return choices;
+  }
+
+  /**
+   * Gets the sources.
+   *
+   * Collection of sources ordered by prefered priorties.
+   *
+   * @return the sources
+   */
+  public List<String> getSources() {
+    return sources;
   }
 }
 

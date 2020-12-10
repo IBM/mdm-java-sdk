@@ -20,25 +20,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetSummaryResponse extends GenericModel {
 
-  @SerializedName("singleton_entity_count")
-  protected Long singletonEntityCount;
   @SerializedName("stats_and_entities")
   protected GetSummaryResponseStatsAndEntities statsAndEntities;
   @SerializedName("unique_source_count")
   protected Long uniqueSourceCount;
   @SerializedName("total_records")
   protected Long totalRecords;
-
-  /**
-   * Gets the singletonEntityCount.
-   *
-   * The number of entities consisting of a single record.
-   *
-   * @return the singletonEntityCount
-   */
-  public Long getSingletonEntityCount() {
-    return singletonEntityCount;
-  }
+  @SerializedName("singleton_entity_count")
+  protected Long singletonEntityCount;
 
   /**
    * Gets the statsAndEntities.
@@ -71,6 +60,17 @@ public class GetSummaryResponse extends GenericModel {
    */
   public Long getTotalRecords() {
     return totalRecords;
+  }
+
+  /**
+   * Gets the singletonEntityCount.
+   *
+   * The number of entities consisting of a single record.
+   *
+   * @return the singletonEntityCount
+   */
+  public Long getSingletonEntityCount() {
+    return singletonEntityCount;
   }
 }
 

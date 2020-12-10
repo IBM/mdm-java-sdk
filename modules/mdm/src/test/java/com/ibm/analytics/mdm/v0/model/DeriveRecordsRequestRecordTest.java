@@ -13,8 +13,8 @@
 
 package com.ibm.analytics.mdm.v0.model;
 
+import com.ibm.analytics.mdm.v0.model.DeriveRecordsRequestAttributes;
 import com.ibm.analytics.mdm.v0.model.DeriveRecordsRequestRecord;
-import com.ibm.analytics.mdm.v0.model.DeriveRecordsRequestRecordAttributes;
 import com.ibm.analytics.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,28 +32,28 @@ public class DeriveRecordsRequestRecordTest {
 
   @Test
   public void testDeriveRecordsRequestRecord() throws Throwable {
-    DeriveRecordsRequestRecordAttributes deriveRecordsRequestRecordAttributesModel = new DeriveRecordsRequestRecordAttributes.Builder()
-      .recordLastUpdated("testString")
+    DeriveRecordsRequestAttributes deriveRecordsRequestAttributesModel = new DeriveRecordsRequestAttributes.Builder()
       .recordId("testString")
       .recordSource("testString")
+      .recordLastUpdated("testString")
       .build();
-    assertEquals(deriveRecordsRequestRecordAttributesModel.recordLastUpdated(), "testString");
-    assertEquals(deriveRecordsRequestRecordAttributesModel.recordId(), "testString");
-    assertEquals(deriveRecordsRequestRecordAttributesModel.recordSource(), "testString");
+    assertEquals(deriveRecordsRequestAttributesModel.recordId(), "testString");
+    assertEquals(deriveRecordsRequestAttributesModel.recordSource(), "testString");
+    assertEquals(deriveRecordsRequestAttributesModel.recordLastUpdated(), "testString");
 
     DeriveRecordsRequestRecord deriveRecordsRequestRecordModel = new DeriveRecordsRequestRecord.Builder()
       .recordType("testString")
-      .attributes(deriveRecordsRequestRecordAttributesModel)
+      .attributes(deriveRecordsRequestAttributesModel)
       .build();
     assertEquals(deriveRecordsRequestRecordModel.recordType(), "testString");
-    assertEquals(deriveRecordsRequestRecordModel.attributes(), deriveRecordsRequestRecordAttributesModel);
+    assertEquals(deriveRecordsRequestRecordModel.attributes(), deriveRecordsRequestAttributesModel);
 
     String json = TestUtilities.serialize(deriveRecordsRequestRecordModel);
 
     DeriveRecordsRequestRecord deriveRecordsRequestRecordModelNew = TestUtilities.deserialize(json, DeriveRecordsRequestRecord.class);
     assertTrue(deriveRecordsRequestRecordModelNew instanceof DeriveRecordsRequestRecord);
     assertEquals(deriveRecordsRequestRecordModelNew.recordType(), "testString");
-    assertEquals(deriveRecordsRequestRecordModelNew.attributes().toString(), deriveRecordsRequestRecordAttributesModel.toString());
+    assertEquals(deriveRecordsRequestRecordModelNew.attributes().toString(), deriveRecordsRequestAttributesModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

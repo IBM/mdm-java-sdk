@@ -17,14 +17,11 @@ import com.ibm.analytics.mdm.v0.model.EntityBreakdown;
 import com.ibm.analytics.mdm.v0.model.MatchEntityCountStats;
 import com.ibm.analytics.mdm.v0.model.MatchEntitySizeStats;
 import com.ibm.analytics.mdm.v0.model.MatchStatistics;
-import com.ibm.analytics.mdm.v0.model.MatchStatisticsMatchStatistics;
 import com.ibm.analytics.mdm.v0.model.Status;
 import com.ibm.analytics.mdm.v0.model.Summary;
 import com.ibm.analytics.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -40,6 +37,10 @@ public class MatchStatisticsTest {
   @Test
   public void testMatchStatistics() throws Throwable {
     MatchStatistics matchStatisticsModel = new MatchStatistics();
-    assertNull(matchStatisticsModel.getMatchStatistics());
+    assertNull(matchStatisticsModel.getLargestEntities());
+    assertNull(matchStatisticsModel.getEntitySizeDistribution());
+    assertNull(matchStatisticsModel.getEntityBreakdown());
+    assertNull(matchStatisticsModel.getSummary());
+    assertNull(matchStatisticsModel.getStatus());
   }
 }

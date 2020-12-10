@@ -25,11 +25,11 @@ public class GetIndexResponse extends GenericModel {
 
   @SerializedName("standardized_values")
   protected String standardizedValues;
-  @SerializedName("record_number")
-  protected String recordNumber;
   @SerializedName("self_scores")
   protected Map<String, Object> selfScores;
   protected List<Long> buckets;
+  @SerializedName("record_number")
+  protected String recordNumber;
 
   /**
    * Gets the standardizedValues.
@@ -40,17 +40,6 @@ public class GetIndexResponse extends GenericModel {
    */
   public String getStandardizedValues() {
     return standardizedValues;
-  }
-
-  /**
-   * Gets the recordNumber.
-   *
-   * The unique identifier of a source record as assigned by the system.
-   *
-   * @return the recordNumber
-   */
-  public String getRecordNumber() {
-    return recordNumber;
   }
 
   /**
@@ -73,6 +62,17 @@ public class GetIndexResponse extends GenericModel {
    */
   public List<Long> getBuckets() {
     return buckets;
+  }
+
+  /**
+   * Gets the recordNumber.
+   *
+   * The unique identifier of a source record as assigned by the system.
+   *
+   * @return the recordNumber
+   */
+  public String getRecordNumber() {
+    return recordNumber;
   }
 }
 

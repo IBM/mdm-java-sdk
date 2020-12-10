@@ -23,21 +23,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class TargetObject extends GenericModel {
 
-  @SerializedName("entity_types")
-  protected List<String> entityTypes;
   @SerializedName("record_types")
   protected List<String> recordTypes;
+  @SerializedName("entity_types")
+  protected List<String> entityTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<String> entityTypes;
     private List<String> recordTypes;
+    private List<String> entityTypes;
 
     private Builder(TargetObject targetObject) {
-      this.entityTypes = targetObject.entityTypes;
       this.recordTypes = targetObject.recordTypes;
+      this.entityTypes = targetObject.entityTypes;
     }
 
     /**
@@ -53,22 +53,6 @@ public class TargetObject extends GenericModel {
      */
     public TargetObject build() {
       return new TargetObject(this);
-    }
-
-    /**
-     * Adds an entityTypes to entityTypes.
-     *
-     * @param entityTypes the new entityTypes
-     * @return the TargetObject builder
-     */
-    public Builder addEntityTypes(String entityTypes) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(entityTypes,
-        "entityTypes cannot be null");
-      if (this.entityTypes == null) {
-        this.entityTypes = new ArrayList<String>();
-      }
-      this.entityTypes.add(entityTypes);
-      return this;
     }
 
     /**
@@ -88,14 +72,18 @@ public class TargetObject extends GenericModel {
     }
 
     /**
-     * Set the entityTypes.
-     * Existing entityTypes will be replaced.
+     * Adds an entityTypes to entityTypes.
      *
-     * @param entityTypes the entityTypes
+     * @param entityTypes the new entityTypes
      * @return the TargetObject builder
      */
-    public Builder entityTypes(List<String> entityTypes) {
-      this.entityTypes = entityTypes;
+    public Builder addEntityTypes(String entityTypes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(entityTypes,
+        "entityTypes cannot be null");
+      if (this.entityTypes == null) {
+        this.entityTypes = new ArrayList<String>();
+      }
+      this.entityTypes.add(entityTypes);
       return this;
     }
 
@@ -110,11 +98,23 @@ public class TargetObject extends GenericModel {
       this.recordTypes = recordTypes;
       return this;
     }
+
+    /**
+     * Set the entityTypes.
+     * Existing entityTypes will be replaced.
+     *
+     * @param entityTypes the entityTypes
+     * @return the TargetObject builder
+     */
+    public Builder entityTypes(List<String> entityTypes) {
+      this.entityTypes = entityTypes;
+      return this;
+    }
   }
 
   protected TargetObject(Builder builder) {
-    entityTypes = builder.entityTypes;
     recordTypes = builder.recordTypes;
+    entityTypes = builder.entityTypes;
   }
 
   /**
@@ -127,17 +127,6 @@ public class TargetObject extends GenericModel {
   }
 
   /**
-   * Gets the entityTypes.
-   *
-   * Entity Types.
-   *
-   * @return the entityTypes
-   */
-  public List<String> entityTypes() {
-    return entityTypes;
-  }
-
-  /**
    * Gets the recordTypes.
    *
    * Record Types.
@@ -146,6 +135,17 @@ public class TargetObject extends GenericModel {
    */
   public List<String> recordTypes() {
     return recordTypes;
+  }
+
+  /**
+   * Gets the entityTypes.
+   *
+   * Entity Types.
+   *
+   * @return the entityTypes
+   */
+  public List<String> entityTypes() {
+    return entityTypes;
   }
 }
 

@@ -34,14 +34,14 @@ public class AlgorithmBucketGroupStepTest {
   @Test
   public void testAlgorithmBucketGroupStep() throws Throwable {
     AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
-      .order(true)
       .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .order(true)
       .method("testString")
       .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
       .label("testString")
       .build();
-    assertEquals(algorithmBucketGroupStepModel.order(), Boolean.valueOf(true));
     assertEquals(algorithmBucketGroupStepModel.inputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
+    assertEquals(algorithmBucketGroupStepModel.order(), Boolean.valueOf(true));
     assertEquals(algorithmBucketGroupStepModel.method(), "testString");
     assertEquals(algorithmBucketGroupStepModel.fields(), new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))));
     assertEquals(algorithmBucketGroupStepModel.label(), "testString");

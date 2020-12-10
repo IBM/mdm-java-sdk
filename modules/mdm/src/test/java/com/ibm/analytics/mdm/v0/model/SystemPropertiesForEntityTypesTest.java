@@ -33,26 +33,26 @@ public class SystemPropertiesForEntityTypesTest {
   public void testSystemPropertiesForEntityTypes() throws Throwable {
     SystemPropertiesForEntityTypes systemPropertiesForEntityTypesModel = new SystemPropertiesForEntityTypes.Builder()
       .label("testString")
-      .description("testString")
       .dataType("testString")
-      .indexed(true)
       .editable(true)
+      .description("testString")
+      .indexed(true)
       .build();
     assertEquals(systemPropertiesForEntityTypesModel.label(), "testString");
-    assertEquals(systemPropertiesForEntityTypesModel.description(), "testString");
     assertEquals(systemPropertiesForEntityTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesForEntityTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(systemPropertiesForEntityTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForEntityTypesModel.description(), "testString");
+    assertEquals(systemPropertiesForEntityTypesModel.indexed(), Boolean.valueOf(true));
 
     String json = TestUtilities.serialize(systemPropertiesForEntityTypesModel);
 
     SystemPropertiesForEntityTypes systemPropertiesForEntityTypesModelNew = TestUtilities.deserialize(json, SystemPropertiesForEntityTypes.class);
     assertTrue(systemPropertiesForEntityTypesModelNew instanceof SystemPropertiesForEntityTypes);
     assertEquals(systemPropertiesForEntityTypesModelNew.label(), "testString");
-    assertEquals(systemPropertiesForEntityTypesModelNew.description(), "testString");
     assertEquals(systemPropertiesForEntityTypesModelNew.dataType(), "testString");
-    assertEquals(systemPropertiesForEntityTypesModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(systemPropertiesForEntityTypesModelNew.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForEntityTypesModelNew.description(), "testString");
+    assertEquals(systemPropertiesForEntityTypesModelNew.indexed(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

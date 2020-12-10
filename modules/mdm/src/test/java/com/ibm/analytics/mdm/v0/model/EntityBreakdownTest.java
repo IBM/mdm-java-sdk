@@ -35,8 +35,8 @@ public class EntityBreakdownTest {
     assertNull(entityBreakdownModel.getAverage());
     assertNull(entityBreakdownModel.getStandardDeviation());
     assertNull(entityBreakdownModel.getVariance());
-    assertNull(entityBreakdownModel.getMax());
-    assertNull(entityBreakdownModel.getMin());
     assertNull(entityBreakdownModel.getCount());
+    assertNull(entityBreakdownModel.getMin());
+    assertNull(entityBreakdownModel.getMax());
   }
 }

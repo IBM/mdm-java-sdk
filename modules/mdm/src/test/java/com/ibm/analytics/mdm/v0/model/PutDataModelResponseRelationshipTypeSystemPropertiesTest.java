@@ -33,12 +33,6 @@ public class PutDataModelResponseRelationshipTypeSystemPropertiesTest {
   @Test
   public void testPutDataModelResponseRelationshipTypeSystemProperties() throws Throwable {
     PutDataModelResponseRelationshipTypeSystemProperties putDataModelResponseRelationshipTypeSystemPropertiesModel = new PutDataModelResponseRelationshipTypeSystemProperties();
-    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getToRecordNumber());
-    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getFromRecordNumber());
-    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipSource());
-    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getFromRecordSource());
-    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getToRecordSource());
-    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipId());
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipType());
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getFromRecordId());
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getToRecordId());
@@ -46,5 +40,11 @@ public class PutDataModelResponseRelationshipTypeSystemPropertiesTest {
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getToRecordType());
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipLastUpdated());
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getFromRecordType());
+    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getToRecordNumber());
+    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getFromRecordNumber());
+    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipSource());
+    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getFromRecordSource());
+    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getToRecordSource());
+    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipId());
   }
 }

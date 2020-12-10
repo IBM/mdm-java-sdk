@@ -20,23 +20,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetRecordKeysRecordinfo extends GenericModel {
 
-  @SerializedName("record_number")
-  protected String recordNumber;
   @SerializedName("record_id")
   protected String recordId;
+  @SerializedName("record_number")
+  protected String recordNumber;
   @SerializedName("record_source")
   protected String recordSource;
-
-  /**
-   * Gets the recordNumber.
-   *
-   * The unique identifier of a source record as assigned by the system.
-   *
-   * @return the recordNumber
-   */
-  public String getRecordNumber() {
-    return recordNumber;
-  }
 
   /**
    * Gets the recordId.
@@ -47,6 +36,17 @@ public class GetRecordKeysRecordinfo extends GenericModel {
    */
   public String getRecordId() {
     return recordId;
+  }
+
+  /**
+   * Gets the recordNumber.
+   *
+   * The unique identifier of a source record as assigned by the system.
+   *
+   * @return the recordNumber
+   */
+  public String getRecordNumber() {
+    return recordNumber;
   }
 
   /**

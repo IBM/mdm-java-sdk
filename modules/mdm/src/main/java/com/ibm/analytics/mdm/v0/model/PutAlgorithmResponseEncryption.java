@@ -22,23 +22,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseEncryption extends GenericModel {
 
-  @SerializedName("pub_key")
-  protected List<String> pubKey;
   @SerializedName("sub_type")
   protected String subType;
-  protected Boolean enabled;
+  @SerializedName("pub_key")
+  protected List<String> pubKey;
   protected String type;
-
-  /**
-   * Gets the pubKey.
-   *
-   * Asymmetric encryption public keys.
-   *
-   * @return the pubKey
-   */
-  public List<String> getPubKey() {
-    return pubKey;
-  }
+  protected Boolean enabled;
 
   /**
    * Gets the subType.
@@ -52,14 +41,14 @@ public class PutAlgorithmResponseEncryption extends GenericModel {
   }
 
   /**
-   * Gets the enabled.
+   * Gets the pubKey.
    *
-   * Asymmetric encryption enabled indicator, true or false.
+   * Asymmetric encryption public keys.
    *
-   * @return the enabled
+   * @return the pubKey
    */
-  public Boolean isEnabled() {
-    return enabled;
+  public List<String> getPubKey() {
+    return pubKey;
   }
 
   /**
@@ -71,6 +60,17 @@ public class PutAlgorithmResponseEncryption extends GenericModel {
    */
   public String getType() {
     return type;
+  }
+
+  /**
+   * Gets the enabled.
+   *
+   * Asymmetric encryption enabled indicator, true or false.
+   *
+   * @return the enabled
+   */
+  public Boolean isEnabled() {
+    return enabled;
   }
 }
 

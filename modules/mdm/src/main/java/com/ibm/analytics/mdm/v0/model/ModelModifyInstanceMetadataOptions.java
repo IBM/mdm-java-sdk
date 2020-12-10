@@ -23,8 +23,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ModelModifyInstanceMetadataOptions extends GenericModel {
 
   protected String crn;
-  protected String jobProjectId;
   protected List<InstanceMetadataProject> projects;
+  protected String jobProjectId;
   protected List<InstanceMetadataCatalog> catalogs;
   protected String label;
 
@@ -33,15 +33,15 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
    */
   public static class Builder {
     private String crn;
-    private String jobProjectId;
     private List<InstanceMetadataProject> projects;
+    private String jobProjectId;
     private List<InstanceMetadataCatalog> catalogs;
     private String label;
 
     private Builder(ModelModifyInstanceMetadataOptions modelModifyInstanceMetadataOptions) {
       this.crn = modelModifyInstanceMetadataOptions.crn;
-      this.jobProjectId = modelModifyInstanceMetadataOptions.jobProjectId;
       this.projects = modelModifyInstanceMetadataOptions.projects;
+      this.jobProjectId = modelModifyInstanceMetadataOptions.jobProjectId;
       this.catalogs = modelModifyInstanceMetadataOptions.catalogs;
       this.label = modelModifyInstanceMetadataOptions.label;
     }
@@ -114,17 +114,6 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Set the jobProjectId.
-     *
-     * @param jobProjectId the jobProjectId
-     * @return the ModelModifyInstanceMetadataOptions builder
-     */
-    public Builder jobProjectId(String jobProjectId) {
-      this.jobProjectId = jobProjectId;
-      return this;
-    }
-
-    /**
      * Set the projects.
      * Existing projects will be replaced.
      *
@@ -133,6 +122,17 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
      */
     public Builder projects(List<InstanceMetadataProject> projects) {
       this.projects = projects;
+      return this;
+    }
+
+    /**
+     * Set the jobProjectId.
+     *
+     * @param jobProjectId the jobProjectId
+     * @return the ModelModifyInstanceMetadataOptions builder
+     */
+    public Builder jobProjectId(String jobProjectId) {
+      this.jobProjectId = jobProjectId;
       return this;
     }
 
@@ -166,8 +166,8 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
      * @return the ModelModifyInstanceMetadataOptions builder
      */
     public Builder instanceMetadata(InstanceMetadata instanceMetadata) {
-      this.jobProjectId = instanceMetadata.jobProjectId();
       this.projects = instanceMetadata.projects();
+      this.jobProjectId = instanceMetadata.jobProjectId();
       this.catalogs = instanceMetadata.catalogs();
       this.label = instanceMetadata.label();
       return this;
@@ -178,8 +178,8 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
       "crn cannot be null");
     crn = builder.crn;
-    jobProjectId = builder.jobProjectId;
     projects = builder.projects;
+    jobProjectId = builder.jobProjectId;
     catalogs = builder.catalogs;
     label = builder.label;
   }
@@ -205,17 +205,6 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
   }
 
   /**
-   * Gets the jobProjectId.
-   *
-   * The unique identifier of a project for the jobs.
-   *
-   * @return the jobProjectId
-   */
-  public String jobProjectId() {
-    return jobProjectId;
-  }
-
-  /**
    * Gets the projects.
    *
    * Collection of project objects as available in Watson Knowledge Catalog (WKC).
@@ -224,6 +213,17 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
    */
   public List<InstanceMetadataProject> projects() {
     return projects;
+  }
+
+  /**
+   * Gets the jobProjectId.
+   *
+   * The unique identifier of a project for the jobs.
+   *
+   * @return the jobProjectId
+   */
+  public String jobProjectId() {
+    return jobProjectId;
   }
 
   /**

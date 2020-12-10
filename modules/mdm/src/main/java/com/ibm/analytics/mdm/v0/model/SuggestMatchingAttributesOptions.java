@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SuggestMatchingAttributesOptions extends GenericModel {
 
-  protected String projectId;
   protected String recordType;
   protected String crn;
 
@@ -27,12 +26,10 @@ public class SuggestMatchingAttributesOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String projectId;
     private String recordType;
     private String crn;
 
     private Builder(SuggestMatchingAttributesOptions suggestMatchingAttributesOptions) {
-      this.projectId = suggestMatchingAttributesOptions.projectId;
       this.recordType = suggestMatchingAttributesOptions.recordType;
       this.crn = suggestMatchingAttributesOptions.crn;
     }
@@ -46,12 +43,10 @@ public class SuggestMatchingAttributesOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param projectId the projectId
      * @param recordType the recordType
      * @param crn the crn
      */
-    public Builder(String projectId, String recordType, String crn) {
-      this.projectId = projectId;
+    public Builder(String recordType, String crn) {
       this.recordType = recordType;
       this.crn = crn;
     }
@@ -63,17 +58,6 @@ public class SuggestMatchingAttributesOptions extends GenericModel {
      */
     public SuggestMatchingAttributesOptions build() {
       return new SuggestMatchingAttributesOptions(this);
-    }
-
-    /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the SuggestMatchingAttributesOptions builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
     }
 
     /**
@@ -100,13 +84,10 @@ public class SuggestMatchingAttributesOptions extends GenericModel {
   }
 
   protected SuggestMatchingAttributesOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.projectId,
-      "projectId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
       "recordType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
       "crn cannot be null");
-    projectId = builder.projectId;
     recordType = builder.recordType;
     crn = builder.crn;
   }
@@ -118,17 +99,6 @@ public class SuggestMatchingAttributesOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * Unique identifier of project_metadata.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
   }
 
   /**

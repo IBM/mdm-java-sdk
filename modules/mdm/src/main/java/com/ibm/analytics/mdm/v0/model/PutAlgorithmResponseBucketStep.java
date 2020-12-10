@@ -22,17 +22,50 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseBucketStep extends GenericModel {
 
+  protected List<Long> inputs;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
+  @SerializedName("set_resource")
+  protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
   protected Boolean order;
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
-  protected List<Long> inputs;
-  @SerializedName("set_resource")
-  protected String setResource;
   protected String method;
   protected List<String> fields;
   protected String label;
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   *
+   * @return the inputs
+   */
+  public List<Long> getInputs() {
+    return inputs;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String getComparisonResource() {
+    return comparisonResource;
+  }
+
+  /**
+   * Gets the setResource.
+   *
+   * An existing set resource name, if applicable.
+   *
+   * @return the setResource
+   */
+  public String getSetResource() {
+    return setResource;
+  }
 
   /**
    * Gets the mapResource.
@@ -54,39 +87,6 @@ public class PutAlgorithmResponseBucketStep extends GenericModel {
    */
   public Boolean isOrder() {
     return order;
-  }
-
-  /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String getComparisonResource() {
-    return comparisonResource;
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> getInputs() {
-    return inputs;
-  }
-
-  /**
-   * Gets the setResource.
-   *
-   * An existing set resource name, if applicable.
-   *
-   * @return the setResource
-   */
-  public String getSetResource() {
-    return setResource;
   }
 
   /**

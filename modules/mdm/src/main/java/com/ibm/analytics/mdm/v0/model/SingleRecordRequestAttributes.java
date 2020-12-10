@@ -20,25 +20,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SingleRecordRequestAttributes extends GenericModel {
 
-  @SerializedName("record_last_updated")
-  protected String recordLastUpdated;
   @SerializedName("record_id")
   protected String recordId;
   @SerializedName("record_source")
   protected String recordSource;
+  @SerializedName("record_last_updated")
+  protected String recordLastUpdated;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String recordLastUpdated;
     private String recordId;
     private String recordSource;
+    private String recordLastUpdated;
 
     private Builder(SingleRecordRequestAttributes singleRecordRequestAttributes) {
-      this.recordLastUpdated = singleRecordRequestAttributes.recordLastUpdated;
       this.recordId = singleRecordRequestAttributes.recordId;
       this.recordSource = singleRecordRequestAttributes.recordSource;
+      this.recordLastUpdated = singleRecordRequestAttributes.recordLastUpdated;
     }
 
     /**
@@ -54,17 +54,6 @@ public class SingleRecordRequestAttributes extends GenericModel {
      */
     public SingleRecordRequestAttributes build() {
       return new SingleRecordRequestAttributes(this);
-    }
-
-    /**
-     * Set the recordLastUpdated.
-     *
-     * @param recordLastUpdated the recordLastUpdated
-     * @return the SingleRecordRequestAttributes builder
-     */
-    public Builder recordLastUpdated(String recordLastUpdated) {
-      this.recordLastUpdated = recordLastUpdated;
-      return this;
     }
 
     /**
@@ -88,12 +77,23 @@ public class SingleRecordRequestAttributes extends GenericModel {
       this.recordSource = recordSource;
       return this;
     }
+
+    /**
+     * Set the recordLastUpdated.
+     *
+     * @param recordLastUpdated the recordLastUpdated
+     * @return the SingleRecordRequestAttributes builder
+     */
+    public Builder recordLastUpdated(String recordLastUpdated) {
+      this.recordLastUpdated = recordLastUpdated;
+      return this;
+    }
   }
 
   protected SingleRecordRequestAttributes(Builder builder) {
-    recordLastUpdated = builder.recordLastUpdated;
     recordId = builder.recordId;
     recordSource = builder.recordSource;
+    recordLastUpdated = builder.recordLastUpdated;
   }
 
   /**
@@ -103,17 +103,6 @@ public class SingleRecordRequestAttributes extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the recordLastUpdated.
-   *
-   * System generated timestamp when the record was last updated.
-   *
-   * @return the recordLastUpdated
-   */
-  public String recordLastUpdated() {
-    return recordLastUpdated;
   }
 
   /**
@@ -136,6 +125,17 @@ public class SingleRecordRequestAttributes extends GenericModel {
    */
   public String recordSource() {
     return recordSource;
+  }
+
+  /**
+   * Gets the recordLastUpdated.
+   *
+   * System generated timestamp when the record was last updated.
+   *
+   * @return the recordLastUpdated
+   */
+  public String recordLastUpdated() {
+    return recordLastUpdated;
   }
 }
 

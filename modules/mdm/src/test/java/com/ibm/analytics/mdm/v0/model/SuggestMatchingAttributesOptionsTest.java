@@ -32,11 +32,9 @@ public class SuggestMatchingAttributesOptionsTest {
   @Test
   public void testSuggestMatchingAttributesOptions() throws Throwable {
     SuggestMatchingAttributesOptions suggestMatchingAttributesOptionsModel = new SuggestMatchingAttributesOptions.Builder()
-      .projectId("testString")
       .recordType("testString")
       .crn("testString")
       .build();
-    assertEquals(suggestMatchingAttributesOptionsModel.projectId(), "testString");
     assertEquals(suggestMatchingAttributesOptionsModel.recordType(), "testString");
     assertEquals(suggestMatchingAttributesOptionsModel.crn(), "testString");
   }

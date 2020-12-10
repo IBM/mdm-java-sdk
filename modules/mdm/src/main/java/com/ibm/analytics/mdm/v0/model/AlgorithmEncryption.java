@@ -23,27 +23,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmEncryption extends GenericModel {
 
-  @SerializedName("pub_key")
-  protected List<String> pubKey;
   @SerializedName("sub_type")
   protected String subType;
-  protected Boolean enabled;
+  @SerializedName("pub_key")
+  protected List<String> pubKey;
   protected String type;
+  protected Boolean enabled;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<String> pubKey;
     private String subType;
-    private Boolean enabled;
+    private List<String> pubKey;
     private String type;
+    private Boolean enabled;
 
     private Builder(AlgorithmEncryption algorithmEncryption) {
-      this.pubKey = algorithmEncryption.pubKey;
       this.subType = algorithmEncryption.subType;
-      this.enabled = algorithmEncryption.enabled;
+      this.pubKey = algorithmEncryption.pubKey;
       this.type = algorithmEncryption.type;
+      this.enabled = algorithmEncryption.enabled;
     }
 
     /**
@@ -55,16 +55,16 @@ public class AlgorithmEncryption extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param pubKey the pubKey
      * @param subType the subType
-     * @param enabled the enabled
+     * @param pubKey the pubKey
      * @param type the type
+     * @param enabled the enabled
      */
-    public Builder(List<String> pubKey, String subType, Boolean enabled, String type) {
-      this.pubKey = pubKey;
+    public Builder(String subType, List<String> pubKey, String type, Boolean enabled) {
       this.subType = subType;
-      this.enabled = enabled;
+      this.pubKey = pubKey;
       this.type = type;
+      this.enabled = enabled;
     }
 
     /**
@@ -93,18 +93,6 @@ public class AlgorithmEncryption extends GenericModel {
     }
 
     /**
-     * Set the pubKey.
-     * Existing pubKey will be replaced.
-     *
-     * @param pubKey the pubKey
-     * @return the AlgorithmEncryption builder
-     */
-    public Builder pubKey(List<String> pubKey) {
-      this.pubKey = pubKey;
-      return this;
-    }
-
-    /**
      * Set the subType.
      *
      * @param subType the subType
@@ -116,13 +104,14 @@ public class AlgorithmEncryption extends GenericModel {
     }
 
     /**
-     * Set the enabled.
+     * Set the pubKey.
+     * Existing pubKey will be replaced.
      *
-     * @param enabled the enabled
+     * @param pubKey the pubKey
      * @return the AlgorithmEncryption builder
      */
-    public Builder enabled(Boolean enabled) {
-      this.enabled = enabled;
+    public Builder pubKey(List<String> pubKey) {
+      this.pubKey = pubKey;
       return this;
     }
 
@@ -136,21 +125,32 @@ public class AlgorithmEncryption extends GenericModel {
       this.type = type;
       return this;
     }
+
+    /**
+     * Set the enabled.
+     *
+     * @param enabled the enabled
+     * @return the AlgorithmEncryption builder
+     */
+    public Builder enabled(Boolean enabled) {
+      this.enabled = enabled;
+      return this;
+    }
   }
 
   protected AlgorithmEncryption(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.pubKey,
-      "pubKey cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subType,
       "subType cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.enabled,
-      "enabled cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.pubKey,
+      "pubKey cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,
       "type cannot be null");
-    pubKey = builder.pubKey;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.enabled,
+      "enabled cannot be null");
     subType = builder.subType;
-    enabled = builder.enabled;
+    pubKey = builder.pubKey;
     type = builder.type;
+    enabled = builder.enabled;
   }
 
   /**
@@ -160,17 +160,6 @@ public class AlgorithmEncryption extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the pubKey.
-   *
-   * Asymmetric encryption public keys.
-   *
-   * @return the pubKey
-   */
-  public List<String> pubKey() {
-    return pubKey;
   }
 
   /**
@@ -185,14 +174,14 @@ public class AlgorithmEncryption extends GenericModel {
   }
 
   /**
-   * Gets the enabled.
+   * Gets the pubKey.
    *
-   * Asymmetric encryption enabled indicator, true or false.
+   * Asymmetric encryption public keys.
    *
-   * @return the enabled
+   * @return the pubKey
    */
-  public Boolean enabled() {
-    return enabled;
+  public List<String> pubKey() {
+    return pubKey;
   }
 
   /**
@@ -204,6 +193,17 @@ public class AlgorithmEncryption extends GenericModel {
    */
   public String type() {
     return type;
+  }
+
+  /**
+   * Gets the enabled.
+   *
+   * Asymmetric encryption enabled indicator, true or false.
+   *
+   * @return the enabled
+   */
+  public Boolean enabled() {
+    return enabled;
   }
 }
 

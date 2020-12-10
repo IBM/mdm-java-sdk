@@ -20,11 +20,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponse extends GenericModel {
 
+  protected PutAlgorithmResponseAlgorithm algorithm;
   @SerializedName("flow_id")
   protected String flowId;
   @SerializedName("flow_state")
   protected String flowState;
-  protected PutAlgorithmResponseAlgorithm algorithm;
+
+  /**
+   * Gets the algorithm.
+   *
+   * The matching algorithm for a given record type (i.e. person).
+   *
+   * @return the algorithm
+   */
+  public PutAlgorithmResponseAlgorithm getAlgorithm() {
+    return algorithm;
+  }
 
   /**
    * Gets the flowId.
@@ -46,17 +57,6 @@ public class PutAlgorithmResponse extends GenericModel {
    */
   public String getFlowState() {
     return flowState;
-  }
-
-  /**
-   * Gets the algorithm.
-   *
-   * The matching algorithm for a given record type (i.e. person).
-   *
-   * @return the algorithm
-   */
-  public PutAlgorithmResponseAlgorithm getAlgorithm() {
-    return algorithm;
   }
 }
 

@@ -24,9 +24,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelAttributeType extends GenericModel {
 
+  protected String classification;
   @SerializedName("matching_types")
   protected List<String> matchingTypes;
-  protected String classification;
   protected String description;
   protected Map<String, DataModelField> fields;
   protected String label;
@@ -35,15 +35,15 @@ public class DataModelAttributeType extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private List<String> matchingTypes;
     private String classification;
+    private List<String> matchingTypes;
     private String description;
     private Map<String, DataModelField> fields;
     private String label;
 
     private Builder(DataModelAttributeType dataModelAttributeType) {
-      this.matchingTypes = dataModelAttributeType.matchingTypes;
       this.classification = dataModelAttributeType.classification;
+      this.matchingTypes = dataModelAttributeType.matchingTypes;
       this.description = dataModelAttributeType.description;
       this.fields = dataModelAttributeType.fields;
       this.label = dataModelAttributeType.label;
@@ -92,6 +92,17 @@ public class DataModelAttributeType extends GenericModel {
     }
 
     /**
+     * Set the classification.
+     *
+     * @param classification the classification
+     * @return the DataModelAttributeType builder
+     */
+    public Builder classification(String classification) {
+      this.classification = classification;
+      return this;
+    }
+
+    /**
      * Set the matchingTypes.
      * Existing matchingTypes will be replaced.
      *
@@ -100,17 +111,6 @@ public class DataModelAttributeType extends GenericModel {
      */
     public Builder matchingTypes(List<String> matchingTypes) {
       this.matchingTypes = matchingTypes;
-      return this;
-    }
-
-    /**
-     * Set the classification.
-     *
-     * @param classification the classification
-     * @return the DataModelAttributeType builder
-     */
-    public Builder classification(String classification) {
-      this.classification = classification;
       return this;
     }
 
@@ -153,8 +153,8 @@ public class DataModelAttributeType extends GenericModel {
       "fields cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    matchingTypes = builder.matchingTypes;
     classification = builder.classification;
+    matchingTypes = builder.matchingTypes;
     description = builder.description;
     fields = builder.fields;
     label = builder.label;
@@ -170,6 +170,17 @@ public class DataModelAttributeType extends GenericModel {
   }
 
   /**
+   * Gets the classification.
+   *
+   * User defined classification.
+   *
+   * @return the classification
+   */
+  public String classification() {
+    return classification;
+  }
+
+  /**
    * Gets the matchingTypes.
    *
    * Collection of matching types, a subset of: PERSONNAME, ORGNAME, GENDER, DATE, EMAIL, SOCIALMEDIA, ADDRESS, PHONE,
@@ -179,17 +190,6 @@ public class DataModelAttributeType extends GenericModel {
    */
   public List<String> matchingTypes() {
     return matchingTypes;
-  }
-
-  /**
-   * Gets the classification.
-   *
-   * User defined classification.
-   *
-   * @return the classification
-   */
-  public String classification() {
-    return classification;
   }
 
   /**
