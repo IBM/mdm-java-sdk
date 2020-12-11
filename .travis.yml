@@ -31,7 +31,7 @@ before_install:
 - sudo apt-get install python
 - nvm install 12
 - npm install -g npm@6.x
-- echo -e "machine github.ibm.com\n  login $GITHUB_OAUTH_TOKEN" > ~/.netrc
+- echo -e "machine github.com\n  login $GITHUB_OAUTH_TOKEN" > ~/.netrc
 # Uncomment this section and update as needed to decrypt each configuration file.
 # - >-
 #       [ -z "${TRAVIS_TAG}" ] && [ "${TRAVIS_PULL_REQUEST}" == "false" ]
