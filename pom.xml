@@ -87,7 +87,7 @@
     <scm>
         <connection>scm:git:https://github.com/IBM/mdm-java-sdk</connection>
         <developerConnection>scm:git:https://github.com/IBM/mdm-java-sdk</developerConnection>
-        <url>https://github.com/IBM/mdm-java-sdk/tree/master</url>
+        <url>https://github.com/IBM/mdm-java-sdk/tree/main</url>
     </scm>
 
     <!-- >>> Update these values to reflect your project -->

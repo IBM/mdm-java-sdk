@@ -64,7 +64,7 @@ script:
      script: npx semantic-release
      skip_cleanup: true
      on:
-       branch: master
+       branch: main
 #   # Publish jars on bintray for a tagged release.
    - provider: script
      script:
@@ -87,5 +87,5 @@ script:
 #     script: $HOME/codecov-bash.sh -s modules/coverage-reports/target/site/jacoco-aggregate -t $CODECOV_TOKEN
 #     skip_cleanup: true
 #     on:
-#       condition: $TRAVIS_BRANCH == master || -n "$TRAVIS_TAG"
+#       condition: $TRAVIS_BRANCH == main || -n "$TRAVIS_TAG"
 #       jdk: openjdk8
