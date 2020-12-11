@@ -51,14 +51,14 @@ script:
 -  mvn clean verify $MVN_ARGS
 
 # To enable semantic-release, uncomment these sections.
- before_deploy:
+before_deploy:
  - pip install --user bump2version
  - npm install @semantic-release/changelog
  - npm install @semantic-release/exec
  - npm install @semantic-release/git
  - npm install @semantic-release/github
 #
- deploy:
+deploy:
    # On master, run semrel to create a new tagged-release.
    - provider: script
      script: npx semantic-release
