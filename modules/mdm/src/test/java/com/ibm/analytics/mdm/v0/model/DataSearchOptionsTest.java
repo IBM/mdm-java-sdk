@@ -77,7 +77,7 @@ public class DataSearchOptionsTest {
       .incomingCriteria(criteriaRequestModel)
       .body(TestUtilities.createMockStream("This is a mock file."))
       .contentType("application/json")
-      .returnType("stats")
+      .returnType("results")
       .limit(Long.valueOf("50"))
       .offset(Long.valueOf("26"))
       .include(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
@@ -87,7 +87,7 @@ public class DataSearchOptionsTest {
     assertEquals(dataSearchOptionsModel.incomingCriteria(), criteriaRequestModel);
     assertEquals(IOUtils.toString(dataSearchOptionsModel.body()), IOUtils.toString(TestUtilities.createMockStream("This is a mock file.")));
     assertEquals(dataSearchOptionsModel.contentType(), "application/json");
-    assertEquals(dataSearchOptionsModel.returnType(), "stats");
+    assertEquals(dataSearchOptionsModel.returnType(), "results");
     assertEquals(dataSearchOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(dataSearchOptionsModel.offset(), Long.valueOf("26"));
     assertEquals(dataSearchOptionsModel.include(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));

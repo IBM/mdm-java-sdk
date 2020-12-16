@@ -20,36 +20,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseSystemProperties extends GenericModel {
 
-  @SerializedName("entity_types")
-  protected PutDataModelResponseEntityTypeSystemProperties entityTypes;
-  @SerializedName("record_types")
-  protected PutDataModelResponseRecordTypeSystemProperties recordTypes;
   @SerializedName("attribute_types")
   protected PutDataModelResponseAttributeTypeSystemProperties attributeTypes;
   @SerializedName("relationship_types")
   protected PutDataModelResponseRelationshipTypeSystemProperties relationshipTypes;
-
-  /**
-   * Gets the entityTypes.
-   *
-   * Defines metadata of system properties of all entity types.
-   *
-   * @return the entityTypes
-   */
-  public PutDataModelResponseEntityTypeSystemProperties getEntityTypes() {
-    return entityTypes;
-  }
-
-  /**
-   * Gets the recordTypes.
-   *
-   * Defines metadata of system properties of record types.
-   *
-   * @return the recordTypes
-   */
-  public PutDataModelResponseRecordTypeSystemProperties getRecordTypes() {
-    return recordTypes;
-  }
+  @SerializedName("entity_types")
+  protected PutDataModelResponseEntityTypeSystemProperties entityTypes;
+  @SerializedName("record_types")
+  protected PutDataModelResponseRecordTypeSystemProperties recordTypes;
 
   /**
    * Gets the attributeTypes.
@@ -71,6 +49,28 @@ public class PutDataModelResponseSystemProperties extends GenericModel {
    */
   public PutDataModelResponseRelationshipTypeSystemProperties getRelationshipTypes() {
     return relationshipTypes;
+  }
+
+  /**
+   * Gets the entityTypes.
+   *
+   * Defines metadata of system properties of all entity types.
+   *
+   * @return the entityTypes
+   */
+  public PutDataModelResponseEntityTypeSystemProperties getEntityTypes() {
+    return entityTypes;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Defines metadata of system properties of record types.
+   *
+   * @return the recordTypes
+   */
+  public PutDataModelResponseRecordTypeSystemProperties getRecordTypes() {
+    return recordTypes;
   }
 }
 

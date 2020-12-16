@@ -23,13 +23,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmCompareStep extends GenericModel {
 
-  protected List<Long> inputs;
   @SerializedName("comparison_resource")
   protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
+  protected List<Long> inputs;
   protected String method;
   protected List<String> fields;
   protected String label;
@@ -38,19 +38,19 @@ public class AlgorithmCompareStep extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private List<Long> inputs;
     private String comparisonResource;
     private String setResource;
     private String mapResource;
+    private List<Long> inputs;
     private String method;
     private List<String> fields;
     private String label;
 
     private Builder(AlgorithmCompareStep algorithmCompareStep) {
-      this.inputs = algorithmCompareStep.inputs;
       this.comparisonResource = algorithmCompareStep.comparisonResource;
       this.setResource = algorithmCompareStep.setResource;
       this.mapResource = algorithmCompareStep.mapResource;
+      this.inputs = algorithmCompareStep.inputs;
       this.method = algorithmCompareStep.method;
       this.fields = algorithmCompareStep.fields;
       this.label = algorithmCompareStep.label;
@@ -115,18 +115,6 @@ public class AlgorithmCompareStep extends GenericModel {
     }
 
     /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
-     *
-     * @param inputs the inputs
-     * @return the AlgorithmCompareStep builder
-     */
-    public Builder inputs(List<Long> inputs) {
-      this.inputs = inputs;
-      return this;
-    }
-
-    /**
      * Set the comparisonResource.
      *
      * @param comparisonResource the comparisonResource
@@ -156,6 +144,18 @@ public class AlgorithmCompareStep extends GenericModel {
      */
     public Builder mapResource(String mapResource) {
       this.mapResource = mapResource;
+      return this;
+    }
+
+    /**
+     * Set the inputs.
+     * Existing inputs will be replaced.
+     *
+     * @param inputs the inputs
+     * @return the AlgorithmCompareStep builder
+     */
+    public Builder inputs(List<Long> inputs) {
+      this.inputs = inputs;
       return this;
     }
 
@@ -199,10 +199,10 @@ public class AlgorithmCompareStep extends GenericModel {
       "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    inputs = builder.inputs;
     comparisonResource = builder.comparisonResource;
     setResource = builder.setResource;
     mapResource = builder.mapResource;
+    inputs = builder.inputs;
     method = builder.method;
     fields = builder.fields;
     label = builder.label;
@@ -215,17 +215,6 @@ public class AlgorithmCompareStep extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> inputs() {
-    return inputs;
   }
 
   /**
@@ -259,6 +248,17 @@ public class AlgorithmCompareStep extends GenericModel {
    */
   public String mapResource() {
     return mapResource;
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   *
+   * @return the inputs
+   */
+  public List<Long> inputs() {
+    return inputs;
   }
 
   /**

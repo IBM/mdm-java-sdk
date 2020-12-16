@@ -22,10 +22,10 @@ public class GetRecordKeysRecordinfo extends GenericModel {
 
   @SerializedName("record_id")
   protected String recordId;
-  @SerializedName("record_number")
-  protected String recordNumber;
   @SerializedName("record_source")
   protected String recordSource;
+  @SerializedName("record_number")
+  protected String recordNumber;
 
   /**
    * Gets the recordId.
@@ -39,17 +39,6 @@ public class GetRecordKeysRecordinfo extends GenericModel {
   }
 
   /**
-   * Gets the recordNumber.
-   *
-   * The unique identifier of a source record as assigned by the system.
-   *
-   * @return the recordNumber
-   */
-  public String getRecordNumber() {
-    return recordNumber;
-  }
-
-  /**
    * Gets the recordSource.
    *
    * The source system name of a record.
@@ -58,6 +47,17 @@ public class GetRecordKeysRecordinfo extends GenericModel {
    */
   public String getRecordSource() {
     return recordSource;
+  }
+
+  /**
+   * Gets the recordNumber.
+   *
+   * The unique identifier of a source record as assigned by the system.
+   *
+   * @return the recordNumber
+   */
+  public String getRecordNumber() {
+    return recordNumber;
   }
 }
 

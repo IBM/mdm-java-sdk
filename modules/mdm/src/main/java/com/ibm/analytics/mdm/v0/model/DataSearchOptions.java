@@ -31,8 +31,6 @@ public class DataSearchOptions extends GenericModel {
    * The type of results to return from the search.
    */
   public interface ReturnType {
-    /** stats. */
-    String STATS = "stats";
     /** results. */
     String RESULTS = "results";
     /** results_as_entities. */

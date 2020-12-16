@@ -22,12 +22,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModel extends GenericModel {
 
-  @SerializedName("record_types")
-  protected Map<String, DataModelRecordType> recordTypes;
   @SerializedName("attribute_types")
   protected Map<String, DataModelAttributeType> attributeTypes;
   @SerializedName("relationship_types")
   protected Map<String, DataModelRelationshipType> relationshipTypes;
+  @SerializedName("record_types")
+  protected Map<String, DataModelRecordType> recordTypes;
   protected String locale;
   @SerializedName("system_properties")
   protected DataModelSystemProperties systemProperties;
@@ -36,16 +36,16 @@ public class DataModel extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private Map<String, DataModelRecordType> recordTypes;
     private Map<String, DataModelAttributeType> attributeTypes;
     private Map<String, DataModelRelationshipType> relationshipTypes;
+    private Map<String, DataModelRecordType> recordTypes;
     private String locale;
     private DataModelSystemProperties systemProperties;
 
     private Builder(DataModel dataModel) {
-      this.recordTypes = dataModel.recordTypes;
       this.attributeTypes = dataModel.attributeTypes;
       this.relationshipTypes = dataModel.relationshipTypes;
+      this.recordTypes = dataModel.recordTypes;
       this.locale = dataModel.locale;
       this.systemProperties = dataModel.systemProperties;
     }
@@ -59,16 +59,16 @@ public class DataModel extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param recordTypes the recordTypes
      * @param attributeTypes the attributeTypes
      * @param relationshipTypes the relationshipTypes
+     * @param recordTypes the recordTypes
      * @param locale the locale
      * @param systemProperties the systemProperties
      */
-    public Builder(Map<String, DataModelRecordType> recordTypes, Map<String, DataModelAttributeType> attributeTypes, Map<String, DataModelRelationshipType> relationshipTypes, String locale, DataModelSystemProperties systemProperties) {
-      this.recordTypes = recordTypes;
+    public Builder(Map<String, DataModelAttributeType> attributeTypes, Map<String, DataModelRelationshipType> relationshipTypes, Map<String, DataModelRecordType> recordTypes, String locale, DataModelSystemProperties systemProperties) {
       this.attributeTypes = attributeTypes;
       this.relationshipTypes = relationshipTypes;
+      this.recordTypes = recordTypes;
       this.locale = locale;
       this.systemProperties = systemProperties;
     }
@@ -80,17 +80,6 @@ public class DataModel extends GenericModel {
      */
     public DataModel build() {
       return new DataModel(this);
-    }
-
-    /**
-     * Set the recordTypes.
-     *
-     * @param recordTypes the recordTypes
-     * @return the DataModel builder
-     */
-    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
-      this.recordTypes = recordTypes;
-      return this;
     }
 
     /**
@@ -112,6 +101,17 @@ public class DataModel extends GenericModel {
      */
     public Builder relationshipTypes(Map<String, DataModelRelationshipType> relationshipTypes) {
       this.relationshipTypes = relationshipTypes;
+      return this;
+    }
+
+    /**
+     * Set the recordTypes.
+     *
+     * @param recordTypes the recordTypes
+     * @return the DataModel builder
+     */
+    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
+      this.recordTypes = recordTypes;
       return this;
     }
 
@@ -139,19 +139,19 @@ public class DataModel extends GenericModel {
   }
 
   protected DataModel(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
-      "recordTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
       "attributeTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
       "relationshipTypes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
+      "recordTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.systemProperties,
       "systemProperties cannot be null");
-    recordTypes = builder.recordTypes;
     attributeTypes = builder.attributeTypes;
     relationshipTypes = builder.relationshipTypes;
+    recordTypes = builder.recordTypes;
     locale = builder.locale;
     systemProperties = builder.systemProperties;
   }
@@ -163,17 +163,6 @@ public class DataModel extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the recordTypes.
-   *
-   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
-   *
-   * @return the recordTypes
-   */
-  public Map<String, DataModelRecordType> recordTypes() {
-    return recordTypes;
   }
 
   /**
@@ -196,6 +185,17 @@ public class DataModel extends GenericModel {
    */
   public Map<String, DataModelRelationshipType> relationshipTypes() {
     return relationshipTypes;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
+   *
+   * @return the recordTypes
+   */
+  public Map<String, DataModelRecordType> recordTypes() {
+    return recordTypes;
   }
 
   /**

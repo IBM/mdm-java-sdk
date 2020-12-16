@@ -23,30 +23,30 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmBucketGenerator extends GenericModel {
 
-  protected List<AlgorithmInput> inputs;
   @SerializedName("bucket_group_recipe")
   protected List<AlgorithmBucketGroupStep> bucketGroupRecipe;
   @SerializedName("maximum_bucket_size")
   protected Long maximumBucketSize;
   @SerializedName("bucket_recipe")
   protected List<AlgorithmBucketStep> bucketRecipe;
+  protected List<AlgorithmInput> inputs;
   protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<AlgorithmInput> inputs;
     private List<AlgorithmBucketGroupStep> bucketGroupRecipe;
     private Long maximumBucketSize;
     private List<AlgorithmBucketStep> bucketRecipe;
+    private List<AlgorithmInput> inputs;
     private String label;
 
     private Builder(AlgorithmBucketGenerator algorithmBucketGenerator) {
-      this.inputs = algorithmBucketGenerator.inputs;
       this.bucketGroupRecipe = algorithmBucketGenerator.bucketGroupRecipe;
       this.maximumBucketSize = algorithmBucketGenerator.maximumBucketSize;
       this.bucketRecipe = algorithmBucketGenerator.bucketRecipe;
+      this.inputs = algorithmBucketGenerator.inputs;
       this.label = algorithmBucketGenerator.label;
     }
 
@@ -74,22 +74,6 @@ public class AlgorithmBucketGenerator extends GenericModel {
      */
     public AlgorithmBucketGenerator build() {
       return new AlgorithmBucketGenerator(this);
-    }
-
-    /**
-     * Adds an inputs to inputs.
-     *
-     * @param inputs the new inputs
-     * @return the AlgorithmBucketGenerator builder
-     */
-    public Builder addInputs(AlgorithmInput inputs) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,
-        "inputs cannot be null");
-      if (this.inputs == null) {
-        this.inputs = new ArrayList<AlgorithmInput>();
-      }
-      this.inputs.add(inputs);
-      return this;
     }
 
     /**
@@ -125,14 +109,18 @@ public class AlgorithmBucketGenerator extends GenericModel {
     }
 
     /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
+     * Adds an inputs to inputs.
      *
-     * @param inputs the inputs
+     * @param inputs the new inputs
      * @return the AlgorithmBucketGenerator builder
      */
-    public Builder inputs(List<AlgorithmInput> inputs) {
-      this.inputs = inputs;
+    public Builder addInputs(AlgorithmInput inputs) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,
+        "inputs cannot be null");
+      if (this.inputs == null) {
+        this.inputs = new ArrayList<AlgorithmInput>();
+      }
+      this.inputs.add(inputs);
       return this;
     }
 
@@ -172,6 +160,18 @@ public class AlgorithmBucketGenerator extends GenericModel {
     }
 
     /**
+     * Set the inputs.
+     * Existing inputs will be replaced.
+     *
+     * @param inputs the inputs
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder inputs(List<AlgorithmInput> inputs) {
+      this.inputs = inputs;
+      return this;
+    }
+
+    /**
      * Set the label.
      *
      * @param label the label
@@ -188,10 +188,10 @@ public class AlgorithmBucketGenerator extends GenericModel {
       "maximumBucketSize cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    inputs = builder.inputs;
     bucketGroupRecipe = builder.bucketGroupRecipe;
     maximumBucketSize = builder.maximumBucketSize;
     bucketRecipe = builder.bucketRecipe;
+    inputs = builder.inputs;
     label = builder.label;
   }
 
@@ -202,17 +202,6 @@ public class AlgorithmBucketGenerator extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of input definitions used for bucket generator.
-   *
-   * @return the inputs
-   */
-  public List<AlgorithmInput> inputs() {
-    return inputs;
   }
 
   /**
@@ -246,6 +235,17 @@ public class AlgorithmBucketGenerator extends GenericModel {
    */
   public List<AlgorithmBucketStep> bucketRecipe() {
     return bucketRecipe;
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of input definitions used for bucket generator.
+   *
+   * @return the inputs
+   */
+  public List<AlgorithmInput> inputs() {
+    return inputs;
   }
 
   /**

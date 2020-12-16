@@ -25,9 +25,9 @@ public class CompareResponseComparedValuesDetails extends GenericModel {
 
   @SerializedName("feature_vector")
   protected Map<String, Object> featureVector;
-  protected Long distance;
-  protected Float score;
   protected Map<String, Object> details;
+  protected Float score;
+  protected Long distance;
   protected List<String> values;
   protected List<String> types;
 
@@ -43,14 +43,14 @@ public class CompareResponseComparedValuesDetails extends GenericModel {
   }
 
   /**
-   * Gets the distance.
+   * Gets the details.
    *
-   * The distance measure of compared values.
+   * Collection of details of compared tokens.
    *
-   * @return the distance
+   * @return the details
    */
-  public Long getDistance() {
-    return distance;
+  public Map<String, Object> getDetails() {
+    return details;
   }
 
   /**
@@ -65,14 +65,14 @@ public class CompareResponseComparedValuesDetails extends GenericModel {
   }
 
   /**
-   * Gets the details.
+   * Gets the distance.
    *
-   * Collection of details of compared tokens.
+   * The distance measure of compared values.
    *
-   * @return the details
+   * @return the distance
    */
-  public Map<String, Object> getDetails() {
-    return details;
+  public Long getDistance() {
+    return distance;
   }
 
   /**

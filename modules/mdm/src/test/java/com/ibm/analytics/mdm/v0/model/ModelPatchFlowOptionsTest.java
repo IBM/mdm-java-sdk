@@ -33,14 +33,14 @@ public class ModelPatchFlowOptionsTest {
   public void testModelPatchFlowOptions() throws Throwable {
     ModelPatchFlowOptions modelPatchFlowOptionsModel = new ModelPatchFlowOptions.Builder()
       .crn("testString")
-      .flowId("testString")
       .approverName("testString")
+      .flowId("testString")
       .action("testString")
       .message("testString")
       .build();
     assertEquals(modelPatchFlowOptionsModel.crn(), "testString");
-    assertEquals(modelPatchFlowOptionsModel.flowId(), "testString");
     assertEquals(modelPatchFlowOptionsModel.approverName(), "testString");
+    assertEquals(modelPatchFlowOptionsModel.flowId(), "testString");
     assertEquals(modelPatchFlowOptionsModel.action(), "testString");
     assertEquals(modelPatchFlowOptionsModel.message(), "testString");
   }

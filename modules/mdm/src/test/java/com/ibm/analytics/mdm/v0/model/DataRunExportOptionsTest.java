@@ -74,10 +74,12 @@ public class DataRunExportOptionsTest {
     DataRunExportOptions dataRunExportOptionsModel = new DataRunExportOptions.Builder()
       .format("csv")
       .fileName("testString")
+      .exportType("record")
       .searchCriteria(criteriaRequestModel)
       .build();
     assertEquals(dataRunExportOptionsModel.format(), "csv");
     assertEquals(dataRunExportOptionsModel.fileName(), "testString");
+    assertEquals(dataRunExportOptionsModel.exportType(), "record");
     assertEquals(dataRunExportOptionsModel.searchCriteria(), criteriaRequestModel);
   }
 }

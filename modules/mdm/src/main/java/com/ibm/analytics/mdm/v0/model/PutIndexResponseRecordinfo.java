@@ -22,12 +22,12 @@ public class PutIndexResponseRecordinfo extends GenericModel {
 
   @SerializedName("record_id")
   protected String recordId;
-  @SerializedName("record_number")
-  protected Long recordNumber;
   @SerializedName("entity_id")
   protected Long entityId;
   @SerializedName("record_source")
   protected String recordSource;
+  @SerializedName("record_number")
+  protected Long recordNumber;
 
   /**
    * Gets the recordId.
@@ -38,17 +38,6 @@ public class PutIndexResponseRecordinfo extends GenericModel {
    */
   public String getRecordId() {
     return recordId;
-  }
-
-  /**
-   * Gets the recordNumber.
-   *
-   * The unique identifier of a source record as assigned by the system.
-   *
-   * @return the recordNumber
-   */
-  public Long getRecordNumber() {
-    return recordNumber;
   }
 
   /**
@@ -71,6 +60,17 @@ public class PutIndexResponseRecordinfo extends GenericModel {
    */
   public String getRecordSource() {
     return recordSource;
+  }
+
+  /**
+   * Gets the recordNumber.
+   *
+   * The unique identifier of a source record as assigned by the system.
+   *
+   * @return the recordNumber
+   */
+  public Long getRecordNumber() {
+    return recordNumber;
   }
 }
 

@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SystemPropertiesForRelationshipTypes extends GenericModel {
 
-  protected String label;
   @SerializedName("data_type")
   protected String dataType;
-  protected Boolean editable;
-  protected String description;
   protected Boolean indexed;
+  protected Boolean editable;
+  protected String label;
+  protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
     private String dataType;
-    private Boolean editable;
-    private String description;
     private Boolean indexed;
+    private Boolean editable;
+    private String label;
+    private String description;
 
     private Builder(SystemPropertiesForRelationshipTypes systemPropertiesForRelationshipTypes) {
-      this.label = systemPropertiesForRelationshipTypes.label;
       this.dataType = systemPropertiesForRelationshipTypes.dataType;
-      this.editable = systemPropertiesForRelationshipTypes.editable;
-      this.description = systemPropertiesForRelationshipTypes.description;
       this.indexed = systemPropertiesForRelationshipTypes.indexed;
+      this.editable = systemPropertiesForRelationshipTypes.editable;
+      this.label = systemPropertiesForRelationshipTypes.label;
+      this.description = systemPropertiesForRelationshipTypes.description;
     }
 
     /**
@@ -54,12 +54,12 @@ public class SystemPropertiesForRelationshipTypes extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param label the label
      * @param dataType the dataType
+     * @param label the label
      */
-    public Builder(String label, String dataType) {
-      this.label = label;
+    public Builder(String dataType, String label) {
       this.dataType = dataType;
+      this.label = label;
     }
 
     /**
@@ -72,17 +72,6 @@ public class SystemPropertiesForRelationshipTypes extends GenericModel {
     }
 
     /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the SystemPropertiesForRelationshipTypes builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
      * Set the dataType.
      *
      * @param dataType the dataType
@@ -90,6 +79,17 @@ public class SystemPropertiesForRelationshipTypes extends GenericModel {
      */
     public Builder dataType(String dataType) {
       this.dataType = dataType;
+      return this;
+    }
+
+    /**
+     * Set the indexed.
+     *
+     * @param indexed the indexed
+     * @return the SystemPropertiesForRelationshipTypes builder
+     */
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
       return this;
     }
 
@@ -105,6 +105,17 @@ public class SystemPropertiesForRelationshipTypes extends GenericModel {
     }
 
     /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the SystemPropertiesForRelationshipTypes builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
      * Set the description.
      *
      * @param description the description
@@ -114,29 +125,18 @@ public class SystemPropertiesForRelationshipTypes extends GenericModel {
       this.description = description;
       return this;
     }
-
-    /**
-     * Set the indexed.
-     *
-     * @param indexed the indexed
-     * @return the SystemPropertiesForRelationshipTypes builder
-     */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
-      return this;
-    }
   }
 
   protected SystemPropertiesForRelationshipTypes(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
-      "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
       "dataType cannot be null");
-    label = builder.label;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
+      "label cannot be null");
     dataType = builder.dataType;
-    editable = builder.editable;
-    description = builder.description;
     indexed = builder.indexed;
+    editable = builder.editable;
+    label = builder.label;
+    description = builder.description;
   }
 
   /**
@@ -146,17 +146,6 @@ public class SystemPropertiesForRelationshipTypes extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the label.
-   *
-   * system label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 
   /**
@@ -171,6 +160,17 @@ public class SystemPropertiesForRelationshipTypes extends GenericModel {
   }
 
   /**
+   * Gets the indexed.
+   *
+   * indexed.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
+  }
+
+  /**
    * Gets the editable.
    *
    * editable.
@@ -182,6 +182,17 @@ public class SystemPropertiesForRelationshipTypes extends GenericModel {
   }
 
   /**
+   * Gets the label.
+   *
+   * system label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
+  }
+
+  /**
    * Gets the description.
    *
    * system description.
@@ -190,17 +201,6 @@ public class SystemPropertiesForRelationshipTypes extends GenericModel {
    */
   public String description() {
     return description;
-  }
-
-  /**
-   * Gets the indexed.
-   *
-   * indexed.
-   *
-   * @return the indexed
-   */
-  public Boolean indexed() {
-    return indexed;
   }
 }
 

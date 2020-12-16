@@ -33,8 +33,8 @@ public class PutIndexResponseRecordinfoTest {
   public void testPutIndexResponseRecordinfo() throws Throwable {
     PutIndexResponseRecordinfo putIndexResponseRecordinfoModel = new PutIndexResponseRecordinfo();
     assertNull(putIndexResponseRecordinfoModel.getRecordId());
-    assertNull(putIndexResponseRecordinfoModel.getRecordNumber());
     assertNull(putIndexResponseRecordinfoModel.getEntityId());
     assertNull(putIndexResponseRecordinfoModel.getRecordSource());
+    assertNull(putIndexResponseRecordinfoModel.getRecordNumber());
   }
 }

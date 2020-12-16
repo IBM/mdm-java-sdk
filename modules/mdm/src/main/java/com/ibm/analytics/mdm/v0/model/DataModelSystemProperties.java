@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelSystemProperties extends GenericModel {
 
-  @SerializedName("entity_types")
-  protected DataModelEntityTypeSystemProperties entityTypes;
-  @SerializedName("record_types")
-  protected DataModelRecordTypeSystemProperties recordTypes;
   @SerializedName("attribute_types")
   protected DataModelAttributeTypeSystemProperties attributeTypes;
   @SerializedName("relationship_types")
   protected DataModelRelationshipTypeSystemProperties relationshipTypes;
+  @SerializedName("entity_types")
+  protected DataModelEntityTypeSystemProperties entityTypes;
+  @SerializedName("record_types")
+  protected DataModelRecordTypeSystemProperties recordTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private DataModelEntityTypeSystemProperties entityTypes;
-    private DataModelRecordTypeSystemProperties recordTypes;
     private DataModelAttributeTypeSystemProperties attributeTypes;
     private DataModelRelationshipTypeSystemProperties relationshipTypes;
+    private DataModelEntityTypeSystemProperties entityTypes;
+    private DataModelRecordTypeSystemProperties recordTypes;
 
     private Builder(DataModelSystemProperties dataModelSystemProperties) {
-      this.entityTypes = dataModelSystemProperties.entityTypes;
-      this.recordTypes = dataModelSystemProperties.recordTypes;
       this.attributeTypes = dataModelSystemProperties.attributeTypes;
       this.relationshipTypes = dataModelSystemProperties.relationshipTypes;
+      this.entityTypes = dataModelSystemProperties.entityTypes;
+      this.recordTypes = dataModelSystemProperties.recordTypes;
     }
 
     /**
@@ -54,16 +54,16 @@ public class DataModelSystemProperties extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param entityTypes the entityTypes
-     * @param recordTypes the recordTypes
      * @param attributeTypes the attributeTypes
      * @param relationshipTypes the relationshipTypes
+     * @param entityTypes the entityTypes
+     * @param recordTypes the recordTypes
      */
-    public Builder(DataModelEntityTypeSystemProperties entityTypes, DataModelRecordTypeSystemProperties recordTypes, DataModelAttributeTypeSystemProperties attributeTypes, DataModelRelationshipTypeSystemProperties relationshipTypes) {
-      this.entityTypes = entityTypes;
-      this.recordTypes = recordTypes;
+    public Builder(DataModelAttributeTypeSystemProperties attributeTypes, DataModelRelationshipTypeSystemProperties relationshipTypes, DataModelEntityTypeSystemProperties entityTypes, DataModelRecordTypeSystemProperties recordTypes) {
       this.attributeTypes = attributeTypes;
       this.relationshipTypes = relationshipTypes;
+      this.entityTypes = entityTypes;
+      this.recordTypes = recordTypes;
     }
 
     /**
@@ -73,28 +73,6 @@ public class DataModelSystemProperties extends GenericModel {
      */
     public DataModelSystemProperties build() {
       return new DataModelSystemProperties(this);
-    }
-
-    /**
-     * Set the entityTypes.
-     *
-     * @param entityTypes the entityTypes
-     * @return the DataModelSystemProperties builder
-     */
-    public Builder entityTypes(DataModelEntityTypeSystemProperties entityTypes) {
-      this.entityTypes = entityTypes;
-      return this;
-    }
-
-    /**
-     * Set the recordTypes.
-     *
-     * @param recordTypes the recordTypes
-     * @return the DataModelSystemProperties builder
-     */
-    public Builder recordTypes(DataModelRecordTypeSystemProperties recordTypes) {
-      this.recordTypes = recordTypes;
-      return this;
     }
 
     /**
@@ -118,21 +96,43 @@ public class DataModelSystemProperties extends GenericModel {
       this.relationshipTypes = relationshipTypes;
       return this;
     }
+
+    /**
+     * Set the entityTypes.
+     *
+     * @param entityTypes the entityTypes
+     * @return the DataModelSystemProperties builder
+     */
+    public Builder entityTypes(DataModelEntityTypeSystemProperties entityTypes) {
+      this.entityTypes = entityTypes;
+      return this;
+    }
+
+    /**
+     * Set the recordTypes.
+     *
+     * @param recordTypes the recordTypes
+     * @return the DataModelSystemProperties builder
+     */
+    public Builder recordTypes(DataModelRecordTypeSystemProperties recordTypes) {
+      this.recordTypes = recordTypes;
+      return this;
+    }
   }
 
   protected DataModelSystemProperties(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
-      "entityTypes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
-      "recordTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
       "attributeTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
       "relationshipTypes cannot be null");
-    entityTypes = builder.entityTypes;
-    recordTypes = builder.recordTypes;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
+      "entityTypes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
+      "recordTypes cannot be null");
     attributeTypes = builder.attributeTypes;
     relationshipTypes = builder.relationshipTypes;
+    entityTypes = builder.entityTypes;
+    recordTypes = builder.recordTypes;
   }
 
   /**
@@ -142,28 +142,6 @@ public class DataModelSystemProperties extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the entityTypes.
-   *
-   * Defines metadata of system properties of all entity types.
-   *
-   * @return the entityTypes
-   */
-  public DataModelEntityTypeSystemProperties entityTypes() {
-    return entityTypes;
-  }
-
-  /**
-   * Gets the recordTypes.
-   *
-   * Defines metadata of system properties of record types.
-   *
-   * @return the recordTypes
-   */
-  public DataModelRecordTypeSystemProperties recordTypes() {
-    return recordTypes;
   }
 
   /**
@@ -186,6 +164,28 @@ public class DataModelSystemProperties extends GenericModel {
    */
   public DataModelRelationshipTypeSystemProperties relationshipTypes() {
     return relationshipTypes;
+  }
+
+  /**
+   * Gets the entityTypes.
+   *
+   * Defines metadata of system properties of all entity types.
+   *
+   * @return the entityTypes
+   */
+  public DataModelEntityTypeSystemProperties entityTypes() {
+    return entityTypes;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Defines metadata of system properties of record types.
+   *
+   * @return the recordTypes
+   */
+  public DataModelRecordTypeSystemProperties recordTypes() {
+    return recordTypes;
   }
 }
 

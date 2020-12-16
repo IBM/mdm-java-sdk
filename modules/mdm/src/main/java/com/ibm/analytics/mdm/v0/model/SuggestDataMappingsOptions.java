@@ -118,8 +118,8 @@ public class SuggestDataMappingsOptions extends GenericModel {
   }
 
   protected SuggestDataMappingsOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.recordType,
-      "recordType cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
+      "recordType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
       "crn cannot be null");
     recordType = builder.recordType;

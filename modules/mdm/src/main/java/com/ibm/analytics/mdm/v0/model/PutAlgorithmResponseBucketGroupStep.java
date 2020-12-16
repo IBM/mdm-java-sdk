@@ -21,22 +21,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseBucketGroupStep extends GenericModel {
 
-  protected List<Long> inputs;
   protected Boolean order;
+  protected List<Long> inputs;
   protected String method;
   protected List<List<String>> fields;
   protected String label;
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> getInputs() {
-    return inputs;
-  }
 
   /**
    * Gets the order.
@@ -47,6 +36,17 @@ public class PutAlgorithmResponseBucketGroupStep extends GenericModel {
    */
   public Boolean isOrder() {
     return order;
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   *
+   * @return the inputs
+   */
+  public List<Long> getInputs() {
+    return inputs;
   }
 
   /**

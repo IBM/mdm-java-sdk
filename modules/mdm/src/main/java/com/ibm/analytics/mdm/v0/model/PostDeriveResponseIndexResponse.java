@@ -25,13 +25,13 @@ public class PostDeriveResponseIndexResponse extends GenericModel {
 
   @SerializedName("standardized_values")
   protected Map<String, Object> standardizedValues;
-  protected List<Long> buckets;
-  @SerializedName("record_type")
-  protected String recordType;
   @SerializedName("record_id")
   protected String recordId;
   @SerializedName("record_source")
   protected String recordSource;
+  protected List<Long> buckets;
+  @SerializedName("record_type")
+  protected String recordType;
 
   /**
    * Gets the standardizedValues.
@@ -42,28 +42,6 @@ public class PostDeriveResponseIndexResponse extends GenericModel {
    */
   public Map<String, Object> getStandardizedValues() {
     return standardizedValues;
-  }
-
-  /**
-   * Gets the buckets.
-   *
-   * Collection of a record's bucket hashes, primarily used for efficient entity resolution.
-   *
-   * @return the buckets
-   */
-  public List<Long> getBuckets() {
-    return buckets;
-  }
-
-  /**
-   * Gets the recordType.
-   *
-   * The data type identifier of the record, ie. person, organization.
-   *
-   * @return the recordType
-   */
-  public String getRecordType() {
-    return recordType;
   }
 
   /**
@@ -86,6 +64,28 @@ public class PostDeriveResponseIndexResponse extends GenericModel {
    */
   public String getRecordSource() {
     return recordSource;
+  }
+
+  /**
+   * Gets the buckets.
+   *
+   * Collection of a record's bucket hashes, primarily used for efficient entity resolution.
+   *
+   * @return the buckets
+   */
+  public List<Long> getBuckets() {
+    return buckets;
+  }
+
+  /**
+   * Gets the recordType.
+   *
+   * The data type identifier of the record, ie. person, organization.
+   *
+   * @return the recordType
+   */
+  public String getRecordType() {
+    return recordType;
   }
 }
 

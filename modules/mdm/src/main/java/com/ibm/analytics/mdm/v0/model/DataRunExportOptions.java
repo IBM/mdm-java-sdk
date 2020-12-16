@@ -19,8 +19,31 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataRunExportOptions extends GenericModel {
 
+  /**
+   * The format of the export file.
+   */
+  public interface Format {
+    /** csv. */
+    String CSV = "csv";
+    /** psv. */
+    String PSV = "psv";
+    /** tsv. */
+    String TSV = "tsv";
+  }
+
+  /**
+   * The type of export.
+   */
+  public interface ExportType {
+    /** record. */
+    String RECORD = "record";
+    /** entity. */
+    String ENTITY = "entity";
+  }
+
   protected String format;
   protected String fileName;
+  protected String exportType;
   protected CriteriaRequest searchCriteria;
 
   /**
@@ -29,11 +52,13 @@ public class DataRunExportOptions extends GenericModel {
   public static class Builder {
     private String format;
     private String fileName;
+    private String exportType;
     private CriteriaRequest searchCriteria;
 
     private Builder(DataRunExportOptions dataRunExportOptions) {
       this.format = dataRunExportOptions.format;
       this.fileName = dataRunExportOptions.fileName;
+      this.exportType = dataRunExportOptions.exportType;
       this.searchCriteria = dataRunExportOptions.searchCriteria;
     }
 
@@ -75,6 +100,17 @@ public class DataRunExportOptions extends GenericModel {
     }
 
     /**
+     * Set the exportType.
+     *
+     * @param exportType the exportType
+     * @return the DataRunExportOptions builder
+     */
+    public Builder exportType(String exportType) {
+      this.exportType = exportType;
+      return this;
+    }
+
+    /**
      * Set the searchCriteria.
      *
      * @param searchCriteria the searchCriteria
@@ -89,6 +125,7 @@ public class DataRunExportOptions extends GenericModel {
   protected DataRunExportOptions(Builder builder) {
     format = builder.format;
     fileName = builder.fileName;
+    exportType = builder.exportType;
     searchCriteria = builder.searchCriteria;
   }
 
@@ -121,6 +158,17 @@ public class DataRunExportOptions extends GenericModel {
    */
   public String fileName() {
     return fileName;
+  }
+
+  /**
+   * Gets the exportType.
+   *
+   * The type of export.
+   *
+   * @return the exportType
+   */
+  public String exportType() {
+    return exportType;
   }
 
   /**

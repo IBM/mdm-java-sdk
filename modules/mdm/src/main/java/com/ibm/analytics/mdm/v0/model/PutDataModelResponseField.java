@@ -19,21 +19,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseField extends GenericModel {
 
-  protected String classification;
   protected Boolean indexed;
+  protected String classification;
   protected String description;
   protected String label;
-
-  /**
-   * Gets the classification.
-   *
-   * User defined classification.
-   *
-   * @return the classification
-   */
-  public String getClassification() {
-    return classification;
-  }
 
   /**
    * Gets the indexed.
@@ -44,6 +33,17 @@ public class PutDataModelResponseField extends GenericModel {
    */
   public Boolean isIndexed() {
     return indexed;
+  }
+
+  /**
+   * Gets the classification.
+   *
+   * User defined classification.
+   *
+   * @return the classification
+   */
+  public String getClassification() {
+    return classification;
   }
 
   /**

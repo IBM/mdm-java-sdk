@@ -22,27 +22,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseStandardizerStep extends GenericModel {
 
-  protected List<Long> inputs;
   @SerializedName("comparison_resource")
   protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
+  protected List<Long> inputs;
   protected String method;
   protected List<String> fields;
   protected String label;
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> getInputs() {
-    return inputs;
-  }
 
   /**
    * Gets the comparisonResource.
@@ -75,6 +64,17 @@ public class PutAlgorithmResponseStandardizerStep extends GenericModel {
    */
   public String getMapResource() {
     return mapResource;
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   *
+   * @return the inputs
+   */
+  public List<Long> getInputs() {
+    return inputs;
   }
 
   /**

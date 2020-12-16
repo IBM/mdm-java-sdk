@@ -22,9 +22,9 @@ public class Property extends GenericModel {
 
   @SerializedName("data_type")
   protected String dataType;
-  protected String designation;
   @SerializedName("default_display_name")
   protected String defaultDisplayName;
+  protected String designation;
   protected String name;
 
   /**
@@ -39,17 +39,6 @@ public class Property extends GenericModel {
   }
 
   /**
-   * Gets the designation.
-   *
-   * designation.
-   *
-   * @return the designation
-   */
-  public String getDesignation() {
-    return designation;
-  }
-
-  /**
    * Gets the defaultDisplayName.
    *
    * display name.
@@ -58,6 +47,17 @@ public class Property extends GenericModel {
    */
   public String getDefaultDisplayName() {
     return defaultDisplayName;
+  }
+
+  /**
+   * Gets the designation.
+   *
+   * designation.
+   *
+   * @return the designation
+   */
+  public String getDesignation() {
+    return designation;
   }
 
   /**

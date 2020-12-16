@@ -37,9 +37,9 @@ public class PostSearchResponseSearchResultTest {
   @Test
   public void testPostSearchResponseSearchResult() throws Throwable {
     PostSearchResponseSearchResult postSearchResponseSearchResultModel = new PostSearchResponseSearchResult();
-    assertNull(postSearchResponseSearchResultModel.getScore());
     assertNull(postSearchResponseSearchResultModel.getRecordId());
     assertNull(postSearchResponseSearchResultModel.getRecordSource());
     assertNull(postSearchResponseSearchResultModel.getCompareMethods());
+    assertNull(postSearchResponseSearchResultModel.getScore());
   }
 }

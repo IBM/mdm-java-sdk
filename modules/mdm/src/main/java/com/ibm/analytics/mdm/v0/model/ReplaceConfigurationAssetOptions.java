@@ -24,10 +24,10 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
 
   protected String assetId;
   protected String crn;
-  protected String assetName;
   protected String assetStatus;
-  protected List<AssetMapping> assetMappings;
+  protected String assetName;
   protected String assetCreatedDate;
+  protected List<AssetMapping> assetMappings;
 
   /**
    * Builder.
@@ -35,18 +35,18 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
   public static class Builder {
     private String assetId;
     private String crn;
-    private String assetName;
     private String assetStatus;
-    private List<AssetMapping> assetMappings;
+    private String assetName;
     private String assetCreatedDate;
+    private List<AssetMapping> assetMappings;
 
     private Builder(ReplaceConfigurationAssetOptions replaceConfigurationAssetOptions) {
       this.assetId = replaceConfigurationAssetOptions.assetId;
       this.crn = replaceConfigurationAssetOptions.crn;
-      this.assetName = replaceConfigurationAssetOptions.assetName;
       this.assetStatus = replaceConfigurationAssetOptions.assetStatus;
-      this.assetMappings = replaceConfigurationAssetOptions.assetMappings;
+      this.assetName = replaceConfigurationAssetOptions.assetName;
       this.assetCreatedDate = replaceConfigurationAssetOptions.assetCreatedDate;
+      this.assetMappings = replaceConfigurationAssetOptions.assetMappings;
     }
 
     /**
@@ -60,14 +60,14 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
      *
      * @param assetId the assetId
      * @param crn the crn
-     * @param assetName the assetName
      * @param assetStatus the assetStatus
+     * @param assetName the assetName
      */
-    public Builder(String assetId, String crn, String assetName, String assetStatus) {
+    public Builder(String assetId, String crn, String assetStatus, String assetName) {
       this.assetId = assetId;
       this.crn = crn;
-      this.assetName = assetName;
       this.assetStatus = assetStatus;
+      this.assetName = assetName;
     }
 
     /**
@@ -118,6 +118,17 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
     }
 
     /**
+     * Set the assetStatus.
+     *
+     * @param assetStatus the assetStatus
+     * @return the ReplaceConfigurationAssetOptions builder
+     */
+    public Builder assetStatus(String assetStatus) {
+      this.assetStatus = assetStatus;
+      return this;
+    }
+
+    /**
      * Set the assetName.
      *
      * @param assetName the assetName
@@ -129,13 +140,13 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
     }
 
     /**
-     * Set the assetStatus.
+     * Set the assetCreatedDate.
      *
-     * @param assetStatus the assetStatus
+     * @param assetCreatedDate the assetCreatedDate
      * @return the ReplaceConfigurationAssetOptions builder
      */
-    public Builder assetStatus(String assetStatus) {
-      this.assetStatus = assetStatus;
+    public Builder assetCreatedDate(String assetCreatedDate) {
+      this.assetCreatedDate = assetCreatedDate;
       return this;
     }
 
@@ -150,17 +161,6 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
       this.assetMappings = assetMappings;
       return this;
     }
-
-    /**
-     * Set the assetCreatedDate.
-     *
-     * @param assetCreatedDate the assetCreatedDate
-     * @return the ReplaceConfigurationAssetOptions builder
-     */
-    public Builder assetCreatedDate(String assetCreatedDate) {
-      this.assetCreatedDate = assetCreatedDate;
-      return this;
-    }
   }
 
   protected ReplaceConfigurationAssetOptions(Builder builder) {
@@ -168,16 +168,16 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
       "assetId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
       "crn cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetName,
-      "assetName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetStatus,
       "assetStatus cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetName,
+      "assetName cannot be null");
     assetId = builder.assetId;
     crn = builder.crn;
-    assetName = builder.assetName;
     assetStatus = builder.assetStatus;
-    assetMappings = builder.assetMappings;
+    assetName = builder.assetName;
     assetCreatedDate = builder.assetCreatedDate;
+    assetMappings = builder.assetMappings;
   }
 
   /**
@@ -212,17 +212,6 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
   }
 
   /**
-   * Gets the assetName.
-   *
-   * asse name.
-   *
-   * @return the assetName
-   */
-  public String assetName() {
-    return assetName;
-  }
-
-  /**
    * Gets the assetStatus.
    *
    * asset status.
@@ -234,14 +223,14 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
   }
 
   /**
-   * Gets the assetMappings.
+   * Gets the assetName.
    *
-   * list of columns mapped with data model.
+   * asse name.
    *
-   * @return the assetMappings
+   * @return the assetName
    */
-  public List<AssetMapping> assetMappings() {
-    return assetMappings;
+  public String assetName() {
+    return assetName;
   }
 
   /**
@@ -253,6 +242,17 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
    */
   public String assetCreatedDate() {
     return assetCreatedDate;
+  }
+
+  /**
+   * Gets the assetMappings.
+   *
+   * list of columns mapped with data model.
+   *
+   * @return the assetMappings
+   */
+  public List<AssetMapping> assetMappings() {
+    return assetMappings;
   }
 }
 

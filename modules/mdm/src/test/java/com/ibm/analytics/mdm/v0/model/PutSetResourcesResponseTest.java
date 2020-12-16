@@ -35,8 +35,8 @@ public class PutSetResourcesResponseTest {
   @Test
   public void testPutSetResourcesResponse() throws Throwable {
     PutSetResourcesResponse putSetResourcesResponseModel = new PutSetResourcesResponse();
-    assertNull(putSetResourcesResponseModel.getFlowId());
     assertNull(putSetResourcesResponseModel.getSetResources());
     assertNull(putSetResourcesResponseModel.getFlowState());
+    assertNull(putSetResourcesResponseModel.getFlowId());
   }
 }

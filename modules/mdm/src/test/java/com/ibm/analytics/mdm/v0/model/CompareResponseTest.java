@@ -37,7 +37,7 @@ public class CompareResponseTest {
   @Test
   public void testCompareResponse() throws Throwable {
     CompareResponse compareResponseModel = new CompareResponse();
-    assertNull(compareResponseModel.getScore());
     assertNull(compareResponseModel.getCompareMethods());
+    assertNull(compareResponseModel.getScore());
   }
 }

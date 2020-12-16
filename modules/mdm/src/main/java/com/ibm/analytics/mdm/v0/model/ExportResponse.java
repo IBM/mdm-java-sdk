@@ -79,6 +79,16 @@ public class ExportResponse extends GenericModel {
     String SCHEMA_UPDATE = "schema_update";
   }
 
+  /**
+   * The type of export.
+   */
+  public interface ExportType {
+    /** record. */
+    String RECORD = "record";
+    /** entity. */
+    String ENTITY = "entity";
+  }
+
   @SerializedName("job_id")
   protected String jobId;
   @SerializedName("start_time")
@@ -94,6 +104,8 @@ public class ExportResponse extends GenericModel {
   protected String fileName;
   @SerializedName("file_expired")
   protected Boolean fileExpired;
+  @SerializedName("export_type")
+  protected String exportType;
   @SerializedName("search_criteria")
   protected CriteriaRequest searchCriteria;
 
@@ -183,6 +195,17 @@ public class ExportResponse extends GenericModel {
    */
   public Boolean isFileExpired() {
     return fileExpired;
+  }
+
+  /**
+   * Gets the exportType.
+   *
+   * The type of export.
+   *
+   * @return the exportType
+   */
+  public String getExportType() {
+    return exportType;
   }
 
   /**

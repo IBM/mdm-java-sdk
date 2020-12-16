@@ -20,16 +20,38 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RulesResponseEntityRule extends GenericModel {
 
+  @SerializedName("last_updated")
+  protected Long lastUpdated;
+  @SerializedName("rule_type")
+  protected String ruleType;
   @SerializedName("src_recno")
   protected String srcRecno;
   @SerializedName("target_recno")
   protected String targetRecno;
-  @SerializedName("rule_type")
-  protected String ruleType;
-  @SerializedName("last_updated")
-  protected Long lastUpdated;
   protected String description;
   protected String user;
+
+  /**
+   * Gets the lastUpdated.
+   *
+   * System generated timestamp when the linkage rule was last updated.
+   *
+   * @return the lastUpdated
+   */
+  public Long getLastUpdated() {
+    return lastUpdated;
+  }
+
+  /**
+   * Gets the ruleType.
+   *
+   * User specified rule type. One Of: link, unlink.
+   *
+   * @return the ruleType
+   */
+  public String getRuleType() {
+    return ruleType;
+  }
 
   /**
    * Gets the srcRecno.
@@ -51,28 +73,6 @@ public class RulesResponseEntityRule extends GenericModel {
    */
   public String getTargetRecno() {
     return targetRecno;
-  }
-
-  /**
-   * Gets the ruleType.
-   *
-   * User specified rule type. One Of: link, unlink.
-   *
-   * @return the ruleType
-   */
-  public String getRuleType() {
-    return ruleType;
-  }
-
-  /**
-   * Gets the lastUpdated.
-   *
-   * System generated timestamp when the linkage rule was last updated.
-   *
-   * @return the lastUpdated
-   */
-  public Long getLastUpdated() {
-    return lastUpdated;
   }
 
   /**

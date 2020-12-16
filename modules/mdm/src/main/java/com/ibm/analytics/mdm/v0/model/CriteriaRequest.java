@@ -29,8 +29,6 @@ public class CriteriaRequest extends GenericModel {
   public interface SearchType {
     /** record. */
     String RECORD = "record";
-    /** entity. */
-    String ENTITY = "entity";
   }
 
   @SerializedName("search_type")
