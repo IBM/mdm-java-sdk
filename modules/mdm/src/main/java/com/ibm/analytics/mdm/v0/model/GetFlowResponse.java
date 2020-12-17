@@ -22,38 +22,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetFlowResponse extends GenericModel {
 
-  protected Boolean active;
-  @SerializedName("flow_type")
-  protected String flowType;
   protected List<String> approvals;
   protected List<String> rejections;
-  @SerializedName("flow_id")
-  protected String flowId;
   @SerializedName("flow_state")
   protected String flowState;
-
-  /**
-   * Gets the active.
-   *
-   * True if the flow is active.
-   *
-   * @return the active
-   */
-  public Boolean isActive() {
-    return active;
-  }
-
-  /**
-   * Gets the flowType.
-   *
-   * Type of flow. One of: data_model, algorithm, compare_spec_resources, composite_rules, map_resources or
-   * set_resources.
-   *
-   * @return the flowType
-   */
-  public String getFlowType() {
-    return flowType;
-  }
+  @SerializedName("flow_type")
+  protected String flowType;
+  @SerializedName("flow_id")
+  protected String flowId;
+  protected Boolean active;
 
   /**
    * Gets the approvals.
@@ -78,6 +55,29 @@ public class GetFlowResponse extends GenericModel {
   }
 
   /**
+   * Gets the flowState.
+   *
+   * Current state of flow according to its state machine.
+   *
+   * @return the flowState
+   */
+  public String getFlowState() {
+    return flowState;
+  }
+
+  /**
+   * Gets the flowType.
+   *
+   * Type of flow. One of: data_model, algorithm, compare_spec_resources, composite_rules, map_resources or
+   * set_resources.
+   *
+   * @return the flowType
+   */
+  public String getFlowType() {
+    return flowType;
+  }
+
+  /**
    * Gets the flowId.
    *
    * System generated flow identifier.
@@ -89,14 +89,14 @@ public class GetFlowResponse extends GenericModel {
   }
 
   /**
-   * Gets the flowState.
+   * Gets the active.
    *
-   * Current state of flow according to its state machine.
+   * True if the flow is active.
    *
-   * @return the flowState
+   * @return the active
    */
-  public String getFlowState() {
-    return flowState;
+  public Boolean isActive() {
+    return active;
   }
 }
 

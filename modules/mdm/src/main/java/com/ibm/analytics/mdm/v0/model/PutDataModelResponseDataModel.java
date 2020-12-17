@@ -22,26 +22,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseDataModel extends GenericModel {
 
-  @SerializedName("record_types")
-  protected Map<String, PutDataModelResponseRecordType> recordTypes;
   @SerializedName("attribute_types")
   protected Map<String, PutDataModelResponseAttributeType> attributeTypes;
   @SerializedName("relationship_types")
   protected Map<String, PutDataModelResponseRelationshipType> relationshipTypes;
+  @SerializedName("record_types")
+  protected Map<String, PutDataModelResponseRecordType> recordTypes;
   protected String locale;
   @SerializedName("system_properties")
   protected PutDataModelResponseSystemProperties systemProperties;
-
-  /**
-   * Gets the recordTypes.
-   *
-   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
-   *
-   * @return the recordTypes
-   */
-  public Map<String, PutDataModelResponseRecordType> getRecordTypes() {
-    return recordTypes;
-  }
 
   /**
    * Gets the attributeTypes.
@@ -63,6 +52,17 @@ public class PutDataModelResponseDataModel extends GenericModel {
    */
   public Map<String, PutDataModelResponseRelationshipType> getRelationshipTypes() {
     return relationshipTypes;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
+   *
+   * @return the recordTypes
+   */
+  public Map<String, PutDataModelResponseRecordType> getRecordTypes() {
+    return recordTypes;
   }
 
   /**

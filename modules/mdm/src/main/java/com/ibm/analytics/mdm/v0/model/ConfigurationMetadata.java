@@ -20,18 +20,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ConfigurationMetadata extends GenericModel {
 
-  @SerializedName("storage_type")
-  protected String storageType;
+  @SerializedName("created_date")
+  protected String createdDate;
+  @SerializedName("last_update_date")
+  protected String lastUpdateDate;
   @SerializedName("project_id")
   protected String projectId;
   @SerializedName("catalog_id")
   protected String catalogId;
-  protected String collaborators;
-  @SerializedName("last_update_date")
-  protected String lastUpdateDate;
-  @SerializedName("created_date")
-  protected String createdDate;
-  protected String role;
   protected String description;
   protected String name;
   protected String id;
@@ -40,20 +36,14 @@ public class ConfigurationMetadata extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String storageType;
     private String projectId;
     private String catalogId;
-    private String collaborators;
-    private String role;
     private String description;
     private String name;
 
     private Builder(ConfigurationMetadata configurationMetadata) {
-      this.storageType = configurationMetadata.storageType;
       this.projectId = configurationMetadata.projectId;
       this.catalogId = configurationMetadata.catalogId;
-      this.collaborators = configurationMetadata.collaborators;
-      this.role = configurationMetadata.role;
       this.description = configurationMetadata.description;
       this.name = configurationMetadata.name;
     }
@@ -85,17 +75,6 @@ public class ConfigurationMetadata extends GenericModel {
     }
 
     /**
-     * Set the storageType.
-     *
-     * @param storageType the storageType
-     * @return the ConfigurationMetadata builder
-     */
-    public Builder storageType(String storageType) {
-      this.storageType = storageType;
-      return this;
-    }
-
-    /**
      * Set the projectId.
      *
      * @param projectId the projectId
@@ -114,28 +93,6 @@ public class ConfigurationMetadata extends GenericModel {
      */
     public Builder catalogId(String catalogId) {
       this.catalogId = catalogId;
-      return this;
-    }
-
-    /**
-     * Set the collaborators.
-     *
-     * @param collaborators the collaborators
-     * @return the ConfigurationMetadata builder
-     */
-    public Builder collaborators(String collaborators) {
-      this.collaborators = collaborators;
-      return this;
-    }
-
-    /**
-     * Set the role.
-     *
-     * @param role the role
-     * @return the ConfigurationMetadata builder
-     */
-    public Builder role(String role) {
-      this.role = role;
       return this;
     }
 
@@ -167,11 +124,8 @@ public class ConfigurationMetadata extends GenericModel {
       "description cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,
       "name cannot be null");
-    storageType = builder.storageType;
     projectId = builder.projectId;
     catalogId = builder.catalogId;
-    collaborators = builder.collaborators;
-    role = builder.role;
     description = builder.description;
     name = builder.name;
   }
@@ -186,14 +140,25 @@ public class ConfigurationMetadata extends GenericModel {
   }
 
   /**
-   * Gets the storageType.
+   * Gets the createdDate.
    *
-   * storage type of the configuration.
+   * created date of configuration metadata.
    *
-   * @return the storageType
+   * @return the createdDate
    */
-  public String storageType() {
-    return storageType;
+  public String createdDate() {
+    return createdDate;
+  }
+
+  /**
+   * Gets the lastUpdateDate.
+   *
+   * last update date of project metadata.
+   *
+   * @return the lastUpdateDate
+   */
+  public String lastUpdateDate() {
+    return lastUpdateDate;
   }
 
   /**
@@ -216,50 +181,6 @@ public class ConfigurationMetadata extends GenericModel {
    */
   public String catalogId() {
     return catalogId;
-  }
-
-  /**
-   * Gets the collaborators.
-   *
-   * collaborators.
-   *
-   * @return the collaborators
-   */
-  public String collaborators() {
-    return collaborators;
-  }
-
-  /**
-   * Gets the lastUpdateDate.
-   *
-   * last update date of project metadata.
-   *
-   * @return the lastUpdateDate
-   */
-  public String lastUpdateDate() {
-    return lastUpdateDate;
-  }
-
-  /**
-   * Gets the createdDate.
-   *
-   * created date of configuration metadata.
-   *
-   * @return the createdDate
-   */
-  public String createdDate() {
-    return createdDate;
-  }
-
-  /**
-   * Gets the role.
-   *
-   * role.
-   *
-   * @return the role
-   */
-  public String role() {
-    return role;
   }
 
   /**

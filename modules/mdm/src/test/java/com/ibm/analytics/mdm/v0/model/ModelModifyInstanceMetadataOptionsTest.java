@@ -53,14 +53,14 @@ public class ModelModifyInstanceMetadataOptionsTest {
 
     ModelModifyInstanceMetadataOptions modelModifyInstanceMetadataOptionsModel = new ModelModifyInstanceMetadataOptions.Builder()
       .crn("testString")
-      .projects(new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)))
       .jobProjectId("testString")
+      .projects(new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)))
       .catalogs(new java.util.ArrayList<InstanceMetadataCatalog>(java.util.Arrays.asList(instanceMetadataCatalogModel)))
       .label("testString")
       .build();
     assertEquals(modelModifyInstanceMetadataOptionsModel.crn(), "testString");
-    assertEquals(modelModifyInstanceMetadataOptionsModel.projects(), new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)));
     assertEquals(modelModifyInstanceMetadataOptionsModel.jobProjectId(), "testString");
+    assertEquals(modelModifyInstanceMetadataOptionsModel.projects(), new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)));
     assertEquals(modelModifyInstanceMetadataOptionsModel.catalogs(), new java.util.ArrayList<InstanceMetadataCatalog>(java.util.Arrays.asList(instanceMetadataCatalogModel)));
     assertEquals(modelModifyInstanceMetadataOptionsModel.label(), "testString");
   }

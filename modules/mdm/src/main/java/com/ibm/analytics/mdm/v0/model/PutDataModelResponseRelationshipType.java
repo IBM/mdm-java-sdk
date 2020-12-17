@@ -24,13 +24,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class PutDataModelResponseRelationshipType extends GenericModel {
 
   protected List<PutDataModelResponseRelationshipRule> rules;
-  @SerializedName("label_from_source")
-  protected String labelFromSource;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
   protected Boolean directional;
-  protected String description;
+  @SerializedName("label_from_source")
+  protected String labelFromSource;
   protected String cardinality;
+  protected String description;
   protected Map<String, PutDataModelResponseAttribute> attributes;
   protected String label;
 
@@ -43,17 +43,6 @@ public class PutDataModelResponseRelationshipType extends GenericModel {
    */
   public List<PutDataModelResponseRelationshipRule> getRules() {
     return rules;
-  }
-
-  /**
-   * Gets the labelFromSource.
-   *
-   * User defined translatable label of 'from' endpoint in the relationship.
-   *
-   * @return the labelFromSource
-   */
-  public String getLabelFromSource() {
-    return labelFromSource;
   }
 
   /**
@@ -79,14 +68,14 @@ public class PutDataModelResponseRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the description.
+   * Gets the labelFromSource.
    *
-   * User defined translatable description.
+   * User defined translatable label of 'from' endpoint in the relationship.
    *
-   * @return the description
+   * @return the labelFromSource
    */
-  public String getDescription() {
-    return description;
+  public String getLabelFromSource() {
+    return labelFromSource;
   }
 
   /**
@@ -98,6 +87,17 @@ public class PutDataModelResponseRelationshipType extends GenericModel {
    */
   public String getCardinality() {
     return cardinality;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * User defined translatable description.
+   *
+   * @return the description
+   */
+  public String getDescription() {
+    return description;
   }
 
   /**

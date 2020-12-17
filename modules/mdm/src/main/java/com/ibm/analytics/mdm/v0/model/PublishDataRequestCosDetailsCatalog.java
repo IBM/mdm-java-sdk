@@ -20,10 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PublishDataRequestCosDetailsCatalog extends GenericModel {
 
-  @SerializedName("cos_bucket_name")
-  protected String cosBucketName;
   @SerializedName("cos_endpoint")
   protected String cosEndpoint;
+  @SerializedName("cos_bucket_name")
+  protected String cosBucketName;
   @SerializedName("cos_api_key")
   protected String cosApiKey;
 
@@ -31,13 +31,13 @@ public class PublishDataRequestCosDetailsCatalog extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String cosBucketName;
     private String cosEndpoint;
+    private String cosBucketName;
     private String cosApiKey;
 
     private Builder(PublishDataRequestCosDetailsCatalog publishDataRequestCosDetailsCatalog) {
-      this.cosBucketName = publishDataRequestCosDetailsCatalog.cosBucketName;
       this.cosEndpoint = publishDataRequestCosDetailsCatalog.cosEndpoint;
+      this.cosBucketName = publishDataRequestCosDetailsCatalog.cosBucketName;
       this.cosApiKey = publishDataRequestCosDetailsCatalog.cosApiKey;
     }
 
@@ -57,17 +57,6 @@ public class PublishDataRequestCosDetailsCatalog extends GenericModel {
     }
 
     /**
-     * Set the cosBucketName.
-     *
-     * @param cosBucketName the cosBucketName
-     * @return the PublishDataRequestCosDetailsCatalog builder
-     */
-    public Builder cosBucketName(String cosBucketName) {
-      this.cosBucketName = cosBucketName;
-      return this;
-    }
-
-    /**
      * Set the cosEndpoint.
      *
      * @param cosEndpoint the cosEndpoint
@@ -75,6 +64,17 @@ public class PublishDataRequestCosDetailsCatalog extends GenericModel {
      */
     public Builder cosEndpoint(String cosEndpoint) {
       this.cosEndpoint = cosEndpoint;
+      return this;
+    }
+
+    /**
+     * Set the cosBucketName.
+     *
+     * @param cosBucketName the cosBucketName
+     * @return the PublishDataRequestCosDetailsCatalog builder
+     */
+    public Builder cosBucketName(String cosBucketName) {
+      this.cosBucketName = cosBucketName;
       return this;
     }
 
@@ -91,8 +91,8 @@ public class PublishDataRequestCosDetailsCatalog extends GenericModel {
   }
 
   protected PublishDataRequestCosDetailsCatalog(Builder builder) {
-    cosBucketName = builder.cosBucketName;
     cosEndpoint = builder.cosEndpoint;
+    cosBucketName = builder.cosBucketName;
     cosApiKey = builder.cosApiKey;
   }
 
@@ -106,17 +106,6 @@ public class PublishDataRequestCosDetailsCatalog extends GenericModel {
   }
 
   /**
-   * Gets the cosBucketName.
-   *
-   * Cos bucket name.
-   *
-   * @return the cosBucketName
-   */
-  public String cosBucketName() {
-    return cosBucketName;
-  }
-
-  /**
    * Gets the cosEndpoint.
    *
    * Cos endpoint.
@@ -125,6 +114,17 @@ public class PublishDataRequestCosDetailsCatalog extends GenericModel {
    */
   public String cosEndpoint() {
     return cosEndpoint;
+  }
+
+  /**
+   * Gets the cosBucketName.
+   *
+   * Cos bucket name.
+   *
+   * @return the cosBucketName
+   */
+  public String cosBucketName() {
+    return cosBucketName;
   }
 
   /**

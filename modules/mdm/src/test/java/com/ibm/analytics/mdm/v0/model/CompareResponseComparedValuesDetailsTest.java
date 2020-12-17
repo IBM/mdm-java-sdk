@@ -33,9 +33,9 @@ public class CompareResponseComparedValuesDetailsTest {
   public void testCompareResponseComparedValuesDetails() throws Throwable {
     CompareResponseComparedValuesDetails compareResponseComparedValuesDetailsModel = new CompareResponseComparedValuesDetails();
     assertNull(compareResponseComparedValuesDetailsModel.getFeatureVector());
-    assertNull(compareResponseComparedValuesDetailsModel.getDistance());
-    assertNull(compareResponseComparedValuesDetailsModel.getScore());
     assertNull(compareResponseComparedValuesDetailsModel.getDetails());
+    assertNull(compareResponseComparedValuesDetailsModel.getScore());
+    assertNull(compareResponseComparedValuesDetailsModel.getDistance());
     assertNull(compareResponseComparedValuesDetailsModel.getValues());
     assertNull(compareResponseComparedValuesDetailsModel.getTypes());
   }

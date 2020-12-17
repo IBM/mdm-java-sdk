@@ -46,6 +46,7 @@ public class ExportResponseTest {
     assertNull(exportResponseModel.getProcessIds());
     assertNull(exportResponseModel.getFileName());
     assertNull(exportResponseModel.isFileExpired());
+    assertNull(exportResponseModel.getExportType());
     assertNull(exportResponseModel.getSearchCriteria());
   }
 }

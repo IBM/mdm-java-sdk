@@ -23,14 +23,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmBucketStep extends GenericModel {
 
-  protected List<Long> inputs;
+  protected Boolean order;
   @SerializedName("comparison_resource")
   protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
-  protected Boolean order;
+  protected List<Long> inputs;
   protected String method;
   protected List<String> fields;
   protected String label;
@@ -39,21 +39,21 @@ public class AlgorithmBucketStep extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private List<Long> inputs;
+    private Boolean order;
     private String comparisonResource;
     private String setResource;
     private String mapResource;
-    private Boolean order;
+    private List<Long> inputs;
     private String method;
     private List<String> fields;
     private String label;
 
     private Builder(AlgorithmBucketStep algorithmBucketStep) {
-      this.inputs = algorithmBucketStep.inputs;
+      this.order = algorithmBucketStep.order;
       this.comparisonResource = algorithmBucketStep.comparisonResource;
       this.setResource = algorithmBucketStep.setResource;
       this.mapResource = algorithmBucketStep.mapResource;
-      this.order = algorithmBucketStep.order;
+      this.inputs = algorithmBucketStep.inputs;
       this.method = algorithmBucketStep.method;
       this.fields = algorithmBucketStep.fields;
       this.label = algorithmBucketStep.label;
@@ -118,14 +118,13 @@ public class AlgorithmBucketStep extends GenericModel {
     }
 
     /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
+     * Set the order.
      *
-     * @param inputs the inputs
+     * @param order the order
      * @return the AlgorithmBucketStep builder
      */
-    public Builder inputs(List<Long> inputs) {
-      this.inputs = inputs;
+    public Builder order(Boolean order) {
+      this.order = order;
       return this;
     }
 
@@ -163,13 +162,14 @@ public class AlgorithmBucketStep extends GenericModel {
     }
 
     /**
-     * Set the order.
+     * Set the inputs.
+     * Existing inputs will be replaced.
      *
-     * @param order the order
+     * @param inputs the inputs
      * @return the AlgorithmBucketStep builder
      */
-    public Builder order(Boolean order) {
-      this.order = order;
+    public Builder inputs(List<Long> inputs) {
+      this.inputs = inputs;
       return this;
     }
 
@@ -213,11 +213,11 @@ public class AlgorithmBucketStep extends GenericModel {
       "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    inputs = builder.inputs;
+    order = builder.order;
     comparisonResource = builder.comparisonResource;
     setResource = builder.setResource;
     mapResource = builder.mapResource;
-    order = builder.order;
+    inputs = builder.inputs;
     method = builder.method;
     fields = builder.fields;
     label = builder.label;
@@ -233,14 +233,14 @@ public class AlgorithmBucketStep extends GenericModel {
   }
 
   /**
-   * Gets the inputs.
+   * Gets the order.
    *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   * True the tokens within the same input will be pre-sorted alphabetically.
    *
-   * @return the inputs
+   * @return the order
    */
-  public List<Long> inputs() {
-    return inputs;
+  public Boolean order() {
+    return order;
   }
 
   /**
@@ -277,14 +277,14 @@ public class AlgorithmBucketStep extends GenericModel {
   }
 
   /**
-   * Gets the order.
+   * Gets the inputs.
    *
-   * True the tokens within the same input will be pre-sorted alphabetically.
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
-   * @return the order
+   * @return the inputs
    */
-  public Boolean order() {
-    return order;
+  public List<Long> inputs() {
+    return inputs;
   }
 
   /**

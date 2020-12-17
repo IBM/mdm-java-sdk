@@ -22,8 +22,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmBucketGroupStep extends GenericModel {
 
-  protected List<Long> inputs;
   protected Boolean order;
+  protected List<Long> inputs;
   protected String method;
   protected List<List<String>> fields;
   protected String label;
@@ -32,15 +32,15 @@ public class AlgorithmBucketGroupStep extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private List<Long> inputs;
     private Boolean order;
+    private List<Long> inputs;
     private String method;
     private List<List<String>> fields;
     private String label;
 
     private Builder(AlgorithmBucketGroupStep algorithmBucketGroupStep) {
-      this.inputs = algorithmBucketGroupStep.inputs;
       this.order = algorithmBucketGroupStep.order;
+      this.inputs = algorithmBucketGroupStep.inputs;
       this.method = algorithmBucketGroupStep.method;
       this.fields = algorithmBucketGroupStep.fields;
       this.label = algorithmBucketGroupStep.label;
@@ -109,6 +109,17 @@ public class AlgorithmBucketGroupStep extends GenericModel {
     }
 
     /**
+     * Set the order.
+     *
+     * @param order the order
+     * @return the AlgorithmBucketGroupStep builder
+     */
+    public Builder order(Boolean order) {
+      this.order = order;
+      return this;
+    }
+
+    /**
      * Set the inputs.
      * Existing inputs will be replaced.
      *
@@ -117,17 +128,6 @@ public class AlgorithmBucketGroupStep extends GenericModel {
      */
     public Builder inputs(List<Long> inputs) {
       this.inputs = inputs;
-      return this;
-    }
-
-    /**
-     * Set the order.
-     *
-     * @param order the order
-     * @return the AlgorithmBucketGroupStep builder
-     */
-    public Builder order(Boolean order) {
-      this.order = order;
       return this;
     }
 
@@ -175,8 +175,8 @@ public class AlgorithmBucketGroupStep extends GenericModel {
       "fields cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    inputs = builder.inputs;
     order = builder.order;
+    inputs = builder.inputs;
     method = builder.method;
     fields = builder.fields;
     label = builder.label;
@@ -192,17 +192,6 @@ public class AlgorithmBucketGroupStep extends GenericModel {
   }
 
   /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> inputs() {
-    return inputs;
-  }
-
-  /**
    * Gets the order.
    *
    * True the tokens within the same input will be pre-sorted alphabetically.
@@ -211,6 +200,17 @@ public class AlgorithmBucketGroupStep extends GenericModel {
    */
   public Boolean order() {
     return order;
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   *
+   * @return the inputs
+   */
+  public List<Long> inputs() {
+    return inputs;
   }
 
   /**

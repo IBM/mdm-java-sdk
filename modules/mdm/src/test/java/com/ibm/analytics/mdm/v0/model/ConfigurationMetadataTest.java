@@ -32,19 +32,13 @@ public class ConfigurationMetadataTest {
   @Test
   public void testConfigurationMetadata() throws Throwable {
     ConfigurationMetadata configurationMetadataModel = new ConfigurationMetadata.Builder()
-      .storageType("Cloud storage")
       .projectId("0e4bb17d-4871-40a5-b5a1-55b2866fe000")
       .catalogId("ee1de5f6-54da-4246-95bc-7bc282151000")
-      .collaborators("AP")
-      .role("admin")
       .description("Example configuration")
       .name("Configuration 1")
       .build();
-    assertEquals(configurationMetadataModel.storageType(), "Cloud storage");
     assertEquals(configurationMetadataModel.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");
     assertEquals(configurationMetadataModel.catalogId(), "ee1de5f6-54da-4246-95bc-7bc282151000");
-    assertEquals(configurationMetadataModel.collaborators(), "AP");
-    assertEquals(configurationMetadataModel.role(), "admin");
     assertEquals(configurationMetadataModel.description(), "Example configuration");
     assertEquals(configurationMetadataModel.name(), "Configuration 1");
 
@@ -52,11 +46,8 @@ public class ConfigurationMetadataTest {
 
     ConfigurationMetadata configurationMetadataModelNew = TestUtilities.deserialize(json, ConfigurationMetadata.class);
     assertTrue(configurationMetadataModelNew instanceof ConfigurationMetadata);
-    assertEquals(configurationMetadataModelNew.storageType(), "Cloud storage");
     assertEquals(configurationMetadataModelNew.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");
     assertEquals(configurationMetadataModelNew.catalogId(), "ee1de5f6-54da-4246-95bc-7bc282151000");
-    assertEquals(configurationMetadataModelNew.collaborators(), "AP");
-    assertEquals(configurationMetadataModelNew.role(), "admin");
     assertEquals(configurationMetadataModelNew.description(), "Example configuration");
     assertEquals(configurationMetadataModelNew.name(), "Configuration 1");
   }

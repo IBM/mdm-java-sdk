@@ -35,36 +35,36 @@ public class ReplaceConfigurationAssetOptionsTest {
   @Test
   public void testReplaceConfigurationAssetOptions() throws Throwable {
     AssetMapping assetMappingModel = new AssetMapping.Builder()
-      .completenessPercent("string")
-      .dataMappingAttributeType("string")
       .classifiedClass("GEN")
       .dataMappingName("gender")
       .excludeColumn(false)
       .autoMapped(true)
+      .completenessPercent("string")
+      .dataMappingAttributeType("string")
       .key("COLUMN 1")
       .build();
-    assertEquals(assetMappingModel.completenessPercent(), "string");
-    assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.classifiedClass(), "GEN");
     assertEquals(assetMappingModel.dataMappingName(), "gender");
     assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
+    assertEquals(assetMappingModel.completenessPercent(), "string");
+    assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.key(), "COLUMN 1");
 
     ReplaceConfigurationAssetOptions replaceConfigurationAssetOptionsModel = new ReplaceConfigurationAssetOptions.Builder()
       .assetId("testString")
       .crn("testString")
-      .assetName("Person10k.csv")
       .assetStatus("Mapped")
-      .assetMappings(new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)))
+      .assetName("Person10k.csv")
       .assetCreatedDate("testString")
+      .assetMappings(new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)))
       .build();
     assertEquals(replaceConfigurationAssetOptionsModel.assetId(), "testString");
     assertEquals(replaceConfigurationAssetOptionsModel.crn(), "testString");
-    assertEquals(replaceConfigurationAssetOptionsModel.assetName(), "Person10k.csv");
     assertEquals(replaceConfigurationAssetOptionsModel.assetStatus(), "Mapped");
-    assertEquals(replaceConfigurationAssetOptionsModel.assetMappings(), new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)));
+    assertEquals(replaceConfigurationAssetOptionsModel.assetName(), "Person10k.csv");
     assertEquals(replaceConfigurationAssetOptionsModel.assetCreatedDate(), "testString");
+    assertEquals(replaceConfigurationAssetOptionsModel.assetMappings(), new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

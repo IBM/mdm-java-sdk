@@ -32,8 +32,8 @@ public class EntityBreakdownTest {
   @Test
   public void testEntityBreakdown() throws Throwable {
     EntityBreakdown entityBreakdownModel = new EntityBreakdown();
-    assertNull(entityBreakdownModel.getAverage());
     assertNull(entityBreakdownModel.getStandardDeviation());
+    assertNull(entityBreakdownModel.getAverage());
     assertNull(entityBreakdownModel.getVariance());
     assertNull(entityBreakdownModel.getCount());
     assertNull(entityBreakdownModel.getMin());

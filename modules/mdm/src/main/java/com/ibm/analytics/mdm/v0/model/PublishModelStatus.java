@@ -19,19 +19,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PublishModelStatus extends GenericModel {
 
-  protected String status;
   protected String message;
-
-  /**
-   * Gets the status.
-   *
-   * status.
-   *
-   * @return the status
-   */
-  public String getStatus() {
-    return status;
-  }
+  protected String status;
 
   /**
    * Gets the message.
@@ -42,6 +31,17 @@ public class PublishModelStatus extends GenericModel {
    */
   public String getMessage() {
     return message;
+  }
+
+  /**
+   * Gets the status.
+   *
+   * status.
+   *
+   * @return the status
+   */
+  public String getStatus() {
+    return status;
   }
 }
 

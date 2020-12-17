@@ -22,25 +22,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseBucketGenerator extends GenericModel {
 
-  protected List<PutAlgorithmResponseInput> inputs;
   @SerializedName("bucket_group_recipe")
   protected List<PutAlgorithmResponseBucketGroupStep> bucketGroupRecipe;
   @SerializedName("maximum_bucket_size")
   protected Long maximumBucketSize;
   @SerializedName("bucket_recipe")
   protected List<PutAlgorithmResponseBucketStep> bucketRecipe;
+  protected List<PutAlgorithmResponseInput> inputs;
   protected String label;
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of input definitions used for bucket generator.
-   *
-   * @return the inputs
-   */
-  public List<PutAlgorithmResponseInput> getInputs() {
-    return inputs;
-  }
 
   /**
    * Gets the bucketGroupRecipe.
@@ -73,6 +62,17 @@ public class PutAlgorithmResponseBucketGenerator extends GenericModel {
    */
   public List<PutAlgorithmResponseBucketStep> getBucketRecipe() {
     return bucketRecipe;
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of input definitions used for bucket generator.
+   *
+   * @return the inputs
+   */
+  public List<PutAlgorithmResponseInput> getInputs() {
+    return inputs;
   }
 
   /**

@@ -32,27 +32,27 @@ public class SystemPropertiesForRecordTypesTest {
   @Test
   public void testSystemPropertiesForRecordTypes() throws Throwable {
     SystemPropertiesForRecordTypes systemPropertiesForRecordTypesModel = new SystemPropertiesForRecordTypes.Builder()
-      .label("testString")
       .dataType("testString")
-      .editable(true)
-      .description("testString")
       .indexed(true)
+      .editable(true)
+      .label("testString")
+      .description("testString")
       .build();
-    assertEquals(systemPropertiesForRecordTypesModel.label(), "testString");
     assertEquals(systemPropertiesForRecordTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesForRecordTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForRecordTypesModel.description(), "testString");
     assertEquals(systemPropertiesForRecordTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForRecordTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForRecordTypesModel.label(), "testString");
+    assertEquals(systemPropertiesForRecordTypesModel.description(), "testString");
 
     String json = TestUtilities.serialize(systemPropertiesForRecordTypesModel);
 
     SystemPropertiesForRecordTypes systemPropertiesForRecordTypesModelNew = TestUtilities.deserialize(json, SystemPropertiesForRecordTypes.class);
     assertTrue(systemPropertiesForRecordTypesModelNew instanceof SystemPropertiesForRecordTypes);
-    assertEquals(systemPropertiesForRecordTypesModelNew.label(), "testString");
     assertEquals(systemPropertiesForRecordTypesModelNew.dataType(), "testString");
-    assertEquals(systemPropertiesForRecordTypesModelNew.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForRecordTypesModelNew.description(), "testString");
     assertEquals(systemPropertiesForRecordTypesModelNew.indexed(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForRecordTypesModelNew.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForRecordTypesModelNew.label(), "testString");
+    assertEquals(systemPropertiesForRecordTypesModelNew.description(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

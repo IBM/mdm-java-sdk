@@ -35,13 +35,13 @@ public class DataModelAttributeTypeTest {
   @Test
   public void testDataModelAttributeType() throws Throwable {
     DataModelField dataModelFieldModel = new DataModelField.Builder()
-      .classification("testString")
       .indexed(true)
+      .classification("testString")
       .description("testString")
       .label("testString")
       .build();
-    assertEquals(dataModelFieldModel.classification(), "testString");
     assertEquals(dataModelFieldModel.indexed(), Boolean.valueOf(true));
+    assertEquals(dataModelFieldModel.classification(), "testString");
     assertEquals(dataModelFieldModel.description(), "testString");
     assertEquals(dataModelFieldModel.label(), "testString");
 

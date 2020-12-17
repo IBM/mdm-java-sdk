@@ -20,8 +20,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseRelationshipTypeSystemProperties extends GenericModel {
 
-  @SerializedName("relationship_type")
-  protected PutDataModelResponseSystemProperty relationshipType;
   @SerializedName("from_record_id")
   protected PutDataModelResponseSystemProperty fromRecordId;
   @SerializedName("to_record_id")
@@ -46,17 +44,8 @@ public class PutDataModelResponseRelationshipTypeSystemProperties extends Generi
   protected PutDataModelResponseSystemProperty toRecordSource;
   @SerializedName("relationship_id")
   protected PutDataModelResponseSystemProperty relationshipId;
-
-  /**
-   * Gets the relationshipType.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the relationshipType
-   */
-  public PutDataModelResponseSystemProperty getRelationshipType() {
-    return relationshipType;
-  }
+  @SerializedName("relationship_type")
+  protected PutDataModelResponseSystemProperty relationshipType;
 
   /**
    * Gets the fromRecordId.
@@ -188,6 +177,17 @@ public class PutDataModelResponseRelationshipTypeSystemProperties extends Generi
    */
   public PutDataModelResponseSystemProperty getRelationshipId() {
     return relationshipId;
+  }
+
+  /**
+   * Gets the relationshipType.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the relationshipType
+   */
+  public PutDataModelResponseSystemProperty getRelationshipType() {
+    return relationshipType;
   }
 }
 

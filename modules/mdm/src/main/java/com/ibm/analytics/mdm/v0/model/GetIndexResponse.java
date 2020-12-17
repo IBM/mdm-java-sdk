@@ -23,24 +23,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetIndexResponse extends GenericModel {
 
-  @SerializedName("standardized_values")
-  protected String standardizedValues;
   @SerializedName("self_scores")
   protected Map<String, Object> selfScores;
-  protected List<Long> buckets;
+  @SerializedName("standardized_values")
+  protected String standardizedValues;
   @SerializedName("record_number")
   protected String recordNumber;
-
-  /**
-   * Gets the standardizedValues.
-   *
-   * Collection of a record's standardized values, primarily used for record comparison.
-   *
-   * @return the standardizedValues
-   */
-  public String getStandardizedValues() {
-    return standardizedValues;
-  }
+  protected List<Long> buckets;
 
   /**
    * Gets the selfScores.
@@ -54,14 +43,14 @@ public class GetIndexResponse extends GenericModel {
   }
 
   /**
-   * Gets the buckets.
+   * Gets the standardizedValues.
    *
-   * Collection of a record's bucket hashes, primarily used for efficient entity resolution.
+   * Collection of a record's standardized values, primarily used for record comparison.
    *
-   * @return the buckets
+   * @return the standardizedValues
    */
-  public List<Long> getBuckets() {
-    return buckets;
+  public String getStandardizedValues() {
+    return standardizedValues;
   }
 
   /**
@@ -73,6 +62,17 @@ public class GetIndexResponse extends GenericModel {
    */
   public String getRecordNumber() {
     return recordNumber;
+  }
+
+  /**
+   * Gets the buckets.
+   *
+   * Collection of a record's bucket hashes, primarily used for efficient entity resolution.
+   *
+   * @return the buckets
+   */
+  public List<Long> getBuckets() {
+    return buckets;
   }
 }
 

@@ -33,9 +33,9 @@ public class PostSearchResponseComparisonTest {
   public void testPostSearchResponseComparison() throws Throwable {
     PostSearchResponseComparison postSearchResponseComparisonModel = new PostSearchResponseComparison();
     assertNull(postSearchResponseComparisonModel.getFeatureVector());
-    assertNull(postSearchResponseComparisonModel.getDistance());
-    assertNull(postSearchResponseComparisonModel.getScore());
     assertNull(postSearchResponseComparisonModel.getDetails());
+    assertNull(postSearchResponseComparisonModel.getScore());
+    assertNull(postSearchResponseComparisonModel.getDistance());
     assertNull(postSearchResponseComparisonModel.getValues());
     assertNull(postSearchResponseComparisonModel.getTypes());
   }

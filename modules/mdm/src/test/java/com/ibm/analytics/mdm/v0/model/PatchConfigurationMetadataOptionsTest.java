@@ -35,20 +35,14 @@ public class PatchConfigurationMetadataOptionsTest {
       .crn("testString")
       .description("Example configuration")
       .name("Configuration 1")
-      .storageType("Cloud storage")
       .projectId("0e4bb17d-4871-40a5-b5a1-55b2866fe000")
       .catalogId("ee1de5f6-54da-4246-95bc-7bc282151000")
-      .collaborators("AP")
-      .role("admin")
       .build();
     assertEquals(patchConfigurationMetadataOptionsModel.crn(), "testString");
     assertEquals(patchConfigurationMetadataOptionsModel.description(), "Example configuration");
     assertEquals(patchConfigurationMetadataOptionsModel.name(), "Configuration 1");
-    assertEquals(patchConfigurationMetadataOptionsModel.storageType(), "Cloud storage");
     assertEquals(patchConfigurationMetadataOptionsModel.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");
     assertEquals(patchConfigurationMetadataOptionsModel.catalogId(), "ee1de5f6-54da-4246-95bc-7bc282151000");
-    assertEquals(patchConfigurationMetadataOptionsModel.collaborators(), "AP");
-    assertEquals(patchConfigurationMetadataOptionsModel.role(), "admin");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

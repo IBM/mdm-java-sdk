@@ -22,16 +22,38 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutCompareSpecResourcesResponseCompareSpecResources extends GenericModel {
 
+  @SerializedName("feature_categories")
+  protected Map<String, PutCompareSpecResourcesResponseFeatureCategory> featureCategories;
+  @SerializedName("typo_distance")
+  protected Float typoDistance;
   @SerializedName("similar_characters_map_resource")
   protected String similarCharactersMapResource;
   @SerializedName("feature_coefficients")
   protected Map<String, Float> featureCoefficients;
   @SerializedName("similar_characters_distance")
   protected Float similarCharactersDistance;
-  @SerializedName("typo_distance")
-  protected Float typoDistance;
-  @SerializedName("feature_categories")
-  protected Map<String, PutCompareSpecResourcesResponseFeatureCategory> featureCategories;
+
+  /**
+   * Gets the featureCategories.
+   *
+   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
+   *
+   * @return the featureCategories
+   */
+  public Map<String, PutCompareSpecResourcesResponseFeatureCategory> getFeatureCategories() {
+    return featureCategories;
+  }
+
+  /**
+   * Gets the typoDistance.
+   *
+   * The distance factor for each occurence of typographical error. The value must be between 0 to 1.
+   *
+   * @return the typoDistance
+   */
+  public Float getTypoDistance() {
+    return typoDistance;
+  }
 
   /**
    * Gets the similarCharactersMapResource.
@@ -66,28 +88,6 @@ public class PutCompareSpecResourcesResponseCompareSpecResources extends Generic
    */
   public Float getSimilarCharactersDistance() {
     return similarCharactersDistance;
-  }
-
-  /**
-   * Gets the typoDistance.
-   *
-   * The distance factor for each occurence of typographical error. The value must be between 0 to 1.
-   *
-   * @return the typoDistance
-   */
-  public Float getTypoDistance() {
-    return typoDistance;
-  }
-
-  /**
-   * Gets the featureCategories.
-   *
-   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
-   *
-   * @return the featureCategories
-   */
-  public Map<String, PutCompareSpecResourcesResponseFeatureCategory> getFeatureCategories() {
-    return featureCategories;
   }
 }
 

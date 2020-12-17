@@ -36,7 +36,7 @@ public class PutAlgorithmResponseMethodsTest {
   @Test
   public void testPutAlgorithmResponseMethods() throws Throwable {
     PutAlgorithmResponseMethods putAlgorithmResponseMethodsModel = new PutAlgorithmResponseMethods();
-    assertNull(putAlgorithmResponseMethodsModel.getInputs());
     assertNull(putAlgorithmResponseMethodsModel.getCompareRecipe());
+    assertNull(putAlgorithmResponseMethodsModel.getInputs());
   }
 }

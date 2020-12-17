@@ -51,38 +51,38 @@ public class DataModelRelationshipTypeTest {
     assertEquals(dataModelRelationshipRuleModel.target(), dataModelRelationshipEndpointModel);
 
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
-      .classification("testString")
       .indexed(true)
       .matchingType("testString")
+      .classification("testString")
       .attributeType("testString")
-      .description("testString")
       .cardinality("testString")
+      .description("testString")
       .label("testString")
       .build();
-    assertEquals(dataModelAttributeModel.classification(), "testString");
     assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelAttributeModel.matchingType(), "testString");
+    assertEquals(dataModelAttributeModel.classification(), "testString");
     assertEquals(dataModelAttributeModel.attributeType(), "testString");
-    assertEquals(dataModelAttributeModel.description(), "testString");
     assertEquals(dataModelAttributeModel.cardinality(), "testString");
+    assertEquals(dataModelAttributeModel.description(), "testString");
     assertEquals(dataModelAttributeModel.label(), "testString");
 
     DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
       .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
-      .labelFromSource("testString")
       .labelFromTarget("testString")
       .directional(true)
-      .description("testString")
+      .labelFromSource("testString")
       .cardinality("testString")
+      .description("testString")
       .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
       .label("testString")
       .build();
     assertEquals(dataModelRelationshipTypeModel.rules(), new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)));
-    assertEquals(dataModelRelationshipTypeModel.labelFromSource(), "testString");
     assertEquals(dataModelRelationshipTypeModel.labelFromTarget(), "testString");
     assertEquals(dataModelRelationshipTypeModel.directional(), Boolean.valueOf(true));
-    assertEquals(dataModelRelationshipTypeModel.description(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.labelFromSource(), "testString");
     assertEquals(dataModelRelationshipTypeModel.cardinality(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.description(), "testString");
     assertEquals(dataModelRelationshipTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
     assertEquals(dataModelRelationshipTypeModel.label(), "testString");
 
@@ -90,11 +90,11 @@ public class DataModelRelationshipTypeTest {
 
     DataModelRelationshipType dataModelRelationshipTypeModelNew = TestUtilities.deserialize(json, DataModelRelationshipType.class);
     assertTrue(dataModelRelationshipTypeModelNew instanceof DataModelRelationshipType);
-    assertEquals(dataModelRelationshipTypeModelNew.labelFromSource(), "testString");
     assertEquals(dataModelRelationshipTypeModelNew.labelFromTarget(), "testString");
     assertEquals(dataModelRelationshipTypeModelNew.directional(), Boolean.valueOf(true));
-    assertEquals(dataModelRelationshipTypeModelNew.description(), "testString");
+    assertEquals(dataModelRelationshipTypeModelNew.labelFromSource(), "testString");
     assertEquals(dataModelRelationshipTypeModelNew.cardinality(), "testString");
+    assertEquals(dataModelRelationshipTypeModelNew.description(), "testString");
     assertEquals(dataModelRelationshipTypeModelNew.label(), "testString");
   }
 

@@ -35,8 +35,8 @@ public class PutCompositeRulesResponseRecordTypeTest {
   @Test
   public void testPutCompositeRulesResponseRecordType() throws Throwable {
     PutCompositeRulesResponseRecordType putCompositeRulesResponseRecordTypeModel = new PutCompositeRulesResponseRecordType();
-    assertNull(putCompositeRulesResponseRecordTypeModel.getAttributeRules());
     assertNull(putCompositeRulesResponseRecordTypeModel.getRecordTypeRule());
     assertNull(putCompositeRulesResponseRecordTypeModel.getEntityRules());
+    assertNull(putCompositeRulesResponseRecordTypeModel.getAttributeRules());
   }
 }

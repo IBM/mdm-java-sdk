@@ -22,27 +22,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseBucketStep extends GenericModel {
 
-  protected List<Long> inputs;
+  protected Boolean order;
   @SerializedName("comparison_resource")
   protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
-  protected Boolean order;
+  protected List<Long> inputs;
   protected String method;
   protected List<String> fields;
   protected String label;
 
   /**
-   * Gets the inputs.
+   * Gets the order.
    *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   * True the tokens within the same input will be pre-sorted alphabetically.
    *
-   * @return the inputs
+   * @return the order
    */
-  public List<Long> getInputs() {
-    return inputs;
+  public Boolean isOrder() {
+    return order;
   }
 
   /**
@@ -79,14 +79,14 @@ public class PutAlgorithmResponseBucketStep extends GenericModel {
   }
 
   /**
-   * Gets the order.
+   * Gets the inputs.
    *
-   * True the tokens within the same input will be pre-sorted alphabetically.
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
-   * @return the order
+   * @return the inputs
    */
-  public Boolean isOrder() {
-    return order;
+  public List<Long> getInputs() {
+    return inputs;
   }
 
   /**
