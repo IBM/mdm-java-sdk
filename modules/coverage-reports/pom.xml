@@ -4,7 +4,7 @@
     <parent>
         <!-- >>> Update this to reflect your parent project's artifact id -->
         <artifactId>mdm-parent</artifactId>
-        <groupId>com.ibm.analytics</groupId>
+        <groupId>com.ibm.cloud</groupId>
         <version>0.0.1</version>
         <relativePath>../..</relativePath>
     </parent>
