@@ -5,7 +5,7 @@
 
     <parent>
         <artifactId>mdm-parent</artifactId>
-        <groupId>com.ibm.analytics</groupId>
+        <groupId>com.ibm.cloud</groupId>
         <version>0.0.1</version>
         <relativePath>../..</relativePath>
     </parent>
@@ -24,12 +24,12 @@
 	        in each module's pom.xml file (i.e. not the module's directory name).
         -->
         <dependency>
-            <groupId>com.ibm.analytics</groupId>
+            <groupId>com.ibm.cloud</groupId>
             <artifactId>mdm-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.ibm.analytics</groupId>
+            <groupId>com.ibm.cloud</groupId>
             <artifactId>mdm</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -55,7 +55,7 @@
         <configuration>
             <archive>
                 <manifest>
-                    <mainClass>com.ibm.analytics.mdm.v0.MdmExamples</mainClass>
+                    <mainClass>com.ibm.cloud.mdm.v0.MdmExamples</mainClass>
                 </manifest>
             </archive>
         </configuration>

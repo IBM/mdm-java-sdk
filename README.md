@@ -39,7 +39,7 @@ The IBM Cloud Master Data Management Java SDK allows developers to programmatica
 
 Service Name | Artifact Coordinates
 --- | ---
-<!-- [Master Data Management](https://cloud.ibm.com/apidocs/mdm) | com.ibm.analytics:mdm:0.0.2 -->
+<!-- [Master Data Management](https://cloud.ibm.com/apidocs/mdm) | com.ibm.cloud:mdm:0.0.2 -->
 
 ## Prerequisites
 
@@ -70,7 +70,7 @@ artifact coordinates (group id, artifact id and version) for the service, like t
 
 ```xml
 <dependency>
-    <groupId>com.ibm.analytics</groupId>
+    <groupId>com.ibm.cloud</groupId>
     <artifactId>mdm</artifactId>
     <version>0.0.2</version>
 </dependency>
@@ -78,7 +78,7 @@ artifact coordinates (group id, artifact id and version) for the service, like t
 
 ##### Gradle
 ```gradle
-'com.ibm.analytics:mdm:0.0.2'
+'com.ibm.cloud:mdm:0.0.2'
 ```
 
 ## Using the SDK

@@ -20,8 +20,8 @@ pkgversion=$5
 
 # List of maven artifacts to be sync'd from bintray to maven central"
 package_names="
-com.ibm.analytics:mdm-common
-com.ibm.analytics:mdm"
+com.ibm.cloud:mdm-common
+com.ibm.cloud:mdm"
 
 this_dir=`dirname "$0"`
 
