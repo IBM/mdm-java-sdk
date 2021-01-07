@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.23.0-cea909d1-20201230-184314
+ * IBM OpenAPI SDK Code Generator Version: 3.19.0-be3b4618-20201113-200858
  */
 
 package com.ibm.cloud.mdm.v0;
