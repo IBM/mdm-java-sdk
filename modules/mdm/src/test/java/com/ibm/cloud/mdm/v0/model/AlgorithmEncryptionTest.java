@@ -34,13 +34,13 @@ public class AlgorithmEncryptionTest {
   @Test
   public void testAlgorithmEncryption() throws Throwable {
     AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
-      .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .subType("testString")
+      .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .type("testString")
       .enabled(true)
       .build();
-    assertEquals(algorithmEncryptionModel.pubKey(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmEncryptionModel.subType(), "testString");
+    assertEquals(algorithmEncryptionModel.pubKey(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmEncryptionModel.type(), "testString");
     assertEquals(algorithmEncryptionModel.enabled(), Boolean.valueOf(true));
 

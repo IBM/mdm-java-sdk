@@ -36,8 +36,8 @@ public class PutCompareSpecResourcesResponseTest {
   @Test
   public void testPutCompareSpecResourcesResponse() throws Throwable {
     PutCompareSpecResourcesResponse putCompareSpecResourcesResponseModel = new PutCompareSpecResourcesResponse();
-    assertNull(putCompareSpecResourcesResponseModel.getCompareSpecResources());
     assertNull(putCompareSpecResourcesResponseModel.getFlowId());
     assertNull(putCompareSpecResourcesResponseModel.getFlowState());
+    assertNull(putCompareSpecResourcesResponseModel.getCompareSpecResources());
   }
 }

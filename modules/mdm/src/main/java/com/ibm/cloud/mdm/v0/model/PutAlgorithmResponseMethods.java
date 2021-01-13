@@ -22,20 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseMethods extends GenericModel {
 
+  protected List<PutAlgorithmResponseInput> inputs;
   @SerializedName("compare_recipe")
   protected List<PutAlgorithmResponseCompareStep> compareRecipe;
-  protected List<PutAlgorithmResponseInput> inputs;
-
-  /**
-   * Gets the compareRecipe.
-   *
-   * Collection of compare method steps.
-   *
-   * @return the compareRecipe
-   */
-  public List<PutAlgorithmResponseCompareStep> getCompareRecipe() {
-    return compareRecipe;
-  }
 
   /**
    * Gets the inputs.
@@ -46,6 +35,17 @@ public class PutAlgorithmResponseMethods extends GenericModel {
    */
   public List<PutAlgorithmResponseInput> getInputs() {
     return inputs;
+  }
+
+  /**
+   * Gets the compareRecipe.
+   *
+   * Collection of compare method steps.
+   *
+   * @return the compareRecipe
+   */
+  public List<PutAlgorithmResponseCompareStep> getCompareRecipe() {
+    return compareRecipe;
   }
 }
 

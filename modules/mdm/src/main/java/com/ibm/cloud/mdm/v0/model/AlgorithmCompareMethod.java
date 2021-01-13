@@ -22,21 +22,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmCompareMethod extends GenericModel {
 
-  protected List<Float> weights;
   protected List<AlgorithmMethods> methods;
+  protected List<Float> weights;
   protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<Float> weights;
     private List<AlgorithmMethods> methods;
+    private List<Float> weights;
     private String label;
 
     private Builder(AlgorithmCompareMethod algorithmCompareMethod) {
-      this.weights = algorithmCompareMethod.weights;
       this.methods = algorithmCompareMethod.methods;
+      this.weights = algorithmCompareMethod.weights;
       this.label = algorithmCompareMethod.label;
     }
 
@@ -65,22 +65,6 @@ public class AlgorithmCompareMethod extends GenericModel {
     }
 
     /**
-     * Adds an weights to weights.
-     *
-     * @param weights the new weights
-     * @return the AlgorithmCompareMethod builder
-     */
-    public Builder addWeights(Float weights) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(weights,
-        "weights cannot be null");
-      if (this.weights == null) {
-        this.weights = new ArrayList<Float>();
-      }
-      this.weights.add(weights);
-      return this;
-    }
-
-    /**
      * Adds an methods to methods.
      *
      * @param methods the new methods
@@ -97,14 +81,18 @@ public class AlgorithmCompareMethod extends GenericModel {
     }
 
     /**
-     * Set the weights.
-     * Existing weights will be replaced.
+     * Adds an weights to weights.
      *
-     * @param weights the weights
+     * @param weights the new weights
      * @return the AlgorithmCompareMethod builder
      */
-    public Builder weights(List<Float> weights) {
-      this.weights = weights;
+    public Builder addWeights(Float weights) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(weights,
+        "weights cannot be null");
+      if (this.weights == null) {
+        this.weights = new ArrayList<Float>();
+      }
+      this.weights.add(weights);
       return this;
     }
 
@@ -117,6 +105,18 @@ public class AlgorithmCompareMethod extends GenericModel {
      */
     public Builder methods(List<AlgorithmMethods> methods) {
       this.methods = methods;
+      return this;
+    }
+
+    /**
+     * Set the weights.
+     * Existing weights will be replaced.
+     *
+     * @param weights the weights
+     * @return the AlgorithmCompareMethod builder
+     */
+    public Builder weights(List<Float> weights) {
+      this.weights = weights;
       return this;
     }
 
@@ -135,8 +135,8 @@ public class AlgorithmCompareMethod extends GenericModel {
   protected AlgorithmCompareMethod(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    weights = builder.weights;
     methods = builder.methods;
+    weights = builder.weights;
     label = builder.label;
   }
 
@@ -150,17 +150,6 @@ public class AlgorithmCompareMethod extends GenericModel {
   }
 
   /**
-   * Gets the weights.
-   *
-   * An array of 11 weights that map to the distance measures from 0 to 10.
-   *
-   * @return the weights
-   */
-  public List<Float> weights() {
-    return weights;
-  }
-
-  /**
    * Gets the methods.
    *
    * Collection of compare methods, considered in the same group.
@@ -169,6 +158,17 @@ public class AlgorithmCompareMethod extends GenericModel {
    */
   public List<AlgorithmMethods> methods() {
     return methods;
+  }
+
+  /**
+   * Gets the weights.
+   *
+   * An array of 11 weights that map to the distance measures from 0 to 10.
+   *
+   * @return the weights
+   */
+  public List<Float> weights() {
+    return weights;
   }
 
   /**

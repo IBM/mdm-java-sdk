@@ -23,30 +23,19 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class PutAlgorithmResponseBucketGenerator extends DynamicModel<Object> {
 
-  @SerializedName("bucket_recipe")
-  protected List<PutAlgorithmResponseBucketStep> bucketRecipe;
   @SerializedName("bucket_group_recipe")
   protected List<PutAlgorithmResponseBucketGroupStep> bucketGroupRecipe;
-  @SerializedName("inputs")
-  protected List<PutAlgorithmResponseInput> inputs;
   @SerializedName("maximum_bucket_size")
   protected Long maximumBucketSize;
+  @SerializedName("bucket_recipe")
+  protected List<PutAlgorithmResponseBucketStep> bucketRecipe;
+  @SerializedName("inputs")
+  protected List<PutAlgorithmResponseInput> inputs;
   @SerializedName("label")
   protected String label;
 
   public PutAlgorithmResponseBucketGenerator() {
     super(new TypeToken<Object>() { });
-  }
-
-  /**
-   * Gets the bucketRecipe.
-   *
-   * Collection of bucket generator steps.
-   *
-   * @return the bucketRecipe
-   */
-  public List<PutAlgorithmResponseBucketStep> getBucketRecipe() {
-    return this.bucketRecipe;
   }
 
   /**
@@ -61,17 +50,6 @@ public class PutAlgorithmResponseBucketGenerator extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the inputs.
-   *
-   * Collection of input definitions used for bucket generator.
-   *
-   * @return the inputs
-   */
-  public List<PutAlgorithmResponseInput> getInputs() {
-    return this.inputs;
-  }
-
-  /**
    * Gets the maximumBucketSize.
    *
    * An integer value indicating maximum size of any buckets of this type.
@@ -80,6 +58,28 @@ public class PutAlgorithmResponseBucketGenerator extends DynamicModel<Object> {
    */
   public Long getMaximumBucketSize() {
     return this.maximumBucketSize;
+  }
+
+  /**
+   * Gets the bucketRecipe.
+   *
+   * Collection of bucket generator steps.
+   *
+   * @return the bucketRecipe
+   */
+  public List<PutAlgorithmResponseBucketStep> getBucketRecipe() {
+    return this.bucketRecipe;
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of input definitions used for bucket generator.
+   *
+   * @return the inputs
+   */
+  public List<PutAlgorithmResponseInput> getInputs() {
+    return this.inputs;
   }
 
   /**

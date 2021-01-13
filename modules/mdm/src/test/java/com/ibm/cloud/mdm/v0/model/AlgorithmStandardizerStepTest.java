@@ -34,8 +34,8 @@ public class AlgorithmStandardizerStepTest {
   @Test
   public void testAlgorithmStandardizerStep() throws Throwable {
     AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
-      .comparisonResource("testString")
       .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .comparisonResource("testString")
       .setResource("testString")
       .mapResource("testString")
       .method("testString")
@@ -43,8 +43,8 @@ public class AlgorithmStandardizerStepTest {
       .label("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmStandardizerStepModel.getComparisonResource(), "testString");
     assertEquals(algorithmStandardizerStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
+    assertEquals(algorithmStandardizerStepModel.getComparisonResource(), "testString");
     assertEquals(algorithmStandardizerStepModel.getSetResource(), "testString");
     assertEquals(algorithmStandardizerStepModel.getMapResource(), "testString");
     assertEquals(algorithmStandardizerStepModel.getMethod(), "testString");

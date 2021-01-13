@@ -36,9 +36,9 @@ public class PutCompareSpecResourcesResponseCompareSpecResourcesTest {
   public void testPutCompareSpecResourcesResponseCompareSpecResources() throws Throwable {
     PutCompareSpecResourcesResponseCompareSpecResources putCompareSpecResourcesResponseCompareSpecResourcesModel = new PutCompareSpecResourcesResponseCompareSpecResources();
     assertNull(putCompareSpecResourcesResponseCompareSpecResourcesModel.getTypoDistance());
-    assertNull(putCompareSpecResourcesResponseCompareSpecResourcesModel.getFeatureCategories());
     assertNull(putCompareSpecResourcesResponseCompareSpecResourcesModel.getSimilarCharactersMapResource());
     assertNull(putCompareSpecResourcesResponseCompareSpecResourcesModel.getFeatureCoefficients());
     assertNull(putCompareSpecResourcesResponseCompareSpecResourcesModel.getSimilarCharactersDistance());
+    assertNull(putCompareSpecResourcesResponseCompareSpecResourcesModel.getFeatureCategories());
   }
 }

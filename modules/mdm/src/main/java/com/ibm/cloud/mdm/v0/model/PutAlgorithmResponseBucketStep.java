@@ -23,12 +23,12 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class PutAlgorithmResponseBucketStep extends DynamicModel<Object> {
 
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
   @SerializedName("inputs")
   protected List<Long> inputs;
   @SerializedName("order")
   protected Boolean order;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
@@ -42,17 +42,6 @@ public class PutAlgorithmResponseBucketStep extends DynamicModel<Object> {
 
   public PutAlgorithmResponseBucketStep() {
     super(new TypeToken<Object>() { });
-  }
-
-  /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String getComparisonResource() {
-    return this.comparisonResource;
   }
 
   /**
@@ -75,6 +64,17 @@ public class PutAlgorithmResponseBucketStep extends DynamicModel<Object> {
    */
   public Boolean isOrder() {
     return this.order;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String getComparisonResource() {
+    return this.comparisonResource;
   }
 
   /**

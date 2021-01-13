@@ -22,20 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutCompositeRulesResponseRules extends GenericModel {
 
+  protected PutCompositeRulesResponseRule global;
   @SerializedName("record_types")
   protected Map<String, PutCompositeRulesResponseRecordType> recordTypes;
-  protected PutCompositeRulesResponseRule global;
-
-  /**
-   * Gets the recordTypes.
-   *
-   * Collection of composite rule definitions per record type.
-   *
-   * @return the recordTypes
-   */
-  public Map<String, PutCompositeRulesResponseRecordType> getRecordTypes() {
-    return recordTypes;
-  }
 
   /**
    * Gets the global.
@@ -46,6 +35,17 @@ public class PutCompositeRulesResponseRules extends GenericModel {
    */
   public PutCompositeRulesResponseRule getGlobal() {
     return global;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Collection of composite rule definitions per record type.
+   *
+   * @return the recordTypes
+   */
+  public Map<String, PutCompositeRulesResponseRecordType> getRecordTypes() {
+    return recordTypes;
   }
 }
 

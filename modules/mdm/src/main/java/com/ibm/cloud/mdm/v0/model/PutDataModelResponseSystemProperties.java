@@ -24,10 +24,10 @@ public class PutDataModelResponseSystemProperties extends GenericModel {
   protected PutDataModelResponseRecordTypeSystemProperties recordTypes;
   @SerializedName("entity_types")
   protected PutDataModelResponseEntityTypeSystemProperties entityTypes;
-  @SerializedName("relationship_types")
-  protected PutDataModelResponseRelationshipTypeSystemProperties relationshipTypes;
   @SerializedName("attribute_types")
   protected PutDataModelResponseAttributeTypeSystemProperties attributeTypes;
+  @SerializedName("relationship_types")
+  protected PutDataModelResponseRelationshipTypeSystemProperties relationshipTypes;
 
   /**
    * Gets the recordTypes.
@@ -52,17 +52,6 @@ public class PutDataModelResponseSystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the relationshipTypes.
-   *
-   * Defines metadata of system properties of all relationship types.
-   *
-   * @return the relationshipTypes
-   */
-  public PutDataModelResponseRelationshipTypeSystemProperties getRelationshipTypes() {
-    return relationshipTypes;
-  }
-
-  /**
    * Gets the attributeTypes.
    *
    * Defines metadata of system properties of all attribute types.
@@ -71,6 +60,17 @@ public class PutDataModelResponseSystemProperties extends GenericModel {
    */
   public PutDataModelResponseAttributeTypeSystemProperties getAttributeTypes() {
     return attributeTypes;
+  }
+
+  /**
+   * Gets the relationshipTypes.
+   *
+   * Defines metadata of system properties of all relationship types.
+   *
+   * @return the relationshipTypes
+   */
+  public PutDataModelResponseRelationshipTypeSystemProperties getRelationshipTypes() {
+    return relationshipTypes;
   }
 }
 

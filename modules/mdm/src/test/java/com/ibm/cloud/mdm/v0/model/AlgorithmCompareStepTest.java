@@ -34,8 +34,8 @@ public class AlgorithmCompareStepTest {
   @Test
   public void testAlgorithmCompareStep() throws Throwable {
     AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-      .comparisonResource("testString")
       .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .comparisonResource("testString")
       .setResource("testString")
       .mapResource("testString")
       .method("testString")
@@ -43,8 +43,8 @@ public class AlgorithmCompareStepTest {
       .label("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmCompareStepModel.getComparisonResource(), "testString");
     assertEquals(algorithmCompareStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
+    assertEquals(algorithmCompareStepModel.getComparisonResource(), "testString");
     assertEquals(algorithmCompareStepModel.getSetResource(), "testString");
     assertEquals(algorithmCompareStepModel.getMapResource(), "testString");
     assertEquals(algorithmCompareStepModel.getMethod(), "testString");

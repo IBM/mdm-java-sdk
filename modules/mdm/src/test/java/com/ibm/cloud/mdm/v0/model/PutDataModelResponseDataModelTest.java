@@ -49,8 +49,8 @@ public class PutDataModelResponseDataModelTest {
   public void testPutDataModelResponseDataModel() throws Throwable {
     PutDataModelResponseDataModel putDataModelResponseDataModelModel = new PutDataModelResponseDataModel();
     assertNull(putDataModelResponseDataModelModel.getRecordTypes());
-    assertNull(putDataModelResponseDataModelModel.getRelationshipTypes());
     assertNull(putDataModelResponseDataModelModel.getAttributeTypes());
+    assertNull(putDataModelResponseDataModelModel.getRelationshipTypes());
     assertNull(putDataModelResponseDataModelModel.getLocale());
     assertNull(putDataModelResponseDataModelModel.getSystemProperties());
   }

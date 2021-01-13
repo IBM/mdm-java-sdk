@@ -23,10 +23,10 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class PutAlgorithmResponseStandardizerStep extends DynamicModel<Object> {
 
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
   @SerializedName("inputs")
   protected List<Long> inputs;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
@@ -43,17 +43,6 @@ public class PutAlgorithmResponseStandardizerStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String getComparisonResource() {
-    return this.comparisonResource;
-  }
-
-  /**
    * Gets the inputs.
    *
    * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
@@ -62,6 +51,17 @@ public class PutAlgorithmResponseStandardizerStep extends DynamicModel<Object> {
    */
   public List<Long> getInputs() {
     return this.inputs;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String getComparisonResource() {
+    return this.comparisonResource;
   }
 
   /**

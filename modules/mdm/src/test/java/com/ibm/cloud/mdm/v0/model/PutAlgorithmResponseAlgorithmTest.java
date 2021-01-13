@@ -45,9 +45,9 @@ public class PutAlgorithmResponseAlgorithmTest {
   @Test
   public void testPutAlgorithmResponseAlgorithm() throws Throwable {
     PutAlgorithmResponseAlgorithm putAlgorithmResponseAlgorithmModel = new PutAlgorithmResponseAlgorithm();
+    assertNull(putAlgorithmResponseAlgorithmModel.getEntityTypes());
     assertNull(putAlgorithmResponseAlgorithmModel.getStandardizers());
     assertNull(putAlgorithmResponseAlgorithmModel.getEncryption());
-    assertNull(putAlgorithmResponseAlgorithmModel.getEntityTypes());
     assertNull(putAlgorithmResponseAlgorithmModel.getLocale());
   }
 }

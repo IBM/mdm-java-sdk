@@ -45,16 +45,16 @@ public class CompareSpecResourceTest {
 
     CompareSpecResource compareSpecResourceModel = new CompareSpecResource.Builder()
       .typoDistance(Float.valueOf("36.0"))
-      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
       .similarCharactersMapResource("testString")
       .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
       .similarCharactersDistance(Float.valueOf("36.0"))
+      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
       .build();
     assertEquals(compareSpecResourceModel.typoDistance(), Float.valueOf("36.0"));
-    assertEquals(compareSpecResourceModel.featureCategories(), new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } });
     assertEquals(compareSpecResourceModel.similarCharactersMapResource(), "testString");
     assertEquals(compareSpecResourceModel.featureCoefficients(), new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } });
     assertEquals(compareSpecResourceModel.similarCharactersDistance(), Float.valueOf("36.0"));
+    assertEquals(compareSpecResourceModel.featureCategories(), new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } });
 
     String json = TestUtilities.serialize(compareSpecResourceModel);
 

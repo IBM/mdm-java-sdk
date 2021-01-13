@@ -23,8 +23,8 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
 
   protected String resourceName;
   protected Float typoDistance;
-  protected Map<String, CompareSpecResourceFeatureCategory> featureCategories;
   protected Map<String, Float> featureCoefficients;
+  protected Map<String, CompareSpecResourceFeatureCategory> featureCategories;
   protected String similarCharactersMapResource;
   protected Float similarCharactersDistance;
 
@@ -34,16 +34,16 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
   public static class Builder {
     private String resourceName;
     private Float typoDistance;
-    private Map<String, CompareSpecResourceFeatureCategory> featureCategories;
     private Map<String, Float> featureCoefficients;
+    private Map<String, CompareSpecResourceFeatureCategory> featureCategories;
     private String similarCharactersMapResource;
     private Float similarCharactersDistance;
 
     private Builder(ModelReplaceSpecResourceOptions modelReplaceSpecResourceOptions) {
       this.resourceName = modelReplaceSpecResourceOptions.resourceName;
       this.typoDistance = modelReplaceSpecResourceOptions.typoDistance;
-      this.featureCategories = modelReplaceSpecResourceOptions.featureCategories;
       this.featureCoefficients = modelReplaceSpecResourceOptions.featureCoefficients;
+      this.featureCategories = modelReplaceSpecResourceOptions.featureCategories;
       this.similarCharactersMapResource = modelReplaceSpecResourceOptions.similarCharactersMapResource;
       this.similarCharactersDistance = modelReplaceSpecResourceOptions.similarCharactersDistance;
     }
@@ -59,14 +59,14 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
      *
      * @param resourceName the resourceName
      * @param typoDistance the typoDistance
-     * @param featureCategories the featureCategories
      * @param featureCoefficients the featureCoefficients
+     * @param featureCategories the featureCategories
      */
-    public Builder(String resourceName, Float typoDistance, Map<String, CompareSpecResourceFeatureCategory> featureCategories, Map<String, Float> featureCoefficients) {
+    public Builder(String resourceName, Float typoDistance, Map<String, Float> featureCoefficients, Map<String, CompareSpecResourceFeatureCategory> featureCategories) {
       this.resourceName = resourceName;
       this.typoDistance = typoDistance;
-      this.featureCategories = featureCategories;
       this.featureCoefficients = featureCoefficients;
+      this.featureCategories = featureCategories;
     }
 
     /**
@@ -101,17 +101,6 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
     }
 
     /**
-     * Set the featureCategories.
-     *
-     * @param featureCategories the featureCategories
-     * @return the ModelReplaceSpecResourceOptions builder
-     */
-    public Builder featureCategories(Map<String, CompareSpecResourceFeatureCategory> featureCategories) {
-      this.featureCategories = featureCategories;
-      return this;
-    }
-
-    /**
      * Set the featureCoefficients.
      *
      * @param featureCoefficients the featureCoefficients
@@ -119,6 +108,17 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
      */
     public Builder featureCoefficients(Map<String, Float> featureCoefficients) {
       this.featureCoefficients = featureCoefficients;
+      return this;
+    }
+
+    /**
+     * Set the featureCategories.
+     *
+     * @param featureCategories the featureCategories
+     * @return the ModelReplaceSpecResourceOptions builder
+     */
+    public Builder featureCategories(Map<String, CompareSpecResourceFeatureCategory> featureCategories) {
+      this.featureCategories = featureCategories;
       return this;
     }
 
@@ -152,8 +152,8 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
      */
     public Builder compareSpecResource(CompareSpecResource compareSpecResource) {
       this.typoDistance = compareSpecResource.typoDistance();
-      this.featureCategories = compareSpecResource.featureCategories();
       this.featureCoefficients = compareSpecResource.featureCoefficients();
+      this.featureCategories = compareSpecResource.featureCategories();
       this.similarCharactersMapResource = compareSpecResource.similarCharactersMapResource();
       this.similarCharactersDistance = compareSpecResource.similarCharactersDistance();
       return this;
@@ -165,14 +165,14 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
       "resourceName cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typoDistance,
       "typoDistance cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCategories,
-      "featureCategories cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCoefficients,
       "featureCoefficients cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCategories,
+      "featureCategories cannot be null");
     resourceName = builder.resourceName;
     typoDistance = builder.typoDistance;
-    featureCategories = builder.featureCategories;
     featureCoefficients = builder.featureCoefficients;
+    featureCategories = builder.featureCategories;
     similarCharactersMapResource = builder.similarCharactersMapResource;
     similarCharactersDistance = builder.similarCharactersDistance;
   }
@@ -209,17 +209,6 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
   }
 
   /**
-   * Gets the featureCategories.
-   *
-   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
-   *
-   * @return the featureCategories
-   */
-  public Map<String, CompareSpecResourceFeatureCategory> featureCategories() {
-    return featureCategories;
-  }
-
-  /**
    * Gets the featureCoefficients.
    *
    * Collection of feature coefficients used for distance measurement. The feature coefficient key must be lower snake
@@ -229,6 +218,17 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
    */
   public Map<String, Float> featureCoefficients() {
     return featureCoefficients;
+  }
+
+  /**
+   * Gets the featureCategories.
+   *
+   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
+   *
+   * @return the featureCategories
+   */
+  public Map<String, CompareSpecResourceFeatureCategory> featureCategories() {
+    return featureCategories;
   }
 
   /**

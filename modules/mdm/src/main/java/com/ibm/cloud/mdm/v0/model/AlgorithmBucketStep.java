@@ -26,12 +26,12 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmBucketStep extends DynamicModel<Object> {
 
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
   @SerializedName("inputs")
   protected List<Long> inputs;
   @SerializedName("order")
   protected Boolean order;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
@@ -51,9 +51,9 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private String comparisonResource;
     private List<Long> inputs;
     private Boolean order;
+    private String comparisonResource;
     private String setResource;
     private String mapResource;
     private String method;
@@ -62,9 +62,9 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmBucketStep algorithmBucketStep) {
-      this.comparisonResource = algorithmBucketStep.comparisonResource;
       this.inputs = algorithmBucketStep.inputs;
       this.order = algorithmBucketStep.order;
+      this.comparisonResource = algorithmBucketStep.comparisonResource;
       this.setResource = algorithmBucketStep.setResource;
       this.mapResource = algorithmBucketStep.mapResource;
       this.method = algorithmBucketStep.method;
@@ -132,17 +132,6 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the comparisonResource.
-     *
-     * @param comparisonResource the comparisonResource
-     * @return the AlgorithmBucketStep builder
-     */
-    public Builder comparisonResource(String comparisonResource) {
-      this.comparisonResource = comparisonResource;
-      return this;
-    }
-
-    /**
      * Set the inputs.
      * Existing inputs will be replaced.
      *
@@ -162,6 +151,17 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
      */
     public Builder order(Boolean order) {
       this.order = order;
+      return this;
+    }
+
+    /**
+     * Set the comparisonResource.
+     *
+     * @param comparisonResource the comparisonResource
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder comparisonResource(String comparisonResource) {
+      this.comparisonResource = comparisonResource;
       return this;
     }
 
@@ -244,9 +244,9 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
       "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    comparisonResource = builder.comparisonResource;
     inputs = builder.inputs;
     order = builder.order;
+    comparisonResource = builder.comparisonResource;
     setResource = builder.setResource;
     mapResource = builder.mapResource;
     method = builder.method;
@@ -262,26 +262,6 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String getComparisonResource() {
-    return this.comparisonResource;
-  }
-
-  /**
-   * Sets the comparisonResource.
-   *
-   * @param comparisonResource the new comparisonResource
-   */
-  public void setComparisonResource(final String comparisonResource) {
-    this.comparisonResource = comparisonResource;
   }
 
   /**
@@ -322,6 +302,26 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    */
   public void setOrder(final Boolean order) {
     this.order = order;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String getComparisonResource() {
+    return this.comparisonResource;
+  }
+
+  /**
+   * Sets the comparisonResource.
+   *
+   * @param comparisonResource the new comparisonResource
+   */
+  public void setComparisonResource(final String comparisonResource) {
+    this.comparisonResource = comparisonResource;
   }
 
   /**

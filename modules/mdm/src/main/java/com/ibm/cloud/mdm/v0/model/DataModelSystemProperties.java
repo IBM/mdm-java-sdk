@@ -24,10 +24,10 @@ public class DataModelSystemProperties extends GenericModel {
   protected DataModelRecordTypeSystemProperties recordTypes;
   @SerializedName("entity_types")
   protected DataModelEntityTypeSystemProperties entityTypes;
-  @SerializedName("relationship_types")
-  protected DataModelRelationshipTypeSystemProperties relationshipTypes;
   @SerializedName("attribute_types")
   protected DataModelAttributeTypeSystemProperties attributeTypes;
+  @SerializedName("relationship_types")
+  protected DataModelRelationshipTypeSystemProperties relationshipTypes;
 
   /**
    * Builder.
@@ -35,14 +35,14 @@ public class DataModelSystemProperties extends GenericModel {
   public static class Builder {
     private DataModelRecordTypeSystemProperties recordTypes;
     private DataModelEntityTypeSystemProperties entityTypes;
-    private DataModelRelationshipTypeSystemProperties relationshipTypes;
     private DataModelAttributeTypeSystemProperties attributeTypes;
+    private DataModelRelationshipTypeSystemProperties relationshipTypes;
 
     private Builder(DataModelSystemProperties dataModelSystemProperties) {
       this.recordTypes = dataModelSystemProperties.recordTypes;
       this.entityTypes = dataModelSystemProperties.entityTypes;
-      this.relationshipTypes = dataModelSystemProperties.relationshipTypes;
       this.attributeTypes = dataModelSystemProperties.attributeTypes;
+      this.relationshipTypes = dataModelSystemProperties.relationshipTypes;
     }
 
     /**
@@ -56,14 +56,14 @@ public class DataModelSystemProperties extends GenericModel {
      *
      * @param recordTypes the recordTypes
      * @param entityTypes the entityTypes
-     * @param relationshipTypes the relationshipTypes
      * @param attributeTypes the attributeTypes
+     * @param relationshipTypes the relationshipTypes
      */
-    public Builder(DataModelRecordTypeSystemProperties recordTypes, DataModelEntityTypeSystemProperties entityTypes, DataModelRelationshipTypeSystemProperties relationshipTypes, DataModelAttributeTypeSystemProperties attributeTypes) {
+    public Builder(DataModelRecordTypeSystemProperties recordTypes, DataModelEntityTypeSystemProperties entityTypes, DataModelAttributeTypeSystemProperties attributeTypes, DataModelRelationshipTypeSystemProperties relationshipTypes) {
       this.recordTypes = recordTypes;
       this.entityTypes = entityTypes;
-      this.relationshipTypes = relationshipTypes;
       this.attributeTypes = attributeTypes;
+      this.relationshipTypes = relationshipTypes;
     }
 
     /**
@@ -98,17 +98,6 @@ public class DataModelSystemProperties extends GenericModel {
     }
 
     /**
-     * Set the relationshipTypes.
-     *
-     * @param relationshipTypes the relationshipTypes
-     * @return the DataModelSystemProperties builder
-     */
-    public Builder relationshipTypes(DataModelRelationshipTypeSystemProperties relationshipTypes) {
-      this.relationshipTypes = relationshipTypes;
-      return this;
-    }
-
-    /**
      * Set the attributeTypes.
      *
      * @param attributeTypes the attributeTypes
@@ -118,6 +107,17 @@ public class DataModelSystemProperties extends GenericModel {
       this.attributeTypes = attributeTypes;
       return this;
     }
+
+    /**
+     * Set the relationshipTypes.
+     *
+     * @param relationshipTypes the relationshipTypes
+     * @return the DataModelSystemProperties builder
+     */
+    public Builder relationshipTypes(DataModelRelationshipTypeSystemProperties relationshipTypes) {
+      this.relationshipTypes = relationshipTypes;
+      return this;
+    }
   }
 
   protected DataModelSystemProperties(Builder builder) {
@@ -125,14 +125,14 @@ public class DataModelSystemProperties extends GenericModel {
       "recordTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
       "entityTypes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
-      "relationshipTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
       "attributeTypes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
+      "relationshipTypes cannot be null");
     recordTypes = builder.recordTypes;
     entityTypes = builder.entityTypes;
-    relationshipTypes = builder.relationshipTypes;
     attributeTypes = builder.attributeTypes;
+    relationshipTypes = builder.relationshipTypes;
   }
 
   /**
@@ -167,17 +167,6 @@ public class DataModelSystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the relationshipTypes.
-   *
-   * Defines metadata of system properties of all relationship types.
-   *
-   * @return the relationshipTypes
-   */
-  public DataModelRelationshipTypeSystemProperties relationshipTypes() {
-    return relationshipTypes;
-  }
-
-  /**
    * Gets the attributeTypes.
    *
    * Defines metadata of system properties of all attribute types.
@@ -186,6 +175,17 @@ public class DataModelSystemProperties extends GenericModel {
    */
   public DataModelAttributeTypeSystemProperties attributeTypes() {
     return attributeTypes;
+  }
+
+  /**
+   * Gets the relationshipTypes.
+   *
+   * Defines metadata of system properties of all relationship types.
+   *
+   * @return the relationshipTypes
+   */
+  public DataModelRelationshipTypeSystemProperties relationshipTypes() {
+    return relationshipTypes;
   }
 }
 

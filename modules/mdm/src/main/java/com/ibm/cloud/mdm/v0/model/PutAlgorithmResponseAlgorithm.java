@@ -22,11 +22,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseAlgorithm extends GenericModel {
 
-  protected Map<String, PutAlgorithmResponseStandardizer> standardizers;
-  protected PutAlgorithmResponseEncryption encryption;
   @SerializedName("entity_types")
   protected Map<String, PutAlgorithmResponseEntityType> entityTypes;
+  protected Map<String, PutAlgorithmResponseStandardizer> standardizers;
+  protected PutAlgorithmResponseEncryption encryption;
   protected String locale;
+
+  /**
+   * Gets the entityTypes.
+   *
+   * Collection of entity type definitions.
+   *
+   * @return the entityTypes
+   */
+  public Map<String, PutAlgorithmResponseEntityType> getEntityTypes() {
+    return entityTypes;
+  }
 
   /**
    * Gets the standardizers.
@@ -48,17 +59,6 @@ public class PutAlgorithmResponseAlgorithm extends GenericModel {
    */
   public PutAlgorithmResponseEncryption getEncryption() {
     return encryption;
-  }
-
-  /**
-   * Gets the entityTypes.
-   *
-   * Collection of entity type definitions.
-   *
-   * @return the entityTypes
-   */
-  public Map<String, PutAlgorithmResponseEntityType> getEntityTypes() {
-    return entityTypes;
   }
 
   /**

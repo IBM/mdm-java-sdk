@@ -24,31 +24,31 @@ public class CompareSpecResource extends GenericModel {
 
   @SerializedName("typo_distance")
   protected Float typoDistance;
-  @SerializedName("feature_categories")
-  protected Map<String, CompareSpecResourceFeatureCategory> featureCategories;
   @SerializedName("similar_characters_map_resource")
   protected String similarCharactersMapResource;
   @SerializedName("feature_coefficients")
   protected Map<String, Float> featureCoefficients;
   @SerializedName("similar_characters_distance")
   protected Float similarCharactersDistance;
+  @SerializedName("feature_categories")
+  protected Map<String, CompareSpecResourceFeatureCategory> featureCategories;
 
   /**
    * Builder.
    */
   public static class Builder {
     private Float typoDistance;
-    private Map<String, CompareSpecResourceFeatureCategory> featureCategories;
     private String similarCharactersMapResource;
     private Map<String, Float> featureCoefficients;
     private Float similarCharactersDistance;
+    private Map<String, CompareSpecResourceFeatureCategory> featureCategories;
 
     private Builder(CompareSpecResource compareSpecResource) {
       this.typoDistance = compareSpecResource.typoDistance;
-      this.featureCategories = compareSpecResource.featureCategories;
       this.similarCharactersMapResource = compareSpecResource.similarCharactersMapResource;
       this.featureCoefficients = compareSpecResource.featureCoefficients;
       this.similarCharactersDistance = compareSpecResource.similarCharactersDistance;
+      this.featureCategories = compareSpecResource.featureCategories;
     }
 
     /**
@@ -61,13 +61,13 @@ public class CompareSpecResource extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param typoDistance the typoDistance
-     * @param featureCategories the featureCategories
      * @param featureCoefficients the featureCoefficients
+     * @param featureCategories the featureCategories
      */
-    public Builder(Float typoDistance, Map<String, CompareSpecResourceFeatureCategory> featureCategories, Map<String, Float> featureCoefficients) {
+    public Builder(Float typoDistance, Map<String, Float> featureCoefficients, Map<String, CompareSpecResourceFeatureCategory> featureCategories) {
       this.typoDistance = typoDistance;
-      this.featureCategories = featureCategories;
       this.featureCoefficients = featureCoefficients;
+      this.featureCategories = featureCategories;
     }
 
     /**
@@ -87,17 +87,6 @@ public class CompareSpecResource extends GenericModel {
      */
     public Builder typoDistance(Float typoDistance) {
       this.typoDistance = typoDistance;
-      return this;
-    }
-
-    /**
-     * Set the featureCategories.
-     *
-     * @param featureCategories the featureCategories
-     * @return the CompareSpecResource builder
-     */
-    public Builder featureCategories(Map<String, CompareSpecResourceFeatureCategory> featureCategories) {
-      this.featureCategories = featureCategories;
       return this;
     }
 
@@ -133,20 +122,31 @@ public class CompareSpecResource extends GenericModel {
       this.similarCharactersDistance = similarCharactersDistance;
       return this;
     }
+
+    /**
+     * Set the featureCategories.
+     *
+     * @param featureCategories the featureCategories
+     * @return the CompareSpecResource builder
+     */
+    public Builder featureCategories(Map<String, CompareSpecResourceFeatureCategory> featureCategories) {
+      this.featureCategories = featureCategories;
+      return this;
+    }
   }
 
   protected CompareSpecResource(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typoDistance,
       "typoDistance cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCategories,
-      "featureCategories cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCoefficients,
       "featureCoefficients cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCategories,
+      "featureCategories cannot be null");
     typoDistance = builder.typoDistance;
-    featureCategories = builder.featureCategories;
     similarCharactersMapResource = builder.similarCharactersMapResource;
     featureCoefficients = builder.featureCoefficients;
     similarCharactersDistance = builder.similarCharactersDistance;
+    featureCategories = builder.featureCategories;
   }
 
   /**
@@ -167,17 +167,6 @@ public class CompareSpecResource extends GenericModel {
    */
   public Float typoDistance() {
     return typoDistance;
-  }
-
-  /**
-   * Gets the featureCategories.
-   *
-   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
-   *
-   * @return the featureCategories
-   */
-  public Map<String, CompareSpecResourceFeatureCategory> featureCategories() {
-    return featureCategories;
   }
 
   /**
@@ -213,6 +202,17 @@ public class CompareSpecResource extends GenericModel {
    */
   public Float similarCharactersDistance() {
     return similarCharactersDistance;
+  }
+
+  /**
+   * Gets the featureCategories.
+   *
+   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
+   *
+   * @return the featureCategories
+   */
+  public Map<String, CompareSpecResourceFeatureCategory> featureCategories() {
+    return featureCategories;
   }
 }
 

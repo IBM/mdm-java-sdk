@@ -1290,6 +1290,9 @@ public class MdmExamples {
 
     try {
       // begin-model_replace_algorithm
+      AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
+        .autoLinkThreshold(Float.valueOf("36.0"))
+        .build();
       AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
         .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
@@ -1305,19 +1308,16 @@ public class MdmExamples {
         .label("testString")
         .build();
       AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
-        .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .subType("testString")
+        .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .type("testString")
         .enabled(true)
         .build();
-      AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
-        .autoLinkThreshold(Float.valueOf("36.0"))
-        .build();
       ModelReplaceAlgorithmOptions modelReplaceAlgorithmOptions = new ModelReplaceAlgorithmOptions.Builder()
         .recordType("testString")
+        .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
         .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
         .encryption(algorithmEncryptionModel)
-        .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
         .locale("testString")
         .build();
 
@@ -1333,6 +1333,9 @@ public class MdmExamples {
 
     try {
       // begin-model_update_algorithm
+      AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
+        .autoLinkThreshold(Float.valueOf("36.0"))
+        .build();
       AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
         .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
@@ -1348,19 +1351,16 @@ public class MdmExamples {
         .label("testString")
         .build();
       AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
-        .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .subType("testString")
+        .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .type("testString")
         .enabled(true)
         .build();
-      AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
-        .autoLinkThreshold(Float.valueOf("36.0"))
-        .build();
       ModelUpdateAlgorithmOptions modelUpdateAlgorithmOptions = new ModelUpdateAlgorithmOptions.Builder()
         .recordType("testString")
+        .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
         .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
         .encryption(algorithmEncryptionModel)
-        .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
         .locale("testString")
         .build();
 
@@ -1397,8 +1397,8 @@ public class MdmExamples {
       ModelReplaceSpecResourceOptions modelReplaceSpecResourceOptions = new ModelReplaceSpecResourceOptions.Builder()
         .resourceName("testString")
         .typoDistance(Float.valueOf("36.0"))
-        .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
         .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
+        .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
         .build();
 
       Response<PutCompareSpecResourcesResponse> response = service.modelReplaceSpecResource(modelReplaceSpecResourceOptions).execute();
@@ -1488,9 +1488,6 @@ public class MdmExamples {
         .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
         .label("testString")
         .build();
-      DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
-        .label("testString")
-        .build();
       DataModelField dataModelFieldModel = new DataModelField.Builder()
         .label("testString")
         .build();
@@ -1498,37 +1495,40 @@ public class MdmExamples {
         .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
         .label("testString")
         .build();
+      DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
+        .label("testString")
+        .build();
       DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
         .dataType("testString")
         .label("testString")
         .build();
       DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-        .recordId(dataModelSystemPropertyModel)
-        .recordLastUpdated(dataModelSystemPropertyModel)
         .collectionId(dataModelSystemPropertyModel)
-        .recordNumber(dataModelSystemPropertyModel)
+        .recordLastUpdated(dataModelSystemPropertyModel)
         .recordSource(dataModelSystemPropertyModel)
+        .recordNumber(dataModelSystemPropertyModel)
+        .recordId(dataModelSystemPropertyModel)
         .build();
       DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-        .entityId(dataModelSystemPropertyModel)
         .entityLastUpdated(dataModelSystemPropertyModel)
-        .build();
-      DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
-        .relationshipLastUpdated(dataModelSystemPropertyModel)
+        .entityId(dataModelSystemPropertyModel)
         .build();
       DataModelAttributeTypeSystemProperties dataModelAttributeTypeSystemPropertiesModel = new DataModelAttributeTypeSystemProperties.Builder()
         .attributeLastUpdated(dataModelSystemPropertyModel)
         .build();
+      DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+        .relationshipLastUpdated(dataModelSystemPropertyModel)
+        .build();
       DataModelSystemProperties dataModelSystemPropertiesModel = new DataModelSystemProperties.Builder()
         .recordTypes(dataModelRecordTypeSystemPropertiesModel)
         .entityTypes(dataModelEntityTypeSystemPropertiesModel)
-        .relationshipTypes(dataModelRelationshipTypeSystemPropertiesModel)
         .attributeTypes(dataModelAttributeTypeSystemPropertiesModel)
+        .relationshipTypes(dataModelRelationshipTypeSystemPropertiesModel)
         .build();
       ModelModifyDataModelOptions modelModifyDataModelOptions = new ModelModifyDataModelOptions.Builder()
         .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
-        .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
         .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
+        .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
         .locale("testString")
         .systemProperties(dataModelSystemPropertiesModel)
         .build();
@@ -1553,9 +1553,6 @@ public class MdmExamples {
         .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
         .label("testString")
         .build();
-      DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
-        .label("testString")
-        .build();
       DataModelField dataModelFieldModel = new DataModelField.Builder()
         .label("testString")
         .build();
@@ -1563,37 +1560,40 @@ public class MdmExamples {
         .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
         .label("testString")
         .build();
+      DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
+        .label("testString")
+        .build();
       DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
         .dataType("testString")
         .label("testString")
         .build();
       DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-        .recordId(dataModelSystemPropertyModel)
-        .recordLastUpdated(dataModelSystemPropertyModel)
         .collectionId(dataModelSystemPropertyModel)
-        .recordNumber(dataModelSystemPropertyModel)
+        .recordLastUpdated(dataModelSystemPropertyModel)
         .recordSource(dataModelSystemPropertyModel)
+        .recordNumber(dataModelSystemPropertyModel)
+        .recordId(dataModelSystemPropertyModel)
         .build();
       DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-        .entityId(dataModelSystemPropertyModel)
         .entityLastUpdated(dataModelSystemPropertyModel)
-        .build();
-      DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
-        .relationshipLastUpdated(dataModelSystemPropertyModel)
+        .entityId(dataModelSystemPropertyModel)
         .build();
       DataModelAttributeTypeSystemProperties dataModelAttributeTypeSystemPropertiesModel = new DataModelAttributeTypeSystemProperties.Builder()
         .attributeLastUpdated(dataModelSystemPropertyModel)
         .build();
+      DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+        .relationshipLastUpdated(dataModelSystemPropertyModel)
+        .build();
       DataModelSystemProperties dataModelSystemPropertiesModel = new DataModelSystemProperties.Builder()
         .recordTypes(dataModelRecordTypeSystemPropertiesModel)
         .entityTypes(dataModelEntityTypeSystemPropertiesModel)
-        .relationshipTypes(dataModelRelationshipTypeSystemPropertiesModel)
         .attributeTypes(dataModelAttributeTypeSystemPropertiesModel)
+        .relationshipTypes(dataModelRelationshipTypeSystemPropertiesModel)
         .build();
       ModelPatchDataModelOptions modelPatchDataModelOptions = new ModelPatchDataModelOptions.Builder()
         .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
-        .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
         .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
+        .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
         .locale("testString")
         .systemProperties(dataModelSystemPropertiesModel)
         .build();
@@ -1627,9 +1627,9 @@ public class MdmExamples {
     try {
       // begin-model_patch_flow
       ModelPatchFlowOptions modelPatchFlowOptions = new ModelPatchFlowOptions.Builder()
-        .action("testString")
-        .approverName("testString")
         .flowId("testString")
+        .approverName("testString")
+        .action("testString")
         .build();
 
       Response<Map<String, Object>> response = service.modelPatchFlow(modelPatchFlowOptions).execute();

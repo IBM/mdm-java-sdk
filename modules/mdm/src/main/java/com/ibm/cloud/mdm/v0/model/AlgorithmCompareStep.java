@@ -26,10 +26,10 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmCompareStep extends DynamicModel<Object> {
 
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
   @SerializedName("inputs")
   protected List<Long> inputs;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
@@ -49,8 +49,8 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private String comparisonResource;
     private List<Long> inputs;
+    private String comparisonResource;
     private String setResource;
     private String mapResource;
     private String method;
@@ -59,8 +59,8 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmCompareStep algorithmCompareStep) {
-      this.comparisonResource = algorithmCompareStep.comparisonResource;
       this.inputs = algorithmCompareStep.inputs;
+      this.comparisonResource = algorithmCompareStep.comparisonResource;
       this.setResource = algorithmCompareStep.setResource;
       this.mapResource = algorithmCompareStep.mapResource;
       this.method = algorithmCompareStep.method;
@@ -128,17 +128,6 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the comparisonResource.
-     *
-     * @param comparisonResource the comparisonResource
-     * @return the AlgorithmCompareStep builder
-     */
-    public Builder comparisonResource(String comparisonResource) {
-      this.comparisonResource = comparisonResource;
-      return this;
-    }
-
-    /**
      * Set the inputs.
      * Existing inputs will be replaced.
      *
@@ -147,6 +136,17 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
      */
     public Builder inputs(List<Long> inputs) {
       this.inputs = inputs;
+      return this;
+    }
+
+    /**
+     * Set the comparisonResource.
+     *
+     * @param comparisonResource the comparisonResource
+     * @return the AlgorithmCompareStep builder
+     */
+    public Builder comparisonResource(String comparisonResource) {
+      this.comparisonResource = comparisonResource;
       return this;
     }
 
@@ -229,8 +229,8 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
       "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    comparisonResource = builder.comparisonResource;
     inputs = builder.inputs;
+    comparisonResource = builder.comparisonResource;
     setResource = builder.setResource;
     mapResource = builder.mapResource;
     method = builder.method;
@@ -246,26 +246,6 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String getComparisonResource() {
-    return this.comparisonResource;
-  }
-
-  /**
-   * Sets the comparisonResource.
-   *
-   * @param comparisonResource the new comparisonResource
-   */
-  public void setComparisonResource(final String comparisonResource) {
-    this.comparisonResource = comparisonResource;
   }
 
   /**
@@ -286,6 +266,26 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
    */
   public void setInputs(final List<Long> inputs) {
     this.inputs = inputs;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String getComparisonResource() {
+    return this.comparisonResource;
+  }
+
+  /**
+   * Sets the comparisonResource.
+   *
+   * @param comparisonResource the new comparisonResource
+   */
+  public void setComparisonResource(final String comparisonResource) {
+    this.comparisonResource = comparisonResource;
   }
 
   /**

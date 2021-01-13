@@ -32,9 +32,9 @@ public class PutAlgorithmResponseBucketStepTest {
   @Test
   public void testPutAlgorithmResponseBucketStep() throws Throwable {
     PutAlgorithmResponseBucketStep putAlgorithmResponseBucketStepModel = new PutAlgorithmResponseBucketStep();
-    assertNull(putAlgorithmResponseBucketStepModel.getComparisonResource());
     assertNull(putAlgorithmResponseBucketStepModel.getInputs());
     assertNull(putAlgorithmResponseBucketStepModel.isOrder());
+    assertNull(putAlgorithmResponseBucketStepModel.getComparisonResource());
     assertNull(putAlgorithmResponseBucketStepModel.getSetResource());
     assertNull(putAlgorithmResponseBucketStepModel.getMapResource());
     assertNull(putAlgorithmResponseBucketStepModel.getMethod());

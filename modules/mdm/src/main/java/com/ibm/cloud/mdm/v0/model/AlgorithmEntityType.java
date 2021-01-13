@@ -22,29 +22,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmEntityType extends GenericModel {
 
-  @SerializedName("bucket_generators")
-  protected Map<String, AlgorithmBucketGenerator> bucketGenerators;
   @SerializedName("clerical_review_threshold")
   protected Float clericalReviewThreshold;
-  @SerializedName("compare_methods")
-  protected Map<String, AlgorithmCompareMethod> compareMethods;
   @SerializedName("auto_link_threshold")
   protected Float autoLinkThreshold;
+  @SerializedName("compare_methods")
+  protected Map<String, AlgorithmCompareMethod> compareMethods;
+  @SerializedName("bucket_generators")
+  protected Map<String, AlgorithmBucketGenerator> bucketGenerators;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Map<String, AlgorithmBucketGenerator> bucketGenerators;
     private Float clericalReviewThreshold;
-    private Map<String, AlgorithmCompareMethod> compareMethods;
     private Float autoLinkThreshold;
+    private Map<String, AlgorithmCompareMethod> compareMethods;
+    private Map<String, AlgorithmBucketGenerator> bucketGenerators;
 
     private Builder(AlgorithmEntityType algorithmEntityType) {
-      this.bucketGenerators = algorithmEntityType.bucketGenerators;
       this.clericalReviewThreshold = algorithmEntityType.clericalReviewThreshold;
-      this.compareMethods = algorithmEntityType.compareMethods;
       this.autoLinkThreshold = algorithmEntityType.autoLinkThreshold;
+      this.compareMethods = algorithmEntityType.compareMethods;
+      this.bucketGenerators = algorithmEntityType.bucketGenerators;
     }
 
     /**
@@ -72,17 +72,6 @@ public class AlgorithmEntityType extends GenericModel {
     }
 
     /**
-     * Set the bucketGenerators.
-     *
-     * @param bucketGenerators the bucketGenerators
-     * @return the AlgorithmEntityType builder
-     */
-    public Builder bucketGenerators(Map<String, AlgorithmBucketGenerator> bucketGenerators) {
-      this.bucketGenerators = bucketGenerators;
-      return this;
-    }
-
-    /**
      * Set the clericalReviewThreshold.
      *
      * @param clericalReviewThreshold the clericalReviewThreshold
@@ -90,6 +79,17 @@ public class AlgorithmEntityType extends GenericModel {
      */
     public Builder clericalReviewThreshold(Float clericalReviewThreshold) {
       this.clericalReviewThreshold = clericalReviewThreshold;
+      return this;
+    }
+
+    /**
+     * Set the autoLinkThreshold.
+     *
+     * @param autoLinkThreshold the autoLinkThreshold
+     * @return the AlgorithmEntityType builder
+     */
+    public Builder autoLinkThreshold(Float autoLinkThreshold) {
+      this.autoLinkThreshold = autoLinkThreshold;
       return this;
     }
 
@@ -105,13 +105,13 @@ public class AlgorithmEntityType extends GenericModel {
     }
 
     /**
-     * Set the autoLinkThreshold.
+     * Set the bucketGenerators.
      *
-     * @param autoLinkThreshold the autoLinkThreshold
+     * @param bucketGenerators the bucketGenerators
      * @return the AlgorithmEntityType builder
      */
-    public Builder autoLinkThreshold(Float autoLinkThreshold) {
-      this.autoLinkThreshold = autoLinkThreshold;
+    public Builder bucketGenerators(Map<String, AlgorithmBucketGenerator> bucketGenerators) {
+      this.bucketGenerators = bucketGenerators;
       return this;
     }
   }
@@ -119,10 +119,10 @@ public class AlgorithmEntityType extends GenericModel {
   protected AlgorithmEntityType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.autoLinkThreshold,
       "autoLinkThreshold cannot be null");
-    bucketGenerators = builder.bucketGenerators;
     clericalReviewThreshold = builder.clericalReviewThreshold;
-    compareMethods = builder.compareMethods;
     autoLinkThreshold = builder.autoLinkThreshold;
+    compareMethods = builder.compareMethods;
+    bucketGenerators = builder.bucketGenerators;
   }
 
   /**
@@ -132,17 +132,6 @@ public class AlgorithmEntityType extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the bucketGenerators.
-   *
-   * Collection of bucket generators.
-   *
-   * @return the bucketGenerators
-   */
-  public Map<String, AlgorithmBucketGenerator> bucketGenerators() {
-    return bucketGenerators;
   }
 
   /**
@@ -157,6 +146,17 @@ public class AlgorithmEntityType extends GenericModel {
   }
 
   /**
+   * Gets the autoLinkThreshold.
+   *
+   * The minimum matching score between two records to automatically link them together.
+   *
+   * @return the autoLinkThreshold
+   */
+  public Float autoLinkThreshold() {
+    return autoLinkThreshold;
+  }
+
+  /**
    * Gets the compareMethods.
    *
    * Collection of comparators.
@@ -168,14 +168,14 @@ public class AlgorithmEntityType extends GenericModel {
   }
 
   /**
-   * Gets the autoLinkThreshold.
+   * Gets the bucketGenerators.
    *
-   * The minimum matching score between two records to automatically link them together.
+   * Collection of bucket generators.
    *
-   * @return the autoLinkThreshold
+   * @return the bucketGenerators
    */
-  public Float autoLinkThreshold() {
-    return autoLinkThreshold;
+  public Map<String, AlgorithmBucketGenerator> bucketGenerators() {
+    return bucketGenerators;
   }
 }
 

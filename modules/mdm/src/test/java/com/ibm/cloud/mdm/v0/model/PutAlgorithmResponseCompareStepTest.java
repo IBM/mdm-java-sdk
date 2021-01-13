@@ -32,8 +32,8 @@ public class PutAlgorithmResponseCompareStepTest {
   @Test
   public void testPutAlgorithmResponseCompareStep() throws Throwable {
     PutAlgorithmResponseCompareStep putAlgorithmResponseCompareStepModel = new PutAlgorithmResponseCompareStep();
-    assertNull(putAlgorithmResponseCompareStepModel.getComparisonResource());
     assertNull(putAlgorithmResponseCompareStepModel.getInputs());
+    assertNull(putAlgorithmResponseCompareStepModel.getComparisonResource());
     assertNull(putAlgorithmResponseCompareStepModel.getSetResource());
     assertNull(putAlgorithmResponseCompareStepModel.getMapResource());
     assertNull(putAlgorithmResponseCompareStepModel.getMethod());

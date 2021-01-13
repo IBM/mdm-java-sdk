@@ -3883,7 +3883,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelGetAlgorithmWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"standardizers\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"standardizer_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"inputs\": [6], \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"label\": \"label\"}}, \"encryption\": {\"pub_key\": [\"pubKey\"], \"sub_type\": \"subType\", \"type\": \"type\", \"enabled\": false}, \"entity_types\": {\"mapKey\": {\"bucket_generators\": {\"mapKey\": {\"bucket_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"inputs\": [6], \"order\": false, \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"bucket_group_recipe\": [{\"inputs\": [6], \"order\": false, \"method\": \"method\", \"fields\": [[\"fields\"]], \"label\": \"label\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"maximum_bucket_size\": 17, \"label\": \"label\"}}, \"clerical_review_threshold\": 23, \"compare_methods\": {\"mapKey\": {\"weights\": [7], \"methods\": [{\"compare_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"inputs\": [6], \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}], \"label\": \"label\"}}, \"auto_link_threshold\": 17}}, \"locale\": \"locale\"}";
+    String mockResponseBody = "{\"entity_types\": {\"mapKey\": {\"clerical_review_threshold\": 23, \"auto_link_threshold\": 17, \"compare_methods\": {\"mapKey\": {\"methods\": [{\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"compare_recipe\": [{\"inputs\": [6], \"comparison_resource\": \"comparisonResource\", \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}]}], \"weights\": [7], \"label\": \"label\"}}, \"bucket_generators\": {\"mapKey\": {\"bucket_group_recipe\": [{\"inputs\": [6], \"order\": false, \"method\": \"method\", \"fields\": [[\"fields\"]], \"label\": \"label\"}], \"maximum_bucket_size\": 17, \"bucket_recipe\": [{\"inputs\": [6], \"order\": false, \"comparison_resource\": \"comparisonResource\", \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"label\": \"label\"}}}}, \"standardizers\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"standardizer_recipe\": [{\"inputs\": [6], \"comparison_resource\": \"comparisonResource\", \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"label\": \"label\"}}, \"encryption\": {\"sub_type\": \"subType\", \"pub_key\": [\"pubKey\"], \"type\": \"type\", \"enabled\": false}, \"locale\": \"locale\"}";
     String modelGetAlgorithmPath = "/mdm/model/v0/algorithm/testString";
 
     server.enqueue(new MockResponse()
@@ -3934,7 +3934,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelReplaceAlgorithmWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"algorithm\": {\"standardizers\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"standardizer_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"inputs\": [6], \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"label\": \"label\"}}, \"encryption\": {\"pub_key\": [\"pubKey\"], \"sub_type\": \"subType\", \"type\": \"type\", \"enabled\": false}, \"entity_types\": {\"mapKey\": {\"bucket_generators\": {\"mapKey\": {\"bucket_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"inputs\": [6], \"order\": false, \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"bucket_group_recipe\": [{\"inputs\": [6], \"order\": false, \"method\": \"method\", \"fields\": [[\"fields\"]], \"label\": \"label\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"maximum_bucket_size\": 17, \"label\": \"label\"}}, \"clerical_review_threshold\": 23, \"compare_methods\": {\"mapKey\": {\"weights\": [7], \"methods\": [{\"compare_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"inputs\": [6], \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}], \"label\": \"label\"}}, \"auto_link_threshold\": 17}}, \"locale\": \"locale\"}, \"flow_id\": \"flowId\", \"flow_state\": \"flowState\"}";
+    String mockResponseBody = "{\"flow_id\": \"flowId\", \"flow_state\": \"flowState\", \"algorithm\": {\"entity_types\": {\"mapKey\": {\"clerical_review_threshold\": 23, \"auto_link_threshold\": 17, \"compare_methods\": {\"mapKey\": {\"methods\": [{\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"compare_recipe\": [{\"inputs\": [6], \"comparison_resource\": \"comparisonResource\", \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}]}], \"weights\": [7], \"label\": \"label\"}}, \"bucket_generators\": {\"mapKey\": {\"bucket_group_recipe\": [{\"inputs\": [6], \"order\": false, \"method\": \"method\", \"fields\": [[\"fields\"]], \"label\": \"label\"}], \"maximum_bucket_size\": 17, \"bucket_recipe\": [{\"inputs\": [6], \"order\": false, \"comparison_resource\": \"comparisonResource\", \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"label\": \"label\"}}}}, \"standardizers\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"standardizer_recipe\": [{\"inputs\": [6], \"comparison_resource\": \"comparisonResource\", \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"label\": \"label\"}}, \"encryption\": {\"sub_type\": \"subType\", \"pub_key\": [\"pubKey\"], \"type\": \"type\", \"enabled\": false}, \"locale\": \"locale\"}}";
     String modelReplaceAlgorithmPath = "/mdm/model/v0/algorithm/testString";
 
     server.enqueue(new MockResponse()
@@ -3951,10 +3951,76 @@ public class MdmTest extends PowerMockTestCase {
     .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .build();
 
+    // Construct an instance of the AlgorithmCompareStep model
+    AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
+    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .comparisonResource("testString")
+    .setResource("testString")
+    .mapResource("testString")
+    .method("testString")
+    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .label("testString")
+    .add("foo", "testString")
+    .build();
+
+    // Construct an instance of the AlgorithmMethods model
+    AlgorithmMethods algorithmMethodsModel = new AlgorithmMethods.Builder()
+    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+    .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
+    .build();
+
+    // Construct an instance of the AlgorithmCompareMethod model
+    AlgorithmCompareMethod algorithmCompareMethodModel = new AlgorithmCompareMethod.Builder()
+    .methods(new java.util.ArrayList<AlgorithmMethods>(java.util.Arrays.asList(algorithmMethodsModel)))
+    .weights(new java.util.ArrayList<Float>(java.util.Arrays.asList(Float.valueOf("36.0"))))
+    .label("testString")
+    .build();
+
+    // Construct an instance of the AlgorithmBucketGroupStep model
+    AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
+    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .order(true)
+    .method("testString")
+    .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
+    .label("testString")
+    .add("foo", "testString")
+    .build();
+
+    // Construct an instance of the AlgorithmBucketStep model
+    AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
+    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .order(true)
+    .comparisonResource("testString")
+    .setResource("testString")
+    .mapResource("testString")
+    .method("testString")
+    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .label("testString")
+    .add("foo", "testString")
+    .build();
+
+    // Construct an instance of the AlgorithmBucketGenerator model
+    AlgorithmBucketGenerator algorithmBucketGeneratorModel = new AlgorithmBucketGenerator.Builder()
+    .bucketGroupRecipe(new java.util.ArrayList<AlgorithmBucketGroupStep>(java.util.Arrays.asList(algorithmBucketGroupStepModel)))
+    .maximumBucketSize(Long.valueOf("26"))
+    .bucketRecipe(new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)))
+    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+    .label("testString")
+    .add("foo", "testString")
+    .build();
+
+    // Construct an instance of the AlgorithmEntityType model
+    AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
+    .clericalReviewThreshold(Float.valueOf("36.0"))
+    .autoLinkThreshold(Float.valueOf("36.0"))
+    .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
+    .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
+    .build();
+
     // Construct an instance of the AlgorithmStandardizerStep model
     AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
-    .comparisonResource("testString")
     .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .comparisonResource("testString")
     .setResource("testString")
     .mapResource("testString")
     .method("testString")
@@ -3972,84 +4038,18 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmEncryption model
     AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
-    .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .subType("testString")
+    .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .type("testString")
     .enabled(true)
-    .build();
-
-    // Construct an instance of the AlgorithmBucketStep model
-    AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
-    .comparisonResource("testString")
-    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-    .order(true)
-    .setResource("testString")
-    .mapResource("testString")
-    .method("testString")
-    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .label("testString")
-    .add("foo", "testString")
-    .build();
-
-    // Construct an instance of the AlgorithmBucketGroupStep model
-    AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
-    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-    .order(true)
-    .method("testString")
-    .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
-    .label("testString")
-    .add("foo", "testString")
-    .build();
-
-    // Construct an instance of the AlgorithmBucketGenerator model
-    AlgorithmBucketGenerator algorithmBucketGeneratorModel = new AlgorithmBucketGenerator.Builder()
-    .bucketRecipe(new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)))
-    .bucketGroupRecipe(new java.util.ArrayList<AlgorithmBucketGroupStep>(java.util.Arrays.asList(algorithmBucketGroupStepModel)))
-    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-    .maximumBucketSize(Long.valueOf("26"))
-    .label("testString")
-    .add("foo", "testString")
-    .build();
-
-    // Construct an instance of the AlgorithmCompareStep model
-    AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-    .comparisonResource("testString")
-    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-    .setResource("testString")
-    .mapResource("testString")
-    .method("testString")
-    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .label("testString")
-    .add("foo", "testString")
-    .build();
-
-    // Construct an instance of the AlgorithmMethods model
-    AlgorithmMethods algorithmMethodsModel = new AlgorithmMethods.Builder()
-    .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
-    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-    .build();
-
-    // Construct an instance of the AlgorithmCompareMethod model
-    AlgorithmCompareMethod algorithmCompareMethodModel = new AlgorithmCompareMethod.Builder()
-    .weights(new java.util.ArrayList<Float>(java.util.Arrays.asList(Float.valueOf("36.0"))))
-    .methods(new java.util.ArrayList<AlgorithmMethods>(java.util.Arrays.asList(algorithmMethodsModel)))
-    .label("testString")
-    .build();
-
-    // Construct an instance of the AlgorithmEntityType model
-    AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
-    .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
-    .clericalReviewThreshold(Float.valueOf("36.0"))
-    .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
-    .autoLinkThreshold(Float.valueOf("36.0"))
     .build();
 
     // Construct an instance of the ModelReplaceAlgorithmOptions model
     ModelReplaceAlgorithmOptions modelReplaceAlgorithmOptionsModel = new ModelReplaceAlgorithmOptions.Builder()
     .recordType("testString")
+    .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
     .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
     .encryption(algorithmEncryptionModel)
-    .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
     .locale("testString")
     .build();
 
@@ -4089,7 +4089,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelUpdateAlgorithmWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"algorithm\": {\"standardizers\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"standardizer_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"inputs\": [6], \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"label\": \"label\"}}, \"encryption\": {\"pub_key\": [\"pubKey\"], \"sub_type\": \"subType\", \"type\": \"type\", \"enabled\": false}, \"entity_types\": {\"mapKey\": {\"bucket_generators\": {\"mapKey\": {\"bucket_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"inputs\": [6], \"order\": false, \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"bucket_group_recipe\": [{\"inputs\": [6], \"order\": false, \"method\": \"method\", \"fields\": [[\"fields\"]], \"label\": \"label\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"maximum_bucket_size\": 17, \"label\": \"label\"}}, \"clerical_review_threshold\": 23, \"compare_methods\": {\"mapKey\": {\"weights\": [7], \"methods\": [{\"compare_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"inputs\": [6], \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}], \"label\": \"label\"}}, \"auto_link_threshold\": 17}}, \"locale\": \"locale\"}, \"flow_id\": \"flowId\", \"flow_state\": \"flowState\"}";
+    String mockResponseBody = "{\"flow_id\": \"flowId\", \"flow_state\": \"flowState\", \"algorithm\": {\"entity_types\": {\"mapKey\": {\"clerical_review_threshold\": 23, \"auto_link_threshold\": 17, \"compare_methods\": {\"mapKey\": {\"methods\": [{\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"compare_recipe\": [{\"inputs\": [6], \"comparison_resource\": \"comparisonResource\", \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}]}], \"weights\": [7], \"label\": \"label\"}}, \"bucket_generators\": {\"mapKey\": {\"bucket_group_recipe\": [{\"inputs\": [6], \"order\": false, \"method\": \"method\", \"fields\": [[\"fields\"]], \"label\": \"label\"}], \"maximum_bucket_size\": 17, \"bucket_recipe\": [{\"inputs\": [6], \"order\": false, \"comparison_resource\": \"comparisonResource\", \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"label\": \"label\"}}}}, \"standardizers\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}], \"standardizer_recipe\": [{\"inputs\": [6], \"comparison_resource\": \"comparisonResource\", \"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"method\": \"method\", \"fields\": [\"fields\"], \"label\": \"label\"}], \"label\": \"label\"}}, \"encryption\": {\"sub_type\": \"subType\", \"pub_key\": [\"pubKey\"], \"type\": \"type\", \"enabled\": false}, \"locale\": \"locale\"}}";
     String modelUpdateAlgorithmPath = "/mdm/model/v0/algorithm/testString";
 
     server.enqueue(new MockResponse()
@@ -4106,10 +4106,76 @@ public class MdmTest extends PowerMockTestCase {
     .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .build();
 
+    // Construct an instance of the AlgorithmCompareStep model
+    AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
+    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .comparisonResource("testString")
+    .setResource("testString")
+    .mapResource("testString")
+    .method("testString")
+    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .label("testString")
+    .add("foo", "testString")
+    .build();
+
+    // Construct an instance of the AlgorithmMethods model
+    AlgorithmMethods algorithmMethodsModel = new AlgorithmMethods.Builder()
+    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+    .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
+    .build();
+
+    // Construct an instance of the AlgorithmCompareMethod model
+    AlgorithmCompareMethod algorithmCompareMethodModel = new AlgorithmCompareMethod.Builder()
+    .methods(new java.util.ArrayList<AlgorithmMethods>(java.util.Arrays.asList(algorithmMethodsModel)))
+    .weights(new java.util.ArrayList<Float>(java.util.Arrays.asList(Float.valueOf("36.0"))))
+    .label("testString")
+    .build();
+
+    // Construct an instance of the AlgorithmBucketGroupStep model
+    AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
+    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .order(true)
+    .method("testString")
+    .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
+    .label("testString")
+    .add("foo", "testString")
+    .build();
+
+    // Construct an instance of the AlgorithmBucketStep model
+    AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
+    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .order(true)
+    .comparisonResource("testString")
+    .setResource("testString")
+    .mapResource("testString")
+    .method("testString")
+    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .label("testString")
+    .add("foo", "testString")
+    .build();
+
+    // Construct an instance of the AlgorithmBucketGenerator model
+    AlgorithmBucketGenerator algorithmBucketGeneratorModel = new AlgorithmBucketGenerator.Builder()
+    .bucketGroupRecipe(new java.util.ArrayList<AlgorithmBucketGroupStep>(java.util.Arrays.asList(algorithmBucketGroupStepModel)))
+    .maximumBucketSize(Long.valueOf("26"))
+    .bucketRecipe(new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)))
+    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+    .label("testString")
+    .add("foo", "testString")
+    .build();
+
+    // Construct an instance of the AlgorithmEntityType model
+    AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
+    .clericalReviewThreshold(Float.valueOf("36.0"))
+    .autoLinkThreshold(Float.valueOf("36.0"))
+    .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
+    .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
+    .build();
+
     // Construct an instance of the AlgorithmStandardizerStep model
     AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
-    .comparisonResource("testString")
     .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .comparisonResource("testString")
     .setResource("testString")
     .mapResource("testString")
     .method("testString")
@@ -4127,84 +4193,18 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmEncryption model
     AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
-    .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .subType("testString")
+    .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .type("testString")
     .enabled(true)
-    .build();
-
-    // Construct an instance of the AlgorithmBucketStep model
-    AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
-    .comparisonResource("testString")
-    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-    .order(true)
-    .setResource("testString")
-    .mapResource("testString")
-    .method("testString")
-    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .label("testString")
-    .add("foo", "testString")
-    .build();
-
-    // Construct an instance of the AlgorithmBucketGroupStep model
-    AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
-    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-    .order(true)
-    .method("testString")
-    .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
-    .label("testString")
-    .add("foo", "testString")
-    .build();
-
-    // Construct an instance of the AlgorithmBucketGenerator model
-    AlgorithmBucketGenerator algorithmBucketGeneratorModel = new AlgorithmBucketGenerator.Builder()
-    .bucketRecipe(new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)))
-    .bucketGroupRecipe(new java.util.ArrayList<AlgorithmBucketGroupStep>(java.util.Arrays.asList(algorithmBucketGroupStepModel)))
-    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-    .maximumBucketSize(Long.valueOf("26"))
-    .label("testString")
-    .add("foo", "testString")
-    .build();
-
-    // Construct an instance of the AlgorithmCompareStep model
-    AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-    .comparisonResource("testString")
-    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-    .setResource("testString")
-    .mapResource("testString")
-    .method("testString")
-    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .label("testString")
-    .add("foo", "testString")
-    .build();
-
-    // Construct an instance of the AlgorithmMethods model
-    AlgorithmMethods algorithmMethodsModel = new AlgorithmMethods.Builder()
-    .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
-    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-    .build();
-
-    // Construct an instance of the AlgorithmCompareMethod model
-    AlgorithmCompareMethod algorithmCompareMethodModel = new AlgorithmCompareMethod.Builder()
-    .weights(new java.util.ArrayList<Float>(java.util.Arrays.asList(Float.valueOf("36.0"))))
-    .methods(new java.util.ArrayList<AlgorithmMethods>(java.util.Arrays.asList(algorithmMethodsModel)))
-    .label("testString")
-    .build();
-
-    // Construct an instance of the AlgorithmEntityType model
-    AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
-    .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
-    .clericalReviewThreshold(Float.valueOf("36.0"))
-    .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
-    .autoLinkThreshold(Float.valueOf("36.0"))
     .build();
 
     // Construct an instance of the ModelUpdateAlgorithmOptions model
     ModelUpdateAlgorithmOptions modelUpdateAlgorithmOptionsModel = new ModelUpdateAlgorithmOptions.Builder()
     .recordType("testString")
+    .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
     .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
     .encryption(algorithmEncryptionModel)
-    .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
     .locale("testString")
     .build();
 
@@ -4244,7 +4244,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelGetComparespecResourceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"typo_distance\": 12, \"feature_categories\": {\"mapKey\": {\"equivalency_map_resource\": \"equivalencyMapResource\", \"features\": [\"features\"], \"fields\": [\"fields\"]}}, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25}";
+    String mockResponseBody = "{\"typo_distance\": 12, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25, \"feature_categories\": {\"mapKey\": {\"equivalency_map_resource\": \"equivalencyMapResource\", \"features\": [\"features\"], \"fields\": [\"fields\"]}}}";
     String modelGetComparespecResourcePath = "/mdm/model/v0/compare_spec_resources/testString";
 
     server.enqueue(new MockResponse()
@@ -4295,7 +4295,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelReplaceSpecResourceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"compare_spec_resources\": {\"typo_distance\": 12, \"feature_categories\": {\"mapKey\": {\"equivalency_map_resource\": \"equivalencyMapResource\", \"features\": [\"features\"], \"fields\": [\"fields\"]}}, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25}, \"flow_id\": \"flowId\", \"flow_state\": \"flowState\"}";
+    String mockResponseBody = "{\"flow_id\": \"flowId\", \"flow_state\": \"flowState\", \"compare_spec_resources\": {\"typo_distance\": 12, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25, \"feature_categories\": {\"mapKey\": {\"equivalency_map_resource\": \"equivalencyMapResource\", \"features\": [\"features\"], \"fields\": [\"fields\"]}}}}";
     String modelReplaceSpecResourcePath = "/mdm/model/v0/compare_spec_resources/testString";
 
     server.enqueue(new MockResponse()
@@ -4316,8 +4316,8 @@ public class MdmTest extends PowerMockTestCase {
     ModelReplaceSpecResourceOptions modelReplaceSpecResourceOptionsModel = new ModelReplaceSpecResourceOptions.Builder()
     .resourceName("testString")
     .typoDistance(Float.valueOf("36.0"))
-    .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
     .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
+    .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
     .similarCharactersMapResource("testString")
     .similarCharactersDistance(Float.valueOf("36.0"))
     .build();
@@ -4395,7 +4395,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelGetCompositeRulesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"rules\": {\"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}, \"record_type_rule\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}, \"entity_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}}}, \"global\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}, \"locale\": \"locale\"}";
+    String mockResponseBody = "{\"rules\": {\"global\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}, \"record_type_rule\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}, \"entity_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}}}}, \"locale\": \"locale\"}";
     String modelGetCompositeRulesPath = "/mdm/model/v0/composite_rules";
 
     server.enqueue(new MockResponse()
@@ -4432,7 +4432,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelUpdateCompositeRulesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"composite_rules\": {\"rules\": {\"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}, \"record_type_rule\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}, \"entity_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}}}, \"global\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}, \"locale\": \"locale\"}, \"flow_id\": \"flowId\", \"flow_state\": \"flowState\"}";
+    String mockResponseBody = "{\"flow_id\": \"flowId\", \"flow_state\": \"flowState\", \"composite_rules\": {\"rules\": {\"global\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}, \"record_type_rule\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}, \"entity_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}}}}, \"locale\": \"locale\"}}";
     String modelUpdateCompositeRulesPath = "/mdm/model/v0/composite_rules";
 
     server.enqueue(new MockResponse()
@@ -4457,8 +4457,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CompositeRulesRules model
     CompositeRulesRules compositeRulesRulesModel = new CompositeRulesRules.Builder()
-    .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })
     .global(compositeRulesRuleModel)
+    .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })
     .build();
 
     // Construct an instance of the ModelUpdateCompositeRulesOptions model
@@ -4503,7 +4503,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelGetDataModelWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"description\": \"description\", \"label\": \"label\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"directional\": false, \"label_from_target\": \"labelFromTarget\", \"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"label_from_source\": \"labelFromSource\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"classification\": \"classification\", \"description\": \"description\", \"fields\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"record_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"record_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"collection_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"record_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"record_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"entity_types\": {\"entity_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"entity_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"relationship_types\": {\"from_record_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"from_record_type\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"from_record_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"from_record_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_type\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_type\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}}}";
+    String mockResponseBody = "{\"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"description\": \"description\", \"label\": \"label\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"attribute_types\": {\"mapKey\": {\"classification\": \"classification\", \"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"fields\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"label_from_target\": \"labelFromTarget\", \"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"directional\": false, \"label_from_source\": \"labelFromSource\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"collection_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}, \"entity_types\": {\"entity_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"entity_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}, \"relationship_types\": {\"to_record_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_type\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"to_record_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"to_record_type\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_type\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"to_record_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}}}";
     String modelGetDataModelPath = "/mdm/model/v0/data_model";
 
     server.enqueue(new MockResponse()
@@ -4543,7 +4543,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelModifyDataModelWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"data_model\": {\"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"description\": \"description\", \"label\": \"label\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"directional\": false, \"label_from_target\": \"labelFromTarget\", \"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"label_from_source\": \"labelFromSource\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"classification\": \"classification\", \"description\": \"description\", \"fields\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"record_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"record_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"collection_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"record_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"record_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"entity_types\": {\"entity_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"entity_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"relationship_types\": {\"from_record_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"from_record_type\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"from_record_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"from_record_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_type\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_type\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}}}, \"flow_id\": \"flowId\", \"flow_state\": \"flowState\"}";
+    String mockResponseBody = "{\"flow_id\": \"flowId\", \"flow_state\": \"flowState\", \"data_model\": {\"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"description\": \"description\", \"label\": \"label\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"attribute_types\": {\"mapKey\": {\"classification\": \"classification\", \"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"fields\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"label_from_target\": \"labelFromTarget\", \"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"directional\": false, \"label_from_source\": \"labelFromSource\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"collection_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}, \"entity_types\": {\"entity_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"entity_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}, \"relationship_types\": {\"to_record_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_type\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"to_record_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"to_record_type\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_type\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"to_record_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}}}}";
     String modelModifyDataModelPath = "/mdm/model/v0/data_model";
 
     server.enqueue(new MockResponse()
@@ -4578,6 +4578,23 @@ public class MdmTest extends PowerMockTestCase {
     .label("testString")
     .build();
 
+    // Construct an instance of the DataModelField model
+    DataModelField dataModelFieldModel = new DataModelField.Builder()
+    .classification("testString")
+    .indexed(true)
+    .description("testString")
+    .label("testString")
+    .build();
+
+    // Construct an instance of the DataModelAttributeType model
+    DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
+    .classification("testString")
+    .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .description("testString")
+    .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
+    .label("testString")
+    .build();
+
     // Construct an instance of the DataModelRelationshipEndpoint model
     DataModelRelationshipEndpoint dataModelRelationshipEndpointModel = new DataModelRelationshipEndpoint.Builder()
     .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
@@ -4592,9 +4609,9 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelRelationshipType model
     DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
-    .directional(true)
     .labelFromTarget("testString")
     .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
+    .directional(true)
     .labelFromSource("testString")
     .description("testString")
     .cardinality("testString")
@@ -4602,62 +4619,28 @@ public class MdmTest extends PowerMockTestCase {
     .label("testString")
     .build();
 
-    // Construct an instance of the DataModelField model
-    DataModelField dataModelFieldModel = new DataModelField.Builder()
-    .classification("testString")
-    .indexed(true)
-    .description("testString")
-    .label("testString")
-    .build();
-
-    // Construct an instance of the DataModelAttributeType model
-    DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
-    .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .classification("testString")
-    .description("testString")
-    .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
-    .label("testString")
-    .build();
-
     // Construct an instance of the DataModelSystemProperty model
     DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
-    .editable(true)
-    .dataType("testString")
     .indexed(true)
+    .dataType("testString")
+    .editable(true)
     .description("testString")
     .label("testString")
     .build();
 
     // Construct an instance of the DataModelRecordTypeSystemProperties model
     DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-    .recordId(dataModelSystemPropertyModel)
-    .recordLastUpdated(dataModelSystemPropertyModel)
     .collectionId(dataModelSystemPropertyModel)
-    .recordNumber(dataModelSystemPropertyModel)
+    .recordLastUpdated(dataModelSystemPropertyModel)
     .recordSource(dataModelSystemPropertyModel)
+    .recordNumber(dataModelSystemPropertyModel)
+    .recordId(dataModelSystemPropertyModel)
     .build();
 
     // Construct an instance of the DataModelEntityTypeSystemProperties model
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-    .entityId(dataModelSystemPropertyModel)
     .entityLastUpdated(dataModelSystemPropertyModel)
-    .build();
-
-    // Construct an instance of the DataModelRelationshipTypeSystemProperties model
-    DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
-    .fromRecordId(dataModelSystemPropertyModel)
-    .relationshipLastUpdated(dataModelSystemPropertyModel)
-    .fromRecordType(dataModelSystemPropertyModel)
-    .toRecordNumber(dataModelSystemPropertyModel)
-    .fromRecordNumber(dataModelSystemPropertyModel)
-    .relationshipSource(dataModelSystemPropertyModel)
-    .fromRecordSource(dataModelSystemPropertyModel)
-    .toRecordSource(dataModelSystemPropertyModel)
-    .relationshipId(dataModelSystemPropertyModel)
-    .relationshipType(dataModelSystemPropertyModel)
-    .toRecordId(dataModelSystemPropertyModel)
-    .relationshipNumber(dataModelSystemPropertyModel)
-    .toRecordType(dataModelSystemPropertyModel)
+    .entityId(dataModelSystemPropertyModel)
     .build();
 
     // Construct an instance of the DataModelAttributeTypeSystemProperties model
@@ -4665,19 +4648,36 @@ public class MdmTest extends PowerMockTestCase {
     .attributeLastUpdated(dataModelSystemPropertyModel)
     .build();
 
+    // Construct an instance of the DataModelRelationshipTypeSystemProperties model
+    DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+    .toRecordSource(dataModelSystemPropertyModel)
+    .relationshipId(dataModelSystemPropertyModel)
+    .relationshipType(dataModelSystemPropertyModel)
+    .fromRecordId(dataModelSystemPropertyModel)
+    .toRecordId(dataModelSystemPropertyModel)
+    .relationshipNumber(dataModelSystemPropertyModel)
+    .toRecordType(dataModelSystemPropertyModel)
+    .relationshipLastUpdated(dataModelSystemPropertyModel)
+    .fromRecordType(dataModelSystemPropertyModel)
+    .toRecordNumber(dataModelSystemPropertyModel)
+    .fromRecordNumber(dataModelSystemPropertyModel)
+    .relationshipSource(dataModelSystemPropertyModel)
+    .fromRecordSource(dataModelSystemPropertyModel)
+    .build();
+
     // Construct an instance of the DataModelSystemProperties model
     DataModelSystemProperties dataModelSystemPropertiesModel = new DataModelSystemProperties.Builder()
     .recordTypes(dataModelRecordTypeSystemPropertiesModel)
     .entityTypes(dataModelEntityTypeSystemPropertiesModel)
-    .relationshipTypes(dataModelRelationshipTypeSystemPropertiesModel)
     .attributeTypes(dataModelAttributeTypeSystemPropertiesModel)
+    .relationshipTypes(dataModelRelationshipTypeSystemPropertiesModel)
     .build();
 
     // Construct an instance of the ModelModifyDataModelOptions model
     ModelModifyDataModelOptions modelModifyDataModelOptionsModel = new ModelModifyDataModelOptions.Builder()
     .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
-    .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
     .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
+    .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
     .locale("testString")
     .systemProperties(dataModelSystemPropertiesModel)
     .build();
@@ -4718,7 +4718,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelPatchDataModelWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"data_model\": {\"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"description\": \"description\", \"label\": \"label\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"directional\": false, \"label_from_target\": \"labelFromTarget\", \"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"label_from_source\": \"labelFromSource\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"classification\": \"classification\", \"description\": \"description\", \"fields\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"record_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"record_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"collection_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"record_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"record_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"entity_types\": {\"entity_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"entity_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"relationship_types\": {\"from_record_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"from_record_type\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"from_record_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"from_record_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_source\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_type\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_id\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"relationship_number\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}, \"to_record_type\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"editable\": true, \"data_type\": \"dataType\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}}}, \"flow_id\": \"flowId\", \"flow_state\": \"flowState\"}";
+    String mockResponseBody = "{\"flow_id\": \"flowId\", \"flow_state\": \"flowState\", \"data_model\": {\"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"description\": \"description\", \"label\": \"label\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"attribute_types\": {\"mapKey\": {\"classification\": \"classification\", \"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"fields\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"description\": \"description\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"label_from_target\": \"labelFromTarget\", \"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"directional\": false, \"label_from_source\": \"labelFromSource\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"classification\": \"classification\", \"indexed\": false, \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"label\": \"label\"}}, \"label\": \"label\"}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"collection_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"record_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}, \"entity_types\": {\"entity_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"entity_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}, \"relationship_types\": {\"to_record_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_type\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"to_record_id\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"to_record_type\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_last_updated\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_type\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"to_record_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_number\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"relationship_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}, \"from_record_source\": {\"indexed\": false, \"data_type\": \"dataType\", \"editable\": true, \"description\": \"description\", \"label\": \"label\"}}}}}";
     String modelPatchDataModelPath = "/mdm/model/v0/data_model";
 
     server.enqueue(new MockResponse()
@@ -4753,6 +4753,23 @@ public class MdmTest extends PowerMockTestCase {
     .label("testString")
     .build();
 
+    // Construct an instance of the DataModelField model
+    DataModelField dataModelFieldModel = new DataModelField.Builder()
+    .classification("testString")
+    .indexed(true)
+    .description("testString")
+    .label("testString")
+    .build();
+
+    // Construct an instance of the DataModelAttributeType model
+    DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
+    .classification("testString")
+    .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .description("testString")
+    .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
+    .label("testString")
+    .build();
+
     // Construct an instance of the DataModelRelationshipEndpoint model
     DataModelRelationshipEndpoint dataModelRelationshipEndpointModel = new DataModelRelationshipEndpoint.Builder()
     .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
@@ -4767,9 +4784,9 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelRelationshipType model
     DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
-    .directional(true)
     .labelFromTarget("testString")
     .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
+    .directional(true)
     .labelFromSource("testString")
     .description("testString")
     .cardinality("testString")
@@ -4777,62 +4794,28 @@ public class MdmTest extends PowerMockTestCase {
     .label("testString")
     .build();
 
-    // Construct an instance of the DataModelField model
-    DataModelField dataModelFieldModel = new DataModelField.Builder()
-    .classification("testString")
-    .indexed(true)
-    .description("testString")
-    .label("testString")
-    .build();
-
-    // Construct an instance of the DataModelAttributeType model
-    DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
-    .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .classification("testString")
-    .description("testString")
-    .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
-    .label("testString")
-    .build();
-
     // Construct an instance of the DataModelSystemProperty model
     DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
-    .editable(true)
-    .dataType("testString")
     .indexed(true)
+    .dataType("testString")
+    .editable(true)
     .description("testString")
     .label("testString")
     .build();
 
     // Construct an instance of the DataModelRecordTypeSystemProperties model
     DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-    .recordId(dataModelSystemPropertyModel)
-    .recordLastUpdated(dataModelSystemPropertyModel)
     .collectionId(dataModelSystemPropertyModel)
-    .recordNumber(dataModelSystemPropertyModel)
+    .recordLastUpdated(dataModelSystemPropertyModel)
     .recordSource(dataModelSystemPropertyModel)
+    .recordNumber(dataModelSystemPropertyModel)
+    .recordId(dataModelSystemPropertyModel)
     .build();
 
     // Construct an instance of the DataModelEntityTypeSystemProperties model
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-    .entityId(dataModelSystemPropertyModel)
     .entityLastUpdated(dataModelSystemPropertyModel)
-    .build();
-
-    // Construct an instance of the DataModelRelationshipTypeSystemProperties model
-    DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
-    .fromRecordId(dataModelSystemPropertyModel)
-    .relationshipLastUpdated(dataModelSystemPropertyModel)
-    .fromRecordType(dataModelSystemPropertyModel)
-    .toRecordNumber(dataModelSystemPropertyModel)
-    .fromRecordNumber(dataModelSystemPropertyModel)
-    .relationshipSource(dataModelSystemPropertyModel)
-    .fromRecordSource(dataModelSystemPropertyModel)
-    .toRecordSource(dataModelSystemPropertyModel)
-    .relationshipId(dataModelSystemPropertyModel)
-    .relationshipType(dataModelSystemPropertyModel)
-    .toRecordId(dataModelSystemPropertyModel)
-    .relationshipNumber(dataModelSystemPropertyModel)
-    .toRecordType(dataModelSystemPropertyModel)
+    .entityId(dataModelSystemPropertyModel)
     .build();
 
     // Construct an instance of the DataModelAttributeTypeSystemProperties model
@@ -4840,19 +4823,36 @@ public class MdmTest extends PowerMockTestCase {
     .attributeLastUpdated(dataModelSystemPropertyModel)
     .build();
 
+    // Construct an instance of the DataModelRelationshipTypeSystemProperties model
+    DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+    .toRecordSource(dataModelSystemPropertyModel)
+    .relationshipId(dataModelSystemPropertyModel)
+    .relationshipType(dataModelSystemPropertyModel)
+    .fromRecordId(dataModelSystemPropertyModel)
+    .toRecordId(dataModelSystemPropertyModel)
+    .relationshipNumber(dataModelSystemPropertyModel)
+    .toRecordType(dataModelSystemPropertyModel)
+    .relationshipLastUpdated(dataModelSystemPropertyModel)
+    .fromRecordType(dataModelSystemPropertyModel)
+    .toRecordNumber(dataModelSystemPropertyModel)
+    .fromRecordNumber(dataModelSystemPropertyModel)
+    .relationshipSource(dataModelSystemPropertyModel)
+    .fromRecordSource(dataModelSystemPropertyModel)
+    .build();
+
     // Construct an instance of the DataModelSystemProperties model
     DataModelSystemProperties dataModelSystemPropertiesModel = new DataModelSystemProperties.Builder()
     .recordTypes(dataModelRecordTypeSystemPropertiesModel)
     .entityTypes(dataModelEntityTypeSystemPropertiesModel)
-    .relationshipTypes(dataModelRelationshipTypeSystemPropertiesModel)
     .attributeTypes(dataModelAttributeTypeSystemPropertiesModel)
+    .relationshipTypes(dataModelRelationshipTypeSystemPropertiesModel)
     .build();
 
     // Construct an instance of the ModelPatchDataModelOptions model
     ModelPatchDataModelOptions modelPatchDataModelOptionsModel = new ModelPatchDataModelOptions.Builder()
     .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
-    .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
     .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
+    .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
     .locale("testString")
     .systemProperties(dataModelSystemPropertiesModel)
     .build();
@@ -4893,7 +4893,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelGetFlowByIdWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"approvals\": [\"approvals\"], \"flow_type\": \"flowType\", \"rejections\": [\"rejections\"], \"flow_id\": \"flowId\", \"flow_state\": \"flowState\", \"active\": true}";
+    String mockResponseBody = "{\"flow_id\": \"flowId\", \"flow_state\": \"flowState\", \"flow_type\": \"flowType\", \"approvals\": [\"approvals\"], \"rejections\": [\"rejections\"], \"active\": true}";
     String modelGetFlowByIdPath = "/mdm/model/v0/flows/testString";
 
     server.enqueue(new MockResponse()
@@ -5007,9 +5007,9 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the ModelPatchFlowOptions model
     ModelPatchFlowOptions modelPatchFlowOptionsModel = new ModelPatchFlowOptions.Builder()
-    .action("testString")
-    .approverName("testString")
     .flowId("testString")
+    .approverName("testString")
+    .action("testString")
     .message("testString")
     .build();
 
@@ -5192,7 +5192,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testModelReplaceMapResourceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"map_resources\": {\"mapKey\": [{\"data_type\": \"dataType\", \"regex\": [\"regex\"], \"cardinality\": \"cardinality\", \"values\": [\"values\"], \"key\": \"key\", \"category\": \"category\"}]}, \"flow_id\": \"flowId\", \"flow_state\": \"flowState\"}";
+    String mockResponseBody = "{\"flow_id\": \"flowId\", \"flow_state\": \"flowState\", \"map_resources\": {\"mapKey\": [{\"data_type\": \"dataType\", \"regex\": [\"regex\"], \"cardinality\": \"cardinality\", \"values\": [\"values\"], \"key\": \"key\", \"category\": \"category\"}]}}";
     String modelReplaceMapResourcePath = "/mdm/model/v0/map_resources/testString";
 
     server.enqueue(new MockResponse()

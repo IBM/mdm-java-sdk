@@ -22,25 +22,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseEntityType extends GenericModel {
 
-  @SerializedName("bucket_generators")
-  protected Map<String, PutAlgorithmResponseBucketGenerator> bucketGenerators;
   @SerializedName("clerical_review_threshold")
   protected Float clericalReviewThreshold;
-  @SerializedName("compare_methods")
-  protected Map<String, PutAlgorithmResponseCompareMethod> compareMethods;
   @SerializedName("auto_link_threshold")
   protected Float autoLinkThreshold;
-
-  /**
-   * Gets the bucketGenerators.
-   *
-   * Collection of bucket generators.
-   *
-   * @return the bucketGenerators
-   */
-  public Map<String, PutAlgorithmResponseBucketGenerator> getBucketGenerators() {
-    return bucketGenerators;
-  }
+  @SerializedName("compare_methods")
+  protected Map<String, PutAlgorithmResponseCompareMethod> compareMethods;
+  @SerializedName("bucket_generators")
+  protected Map<String, PutAlgorithmResponseBucketGenerator> bucketGenerators;
 
   /**
    * Gets the clericalReviewThreshold.
@@ -51,6 +40,17 @@ public class PutAlgorithmResponseEntityType extends GenericModel {
    */
   public Float getClericalReviewThreshold() {
     return clericalReviewThreshold;
+  }
+
+  /**
+   * Gets the autoLinkThreshold.
+   *
+   * The minimum matching score between two records to automatically link them together.
+   *
+   * @return the autoLinkThreshold
+   */
+  public Float getAutoLinkThreshold() {
+    return autoLinkThreshold;
   }
 
   /**
@@ -65,14 +65,14 @@ public class PutAlgorithmResponseEntityType extends GenericModel {
   }
 
   /**
-   * Gets the autoLinkThreshold.
+   * Gets the bucketGenerators.
    *
-   * The minimum matching score between two records to automatically link them together.
+   * Collection of bucket generators.
    *
-   * @return the autoLinkThreshold
+   * @return the bucketGenerators
    */
-  public Float getAutoLinkThreshold() {
-    return autoLinkThreshold;
+  public Map<String, PutAlgorithmResponseBucketGenerator> getBucketGenerators() {
+    return bucketGenerators;
   }
 }
 

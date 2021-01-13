@@ -34,9 +34,9 @@ public class AlgorithmBucketStepTest {
   @Test
   public void testAlgorithmBucketStep() throws Throwable {
     AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
-      .comparisonResource("testString")
       .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .order(true)
+      .comparisonResource("testString")
       .setResource("testString")
       .mapResource("testString")
       .method("testString")
@@ -44,9 +44,9 @@ public class AlgorithmBucketStepTest {
       .label("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmBucketStepModel.getComparisonResource(), "testString");
     assertEquals(algorithmBucketStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
     assertEquals(algorithmBucketStepModel.isOrder(), Boolean.valueOf(true));
+    assertEquals(algorithmBucketStepModel.getComparisonResource(), "testString");
     assertEquals(algorithmBucketStepModel.getSetResource(), "testString");
     assertEquals(algorithmBucketStepModel.getMapResource(), "testString");
     assertEquals(algorithmBucketStepModel.getMethod(), "testString");
@@ -58,8 +58,8 @@ public class AlgorithmBucketStepTest {
 
     AlgorithmBucketStep algorithmBucketStepModelNew = TestUtilities.deserialize(json, AlgorithmBucketStep.class);
     assertTrue(algorithmBucketStepModelNew instanceof AlgorithmBucketStep);
-    assertEquals(algorithmBucketStepModelNew.getComparisonResource(), "testString");
     assertEquals(algorithmBucketStepModelNew.isOrder(), Boolean.valueOf(true));
+    assertEquals(algorithmBucketStepModelNew.getComparisonResource(), "testString");
     assertEquals(algorithmBucketStepModelNew.getSetResource(), "testString");
     assertEquals(algorithmBucketStepModelNew.getMapResource(), "testString");
     assertEquals(algorithmBucketStepModelNew.getMethod(), "testString");

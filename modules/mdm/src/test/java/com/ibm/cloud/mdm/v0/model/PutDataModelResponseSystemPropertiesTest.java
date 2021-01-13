@@ -39,7 +39,7 @@ public class PutDataModelResponseSystemPropertiesTest {
     PutDataModelResponseSystemProperties putDataModelResponseSystemPropertiesModel = new PutDataModelResponseSystemProperties();
     assertNull(putDataModelResponseSystemPropertiesModel.getRecordTypes());
     assertNull(putDataModelResponseSystemPropertiesModel.getEntityTypes());
-    assertNull(putDataModelResponseSystemPropertiesModel.getRelationshipTypes());
     assertNull(putDataModelResponseSystemPropertiesModel.getAttributeTypes());
+    assertNull(putDataModelResponseSystemPropertiesModel.getRelationshipTypes());
   }
 }

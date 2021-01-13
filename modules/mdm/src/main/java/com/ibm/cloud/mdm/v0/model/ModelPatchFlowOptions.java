@@ -19,24 +19,24 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelPatchFlowOptions extends GenericModel {
 
-  protected String action;
-  protected String approverName;
   protected String flowId;
+  protected String approverName;
+  protected String action;
   protected String message;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String action;
-    private String approverName;
     private String flowId;
+    private String approverName;
+    private String action;
     private String message;
 
     private Builder(ModelPatchFlowOptions modelPatchFlowOptions) {
-      this.action = modelPatchFlowOptions.action;
-      this.approverName = modelPatchFlowOptions.approverName;
       this.flowId = modelPatchFlowOptions.flowId;
+      this.approverName = modelPatchFlowOptions.approverName;
+      this.action = modelPatchFlowOptions.action;
       this.message = modelPatchFlowOptions.message;
     }
 
@@ -49,14 +49,14 @@ public class ModelPatchFlowOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param action the action
-     * @param approverName the approverName
      * @param flowId the flowId
+     * @param approverName the approverName
+     * @param action the action
      */
-    public Builder(String action, String approverName, String flowId) {
-      this.action = action;
-      this.approverName = approverName;
+    public Builder(String flowId, String approverName, String action) {
       this.flowId = flowId;
+      this.approverName = approverName;
+      this.action = action;
     }
 
     /**
@@ -69,13 +69,13 @@ public class ModelPatchFlowOptions extends GenericModel {
     }
 
     /**
-     * Set the action.
+     * Set the flowId.
      *
-     * @param action the action
+     * @param flowId the flowId
      * @return the ModelPatchFlowOptions builder
      */
-    public Builder action(String action) {
-      this.action = action;
+    public Builder flowId(String flowId) {
+      this.flowId = flowId;
       return this;
     }
 
@@ -91,13 +91,13 @@ public class ModelPatchFlowOptions extends GenericModel {
     }
 
     /**
-     * Set the flowId.
+     * Set the action.
      *
-     * @param flowId the flowId
+     * @param action the action
      * @return the ModelPatchFlowOptions builder
      */
-    public Builder flowId(String flowId) {
-      this.flowId = flowId;
+    public Builder action(String action) {
+      this.action = action;
       return this;
     }
 
@@ -114,15 +114,15 @@ public class ModelPatchFlowOptions extends GenericModel {
   }
 
   protected ModelPatchFlowOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.action,
-      "action cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.approverName,
-      "approverName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.flowId,
       "flowId cannot be null");
-    action = builder.action;
-    approverName = builder.approverName;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.approverName,
+      "approverName cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.action,
+      "action cannot be null");
     flowId = builder.flowId;
+    approverName = builder.approverName;
+    action = builder.action;
     message = builder.message;
   }
 
@@ -136,14 +136,14 @@ public class ModelPatchFlowOptions extends GenericModel {
   }
 
   /**
-   * Gets the action.
+   * Gets the flowId.
    *
-   * One of: approve or reject.
+   * System generated flow identifier.
    *
-   * @return the action
+   * @return the flowId
    */
-  public String action() {
-    return action;
+  public String flowId() {
+    return flowId;
   }
 
   /**
@@ -158,14 +158,14 @@ public class ModelPatchFlowOptions extends GenericModel {
   }
 
   /**
-   * Gets the flowId.
+   * Gets the action.
    *
-   * System generated flow identifier.
+   * One of: approve or reject.
    *
-   * @return the flowId
+   * @return the action
    */
-  public String flowId() {
-    return flowId;
+  public String action() {
+    return action;
   }
 
   /**

@@ -24,10 +24,10 @@ public class PutDataModelResponseDataModel extends GenericModel {
 
   @SerializedName("record_types")
   protected Map<String, PutDataModelResponseRecordType> recordTypes;
-  @SerializedName("relationship_types")
-  protected Map<String, PutDataModelResponseRelationshipType> relationshipTypes;
   @SerializedName("attribute_types")
   protected Map<String, PutDataModelResponseAttributeType> attributeTypes;
+  @SerializedName("relationship_types")
+  protected Map<String, PutDataModelResponseRelationshipType> relationshipTypes;
   protected String locale;
   @SerializedName("system_properties")
   protected PutDataModelResponseSystemProperties systemProperties;
@@ -44,17 +44,6 @@ public class PutDataModelResponseDataModel extends GenericModel {
   }
 
   /**
-   * Gets the relationshipTypes.
-   *
-   * Collection of relationship types. The relationship type key must be lower snake case (i.e. employment).
-   *
-   * @return the relationshipTypes
-   */
-  public Map<String, PutDataModelResponseRelationshipType> getRelationshipTypes() {
-    return relationshipTypes;
-  }
-
-  /**
    * Gets the attributeTypes.
    *
    * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
@@ -63,6 +52,17 @@ public class PutDataModelResponseDataModel extends GenericModel {
    */
   public Map<String, PutDataModelResponseAttributeType> getAttributeTypes() {
     return attributeTypes;
+  }
+
+  /**
+   * Gets the relationshipTypes.
+   *
+   * Collection of relationship types. The relationship type key must be lower snake case (i.e. employment).
+   *
+   * @return the relationshipTypes
+   */
+  public Map<String, PutDataModelResponseRelationshipType> getRelationshipTypes() {
+    return relationshipTypes;
   }
 
   /**

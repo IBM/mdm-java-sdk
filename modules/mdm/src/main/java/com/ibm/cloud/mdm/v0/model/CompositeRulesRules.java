@@ -22,20 +22,20 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CompositeRulesRules extends GenericModel {
 
+  protected CompositeRulesRule global;
   @SerializedName("record_types")
   protected Map<String, CompositeRulesRecordType> recordTypes;
-  protected CompositeRulesRule global;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Map<String, CompositeRulesRecordType> recordTypes;
     private CompositeRulesRule global;
+    private Map<String, CompositeRulesRecordType> recordTypes;
 
     private Builder(CompositeRulesRules compositeRulesRules) {
-      this.recordTypes = compositeRulesRules.recordTypes;
       this.global = compositeRulesRules.global;
+      this.recordTypes = compositeRulesRules.recordTypes;
     }
 
     /**
@@ -63,17 +63,6 @@ public class CompositeRulesRules extends GenericModel {
     }
 
     /**
-     * Set the recordTypes.
-     *
-     * @param recordTypes the recordTypes
-     * @return the CompositeRulesRules builder
-     */
-    public Builder recordTypes(Map<String, CompositeRulesRecordType> recordTypes) {
-      this.recordTypes = recordTypes;
-      return this;
-    }
-
-    /**
      * Set the global.
      *
      * @param global the global
@@ -83,13 +72,24 @@ public class CompositeRulesRules extends GenericModel {
       this.global = global;
       return this;
     }
+
+    /**
+     * Set the recordTypes.
+     *
+     * @param recordTypes the recordTypes
+     * @return the CompositeRulesRules builder
+     */
+    public Builder recordTypes(Map<String, CompositeRulesRecordType> recordTypes) {
+      this.recordTypes = recordTypes;
+      return this;
+    }
   }
 
   protected CompositeRulesRules(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.global,
       "global cannot be null");
-    recordTypes = builder.recordTypes;
     global = builder.global;
+    recordTypes = builder.recordTypes;
   }
 
   /**
@@ -102,17 +102,6 @@ public class CompositeRulesRules extends GenericModel {
   }
 
   /**
-   * Gets the recordTypes.
-   *
-   * Collection of composite rule definitions per record type. The record type key must be lower snake case.
-   *
-   * @return the recordTypes
-   */
-  public Map<String, CompositeRulesRecordType> recordTypes() {
-    return recordTypes;
-  }
-
-  /**
    * Gets the global.
    *
    * A single composite rule definition.
@@ -121,6 +110,17 @@ public class CompositeRulesRules extends GenericModel {
    */
   public CompositeRulesRule global() {
     return global;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Collection of composite rule definitions per record type. The record type key must be lower snake case.
+   *
+   * @return the recordTypes
+   */
+  public Map<String, CompositeRulesRecordType> recordTypes() {
+    return recordTypes;
   }
 }
 
