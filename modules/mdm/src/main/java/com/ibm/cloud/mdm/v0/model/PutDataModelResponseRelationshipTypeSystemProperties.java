@@ -22,12 +22,6 @@ public class PutDataModelResponseRelationshipTypeSystemProperties extends Generi
 
   @SerializedName("from_record_id")
   protected PutDataModelResponseSystemProperty fromRecordId;
-  @SerializedName("to_record_id")
-  protected PutDataModelResponseSystemProperty toRecordId;
-  @SerializedName("relationship_number")
-  protected PutDataModelResponseSystemProperty relationshipNumber;
-  @SerializedName("to_record_type")
-  protected PutDataModelResponseSystemProperty toRecordType;
   @SerializedName("relationship_last_updated")
   protected PutDataModelResponseSystemProperty relationshipLastUpdated;
   @SerializedName("from_record_type")
@@ -46,6 +40,12 @@ public class PutDataModelResponseRelationshipTypeSystemProperties extends Generi
   protected PutDataModelResponseSystemProperty relationshipId;
   @SerializedName("relationship_type")
   protected PutDataModelResponseSystemProperty relationshipType;
+  @SerializedName("to_record_id")
+  protected PutDataModelResponseSystemProperty toRecordId;
+  @SerializedName("relationship_number")
+  protected PutDataModelResponseSystemProperty relationshipNumber;
+  @SerializedName("to_record_type")
+  protected PutDataModelResponseSystemProperty toRecordType;
 
   /**
    * Gets the fromRecordId.
@@ -56,39 +56,6 @@ public class PutDataModelResponseRelationshipTypeSystemProperties extends Generi
    */
   public PutDataModelResponseSystemProperty getFromRecordId() {
     return fromRecordId;
-  }
-
-  /**
-   * Gets the toRecordId.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the toRecordId
-   */
-  public PutDataModelResponseSystemProperty getToRecordId() {
-    return toRecordId;
-  }
-
-  /**
-   * Gets the relationshipNumber.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the relationshipNumber
-   */
-  public PutDataModelResponseSystemProperty getRelationshipNumber() {
-    return relationshipNumber;
-  }
-
-  /**
-   * Gets the toRecordType.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the toRecordType
-   */
-  public PutDataModelResponseSystemProperty getToRecordType() {
-    return toRecordType;
   }
 
   /**
@@ -188,6 +155,39 @@ public class PutDataModelResponseRelationshipTypeSystemProperties extends Generi
    */
   public PutDataModelResponseSystemProperty getRelationshipType() {
     return relationshipType;
+  }
+
+  /**
+   * Gets the toRecordId.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the toRecordId
+   */
+  public PutDataModelResponseSystemProperty getToRecordId() {
+    return toRecordId;
+  }
+
+  /**
+   * Gets the relationshipNumber.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the relationshipNumber
+   */
+  public PutDataModelResponseSystemProperty getRelationshipNumber() {
+    return relationshipNumber;
+  }
+
+  /**
+   * Gets the toRecordType.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the toRecordType
+   */
+  public PutDataModelResponseSystemProperty getToRecordType() {
+    return toRecordType;
   }
 }
 

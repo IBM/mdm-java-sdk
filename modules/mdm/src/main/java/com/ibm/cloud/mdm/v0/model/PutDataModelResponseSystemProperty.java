@@ -20,12 +20,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseSystemProperty extends GenericModel {
 
+  protected Boolean editable;
   @SerializedName("data_type")
   protected String dataType;
   protected Boolean indexed;
-  protected Boolean editable;
   protected String description;
   protected String label;
+
+  /**
+   * Gets the editable.
+   *
+   * System pre-defined editable indicator. The default value is false.
+   *
+   * @return the editable
+   */
+  public Boolean isEditable() {
+    return editable;
+  }
 
   /**
    * Gets the dataType.
@@ -47,17 +58,6 @@ public class PutDataModelResponseSystemProperty extends GenericModel {
    */
   public Boolean isIndexed() {
     return indexed;
-  }
-
-  /**
-   * Gets the editable.
-   *
-   * System pre-defined editable indicator. The default value is false.
-   *
-   * @return the editable
-   */
-  public Boolean isEditable() {
-    return editable;
   }
 
   /**

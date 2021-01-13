@@ -19,18 +19,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetCloudJobSummaryOptions extends GenericModel {
 
-  protected String crn;
   protected String jobId;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String jobId;
 
     private Builder(GetCloudJobSummaryOptions getCloudJobSummaryOptions) {
-      this.crn = getCloudJobSummaryOptions.crn;
       this.jobId = getCloudJobSummaryOptions.jobId;
     }
 
@@ -43,11 +40,9 @@ public class GetCloudJobSummaryOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param jobId the jobId
      */
-    public Builder(String crn, String jobId) {
-      this.crn = crn;
+    public Builder(String jobId) {
       this.jobId = jobId;
     }
 
@@ -58,17 +53,6 @@ public class GetCloudJobSummaryOptions extends GenericModel {
      */
     public GetCloudJobSummaryOptions build() {
       return new GetCloudJobSummaryOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the GetCloudJobSummaryOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -84,11 +68,8 @@ public class GetCloudJobSummaryOptions extends GenericModel {
   }
 
   protected GetCloudJobSummaryOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.jobId,
       "jobId cannot be null");
-    crn = builder.crn;
     jobId = builder.jobId;
   }
 
@@ -99,17 +80,6 @@ public class GetCloudJobSummaryOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

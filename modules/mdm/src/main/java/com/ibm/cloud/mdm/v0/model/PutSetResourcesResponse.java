@@ -22,12 +22,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutSetResourcesResponse extends GenericModel {
 
+  @SerializedName("flow_id")
+  protected String flowId;
   @SerializedName("set_resources")
   protected Map<String, PutSetResourcesResponseSetResourceEntry> setResources;
   @SerializedName("flow_state")
   protected String flowState;
-  @SerializedName("flow_id")
-  protected String flowId;
+
+  /**
+   * Gets the flowId.
+   *
+   * System generated flow identifier.
+   *
+   * @return the flowId
+   */
+  public String getFlowId() {
+    return flowId;
+  }
 
   /**
    * Gets the setResources.
@@ -49,17 +60,6 @@ public class PutSetResourcesResponse extends GenericModel {
    */
   public String getFlowState() {
     return flowState;
-  }
-
-  /**
-   * Gets the flowId.
-   *
-   * System generated flow identifier.
-   *
-   * @return the flowId
-   */
-  public String getFlowId() {
-    return flowId;
   }
 }
 

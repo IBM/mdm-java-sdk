@@ -26,10 +26,10 @@ public class AlgorithmEntityType extends GenericModel {
   protected Map<String, AlgorithmBucketGenerator> bucketGenerators;
   @SerializedName("clerical_review_threshold")
   protected Float clericalReviewThreshold;
-  @SerializedName("auto_link_threshold")
-  protected Float autoLinkThreshold;
   @SerializedName("compare_methods")
   protected Map<String, AlgorithmCompareMethod> compareMethods;
+  @SerializedName("auto_link_threshold")
+  protected Float autoLinkThreshold;
 
   /**
    * Builder.
@@ -37,14 +37,14 @@ public class AlgorithmEntityType extends GenericModel {
   public static class Builder {
     private Map<String, AlgorithmBucketGenerator> bucketGenerators;
     private Float clericalReviewThreshold;
-    private Float autoLinkThreshold;
     private Map<String, AlgorithmCompareMethod> compareMethods;
+    private Float autoLinkThreshold;
 
     private Builder(AlgorithmEntityType algorithmEntityType) {
       this.bucketGenerators = algorithmEntityType.bucketGenerators;
       this.clericalReviewThreshold = algorithmEntityType.clericalReviewThreshold;
-      this.autoLinkThreshold = algorithmEntityType.autoLinkThreshold;
       this.compareMethods = algorithmEntityType.compareMethods;
+      this.autoLinkThreshold = algorithmEntityType.autoLinkThreshold;
     }
 
     /**
@@ -94,17 +94,6 @@ public class AlgorithmEntityType extends GenericModel {
     }
 
     /**
-     * Set the autoLinkThreshold.
-     *
-     * @param autoLinkThreshold the autoLinkThreshold
-     * @return the AlgorithmEntityType builder
-     */
-    public Builder autoLinkThreshold(Float autoLinkThreshold) {
-      this.autoLinkThreshold = autoLinkThreshold;
-      return this;
-    }
-
-    /**
      * Set the compareMethods.
      *
      * @param compareMethods the compareMethods
@@ -114,6 +103,17 @@ public class AlgorithmEntityType extends GenericModel {
       this.compareMethods = compareMethods;
       return this;
     }
+
+    /**
+     * Set the autoLinkThreshold.
+     *
+     * @param autoLinkThreshold the autoLinkThreshold
+     * @return the AlgorithmEntityType builder
+     */
+    public Builder autoLinkThreshold(Float autoLinkThreshold) {
+      this.autoLinkThreshold = autoLinkThreshold;
+      return this;
+    }
   }
 
   protected AlgorithmEntityType(Builder builder) {
@@ -121,8 +121,8 @@ public class AlgorithmEntityType extends GenericModel {
       "autoLinkThreshold cannot be null");
     bucketGenerators = builder.bucketGenerators;
     clericalReviewThreshold = builder.clericalReviewThreshold;
-    autoLinkThreshold = builder.autoLinkThreshold;
     compareMethods = builder.compareMethods;
+    autoLinkThreshold = builder.autoLinkThreshold;
   }
 
   /**
@@ -157,17 +157,6 @@ public class AlgorithmEntityType extends GenericModel {
   }
 
   /**
-   * Gets the autoLinkThreshold.
-   *
-   * The minimum matching score between two records to automatically link them together.
-   *
-   * @return the autoLinkThreshold
-   */
-  public Float autoLinkThreshold() {
-    return autoLinkThreshold;
-  }
-
-  /**
    * Gets the compareMethods.
    *
    * Collection of comparators.
@@ -176,6 +165,17 @@ public class AlgorithmEntityType extends GenericModel {
    */
   public Map<String, AlgorithmCompareMethod> compareMethods() {
     return compareMethods;
+  }
+
+  /**
+   * Gets the autoLinkThreshold.
+   *
+   * The minimum matching score between two records to automatically link them together.
+   *
+   * @return the autoLinkThreshold
+   */
+  public Float autoLinkThreshold() {
+    return autoLinkThreshold;
   }
 }
 

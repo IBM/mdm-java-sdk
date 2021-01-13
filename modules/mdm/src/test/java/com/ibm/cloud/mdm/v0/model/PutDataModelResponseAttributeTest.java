@@ -32,12 +32,12 @@ public class PutDataModelResponseAttributeTest {
   @Test
   public void testPutDataModelResponseAttribute() throws Throwable {
     PutDataModelResponseAttribute putDataModelResponseAttributeModel = new PutDataModelResponseAttribute();
+    assertNull(putDataModelResponseAttributeModel.getClassification());
     assertNull(putDataModelResponseAttributeModel.isIndexed());
     assertNull(putDataModelResponseAttributeModel.getMatchingType());
-    assertNull(putDataModelResponseAttributeModel.getClassification());
     assertNull(putDataModelResponseAttributeModel.getAttributeType());
-    assertNull(putDataModelResponseAttributeModel.getCardinality());
     assertNull(putDataModelResponseAttributeModel.getDescription());
+    assertNull(putDataModelResponseAttributeModel.getCardinality());
     assertNull(putDataModelResponseAttributeModel.getLabel());
   }
 }

@@ -33,10 +33,10 @@ public class PutDataModelResponseRecordTypeSystemPropertiesTest {
   @Test
   public void testPutDataModelResponseRecordTypeSystemProperties() throws Throwable {
     PutDataModelResponseRecordTypeSystemProperties putDataModelResponseRecordTypeSystemPropertiesModel = new PutDataModelResponseRecordTypeSystemProperties();
-    assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordNumber());
     assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordId());
-    assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordSource());
     assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordLastUpdated());
     assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getCollectionId());
+    assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordNumber());
+    assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordSource());
   }
 }

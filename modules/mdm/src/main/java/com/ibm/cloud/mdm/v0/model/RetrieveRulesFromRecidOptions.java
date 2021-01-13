@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RetrieveRulesFromRecidOptions extends GenericModel {
 
-  protected String crn;
   protected Long recordNumber;
   protected String entityType;
 
@@ -27,12 +26,10 @@ public class RetrieveRulesFromRecidOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private Long recordNumber;
     private String entityType;
 
     private Builder(RetrieveRulesFromRecidOptions retrieveRulesFromRecidOptions) {
-      this.crn = retrieveRulesFromRecidOptions.crn;
       this.recordNumber = retrieveRulesFromRecidOptions.recordNumber;
       this.entityType = retrieveRulesFromRecidOptions.entityType;
     }
@@ -46,12 +43,10 @@ public class RetrieveRulesFromRecidOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param recordNumber the recordNumber
      * @param entityType the entityType
      */
-    public Builder(String crn, Long recordNumber, String entityType) {
-      this.crn = crn;
+    public Builder(Long recordNumber, String entityType) {
       this.recordNumber = recordNumber;
       this.entityType = entityType;
     }
@@ -63,17 +58,6 @@ public class RetrieveRulesFromRecidOptions extends GenericModel {
      */
     public RetrieveRulesFromRecidOptions build() {
       return new RetrieveRulesFromRecidOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the RetrieveRulesFromRecidOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -100,13 +84,10 @@ public class RetrieveRulesFromRecidOptions extends GenericModel {
   }
 
   protected RetrieveRulesFromRecidOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordNumber,
       "recordNumber cannot be num");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityType,
       "entityType cannot be null");
-    crn = builder.crn;
     recordNumber = builder.recordNumber;
     entityType = builder.entityType;
   }
@@ -118,17 +99,6 @@ public class RetrieveRulesFromRecidOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

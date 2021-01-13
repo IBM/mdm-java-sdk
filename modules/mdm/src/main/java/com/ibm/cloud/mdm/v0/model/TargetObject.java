@@ -23,21 +23,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class TargetObject extends GenericModel {
 
-  @SerializedName("record_types")
-  protected List<String> recordTypes;
   @SerializedName("entity_types")
   protected List<String> entityTypes;
+  @SerializedName("record_types")
+  protected List<String> recordTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<String> recordTypes;
     private List<String> entityTypes;
+    private List<String> recordTypes;
 
     private Builder(TargetObject targetObject) {
-      this.recordTypes = targetObject.recordTypes;
       this.entityTypes = targetObject.entityTypes;
+      this.recordTypes = targetObject.recordTypes;
     }
 
     /**
@@ -53,22 +53,6 @@ public class TargetObject extends GenericModel {
      */
     public TargetObject build() {
       return new TargetObject(this);
-    }
-
-    /**
-     * Adds an recordTypes to recordTypes.
-     *
-     * @param recordTypes the new recordTypes
-     * @return the TargetObject builder
-     */
-    public Builder addRecordTypes(String recordTypes) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(recordTypes,
-        "recordTypes cannot be null");
-      if (this.recordTypes == null) {
-        this.recordTypes = new ArrayList<String>();
-      }
-      this.recordTypes.add(recordTypes);
-      return this;
     }
 
     /**
@@ -88,14 +72,18 @@ public class TargetObject extends GenericModel {
     }
 
     /**
-     * Set the recordTypes.
-     * Existing recordTypes will be replaced.
+     * Adds an recordTypes to recordTypes.
      *
-     * @param recordTypes the recordTypes
+     * @param recordTypes the new recordTypes
      * @return the TargetObject builder
      */
-    public Builder recordTypes(List<String> recordTypes) {
-      this.recordTypes = recordTypes;
+    public Builder addRecordTypes(String recordTypes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(recordTypes,
+        "recordTypes cannot be null");
+      if (this.recordTypes == null) {
+        this.recordTypes = new ArrayList<String>();
+      }
+      this.recordTypes.add(recordTypes);
       return this;
     }
 
@@ -110,11 +98,23 @@ public class TargetObject extends GenericModel {
       this.entityTypes = entityTypes;
       return this;
     }
+
+    /**
+     * Set the recordTypes.
+     * Existing recordTypes will be replaced.
+     *
+     * @param recordTypes the recordTypes
+     * @return the TargetObject builder
+     */
+    public Builder recordTypes(List<String> recordTypes) {
+      this.recordTypes = recordTypes;
+      return this;
+    }
   }
 
   protected TargetObject(Builder builder) {
-    recordTypes = builder.recordTypes;
     entityTypes = builder.entityTypes;
+    recordTypes = builder.recordTypes;
   }
 
   /**
@@ -127,17 +127,6 @@ public class TargetObject extends GenericModel {
   }
 
   /**
-   * Gets the recordTypes.
-   *
-   * Record Types.
-   *
-   * @return the recordTypes
-   */
-  public List<String> recordTypes() {
-    return recordTypes;
-  }
-
-  /**
    * Gets the entityTypes.
    *
    * Entity Types.
@@ -146,6 +135,17 @@ public class TargetObject extends GenericModel {
    */
   public List<String> entityTypes() {
     return entityTypes;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Record Types.
+   *
+   * @return the recordTypes
+   */
+  public List<String> recordTypes() {
+    return recordTypes;
   }
 }
 

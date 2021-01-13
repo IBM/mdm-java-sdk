@@ -31,15 +31,7 @@ public class ModelListSetResourcesOptionsTest {
 
   @Test
   public void testModelListSetResourcesOptions() throws Throwable {
-    ModelListSetResourcesOptions modelListSetResourcesOptionsModel = new ModelListSetResourcesOptions.Builder()
-      .crn("testString")
-      .build();
-    assertEquals(modelListSetResourcesOptionsModel.crn(), "testString");
+    ModelListSetResourcesOptions modelListSetResourcesOptionsModel = new ModelListSetResourcesOptions();
+    assertNotNull(modelListSetResourcesOptionsModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testModelListSetResourcesOptionsError() throws Throwable {
-    new ModelListSetResourcesOptions.Builder().build();
-  }
-
 }

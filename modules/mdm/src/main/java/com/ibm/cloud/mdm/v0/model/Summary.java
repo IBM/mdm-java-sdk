@@ -20,38 +20,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Summary extends GenericModel {
 
-  @SerializedName("distinct_sources")
-  protected String distinctSources;
-  @SerializedName("data_assets")
-  protected String dataAssets;
   @SerializedName("total_records")
   protected String totalRecords;
   @SerializedName("entities_count")
   protected String entitiesCount;
   @SerializedName("singleton_count")
   protected String singletonCount;
-
-  /**
-   * Gets the distinctSources.
-   *
-   * distinct sources.
-   *
-   * @return the distinctSources
-   */
-  public String getDistinctSources() {
-    return distinctSources;
-  }
-
-  /**
-   * Gets the dataAssets.
-   *
-   * data assets.
-   *
-   * @return the dataAssets
-   */
-  public String getDataAssets() {
-    return dataAssets;
-  }
+  @SerializedName("distinct_sources")
+  protected String distinctSources;
+  @SerializedName("data_assets")
+  protected String dataAssets;
 
   /**
    * Gets the totalRecords.
@@ -84,6 +62,28 @@ public class Summary extends GenericModel {
    */
   public String getSingletonCount() {
     return singletonCount;
+  }
+
+  /**
+   * Gets the distinctSources.
+   *
+   * distinct sources.
+   *
+   * @return the distinctSources
+   */
+  public String getDistinctSources() {
+    return distinctSources;
+  }
+
+  /**
+   * Gets the dataAssets.
+   *
+   * data assets.
+   *
+   * @return the dataAssets
+   */
+  public String getDataAssets() {
+    return dataAssets;
   }
 }
 

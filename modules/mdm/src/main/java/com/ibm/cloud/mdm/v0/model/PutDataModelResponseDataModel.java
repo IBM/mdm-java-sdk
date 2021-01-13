@@ -22,25 +22,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseDataModel extends GenericModel {
 
-  @SerializedName("attribute_types")
-  protected Map<String, PutDataModelResponseAttributeType> attributeTypes;
-  @SerializedName("relationship_types")
-  protected Map<String, PutDataModelResponseRelationshipType> relationshipTypes;
   @SerializedName("record_types")
   protected Map<String, PutDataModelResponseRecordType> recordTypes;
+  @SerializedName("relationship_types")
+  protected Map<String, PutDataModelResponseRelationshipType> relationshipTypes;
+  @SerializedName("attribute_types")
+  protected Map<String, PutDataModelResponseAttributeType> attributeTypes;
   protected String locale;
   @SerializedName("system_properties")
   protected PutDataModelResponseSystemProperties systemProperties;
 
   /**
-   * Gets the attributeTypes.
+   * Gets the recordTypes.
    *
-   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
+   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
    *
-   * @return the attributeTypes
+   * @return the recordTypes
    */
-  public Map<String, PutDataModelResponseAttributeType> getAttributeTypes() {
-    return attributeTypes;
+  public Map<String, PutDataModelResponseRecordType> getRecordTypes() {
+    return recordTypes;
   }
 
   /**
@@ -55,14 +55,14 @@ public class PutDataModelResponseDataModel extends GenericModel {
   }
 
   /**
-   * Gets the recordTypes.
+   * Gets the attributeTypes.
    *
-   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
+   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
    *
-   * @return the recordTypes
+   * @return the attributeTypes
    */
-  public Map<String, PutDataModelResponseRecordType> getRecordTypes() {
-    return recordTypes;
+  public Map<String, PutDataModelResponseAttributeType> getAttributeTypes() {
+    return attributeTypes;
   }
 
   /**

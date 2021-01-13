@@ -32,9 +32,9 @@ public class RulesResponseEntityRuleTest {
   @Test
   public void testRulesResponseEntityRule() throws Throwable {
     RulesResponseEntityRule rulesResponseEntityRuleModel = new RulesResponseEntityRule();
-    assertNull(rulesResponseEntityRuleModel.getLastUpdated());
     assertNull(rulesResponseEntityRuleModel.getRuleType());
     assertNull(rulesResponseEntityRuleModel.getSrcRecno());
+    assertNull(rulesResponseEntityRuleModel.getLastUpdated());
     assertNull(rulesResponseEntityRuleModel.getTargetRecno());
     assertNull(rulesResponseEntityRuleModel.getDescription());
     assertNull(rulesResponseEntityRuleModel.getUser());

@@ -31,15 +31,7 @@ public class ModelListComparespecResouresOptionsTest {
 
   @Test
   public void testModelListComparespecResouresOptions() throws Throwable {
-    ModelListComparespecResouresOptions modelListComparespecResouresOptionsModel = new ModelListComparespecResouresOptions.Builder()
-      .crn("testString")
-      .build();
-    assertEquals(modelListComparespecResouresOptionsModel.crn(), "testString");
+    ModelListComparespecResouresOptions modelListComparespecResouresOptionsModel = new ModelListComparespecResouresOptions();
+    assertNotNull(modelListComparespecResouresOptionsModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testModelListComparespecResouresOptionsError() throws Throwable {
-    new ModelListComparespecResouresOptions.Builder().build();
-  }
-
 }

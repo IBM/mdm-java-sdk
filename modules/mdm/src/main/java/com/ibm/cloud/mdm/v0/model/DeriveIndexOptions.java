@@ -22,7 +22,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DeriveIndexOptions extends GenericModel {
 
-  protected String crn;
   protected List<DeriveRecordsRequestRecord> records;
   protected String details;
 
@@ -30,12 +29,10 @@ public class DeriveIndexOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private List<DeriveRecordsRequestRecord> records;
     private String details;
 
     private Builder(DeriveIndexOptions deriveIndexOptions) {
-      this.crn = deriveIndexOptions.crn;
       this.records = deriveIndexOptions.records;
       this.details = deriveIndexOptions.details;
     }
@@ -49,11 +46,9 @@ public class DeriveIndexOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param records the records
      */
-    public Builder(String crn, List<DeriveRecordsRequestRecord> records) {
-      this.crn = crn;
+    public Builder(List<DeriveRecordsRequestRecord> records) {
       this.records = records;
     }
 
@@ -83,17 +78,6 @@ public class DeriveIndexOptions extends GenericModel {
     }
 
     /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the DeriveIndexOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
-    }
-
-    /**
      * Set the records.
      * Existing records will be replaced.
      *
@@ -118,11 +102,8 @@ public class DeriveIndexOptions extends GenericModel {
   }
 
   protected DeriveIndexOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.records,
       "records cannot be null");
-    crn = builder.crn;
     records = builder.records;
     details = builder.details;
   }
@@ -134,17 +115,6 @@ public class DeriveIndexOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

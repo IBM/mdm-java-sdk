@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CloudMatchJobOptions extends GenericModel {
 
-  protected String crn;
   protected String recordType;
   protected String entityType;
   protected Boolean doReplicate;
@@ -28,13 +27,11 @@ public class CloudMatchJobOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String recordType;
     private String entityType;
     private Boolean doReplicate;
 
     private Builder(CloudMatchJobOptions cloudMatchJobOptions) {
-      this.crn = cloudMatchJobOptions.crn;
       this.recordType = cloudMatchJobOptions.recordType;
       this.entityType = cloudMatchJobOptions.entityType;
       this.doReplicate = cloudMatchJobOptions.doReplicate;
@@ -47,32 +44,12 @@ public class CloudMatchJobOptions extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param crn the crn
-     */
-    public Builder(String crn) {
-      this.crn = crn;
-    }
-
-    /**
      * Builds a CloudMatchJobOptions.
      *
      * @return the new CloudMatchJobOptions instance
      */
     public CloudMatchJobOptions build() {
       return new CloudMatchJobOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the CloudMatchJobOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -110,9 +87,6 @@ public class CloudMatchJobOptions extends GenericModel {
   }
 
   protected CloudMatchJobOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    crn = builder.crn;
     recordType = builder.recordType;
     entityType = builder.entityType;
     doReplicate = builder.doReplicate;
@@ -125,17 +99,6 @@ public class CloudMatchJobOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

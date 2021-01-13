@@ -55,27 +55,11 @@ public class SyncUpdateElementTest {
       .id("testString")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .typeName("testString")
-      .fromRecordId("testString")
-      .fromRecordSource("testString")
-      .fromRecordNumber("testString")
-      .fromRecordType("testString")
-      .toRecordId("testString")
-      .toRecordSource("testString")
-      .toRecordType("testString")
-      .toRecordNumber("testString")
       .build();
     assertEquals(relationshipModel.type(), "testString");
     assertEquals(relationshipModel.id(), "testString");
     assertEquals(relationshipModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
     assertEquals(relationshipModel.typeName(), "testString");
-    assertEquals(relationshipModel.fromRecordId(), "testString");
-    assertEquals(relationshipModel.fromRecordSource(), "testString");
-    assertEquals(relationshipModel.fromRecordNumber(), "testString");
-    assertEquals(relationshipModel.fromRecordType(), "testString");
-    assertEquals(relationshipModel.toRecordId(), "testString");
-    assertEquals(relationshipModel.toRecordSource(), "testString");
-    assertEquals(relationshipModel.toRecordType(), "testString");
-    assertEquals(relationshipModel.toRecordNumber(), "testString");
 
     SyncUpdateElement syncUpdateElementModel = new SyncUpdateElement.Builder()
       .records(new java.util.ArrayList<Record>(java.util.Arrays.asList(recordModel)))

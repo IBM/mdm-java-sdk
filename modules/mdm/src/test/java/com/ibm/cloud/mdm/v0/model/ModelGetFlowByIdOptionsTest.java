@@ -32,10 +32,8 @@ public class ModelGetFlowByIdOptionsTest {
   @Test
   public void testModelGetFlowByIdOptions() throws Throwable {
     ModelGetFlowByIdOptions modelGetFlowByIdOptionsModel = new ModelGetFlowByIdOptions.Builder()
-      .crn("testString")
       .flowId("testString")
       .build();
-    assertEquals(modelGetFlowByIdOptionsModel.crn(), "testString");
     assertEquals(modelGetFlowByIdOptionsModel.flowId(), "testString");
   }
 

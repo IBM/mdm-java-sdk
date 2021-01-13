@@ -21,7 +21,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelReplaceAlgorithmOptions extends GenericModel {
 
-  protected String crn;
   protected String recordType;
   protected Map<String, AlgorithmStandardizer> standardizers;
   protected AlgorithmEncryption encryption;
@@ -32,7 +31,6 @@ public class ModelReplaceAlgorithmOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String recordType;
     private Map<String, AlgorithmStandardizer> standardizers;
     private AlgorithmEncryption encryption;
@@ -40,7 +38,6 @@ public class ModelReplaceAlgorithmOptions extends GenericModel {
     private String locale;
 
     private Builder(ModelReplaceAlgorithmOptions modelReplaceAlgorithmOptions) {
-      this.crn = modelReplaceAlgorithmOptions.crn;
       this.recordType = modelReplaceAlgorithmOptions.recordType;
       this.standardizers = modelReplaceAlgorithmOptions.standardizers;
       this.encryption = modelReplaceAlgorithmOptions.encryption;
@@ -57,15 +54,13 @@ public class ModelReplaceAlgorithmOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param recordType the recordType
      * @param standardizers the standardizers
      * @param encryption the encryption
      * @param entityTypes the entityTypes
      * @param locale the locale
      */
-    public Builder(String crn, String recordType, Map<String, AlgorithmStandardizer> standardizers, AlgorithmEncryption encryption, Map<String, AlgorithmEntityType> entityTypes, String locale) {
-      this.crn = crn;
+    public Builder(String recordType, Map<String, AlgorithmStandardizer> standardizers, AlgorithmEncryption encryption, Map<String, AlgorithmEntityType> entityTypes, String locale) {
       this.recordType = recordType;
       this.standardizers = standardizers;
       this.encryption = encryption;
@@ -80,17 +75,6 @@ public class ModelReplaceAlgorithmOptions extends GenericModel {
      */
     public ModelReplaceAlgorithmOptions build() {
       return new ModelReplaceAlgorithmOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the ModelReplaceAlgorithmOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -164,8 +148,6 @@ public class ModelReplaceAlgorithmOptions extends GenericModel {
   }
 
   protected ModelReplaceAlgorithmOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.recordType,
       "recordType cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.standardizers,
@@ -176,7 +158,6 @@ public class ModelReplaceAlgorithmOptions extends GenericModel {
       "entityTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
-    crn = builder.crn;
     recordType = builder.recordType;
     standardizers = builder.standardizers;
     encryption = builder.encryption;
@@ -191,17 +172,6 @@ public class ModelReplaceAlgorithmOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

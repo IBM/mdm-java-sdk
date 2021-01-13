@@ -15,42 +15,27 @@ package com.ibm.cloud.mdm.v0.model;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
+import com.google.gson.reflect.TypeToken;
+import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * A single bucket generator.
  */
-public class PutAlgorithmResponseBucketGenerator extends GenericModel {
+public class PutAlgorithmResponseBucketGenerator extends DynamicModel<Object> {
 
-  @SerializedName("bucket_group_recipe")
-  protected List<PutAlgorithmResponseBucketGroupStep> bucketGroupRecipe;
-  @SerializedName("maximum_bucket_size")
-  protected Long maximumBucketSize;
   @SerializedName("bucket_recipe")
   protected List<PutAlgorithmResponseBucketStep> bucketRecipe;
+  @SerializedName("bucket_group_recipe")
+  protected List<PutAlgorithmResponseBucketGroupStep> bucketGroupRecipe;
+  @SerializedName("inputs")
   protected List<PutAlgorithmResponseInput> inputs;
+  @SerializedName("maximum_bucket_size")
+  protected Long maximumBucketSize;
+  @SerializedName("label")
   protected String label;
 
-  /**
-   * Gets the bucketGroupRecipe.
-   *
-   * Collection of bucket group generator steps.
-   *
-   * @return the bucketGroupRecipe
-   */
-  public List<PutAlgorithmResponseBucketGroupStep> getBucketGroupRecipe() {
-    return bucketGroupRecipe;
-  }
-
-  /**
-   * Gets the maximumBucketSize.
-   *
-   * An integer value indicating maximum size of any buckets of this type.
-   *
-   * @return the maximumBucketSize
-   */
-  public Long getMaximumBucketSize() {
-    return maximumBucketSize;
+  public PutAlgorithmResponseBucketGenerator() {
+    super(new TypeToken<Object>() { });
   }
 
   /**
@@ -61,7 +46,18 @@ public class PutAlgorithmResponseBucketGenerator extends GenericModel {
    * @return the bucketRecipe
    */
   public List<PutAlgorithmResponseBucketStep> getBucketRecipe() {
-    return bucketRecipe;
+    return this.bucketRecipe;
+  }
+
+  /**
+   * Gets the bucketGroupRecipe.
+   *
+   * Collection of bucket group generator steps.
+   *
+   * @return the bucketGroupRecipe
+   */
+  public List<PutAlgorithmResponseBucketGroupStep> getBucketGroupRecipe() {
+    return this.bucketGroupRecipe;
   }
 
   /**
@@ -72,7 +68,18 @@ public class PutAlgorithmResponseBucketGenerator extends GenericModel {
    * @return the inputs
    */
   public List<PutAlgorithmResponseInput> getInputs() {
-    return inputs;
+    return this.inputs;
+  }
+
+  /**
+   * Gets the maximumBucketSize.
+   *
+   * An integer value indicating maximum size of any buckets of this type.
+   *
+   * @return the maximumBucketSize
+   */
+  public Long getMaximumBucketSize() {
+    return this.maximumBucketSize;
   }
 
   /**
@@ -83,7 +90,6 @@ public class PutAlgorithmResponseBucketGenerator extends GenericModel {
    * @return the label
    */
   public String getLabel() {
-    return label;
+    return this.label;
   }
 }
-

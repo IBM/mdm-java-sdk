@@ -36,13 +36,15 @@ public class CompareIndexOptionsTest {
   @Test
   public void testCompareIndexOptions() throws Throwable {
     CompareRecordsRequestAttributes compareRecordsRequestAttributesModel = new CompareRecordsRequestAttributes.Builder()
+      .recordLastUpdated("testString")
       .recordId("testString")
       .recordSource("testString")
-      .recordLastUpdated("testString")
+      .add("foo", "testString")
       .build();
-    assertEquals(compareRecordsRequestAttributesModel.recordId(), "testString");
-    assertEquals(compareRecordsRequestAttributesModel.recordSource(), "testString");
-    assertEquals(compareRecordsRequestAttributesModel.recordLastUpdated(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.getRecordId(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.getRecordSource(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.get("foo"), "testString");
 
     CompareRecordsRequestRecord compareRecordsRequestRecordModel = new CompareRecordsRequestRecord.Builder()
       .recordType("testString")
@@ -52,7 +54,6 @@ public class CompareIndexOptionsTest {
     assertEquals(compareRecordsRequestRecordModel.attributes(), compareRecordsRequestAttributesModel);
 
     CompareIndexOptions compareIndexOptionsModel = new CompareIndexOptions.Builder()
-      .crn("testString")
       .records(new java.util.ArrayList<CompareRecordsRequestRecord>(java.util.Arrays.asList(compareRecordsRequestRecordModel)))
       .details("testString")
       .entityType("person_entity")
@@ -60,7 +61,6 @@ public class CompareIndexOptionsTest {
       .recordNumber2(Long.valueOf("123456789"))
       .recordType("person")
       .build();
-    assertEquals(compareIndexOptionsModel.crn(), "testString");
     assertEquals(compareIndexOptionsModel.records(), new java.util.ArrayList<CompareRecordsRequestRecord>(java.util.Arrays.asList(compareRecordsRequestRecordModel)));
     assertEquals(compareIndexOptionsModel.details(), "testString");
     assertEquals(compareIndexOptionsModel.entityType(), "person_entity");
@@ -68,10 +68,4 @@ public class CompareIndexOptionsTest {
     assertEquals(compareIndexOptionsModel.recordNumber2(), Long.valueOf("123456789"));
     assertEquals(compareIndexOptionsModel.recordType(), "person");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testCompareIndexOptionsError() throws Throwable {
-    new CompareIndexOptions.Builder().build();
-  }
-
 }

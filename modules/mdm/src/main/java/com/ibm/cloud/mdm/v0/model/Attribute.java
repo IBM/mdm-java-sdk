@@ -20,31 +20,31 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Attribute extends GenericModel {
 
-  protected String label;
   protected String description;
   @SerializedName("attribute_type")
   protected String attributeType;
   protected String classification;
   protected Boolean indexed;
+  protected String label;
   protected String cardinality;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
     private String description;
     private String attributeType;
     private String classification;
     private Boolean indexed;
+    private String label;
     private String cardinality;
 
     private Builder(Attribute attribute) {
-      this.label = attribute.label;
       this.description = attribute.description;
       this.attributeType = attribute.attributeType;
       this.classification = attribute.classification;
       this.indexed = attribute.indexed;
+      this.label = attribute.label;
       this.cardinality = attribute.cardinality;
     }
 
@@ -57,12 +57,12 @@ public class Attribute extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param label the label
      * @param attributeType the attributeType
+     * @param label the label
      */
-    public Builder(String label, String attributeType) {
-      this.label = label;
+    public Builder(String attributeType, String label) {
       this.attributeType = attributeType;
+      this.label = label;
     }
 
     /**
@@ -72,17 +72,6 @@ public class Attribute extends GenericModel {
      */
     public Attribute build() {
       return new Attribute(this);
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the Attribute builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
     }
 
     /**
@@ -130,6 +119,17 @@ public class Attribute extends GenericModel {
     }
 
     /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the Attribute builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
      * Set the cardinality.
      *
      * @param cardinality the cardinality
@@ -142,15 +142,15 @@ public class Attribute extends GenericModel {
   }
 
   protected Attribute(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
-      "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
       "attributeType cannot be null");
-    label = builder.label;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
+      "label cannot be null");
     description = builder.description;
     attributeType = builder.attributeType;
     classification = builder.classification;
     indexed = builder.indexed;
+    label = builder.label;
     cardinality = builder.cardinality;
   }
 
@@ -161,17 +161,6 @@ public class Attribute extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the label.
-   *
-   * attributes label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 
   /**
@@ -216,6 +205,17 @@ public class Attribute extends GenericModel {
    */
   public Boolean indexed() {
     return indexed;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * attributes label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**

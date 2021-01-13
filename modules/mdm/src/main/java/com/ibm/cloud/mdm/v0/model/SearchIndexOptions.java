@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SearchIndexOptions extends GenericModel {
 
-  protected String crn;
   protected String recordType;
   protected CompareRecordsRequestAttributes attributes;
   protected String details;
@@ -33,7 +32,6 @@ public class SearchIndexOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String recordType;
     private CompareRecordsRequestAttributes attributes;
     private String details;
@@ -44,7 +42,6 @@ public class SearchIndexOptions extends GenericModel {
     private String limit;
 
     private Builder(SearchIndexOptions searchIndexOptions) {
-      this.crn = searchIndexOptions.crn;
       this.recordType = searchIndexOptions.recordType;
       this.attributes = searchIndexOptions.attributes;
       this.details = searchIndexOptions.details;
@@ -64,11 +61,9 @@ public class SearchIndexOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param recordType the recordType
      */
-    public Builder(String crn, String recordType) {
-      this.crn = crn;
+    public Builder(String recordType) {
       this.recordType = recordType;
     }
 
@@ -79,17 +74,6 @@ public class SearchIndexOptions extends GenericModel {
      */
     public SearchIndexOptions build() {
       return new SearchIndexOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the SearchIndexOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -182,11 +166,8 @@ public class SearchIndexOptions extends GenericModel {
   }
 
   protected SearchIndexOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
       "recordType cannot be null");
-    crn = builder.crn;
     recordType = builder.recordType;
     attributes = builder.attributes;
     details = builder.details;
@@ -204,17 +185,6 @@ public class SearchIndexOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

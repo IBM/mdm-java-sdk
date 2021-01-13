@@ -26,10 +26,10 @@ public class PutAlgorithmResponseEntityType extends GenericModel {
   protected Map<String, PutAlgorithmResponseBucketGenerator> bucketGenerators;
   @SerializedName("clerical_review_threshold")
   protected Float clericalReviewThreshold;
-  @SerializedName("auto_link_threshold")
-  protected Float autoLinkThreshold;
   @SerializedName("compare_methods")
   protected Map<String, PutAlgorithmResponseCompareMethod> compareMethods;
+  @SerializedName("auto_link_threshold")
+  protected Float autoLinkThreshold;
 
   /**
    * Gets the bucketGenerators.
@@ -54,17 +54,6 @@ public class PutAlgorithmResponseEntityType extends GenericModel {
   }
 
   /**
-   * Gets the autoLinkThreshold.
-   *
-   * The minimum matching score between two records to automatically link them together.
-   *
-   * @return the autoLinkThreshold
-   */
-  public Float getAutoLinkThreshold() {
-    return autoLinkThreshold;
-  }
-
-  /**
    * Gets the compareMethods.
    *
    * Collection of comparators.
@@ -73,6 +62,17 @@ public class PutAlgorithmResponseEntityType extends GenericModel {
    */
   public Map<String, PutAlgorithmResponseCompareMethod> getCompareMethods() {
     return compareMethods;
+  }
+
+  /**
+   * Gets the autoLinkThreshold.
+   *
+   * The minimum matching score between two records to automatically link them together.
+   *
+   * @return the autoLinkThreshold
+   */
+  public Float getAutoLinkThreshold() {
+    return autoLinkThreshold;
   }
 }
 

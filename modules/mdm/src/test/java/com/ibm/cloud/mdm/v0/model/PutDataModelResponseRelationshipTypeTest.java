@@ -37,12 +37,12 @@ public class PutDataModelResponseRelationshipTypeTest {
   @Test
   public void testPutDataModelResponseRelationshipType() throws Throwable {
     PutDataModelResponseRelationshipType putDataModelResponseRelationshipTypeModel = new PutDataModelResponseRelationshipType();
-    assertNull(putDataModelResponseRelationshipTypeModel.getRules());
-    assertNull(putDataModelResponseRelationshipTypeModel.getLabelFromTarget());
     assertNull(putDataModelResponseRelationshipTypeModel.isDirectional());
+    assertNull(putDataModelResponseRelationshipTypeModel.getLabelFromTarget());
+    assertNull(putDataModelResponseRelationshipTypeModel.getRules());
     assertNull(putDataModelResponseRelationshipTypeModel.getLabelFromSource());
-    assertNull(putDataModelResponseRelationshipTypeModel.getCardinality());
     assertNull(putDataModelResponseRelationshipTypeModel.getDescription());
+    assertNull(putDataModelResponseRelationshipTypeModel.getCardinality());
     assertNull(putDataModelResponseRelationshipTypeModel.getAttributes());
     assertNull(putDataModelResponseRelationshipTypeModel.getLabel());
   }

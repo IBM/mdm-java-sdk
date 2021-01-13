@@ -32,7 +32,7 @@ public class PublishModelStatusTest {
   @Test
   public void testPublishModelStatus() throws Throwable {
     PublishModelStatus publishModelStatusModel = new PublishModelStatus();
-    assertNull(publishModelStatusModel.getMessage());
     assertNull(publishModelStatusModel.getStatus());
+    assertNull(publishModelStatusModel.getMessage());
   }
 }

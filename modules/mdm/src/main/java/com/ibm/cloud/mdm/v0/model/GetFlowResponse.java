@@ -23,13 +23,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class GetFlowResponse extends GenericModel {
 
   protected List<String> approvals;
-  protected List<String> rejections;
-  @SerializedName("flow_state")
-  protected String flowState;
   @SerializedName("flow_type")
   protected String flowType;
+  protected List<String> rejections;
   @SerializedName("flow_id")
   protected String flowId;
+  @SerializedName("flow_state")
+  protected String flowState;
   protected Boolean active;
 
   /**
@@ -41,28 +41,6 @@ public class GetFlowResponse extends GenericModel {
    */
   public List<String> getApprovals() {
     return approvals;
-  }
-
-  /**
-   * Gets the rejections.
-   *
-   * Collection of authorized approvers that rejected the flow.
-   *
-   * @return the rejections
-   */
-  public List<String> getRejections() {
-    return rejections;
-  }
-
-  /**
-   * Gets the flowState.
-   *
-   * Current state of flow according to its state machine.
-   *
-   * @return the flowState
-   */
-  public String getFlowState() {
-    return flowState;
   }
 
   /**
@@ -78,6 +56,17 @@ public class GetFlowResponse extends GenericModel {
   }
 
   /**
+   * Gets the rejections.
+   *
+   * Collection of authorized approvers that rejected the flow.
+   *
+   * @return the rejections
+   */
+  public List<String> getRejections() {
+    return rejections;
+  }
+
+  /**
    * Gets the flowId.
    *
    * System generated flow identifier.
@@ -86,6 +75,17 @@ public class GetFlowResponse extends GenericModel {
    */
   public String getFlowId() {
     return flowId;
+  }
+
+  /**
+   * Gets the flowState.
+   *
+   * Current state of flow according to its state machine.
+   *
+   * @return the flowState
+   */
+  public String getFlowState() {
+    return flowState;
   }
 
   /**

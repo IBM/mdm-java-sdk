@@ -43,7 +43,7 @@ public class PutAlgorithmResponseEntityTypeTest {
     PutAlgorithmResponseEntityType putAlgorithmResponseEntityTypeModel = new PutAlgorithmResponseEntityType();
     assertNull(putAlgorithmResponseEntityTypeModel.getBucketGenerators());
     assertNull(putAlgorithmResponseEntityTypeModel.getClericalReviewThreshold());
-    assertNull(putAlgorithmResponseEntityTypeModel.getAutoLinkThreshold());
     assertNull(putAlgorithmResponseEntityTypeModel.getCompareMethods());
+    assertNull(putAlgorithmResponseEntityTypeModel.getAutoLinkThreshold());
   }
 }

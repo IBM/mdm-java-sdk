@@ -19,18 +19,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelDeleteFlowOptions extends GenericModel {
 
-  protected String crn;
   protected String flowId;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String flowId;
 
     private Builder(ModelDeleteFlowOptions modelDeleteFlowOptions) {
-      this.crn = modelDeleteFlowOptions.crn;
       this.flowId = modelDeleteFlowOptions.flowId;
     }
 
@@ -43,11 +40,9 @@ public class ModelDeleteFlowOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param flowId the flowId
      */
-    public Builder(String crn, String flowId) {
-      this.crn = crn;
+    public Builder(String flowId) {
       this.flowId = flowId;
     }
 
@@ -58,17 +53,6 @@ public class ModelDeleteFlowOptions extends GenericModel {
      */
     public ModelDeleteFlowOptions build() {
       return new ModelDeleteFlowOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the ModelDeleteFlowOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -84,11 +68,8 @@ public class ModelDeleteFlowOptions extends GenericModel {
   }
 
   protected ModelDeleteFlowOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.flowId,
       "flowId cannot be empty");
-    crn = builder.crn;
     flowId = builder.flowId;
   }
 
@@ -99,17 +80,6 @@ public class ModelDeleteFlowOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

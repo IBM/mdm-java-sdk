@@ -19,27 +19,24 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelPatchFlowOptions extends GenericModel {
 
-  protected String crn;
+  protected String action;
   protected String approverName;
   protected String flowId;
-  protected String action;
   protected String message;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String crn;
+    private String action;
     private String approverName;
     private String flowId;
-    private String action;
     private String message;
 
     private Builder(ModelPatchFlowOptions modelPatchFlowOptions) {
-      this.crn = modelPatchFlowOptions.crn;
+      this.action = modelPatchFlowOptions.action;
       this.approverName = modelPatchFlowOptions.approverName;
       this.flowId = modelPatchFlowOptions.flowId;
-      this.action = modelPatchFlowOptions.action;
       this.message = modelPatchFlowOptions.message;
     }
 
@@ -52,16 +49,14 @@ public class ModelPatchFlowOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
+     * @param action the action
      * @param approverName the approverName
      * @param flowId the flowId
-     * @param action the action
      */
-    public Builder(String crn, String approverName, String flowId, String action) {
-      this.crn = crn;
+    public Builder(String action, String approverName, String flowId) {
+      this.action = action;
       this.approverName = approverName;
       this.flowId = flowId;
-      this.action = action;
     }
 
     /**
@@ -74,13 +69,13 @@ public class ModelPatchFlowOptions extends GenericModel {
     }
 
     /**
-     * Set the crn.
+     * Set the action.
      *
-     * @param crn the crn
+     * @param action the action
      * @return the ModelPatchFlowOptions builder
      */
-    public Builder crn(String crn) {
-      this.crn = crn;
+    public Builder action(String action) {
+      this.action = action;
       return this;
     }
 
@@ -107,17 +102,6 @@ public class ModelPatchFlowOptions extends GenericModel {
     }
 
     /**
-     * Set the action.
-     *
-     * @param action the action
-     * @return the ModelPatchFlowOptions builder
-     */
-    public Builder action(String action) {
-      this.action = action;
-      return this;
-    }
-
-    /**
      * Set the message.
      *
      * @param message the message
@@ -130,18 +114,15 @@ public class ModelPatchFlowOptions extends GenericModel {
   }
 
   protected ModelPatchFlowOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.action,
+      "action cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.approverName,
       "approverName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.flowId,
       "flowId cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.action,
-      "action cannot be null");
-    crn = builder.crn;
+    action = builder.action;
     approverName = builder.approverName;
     flowId = builder.flowId;
-    action = builder.action;
     message = builder.message;
   }
 
@@ -155,14 +136,14 @@ public class ModelPatchFlowOptions extends GenericModel {
   }
 
   /**
-   * Gets the crn.
+   * Gets the action.
    *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
+   * One of: approve or reject.
    *
-   * @return the crn
+   * @return the action
    */
-  public String crn() {
-    return crn;
+  public String action() {
+    return action;
   }
 
   /**
@@ -185,17 +166,6 @@ public class ModelPatchFlowOptions extends GenericModel {
    */
   public String flowId() {
     return flowId;
-  }
-
-  /**
-   * Gets the action.
-   *
-   * One of: approve or reject.
-   *
-   * @return the action
-   */
-  public String action() {
-    return action;
   }
 
   /**

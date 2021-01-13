@@ -21,10 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelModifyDataModelOptions extends GenericModel {
 
-  protected String crn;
-  protected Map<String, DataModelAttributeType> attributeTypes;
-  protected Map<String, DataModelRelationshipType> relationshipTypes;
   protected Map<String, DataModelRecordType> recordTypes;
+  protected Map<String, DataModelRelationshipType> relationshipTypes;
+  protected Map<String, DataModelAttributeType> attributeTypes;
   protected String locale;
   protected DataModelSystemProperties systemProperties;
 
@@ -32,18 +31,16 @@ public class ModelModifyDataModelOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
-    private Map<String, DataModelAttributeType> attributeTypes;
-    private Map<String, DataModelRelationshipType> relationshipTypes;
     private Map<String, DataModelRecordType> recordTypes;
+    private Map<String, DataModelRelationshipType> relationshipTypes;
+    private Map<String, DataModelAttributeType> attributeTypes;
     private String locale;
     private DataModelSystemProperties systemProperties;
 
     private Builder(ModelModifyDataModelOptions modelModifyDataModelOptions) {
-      this.crn = modelModifyDataModelOptions.crn;
-      this.attributeTypes = modelModifyDataModelOptions.attributeTypes;
-      this.relationshipTypes = modelModifyDataModelOptions.relationshipTypes;
       this.recordTypes = modelModifyDataModelOptions.recordTypes;
+      this.relationshipTypes = modelModifyDataModelOptions.relationshipTypes;
+      this.attributeTypes = modelModifyDataModelOptions.attributeTypes;
       this.locale = modelModifyDataModelOptions.locale;
       this.systemProperties = modelModifyDataModelOptions.systemProperties;
     }
@@ -57,18 +54,16 @@ public class ModelModifyDataModelOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
-     * @param attributeTypes the attributeTypes
-     * @param relationshipTypes the relationshipTypes
      * @param recordTypes the recordTypes
+     * @param relationshipTypes the relationshipTypes
+     * @param attributeTypes the attributeTypes
      * @param locale the locale
      * @param systemProperties the systemProperties
      */
-    public Builder(String crn, Map<String, DataModelAttributeType> attributeTypes, Map<String, DataModelRelationshipType> relationshipTypes, Map<String, DataModelRecordType> recordTypes, String locale, DataModelSystemProperties systemProperties) {
-      this.crn = crn;
-      this.attributeTypes = attributeTypes;
-      this.relationshipTypes = relationshipTypes;
+    public Builder(Map<String, DataModelRecordType> recordTypes, Map<String, DataModelRelationshipType> relationshipTypes, Map<String, DataModelAttributeType> attributeTypes, String locale, DataModelSystemProperties systemProperties) {
       this.recordTypes = recordTypes;
+      this.relationshipTypes = relationshipTypes;
+      this.attributeTypes = attributeTypes;
       this.locale = locale;
       this.systemProperties = systemProperties;
     }
@@ -83,24 +78,13 @@ public class ModelModifyDataModelOptions extends GenericModel {
     }
 
     /**
-     * Set the crn.
+     * Set the recordTypes.
      *
-     * @param crn the crn
+     * @param recordTypes the recordTypes
      * @return the ModelModifyDataModelOptions builder
      */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
-    }
-
-    /**
-     * Set the attributeTypes.
-     *
-     * @param attributeTypes the attributeTypes
-     * @return the ModelModifyDataModelOptions builder
-     */
-    public Builder attributeTypes(Map<String, DataModelAttributeType> attributeTypes) {
-      this.attributeTypes = attributeTypes;
+    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
+      this.recordTypes = recordTypes;
       return this;
     }
 
@@ -116,13 +100,13 @@ public class ModelModifyDataModelOptions extends GenericModel {
     }
 
     /**
-     * Set the recordTypes.
+     * Set the attributeTypes.
      *
-     * @param recordTypes the recordTypes
+     * @param attributeTypes the attributeTypes
      * @return the ModelModifyDataModelOptions builder
      */
-    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
-      this.recordTypes = recordTypes;
+    public Builder attributeTypes(Map<String, DataModelAttributeType> attributeTypes) {
+      this.attributeTypes = attributeTypes;
       return this;
     }
 
@@ -155,9 +139,9 @@ public class ModelModifyDataModelOptions extends GenericModel {
      * @return the ModelModifyDataModelOptions builder
      */
     public Builder dataModel(DataModel dataModel) {
-      this.attributeTypes = dataModel.attributeTypes();
-      this.relationshipTypes = dataModel.relationshipTypes();
       this.recordTypes = dataModel.recordTypes();
+      this.relationshipTypes = dataModel.relationshipTypes();
+      this.attributeTypes = dataModel.attributeTypes();
       this.locale = dataModel.locale();
       this.systemProperties = dataModel.systemProperties();
       return this;
@@ -165,22 +149,19 @@ public class ModelModifyDataModelOptions extends GenericModel {
   }
 
   protected ModelModifyDataModelOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
-      "attributeTypes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
-      "relationshipTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
       "recordTypes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
+      "relationshipTypes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
+      "attributeTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.systemProperties,
       "systemProperties cannot be null");
-    crn = builder.crn;
-    attributeTypes = builder.attributeTypes;
-    relationshipTypes = builder.relationshipTypes;
     recordTypes = builder.recordTypes;
+    relationshipTypes = builder.relationshipTypes;
+    attributeTypes = builder.attributeTypes;
     locale = builder.locale;
     systemProperties = builder.systemProperties;
   }
@@ -195,25 +176,14 @@ public class ModelModifyDataModelOptions extends GenericModel {
   }
 
   /**
-   * Gets the crn.
+   * Gets the recordTypes.
    *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
+   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
    *
-   * @return the crn
+   * @return the recordTypes
    */
-  public String crn() {
-    return crn;
-  }
-
-  /**
-   * Gets the attributeTypes.
-   *
-   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
-   *
-   * @return the attributeTypes
-   */
-  public Map<String, DataModelAttributeType> attributeTypes() {
-    return attributeTypes;
+  public Map<String, DataModelRecordType> recordTypes() {
+    return recordTypes;
   }
 
   /**
@@ -228,14 +198,14 @@ public class ModelModifyDataModelOptions extends GenericModel {
   }
 
   /**
-   * Gets the recordTypes.
+   * Gets the attributeTypes.
    *
-   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
+   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
    *
-   * @return the recordTypes
+   * @return the attributeTypes
    */
-  public Map<String, DataModelRecordType> recordTypes() {
-    return recordTypes;
+  public Map<String, DataModelAttributeType> attributeTypes() {
+    return attributeTypes;
   }
 
   /**

@@ -35,76 +35,76 @@ public class SystemPropertiesTest {
 
   @Test
   public void testSystemProperties() throws Throwable {
-    SystemPropertiesForRelationshipTypes systemPropertiesForRelationshipTypesModel = new SystemPropertiesForRelationshipTypes.Builder()
-      .dataType("testString")
-      .indexed(true)
-      .editable(true)
-      .label("testString")
-      .description("testString")
-      .build();
-    assertEquals(systemPropertiesForRelationshipTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesForRelationshipTypesModel.indexed(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForRelationshipTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForRelationshipTypesModel.label(), "testString");
-    assertEquals(systemPropertiesForRelationshipTypesModel.description(), "testString");
-
-    SystemPropertiesForRecordTypes systemPropertiesForRecordTypesModel = new SystemPropertiesForRecordTypes.Builder()
-      .dataType("testString")
-      .indexed(true)
-      .editable(true)
-      .label("testString")
-      .description("testString")
-      .build();
-    assertEquals(systemPropertiesForRecordTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesForRecordTypesModel.indexed(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForRecordTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForRecordTypesModel.label(), "testString");
-    assertEquals(systemPropertiesForRecordTypesModel.description(), "testString");
-
-    SystemPropertiesForAttributeTypes systemPropertiesForAttributeTypesModel = new SystemPropertiesForAttributeTypes.Builder()
-      .dataType("testString")
-      .indexed(true)
-      .editable(true)
-      .label("testString")
-      .description("testString")
-      .build();
-    assertEquals(systemPropertiesForAttributeTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesForAttributeTypesModel.indexed(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForAttributeTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForAttributeTypesModel.label(), "testString");
-    assertEquals(systemPropertiesForAttributeTypesModel.description(), "testString");
-
     SystemPropertiesForEntityTypes systemPropertiesForEntityTypesModel = new SystemPropertiesForEntityTypes.Builder()
+      .label("testString")
+      .editable(true)
+      .description("testString")
       .dataType("testString")
       .indexed(true)
-      .editable(true)
-      .label("testString")
-      .description("testString")
       .build();
+    assertEquals(systemPropertiesForEntityTypesModel.label(), "testString");
+    assertEquals(systemPropertiesForEntityTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForEntityTypesModel.description(), "testString");
     assertEquals(systemPropertiesForEntityTypesModel.dataType(), "testString");
     assertEquals(systemPropertiesForEntityTypesModel.indexed(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForEntityTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForEntityTypesModel.label(), "testString");
-    assertEquals(systemPropertiesForEntityTypesModel.description(), "testString");
+
+    SystemPropertiesForRecordTypes systemPropertiesForRecordTypesModel = new SystemPropertiesForRecordTypes.Builder()
+      .label("testString")
+      .editable(true)
+      .description("testString")
+      .dataType("testString")
+      .indexed(true)
+      .build();
+    assertEquals(systemPropertiesForRecordTypesModel.label(), "testString");
+    assertEquals(systemPropertiesForRecordTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForRecordTypesModel.description(), "testString");
+    assertEquals(systemPropertiesForRecordTypesModel.dataType(), "testString");
+    assertEquals(systemPropertiesForRecordTypesModel.indexed(), Boolean.valueOf(true));
+
+    SystemPropertiesForAttributeTypes systemPropertiesForAttributeTypesModel = new SystemPropertiesForAttributeTypes.Builder()
+      .label("testString")
+      .editable(true)
+      .description("testString")
+      .dataType("testString")
+      .indexed(true)
+      .build();
+    assertEquals(systemPropertiesForAttributeTypesModel.label(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForAttributeTypesModel.description(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModel.dataType(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModel.indexed(), Boolean.valueOf(true));
+
+    SystemPropertiesForRelationshipTypes systemPropertiesForRelationshipTypesModel = new SystemPropertiesForRelationshipTypes.Builder()
+      .label("testString")
+      .editable(true)
+      .description("testString")
+      .dataType("testString")
+      .indexed(true)
+      .build();
+    assertEquals(systemPropertiesForRelationshipTypesModel.label(), "testString");
+    assertEquals(systemPropertiesForRelationshipTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForRelationshipTypesModel.description(), "testString");
+    assertEquals(systemPropertiesForRelationshipTypesModel.dataType(), "testString");
+    assertEquals(systemPropertiesForRelationshipTypesModel.indexed(), Boolean.valueOf(true));
 
     SystemProperties systemPropertiesModel = new SystemProperties.Builder()
-      .relationshipTypes(systemPropertiesForRelationshipTypesModel)
+      .entityTypes(systemPropertiesForEntityTypesModel)
       .recordTypes(systemPropertiesForRecordTypesModel)
       .attributeTypes(systemPropertiesForAttributeTypesModel)
-      .entityTypes(systemPropertiesForEntityTypesModel)
+      .relationshipTypes(systemPropertiesForRelationshipTypesModel)
       .build();
-    assertEquals(systemPropertiesModel.relationshipTypes(), systemPropertiesForRelationshipTypesModel);
+    assertEquals(systemPropertiesModel.entityTypes(), systemPropertiesForEntityTypesModel);
     assertEquals(systemPropertiesModel.recordTypes(), systemPropertiesForRecordTypesModel);
     assertEquals(systemPropertiesModel.attributeTypes(), systemPropertiesForAttributeTypesModel);
-    assertEquals(systemPropertiesModel.entityTypes(), systemPropertiesForEntityTypesModel);
+    assertEquals(systemPropertiesModel.relationshipTypes(), systemPropertiesForRelationshipTypesModel);
 
     String json = TestUtilities.serialize(systemPropertiesModel);
 
     SystemProperties systemPropertiesModelNew = TestUtilities.deserialize(json, SystemProperties.class);
     assertTrue(systemPropertiesModelNew instanceof SystemProperties);
-    assertEquals(systemPropertiesModelNew.relationshipTypes().toString(), systemPropertiesForRelationshipTypesModel.toString());
+    assertEquals(systemPropertiesModelNew.entityTypes().toString(), systemPropertiesForEntityTypesModel.toString());
     assertEquals(systemPropertiesModelNew.recordTypes().toString(), systemPropertiesForRecordTypesModel.toString());
     assertEquals(systemPropertiesModelNew.attributeTypes().toString(), systemPropertiesForAttributeTypesModel.toString());
-    assertEquals(systemPropertiesModelNew.entityTypes().toString(), systemPropertiesForEntityTypesModel.toString());
+    assertEquals(systemPropertiesModelNew.relationshipTypes().toString(), systemPropertiesForRelationshipTypesModel.toString());
   }
 }

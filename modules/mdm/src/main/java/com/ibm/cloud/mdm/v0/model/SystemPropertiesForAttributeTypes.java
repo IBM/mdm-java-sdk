@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SystemPropertiesForAttributeTypes extends GenericModel {
 
+  protected String label;
+  protected Boolean editable;
+  protected String description;
   @SerializedName("data_type")
   protected String dataType;
   protected Boolean indexed;
-  protected Boolean editable;
-  protected String label;
-  protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String label;
+    private Boolean editable;
+    private String description;
     private String dataType;
     private Boolean indexed;
-    private Boolean editable;
-    private String label;
-    private String description;
 
     private Builder(SystemPropertiesForAttributeTypes systemPropertiesForAttributeTypes) {
+      this.label = systemPropertiesForAttributeTypes.label;
+      this.editable = systemPropertiesForAttributeTypes.editable;
+      this.description = systemPropertiesForAttributeTypes.description;
       this.dataType = systemPropertiesForAttributeTypes.dataType;
       this.indexed = systemPropertiesForAttributeTypes.indexed;
-      this.editable = systemPropertiesForAttributeTypes.editable;
-      this.label = systemPropertiesForAttributeTypes.label;
-      this.description = systemPropertiesForAttributeTypes.description;
     }
 
     /**
@@ -54,12 +54,12 @@ public class SystemPropertiesForAttributeTypes extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param dataType the dataType
      * @param label the label
+     * @param dataType the dataType
      */
-    public Builder(String dataType, String label) {
-      this.dataType = dataType;
+    public Builder(String label, String dataType) {
       this.label = label;
+      this.dataType = dataType;
     }
 
     /**
@@ -69,6 +69,39 @@ public class SystemPropertiesForAttributeTypes extends GenericModel {
      */
     public SystemPropertiesForAttributeTypes build() {
       return new SystemPropertiesForAttributeTypes(this);
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the SystemPropertiesForAttributeTypes builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the editable.
+     *
+     * @param editable the editable
+     * @return the SystemPropertiesForAttributeTypes builder
+     */
+    public Builder editable(Boolean editable) {
+      this.editable = editable;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the SystemPropertiesForAttributeTypes builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
     }
 
     /**
@@ -92,51 +125,18 @@ public class SystemPropertiesForAttributeTypes extends GenericModel {
       this.indexed = indexed;
       return this;
     }
-
-    /**
-     * Set the editable.
-     *
-     * @param editable the editable
-     * @return the SystemPropertiesForAttributeTypes builder
-     */
-    public Builder editable(Boolean editable) {
-      this.editable = editable;
-      return this;
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the SystemPropertiesForAttributeTypes builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the SystemPropertiesForAttributeTypes builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
   }
 
   protected SystemPropertiesForAttributeTypes(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
-      "dataType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
+      "dataType cannot be null");
+    label = builder.label;
+    editable = builder.editable;
+    description = builder.description;
     dataType = builder.dataType;
     indexed = builder.indexed;
-    editable = builder.editable;
-    label = builder.label;
-    description = builder.description;
   }
 
   /**
@@ -146,6 +146,39 @@ public class SystemPropertiesForAttributeTypes extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the label.
+   *
+   * system label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
+  }
+
+  /**
+   * Gets the editable.
+   *
+   * editable.
+   *
+   * @return the editable
+   */
+  public Boolean editable() {
+    return editable;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * system description.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
   }
 
   /**
@@ -168,39 +201,6 @@ public class SystemPropertiesForAttributeTypes extends GenericModel {
    */
   public Boolean indexed() {
     return indexed;
-  }
-
-  /**
-   * Gets the editable.
-   *
-   * editable.
-   *
-   * @return the editable
-   */
-  public Boolean editable() {
-    return editable;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * system label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
-   * Gets the description.
-   *
-   * system description.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
   }
 }
 

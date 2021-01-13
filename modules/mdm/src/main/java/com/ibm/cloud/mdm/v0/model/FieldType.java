@@ -19,25 +19,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class FieldType extends GenericModel {
 
+  protected String label;
   protected String description;
   protected String classification;
   protected Boolean indexed;
-  protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String label;
     private String description;
     private String classification;
     private Boolean indexed;
-    private String label;
 
     private Builder(FieldType fieldType) {
+      this.label = fieldType.label;
       this.description = fieldType.description;
       this.classification = fieldType.classification;
       this.indexed = fieldType.indexed;
-      this.label = fieldType.label;
     }
 
     /**
@@ -62,6 +62,17 @@ public class FieldType extends GenericModel {
      */
     public FieldType build() {
       return new FieldType(this);
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the FieldType builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
     }
 
     /**
@@ -96,26 +107,15 @@ public class FieldType extends GenericModel {
       this.indexed = indexed;
       return this;
     }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the FieldType builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
   }
 
   protected FieldType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    label = builder.label;
     description = builder.description;
     classification = builder.classification;
     indexed = builder.indexed;
-    label = builder.label;
   }
 
   /**
@@ -125,6 +125,17 @@ public class FieldType extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the label.
+   *
+   * label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**
@@ -158,17 +169,6 @@ public class FieldType extends GenericModel {
    */
   public Boolean indexed() {
     return indexed;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 }
 

@@ -33,15 +33,15 @@ public class AttributeTypeTest {
   @Test
   public void testAttributeType() throws Throwable {
     FieldType fieldTypeModel = new FieldType.Builder()
+      .label("testString")
       .description("testString")
       .classification("testString")
       .indexed(true)
-      .label("testString")
       .build();
+    assertEquals(fieldTypeModel.label(), "testString");
     assertEquals(fieldTypeModel.description(), "testString");
     assertEquals(fieldTypeModel.classification(), "testString");
     assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(fieldTypeModel.label(), "testString");
 
     AttributeType attributeTypeModel = new AttributeType.Builder()
       .label("testString")

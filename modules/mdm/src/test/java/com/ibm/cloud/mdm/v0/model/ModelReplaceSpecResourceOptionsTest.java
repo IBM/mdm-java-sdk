@@ -44,18 +44,16 @@ public class ModelReplaceSpecResourceOptionsTest {
     assertEquals(compareSpecResourceFeatureCategoryModel.fields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     ModelReplaceSpecResourceOptions modelReplaceSpecResourceOptionsModel = new ModelReplaceSpecResourceOptions.Builder()
-      .crn("testString")
       .resourceName("testString")
-      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
       .typoDistance(Float.valueOf("36.0"))
+      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
       .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
       .similarCharactersMapResource("testString")
       .similarCharactersDistance(Float.valueOf("36.0"))
       .build();
-    assertEquals(modelReplaceSpecResourceOptionsModel.crn(), "testString");
     assertEquals(modelReplaceSpecResourceOptionsModel.resourceName(), "testString");
-    assertEquals(modelReplaceSpecResourceOptionsModel.featureCategories(), new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } });
     assertEquals(modelReplaceSpecResourceOptionsModel.typoDistance(), Float.valueOf("36.0"));
+    assertEquals(modelReplaceSpecResourceOptionsModel.featureCategories(), new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } });
     assertEquals(modelReplaceSpecResourceOptionsModel.featureCoefficients(), new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } });
     assertEquals(modelReplaceSpecResourceOptionsModel.similarCharactersMapResource(), "testString");
     assertEquals(modelReplaceSpecResourceOptionsModel.similarCharactersDistance(), Float.valueOf("36.0"));

@@ -22,9 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class PutConfigDataModelOptions extends GenericModel {
 
   protected String crn;
-  protected Map<String, RelationshipType> relationshipTypes;
   protected Map<String, RecordType> recordTypes;
   protected Map<String, AttributeType> attributeTypes;
+  protected Map<String, RelationshipType> relationshipTypes;
   protected String locale;
   protected Map<String, SystemProperties> systemProperties;
 
@@ -33,17 +33,17 @@ public class PutConfigDataModelOptions extends GenericModel {
    */
   public static class Builder {
     private String crn;
-    private Map<String, RelationshipType> relationshipTypes;
     private Map<String, RecordType> recordTypes;
     private Map<String, AttributeType> attributeTypes;
+    private Map<String, RelationshipType> relationshipTypes;
     private String locale;
     private Map<String, SystemProperties> systemProperties;
 
     private Builder(PutConfigDataModelOptions putConfigDataModelOptions) {
       this.crn = putConfigDataModelOptions.crn;
-      this.relationshipTypes = putConfigDataModelOptions.relationshipTypes;
       this.recordTypes = putConfigDataModelOptions.recordTypes;
       this.attributeTypes = putConfigDataModelOptions.attributeTypes;
+      this.relationshipTypes = putConfigDataModelOptions.relationshipTypes;
       this.locale = putConfigDataModelOptions.locale;
       this.systemProperties = putConfigDataModelOptions.systemProperties;
     }
@@ -84,17 +84,6 @@ public class PutConfigDataModelOptions extends GenericModel {
     }
 
     /**
-     * Set the relationshipTypes.
-     *
-     * @param relationshipTypes the relationshipTypes
-     * @return the PutConfigDataModelOptions builder
-     */
-    public Builder relationshipTypes(Map<String, RelationshipType> relationshipTypes) {
-      this.relationshipTypes = relationshipTypes;
-      return this;
-    }
-
-    /**
      * Set the recordTypes.
      *
      * @param recordTypes the recordTypes
@@ -113,6 +102,17 @@ public class PutConfigDataModelOptions extends GenericModel {
      */
     public Builder attributeTypes(Map<String, AttributeType> attributeTypes) {
       this.attributeTypes = attributeTypes;
+      return this;
+    }
+
+    /**
+     * Set the relationshipTypes.
+     *
+     * @param relationshipTypes the relationshipTypes
+     * @return the PutConfigDataModelOptions builder
+     */
+    public Builder relationshipTypes(Map<String, RelationshipType> relationshipTypes) {
+      this.relationshipTypes = relationshipTypes;
       return this;
     }
 
@@ -145,9 +145,9 @@ public class PutConfigDataModelOptions extends GenericModel {
      * @return the PutConfigDataModelOptions builder
      */
     public Builder configDataModel(ConfigDataModel configDataModel) {
-      this.relationshipTypes = configDataModel.relationshipTypes();
       this.recordTypes = configDataModel.recordTypes();
       this.attributeTypes = configDataModel.attributeTypes();
+      this.relationshipTypes = configDataModel.relationshipTypes();
       this.locale = configDataModel.locale();
       this.systemProperties = configDataModel.systemProperties();
       return this;
@@ -158,9 +158,9 @@ public class PutConfigDataModelOptions extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
       "crn cannot be null");
     crn = builder.crn;
-    relationshipTypes = builder.relationshipTypes;
     recordTypes = builder.recordTypes;
     attributeTypes = builder.attributeTypes;
+    relationshipTypes = builder.relationshipTypes;
     locale = builder.locale;
     systemProperties = builder.systemProperties;
   }
@@ -186,17 +186,6 @@ public class PutConfigDataModelOptions extends GenericModel {
   }
 
   /**
-   * Gets the relationshipTypes.
-   *
-   * relationship types.
-   *
-   * @return the relationshipTypes
-   */
-  public Map<String, RelationshipType> relationshipTypes() {
-    return relationshipTypes;
-  }
-
-  /**
    * Gets the recordTypes.
    *
    * record types.
@@ -216,6 +205,17 @@ public class PutConfigDataModelOptions extends GenericModel {
    */
   public Map<String, AttributeType> attributeTypes() {
     return attributeTypes;
+  }
+
+  /**
+   * Gets the relationshipTypes.
+   *
+   * relationship types.
+   *
+   * @return the relationshipTypes
+   */
+  public Map<String, RelationshipType> relationshipTypes() {
+    return relationshipTypes;
   }
 
   /**

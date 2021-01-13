@@ -23,23 +23,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseAttributeType extends GenericModel {
 
-  protected String classification;
   @SerializedName("matching_types")
   protected List<String> matchingTypes;
+  protected String classification;
   protected String description;
   protected Map<String, PutDataModelResponseField> fields;
   protected String label;
-
-  /**
-   * Gets the classification.
-   *
-   * User defined classification.
-   *
-   * @return the classification
-   */
-  public String getClassification() {
-    return classification;
-  }
 
   /**
    * Gets the matchingTypes.
@@ -51,6 +40,17 @@ public class PutDataModelResponseAttributeType extends GenericModel {
    */
   public List<String> getMatchingTypes() {
     return matchingTypes;
+  }
+
+  /**
+   * Gets the classification.
+   *
+   * User defined classification.
+   *
+   * @return the classification
+   */
+  public String getClassification() {
+    return classification;
   }
 
   /**

@@ -35,25 +35,25 @@ public class DataModelAttributeTypeTest {
   @Test
   public void testDataModelAttributeType() throws Throwable {
     DataModelField dataModelFieldModel = new DataModelField.Builder()
-      .indexed(true)
       .classification("testString")
+      .indexed(true)
       .description("testString")
       .label("testString")
       .build();
-    assertEquals(dataModelFieldModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelFieldModel.classification(), "testString");
+    assertEquals(dataModelFieldModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelFieldModel.description(), "testString");
     assertEquals(dataModelFieldModel.label(), "testString");
 
     DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
-      .classification("testString")
       .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .classification("testString")
       .description("testString")
       .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
       .label("testString")
       .build();
-    assertEquals(dataModelAttributeTypeModel.classification(), "testString");
     assertEquals(dataModelAttributeTypeModel.matchingTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(dataModelAttributeTypeModel.classification(), "testString");
     assertEquals(dataModelAttributeTypeModel.description(), "testString");
     assertEquals(dataModelAttributeTypeModel.fields(), new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } });
     assertEquals(dataModelAttributeTypeModel.label(), "testString");

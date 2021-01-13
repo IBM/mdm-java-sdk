@@ -35,32 +35,32 @@ public class RuleTest {
 
   @Test
   public void testRule() throws Throwable {
-    SourceObject sourceObjectModel = new SourceObject.Builder()
-      .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .build();
-    assertEquals(sourceObjectModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(sourceObjectModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-
     TargetObject targetObjectModel = new TargetObject.Builder()
-      .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(targetObjectModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(targetObjectModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(targetObjectModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+
+    SourceObject sourceObjectModel = new SourceObject.Builder()
+      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .build();
+    assertEquals(sourceObjectModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(sourceObjectModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     Rule ruleModel = new Rule.Builder()
-      .source(sourceObjectModel)
       .target(targetObjectModel)
+      .source(sourceObjectModel)
       .build();
-    assertEquals(ruleModel.source(), sourceObjectModel);
     assertEquals(ruleModel.target(), targetObjectModel);
+    assertEquals(ruleModel.source(), sourceObjectModel);
 
     String json = TestUtilities.serialize(ruleModel);
 
     Rule ruleModelNew = TestUtilities.deserialize(json, Rule.class);
     assertTrue(ruleModelNew instanceof Rule);
-    assertEquals(ruleModelNew.source().toString(), sourceObjectModel.toString());
     assertEquals(ruleModelNew.target().toString(), targetObjectModel.toString());
+    assertEquals(ruleModelNew.source().toString(), sourceObjectModel.toString());
   }
 }

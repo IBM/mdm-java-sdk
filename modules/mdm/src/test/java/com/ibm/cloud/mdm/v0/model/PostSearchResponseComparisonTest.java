@@ -32,10 +32,10 @@ public class PostSearchResponseComparisonTest {
   @Test
   public void testPostSearchResponseComparison() throws Throwable {
     PostSearchResponseComparison postSearchResponseComparisonModel = new PostSearchResponseComparison();
-    assertNull(postSearchResponseComparisonModel.getFeatureVector());
-    assertNull(postSearchResponseComparisonModel.getDetails());
     assertNull(postSearchResponseComparisonModel.getScore());
     assertNull(postSearchResponseComparisonModel.getDistance());
+    assertNull(postSearchResponseComparisonModel.getFeatureVector());
+    assertNull(postSearchResponseComparisonModel.getDetails());
     assertNull(postSearchResponseComparisonModel.getValues());
     assertNull(postSearchResponseComparisonModel.getTypes());
   }

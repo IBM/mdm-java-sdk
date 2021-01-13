@@ -33,9 +33,9 @@ public class PutAlgorithmResponseStandardizerStepTest {
   public void testPutAlgorithmResponseStandardizerStep() throws Throwable {
     PutAlgorithmResponseStandardizerStep putAlgorithmResponseStandardizerStepModel = new PutAlgorithmResponseStandardizerStep();
     assertNull(putAlgorithmResponseStandardizerStepModel.getComparisonResource());
+    assertNull(putAlgorithmResponseStandardizerStepModel.getInputs());
     assertNull(putAlgorithmResponseStandardizerStepModel.getSetResource());
     assertNull(putAlgorithmResponseStandardizerStepModel.getMapResource());
-    assertNull(putAlgorithmResponseStandardizerStepModel.getInputs());
     assertNull(putAlgorithmResponseStandardizerStepModel.getMethod());
     assertNull(putAlgorithmResponseStandardizerStepModel.getFields());
     assertNull(putAlgorithmResponseStandardizerStepModel.getLabel());

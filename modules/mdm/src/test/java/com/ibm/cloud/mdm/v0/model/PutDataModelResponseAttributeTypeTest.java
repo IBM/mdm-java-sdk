@@ -33,8 +33,8 @@ public class PutDataModelResponseAttributeTypeTest {
   @Test
   public void testPutDataModelResponseAttributeType() throws Throwable {
     PutDataModelResponseAttributeType putDataModelResponseAttributeTypeModel = new PutDataModelResponseAttributeType();
-    assertNull(putDataModelResponseAttributeTypeModel.getClassification());
     assertNull(putDataModelResponseAttributeTypeModel.getMatchingTypes());
+    assertNull(putDataModelResponseAttributeTypeModel.getClassification());
     assertNull(putDataModelResponseAttributeTypeModel.getDescription());
     assertNull(putDataModelResponseAttributeTypeModel.getFields());
     assertNull(putDataModelResponseAttributeTypeModel.getLabel());

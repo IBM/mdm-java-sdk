@@ -14,28 +14,28 @@ package com.ibm.cloud.mdm.v0.model;
 
 import java.util.List;
 
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * A single bucket generator group step.
  */
-public class PutAlgorithmResponseBucketGroupStep extends GenericModel {
+public class PutAlgorithmResponseBucketGroupStep extends DynamicModel<Object> {
 
-  protected Boolean order;
+  @SerializedName("inputs")
   protected List<Long> inputs;
+  @SerializedName("order")
+  protected Boolean order;
+  @SerializedName("method")
   protected String method;
+  @SerializedName("fields")
   protected List<List<String>> fields;
+  @SerializedName("label")
   protected String label;
 
-  /**
-   * Gets the order.
-   *
-   * True the tokens within the same input will be pre-sorted alphabetically.
-   *
-   * @return the order
-   */
-  public Boolean isOrder() {
-    return order;
+  public PutAlgorithmResponseBucketGroupStep() {
+    super(new TypeToken<Object>() { });
   }
 
   /**
@@ -46,7 +46,18 @@ public class PutAlgorithmResponseBucketGroupStep extends GenericModel {
    * @return the inputs
    */
   public List<Long> getInputs() {
-    return inputs;
+    return this.inputs;
+  }
+
+  /**
+   * Gets the order.
+   *
+   * True the tokens within the same input will be pre-sorted alphabetically.
+   *
+   * @return the order
+   */
+  public Boolean isOrder() {
+    return this.order;
   }
 
   /**
@@ -57,7 +68,7 @@ public class PutAlgorithmResponseBucketGroupStep extends GenericModel {
    * @return the method
    */
   public String getMethod() {
-    return method;
+    return this.method;
   }
 
   /**
@@ -68,7 +79,7 @@ public class PutAlgorithmResponseBucketGroupStep extends GenericModel {
    * @return the fields
    */
   public List<List<String>> getFields() {
-    return fields;
+    return this.fields;
   }
 
   /**
@@ -79,7 +90,6 @@ public class PutAlgorithmResponseBucketGroupStep extends GenericModel {
    * @return the label
    */
   public String getLabel() {
-    return label;
+    return this.label;
   }
 }
-

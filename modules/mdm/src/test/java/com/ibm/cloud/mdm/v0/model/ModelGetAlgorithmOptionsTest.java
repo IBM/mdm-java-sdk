@@ -32,10 +32,8 @@ public class ModelGetAlgorithmOptionsTest {
   @Test
   public void testModelGetAlgorithmOptions() throws Throwable {
     ModelGetAlgorithmOptions modelGetAlgorithmOptionsModel = new ModelGetAlgorithmOptions.Builder()
-      .crn("testString")
       .recordType("testString")
       .build();
-    assertEquals(modelGetAlgorithmOptionsModel.crn(), "testString");
     assertEquals(modelGetAlgorithmOptionsModel.recordType(), "testString");
   }
 

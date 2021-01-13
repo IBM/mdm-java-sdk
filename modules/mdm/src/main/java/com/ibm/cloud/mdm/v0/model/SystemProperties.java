@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SystemProperties extends GenericModel {
 
-  @SerializedName("relationship_types")
-  protected SystemPropertiesForRelationshipTypes relationshipTypes;
+  @SerializedName("entity_types")
+  protected SystemPropertiesForEntityTypes entityTypes;
   @SerializedName("record_types")
   protected SystemPropertiesForRecordTypes recordTypes;
   @SerializedName("attribute_types")
   protected SystemPropertiesForAttributeTypes attributeTypes;
-  @SerializedName("entity_types")
-  protected SystemPropertiesForEntityTypes entityTypes;
+  @SerializedName("relationship_types")
+  protected SystemPropertiesForRelationshipTypes relationshipTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private SystemPropertiesForRelationshipTypes relationshipTypes;
+    private SystemPropertiesForEntityTypes entityTypes;
     private SystemPropertiesForRecordTypes recordTypes;
     private SystemPropertiesForAttributeTypes attributeTypes;
-    private SystemPropertiesForEntityTypes entityTypes;
+    private SystemPropertiesForRelationshipTypes relationshipTypes;
 
     private Builder(SystemProperties systemProperties) {
-      this.relationshipTypes = systemProperties.relationshipTypes;
+      this.entityTypes = systemProperties.entityTypes;
       this.recordTypes = systemProperties.recordTypes;
       this.attributeTypes = systemProperties.attributeTypes;
-      this.entityTypes = systemProperties.entityTypes;
+      this.relationshipTypes = systemProperties.relationshipTypes;
     }
 
     /**
@@ -61,13 +61,13 @@ public class SystemProperties extends GenericModel {
     }
 
     /**
-     * Set the relationshipTypes.
+     * Set the entityTypes.
      *
-     * @param relationshipTypes the relationshipTypes
+     * @param entityTypes the entityTypes
      * @return the SystemProperties builder
      */
-    public Builder relationshipTypes(SystemPropertiesForRelationshipTypes relationshipTypes) {
-      this.relationshipTypes = relationshipTypes;
+    public Builder entityTypes(SystemPropertiesForEntityTypes entityTypes) {
+      this.entityTypes = entityTypes;
       return this;
     }
 
@@ -94,22 +94,22 @@ public class SystemProperties extends GenericModel {
     }
 
     /**
-     * Set the entityTypes.
+     * Set the relationshipTypes.
      *
-     * @param entityTypes the entityTypes
+     * @param relationshipTypes the relationshipTypes
      * @return the SystemProperties builder
      */
-    public Builder entityTypes(SystemPropertiesForEntityTypes entityTypes) {
-      this.entityTypes = entityTypes;
+    public Builder relationshipTypes(SystemPropertiesForRelationshipTypes relationshipTypes) {
+      this.relationshipTypes = relationshipTypes;
       return this;
     }
   }
 
   protected SystemProperties(Builder builder) {
-    relationshipTypes = builder.relationshipTypes;
+    entityTypes = builder.entityTypes;
     recordTypes = builder.recordTypes;
     attributeTypes = builder.attributeTypes;
-    entityTypes = builder.entityTypes;
+    relationshipTypes = builder.relationshipTypes;
   }
 
   /**
@@ -122,14 +122,14 @@ public class SystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the relationshipTypes.
+   * Gets the entityTypes.
    *
-   * relationship types.
+   * entity types.
    *
-   * @return the relationshipTypes
+   * @return the entityTypes
    */
-  public SystemPropertiesForRelationshipTypes relationshipTypes() {
-    return relationshipTypes;
+  public SystemPropertiesForEntityTypes entityTypes() {
+    return entityTypes;
   }
 
   /**
@@ -155,14 +155,14 @@ public class SystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the entityTypes.
+   * Gets the relationshipTypes.
    *
-   * entity types.
+   * relationship types.
    *
-   * @return the entityTypes
+   * @return the relationshipTypes
    */
-  public SystemPropertiesForEntityTypes entityTypes() {
-    return entityTypes;
+  public SystemPropertiesForRelationshipTypes relationshipTypes() {
+    return relationshipTypes;
   }
 }
 

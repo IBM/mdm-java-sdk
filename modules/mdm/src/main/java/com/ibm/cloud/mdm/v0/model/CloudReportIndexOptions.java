@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CloudReportIndexOptions extends GenericModel {
 
-  protected String crn;
   protected String recordType;
   protected String entityType;
 
@@ -27,12 +26,10 @@ public class CloudReportIndexOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String recordType;
     private String entityType;
 
     private Builder(CloudReportIndexOptions cloudReportIndexOptions) {
-      this.crn = cloudReportIndexOptions.crn;
       this.recordType = cloudReportIndexOptions.recordType;
       this.entityType = cloudReportIndexOptions.entityType;
     }
@@ -44,32 +41,12 @@ public class CloudReportIndexOptions extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param crn the crn
-     */
-    public Builder(String crn) {
-      this.crn = crn;
-    }
-
-    /**
      * Builds a CloudReportIndexOptions.
      *
      * @return the new CloudReportIndexOptions instance
      */
     public CloudReportIndexOptions build() {
       return new CloudReportIndexOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the CloudReportIndexOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -96,9 +73,6 @@ public class CloudReportIndexOptions extends GenericModel {
   }
 
   protected CloudReportIndexOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    crn = builder.crn;
     recordType = builder.recordType;
     entityType = builder.entityType;
   }
@@ -110,17 +84,6 @@ public class CloudReportIndexOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

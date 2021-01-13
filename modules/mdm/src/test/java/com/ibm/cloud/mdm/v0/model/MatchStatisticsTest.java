@@ -37,9 +37,9 @@ public class MatchStatisticsTest {
   @Test
   public void testMatchStatistics() throws Throwable {
     MatchStatistics matchStatisticsModel = new MatchStatistics();
-    assertNull(matchStatisticsModel.getEntityBreakdown());
     assertNull(matchStatisticsModel.getLargestEntities());
     assertNull(matchStatisticsModel.getEntitySizeDistribution());
+    assertNull(matchStatisticsModel.getEntityBreakdown());
     assertNull(matchStatisticsModel.getSummary());
     assertNull(matchStatisticsModel.getStatus());
   }

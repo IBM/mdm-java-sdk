@@ -19,18 +19,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelGetComparespecResourceOptions extends GenericModel {
 
-  protected String crn;
   protected String resourceName;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String resourceName;
 
     private Builder(ModelGetComparespecResourceOptions modelGetComparespecResourceOptions) {
-      this.crn = modelGetComparespecResourceOptions.crn;
       this.resourceName = modelGetComparespecResourceOptions.resourceName;
     }
 
@@ -43,11 +40,9 @@ public class ModelGetComparespecResourceOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param resourceName the resourceName
      */
-    public Builder(String crn, String resourceName) {
-      this.crn = crn;
+    public Builder(String resourceName) {
       this.resourceName = resourceName;
     }
 
@@ -58,17 +53,6 @@ public class ModelGetComparespecResourceOptions extends GenericModel {
      */
     public ModelGetComparespecResourceOptions build() {
       return new ModelGetComparespecResourceOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the ModelGetComparespecResourceOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -84,11 +68,8 @@ public class ModelGetComparespecResourceOptions extends GenericModel {
   }
 
   protected ModelGetComparespecResourceOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.resourceName,
       "resourceName cannot be empty");
-    crn = builder.crn;
     resourceName = builder.resourceName;
   }
 
@@ -99,17 +80,6 @@ public class ModelGetComparespecResourceOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

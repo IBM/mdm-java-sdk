@@ -19,18 +19,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelGetDataModelOptions extends GenericModel {
 
-  protected String crn;
   protected String version;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String version;
 
     private Builder(ModelGetDataModelOptions modelGetDataModelOptions) {
-      this.crn = modelGetDataModelOptions.crn;
       this.version = modelGetDataModelOptions.version;
     }
 
@@ -41,32 +38,12 @@ public class ModelGetDataModelOptions extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param crn the crn
-     */
-    public Builder(String crn) {
-      this.crn = crn;
-    }
-
-    /**
      * Builds a ModelGetDataModelOptions.
      *
      * @return the new ModelGetDataModelOptions instance
      */
     public ModelGetDataModelOptions build() {
       return new ModelGetDataModelOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the ModelGetDataModelOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -82,9 +59,6 @@ public class ModelGetDataModelOptions extends GenericModel {
   }
 
   protected ModelGetDataModelOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    crn = builder.crn;
     version = builder.version;
   }
 
@@ -95,17 +69,6 @@ public class ModelGetDataModelOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

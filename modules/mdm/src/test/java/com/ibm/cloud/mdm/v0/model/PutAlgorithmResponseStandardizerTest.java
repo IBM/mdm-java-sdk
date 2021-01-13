@@ -36,8 +36,8 @@ public class PutAlgorithmResponseStandardizerTest {
   @Test
   public void testPutAlgorithmResponseStandardizer() throws Throwable {
     PutAlgorithmResponseStandardizer putAlgorithmResponseStandardizerModel = new PutAlgorithmResponseStandardizer();
-    assertNull(putAlgorithmResponseStandardizerModel.getStandardizerRecipe());
     assertNull(putAlgorithmResponseStandardizerModel.getInputs());
+    assertNull(putAlgorithmResponseStandardizerModel.getStandardizerRecipe());
     assertNull(putAlgorithmResponseStandardizerModel.getLabel());
   }
 }

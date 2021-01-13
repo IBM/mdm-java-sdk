@@ -16,54 +16,27 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
+import com.google.gson.reflect.TypeToken;
+import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * A single derived matching data.
  */
-public class PostDeriveResponseIndexResponse extends GenericModel {
+public class PostDeriveResponseIndexResponse extends DynamicModel<Object> {
 
+  @SerializedName("buckets")
+  protected List<Long> buckets;
+  @SerializedName("record_type")
+  protected String recordType;
   @SerializedName("standardized_values")
   protected Map<String, Object> standardizedValues;
   @SerializedName("record_id")
   protected String recordId;
   @SerializedName("record_source")
   protected String recordSource;
-  protected List<Long> buckets;
-  @SerializedName("record_type")
-  protected String recordType;
 
-  /**
-   * Gets the standardizedValues.
-   *
-   * Collection of a record's standardized values, primarily used for record comparison.
-   *
-   * @return the standardizedValues
-   */
-  public Map<String, Object> getStandardizedValues() {
-    return standardizedValues;
-  }
-
-  /**
-   * Gets the recordId.
-   *
-   * The identifier of the record.
-   *
-   * @return the recordId
-   */
-  public String getRecordId() {
-    return recordId;
-  }
-
-  /**
-   * Gets the recordSource.
-   *
-   * The source system name of a record.
-   *
-   * @return the recordSource
-   */
-  public String getRecordSource() {
-    return recordSource;
+  public PostDeriveResponseIndexResponse() {
+    super(new TypeToken<Object>() { });
   }
 
   /**
@@ -74,7 +47,7 @@ public class PostDeriveResponseIndexResponse extends GenericModel {
    * @return the buckets
    */
   public List<Long> getBuckets() {
-    return buckets;
+    return this.buckets;
   }
 
   /**
@@ -85,7 +58,39 @@ public class PostDeriveResponseIndexResponse extends GenericModel {
    * @return the recordType
    */
   public String getRecordType() {
-    return recordType;
+    return this.recordType;
+  }
+
+  /**
+   * Gets the standardizedValues.
+   *
+   * Collection of a record's standardized values, primarily used for record comparison.
+   *
+   * @return the standardizedValues
+   */
+  public Map<String, Object> getStandardizedValues() {
+    return this.standardizedValues;
+  }
+
+  /**
+   * Gets the recordId.
+   *
+   * The identifier of the record.
+   *
+   * @return the recordId
+   */
+  public String getRecordId() {
+    return this.recordId;
+  }
+
+  /**
+   * Gets the recordSource.
+   *
+   * The source system name of a record.
+   *
+   * @return the recordSource
+   */
+  public String getRecordSource() {
+    return this.recordSource;
   }
 }
-

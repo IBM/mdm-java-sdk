@@ -32,10 +32,8 @@ public class ModelGetComparespecResourceOptionsTest {
   @Test
   public void testModelGetComparespecResourceOptions() throws Throwable {
     ModelGetComparespecResourceOptions modelGetComparespecResourceOptionsModel = new ModelGetComparespecResourceOptions.Builder()
-      .crn("testString")
       .resourceName("testString")
       .build();
-    assertEquals(modelGetComparespecResourceOptionsModel.crn(), "testString");
     assertEquals(modelGetComparespecResourceOptionsModel.resourceName(), "testString");
   }
 

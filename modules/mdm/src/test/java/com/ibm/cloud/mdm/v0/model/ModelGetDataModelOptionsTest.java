@@ -32,16 +32,8 @@ public class ModelGetDataModelOptionsTest {
   @Test
   public void testModelGetDataModelOptions() throws Throwable {
     ModelGetDataModelOptions modelGetDataModelOptionsModel = new ModelGetDataModelOptions.Builder()
-      .crn("testString")
       .version("testString")
       .build();
-    assertEquals(modelGetDataModelOptionsModel.crn(), "testString");
     assertEquals(modelGetDataModelOptionsModel.version(), "testString");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testModelGetDataModelOptionsError() throws Throwable {
-    new ModelGetDataModelOptions.Builder().build();
-  }
-
 }

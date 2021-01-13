@@ -20,27 +20,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseRecordTypeSystemProperties extends GenericModel {
 
-  @SerializedName("record_number")
-  protected PutDataModelResponseSystemProperty recordNumber;
   @SerializedName("record_id")
   protected PutDataModelResponseSystemProperty recordId;
-  @SerializedName("record_source")
-  protected PutDataModelResponseSystemProperty recordSource;
   @SerializedName("record_last_updated")
   protected PutDataModelResponseSystemProperty recordLastUpdated;
   @SerializedName("collection_id")
   protected PutDataModelResponseSystemProperty collectionId;
-
-  /**
-   * Gets the recordNumber.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the recordNumber
-   */
-  public PutDataModelResponseSystemProperty getRecordNumber() {
-    return recordNumber;
-  }
+  @SerializedName("record_number")
+  protected PutDataModelResponseSystemProperty recordNumber;
+  @SerializedName("record_source")
+  protected PutDataModelResponseSystemProperty recordSource;
 
   /**
    * Gets the recordId.
@@ -51,17 +40,6 @@ public class PutDataModelResponseRecordTypeSystemProperties extends GenericModel
    */
   public PutDataModelResponseSystemProperty getRecordId() {
     return recordId;
-  }
-
-  /**
-   * Gets the recordSource.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the recordSource
-   */
-  public PutDataModelResponseSystemProperty getRecordSource() {
-    return recordSource;
   }
 
   /**
@@ -84,6 +62,28 @@ public class PutDataModelResponseRecordTypeSystemProperties extends GenericModel
    */
   public PutDataModelResponseSystemProperty getCollectionId() {
     return collectionId;
+  }
+
+  /**
+   * Gets the recordNumber.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the recordNumber
+   */
+  public PutDataModelResponseSystemProperty getRecordNumber() {
+    return recordNumber;
+  }
+
+  /**
+   * Gets the recordSource.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the recordSource
+   */
+  public PutDataModelResponseSystemProperty getRecordSource() {
+    return recordSource;
   }
 }
 

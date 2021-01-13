@@ -32,10 +32,8 @@ public class GetCloudJobSummaryOptionsTest {
   @Test
   public void testGetCloudJobSummaryOptions() throws Throwable {
     GetCloudJobSummaryOptions getCloudJobSummaryOptionsModel = new GetCloudJobSummaryOptions.Builder()
-      .crn("testString")
       .jobId("95364")
       .build();
-    assertEquals(getCloudJobSummaryOptionsModel.crn(), "testString");
     assertEquals(getCloudJobSummaryOptionsModel.jobId(), "95364");
   }
 

@@ -24,14 +24,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRelationshipType extends GenericModel {
 
-  protected List<DataModelRelationshipRule> rules;
+  protected Boolean directional;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
-  protected Boolean directional;
+  protected List<DataModelRelationshipRule> rules;
   @SerializedName("label_from_source")
   protected String labelFromSource;
-  protected String cardinality;
   protected String description;
+  protected String cardinality;
   protected Map<String, DataModelAttribute> attributes;
   protected String label;
 
@@ -39,22 +39,22 @@ public class DataModelRelationshipType extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private List<DataModelRelationshipRule> rules;
-    private String labelFromTarget;
     private Boolean directional;
+    private String labelFromTarget;
+    private List<DataModelRelationshipRule> rules;
     private String labelFromSource;
-    private String cardinality;
     private String description;
+    private String cardinality;
     private Map<String, DataModelAttribute> attributes;
     private String label;
 
     private Builder(DataModelRelationshipType dataModelRelationshipType) {
-      this.rules = dataModelRelationshipType.rules;
-      this.labelFromTarget = dataModelRelationshipType.labelFromTarget;
       this.directional = dataModelRelationshipType.directional;
+      this.labelFromTarget = dataModelRelationshipType.labelFromTarget;
+      this.rules = dataModelRelationshipType.rules;
       this.labelFromSource = dataModelRelationshipType.labelFromSource;
-      this.cardinality = dataModelRelationshipType.cardinality;
       this.description = dataModelRelationshipType.description;
+      this.cardinality = dataModelRelationshipType.cardinality;
       this.attributes = dataModelRelationshipType.attributes;
       this.label = dataModelRelationshipType.label;
     }
@@ -100,14 +100,13 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the rules.
-     * Existing rules will be replaced.
+     * Set the directional.
      *
-     * @param rules the rules
+     * @param directional the directional
      * @return the DataModelRelationshipType builder
      */
-    public Builder rules(List<DataModelRelationshipRule> rules) {
-      this.rules = rules;
+    public Builder directional(Boolean directional) {
+      this.directional = directional;
       return this;
     }
 
@@ -123,13 +122,14 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the directional.
+     * Set the rules.
+     * Existing rules will be replaced.
      *
-     * @param directional the directional
+     * @param rules the rules
      * @return the DataModelRelationshipType builder
      */
-    public Builder directional(Boolean directional) {
-      this.directional = directional;
+    public Builder rules(List<DataModelRelationshipRule> rules) {
+      this.rules = rules;
       return this;
     }
 
@@ -145,17 +145,6 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the cardinality.
-     *
-     * @param cardinality the cardinality
-     * @return the DataModelRelationshipType builder
-     */
-    public Builder cardinality(String cardinality) {
-      this.cardinality = cardinality;
-      return this;
-    }
-
-    /**
      * Set the description.
      *
      * @param description the description
@@ -163,6 +152,17 @@ public class DataModelRelationshipType extends GenericModel {
      */
     public Builder description(String description) {
       this.description = description;
+      return this;
+    }
+
+    /**
+     * Set the cardinality.
+     *
+     * @param cardinality the cardinality
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder cardinality(String cardinality) {
+      this.cardinality = cardinality;
       return this;
     }
 
@@ -192,12 +192,12 @@ public class DataModelRelationshipType extends GenericModel {
   protected DataModelRelationshipType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    rules = builder.rules;
-    labelFromTarget = builder.labelFromTarget;
     directional = builder.directional;
+    labelFromTarget = builder.labelFromTarget;
+    rules = builder.rules;
     labelFromSource = builder.labelFromSource;
-    cardinality = builder.cardinality;
     description = builder.description;
+    cardinality = builder.cardinality;
     attributes = builder.attributes;
     label = builder.label;
   }
@@ -212,14 +212,14 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the rules.
+   * Gets the directional.
    *
-   * Collection of defined relationship rules.
+   * True if the relationship is directional, otherwise false. The default value is true.
    *
-   * @return the rules
+   * @return the directional
    */
-  public List<DataModelRelationshipRule> rules() {
-    return rules;
+  public Boolean directional() {
+    return directional;
   }
 
   /**
@@ -234,14 +234,14 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the directional.
+   * Gets the rules.
    *
-   * True if the relationship is directional, otherwise false. The default value is true.
+   * Collection of defined relationship rules.
    *
-   * @return the directional
+   * @return the rules
    */
-  public Boolean directional() {
-    return directional;
+  public List<DataModelRelationshipRule> rules() {
+    return rules;
   }
 
   /**
@@ -256,17 +256,6 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the cardinality.
-   *
-   * User defined cardinality, one of MULTI, SIMPLE, MANY2ONE, ONE2MANY or ONE2ONE. The default value is MULTI.
-   *
-   * @return the cardinality
-   */
-  public String cardinality() {
-    return cardinality;
-  }
-
-  /**
    * Gets the description.
    *
    * User defined translatable description.
@@ -275,6 +264,17 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public String description() {
     return description;
+  }
+
+  /**
+   * Gets the cardinality.
+   *
+   * User defined cardinality, one of MULTI, SIMPLE, MANY2ONE, ONE2MANY or ONE2ONE. The default value is MULTI.
+   *
+   * @return the cardinality
+   */
+  public String cardinality() {
+    return cardinality;
   }
 
   /**

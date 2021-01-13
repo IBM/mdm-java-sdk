@@ -22,12 +22,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ConfigDataModel extends GenericModel {
 
-  @SerializedName("relationship_types")
-  protected Map<String, RelationshipType> relationshipTypes;
   @SerializedName("record_types")
   protected Map<String, RecordType> recordTypes;
   @SerializedName("attribute_types")
   protected Map<String, AttributeType> attributeTypes;
+  @SerializedName("relationship_types")
+  protected Map<String, RelationshipType> relationshipTypes;
   protected String locale;
   @SerializedName("system_properties")
   protected Map<String, SystemProperties> systemProperties;
@@ -36,16 +36,16 @@ public class ConfigDataModel extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private Map<String, RelationshipType> relationshipTypes;
     private Map<String, RecordType> recordTypes;
     private Map<String, AttributeType> attributeTypes;
+    private Map<String, RelationshipType> relationshipTypes;
     private String locale;
     private Map<String, SystemProperties> systemProperties;
 
     private Builder(ConfigDataModel configDataModel) {
-      this.relationshipTypes = configDataModel.relationshipTypes;
       this.recordTypes = configDataModel.recordTypes;
       this.attributeTypes = configDataModel.attributeTypes;
+      this.relationshipTypes = configDataModel.relationshipTypes;
       this.locale = configDataModel.locale;
       this.systemProperties = configDataModel.systemProperties;
     }
@@ -63,17 +63,6 @@ public class ConfigDataModel extends GenericModel {
      */
     public ConfigDataModel build() {
       return new ConfigDataModel(this);
-    }
-
-    /**
-     * Set the relationshipTypes.
-     *
-     * @param relationshipTypes the relationshipTypes
-     * @return the ConfigDataModel builder
-     */
-    public Builder relationshipTypes(Map<String, RelationshipType> relationshipTypes) {
-      this.relationshipTypes = relationshipTypes;
-      return this;
     }
 
     /**
@@ -95,6 +84,17 @@ public class ConfigDataModel extends GenericModel {
      */
     public Builder attributeTypes(Map<String, AttributeType> attributeTypes) {
       this.attributeTypes = attributeTypes;
+      return this;
+    }
+
+    /**
+     * Set the relationshipTypes.
+     *
+     * @param relationshipTypes the relationshipTypes
+     * @return the ConfigDataModel builder
+     */
+    public Builder relationshipTypes(Map<String, RelationshipType> relationshipTypes) {
+      this.relationshipTypes = relationshipTypes;
       return this;
     }
 
@@ -122,9 +122,9 @@ public class ConfigDataModel extends GenericModel {
   }
 
   protected ConfigDataModel(Builder builder) {
-    relationshipTypes = builder.relationshipTypes;
     recordTypes = builder.recordTypes;
     attributeTypes = builder.attributeTypes;
+    relationshipTypes = builder.relationshipTypes;
     locale = builder.locale;
     systemProperties = builder.systemProperties;
   }
@@ -136,17 +136,6 @@ public class ConfigDataModel extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the relationshipTypes.
-   *
-   * relationship types.
-   *
-   * @return the relationshipTypes
-   */
-  public Map<String, RelationshipType> relationshipTypes() {
-    return relationshipTypes;
   }
 
   /**
@@ -169,6 +158,17 @@ public class ConfigDataModel extends GenericModel {
    */
   public Map<String, AttributeType> attributeTypes() {
     return attributeTypes;
+  }
+
+  /**
+   * Gets the relationshipTypes.
+   *
+   * relationship types.
+   *
+   * @return the relationshipTypes
+   */
+  public Map<String, RelationshipType> relationshipTypes() {
+    return relationshipTypes;
   }
 
   /**

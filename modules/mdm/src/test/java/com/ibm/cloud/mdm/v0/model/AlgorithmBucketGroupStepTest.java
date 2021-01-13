@@ -34,25 +34,28 @@ public class AlgorithmBucketGroupStepTest {
   @Test
   public void testAlgorithmBucketGroupStep() throws Throwable {
     AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
-      .order(true)
       .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .order(true)
       .method("testString")
       .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
       .label("testString")
+      .add("foo", "testString")
       .build();
-    assertEquals(algorithmBucketGroupStepModel.order(), Boolean.valueOf(true));
-    assertEquals(algorithmBucketGroupStepModel.inputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmBucketGroupStepModel.method(), "testString");
-    assertEquals(algorithmBucketGroupStepModel.fields(), new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))));
-    assertEquals(algorithmBucketGroupStepModel.label(), "testString");
+    assertEquals(algorithmBucketGroupStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
+    assertEquals(algorithmBucketGroupStepModel.isOrder(), Boolean.valueOf(true));
+    assertEquals(algorithmBucketGroupStepModel.getMethod(), "testString");
+    assertEquals(algorithmBucketGroupStepModel.getFields(), new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))));
+    assertEquals(algorithmBucketGroupStepModel.getLabel(), "testString");
+    assertEquals(algorithmBucketGroupStepModel.get("foo"), "testString");
 
     String json = TestUtilities.serialize(algorithmBucketGroupStepModel);
 
     AlgorithmBucketGroupStep algorithmBucketGroupStepModelNew = TestUtilities.deserialize(json, AlgorithmBucketGroupStep.class);
     assertTrue(algorithmBucketGroupStepModelNew instanceof AlgorithmBucketGroupStep);
-    assertEquals(algorithmBucketGroupStepModelNew.order(), Boolean.valueOf(true));
-    assertEquals(algorithmBucketGroupStepModelNew.method(), "testString");
-    assertEquals(algorithmBucketGroupStepModelNew.label(), "testString");
+    assertEquals(algorithmBucketGroupStepModelNew.isOrder(), Boolean.valueOf(true));
+    assertEquals(algorithmBucketGroupStepModelNew.getMethod(), "testString");
+    assertEquals(algorithmBucketGroupStepModelNew.getLabel(), "testString");
+    assertEquals(algorithmBucketGroupStepModelNew.get("foo"), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

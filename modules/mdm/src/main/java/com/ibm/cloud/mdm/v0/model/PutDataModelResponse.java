@@ -20,23 +20,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponse extends GenericModel {
 
-  @SerializedName("flow_state")
-  protected String flowState;
   @SerializedName("data_model")
   protected PutDataModelResponseDataModel dataModel;
   @SerializedName("flow_id")
   protected String flowId;
-
-  /**
-   * Gets the flowState.
-   *
-   * Current state of flow according to its state machine.
-   *
-   * @return the flowState
-   */
-  public String getFlowState() {
-    return flowState;
-  }
+  @SerializedName("flow_state")
+  protected String flowState;
 
   /**
    * Gets the dataModel.
@@ -58,6 +47,17 @@ public class PutDataModelResponse extends GenericModel {
    */
   public String getFlowId() {
     return flowId;
+  }
+
+  /**
+   * Gets the flowState.
+   *
+   * Current state of flow according to its state machine.
+   *
+   * @return the flowState
+   */
+  public String getFlowState() {
+    return flowState;
   }
 }
 

@@ -31,15 +31,7 @@ public class ModelListMapResourcesOptionsTest {
 
   @Test
   public void testModelListMapResourcesOptions() throws Throwable {
-    ModelListMapResourcesOptions modelListMapResourcesOptionsModel = new ModelListMapResourcesOptions.Builder()
-      .crn("testString")
-      .build();
-    assertEquals(modelListMapResourcesOptionsModel.crn(), "testString");
+    ModelListMapResourcesOptions modelListMapResourcesOptionsModel = new ModelListMapResourcesOptions();
+    assertNotNull(modelListMapResourcesOptionsModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testModelListMapResourcesOptionsError() throws Throwable {
-    new ModelListMapResourcesOptions.Builder().build();
-  }
-
 }

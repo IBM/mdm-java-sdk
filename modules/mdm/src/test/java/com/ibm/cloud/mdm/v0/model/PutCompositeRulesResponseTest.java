@@ -38,8 +38,8 @@ public class PutCompositeRulesResponseTest {
   @Test
   public void testPutCompositeRulesResponse() throws Throwable {
     PutCompositeRulesResponse putCompositeRulesResponseModel = new PutCompositeRulesResponse();
-    assertNull(putCompositeRulesResponseModel.getFlowState());
     assertNull(putCompositeRulesResponseModel.getCompositeRules());
     assertNull(putCompositeRulesResponseModel.getFlowId());
+    assertNull(putCompositeRulesResponseModel.getFlowState());
   }
 }
