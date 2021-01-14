@@ -31,15 +31,7 @@ public class ModelGetCompositeRulesOptionsTest {
 
   @Test
   public void testModelGetCompositeRulesOptions() throws Throwable {
-    ModelGetCompositeRulesOptions modelGetCompositeRulesOptionsModel = new ModelGetCompositeRulesOptions.Builder()
-      .crn("testString")
-      .build();
-    assertEquals(modelGetCompositeRulesOptionsModel.crn(), "testString");
+    ModelGetCompositeRulesOptions modelGetCompositeRulesOptionsModel = new ModelGetCompositeRulesOptions();
+    assertNotNull(modelGetCompositeRulesOptionsModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testModelGetCompositeRulesOptionsError() throws Throwable {
-    new ModelGetCompositeRulesOptions.Builder().build();
-  }
-
 }

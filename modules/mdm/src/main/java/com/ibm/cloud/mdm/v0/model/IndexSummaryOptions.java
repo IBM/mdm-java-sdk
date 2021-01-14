@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class IndexSummaryOptions extends GenericModel {
 
-  protected String crn;
   protected String recordType;
   protected String entityType;
   protected Long maxResult;
@@ -28,13 +27,11 @@ public class IndexSummaryOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String recordType;
     private String entityType;
     private Long maxResult;
 
     private Builder(IndexSummaryOptions indexSummaryOptions) {
-      this.crn = indexSummaryOptions.crn;
       this.recordType = indexSummaryOptions.recordType;
       this.entityType = indexSummaryOptions.entityType;
       this.maxResult = indexSummaryOptions.maxResult;
@@ -47,32 +44,12 @@ public class IndexSummaryOptions extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param crn the crn
-     */
-    public Builder(String crn) {
-      this.crn = crn;
-    }
-
-    /**
      * Builds a IndexSummaryOptions.
      *
      * @return the new IndexSummaryOptions instance
      */
     public IndexSummaryOptions build() {
       return new IndexSummaryOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the IndexSummaryOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -110,9 +87,6 @@ public class IndexSummaryOptions extends GenericModel {
   }
 
   protected IndexSummaryOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    crn = builder.crn;
     recordType = builder.recordType;
     entityType = builder.entityType;
     maxResult = builder.maxResult;
@@ -125,17 +99,6 @@ public class IndexSummaryOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

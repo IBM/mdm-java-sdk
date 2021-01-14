@@ -22,21 +22,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseRelationshipEndpoint extends GenericModel {
 
-  @SerializedName("entity_types")
-  protected List<String> entityTypes;
   @SerializedName("record_types")
   protected List<String> recordTypes;
-
-  /**
-   * Gets the entityTypes.
-   *
-   * Collection of allowed entity types.
-   *
-   * @return the entityTypes
-   */
-  public List<String> getEntityTypes() {
-    return entityTypes;
-  }
+  @SerializedName("entity_types")
+  protected List<String> entityTypes;
 
   /**
    * Gets the recordTypes.
@@ -47,6 +36,17 @@ public class PutDataModelResponseRelationshipEndpoint extends GenericModel {
    */
   public List<String> getRecordTypes() {
     return recordTypes;
+  }
+
+  /**
+   * Gets the entityTypes.
+   *
+   * Collection of allowed entity types.
+   *
+   * @return the entityTypes
+   */
+  public List<String> getEntityTypes() {
+    return entityTypes;
   }
 }
 

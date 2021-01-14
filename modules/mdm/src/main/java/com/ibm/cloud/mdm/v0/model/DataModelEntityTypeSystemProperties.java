@@ -20,21 +20,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelEntityTypeSystemProperties extends GenericModel {
 
-  @SerializedName("entity_id")
-  protected DataModelSystemProperty entityId;
   @SerializedName("entity_last_updated")
   protected DataModelSystemProperty entityLastUpdated;
+  @SerializedName("entity_id")
+  protected DataModelSystemProperty entityId;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private DataModelSystemProperty entityId;
     private DataModelSystemProperty entityLastUpdated;
+    private DataModelSystemProperty entityId;
 
     private Builder(DataModelEntityTypeSystemProperties dataModelEntityTypeSystemProperties) {
-      this.entityId = dataModelEntityTypeSystemProperties.entityId;
       this.entityLastUpdated = dataModelEntityTypeSystemProperties.entityLastUpdated;
+      this.entityId = dataModelEntityTypeSystemProperties.entityId;
     }
 
     /**
@@ -46,12 +46,12 @@ public class DataModelEntityTypeSystemProperties extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param entityId the entityId
      * @param entityLastUpdated the entityLastUpdated
+     * @param entityId the entityId
      */
-    public Builder(DataModelSystemProperty entityId, DataModelSystemProperty entityLastUpdated) {
-      this.entityId = entityId;
+    public Builder(DataModelSystemProperty entityLastUpdated, DataModelSystemProperty entityId) {
       this.entityLastUpdated = entityLastUpdated;
+      this.entityId = entityId;
     }
 
     /**
@@ -64,17 +64,6 @@ public class DataModelEntityTypeSystemProperties extends GenericModel {
     }
 
     /**
-     * Set the entityId.
-     *
-     * @param entityId the entityId
-     * @return the DataModelEntityTypeSystemProperties builder
-     */
-    public Builder entityId(DataModelSystemProperty entityId) {
-      this.entityId = entityId;
-      return this;
-    }
-
-    /**
      * Set the entityLastUpdated.
      *
      * @param entityLastUpdated the entityLastUpdated
@@ -84,15 +73,26 @@ public class DataModelEntityTypeSystemProperties extends GenericModel {
       this.entityLastUpdated = entityLastUpdated;
       return this;
     }
+
+    /**
+     * Set the entityId.
+     *
+     * @param entityId the entityId
+     * @return the DataModelEntityTypeSystemProperties builder
+     */
+    public Builder entityId(DataModelSystemProperty entityId) {
+      this.entityId = entityId;
+      return this;
+    }
   }
 
   protected DataModelEntityTypeSystemProperties(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityId,
-      "entityId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityLastUpdated,
       "entityLastUpdated cannot be null");
-    entityId = builder.entityId;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityId,
+      "entityId cannot be null");
     entityLastUpdated = builder.entityLastUpdated;
+    entityId = builder.entityId;
   }
 
   /**
@@ -105,17 +105,6 @@ public class DataModelEntityTypeSystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the entityId.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the entityId
-   */
-  public DataModelSystemProperty entityId() {
-    return entityId;
-  }
-
-  /**
    * Gets the entityLastUpdated.
    *
    * Defines metadata of a system property.
@@ -124,6 +113,17 @@ public class DataModelEntityTypeSystemProperties extends GenericModel {
    */
   public DataModelSystemProperty entityLastUpdated() {
     return entityLastUpdated;
+  }
+
+  /**
+   * Gets the entityId.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the entityId
+   */
+  public DataModelSystemProperty entityId() {
+    return entityId;
   }
 }
 

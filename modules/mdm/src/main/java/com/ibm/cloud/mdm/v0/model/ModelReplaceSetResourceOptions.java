@@ -21,7 +21,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelReplaceSetResourceOptions extends GenericModel {
 
-  protected String crn;
   protected String resourceName;
   protected Map<String, SetResourceEntry> requestBody;
 
@@ -29,12 +28,10 @@ public class ModelReplaceSetResourceOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String resourceName;
     private Map<String, SetResourceEntry> requestBody;
 
     private Builder(ModelReplaceSetResourceOptions modelReplaceSetResourceOptions) {
-      this.crn = modelReplaceSetResourceOptions.crn;
       this.resourceName = modelReplaceSetResourceOptions.resourceName;
       this.requestBody = modelReplaceSetResourceOptions.requestBody;
     }
@@ -48,12 +45,10 @@ public class ModelReplaceSetResourceOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param resourceName the resourceName
      * @param requestBody the requestBody
      */
-    public Builder(String crn, String resourceName, Map<String, SetResourceEntry> requestBody) {
-      this.crn = crn;
+    public Builder(String resourceName, Map<String, SetResourceEntry> requestBody) {
       this.resourceName = resourceName;
       this.requestBody = requestBody;
     }
@@ -65,17 +60,6 @@ public class ModelReplaceSetResourceOptions extends GenericModel {
      */
     public ModelReplaceSetResourceOptions build() {
       return new ModelReplaceSetResourceOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the ModelReplaceSetResourceOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -102,13 +86,10 @@ public class ModelReplaceSetResourceOptions extends GenericModel {
   }
 
   protected ModelReplaceSetResourceOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.resourceName,
       "resourceName cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.requestBody,
       "requestBody cannot be null");
-    crn = builder.crn;
     resourceName = builder.resourceName;
     requestBody = builder.requestBody;
   }
@@ -120,17 +101,6 @@ public class ModelReplaceSetResourceOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

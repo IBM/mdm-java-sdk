@@ -32,10 +32,8 @@ public class ModelGetMapResourceOptionsTest {
   @Test
   public void testModelGetMapResourceOptions() throws Throwable {
     ModelGetMapResourceOptions modelGetMapResourceOptionsModel = new ModelGetMapResourceOptions.Builder()
-      .crn("testString")
       .resourceName("testString")
       .build();
-    assertEquals(modelGetMapResourceOptionsModel.crn(), "testString");
     assertEquals(modelGetMapResourceOptionsModel.resourceName(), "testString");
   }
 

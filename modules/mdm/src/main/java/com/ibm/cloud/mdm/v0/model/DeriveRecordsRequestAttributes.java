@@ -12,33 +12,43 @@
  */
 package com.ibm.cloud.mdm.v0.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
+import com.google.gson.reflect.TypeToken;
+import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * Details of a single record including external record reference and record attributes.
  */
-public class DeriveRecordsRequestAttributes extends GenericModel {
+public class DeriveRecordsRequestAttributes extends DynamicModel<Object> {
 
+  @SerializedName("record_last_updated")
+  protected String recordLastUpdated;
   @SerializedName("record_id")
   protected String recordId;
   @SerializedName("record_source")
   protected String recordSource;
-  @SerializedName("record_last_updated")
-  protected String recordLastUpdated;
+
+  public DeriveRecordsRequestAttributes() {
+    super(new TypeToken<Object>() { });
+  }
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String recordLastUpdated;
     private String recordId;
     private String recordSource;
-    private String recordLastUpdated;
+    private Map<String, Object> dynamicProperties;
 
     private Builder(DeriveRecordsRequestAttributes deriveRecordsRequestAttributes) {
+      this.recordLastUpdated = deriveRecordsRequestAttributes.recordLastUpdated;
       this.recordId = deriveRecordsRequestAttributes.recordId;
       this.recordSource = deriveRecordsRequestAttributes.recordSource;
-      this.recordLastUpdated = deriveRecordsRequestAttributes.recordLastUpdated;
+      this.dynamicProperties = deriveRecordsRequestAttributes.getProperties();
     }
 
     /**
@@ -54,6 +64,17 @@ public class DeriveRecordsRequestAttributes extends GenericModel {
      */
     public DeriveRecordsRequestAttributes build() {
       return new DeriveRecordsRequestAttributes(this);
+    }
+
+    /**
+     * Set the recordLastUpdated.
+     *
+     * @param recordLastUpdated the recordLastUpdated
+     * @return the DeriveRecordsRequestAttributes builder
+     */
+    public Builder recordLastUpdated(String recordLastUpdated) {
+      this.recordLastUpdated = recordLastUpdated;
+      return this;
     }
 
     /**
@@ -79,21 +100,28 @@ public class DeriveRecordsRequestAttributes extends GenericModel {
     }
 
     /**
-     * Set the recordLastUpdated.
+     * Add an arbitrary property.
      *
-     * @param recordLastUpdated the recordLastUpdated
+     * @param name the name of the property to add
+     * @param value the value of the property to add
      * @return the DeriveRecordsRequestAttributes builder
      */
-    public Builder recordLastUpdated(String recordLastUpdated) {
-      this.recordLastUpdated = recordLastUpdated;
+    public Builder add(String name, Object value) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(name, "name cannot be null");
+      if (this.dynamicProperties == null) {
+        this.dynamicProperties = new HashMap<String, Object>();
+      }
+      this.dynamicProperties.put(name, value);
       return this;
     }
   }
 
   protected DeriveRecordsRequestAttributes(Builder builder) {
+    super(new TypeToken<Object>() { });
+    recordLastUpdated = builder.recordLastUpdated;
     recordId = builder.recordId;
     recordSource = builder.recordSource;
-    recordLastUpdated = builder.recordLastUpdated;
+    this.setProperties(builder.dynamicProperties);
   }
 
   /**
@@ -106,14 +134,43 @@ public class DeriveRecordsRequestAttributes extends GenericModel {
   }
 
   /**
+   * Gets the recordLastUpdated.
+   *
+   * System generated timestamp when the record was last updated.
+   *
+   * @return the recordLastUpdated
+   */
+  public String getRecordLastUpdated() {
+    return this.recordLastUpdated;
+  }
+
+  /**
+   * Sets the recordLastUpdated.
+   *
+   * @param recordLastUpdated the new recordLastUpdated
+   */
+  public void setRecordLastUpdated(final String recordLastUpdated) {
+    this.recordLastUpdated = recordLastUpdated;
+  }
+
+  /**
    * Gets the recordId.
    *
    * The identifier of the record.
    *
    * @return the recordId
    */
-  public String recordId() {
-    return recordId;
+  public String getRecordId() {
+    return this.recordId;
+  }
+
+  /**
+   * Sets the recordId.
+   *
+   * @param recordId the new recordId
+   */
+  public void setRecordId(final String recordId) {
+    this.recordId = recordId;
   }
 
   /**
@@ -123,19 +180,16 @@ public class DeriveRecordsRequestAttributes extends GenericModel {
    *
    * @return the recordSource
    */
-  public String recordSource() {
-    return recordSource;
+  public String getRecordSource() {
+    return this.recordSource;
   }
 
   /**
-   * Gets the recordLastUpdated.
+   * Sets the recordSource.
    *
-   * System generated timestamp when the record was last updated.
-   *
-   * @return the recordLastUpdated
+   * @param recordSource the new recordSource
    */
-  public String recordLastUpdated() {
-    return recordLastUpdated;
+  public void setRecordSource(final String recordSource) {
+    this.recordSource = recordSource;
   }
 }
-

@@ -15,12 +15,13 @@ package com.ibm.cloud.mdm.v0.model;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
+import com.google.gson.reflect.TypeToken;
+import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * A single bucket generator.
  */
-public class PutAlgorithmResponseBucketGenerator extends GenericModel {
+public class PutAlgorithmResponseBucketGenerator extends DynamicModel<Object> {
 
   @SerializedName("bucket_group_recipe")
   protected List<PutAlgorithmResponseBucketGroupStep> bucketGroupRecipe;
@@ -28,8 +29,14 @@ public class PutAlgorithmResponseBucketGenerator extends GenericModel {
   protected Long maximumBucketSize;
   @SerializedName("bucket_recipe")
   protected List<PutAlgorithmResponseBucketStep> bucketRecipe;
+  @SerializedName("inputs")
   protected List<PutAlgorithmResponseInput> inputs;
+  @SerializedName("label")
   protected String label;
+
+  public PutAlgorithmResponseBucketGenerator() {
+    super(new TypeToken<Object>() { });
+  }
 
   /**
    * Gets the bucketGroupRecipe.
@@ -39,7 +46,7 @@ public class PutAlgorithmResponseBucketGenerator extends GenericModel {
    * @return the bucketGroupRecipe
    */
   public List<PutAlgorithmResponseBucketGroupStep> getBucketGroupRecipe() {
-    return bucketGroupRecipe;
+    return this.bucketGroupRecipe;
   }
 
   /**
@@ -50,7 +57,7 @@ public class PutAlgorithmResponseBucketGenerator extends GenericModel {
    * @return the maximumBucketSize
    */
   public Long getMaximumBucketSize() {
-    return maximumBucketSize;
+    return this.maximumBucketSize;
   }
 
   /**
@@ -61,7 +68,7 @@ public class PutAlgorithmResponseBucketGenerator extends GenericModel {
    * @return the bucketRecipe
    */
   public List<PutAlgorithmResponseBucketStep> getBucketRecipe() {
-    return bucketRecipe;
+    return this.bucketRecipe;
   }
 
   /**
@@ -72,7 +79,7 @@ public class PutAlgorithmResponseBucketGenerator extends GenericModel {
    * @return the inputs
    */
   public List<PutAlgorithmResponseInput> getInputs() {
-    return inputs;
+    return this.inputs;
   }
 
   /**
@@ -83,7 +90,6 @@ public class PutAlgorithmResponseBucketGenerator extends GenericModel {
    * @return the label
    */
   public String getLabel() {
-    return label;
+    return this.label;
   }
 }
-

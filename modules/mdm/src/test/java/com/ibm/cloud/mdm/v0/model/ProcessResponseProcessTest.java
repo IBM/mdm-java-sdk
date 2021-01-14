@@ -33,8 +33,8 @@ public class ProcessResponseProcessTest {
   public void testProcessResponseProcess() throws Throwable {
     ProcessResponseProcess processResponseProcessModel = new ProcessResponseProcess();
     assertNull(processResponseProcessModel.getRecordType());
-    assertNull(processResponseProcessModel.getMessage());
     assertNull(processResponseProcessModel.getStatus());
     assertNull(processResponseProcessModel.getProcessName());
+    assertNull(processResponseProcessModel.getMessage());
   }
 }

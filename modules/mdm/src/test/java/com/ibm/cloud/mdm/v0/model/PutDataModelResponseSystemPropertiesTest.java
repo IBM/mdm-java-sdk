@@ -37,9 +37,9 @@ public class PutDataModelResponseSystemPropertiesTest {
   @Test
   public void testPutDataModelResponseSystemProperties() throws Throwable {
     PutDataModelResponseSystemProperties putDataModelResponseSystemPropertiesModel = new PutDataModelResponseSystemProperties();
+    assertNull(putDataModelResponseSystemPropertiesModel.getRecordTypes());
+    assertNull(putDataModelResponseSystemPropertiesModel.getEntityTypes());
     assertNull(putDataModelResponseSystemPropertiesModel.getAttributeTypes());
     assertNull(putDataModelResponseSystemPropertiesModel.getRelationshipTypes());
-    assertNull(putDataModelResponseSystemPropertiesModel.getEntityTypes());
-    assertNull(putDataModelResponseSystemPropertiesModel.getRecordTypes());
   }
 }

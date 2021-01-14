@@ -44,13 +44,13 @@ public class ModelUpdateCompositeRulesOptionsTest {
     assertEquals(compositeRulesRuleModel.sources(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
+      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
       .recordTypeRule(compositeRulesRuleModel)
       .entityRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
       .build();
+    assertEquals(compositeRulesRecordTypeModel.attributeRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
     assertEquals(compositeRulesRecordTypeModel.recordTypeRule(), compositeRulesRuleModel);
     assertEquals(compositeRulesRecordTypeModel.entityRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
-    assertEquals(compositeRulesRecordTypeModel.attributeRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
 
     CompositeRulesRules compositeRulesRulesModel = new CompositeRulesRules.Builder()
       .global(compositeRulesRuleModel)
@@ -60,11 +60,9 @@ public class ModelUpdateCompositeRulesOptionsTest {
     assertEquals(compositeRulesRulesModel.recordTypes(), new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } });
 
     ModelUpdateCompositeRulesOptions modelUpdateCompositeRulesOptionsModel = new ModelUpdateCompositeRulesOptions.Builder()
-      .crn("testString")
       .rules(compositeRulesRulesModel)
       .locale("testString")
       .build();
-    assertEquals(modelUpdateCompositeRulesOptionsModel.crn(), "testString");
     assertEquals(modelUpdateCompositeRulesOptionsModel.rules(), compositeRulesRulesModel);
     assertEquals(modelUpdateCompositeRulesOptionsModel.locale(), "testString");
   }

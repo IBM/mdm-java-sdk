@@ -22,25 +22,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CompositeRulesRecordType extends GenericModel {
 
+  @SerializedName("attribute_rules")
+  protected Map<String, CompositeRulesRule> attributeRules;
   @SerializedName("record_type_rule")
   protected CompositeRulesRule recordTypeRule;
   @SerializedName("entity_rules")
   protected Map<String, CompositeRulesRule> entityRules;
-  @SerializedName("attribute_rules")
-  protected Map<String, CompositeRulesRule> attributeRules;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private Map<String, CompositeRulesRule> attributeRules;
     private CompositeRulesRule recordTypeRule;
     private Map<String, CompositeRulesRule> entityRules;
-    private Map<String, CompositeRulesRule> attributeRules;
 
     private Builder(CompositeRulesRecordType compositeRulesRecordType) {
+      this.attributeRules = compositeRulesRecordType.attributeRules;
       this.recordTypeRule = compositeRulesRecordType.recordTypeRule;
       this.entityRules = compositeRulesRecordType.entityRules;
-      this.attributeRules = compositeRulesRecordType.attributeRules;
     }
 
     /**
@@ -56,6 +56,17 @@ public class CompositeRulesRecordType extends GenericModel {
      */
     public CompositeRulesRecordType build() {
       return new CompositeRulesRecordType(this);
+    }
+
+    /**
+     * Set the attributeRules.
+     *
+     * @param attributeRules the attributeRules
+     * @return the CompositeRulesRecordType builder
+     */
+    public Builder attributeRules(Map<String, CompositeRulesRule> attributeRules) {
+      this.attributeRules = attributeRules;
+      return this;
     }
 
     /**
@@ -79,23 +90,12 @@ public class CompositeRulesRecordType extends GenericModel {
       this.entityRules = entityRules;
       return this;
     }
-
-    /**
-     * Set the attributeRules.
-     *
-     * @param attributeRules the attributeRules
-     * @return the CompositeRulesRecordType builder
-     */
-    public Builder attributeRules(Map<String, CompositeRulesRule> attributeRules) {
-      this.attributeRules = attributeRules;
-      return this;
-    }
   }
 
   protected CompositeRulesRecordType(Builder builder) {
+    attributeRules = builder.attributeRules;
     recordTypeRule = builder.recordTypeRule;
     entityRules = builder.entityRules;
-    attributeRules = builder.attributeRules;
   }
 
   /**
@@ -105,6 +105,17 @@ public class CompositeRulesRecordType extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the attributeRules.
+   *
+   * Collection of composite rule definitions at attribute level.
+   *
+   * @return the attributeRules
+   */
+  public Map<String, CompositeRulesRule> attributeRules() {
+    return attributeRules;
   }
 
   /**
@@ -127,17 +138,6 @@ public class CompositeRulesRecordType extends GenericModel {
    */
   public Map<String, CompositeRulesRule> entityRules() {
     return entityRules;
-  }
-
-  /**
-   * Gets the attributeRules.
-   *
-   * Collection of composite rule definitions at attribute level.
-   *
-   * @return the attributeRules
-   */
-  public Map<String, CompositeRulesRule> attributeRules() {
-    return attributeRules;
   }
 }
 

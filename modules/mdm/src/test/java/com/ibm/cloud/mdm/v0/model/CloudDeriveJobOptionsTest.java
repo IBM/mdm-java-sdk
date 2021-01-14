@@ -32,7 +32,6 @@ public class CloudDeriveJobOptionsTest {
   @Test
   public void testCloudDeriveJobOptions() throws Throwable {
     CloudDeriveJobOptions cloudDeriveJobOptionsModel = new CloudDeriveJobOptions.Builder()
-      .crn("testString")
       .recordType("person")
       .csvFile("/usr/mdm-matching/sample/person-100.tsv")
       .csvColumn("record_source,,record_id,legal_name.given_name,legal_name.last_name,primary_residence.address_line1,primary_residence.city,primary_residence.province_state,primary_residence.zip_postal_code,,home_telephone.phone_number,business_address.address_line1,business_address.city,business_address.province_state,business_address.zip_postal_code,,home_telephone.phone_number.1,social_security_number.identification_number,health_card.identification_number,birth_date.value,gender.value")
@@ -41,7 +40,6 @@ public class CloudDeriveJobOptionsTest {
       .cosAccessKey("b33037e4e8954207a434cc032c1139d1 #pragma: allowlist secret")
       .cosSecretKey("<hex string>")
       .build();
-    assertEquals(cloudDeriveJobOptionsModel.crn(), "testString");
     assertEquals(cloudDeriveJobOptionsModel.recordType(), "person");
     assertEquals(cloudDeriveJobOptionsModel.csvFile(), "/usr/mdm-matching/sample/person-100.tsv");
     assertEquals(cloudDeriveJobOptionsModel.csvColumn(), "record_source,,record_id,legal_name.given_name,legal_name.last_name,primary_residence.address_line1,primary_residence.city,primary_residence.province_state,primary_residence.zip_postal_code,,home_telephone.phone_number,business_address.address_line1,business_address.city,business_address.province_state,business_address.zip_postal_code,,home_telephone.phone_number.1,social_security_number.identification_number,health_card.identification_number,birth_date.value,gender.value");
@@ -50,10 +48,4 @@ public class CloudDeriveJobOptionsTest {
     assertEquals(cloudDeriveJobOptionsModel.cosAccessKey(), "b33037e4e8954207a434cc032c1139d1 #pragma: allowlist secret");
     assertEquals(cloudDeriveJobOptionsModel.cosSecretKey(), "<hex string>");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testCloudDeriveJobOptionsError() throws Throwable {
-    new CloudDeriveJobOptions.Builder().build();
-  }
-
 }

@@ -21,30 +21,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelUpdateAlgorithmOptions extends GenericModel {
 
-  protected String crn;
   protected String recordType;
+  protected Map<String, AlgorithmEntityType> entityTypes;
   protected Map<String, AlgorithmStandardizer> standardizers;
   protected AlgorithmEncryption encryption;
-  protected Map<String, AlgorithmEntityType> entityTypes;
   protected String locale;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String recordType;
+    private Map<String, AlgorithmEntityType> entityTypes;
     private Map<String, AlgorithmStandardizer> standardizers;
     private AlgorithmEncryption encryption;
-    private Map<String, AlgorithmEntityType> entityTypes;
     private String locale;
 
     private Builder(ModelUpdateAlgorithmOptions modelUpdateAlgorithmOptions) {
-      this.crn = modelUpdateAlgorithmOptions.crn;
       this.recordType = modelUpdateAlgorithmOptions.recordType;
+      this.entityTypes = modelUpdateAlgorithmOptions.entityTypes;
       this.standardizers = modelUpdateAlgorithmOptions.standardizers;
       this.encryption = modelUpdateAlgorithmOptions.encryption;
-      this.entityTypes = modelUpdateAlgorithmOptions.entityTypes;
       this.locale = modelUpdateAlgorithmOptions.locale;
     }
 
@@ -57,19 +54,17 @@ public class ModelUpdateAlgorithmOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param recordType the recordType
+     * @param entityTypes the entityTypes
      * @param standardizers the standardizers
      * @param encryption the encryption
-     * @param entityTypes the entityTypes
      * @param locale the locale
      */
-    public Builder(String crn, String recordType, Map<String, AlgorithmStandardizer> standardizers, AlgorithmEncryption encryption, Map<String, AlgorithmEntityType> entityTypes, String locale) {
-      this.crn = crn;
+    public Builder(String recordType, Map<String, AlgorithmEntityType> entityTypes, Map<String, AlgorithmStandardizer> standardizers, AlgorithmEncryption encryption, String locale) {
       this.recordType = recordType;
+      this.entityTypes = entityTypes;
       this.standardizers = standardizers;
       this.encryption = encryption;
-      this.entityTypes = entityTypes;
       this.locale = locale;
     }
 
@@ -83,17 +78,6 @@ public class ModelUpdateAlgorithmOptions extends GenericModel {
     }
 
     /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the ModelUpdateAlgorithmOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
-    }
-
-    /**
      * Set the recordType.
      *
      * @param recordType the recordType
@@ -101,6 +85,17 @@ public class ModelUpdateAlgorithmOptions extends GenericModel {
      */
     public Builder recordType(String recordType) {
       this.recordType = recordType;
+      return this;
+    }
+
+    /**
+     * Set the entityTypes.
+     *
+     * @param entityTypes the entityTypes
+     * @return the ModelUpdateAlgorithmOptions builder
+     */
+    public Builder entityTypes(Map<String, AlgorithmEntityType> entityTypes) {
+      this.entityTypes = entityTypes;
       return this;
     }
 
@@ -127,17 +122,6 @@ public class ModelUpdateAlgorithmOptions extends GenericModel {
     }
 
     /**
-     * Set the entityTypes.
-     *
-     * @param entityTypes the entityTypes
-     * @return the ModelUpdateAlgorithmOptions builder
-     */
-    public Builder entityTypes(Map<String, AlgorithmEntityType> entityTypes) {
-      this.entityTypes = entityTypes;
-      return this;
-    }
-
-    /**
      * Set the locale.
      *
      * @param locale the locale
@@ -155,32 +139,29 @@ public class ModelUpdateAlgorithmOptions extends GenericModel {
      * @return the ModelUpdateAlgorithmOptions builder
      */
     public Builder algorithm(Algorithm algorithm) {
+      this.entityTypes = algorithm.entityTypes();
       this.standardizers = algorithm.standardizers();
       this.encryption = algorithm.encryption();
-      this.entityTypes = algorithm.entityTypes();
       this.locale = algorithm.locale();
       return this;
     }
   }
 
   protected ModelUpdateAlgorithmOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.recordType,
       "recordType cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
+      "entityTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.standardizers,
       "standardizers cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.encryption,
       "encryption cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
-      "entityTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
-    crn = builder.crn;
     recordType = builder.recordType;
+    entityTypes = builder.entityTypes;
     standardizers = builder.standardizers;
     encryption = builder.encryption;
-    entityTypes = builder.entityTypes;
     locale = builder.locale;
   }
 
@@ -194,17 +175,6 @@ public class ModelUpdateAlgorithmOptions extends GenericModel {
   }
 
   /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
-  }
-
-  /**
    * Gets the recordType.
    *
    * The data type identifier of source records, ie. person, organization, contract.
@@ -213,6 +183,17 @@ public class ModelUpdateAlgorithmOptions extends GenericModel {
    */
   public String recordType() {
     return recordType;
+  }
+
+  /**
+   * Gets the entityTypes.
+   *
+   * Collection of entity type definitions.
+   *
+   * @return the entityTypes
+   */
+  public Map<String, AlgorithmEntityType> entityTypes() {
+    return entityTypes;
   }
 
   /**
@@ -235,17 +216,6 @@ public class ModelUpdateAlgorithmOptions extends GenericModel {
    */
   public AlgorithmEncryption encryption() {
     return encryption;
-  }
-
-  /**
-   * Gets the entityTypes.
-   *
-   * Collection of entity type definitions.
-   *
-   * @return the entityTypes
-   */
-  public Map<String, AlgorithmEntityType> entityTypes() {
-    return entityTypes;
   }
 
   /**

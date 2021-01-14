@@ -32,18 +32,10 @@ public class CloudReportIndexOptionsTest {
   @Test
   public void testCloudReportIndexOptions() throws Throwable {
     CloudReportIndexOptions cloudReportIndexOptionsModel = new CloudReportIndexOptions.Builder()
-      .crn("testString")
       .recordType("person")
       .entityType("person_entity")
       .build();
-    assertEquals(cloudReportIndexOptionsModel.crn(), "testString");
     assertEquals(cloudReportIndexOptionsModel.recordType(), "person");
     assertEquals(cloudReportIndexOptionsModel.entityType(), "person_entity");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testCloudReportIndexOptionsError() throws Throwable {
-    new CloudReportIndexOptions.Builder().build();
-  }
-
 }

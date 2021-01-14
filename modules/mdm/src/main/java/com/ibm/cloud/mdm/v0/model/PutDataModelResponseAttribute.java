@@ -20,15 +20,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseAttribute extends GenericModel {
 
+  protected String classification;
   protected Boolean indexed;
   @SerializedName("matching_type")
   protected String matchingType;
-  protected String classification;
   @SerializedName("attribute_type")
   protected String attributeType;
-  protected String cardinality;
   protected String description;
+  protected String cardinality;
   protected String label;
+
+  /**
+   * Gets the classification.
+   *
+   * User defined classification.
+   *
+   * @return the classification
+   */
+  public String getClassification() {
+    return classification;
+  }
 
   /**
    * Gets the indexed.
@@ -54,17 +65,6 @@ public class PutDataModelResponseAttribute extends GenericModel {
   }
 
   /**
-   * Gets the classification.
-   *
-   * User defined classification.
-   *
-   * @return the classification
-   */
-  public String getClassification() {
-    return classification;
-  }
-
-  /**
    * Gets the attributeType.
    *
    * The type of attribute (i.e. address).
@@ -76,17 +76,6 @@ public class PutDataModelResponseAttribute extends GenericModel {
   }
 
   /**
-   * Gets the cardinality.
-   *
-   * User defined cardinality, one of SINGLE, LIST or SET. The default value is LIST.
-   *
-   * @return the cardinality
-   */
-  public String getCardinality() {
-    return cardinality;
-  }
-
-  /**
    * Gets the description.
    *
    * User defined translatable description.
@@ -95,6 +84,17 @@ public class PutDataModelResponseAttribute extends GenericModel {
    */
   public String getDescription() {
     return description;
+  }
+
+  /**
+   * Gets the cardinality.
+   *
+   * User defined cardinality, one of SINGLE, LIST or SET. The default value is LIST.
+   *
+   * @return the cardinality
+   */
+  public String getCardinality() {
+    return cardinality;
   }
 
   /**

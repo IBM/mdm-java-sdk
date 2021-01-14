@@ -44,13 +44,11 @@ public class RemoveRuleOptionsTest {
     assertEquals(rulesRequestRuleModel.description(), "testString");
 
     RemoveRuleOptions removeRuleOptionsModel = new RemoveRuleOptions.Builder()
-      .crn("testString")
-      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
       .entityType("testString")
+      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
       .build();
-    assertEquals(removeRuleOptionsModel.crn(), "testString");
-    assertEquals(removeRuleOptionsModel.rules(), new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)));
     assertEquals(removeRuleOptionsModel.entityType(), "testString");
+    assertEquals(removeRuleOptionsModel.rules(), new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

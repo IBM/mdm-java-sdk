@@ -31,15 +31,7 @@ public class ModelGetInstanceMetadataOptionsTest {
 
   @Test
   public void testModelGetInstanceMetadataOptions() throws Throwable {
-    ModelGetInstanceMetadataOptions modelGetInstanceMetadataOptionsModel = new ModelGetInstanceMetadataOptions.Builder()
-      .crn("testString")
-      .build();
-    assertEquals(modelGetInstanceMetadataOptionsModel.crn(), "testString");
+    ModelGetInstanceMetadataOptions modelGetInstanceMetadataOptionsModel = new ModelGetInstanceMetadataOptions();
+    assertNotNull(modelGetInstanceMetadataOptionsModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testModelGetInstanceMetadataOptionsError() throws Throwable {
-    new ModelGetInstanceMetadataOptions.Builder().build();
-  }
-
 }

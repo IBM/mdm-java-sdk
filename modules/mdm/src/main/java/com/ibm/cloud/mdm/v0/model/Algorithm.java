@@ -22,25 +22,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Algorithm extends GenericModel {
 
-  protected Map<String, AlgorithmStandardizer> standardizers;
-  protected AlgorithmEncryption encryption;
   @SerializedName("entity_types")
   protected Map<String, AlgorithmEntityType> entityTypes;
+  protected Map<String, AlgorithmStandardizer> standardizers;
+  protected AlgorithmEncryption encryption;
   protected String locale;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private Map<String, AlgorithmEntityType> entityTypes;
     private Map<String, AlgorithmStandardizer> standardizers;
     private AlgorithmEncryption encryption;
-    private Map<String, AlgorithmEntityType> entityTypes;
     private String locale;
 
     private Builder(Algorithm algorithm) {
+      this.entityTypes = algorithm.entityTypes;
       this.standardizers = algorithm.standardizers;
       this.encryption = algorithm.encryption;
-      this.entityTypes = algorithm.entityTypes;
       this.locale = algorithm.locale;
     }
 
@@ -53,15 +53,15 @@ public class Algorithm extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
+     * @param entityTypes the entityTypes
      * @param standardizers the standardizers
      * @param encryption the encryption
-     * @param entityTypes the entityTypes
      * @param locale the locale
      */
-    public Builder(Map<String, AlgorithmStandardizer> standardizers, AlgorithmEncryption encryption, Map<String, AlgorithmEntityType> entityTypes, String locale) {
+    public Builder(Map<String, AlgorithmEntityType> entityTypes, Map<String, AlgorithmStandardizer> standardizers, AlgorithmEncryption encryption, String locale) {
+      this.entityTypes = entityTypes;
       this.standardizers = standardizers;
       this.encryption = encryption;
-      this.entityTypes = entityTypes;
       this.locale = locale;
     }
 
@@ -72,6 +72,17 @@ public class Algorithm extends GenericModel {
      */
     public Algorithm build() {
       return new Algorithm(this);
+    }
+
+    /**
+     * Set the entityTypes.
+     *
+     * @param entityTypes the entityTypes
+     * @return the Algorithm builder
+     */
+    public Builder entityTypes(Map<String, AlgorithmEntityType> entityTypes) {
+      this.entityTypes = entityTypes;
+      return this;
     }
 
     /**
@@ -97,17 +108,6 @@ public class Algorithm extends GenericModel {
     }
 
     /**
-     * Set the entityTypes.
-     *
-     * @param entityTypes the entityTypes
-     * @return the Algorithm builder
-     */
-    public Builder entityTypes(Map<String, AlgorithmEntityType> entityTypes) {
-      this.entityTypes = entityTypes;
-      return this;
-    }
-
-    /**
      * Set the locale.
      *
      * @param locale the locale
@@ -120,17 +120,17 @@ public class Algorithm extends GenericModel {
   }
 
   protected Algorithm(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
+      "entityTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.standardizers,
       "standardizers cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.encryption,
       "encryption cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
-      "entityTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
+    entityTypes = builder.entityTypes;
     standardizers = builder.standardizers;
     encryption = builder.encryption;
-    entityTypes = builder.entityTypes;
     locale = builder.locale;
   }
 
@@ -141,6 +141,17 @@ public class Algorithm extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the entityTypes.
+   *
+   * Collection of entity type definitions.
+   *
+   * @return the entityTypes
+   */
+  public Map<String, AlgorithmEntityType> entityTypes() {
+    return entityTypes;
   }
 
   /**
@@ -163,17 +174,6 @@ public class Algorithm extends GenericModel {
    */
   public AlgorithmEncryption encryption() {
     return encryption;
-  }
-
-  /**
-   * Gets the entityTypes.
-   *
-   * Collection of entity type definitions.
-   *
-   * @return the entityTypes
-   */
-  public Map<String, AlgorithmEntityType> entityTypes() {
-    return entityTypes;
   }
 
   /**

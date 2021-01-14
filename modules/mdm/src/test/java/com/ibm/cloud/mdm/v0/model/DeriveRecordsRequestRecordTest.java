@@ -33,13 +33,15 @@ public class DeriveRecordsRequestRecordTest {
   @Test
   public void testDeriveRecordsRequestRecord() throws Throwable {
     DeriveRecordsRequestAttributes deriveRecordsRequestAttributesModel = new DeriveRecordsRequestAttributes.Builder()
+      .recordLastUpdated("testString")
       .recordId("testString")
       .recordSource("testString")
-      .recordLastUpdated("testString")
+      .add("foo", "testString")
       .build();
-    assertEquals(deriveRecordsRequestAttributesModel.recordId(), "testString");
-    assertEquals(deriveRecordsRequestAttributesModel.recordSource(), "testString");
-    assertEquals(deriveRecordsRequestAttributesModel.recordLastUpdated(), "testString");
+    assertEquals(deriveRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
+    assertEquals(deriveRecordsRequestAttributesModel.getRecordId(), "testString");
+    assertEquals(deriveRecordsRequestAttributesModel.getRecordSource(), "testString");
+    assertEquals(deriveRecordsRequestAttributesModel.get("foo"), "testString");
 
     DeriveRecordsRequestRecord deriveRecordsRequestRecordModel = new DeriveRecordsRequestRecord.Builder()
       .recordType("testString")

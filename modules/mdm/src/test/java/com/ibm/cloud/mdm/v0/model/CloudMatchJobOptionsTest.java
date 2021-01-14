@@ -32,20 +32,12 @@ public class CloudMatchJobOptionsTest {
   @Test
   public void testCloudMatchJobOptions() throws Throwable {
     CloudMatchJobOptions cloudMatchJobOptionsModel = new CloudMatchJobOptions.Builder()
-      .crn("testString")
       .recordType("person")
       .entityType("person_entity")
       .doReplicate(true)
       .build();
-    assertEquals(cloudMatchJobOptionsModel.crn(), "testString");
     assertEquals(cloudMatchJobOptionsModel.recordType(), "person");
     assertEquals(cloudMatchJobOptionsModel.entityType(), "person_entity");
     assertEquals(cloudMatchJobOptionsModel.doReplicate(), Boolean.valueOf(true));
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testCloudMatchJobOptionsError() throws Throwable {
-    new CloudMatchJobOptions.Builder().build();
-  }
-
 }

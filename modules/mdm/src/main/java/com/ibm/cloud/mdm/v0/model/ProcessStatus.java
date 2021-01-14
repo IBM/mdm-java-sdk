@@ -22,10 +22,10 @@ public class ProcessStatus extends GenericModel {
 
   @SerializedName("record_type")
   protected String recordType;
-  protected String message;
   protected String status;
   @SerializedName("process_name")
   protected String processName;
+  protected String message;
 
   /**
    * Gets the recordType.
@@ -36,17 +36,6 @@ public class ProcessStatus extends GenericModel {
    */
   public String getRecordType() {
     return recordType;
-  }
-
-  /**
-   * Gets the message.
-   *
-   * message.
-   *
-   * @return the message
-   */
-  public String getMessage() {
-    return message;
   }
 
   /**
@@ -69,6 +58,17 @@ public class ProcessStatus extends GenericModel {
    */
   public String getProcessName() {
     return processName;
+  }
+
+  /**
+   * Gets the message.
+   *
+   * message.
+   *
+   * @return the message
+   */
+  public String getMessage() {
+    return message;
   }
 }
 

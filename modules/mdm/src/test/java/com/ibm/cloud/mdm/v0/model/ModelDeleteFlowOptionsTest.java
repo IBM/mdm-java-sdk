@@ -32,10 +32,8 @@ public class ModelDeleteFlowOptionsTest {
   @Test
   public void testModelDeleteFlowOptions() throws Throwable {
     ModelDeleteFlowOptions modelDeleteFlowOptionsModel = new ModelDeleteFlowOptions.Builder()
-      .crn("testString")
       .flowId("testString")
       .build();
-    assertEquals(modelDeleteFlowOptionsModel.crn(), "testString");
     assertEquals(modelDeleteFlowOptionsModel.flowId(), "testString");
   }
 

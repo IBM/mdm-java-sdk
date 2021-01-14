@@ -32,20 +32,23 @@ public class CompareRecordsRequestAttributesTest {
   @Test
   public void testCompareRecordsRequestAttributes() throws Throwable {
     CompareRecordsRequestAttributes compareRecordsRequestAttributesModel = new CompareRecordsRequestAttributes.Builder()
+      .recordLastUpdated("testString")
       .recordId("testString")
       .recordSource("testString")
-      .recordLastUpdated("testString")
+      .add("foo", "testString")
       .build();
-    assertEquals(compareRecordsRequestAttributesModel.recordId(), "testString");
-    assertEquals(compareRecordsRequestAttributesModel.recordSource(), "testString");
-    assertEquals(compareRecordsRequestAttributesModel.recordLastUpdated(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.getRecordId(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.getRecordSource(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.get("foo"), "testString");
 
     String json = TestUtilities.serialize(compareRecordsRequestAttributesModel);
 
     CompareRecordsRequestAttributes compareRecordsRequestAttributesModelNew = TestUtilities.deserialize(json, CompareRecordsRequestAttributes.class);
     assertTrue(compareRecordsRequestAttributesModelNew instanceof CompareRecordsRequestAttributes);
-    assertEquals(compareRecordsRequestAttributesModelNew.recordId(), "testString");
-    assertEquals(compareRecordsRequestAttributesModelNew.recordSource(), "testString");
-    assertEquals(compareRecordsRequestAttributesModelNew.recordLastUpdated(), "testString");
+    assertEquals(compareRecordsRequestAttributesModelNew.getRecordLastUpdated(), "testString");
+    assertEquals(compareRecordsRequestAttributesModelNew.getRecordId(), "testString");
+    assertEquals(compareRecordsRequestAttributesModelNew.getRecordSource(), "testString");
+    assertEquals(compareRecordsRequestAttributesModelNew.get("foo"), "testString");
   }
 }

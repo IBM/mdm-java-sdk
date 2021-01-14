@@ -15,55 +15,31 @@ package com.ibm.cloud.mdm.v0.model;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
+import com.google.gson.reflect.TypeToken;
+import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * A single standardizer step.
  */
-public class PutAlgorithmResponseStandardizerStep extends GenericModel {
+public class PutAlgorithmResponseStandardizerStep extends DynamicModel<Object> {
 
+  @SerializedName("inputs")
+  protected List<Long> inputs;
   @SerializedName("comparison_resource")
   protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
-  protected List<Long> inputs;
+  @SerializedName("method")
   protected String method;
+  @SerializedName("fields")
   protected List<String> fields;
+  @SerializedName("label")
   protected String label;
 
-  /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String getComparisonResource() {
-    return comparisonResource;
-  }
-
-  /**
-   * Gets the setResource.
-   *
-   * An existing set resource name, if applicable.
-   *
-   * @return the setResource
-   */
-  public String getSetResource() {
-    return setResource;
-  }
-
-  /**
-   * Gets the mapResource.
-   *
-   * An existing map resource name, if applicable.
-   *
-   * @return the mapResource
-   */
-  public String getMapResource() {
-    return mapResource;
+  public PutAlgorithmResponseStandardizerStep() {
+    super(new TypeToken<Object>() { });
   }
 
   /**
@@ -74,7 +50,40 @@ public class PutAlgorithmResponseStandardizerStep extends GenericModel {
    * @return the inputs
    */
   public List<Long> getInputs() {
-    return inputs;
+    return this.inputs;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String getComparisonResource() {
+    return this.comparisonResource;
+  }
+
+  /**
+   * Gets the setResource.
+   *
+   * An existing set resource name, if applicable.
+   *
+   * @return the setResource
+   */
+  public String getSetResource() {
+    return this.setResource;
+  }
+
+  /**
+   * Gets the mapResource.
+   *
+   * An existing map resource name, if applicable.
+   *
+   * @return the mapResource
+   */
+  public String getMapResource() {
+    return this.mapResource;
   }
 
   /**
@@ -88,7 +97,7 @@ public class PutAlgorithmResponseStandardizerStep extends GenericModel {
    * @return the method
    */
   public String getMethod() {
-    return method;
+    return this.method;
   }
 
   /**
@@ -99,7 +108,7 @@ public class PutAlgorithmResponseStandardizerStep extends GenericModel {
    * @return the fields
    */
   public List<String> getFields() {
-    return fields;
+    return this.fields;
   }
 
   /**
@@ -110,7 +119,6 @@ public class PutAlgorithmResponseStandardizerStep extends GenericModel {
    * @return the label
    */
   public String getLabel() {
-    return label;
+    return this.label;
   }
 }
-

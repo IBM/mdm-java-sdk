@@ -32,10 +32,8 @@ public class GetRecordsOptionsTest {
   @Test
   public void testGetRecordsOptions() throws Throwable {
     GetRecordsOptions getRecordsOptionsModel = new GetRecordsOptions.Builder()
-      .crn("testString")
       .entityId("entity_type-123456789")
       .build();
-    assertEquals(getRecordsOptionsModel.crn(), "testString");
     assertEquals(getRecordsOptionsModel.entityId(), "entity_type-123456789");
   }
 

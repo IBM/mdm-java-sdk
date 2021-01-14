@@ -19,18 +19,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelGetAlgorithmOptions extends GenericModel {
 
-  protected String crn;
   protected String recordType;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String recordType;
 
     private Builder(ModelGetAlgorithmOptions modelGetAlgorithmOptions) {
-      this.crn = modelGetAlgorithmOptions.crn;
       this.recordType = modelGetAlgorithmOptions.recordType;
     }
 
@@ -43,11 +40,9 @@ public class ModelGetAlgorithmOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param recordType the recordType
      */
-    public Builder(String crn, String recordType) {
-      this.crn = crn;
+    public Builder(String recordType) {
       this.recordType = recordType;
     }
 
@@ -58,17 +53,6 @@ public class ModelGetAlgorithmOptions extends GenericModel {
      */
     public ModelGetAlgorithmOptions build() {
       return new ModelGetAlgorithmOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the ModelGetAlgorithmOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -84,11 +68,8 @@ public class ModelGetAlgorithmOptions extends GenericModel {
   }
 
   protected ModelGetAlgorithmOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.recordType,
       "recordType cannot be empty");
-    crn = builder.crn;
     recordType = builder.recordType;
   }
 
@@ -99,17 +80,6 @@ public class ModelGetAlgorithmOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

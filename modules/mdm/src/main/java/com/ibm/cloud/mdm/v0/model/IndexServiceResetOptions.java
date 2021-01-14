@@ -19,18 +19,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class IndexServiceResetOptions extends GenericModel {
 
-  protected String crn;
   protected String recordType;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String recordType;
 
     private Builder(IndexServiceResetOptions indexServiceResetOptions) {
-      this.crn = indexServiceResetOptions.crn;
       this.recordType = indexServiceResetOptions.recordType;
     }
 
@@ -41,32 +38,12 @@ public class IndexServiceResetOptions extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param crn the crn
-     */
-    public Builder(String crn) {
-      this.crn = crn;
-    }
-
-    /**
      * Builds a IndexServiceResetOptions.
      *
      * @return the new IndexServiceResetOptions instance
      */
     public IndexServiceResetOptions build() {
       return new IndexServiceResetOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the IndexServiceResetOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -82,9 +59,6 @@ public class IndexServiceResetOptions extends GenericModel {
   }
 
   protected IndexServiceResetOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    crn = builder.crn;
     recordType = builder.recordType;
   }
 
@@ -95,17 +69,6 @@ public class IndexServiceResetOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

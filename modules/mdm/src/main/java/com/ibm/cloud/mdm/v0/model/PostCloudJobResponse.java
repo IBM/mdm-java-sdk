@@ -13,42 +13,27 @@
 package com.ibm.cloud.mdm.v0.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
+import com.google.gson.reflect.TypeToken;
+import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * Response object for asynchronous processing of a job.
  */
-public class PostCloudJobResponse extends GenericModel {
+public class PostCloudJobResponse extends DynamicModel<Object> {
 
-  @SerializedName("job_name")
-  protected String jobName;
-  @SerializedName("created_at")
-  protected String createdAt;
   @SerializedName("last_updated_at")
   protected String lastUpdatedAt;
+  @SerializedName("created_at")
+  protected String createdAt;
+  @SerializedName("job_name")
+  protected String jobName;
+  @SerializedName("status")
   protected String status;
+  @SerializedName("id")
   protected String id;
 
-  /**
-   * Gets the jobName.
-   *
-   * System defined name of a given job e.g. match-bulkderiver.
-   *
-   * @return the jobName
-   */
-  public String getJobName() {
-    return jobName;
-  }
-
-  /**
-   * Gets the createdAt.
-   *
-   * System generated timestamp when a job was created.
-   *
-   * @return the createdAt
-   */
-  public String getCreatedAt() {
-    return createdAt;
+  public PostCloudJobResponse() {
+    super(new TypeToken<Object>() { });
   }
 
   /**
@@ -59,7 +44,29 @@ public class PostCloudJobResponse extends GenericModel {
    * @return the lastUpdatedAt
    */
   public String getLastUpdatedAt() {
-    return lastUpdatedAt;
+    return this.lastUpdatedAt;
+  }
+
+  /**
+   * Gets the createdAt.
+   *
+   * System generated timestamp when a job was created.
+   *
+   * @return the createdAt
+   */
+  public String getCreatedAt() {
+    return this.createdAt;
+  }
+
+  /**
+   * Gets the jobName.
+   *
+   * System defined name of a given job e.g. match-bulkderiver.
+   *
+   * @return the jobName
+   */
+  public String getJobName() {
+    return this.jobName;
   }
 
   /**
@@ -70,7 +77,7 @@ public class PostCloudJobResponse extends GenericModel {
    * @return the status
    */
   public String getStatus() {
-    return status;
+    return this.status;
   }
 
   /**
@@ -81,7 +88,6 @@ public class PostCloudJobResponse extends GenericModel {
    * @return the id
    */
   public String getId() {
-    return id;
+    return this.id;
   }
 }
-

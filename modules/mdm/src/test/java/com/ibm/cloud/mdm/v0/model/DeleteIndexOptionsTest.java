@@ -32,22 +32,14 @@ public class DeleteIndexOptionsTest {
   @Test
   public void testDeleteIndexOptions() throws Throwable {
     DeleteIndexOptions deleteIndexOptionsModel = new DeleteIndexOptions.Builder()
-      .crn("testString")
       .recordNumber(Long.valueOf("1234567890"))
       .recordSource("MDM")
       .recordId("123456")
       .recordType("person")
       .build();
-    assertEquals(deleteIndexOptionsModel.crn(), "testString");
     assertEquals(deleteIndexOptionsModel.recordNumber(), Long.valueOf("1234567890"));
     assertEquals(deleteIndexOptionsModel.recordSource(), "MDM");
     assertEquals(deleteIndexOptionsModel.recordId(), "123456");
     assertEquals(deleteIndexOptionsModel.recordType(), "person");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testDeleteIndexOptionsError() throws Throwable {
-    new DeleteIndexOptions.Builder().build();
-  }
-
 }

@@ -32,8 +32,8 @@ public class PutDataModelResponseSystemPropertyTest {
   @Test
   public void testPutDataModelResponseSystemProperty() throws Throwable {
     PutDataModelResponseSystemProperty putDataModelResponseSystemPropertyModel = new PutDataModelResponseSystemProperty();
-    assertNull(putDataModelResponseSystemPropertyModel.getDataType());
     assertNull(putDataModelResponseSystemPropertyModel.isIndexed());
+    assertNull(putDataModelResponseSystemPropertyModel.getDataType());
     assertNull(putDataModelResponseSystemPropertyModel.isEditable());
     assertNull(putDataModelResponseSystemPropertyModel.getDescription());
     assertNull(putDataModelResponseSystemPropertyModel.getLabel());

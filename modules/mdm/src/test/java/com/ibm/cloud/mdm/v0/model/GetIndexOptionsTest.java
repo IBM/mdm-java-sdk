@@ -32,22 +32,14 @@ public class GetIndexOptionsTest {
   @Test
   public void testGetIndexOptions() throws Throwable {
     GetIndexOptions getIndexOptionsModel = new GetIndexOptions.Builder()
-      .crn("testString")
       .recordNumber(Long.valueOf("1234567890"))
       .recordSource("MDM")
       .recordId("123456")
       .recordType("person")
       .build();
-    assertEquals(getIndexOptionsModel.crn(), "testString");
     assertEquals(getIndexOptionsModel.recordNumber(), Long.valueOf("1234567890"));
     assertEquals(getIndexOptionsModel.recordSource(), "MDM");
     assertEquals(getIndexOptionsModel.recordId(), "123456");
     assertEquals(getIndexOptionsModel.recordType(), "person");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGetIndexOptionsError() throws Throwable {
-    new GetIndexOptions.Builder().build();
-  }
-
 }

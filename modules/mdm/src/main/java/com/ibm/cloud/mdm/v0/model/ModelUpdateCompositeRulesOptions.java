@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelUpdateCompositeRulesOptions extends GenericModel {
 
-  protected String crn;
   protected CompositeRulesRules rules;
   protected String locale;
 
@@ -27,12 +26,10 @@ public class ModelUpdateCompositeRulesOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private CompositeRulesRules rules;
     private String locale;
 
     private Builder(ModelUpdateCompositeRulesOptions modelUpdateCompositeRulesOptions) {
-      this.crn = modelUpdateCompositeRulesOptions.crn;
       this.rules = modelUpdateCompositeRulesOptions.rules;
       this.locale = modelUpdateCompositeRulesOptions.locale;
     }
@@ -46,12 +43,10 @@ public class ModelUpdateCompositeRulesOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param rules the rules
      * @param locale the locale
      */
-    public Builder(String crn, CompositeRulesRules rules, String locale) {
-      this.crn = crn;
+    public Builder(CompositeRulesRules rules, String locale) {
       this.rules = rules;
       this.locale = locale;
     }
@@ -63,17 +58,6 @@ public class ModelUpdateCompositeRulesOptions extends GenericModel {
      */
     public ModelUpdateCompositeRulesOptions build() {
       return new ModelUpdateCompositeRulesOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the ModelUpdateCompositeRulesOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -112,13 +96,10 @@ public class ModelUpdateCompositeRulesOptions extends GenericModel {
   }
 
   protected ModelUpdateCompositeRulesOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.rules,
       "rules cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
-    crn = builder.crn;
     rules = builder.rules;
     locale = builder.locale;
   }
@@ -130,17 +111,6 @@ public class ModelUpdateCompositeRulesOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

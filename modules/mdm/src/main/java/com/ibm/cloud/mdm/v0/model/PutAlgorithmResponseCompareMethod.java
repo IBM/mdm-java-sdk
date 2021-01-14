@@ -21,20 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithmResponseCompareMethod extends GenericModel {
 
-  protected List<Float> weights;
   protected List<PutAlgorithmResponseMethods> methods;
+  protected List<Float> weights;
   protected String label;
-
-  /**
-   * Gets the weights.
-   *
-   * An array of 11 weights that map to the distance measures from 0 to 10.
-   *
-   * @return the weights
-   */
-  public List<Float> getWeights() {
-    return weights;
-  }
 
   /**
    * Gets the methods.
@@ -45,6 +34,17 @@ public class PutAlgorithmResponseCompareMethod extends GenericModel {
    */
   public List<PutAlgorithmResponseMethods> getMethods() {
     return methods;
+  }
+
+  /**
+   * Gets the weights.
+   *
+   * An array of 11 weights that map to the distance measures from 0 to 10.
+   *
+   * @return the weights
+   */
+  public List<Float> getWeights() {
+    return weights;
   }
 
   /**

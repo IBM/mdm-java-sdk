@@ -22,9 +22,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelModifyInstanceMetadataOptions extends GenericModel {
 
-  protected String crn;
-  protected String jobProjectId;
   protected List<InstanceMetadataProject> projects;
+  protected String jobProjectId;
   protected List<InstanceMetadataCatalog> catalogs;
   protected String label;
 
@@ -32,16 +31,14 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
-    private String jobProjectId;
     private List<InstanceMetadataProject> projects;
+    private String jobProjectId;
     private List<InstanceMetadataCatalog> catalogs;
     private String label;
 
     private Builder(ModelModifyInstanceMetadataOptions modelModifyInstanceMetadataOptions) {
-      this.crn = modelModifyInstanceMetadataOptions.crn;
-      this.jobProjectId = modelModifyInstanceMetadataOptions.jobProjectId;
       this.projects = modelModifyInstanceMetadataOptions.projects;
+      this.jobProjectId = modelModifyInstanceMetadataOptions.jobProjectId;
       this.catalogs = modelModifyInstanceMetadataOptions.catalogs;
       this.label = modelModifyInstanceMetadataOptions.label;
     }
@@ -50,15 +47,6 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
      * Instantiates a new builder.
      */
     public Builder() {
-    }
-
-    /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param crn the crn
-     */
-    public Builder(String crn) {
-      this.crn = crn;
     }
 
     /**
@@ -103,13 +91,14 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Set the crn.
+     * Set the projects.
+     * Existing projects will be replaced.
      *
-     * @param crn the crn
+     * @param projects the projects
      * @return the ModelModifyInstanceMetadataOptions builder
      */
-    public Builder crn(String crn) {
-      this.crn = crn;
+    public Builder projects(List<InstanceMetadataProject> projects) {
+      this.projects = projects;
       return this;
     }
 
@@ -121,18 +110,6 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
      */
     public Builder jobProjectId(String jobProjectId) {
       this.jobProjectId = jobProjectId;
-      return this;
-    }
-
-    /**
-     * Set the projects.
-     * Existing projects will be replaced.
-     *
-     * @param projects the projects
-     * @return the ModelModifyInstanceMetadataOptions builder
-     */
-    public Builder projects(List<InstanceMetadataProject> projects) {
-      this.projects = projects;
       return this;
     }
 
@@ -166,8 +143,8 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
      * @return the ModelModifyInstanceMetadataOptions builder
      */
     public Builder instanceMetadata(InstanceMetadata instanceMetadata) {
-      this.jobProjectId = instanceMetadata.jobProjectId();
       this.projects = instanceMetadata.projects();
+      this.jobProjectId = instanceMetadata.jobProjectId();
       this.catalogs = instanceMetadata.catalogs();
       this.label = instanceMetadata.label();
       return this;
@@ -175,11 +152,8 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
   }
 
   protected ModelModifyInstanceMetadataOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    crn = builder.crn;
-    jobProjectId = builder.jobProjectId;
     projects = builder.projects;
+    jobProjectId = builder.jobProjectId;
     catalogs = builder.catalogs;
     label = builder.label;
   }
@@ -194,14 +168,14 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
   }
 
   /**
-   * Gets the crn.
+   * Gets the projects.
    *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
+   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
    *
-   * @return the crn
+   * @return the projects
    */
-  public String crn() {
-    return crn;
+  public List<InstanceMetadataProject> projects() {
+    return projects;
   }
 
   /**
@@ -213,17 +187,6 @@ public class ModelModifyInstanceMetadataOptions extends GenericModel {
    */
   public String jobProjectId() {
     return jobProjectId;
-  }
-
-  /**
-   * Gets the projects.
-   *
-   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
-   *
-   * @return the projects
-   */
-  public List<InstanceMetadataProject> projects() {
-    return projects;
   }
 
   /**

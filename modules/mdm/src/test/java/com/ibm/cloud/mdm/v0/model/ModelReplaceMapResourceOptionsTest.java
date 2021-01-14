@@ -50,11 +50,9 @@ public class ModelReplaceMapResourceOptionsTest {
     assertEquals(mapResourceEntryModel.category(), "testString");
 
     ModelReplaceMapResourceOptions modelReplaceMapResourceOptionsModel = new ModelReplaceMapResourceOptions.Builder()
-      .crn("testString")
       .resourceName("testString")
       .requestBody(new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", new java.util.ArrayList<MapResourceEntry>(java.util.Arrays.asList(mapResourceEntryModel))); } })
       .build();
-    assertEquals(modelReplaceMapResourceOptionsModel.crn(), "testString");
     assertEquals(modelReplaceMapResourceOptionsModel.resourceName(), "testString");
     assertEquals(modelReplaceMapResourceOptionsModel.requestBody(), new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", new java.util.ArrayList<MapResourceEntry>(java.util.Arrays.asList(mapResourceEntryModel))); } });
   }

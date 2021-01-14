@@ -32,10 +32,8 @@ public class ModelGetSetResourceOptionsTest {
   @Test
   public void testModelGetSetResourceOptions() throws Throwable {
     ModelGetSetResourceOptions modelGetSetResourceOptionsModel = new ModelGetSetResourceOptions.Builder()
-      .crn("testString")
       .resourceName("testString")
       .build();
-    assertEquals(modelGetSetResourceOptionsModel.crn(), "testString");
     assertEquals(modelGetSetResourceOptionsModel.resourceName(), "testString");
   }
 

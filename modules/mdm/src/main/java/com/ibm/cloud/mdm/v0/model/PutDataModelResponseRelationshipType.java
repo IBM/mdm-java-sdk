@@ -23,27 +23,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseRelationshipType extends GenericModel {
 
-  protected List<PutDataModelResponseRelationshipRule> rules;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
+  protected List<PutDataModelResponseRelationshipRule> rules;
   protected Boolean directional;
   @SerializedName("label_from_source")
   protected String labelFromSource;
-  protected String cardinality;
   protected String description;
+  protected String cardinality;
   protected Map<String, PutDataModelResponseAttribute> attributes;
   protected String label;
-
-  /**
-   * Gets the rules.
-   *
-   * Collection of defined relationship rules.
-   *
-   * @return the rules
-   */
-  public List<PutDataModelResponseRelationshipRule> getRules() {
-    return rules;
-  }
 
   /**
    * Gets the labelFromTarget.
@@ -54,6 +43,17 @@ public class PutDataModelResponseRelationshipType extends GenericModel {
    */
   public String getLabelFromTarget() {
     return labelFromTarget;
+  }
+
+  /**
+   * Gets the rules.
+   *
+   * Collection of defined relationship rules.
+   *
+   * @return the rules
+   */
+  public List<PutDataModelResponseRelationshipRule> getRules() {
+    return rules;
   }
 
   /**
@@ -79,17 +79,6 @@ public class PutDataModelResponseRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the cardinality.
-   *
-   * User defined cardinality, one of MULTI, SIMPLE, MANY2ONE, ONE2MANY or ONE2ONE. The default value is MULTI.
-   *
-   * @return the cardinality
-   */
-  public String getCardinality() {
-    return cardinality;
-  }
-
-  /**
    * Gets the description.
    *
    * User defined translatable description.
@@ -98,6 +87,17 @@ public class PutDataModelResponseRelationshipType extends GenericModel {
    */
   public String getDescription() {
     return description;
+  }
+
+  /**
+   * Gets the cardinality.
+   *
+   * User defined cardinality, one of MULTI, SIMPLE, MANY2ONE, ONE2MANY or ONE2ONE. The default value is MULTI.
+   *
+   * @return the cardinality
+   */
+  public String getCardinality() {
+    return cardinality;
   }
 
   /**

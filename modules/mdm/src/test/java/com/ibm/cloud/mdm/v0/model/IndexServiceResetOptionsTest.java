@@ -32,16 +32,8 @@ public class IndexServiceResetOptionsTest {
   @Test
   public void testIndexServiceResetOptions() throws Throwable {
     IndexServiceResetOptions indexServiceResetOptionsModel = new IndexServiceResetOptions.Builder()
-      .crn("testString")
       .recordType("person")
       .build();
-    assertEquals(indexServiceResetOptionsModel.crn(), "testString");
     assertEquals(indexServiceResetOptionsModel.recordType(), "person");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testIndexServiceResetOptionsError() throws Throwable {
-    new IndexServiceResetOptions.Builder().build();
-  }
-
 }

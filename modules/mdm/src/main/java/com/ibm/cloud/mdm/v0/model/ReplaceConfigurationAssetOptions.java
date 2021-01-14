@@ -24,8 +24,8 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
 
   protected String assetId;
   protected String crn;
-  protected String assetStatus;
   protected String assetName;
+  protected String assetStatus;
   protected String assetCreatedDate;
   protected List<AssetMapping> assetMappings;
 
@@ -35,16 +35,16 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
   public static class Builder {
     private String assetId;
     private String crn;
-    private String assetStatus;
     private String assetName;
+    private String assetStatus;
     private String assetCreatedDate;
     private List<AssetMapping> assetMappings;
 
     private Builder(ReplaceConfigurationAssetOptions replaceConfigurationAssetOptions) {
       this.assetId = replaceConfigurationAssetOptions.assetId;
       this.crn = replaceConfigurationAssetOptions.crn;
-      this.assetStatus = replaceConfigurationAssetOptions.assetStatus;
       this.assetName = replaceConfigurationAssetOptions.assetName;
+      this.assetStatus = replaceConfigurationAssetOptions.assetStatus;
       this.assetCreatedDate = replaceConfigurationAssetOptions.assetCreatedDate;
       this.assetMappings = replaceConfigurationAssetOptions.assetMappings;
     }
@@ -60,14 +60,14 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
      *
      * @param assetId the assetId
      * @param crn the crn
-     * @param assetStatus the assetStatus
      * @param assetName the assetName
+     * @param assetStatus the assetStatus
      */
-    public Builder(String assetId, String crn, String assetStatus, String assetName) {
+    public Builder(String assetId, String crn, String assetName, String assetStatus) {
       this.assetId = assetId;
       this.crn = crn;
-      this.assetStatus = assetStatus;
       this.assetName = assetName;
+      this.assetStatus = assetStatus;
     }
 
     /**
@@ -118,17 +118,6 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
     }
 
     /**
-     * Set the assetStatus.
-     *
-     * @param assetStatus the assetStatus
-     * @return the ReplaceConfigurationAssetOptions builder
-     */
-    public Builder assetStatus(String assetStatus) {
-      this.assetStatus = assetStatus;
-      return this;
-    }
-
-    /**
      * Set the assetName.
      *
      * @param assetName the assetName
@@ -136,6 +125,17 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
      */
     public Builder assetName(String assetName) {
       this.assetName = assetName;
+      return this;
+    }
+
+    /**
+     * Set the assetStatus.
+     *
+     * @param assetStatus the assetStatus
+     * @return the ReplaceConfigurationAssetOptions builder
+     */
+    public Builder assetStatus(String assetStatus) {
+      this.assetStatus = assetStatus;
       return this;
     }
 
@@ -168,14 +168,14 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
       "assetId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
       "crn cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetStatus,
-      "assetStatus cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetName,
       "assetName cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetStatus,
+      "assetStatus cannot be null");
     assetId = builder.assetId;
     crn = builder.crn;
-    assetStatus = builder.assetStatus;
     assetName = builder.assetName;
+    assetStatus = builder.assetStatus;
     assetCreatedDate = builder.assetCreatedDate;
     assetMappings = builder.assetMappings;
   }
@@ -212,17 +212,6 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
   }
 
   /**
-   * Gets the assetStatus.
-   *
-   * asset status.
-   *
-   * @return the assetStatus
-   */
-  public String assetStatus() {
-    return assetStatus;
-  }
-
-  /**
    * Gets the assetName.
    *
    * asse name.
@@ -231,6 +220,17 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
    */
   public String assetName() {
     return assetName;
+  }
+
+  /**
+   * Gets the assetStatus.
+   *
+   * asset status.
+   *
+   * @return the assetStatus
+   */
+  public String assetStatus() {
+    return assetStatus;
   }
 
   /**

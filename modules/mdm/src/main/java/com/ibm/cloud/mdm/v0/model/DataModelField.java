@@ -19,8 +19,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelField extends GenericModel {
 
-  protected Boolean indexed;
   protected String classification;
+  protected Boolean indexed;
   protected String description;
   protected String label;
 
@@ -28,14 +28,14 @@ public class DataModelField extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private Boolean indexed;
     private String classification;
+    private Boolean indexed;
     private String description;
     private String label;
 
     private Builder(DataModelField dataModelField) {
-      this.indexed = dataModelField.indexed;
       this.classification = dataModelField.classification;
+      this.indexed = dataModelField.indexed;
       this.description = dataModelField.description;
       this.label = dataModelField.label;
     }
@@ -65,17 +65,6 @@ public class DataModelField extends GenericModel {
     }
 
     /**
-     * Set the indexed.
-     *
-     * @param indexed the indexed
-     * @return the DataModelField builder
-     */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
-      return this;
-    }
-
-    /**
      * Set the classification.
      *
      * @param classification the classification
@@ -83,6 +72,17 @@ public class DataModelField extends GenericModel {
      */
     public Builder classification(String classification) {
       this.classification = classification;
+      return this;
+    }
+
+    /**
+     * Set the indexed.
+     *
+     * @param indexed the indexed
+     * @return the DataModelField builder
+     */
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
       return this;
     }
 
@@ -112,8 +112,8 @@ public class DataModelField extends GenericModel {
   protected DataModelField(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    indexed = builder.indexed;
     classification = builder.classification;
+    indexed = builder.indexed;
     description = builder.description;
     label = builder.label;
   }
@@ -128,17 +128,6 @@ public class DataModelField extends GenericModel {
   }
 
   /**
-   * Gets the indexed.
-   *
-   * User defined indexed indicator. The default value is true.
-   *
-   * @return the indexed
-   */
-  public Boolean indexed() {
-    return indexed;
-  }
-
-  /**
    * Gets the classification.
    *
    * User defined classification.
@@ -147,6 +136,17 @@ public class DataModelField extends GenericModel {
    */
   public String classification() {
     return classification;
+  }
+
+  /**
+   * Gets the indexed.
+   *
+   * User defined indexed indicator. The default value is true.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
   }
 
   /**

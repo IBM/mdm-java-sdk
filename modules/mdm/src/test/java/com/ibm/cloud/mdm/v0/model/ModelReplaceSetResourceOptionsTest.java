@@ -46,11 +46,9 @@ public class ModelReplaceSetResourceOptionsTest {
     assertEquals(setResourceEntryModel.category(), "testString");
 
     ModelReplaceSetResourceOptions modelReplaceSetResourceOptionsModel = new ModelReplaceSetResourceOptions.Builder()
-      .crn("testString")
       .resourceName("testString")
       .requestBody(new java.util.HashMap<String, SetResourceEntry>() { { put("foo", setResourceEntryModel); } })
       .build();
-    assertEquals(modelReplaceSetResourceOptionsModel.crn(), "testString");
     assertEquals(modelReplaceSetResourceOptionsModel.resourceName(), "testString");
     assertEquals(modelReplaceSetResourceOptionsModel.requestBody(), new java.util.HashMap<String, SetResourceEntry>() { { put("foo", setResourceEntryModel); } });
   }

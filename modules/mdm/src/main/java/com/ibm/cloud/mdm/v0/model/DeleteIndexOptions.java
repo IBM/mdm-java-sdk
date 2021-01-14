@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DeleteIndexOptions extends GenericModel {
 
-  protected String crn;
   protected Long recordNumber;
   protected String recordSource;
   protected String recordId;
@@ -29,14 +28,12 @@ public class DeleteIndexOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private Long recordNumber;
     private String recordSource;
     private String recordId;
     private String recordType;
 
     private Builder(DeleteIndexOptions deleteIndexOptions) {
-      this.crn = deleteIndexOptions.crn;
       this.recordNumber = deleteIndexOptions.recordNumber;
       this.recordSource = deleteIndexOptions.recordSource;
       this.recordId = deleteIndexOptions.recordId;
@@ -50,32 +47,12 @@ public class DeleteIndexOptions extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param crn the crn
-     */
-    public Builder(String crn) {
-      this.crn = crn;
-    }
-
-    /**
      * Builds a DeleteIndexOptions.
      *
      * @return the new DeleteIndexOptions instance
      */
     public DeleteIndexOptions build() {
       return new DeleteIndexOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the DeleteIndexOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -124,9 +101,6 @@ public class DeleteIndexOptions extends GenericModel {
   }
 
   protected DeleteIndexOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    crn = builder.crn;
     recordNumber = builder.recordNumber;
     recordSource = builder.recordSource;
     recordId = builder.recordId;
@@ -140,17 +114,6 @@ public class DeleteIndexOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

@@ -32,10 +32,8 @@ public class RetrieveRulesOptionsTest {
   @Test
   public void testRetrieveRulesOptions() throws Throwable {
     RetrieveRulesOptions retrieveRulesOptionsModel = new RetrieveRulesOptions.Builder()
-      .crn("testString")
       .entityId("person_entity-1234")
       .build();
-    assertEquals(retrieveRulesOptionsModel.crn(), "testString");
     assertEquals(retrieveRulesOptionsModel.entityId(), "person_entity-1234");
   }
 

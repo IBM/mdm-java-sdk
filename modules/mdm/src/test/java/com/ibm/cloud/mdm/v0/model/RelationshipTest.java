@@ -36,27 +36,11 @@ public class RelationshipTest {
       .id("testString")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .typeName("testString")
-      .fromRecordId("testString")
-      .fromRecordSource("testString")
-      .fromRecordNumber("testString")
-      .fromRecordType("testString")
-      .toRecordId("testString")
-      .toRecordSource("testString")
-      .toRecordType("testString")
-      .toRecordNumber("testString")
       .build();
     assertEquals(relationshipModel.type(), "testString");
     assertEquals(relationshipModel.id(), "testString");
     assertEquals(relationshipModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
     assertEquals(relationshipModel.typeName(), "testString");
-    assertEquals(relationshipModel.fromRecordId(), "testString");
-    assertEquals(relationshipModel.fromRecordSource(), "testString");
-    assertEquals(relationshipModel.fromRecordNumber(), "testString");
-    assertEquals(relationshipModel.fromRecordType(), "testString");
-    assertEquals(relationshipModel.toRecordId(), "testString");
-    assertEquals(relationshipModel.toRecordSource(), "testString");
-    assertEquals(relationshipModel.toRecordType(), "testString");
-    assertEquals(relationshipModel.toRecordNumber(), "testString");
 
     String json = TestUtilities.serialize(relationshipModel);
 
@@ -65,14 +49,6 @@ public class RelationshipTest {
     assertEquals(relationshipModelNew.type(), "testString");
     assertEquals(relationshipModelNew.id(), "testString");
     assertEquals(relationshipModelNew.typeName(), "testString");
-    assertEquals(relationshipModelNew.fromRecordId(), "testString");
-    assertEquals(relationshipModelNew.fromRecordSource(), "testString");
-    assertEquals(relationshipModelNew.fromRecordNumber(), "testString");
-    assertEquals(relationshipModelNew.fromRecordType(), "testString");
-    assertEquals(relationshipModelNew.toRecordId(), "testString");
-    assertEquals(relationshipModelNew.toRecordSource(), "testString");
-    assertEquals(relationshipModelNew.toRecordType(), "testString");
-    assertEquals(relationshipModelNew.toRecordNumber(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

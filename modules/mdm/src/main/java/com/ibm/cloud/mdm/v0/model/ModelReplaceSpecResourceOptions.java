@@ -21,11 +21,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ModelReplaceSpecResourceOptions extends GenericModel {
 
-  protected String crn;
   protected String resourceName;
-  protected Map<String, CompareSpecResourceFeatureCategory> featureCategories;
   protected Float typoDistance;
   protected Map<String, Float> featureCoefficients;
+  protected Map<String, CompareSpecResourceFeatureCategory> featureCategories;
   protected String similarCharactersMapResource;
   protected Float similarCharactersDistance;
 
@@ -33,20 +32,18 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String resourceName;
-    private Map<String, CompareSpecResourceFeatureCategory> featureCategories;
     private Float typoDistance;
     private Map<String, Float> featureCoefficients;
+    private Map<String, CompareSpecResourceFeatureCategory> featureCategories;
     private String similarCharactersMapResource;
     private Float similarCharactersDistance;
 
     private Builder(ModelReplaceSpecResourceOptions modelReplaceSpecResourceOptions) {
-      this.crn = modelReplaceSpecResourceOptions.crn;
       this.resourceName = modelReplaceSpecResourceOptions.resourceName;
-      this.featureCategories = modelReplaceSpecResourceOptions.featureCategories;
       this.typoDistance = modelReplaceSpecResourceOptions.typoDistance;
       this.featureCoefficients = modelReplaceSpecResourceOptions.featureCoefficients;
+      this.featureCategories = modelReplaceSpecResourceOptions.featureCategories;
       this.similarCharactersMapResource = modelReplaceSpecResourceOptions.similarCharactersMapResource;
       this.similarCharactersDistance = modelReplaceSpecResourceOptions.similarCharactersDistance;
     }
@@ -60,18 +57,16 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param resourceName the resourceName
-     * @param featureCategories the featureCategories
      * @param typoDistance the typoDistance
      * @param featureCoefficients the featureCoefficients
+     * @param featureCategories the featureCategories
      */
-    public Builder(String crn, String resourceName, Map<String, CompareSpecResourceFeatureCategory> featureCategories, Float typoDistance, Map<String, Float> featureCoefficients) {
-      this.crn = crn;
+    public Builder(String resourceName, Float typoDistance, Map<String, Float> featureCoefficients, Map<String, CompareSpecResourceFeatureCategory> featureCategories) {
       this.resourceName = resourceName;
-      this.featureCategories = featureCategories;
       this.typoDistance = typoDistance;
       this.featureCoefficients = featureCoefficients;
+      this.featureCategories = featureCategories;
     }
 
     /**
@@ -84,17 +79,6 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
     }
 
     /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the ModelReplaceSpecResourceOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
-    }
-
-    /**
      * Set the resourceName.
      *
      * @param resourceName the resourceName
@@ -102,17 +86,6 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
      */
     public Builder resourceName(String resourceName) {
       this.resourceName = resourceName;
-      return this;
-    }
-
-    /**
-     * Set the featureCategories.
-     *
-     * @param featureCategories the featureCategories
-     * @return the ModelReplaceSpecResourceOptions builder
-     */
-    public Builder featureCategories(Map<String, CompareSpecResourceFeatureCategory> featureCategories) {
-      this.featureCategories = featureCategories;
       return this;
     }
 
@@ -135,6 +108,17 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
      */
     public Builder featureCoefficients(Map<String, Float> featureCoefficients) {
       this.featureCoefficients = featureCoefficients;
+      return this;
+    }
+
+    /**
+     * Set the featureCategories.
+     *
+     * @param featureCategories the featureCategories
+     * @return the ModelReplaceSpecResourceOptions builder
+     */
+    public Builder featureCategories(Map<String, CompareSpecResourceFeatureCategory> featureCategories) {
+      this.featureCategories = featureCategories;
       return this;
     }
 
@@ -167,9 +151,9 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
      * @return the ModelReplaceSpecResourceOptions builder
      */
     public Builder compareSpecResource(CompareSpecResource compareSpecResource) {
-      this.featureCategories = compareSpecResource.featureCategories();
       this.typoDistance = compareSpecResource.typoDistance();
       this.featureCoefficients = compareSpecResource.featureCoefficients();
+      this.featureCategories = compareSpecResource.featureCategories();
       this.similarCharactersMapResource = compareSpecResource.similarCharactersMapResource();
       this.similarCharactersDistance = compareSpecResource.similarCharactersDistance();
       return this;
@@ -177,21 +161,18 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
   }
 
   protected ModelReplaceSpecResourceOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.resourceName,
       "resourceName cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCategories,
-      "featureCategories cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typoDistance,
       "typoDistance cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCoefficients,
       "featureCoefficients cannot be null");
-    crn = builder.crn;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCategories,
+      "featureCategories cannot be null");
     resourceName = builder.resourceName;
-    featureCategories = builder.featureCategories;
     typoDistance = builder.typoDistance;
     featureCoefficients = builder.featureCoefficients;
+    featureCategories = builder.featureCategories;
     similarCharactersMapResource = builder.similarCharactersMapResource;
     similarCharactersDistance = builder.similarCharactersDistance;
   }
@@ -206,17 +187,6 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
   }
 
   /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
-  }
-
-  /**
    * Gets the resourceName.
    *
    * The unique identifier for the comparison parameters.
@@ -225,17 +195,6 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
    */
   public String resourceName() {
     return resourceName;
-  }
-
-  /**
-   * Gets the featureCategories.
-   *
-   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
-   *
-   * @return the featureCategories
-   */
-  public Map<String, CompareSpecResourceFeatureCategory> featureCategories() {
-    return featureCategories;
   }
 
   /**
@@ -259,6 +218,17 @@ public class ModelReplaceSpecResourceOptions extends GenericModel {
    */
   public Map<String, Float> featureCoefficients() {
     return featureCoefficients;
+  }
+
+  /**
+   * Gets the featureCategories.
+   *
+   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
+   *
+   * @return the featureCategories
+   */
+  public Map<String, CompareSpecResourceFeatureCategory> featureCategories() {
+    return featureCategories;
   }
 
   /**

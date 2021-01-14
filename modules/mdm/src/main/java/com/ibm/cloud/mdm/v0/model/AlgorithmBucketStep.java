@@ -13,16 +13,22 @@
 package com.ibm.cloud.mdm.v0.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
+import com.google.gson.reflect.TypeToken;
+import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * A single bucket generator step.
  */
-public class AlgorithmBucketStep extends GenericModel {
+public class AlgorithmBucketStep extends DynamicModel<Object> {
 
+  @SerializedName("inputs")
+  protected List<Long> inputs;
+  @SerializedName("order")
   protected Boolean order;
   @SerializedName("comparison_resource")
   protected String comparisonResource;
@@ -30,33 +36,41 @@ public class AlgorithmBucketStep extends GenericModel {
   protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
-  protected List<Long> inputs;
+  @SerializedName("method")
   protected String method;
+  @SerializedName("fields")
   protected List<String> fields;
+  @SerializedName("label")
   protected String label;
+
+  public AlgorithmBucketStep() {
+    super(new TypeToken<Object>() { });
+  }
 
   /**
    * Builder.
    */
   public static class Builder {
+    private List<Long> inputs;
     private Boolean order;
     private String comparisonResource;
     private String setResource;
     private String mapResource;
-    private List<Long> inputs;
     private String method;
     private List<String> fields;
     private String label;
+    private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmBucketStep algorithmBucketStep) {
+      this.inputs = algorithmBucketStep.inputs;
       this.order = algorithmBucketStep.order;
       this.comparisonResource = algorithmBucketStep.comparisonResource;
       this.setResource = algorithmBucketStep.setResource;
       this.mapResource = algorithmBucketStep.mapResource;
-      this.inputs = algorithmBucketStep.inputs;
       this.method = algorithmBucketStep.method;
       this.fields = algorithmBucketStep.fields;
       this.label = algorithmBucketStep.label;
+      this.dynamicProperties = algorithmBucketStep.getProperties();
     }
 
     /**
@@ -118,6 +132,18 @@ public class AlgorithmBucketStep extends GenericModel {
     }
 
     /**
+     * Set the inputs.
+     * Existing inputs will be replaced.
+     *
+     * @param inputs the inputs
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder inputs(List<Long> inputs) {
+      this.inputs = inputs;
+      return this;
+    }
+
+    /**
      * Set the order.
      *
      * @param order the order
@@ -162,18 +188,6 @@ public class AlgorithmBucketStep extends GenericModel {
     }
 
     /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
-     *
-     * @param inputs the inputs
-     * @return the AlgorithmBucketStep builder
-     */
-    public Builder inputs(List<Long> inputs) {
-      this.inputs = inputs;
-      return this;
-    }
-
-    /**
      * Set the method.
      *
      * @param method the method
@@ -206,21 +220,39 @@ public class AlgorithmBucketStep extends GenericModel {
       this.label = label;
       return this;
     }
+
+    /**
+     * Add an arbitrary property.
+     *
+     * @param name the name of the property to add
+     * @param value the value of the property to add
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder add(String name, Object value) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(name, "name cannot be null");
+      if (this.dynamicProperties == null) {
+        this.dynamicProperties = new HashMap<String, Object>();
+      }
+      this.dynamicProperties.put(name, value);
+      return this;
+    }
   }
 
   protected AlgorithmBucketStep(Builder builder) {
+    super(new TypeToken<Object>() { });
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
       "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    inputs = builder.inputs;
     order = builder.order;
     comparisonResource = builder.comparisonResource;
     setResource = builder.setResource;
     mapResource = builder.mapResource;
-    inputs = builder.inputs;
     method = builder.method;
     fields = builder.fields;
     label = builder.label;
+    this.setProperties(builder.dynamicProperties);
   }
 
   /**
@@ -233,14 +265,43 @@ public class AlgorithmBucketStep extends GenericModel {
   }
 
   /**
+   * Gets the inputs.
+   *
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   *
+   * @return the inputs
+   */
+  public List<Long> getInputs() {
+    return this.inputs;
+  }
+
+  /**
+   * Sets the inputs.
+   *
+   * @param inputs the new inputs
+   */
+  public void setInputs(final List<Long> inputs) {
+    this.inputs = inputs;
+  }
+
+  /**
    * Gets the order.
    *
    * True the tokens within the same input will be pre-sorted alphabetically.
    *
    * @return the order
    */
-  public Boolean order() {
-    return order;
+  public Boolean isOrder() {
+    return this.order;
+  }
+
+  /**
+   * Sets the order.
+   *
+   * @param order the new order
+   */
+  public void setOrder(final Boolean order) {
+    this.order = order;
   }
 
   /**
@@ -250,8 +311,17 @@ public class AlgorithmBucketStep extends GenericModel {
    *
    * @return the comparisonResource
    */
-  public String comparisonResource() {
-    return comparisonResource;
+  public String getComparisonResource() {
+    return this.comparisonResource;
+  }
+
+  /**
+   * Sets the comparisonResource.
+   *
+   * @param comparisonResource the new comparisonResource
+   */
+  public void setComparisonResource(final String comparisonResource) {
+    this.comparisonResource = comparisonResource;
   }
 
   /**
@@ -261,8 +331,17 @@ public class AlgorithmBucketStep extends GenericModel {
    *
    * @return the setResource
    */
-  public String setResource() {
-    return setResource;
+  public String getSetResource() {
+    return this.setResource;
+  }
+
+  /**
+   * Sets the setResource.
+   *
+   * @param setResource the new setResource
+   */
+  public void setSetResource(final String setResource) {
+    this.setResource = setResource;
   }
 
   /**
@@ -272,19 +351,17 @@ public class AlgorithmBucketStep extends GenericModel {
    *
    * @return the mapResource
    */
-  public String mapResource() {
-    return mapResource;
+  public String getMapResource() {
+    return this.mapResource;
   }
 
   /**
-   * Gets the inputs.
+   * Sets the mapResource.
    *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
+   * @param mapResource the new mapResource
    */
-  public List<Long> inputs() {
-    return inputs;
+  public void setMapResource(final String mapResource) {
+    this.mapResource = mapResource;
   }
 
   /**
@@ -295,8 +372,17 @@ public class AlgorithmBucketStep extends GenericModel {
    *
    * @return the method
    */
-  public String method() {
-    return method;
+  public String getMethod() {
+    return this.method;
+  }
+
+  /**
+   * Sets the method.
+   *
+   * @param method the new method
+   */
+  public void setMethod(final String method) {
+    this.method = method;
   }
 
   /**
@@ -306,8 +392,17 @@ public class AlgorithmBucketStep extends GenericModel {
    *
    * @return the fields
    */
-  public List<String> fields() {
-    return fields;
+  public List<String> getFields() {
+    return this.fields;
+  }
+
+  /**
+   * Sets the fields.
+   *
+   * @param fields the new fields
+   */
+  public void setFields(final List<String> fields) {
+    this.fields = fields;
   }
 
   /**
@@ -317,8 +412,16 @@ public class AlgorithmBucketStep extends GenericModel {
    *
    * @return the label
    */
-  public String label() {
-    return label;
+  public String getLabel() {
+    return this.label;
+  }
+
+  /**
+   * Sets the label.
+   *
+   * @param label the new label
+   */
+  public void setLabel(final String label) {
+    this.label = label;
   }
 }
-

@@ -32,8 +32,8 @@ public class PutDataModelResponseFieldTest {
   @Test
   public void testPutDataModelResponseField() throws Throwable {
     PutDataModelResponseField putDataModelResponseFieldModel = new PutDataModelResponseField();
-    assertNull(putDataModelResponseFieldModel.isIndexed());
     assertNull(putDataModelResponseFieldModel.getClassification());
+    assertNull(putDataModelResponseFieldModel.isIndexed());
     assertNull(putDataModelResponseFieldModel.getDescription());
     assertNull(putDataModelResponseFieldModel.getLabel());
   }

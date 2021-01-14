@@ -32,11 +32,9 @@ public class RetrieveRulesFromRecidOptionsTest {
   @Test
   public void testRetrieveRulesFromRecidOptions() throws Throwable {
     RetrieveRulesFromRecidOptions retrieveRulesFromRecidOptionsModel = new RetrieveRulesFromRecidOptions.Builder()
-      .crn("testString")
       .recordNumber(Long.valueOf("123456789"))
       .entityType("entity-type")
       .build();
-    assertEquals(retrieveRulesFromRecidOptionsModel.crn(), "testString");
     assertEquals(retrieveRulesFromRecidOptionsModel.recordNumber(), Long.valueOf("123456789"));
     assertEquals(retrieveRulesFromRecidOptionsModel.entityType(), "entity-type");
   }

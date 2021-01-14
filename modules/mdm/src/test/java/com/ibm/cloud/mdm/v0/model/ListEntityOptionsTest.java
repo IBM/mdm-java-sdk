@@ -32,22 +32,14 @@ public class ListEntityOptionsTest {
   @Test
   public void testListEntityOptions() throws Throwable {
     ListEntityOptions listEntityOptionsModel = new ListEntityOptions.Builder()
-      .crn("testString")
       .recordNumber(Long.valueOf("1234567890"))
       .recordSource("MDM")
       .recordId("123")
       .recordType("person")
       .build();
-    assertEquals(listEntityOptionsModel.crn(), "testString");
     assertEquals(listEntityOptionsModel.recordNumber(), Long.valueOf("1234567890"));
     assertEquals(listEntityOptionsModel.recordSource(), "MDM");
     assertEquals(listEntityOptionsModel.recordId(), "123");
     assertEquals(listEntityOptionsModel.recordType(), "person");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testListEntityOptionsError() throws Throwable {
-    new ListEntityOptions.Builder().build();
-  }
-
 }

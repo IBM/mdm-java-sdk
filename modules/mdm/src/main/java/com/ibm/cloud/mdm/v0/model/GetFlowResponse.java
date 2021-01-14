@@ -22,36 +22,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetFlowResponse extends GenericModel {
 
-  protected List<String> approvals;
-  protected List<String> rejections;
+  @SerializedName("flow_id")
+  protected String flowId;
   @SerializedName("flow_state")
   protected String flowState;
   @SerializedName("flow_type")
   protected String flowType;
-  @SerializedName("flow_id")
-  protected String flowId;
+  protected List<String> approvals;
+  protected List<String> rejections;
   protected Boolean active;
 
   /**
-   * Gets the approvals.
+   * Gets the flowId.
    *
-   * Collection of authorized approvers that approved the flow.
+   * System generated flow identifier.
    *
-   * @return the approvals
+   * @return the flowId
    */
-  public List<String> getApprovals() {
-    return approvals;
-  }
-
-  /**
-   * Gets the rejections.
-   *
-   * Collection of authorized approvers that rejected the flow.
-   *
-   * @return the rejections
-   */
-  public List<String> getRejections() {
-    return rejections;
+  public String getFlowId() {
+    return flowId;
   }
 
   /**
@@ -78,14 +67,25 @@ public class GetFlowResponse extends GenericModel {
   }
 
   /**
-   * Gets the flowId.
+   * Gets the approvals.
    *
-   * System generated flow identifier.
+   * Collection of authorized approvers that approved the flow.
    *
-   * @return the flowId
+   * @return the approvals
    */
-  public String getFlowId() {
-    return flowId;
+  public List<String> getApprovals() {
+    return approvals;
+  }
+
+  /**
+   * Gets the rejections.
+   *
+   * Collection of authorized approvers that rejected the flow.
+   *
+   * @return the rejections
+   */
+  public List<String> getRejections() {
+    return rejections;
   }
 
   /**

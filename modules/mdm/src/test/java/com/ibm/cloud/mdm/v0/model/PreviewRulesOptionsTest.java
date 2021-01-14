@@ -44,13 +44,11 @@ public class PreviewRulesOptionsTest {
     assertEquals(rulesRequestRuleModel.description(), "testString");
 
     PreviewRulesOptions previewRulesOptionsModel = new PreviewRulesOptions.Builder()
-      .crn("testString")
-      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
       .entityType("testString")
+      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
       .build();
-    assertEquals(previewRulesOptionsModel.crn(), "testString");
-    assertEquals(previewRulesOptionsModel.rules(), new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)));
     assertEquals(previewRulesOptionsModel.entityType(), "testString");
+    assertEquals(previewRulesOptionsModel.rules(), new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

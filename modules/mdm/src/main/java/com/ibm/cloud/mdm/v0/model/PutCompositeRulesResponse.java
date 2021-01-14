@@ -20,12 +20,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutCompositeRulesResponse extends GenericModel {
 
+  @SerializedName("flow_id")
+  protected String flowId;
   @SerializedName("flow_state")
   protected String flowState;
   @SerializedName("composite_rules")
   protected PutCompositeRulesResponseCompositeRules compositeRules;
-  @SerializedName("flow_id")
-  protected String flowId;
+
+  /**
+   * Gets the flowId.
+   *
+   * System generated flow identifier.
+   *
+   * @return the flowId
+   */
+  public String getFlowId() {
+    return flowId;
+  }
 
   /**
    * Gets the flowState.
@@ -47,17 +58,6 @@ public class PutCompositeRulesResponse extends GenericModel {
    */
   public PutCompositeRulesResponseCompositeRules getCompositeRules() {
     return compositeRules;
-  }
-
-  /**
-   * Gets the flowId.
-   *
-   * System generated flow identifier.
-   *
-   * @return the flowId
-   */
-  public String getFlowId() {
-    return flowId;
   }
 }
 

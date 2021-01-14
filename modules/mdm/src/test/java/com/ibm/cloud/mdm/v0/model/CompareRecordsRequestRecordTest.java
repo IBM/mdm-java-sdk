@@ -33,13 +33,15 @@ public class CompareRecordsRequestRecordTest {
   @Test
   public void testCompareRecordsRequestRecord() throws Throwable {
     CompareRecordsRequestAttributes compareRecordsRequestAttributesModel = new CompareRecordsRequestAttributes.Builder()
+      .recordLastUpdated("testString")
       .recordId("testString")
       .recordSource("testString")
-      .recordLastUpdated("testString")
+      .add("foo", "testString")
       .build();
-    assertEquals(compareRecordsRequestAttributesModel.recordId(), "testString");
-    assertEquals(compareRecordsRequestAttributesModel.recordSource(), "testString");
-    assertEquals(compareRecordsRequestAttributesModel.recordLastUpdated(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.getRecordId(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.getRecordSource(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.get("foo"), "testString");
 
     CompareRecordsRequestRecord compareRecordsRequestRecordModel = new CompareRecordsRequestRecord.Builder()
       .recordType("testString")

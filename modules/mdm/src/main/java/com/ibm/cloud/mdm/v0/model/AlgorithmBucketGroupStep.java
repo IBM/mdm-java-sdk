@@ -13,37 +13,52 @@
 package com.ibm.cloud.mdm.v0.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * A single bucket generator group step.
  */
-public class AlgorithmBucketGroupStep extends GenericModel {
+public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
 
-  protected Boolean order;
+  @SerializedName("inputs")
   protected List<Long> inputs;
+  @SerializedName("order")
+  protected Boolean order;
+  @SerializedName("method")
   protected String method;
+  @SerializedName("fields")
   protected List<List<String>> fields;
+  @SerializedName("label")
   protected String label;
+
+  public AlgorithmBucketGroupStep() {
+    super(new TypeToken<Object>() { });
+  }
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Boolean order;
     private List<Long> inputs;
+    private Boolean order;
     private String method;
     private List<List<String>> fields;
     private String label;
+    private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmBucketGroupStep algorithmBucketGroupStep) {
-      this.order = algorithmBucketGroupStep.order;
       this.inputs = algorithmBucketGroupStep.inputs;
+      this.order = algorithmBucketGroupStep.order;
       this.method = algorithmBucketGroupStep.method;
       this.fields = algorithmBucketGroupStep.fields;
       this.label = algorithmBucketGroupStep.label;
+      this.dynamicProperties = algorithmBucketGroupStep.getProperties();
     }
 
     /**
@@ -109,17 +124,6 @@ public class AlgorithmBucketGroupStep extends GenericModel {
     }
 
     /**
-     * Set the order.
-     *
-     * @param order the order
-     * @return the AlgorithmBucketGroupStep builder
-     */
-    public Builder order(Boolean order) {
-      this.order = order;
-      return this;
-    }
-
-    /**
      * Set the inputs.
      * Existing inputs will be replaced.
      *
@@ -128,6 +132,17 @@ public class AlgorithmBucketGroupStep extends GenericModel {
      */
     public Builder inputs(List<Long> inputs) {
       this.inputs = inputs;
+      return this;
+    }
+
+    /**
+     * Set the order.
+     *
+     * @param order the order
+     * @return the AlgorithmBucketGroupStep builder
+     */
+    public Builder order(Boolean order) {
+      this.order = order;
       return this;
     }
 
@@ -164,9 +179,26 @@ public class AlgorithmBucketGroupStep extends GenericModel {
       this.label = label;
       return this;
     }
+
+    /**
+     * Add an arbitrary property.
+     *
+     * @param name the name of the property to add
+     * @param value the value of the property to add
+     * @return the AlgorithmBucketGroupStep builder
+     */
+    public Builder add(String name, Object value) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(name, "name cannot be null");
+      if (this.dynamicProperties == null) {
+        this.dynamicProperties = new HashMap<String, Object>();
+      }
+      this.dynamicProperties.put(name, value);
+      return this;
+    }
   }
 
   protected AlgorithmBucketGroupStep(Builder builder) {
+    super(new TypeToken<Object>() { });
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.inputs,
       "inputs cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
@@ -175,11 +207,12 @@ public class AlgorithmBucketGroupStep extends GenericModel {
       "fields cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    order = builder.order;
     inputs = builder.inputs;
+    order = builder.order;
     method = builder.method;
     fields = builder.fields;
     label = builder.label;
+    this.setProperties(builder.dynamicProperties);
   }
 
   /**
@@ -192,25 +225,43 @@ public class AlgorithmBucketGroupStep extends GenericModel {
   }
 
   /**
-   * Gets the order.
-   *
-   * True the tokens within the same input will be pre-sorted alphabetically.
-   *
-   * @return the order
-   */
-  public Boolean order() {
-    return order;
-  }
-
-  /**
    * Gets the inputs.
    *
    * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
    * @return the inputs
    */
-  public List<Long> inputs() {
-    return inputs;
+  public List<Long> getInputs() {
+    return this.inputs;
+  }
+
+  /**
+   * Sets the inputs.
+   *
+   * @param inputs the new inputs
+   */
+  public void setInputs(final List<Long> inputs) {
+    this.inputs = inputs;
+  }
+
+  /**
+   * Gets the order.
+   *
+   * True the tokens within the same input will be pre-sorted alphabetically.
+   *
+   * @return the order
+   */
+  public Boolean isOrder() {
+    return this.order;
+  }
+
+  /**
+   * Sets the order.
+   *
+   * @param order the new order
+   */
+  public void setOrder(final Boolean order) {
+    this.order = order;
   }
 
   /**
@@ -220,8 +271,17 @@ public class AlgorithmBucketGroupStep extends GenericModel {
    *
    * @return the method
    */
-  public String method() {
-    return method;
+  public String getMethod() {
+    return this.method;
+  }
+
+  /**
+   * Sets the method.
+   *
+   * @param method the new method
+   */
+  public void setMethod(final String method) {
+    this.method = method;
   }
 
   /**
@@ -231,8 +291,17 @@ public class AlgorithmBucketGroupStep extends GenericModel {
    *
    * @return the fields
    */
-  public List<List<String>> fields() {
-    return fields;
+  public List<List<String>> getFields() {
+    return this.fields;
+  }
+
+  /**
+   * Sets the fields.
+   *
+   * @param fields the new fields
+   */
+  public void setFields(final List<List<String>> fields) {
+    this.fields = fields;
   }
 
   /**
@@ -242,8 +311,16 @@ public class AlgorithmBucketGroupStep extends GenericModel {
    *
    * @return the label
    */
-  public String label() {
-    return label;
+  public String getLabel() {
+    return this.label;
+  }
+
+  /**
+   * Sets the label.
+   *
+   * @param label the new label
+   */
+  public void setLabel(final String label) {
+    this.label = label;
   }
 }
-

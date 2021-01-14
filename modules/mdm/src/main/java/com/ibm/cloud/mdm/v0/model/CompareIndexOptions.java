@@ -22,7 +22,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CompareIndexOptions extends GenericModel {
 
-  protected String crn;
   protected List<CompareRecordsRequestRecord> records;
   protected String details;
   protected String entityType;
@@ -34,7 +33,6 @@ public class CompareIndexOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private List<CompareRecordsRequestRecord> records;
     private String details;
     private String entityType;
@@ -43,7 +41,6 @@ public class CompareIndexOptions extends GenericModel {
     private String recordType;
 
     private Builder(CompareIndexOptions compareIndexOptions) {
-      this.crn = compareIndexOptions.crn;
       this.records = compareIndexOptions.records;
       this.details = compareIndexOptions.details;
       this.entityType = compareIndexOptions.entityType;
@@ -56,15 +53,6 @@ public class CompareIndexOptions extends GenericModel {
      * Instantiates a new builder.
      */
     public Builder() {
-    }
-
-    /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param crn the crn
-     */
-    public Builder(String crn) {
-      this.crn = crn;
     }
 
     /**
@@ -89,17 +77,6 @@ public class CompareIndexOptions extends GenericModel {
         this.records = new ArrayList<CompareRecordsRequestRecord>();
       }
       this.records.add(records);
-      return this;
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the CompareIndexOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
       return this;
     }
 
@@ -172,9 +149,6 @@ public class CompareIndexOptions extends GenericModel {
   }
 
   protected CompareIndexOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    crn = builder.crn;
     records = builder.records;
     details = builder.details;
     entityType = builder.entityType;
@@ -190,17 +164,6 @@ public class CompareIndexOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

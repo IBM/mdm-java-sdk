@@ -33,7 +33,7 @@ public class GetRecordKeysRecordinfoTest {
   public void testGetRecordKeysRecordinfo() throws Throwable {
     GetRecordKeysRecordinfo getRecordKeysRecordinfoModel = new GetRecordKeysRecordinfo();
     assertNull(getRecordKeysRecordinfoModel.getRecordId());
-    assertNull(getRecordKeysRecordinfoModel.getRecordSource());
     assertNull(getRecordKeysRecordinfoModel.getRecordNumber());
+    assertNull(getRecordKeysRecordinfoModel.getRecordSource());
   }
 }

@@ -22,22 +22,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PreviewRulesOptions extends GenericModel {
 
-  protected String crn;
-  protected List<RulesRequestRule> rules;
   protected String entityType;
+  protected List<RulesRequestRule> rules;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String crn;
-    private List<RulesRequestRule> rules;
     private String entityType;
+    private List<RulesRequestRule> rules;
 
     private Builder(PreviewRulesOptions previewRulesOptions) {
-      this.crn = previewRulesOptions.crn;
-      this.rules = previewRulesOptions.rules;
       this.entityType = previewRulesOptions.entityType;
+      this.rules = previewRulesOptions.rules;
     }
 
     /**
@@ -49,14 +46,12 @@ public class PreviewRulesOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
-     * @param rules the rules
      * @param entityType the entityType
+     * @param rules the rules
      */
-    public Builder(String crn, List<RulesRequestRule> rules, String entityType) {
-      this.crn = crn;
-      this.rules = rules;
+    public Builder(String entityType, List<RulesRequestRule> rules) {
       this.entityType = entityType;
+      this.rules = rules;
     }
 
     /**
@@ -85,13 +80,13 @@ public class PreviewRulesOptions extends GenericModel {
     }
 
     /**
-     * Set the crn.
+     * Set the entityType.
      *
-     * @param crn the crn
+     * @param entityType the entityType
      * @return the PreviewRulesOptions builder
      */
-    public Builder crn(String crn) {
-      this.crn = crn;
+    public Builder entityType(String entityType) {
+      this.entityType = entityType;
       return this;
     }
 
@@ -106,29 +101,15 @@ public class PreviewRulesOptions extends GenericModel {
       this.rules = rules;
       return this;
     }
-
-    /**
-     * Set the entityType.
-     *
-     * @param entityType the entityType
-     * @return the PreviewRulesOptions builder
-     */
-    public Builder entityType(String entityType) {
-      this.entityType = entityType;
-      return this;
-    }
   }
 
   protected PreviewRulesOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.rules,
-      "rules cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityType,
       "entityType cannot be null");
-    crn = builder.crn;
-    rules = builder.rules;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.rules,
+      "rules cannot be null");
     entityType = builder.entityType;
+    rules = builder.rules;
   }
 
   /**
@@ -141,14 +122,14 @@ public class PreviewRulesOptions extends GenericModel {
   }
 
   /**
-   * Gets the crn.
+   * Gets the entityType.
    *
-   * The Cloud Resource Name (CRN) that uniquely identifies your dedicated resource on the cloud.
+   * The data type identifier of entity, ie. person_entity, organization_entity, household_entity.
    *
-   * @return the crn
+   * @return the entityType
    */
-  public String crn() {
-    return crn;
+  public String entityType() {
+    return entityType;
   }
 
   /**
@@ -160,17 +141,6 @@ public class PreviewRulesOptions extends GenericModel {
    */
   public List<RulesRequestRule> rules() {
     return rules;
-  }
-
-  /**
-   * Gets the entityType.
-   *
-   * The data type identifier of entity, ie. person_entity, organization_entity, household_entity.
-   *
-   * @return the entityType
-   */
-  public String entityType() {
-    return entityType;
   }
 }
 

@@ -24,14 +24,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRelationshipType extends GenericModel {
 
-  protected List<DataModelRelationshipRule> rules;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
+  protected List<DataModelRelationshipRule> rules;
   protected Boolean directional;
   @SerializedName("label_from_source")
   protected String labelFromSource;
-  protected String cardinality;
   protected String description;
+  protected String cardinality;
   protected Map<String, DataModelAttribute> attributes;
   protected String label;
 
@@ -39,22 +39,22 @@ public class DataModelRelationshipType extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private List<DataModelRelationshipRule> rules;
     private String labelFromTarget;
+    private List<DataModelRelationshipRule> rules;
     private Boolean directional;
     private String labelFromSource;
-    private String cardinality;
     private String description;
+    private String cardinality;
     private Map<String, DataModelAttribute> attributes;
     private String label;
 
     private Builder(DataModelRelationshipType dataModelRelationshipType) {
-      this.rules = dataModelRelationshipType.rules;
       this.labelFromTarget = dataModelRelationshipType.labelFromTarget;
+      this.rules = dataModelRelationshipType.rules;
       this.directional = dataModelRelationshipType.directional;
       this.labelFromSource = dataModelRelationshipType.labelFromSource;
-      this.cardinality = dataModelRelationshipType.cardinality;
       this.description = dataModelRelationshipType.description;
+      this.cardinality = dataModelRelationshipType.cardinality;
       this.attributes = dataModelRelationshipType.attributes;
       this.label = dataModelRelationshipType.label;
     }
@@ -100,6 +100,17 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
+     * Set the labelFromTarget.
+     *
+     * @param labelFromTarget the labelFromTarget
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder labelFromTarget(String labelFromTarget) {
+      this.labelFromTarget = labelFromTarget;
+      return this;
+    }
+
+    /**
      * Set the rules.
      * Existing rules will be replaced.
      *
@@ -108,17 +119,6 @@ public class DataModelRelationshipType extends GenericModel {
      */
     public Builder rules(List<DataModelRelationshipRule> rules) {
       this.rules = rules;
-      return this;
-    }
-
-    /**
-     * Set the labelFromTarget.
-     *
-     * @param labelFromTarget the labelFromTarget
-     * @return the DataModelRelationshipType builder
-     */
-    public Builder labelFromTarget(String labelFromTarget) {
-      this.labelFromTarget = labelFromTarget;
       return this;
     }
 
@@ -145,17 +145,6 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the cardinality.
-     *
-     * @param cardinality the cardinality
-     * @return the DataModelRelationshipType builder
-     */
-    public Builder cardinality(String cardinality) {
-      this.cardinality = cardinality;
-      return this;
-    }
-
-    /**
      * Set the description.
      *
      * @param description the description
@@ -163,6 +152,17 @@ public class DataModelRelationshipType extends GenericModel {
      */
     public Builder description(String description) {
       this.description = description;
+      return this;
+    }
+
+    /**
+     * Set the cardinality.
+     *
+     * @param cardinality the cardinality
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder cardinality(String cardinality) {
+      this.cardinality = cardinality;
       return this;
     }
 
@@ -192,12 +192,12 @@ public class DataModelRelationshipType extends GenericModel {
   protected DataModelRelationshipType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    rules = builder.rules;
     labelFromTarget = builder.labelFromTarget;
+    rules = builder.rules;
     directional = builder.directional;
     labelFromSource = builder.labelFromSource;
-    cardinality = builder.cardinality;
     description = builder.description;
+    cardinality = builder.cardinality;
     attributes = builder.attributes;
     label = builder.label;
   }
@@ -212,17 +212,6 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the rules.
-   *
-   * Collection of defined relationship rules.
-   *
-   * @return the rules
-   */
-  public List<DataModelRelationshipRule> rules() {
-    return rules;
-  }
-
-  /**
    * Gets the labelFromTarget.
    *
    * User defined translatable label of 'to' endpoint in the relationship.
@@ -231,6 +220,17 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public String labelFromTarget() {
     return labelFromTarget;
+  }
+
+  /**
+   * Gets the rules.
+   *
+   * Collection of defined relationship rules.
+   *
+   * @return the rules
+   */
+  public List<DataModelRelationshipRule> rules() {
+    return rules;
   }
 
   /**
@@ -256,17 +256,6 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the cardinality.
-   *
-   * User defined cardinality, one of MULTI, SIMPLE, MANY2ONE, ONE2MANY or ONE2ONE. The default value is MULTI.
-   *
-   * @return the cardinality
-   */
-  public String cardinality() {
-    return cardinality;
-  }
-
-  /**
    * Gets the description.
    *
    * User defined translatable description.
@@ -275,6 +264,17 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public String description() {
     return description;
+  }
+
+  /**
+   * Gets the cardinality.
+   *
+   * User defined cardinality, one of MULTI, SIMPLE, MANY2ONE, ONE2MANY or ONE2ONE. The default value is MULTI.
+   *
+   * @return the cardinality
+   */
+  public String cardinality() {
+    return cardinality;
   }
 
   /**

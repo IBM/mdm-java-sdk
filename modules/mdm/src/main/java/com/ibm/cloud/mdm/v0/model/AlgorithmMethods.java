@@ -23,20 +23,20 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmMethods extends GenericModel {
 
+  protected List<AlgorithmInput> inputs;
   @SerializedName("compare_recipe")
   protected List<AlgorithmCompareStep> compareRecipe;
-  protected List<AlgorithmInput> inputs;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<AlgorithmCompareStep> compareRecipe;
     private List<AlgorithmInput> inputs;
+    private List<AlgorithmCompareStep> compareRecipe;
 
     private Builder(AlgorithmMethods algorithmMethods) {
-      this.compareRecipe = algorithmMethods.compareRecipe;
       this.inputs = algorithmMethods.inputs;
+      this.compareRecipe = algorithmMethods.compareRecipe;
     }
 
     /**
@@ -52,22 +52,6 @@ public class AlgorithmMethods extends GenericModel {
      */
     public AlgorithmMethods build() {
       return new AlgorithmMethods(this);
-    }
-
-    /**
-     * Adds an compareRecipe to compareRecipe.
-     *
-     * @param compareRecipe the new compareRecipe
-     * @return the AlgorithmMethods builder
-     */
-    public Builder addCompareRecipe(AlgorithmCompareStep compareRecipe) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(compareRecipe,
-        "compareRecipe cannot be null");
-      if (this.compareRecipe == null) {
-        this.compareRecipe = new ArrayList<AlgorithmCompareStep>();
-      }
-      this.compareRecipe.add(compareRecipe);
-      return this;
     }
 
     /**
@@ -87,14 +71,18 @@ public class AlgorithmMethods extends GenericModel {
     }
 
     /**
-     * Set the compareRecipe.
-     * Existing compareRecipe will be replaced.
+     * Adds an compareRecipe to compareRecipe.
      *
-     * @param compareRecipe the compareRecipe
+     * @param compareRecipe the new compareRecipe
      * @return the AlgorithmMethods builder
      */
-    public Builder compareRecipe(List<AlgorithmCompareStep> compareRecipe) {
-      this.compareRecipe = compareRecipe;
+    public Builder addCompareRecipe(AlgorithmCompareStep compareRecipe) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(compareRecipe,
+        "compareRecipe cannot be null");
+      if (this.compareRecipe == null) {
+        this.compareRecipe = new ArrayList<AlgorithmCompareStep>();
+      }
+      this.compareRecipe.add(compareRecipe);
       return this;
     }
 
@@ -109,11 +97,23 @@ public class AlgorithmMethods extends GenericModel {
       this.inputs = inputs;
       return this;
     }
+
+    /**
+     * Set the compareRecipe.
+     * Existing compareRecipe will be replaced.
+     *
+     * @param compareRecipe the compareRecipe
+     * @return the AlgorithmMethods builder
+     */
+    public Builder compareRecipe(List<AlgorithmCompareStep> compareRecipe) {
+      this.compareRecipe = compareRecipe;
+      return this;
+    }
   }
 
   protected AlgorithmMethods(Builder builder) {
-    compareRecipe = builder.compareRecipe;
     inputs = builder.inputs;
+    compareRecipe = builder.compareRecipe;
   }
 
   /**
@@ -126,17 +126,6 @@ public class AlgorithmMethods extends GenericModel {
   }
 
   /**
-   * Gets the compareRecipe.
-   *
-   * Collection of compare method steps.
-   *
-   * @return the compareRecipe
-   */
-  public List<AlgorithmCompareStep> compareRecipe() {
-    return compareRecipe;
-  }
-
-  /**
    * Gets the inputs.
    *
    * Collection of input definitions used for this method.
@@ -145,6 +134,17 @@ public class AlgorithmMethods extends GenericModel {
    */
   public List<AlgorithmInput> inputs() {
     return inputs;
+  }
+
+  /**
+   * Gets the compareRecipe.
+   *
+   * Collection of compare method steps.
+   *
+   * @return the compareRecipe
+   */
+  public List<AlgorithmCompareStep> compareRecipe() {
+    return compareRecipe;
   }
 }
 

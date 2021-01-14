@@ -34,31 +34,34 @@ public class AlgorithmStandardizerStepTest {
   @Test
   public void testAlgorithmStandardizerStep() throws Throwable {
     AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .comparisonResource("testString")
       .setResource("testString")
       .mapResource("testString")
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .method("testString")
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .label("testString")
+      .add("foo", "testString")
       .build();
-    assertEquals(algorithmStandardizerStepModel.comparisonResource(), "testString");
-    assertEquals(algorithmStandardizerStepModel.setResource(), "testString");
-    assertEquals(algorithmStandardizerStepModel.mapResource(), "testString");
-    assertEquals(algorithmStandardizerStepModel.inputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmStandardizerStepModel.method(), "testString");
-    assertEquals(algorithmStandardizerStepModel.fields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(algorithmStandardizerStepModel.label(), "testString");
+    assertEquals(algorithmStandardizerStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
+    assertEquals(algorithmStandardizerStepModel.getComparisonResource(), "testString");
+    assertEquals(algorithmStandardizerStepModel.getSetResource(), "testString");
+    assertEquals(algorithmStandardizerStepModel.getMapResource(), "testString");
+    assertEquals(algorithmStandardizerStepModel.getMethod(), "testString");
+    assertEquals(algorithmStandardizerStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmStandardizerStepModel.getLabel(), "testString");
+    assertEquals(algorithmStandardizerStepModel.get("foo"), "testString");
 
     String json = TestUtilities.serialize(algorithmStandardizerStepModel);
 
     AlgorithmStandardizerStep algorithmStandardizerStepModelNew = TestUtilities.deserialize(json, AlgorithmStandardizerStep.class);
     assertTrue(algorithmStandardizerStepModelNew instanceof AlgorithmStandardizerStep);
-    assertEquals(algorithmStandardizerStepModelNew.comparisonResource(), "testString");
-    assertEquals(algorithmStandardizerStepModelNew.setResource(), "testString");
-    assertEquals(algorithmStandardizerStepModelNew.mapResource(), "testString");
-    assertEquals(algorithmStandardizerStepModelNew.method(), "testString");
-    assertEquals(algorithmStandardizerStepModelNew.label(), "testString");
+    assertEquals(algorithmStandardizerStepModelNew.getComparisonResource(), "testString");
+    assertEquals(algorithmStandardizerStepModelNew.getSetResource(), "testString");
+    assertEquals(algorithmStandardizerStepModelNew.getMapResource(), "testString");
+    assertEquals(algorithmStandardizerStepModelNew.getMethod(), "testString");
+    assertEquals(algorithmStandardizerStepModelNew.getLabel(), "testString");
+    assertEquals(algorithmStandardizerStepModelNew.get("foo"), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

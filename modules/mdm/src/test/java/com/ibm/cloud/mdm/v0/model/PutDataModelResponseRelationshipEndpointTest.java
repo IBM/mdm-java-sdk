@@ -32,7 +32,7 @@ public class PutDataModelResponseRelationshipEndpointTest {
   @Test
   public void testPutDataModelResponseRelationshipEndpoint() throws Throwable {
     PutDataModelResponseRelationshipEndpoint putDataModelResponseRelationshipEndpointModel = new PutDataModelResponseRelationshipEndpoint();
-    assertNull(putDataModelResponseRelationshipEndpointModel.getEntityTypes());
     assertNull(putDataModelResponseRelationshipEndpointModel.getRecordTypes());
+    assertNull(putDataModelResponseRelationshipEndpointModel.getEntityTypes());
   }
 }

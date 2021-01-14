@@ -32,20 +32,12 @@ public class IndexSummaryOptionsTest {
   @Test
   public void testIndexSummaryOptions() throws Throwable {
     IndexSummaryOptions indexSummaryOptionsModel = new IndexSummaryOptions.Builder()
-      .crn("testString")
       .recordType("person")
       .entityType("person_entity")
       .maxResult(Long.valueOf("26"))
       .build();
-    assertEquals(indexSummaryOptionsModel.crn(), "testString");
     assertEquals(indexSummaryOptionsModel.recordType(), "person");
     assertEquals(indexSummaryOptionsModel.entityType(), "person_entity");
     assertEquals(indexSummaryOptionsModel.maxResult(), Long.valueOf("26"));
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testIndexSummaryOptionsError() throws Throwable {
-    new IndexSummaryOptions.Builder().build();
-  }
-
 }

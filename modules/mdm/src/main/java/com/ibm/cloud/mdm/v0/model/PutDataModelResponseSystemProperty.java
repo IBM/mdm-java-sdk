@@ -20,23 +20,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseSystemProperty extends GenericModel {
 
+  protected Boolean indexed;
   @SerializedName("data_type")
   protected String dataType;
-  protected Boolean indexed;
   protected Boolean editable;
   protected String description;
   protected String label;
-
-  /**
-   * Gets the dataType.
-   *
-   * System pre-defined data type. One of: String or Long.
-   *
-   * @return the dataType
-   */
-  public String getDataType() {
-    return dataType;
-  }
 
   /**
    * Gets the indexed.
@@ -47,6 +36,17 @@ public class PutDataModelResponseSystemProperty extends GenericModel {
    */
   public Boolean isIndexed() {
     return indexed;
+  }
+
+  /**
+   * Gets the dataType.
+   *
+   * System pre-defined data type. One of: String or Long.
+   *
+   * @return the dataType
+   */
+  public String getDataType() {
+    return dataType;
   }
 
   /**
