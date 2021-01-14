@@ -39,7 +39,7 @@ The IBM Cloud Master Data Management Java SDK allows developers to programmatica
 
 Service Name | Artifact Coordinates
 --- | ---
-<!-- [Master Data Management](https://cloud.ibm.com/apidocs/mdm) | com.ibm.cloud:mdm:0.0.2 -->
+[Master Data Management](https://cloud.ibm.com/apidocs/mdm) | com.ibm.cloud:mdm:0.0.2 
 
 ## Prerequisites
 
