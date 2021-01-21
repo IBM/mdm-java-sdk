@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/IBM/mdm-java-sdk.svg?token=eW5FVD71iyte6tTby8gr&branch=master)](https://travis-ci.com/IBM/mdm-java-sdk)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# IBM Cloud Master Data Management Java SDK Version 0.0.6
+# IBM Cloud Master Data Management Java SDK Version 0.0.7
 Java client library to interact with various [IBM Cloud Master Data Management](https://cloud.ibm.com/apidocs?category=mdm).
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
@@ -39,7 +39,7 @@ The IBM Cloud Master Data Management Java SDK allows developers to programmatica
 
 Service Name | Artifact Coordinates
 --- | ---
-[Master Data Management](https://cloud.ibm.com/apidocs/mdm) | com.ibm.cloud:mdm:0.0.6 
+[Master Data Management](https://cloud.ibm.com/apidocs/mdm) | com.ibm.cloud:mdm:0.0.7 
 
 ## Prerequisites
 
@@ -50,7 +50,7 @@ Service Name | Artifact Coordinates
 * Java 8 or above.
 
 ## Installation
-The current version of this SDK is: 0.0.6
+The current version of this SDK is: 0.0.7
 
 Each service's artifact coordinates are listed in the table above.
 
@@ -72,13 +72,13 @@ artifact coordinates (group id, artifact id and version) for the service, like t
 <dependency>
     <groupId>com.ibm.cloud</groupId>
     <artifactId>mdm</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
 </dependency>
 ```
 
 ##### Gradle
 ```gradle
-'com.ibm.cloud:mdm:0.0.6'
+'com.ibm.cloud:mdm:0.0.7'
 ```
 
 ## Using the SDK
