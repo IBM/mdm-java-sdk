@@ -1,3 +1,11 @@
+## [0.0.7](https://github.com/IBM/mdm-java-sdk/compare/0.0.6...0.0.7) (2021-01-21)
+
+
+### Bug Fixes
+
+* MDM Java SDK Code Commit from mdmx-java-sdk ([6c5438a](https://github.com/IBM/mdm-java-sdk/commit/6c5438ae14e7eaeb18a2e659a5462f1c380cd70b))
+* Merge pull request [#16](https://github.com/IBM/mdm-java-sdk/issues/16) from IBM/mdmx-java-sdk ([c7ca73f](https://github.com/IBM/mdm-java-sdk/commit/c7ca73f020031138d45365976c421b560fab2aa9))
+
 ## [0.0.6](https://github.com/IBM/mdm-java-sdk/compare/0.0.5...0.0.6) (2021-01-14)
 
 
