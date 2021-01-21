@@ -60,10 +60,8 @@ public class BulkLoadOptionsTest {
     assertEquals(publishDataRequestCosDetailsModel.catalog(), publishDataRequestCosDetailsCatalogModel);
 
     BulkLoadOptions bulkLoadOptionsModel = new BulkLoadOptions.Builder()
-      .crn("testString")
       .cosDetails(publishDataRequestCosDetailsModel)
       .build();
-    assertEquals(bulkLoadOptionsModel.crn(), "testString");
     assertEquals(bulkLoadOptionsModel.cosDetails(), publishDataRequestCosDetailsModel);
   }
 

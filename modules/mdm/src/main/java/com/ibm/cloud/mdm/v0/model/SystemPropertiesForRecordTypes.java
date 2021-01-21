@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SystemPropertiesForRecordTypes extends GenericModel {
 
-  protected String label;
   protected Boolean editable;
-  protected String description;
   @SerializedName("data_type")
   protected String dataType;
   protected Boolean indexed;
+  protected String label;
+  protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
     private Boolean editable;
-    private String description;
     private String dataType;
     private Boolean indexed;
+    private String label;
+    private String description;
 
     private Builder(SystemPropertiesForRecordTypes systemPropertiesForRecordTypes) {
-      this.label = systemPropertiesForRecordTypes.label;
       this.editable = systemPropertiesForRecordTypes.editable;
-      this.description = systemPropertiesForRecordTypes.description;
       this.dataType = systemPropertiesForRecordTypes.dataType;
       this.indexed = systemPropertiesForRecordTypes.indexed;
+      this.label = systemPropertiesForRecordTypes.label;
+      this.description = systemPropertiesForRecordTypes.description;
     }
 
     /**
@@ -54,12 +54,12 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param label the label
      * @param dataType the dataType
+     * @param label the label
      */
-    public Builder(String label, String dataType) {
-      this.label = label;
+    public Builder(String dataType, String label) {
       this.dataType = dataType;
+      this.label = label;
     }
 
     /**
@@ -72,17 +72,6 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
     }
 
     /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the SystemPropertiesForRecordTypes builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
      * Set the editable.
      *
      * @param editable the editable
@@ -90,17 +79,6 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
      */
     public Builder editable(Boolean editable) {
       this.editable = editable;
-      return this;
-    }
-
-    /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the SystemPropertiesForRecordTypes builder
-     */
-    public Builder description(String description) {
-      this.description = description;
       return this;
     }
 
@@ -125,18 +103,40 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
       this.indexed = indexed;
       return this;
     }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the SystemPropertiesForRecordTypes builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the SystemPropertiesForRecordTypes builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
   }
 
   protected SystemPropertiesForRecordTypes(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
-      "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
       "dataType cannot be null");
-    label = builder.label;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
+      "label cannot be null");
     editable = builder.editable;
-    description = builder.description;
     dataType = builder.dataType;
     indexed = builder.indexed;
+    label = builder.label;
+    description = builder.description;
   }
 
   /**
@@ -149,17 +149,6 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
   }
 
   /**
-   * Gets the label.
-   *
-   * system label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
    * Gets the editable.
    *
    * editable.
@@ -168,17 +157,6 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
    */
   public Boolean editable() {
     return editable;
-  }
-
-  /**
-   * Gets the description.
-   *
-   * system description.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
   }
 
   /**
@@ -201,6 +179,28 @@ public class SystemPropertiesForRecordTypes extends GenericModel {
    */
   public Boolean indexed() {
     return indexed;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * system label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * system description.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
   }
 }
 

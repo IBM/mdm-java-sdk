@@ -32,8 +32,8 @@ public class PutSetResourcesResponseSetResourceEntryTest {
   @Test
   public void testPutSetResourcesResponseSetResourceEntry() throws Throwable {
     PutSetResourcesResponseSetResourceEntry putSetResourcesResponseSetResourceEntryModel = new PutSetResourcesResponseSetResourceEntry();
-    assertNull(putSetResourcesResponseSetResourceEntryModel.getDataType());
     assertNull(putSetResourcesResponseSetResourceEntryModel.getRegex());
+    assertNull(putSetResourcesResponseSetResourceEntryModel.getDataType());
     assertNull(putSetResourcesResponseSetResourceEntryModel.getValues());
     assertNull(putSetResourcesResponseSetResourceEntryModel.getCategory());
   }

@@ -33,9 +33,9 @@ public class PutDataModelResponseAttributeTest {
   public void testPutDataModelResponseAttribute() throws Throwable {
     PutDataModelResponseAttribute putDataModelResponseAttributeModel = new PutDataModelResponseAttribute();
     assertNull(putDataModelResponseAttributeModel.getClassification());
-    assertNull(putDataModelResponseAttributeModel.isIndexed());
     assertNull(putDataModelResponseAttributeModel.getMatchingType());
     assertNull(putDataModelResponseAttributeModel.getAttributeType());
+    assertNull(putDataModelResponseAttributeModel.isIndexed());
     assertNull(putDataModelResponseAttributeModel.getDescription());
     assertNull(putDataModelResponseAttributeModel.getCardinality());
     assertNull(putDataModelResponseAttributeModel.getLabel());

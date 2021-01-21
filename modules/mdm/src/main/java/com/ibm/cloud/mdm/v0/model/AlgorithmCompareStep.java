@@ -26,18 +26,18 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmCompareStep extends DynamicModel<Object> {
 
-  @SerializedName("inputs")
-  protected List<Long> inputs;
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
-  @SerializedName("method")
-  protected String method;
+  @SerializedName("inputs")
+  protected List<Long> inputs;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
   @SerializedName("fields")
   protected List<String> fields;
+  @SerializedName("method")
+  protected String method;
   @SerializedName("label")
   protected String label;
 
@@ -49,22 +49,22 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private List<Long> inputs;
-    private String comparisonResource;
     private String setResource;
     private String mapResource;
-    private String method;
+    private List<Long> inputs;
+    private String comparisonResource;
     private List<String> fields;
+    private String method;
     private String label;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmCompareStep algorithmCompareStep) {
-      this.inputs = algorithmCompareStep.inputs;
-      this.comparisonResource = algorithmCompareStep.comparisonResource;
       this.setResource = algorithmCompareStep.setResource;
       this.mapResource = algorithmCompareStep.mapResource;
-      this.method = algorithmCompareStep.method;
+      this.inputs = algorithmCompareStep.inputs;
+      this.comparisonResource = algorithmCompareStep.comparisonResource;
       this.fields = algorithmCompareStep.fields;
+      this.method = algorithmCompareStep.method;
       this.label = algorithmCompareStep.label;
       this.dynamicProperties = algorithmCompareStep.getProperties();
     }
@@ -128,6 +128,28 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
     }
 
     /**
+     * Set the setResource.
+     *
+     * @param setResource the setResource
+     * @return the AlgorithmCompareStep builder
+     */
+    public Builder setResource(String setResource) {
+      this.setResource = setResource;
+      return this;
+    }
+
+    /**
+     * Set the mapResource.
+     *
+     * @param mapResource the mapResource
+     * @return the AlgorithmCompareStep builder
+     */
+    public Builder mapResource(String mapResource) {
+      this.mapResource = mapResource;
+      return this;
+    }
+
+    /**
      * Set the inputs.
      * Existing inputs will be replaced.
      *
@@ -151,24 +173,14 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the setResource.
+     * Set the fields.
+     * Existing fields will be replaced.
      *
-     * @param setResource the setResource
+     * @param fields the fields
      * @return the AlgorithmCompareStep builder
      */
-    public Builder setResource(String setResource) {
-      this.setResource = setResource;
-      return this;
-    }
-
-    /**
-     * Set the mapResource.
-     *
-     * @param mapResource the mapResource
-     * @return the AlgorithmCompareStep builder
-     */
-    public Builder mapResource(String mapResource) {
-      this.mapResource = mapResource;
+    public Builder fields(List<String> fields) {
+      this.fields = fields;
       return this;
     }
 
@@ -180,18 +192,6 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
      */
     public Builder method(String method) {
       this.method = method;
-      return this;
-    }
-
-    /**
-     * Set the fields.
-     * Existing fields will be replaced.
-     *
-     * @param fields the fields
-     * @return the AlgorithmCompareStep builder
-     */
-    public Builder fields(List<String> fields) {
-      this.fields = fields;
       return this;
     }
 
@@ -229,12 +229,12 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
       "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    inputs = builder.inputs;
-    comparisonResource = builder.comparisonResource;
     setResource = builder.setResource;
     mapResource = builder.mapResource;
-    method = builder.method;
+    inputs = builder.inputs;
+    comparisonResource = builder.comparisonResource;
     fields = builder.fields;
+    method = builder.method;
     label = builder.label;
     this.setProperties(builder.dynamicProperties);
   }
@@ -246,46 +246,6 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> getInputs() {
-    return this.inputs;
-  }
-
-  /**
-   * Sets the inputs.
-   *
-   * @param inputs the new inputs
-   */
-  public void setInputs(final List<Long> inputs) {
-    this.inputs = inputs;
-  }
-
-  /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String getComparisonResource() {
-    return this.comparisonResource;
-  }
-
-  /**
-   * Sets the comparisonResource.
-   *
-   * @param comparisonResource the new comparisonResource
-   */
-  public void setComparisonResource(final String comparisonResource) {
-    this.comparisonResource = comparisonResource;
   }
 
   /**
@@ -329,24 +289,43 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the method.
+   * Gets the inputs.
    *
-   * A compare method. One of: CompareMethod.AddressCompare, CompareMethod.DateCompare, CompareMethod.EmailCompare,
-   * CompareMethod.SingleTokenCompare or CompareMethod.NameCompare.
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
-   * @return the method
+   * @return the inputs
    */
-  public String getMethod() {
-    return this.method;
+  public List<Long> getInputs() {
+    return this.inputs;
   }
 
   /**
-   * Sets the method.
+   * Sets the inputs.
    *
-   * @param method the new method
+   * @param inputs the new inputs
    */
-  public void setMethod(final String method) {
-    this.method = method;
+  public void setInputs(final List<Long> inputs) {
+    this.inputs = inputs;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String getComparisonResource() {
+    return this.comparisonResource;
+  }
+
+  /**
+   * Sets the comparisonResource.
+   *
+   * @param comparisonResource the new comparisonResource
+   */
+  public void setComparisonResource(final String comparisonResource) {
+    this.comparisonResource = comparisonResource;
   }
 
   /**
@@ -367,6 +346,27 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
    */
   public void setFields(final List<String> fields) {
     this.fields = fields;
+  }
+
+  /**
+   * Gets the method.
+   *
+   * A compare method. One of: CompareMethod.AddressCompare, CompareMethod.DateCompare, CompareMethod.EmailCompare,
+   * CompareMethod.SingleTokenCompare or CompareMethod.NameCompare.
+   *
+   * @return the method
+   */
+  public String getMethod() {
+    return this.method;
+  }
+
+  /**
+   * Sets the method.
+   *
+   * @param method the new method
+   */
+  public void setMethod(final String method) {
+    this.method = method;
   }
 
   /**

@@ -14,7 +14,7 @@
 package com.ibm.cloud.mdm.v0.model;
 
 import com.ibm.cloud.mdm.v0.model.ProcessListResponse;
-import com.ibm.cloud.mdm.v0.model.ProcessStatus;
+import com.ibm.cloud.mdm.v0.model.ProcessModelStatus;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

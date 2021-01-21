@@ -32,7 +32,7 @@ public class GetEntityIdsEntityinfoTest {
   @Test
   public void testGetEntityIdsEntityinfo() throws Throwable {
     GetEntityIdsEntityinfo getEntityIdsEntityinfoModel = new GetEntityIdsEntityinfo();
-    assertNull(getEntityIdsEntityinfoModel.getEntityType());
     assertNull(getEntityIdsEntityinfoModel.getEntityId());
+    assertNull(getEntityIdsEntityinfoModel.getEntityType());
   }
 }

@@ -33,9 +33,9 @@ public class PostDeriveResponseIndexResponseTest {
   public void testPostDeriveResponseIndexResponse() throws Throwable {
     PostDeriveResponseIndexResponse postDeriveResponseIndexResponseModel = new PostDeriveResponseIndexResponse();
     assertNull(postDeriveResponseIndexResponseModel.getBuckets());
-    assertNull(postDeriveResponseIndexResponseModel.getRecordType());
     assertNull(postDeriveResponseIndexResponseModel.getStandardizedValues());
     assertNull(postDeriveResponseIndexResponseModel.getRecordId());
     assertNull(postDeriveResponseIndexResponseModel.getRecordSource());
+    assertNull(postDeriveResponseIndexResponseModel.getRecordType());
   }
 }

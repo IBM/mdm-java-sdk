@@ -20,14 +20,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ConfigurationMetadata extends GenericModel {
 
-  @SerializedName("last_update_date")
-  protected String lastUpdateDate;
   @SerializedName("created_date")
   protected String createdDate;
   @SerializedName("project_id")
   protected String projectId;
   @SerializedName("catalog_id")
   protected String catalogId;
+  @SerializedName("last_update_date")
+  protected String lastUpdateDate;
   protected String description;
   protected String name;
   protected String id;
@@ -140,17 +140,6 @@ public class ConfigurationMetadata extends GenericModel {
   }
 
   /**
-   * Gets the lastUpdateDate.
-   *
-   * last update date of project metadata.
-   *
-   * @return the lastUpdateDate
-   */
-  public String lastUpdateDate() {
-    return lastUpdateDate;
-  }
-
-  /**
    * Gets the createdDate.
    *
    * created date of configuration metadata.
@@ -181,6 +170,17 @@ public class ConfigurationMetadata extends GenericModel {
    */
   public String catalogId() {
     return catalogId;
+  }
+
+  /**
+   * Gets the lastUpdateDate.
+   *
+   * last update date of project metadata.
+   *
+   * @return the lastUpdateDate
+   */
+  public String lastUpdateDate() {
+    return lastUpdateDate;
   }
 
   /**

@@ -34,8 +34,8 @@ public class RulesResponseEntityRuleTest {
     RulesResponseEntityRule rulesResponseEntityRuleModel = new RulesResponseEntityRule();
     assertNull(rulesResponseEntityRuleModel.getRuleType());
     assertNull(rulesResponseEntityRuleModel.getSrcRecno());
-    assertNull(rulesResponseEntityRuleModel.getLastUpdated());
     assertNull(rulesResponseEntityRuleModel.getTargetRecno());
+    assertNull(rulesResponseEntityRuleModel.getLastUpdated());
     assertNull(rulesResponseEntityRuleModel.getDescription());
     assertNull(rulesResponseEntityRuleModel.getUser());
   }

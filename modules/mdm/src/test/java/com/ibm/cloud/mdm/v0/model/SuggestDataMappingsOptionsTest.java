@@ -43,11 +43,9 @@ public class SuggestDataMappingsOptionsTest {
 
     SuggestDataMappingsOptions suggestDataMappingsOptionsModel = new SuggestDataMappingsOptions.Builder()
       .recordType("person")
-      .crn("testString")
       .columns(new java.util.ArrayList<DataMapping>(java.util.Arrays.asList(dataMappingModel)))
       .build();
     assertEquals(suggestDataMappingsOptionsModel.recordType(), "person");
-    assertEquals(suggestDataMappingsOptionsModel.crn(), "testString");
     assertEquals(suggestDataMappingsOptionsModel.columns(), new java.util.ArrayList<DataMapping>(java.util.Arrays.asList(dataMappingModel)));
   }
 

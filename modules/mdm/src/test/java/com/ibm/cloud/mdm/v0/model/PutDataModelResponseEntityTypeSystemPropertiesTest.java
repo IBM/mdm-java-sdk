@@ -33,7 +33,7 @@ public class PutDataModelResponseEntityTypeSystemPropertiesTest {
   @Test
   public void testPutDataModelResponseEntityTypeSystemProperties() throws Throwable {
     PutDataModelResponseEntityTypeSystemProperties putDataModelResponseEntityTypeSystemPropertiesModel = new PutDataModelResponseEntityTypeSystemProperties();
-    assertNull(putDataModelResponseEntityTypeSystemPropertiesModel.getEntityLastUpdated());
     assertNull(putDataModelResponseEntityTypeSystemPropertiesModel.getEntityId());
+    assertNull(putDataModelResponseEntityTypeSystemPropertiesModel.getEntityLastUpdated());
   }
 }

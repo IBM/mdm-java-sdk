@@ -32,11 +32,11 @@ public class GetFlowResponseTest {
   @Test
   public void testGetFlowResponse() throws Throwable {
     GetFlowResponse getFlowResponseModel = new GetFlowResponse();
-    assertNull(getFlowResponseModel.getFlowId());
-    assertNull(getFlowResponseModel.getFlowState());
+    assertNull(getFlowResponseModel.getRejections());
     assertNull(getFlowResponseModel.getFlowType());
     assertNull(getFlowResponseModel.getApprovals());
-    assertNull(getFlowResponseModel.getRejections());
+    assertNull(getFlowResponseModel.getFlowId());
+    assertNull(getFlowResponseModel.getFlowState());
     assertNull(getFlowResponseModel.isActive());
   }
 }

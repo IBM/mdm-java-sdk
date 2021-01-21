@@ -22,11 +22,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutSetResourcesResponseSetResourceEntry extends GenericModel {
 
+  protected List<String> regex;
   @SerializedName("data_type")
   protected String dataType;
-  protected List<String> regex;
   protected List<String> values;
   protected String category;
+
+  /**
+   * Gets the regex.
+   *
+   * Collection of applicable regular expressions.
+   *
+   * @return the regex
+   */
+  public List<String> getRegex() {
+    return regex;
+  }
 
   /**
    * Gets the dataType.
@@ -38,17 +49,6 @@ public class PutSetResourcesResponseSetResourceEntry extends GenericModel {
    */
   public String getDataType() {
     return dataType;
-  }
-
-  /**
-   * Gets the regex.
-   *
-   * Collection of applicable regular expressions.
-   *
-   * @return the regex
-   */
-  public List<String> getRegex() {
-    return regex;
   }
 
   /**

@@ -22,6 +22,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutCompareSpecResourcesResponseCompareSpecResources extends GenericModel {
 
+  @SerializedName("feature_categories")
+  protected Map<String, PutCompareSpecResourcesResponseFeatureCategory> featureCategories;
   @SerializedName("typo_distance")
   protected Float typoDistance;
   @SerializedName("similar_characters_map_resource")
@@ -30,8 +32,17 @@ public class PutCompareSpecResourcesResponseCompareSpecResources extends Generic
   protected Map<String, Float> featureCoefficients;
   @SerializedName("similar_characters_distance")
   protected Float similarCharactersDistance;
-  @SerializedName("feature_categories")
-  protected Map<String, PutCompareSpecResourcesResponseFeatureCategory> featureCategories;
+
+  /**
+   * Gets the featureCategories.
+   *
+   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
+   *
+   * @return the featureCategories
+   */
+  public Map<String, PutCompareSpecResourcesResponseFeatureCategory> getFeatureCategories() {
+    return featureCategories;
+  }
 
   /**
    * Gets the typoDistance.
@@ -77,17 +88,6 @@ public class PutCompareSpecResourcesResponseCompareSpecResources extends Generic
    */
   public Float getSimilarCharactersDistance() {
     return similarCharactersDistance;
-  }
-
-  /**
-   * Gets the featureCategories.
-   *
-   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
-   *
-   * @return the featureCategories
-   */
-  public Map<String, PutCompareSpecResourcesResponseFeatureCategory> getFeatureCategories() {
-    return featureCategories;
   }
 }
 

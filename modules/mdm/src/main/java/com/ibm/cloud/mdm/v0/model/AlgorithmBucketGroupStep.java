@@ -26,14 +26,14 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
 
-  @SerializedName("inputs")
-  protected List<Long> inputs;
   @SerializedName("order")
   protected Boolean order;
-  @SerializedName("method")
-  protected String method;
+  @SerializedName("inputs")
+  protected List<Long> inputs;
   @SerializedName("fields")
   protected List<List<String>> fields;
+  @SerializedName("method")
+  protected String method;
   @SerializedName("label")
   protected String label;
 
@@ -45,18 +45,18 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private List<Long> inputs;
     private Boolean order;
-    private String method;
+    private List<Long> inputs;
     private List<List<String>> fields;
+    private String method;
     private String label;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmBucketGroupStep algorithmBucketGroupStep) {
-      this.inputs = algorithmBucketGroupStep.inputs;
       this.order = algorithmBucketGroupStep.order;
-      this.method = algorithmBucketGroupStep.method;
+      this.inputs = algorithmBucketGroupStep.inputs;
       this.fields = algorithmBucketGroupStep.fields;
+      this.method = algorithmBucketGroupStep.method;
       this.label = algorithmBucketGroupStep.label;
       this.dynamicProperties = algorithmBucketGroupStep.getProperties();
     }
@@ -71,14 +71,14 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
      * Instantiates a new builder with required properties.
      *
      * @param inputs the inputs
-     * @param method the method
      * @param fields the fields
+     * @param method the method
      * @param label the label
      */
-    public Builder(List<Long> inputs, String method, List<List<String>> fields, String label) {
+    public Builder(List<Long> inputs, List<List<String>> fields, String method, String label) {
       this.inputs = inputs;
-      this.method = method;
       this.fields = fields;
+      this.method = method;
       this.label = label;
     }
 
@@ -124,6 +124,17 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
     }
 
     /**
+     * Set the order.
+     *
+     * @param order the order
+     * @return the AlgorithmBucketGroupStep builder
+     */
+    public Builder order(Boolean order) {
+      this.order = order;
+      return this;
+    }
+
+    /**
      * Set the inputs.
      * Existing inputs will be replaced.
      *
@@ -136,13 +147,14 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the order.
+     * Set the fields.
+     * Existing fields will be replaced.
      *
-     * @param order the order
+     * @param fields the fields
      * @return the AlgorithmBucketGroupStep builder
      */
-    public Builder order(Boolean order) {
-      this.order = order;
+    public Builder fields(List<List<String>> fields) {
+      this.fields = fields;
       return this;
     }
 
@@ -154,18 +166,6 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
      */
     public Builder method(String method) {
       this.method = method;
-      return this;
-    }
-
-    /**
-     * Set the fields.
-     * Existing fields will be replaced.
-     *
-     * @param fields the fields
-     * @return the AlgorithmBucketGroupStep builder
-     */
-    public Builder fields(List<List<String>> fields) {
-      this.fields = fields;
       return this;
     }
 
@@ -201,16 +201,16 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
     super(new TypeToken<Object>() { });
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.inputs,
       "inputs cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
-      "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fields,
       "fields cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
+      "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    inputs = builder.inputs;
     order = builder.order;
-    method = builder.method;
+    inputs = builder.inputs;
     fields = builder.fields;
+    method = builder.method;
     label = builder.label;
     this.setProperties(builder.dynamicProperties);
   }
@@ -222,26 +222,6 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> getInputs() {
-    return this.inputs;
-  }
-
-  /**
-   * Sets the inputs.
-   *
-   * @param inputs the new inputs
-   */
-  public void setInputs(final List<Long> inputs) {
-    this.inputs = inputs;
   }
 
   /**
@@ -265,23 +245,23 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the method.
+   * Gets the inputs.
    *
-   * A bucket generator method. Accepted value is BucketGenerator.StopToken.
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
-   * @return the method
+   * @return the inputs
    */
-  public String getMethod() {
-    return this.method;
+  public List<Long> getInputs() {
+    return this.inputs;
   }
 
   /**
-   * Sets the method.
+   * Sets the inputs.
    *
-   * @param method the new method
+   * @param inputs the new inputs
    */
-  public void setMethod(final String method) {
-    this.method = method;
+  public void setInputs(final List<Long> inputs) {
+    this.inputs = inputs;
   }
 
   /**
@@ -302,6 +282,26 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
    */
   public void setFields(final List<List<String>> fields) {
     this.fields = fields;
+  }
+
+  /**
+   * Gets the method.
+   *
+   * A bucket generator method. Accepted value is BucketGenerator.StopToken.
+   *
+   * @return the method
+   */
+  public String getMethod() {
+    return this.method;
+  }
+
+  /**
+   * Sets the method.
+   *
+   * @param method the new method
+   */
+  public void setMethod(final String method) {
+    this.method = method;
   }
 
   /**

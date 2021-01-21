@@ -23,7 +23,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class SuggestDataMappingsOptions extends GenericModel {
 
   protected String recordType;
-  protected String crn;
   protected List<DataMapping> columns;
 
   /**
@@ -31,12 +30,10 @@ public class SuggestDataMappingsOptions extends GenericModel {
    */
   public static class Builder {
     private String recordType;
-    private String crn;
     private List<DataMapping> columns;
 
     private Builder(SuggestDataMappingsOptions suggestDataMappingsOptions) {
       this.recordType = suggestDataMappingsOptions.recordType;
-      this.crn = suggestDataMappingsOptions.crn;
       this.columns = suggestDataMappingsOptions.columns;
     }
 
@@ -50,11 +47,9 @@ public class SuggestDataMappingsOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param recordType the recordType
-     * @param crn the crn
      */
-    public Builder(String recordType, String crn) {
+    public Builder(String recordType) {
       this.recordType = recordType;
-      this.crn = crn;
     }
 
     /**
@@ -94,17 +89,6 @@ public class SuggestDataMappingsOptions extends GenericModel {
     }
 
     /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the SuggestDataMappingsOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
-    }
-
-    /**
      * Set the columns.
      * Existing columns will be replaced.
      *
@@ -120,10 +104,7 @@ public class SuggestDataMappingsOptions extends GenericModel {
   protected SuggestDataMappingsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
       "recordType cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     recordType = builder.recordType;
-    crn = builder.crn;
     columns = builder.columns;
   }
 
@@ -145,17 +126,6 @@ public class SuggestDataMappingsOptions extends GenericModel {
    */
   public String recordType() {
     return recordType;
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The cloud resource name of the service.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

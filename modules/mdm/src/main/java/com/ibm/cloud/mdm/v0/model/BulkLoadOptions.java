@@ -19,18 +19,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class BulkLoadOptions extends GenericModel {
 
-  protected String crn;
   protected PublishDataRequestCosDetails cosDetails;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private PublishDataRequestCosDetails cosDetails;
 
     private Builder(BulkLoadOptions bulkLoadOptions) {
-      this.crn = bulkLoadOptions.crn;
       this.cosDetails = bulkLoadOptions.cosDetails;
     }
 
@@ -43,11 +40,9 @@ public class BulkLoadOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param cosDetails the cosDetails
      */
-    public Builder(String crn, PublishDataRequestCosDetails cosDetails) {
-      this.crn = crn;
+    public Builder(PublishDataRequestCosDetails cosDetails) {
       this.cosDetails = cosDetails;
     }
 
@@ -58,17 +53,6 @@ public class BulkLoadOptions extends GenericModel {
      */
     public BulkLoadOptions build() {
       return new BulkLoadOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the BulkLoadOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -84,11 +68,8 @@ public class BulkLoadOptions extends GenericModel {
   }
 
   protected BulkLoadOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cosDetails,
       "cosDetails cannot be null");
-    crn = builder.crn;
     cosDetails = builder.cosDetails;
   }
 
@@ -99,17 +80,6 @@ public class BulkLoadOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The cloud resource name of the service.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

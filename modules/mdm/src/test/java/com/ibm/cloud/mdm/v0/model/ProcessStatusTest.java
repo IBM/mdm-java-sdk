@@ -32,9 +32,7 @@ public class ProcessStatusTest {
   @Test
   public void testProcessStatus() throws Throwable {
     ProcessStatus processStatusModel = new ProcessStatus();
-    assertNull(processStatusModel.getRecordType());
     assertNull(processStatusModel.getStatus());
-    assertNull(processStatusModel.getProcessName());
     assertNull(processStatusModel.getMessage());
   }
 }

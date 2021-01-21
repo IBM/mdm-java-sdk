@@ -23,30 +23,19 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class PutAlgorithmResponseBucketGroupStep extends DynamicModel<Object> {
 
-  @SerializedName("inputs")
-  protected List<Long> inputs;
   @SerializedName("order")
   protected Boolean order;
-  @SerializedName("method")
-  protected String method;
+  @SerializedName("inputs")
+  protected List<Long> inputs;
   @SerializedName("fields")
   protected List<List<String>> fields;
+  @SerializedName("method")
+  protected String method;
   @SerializedName("label")
   protected String label;
 
   public PutAlgorithmResponseBucketGroupStep() {
     super(new TypeToken<Object>() { });
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> getInputs() {
-    return this.inputs;
   }
 
   /**
@@ -61,14 +50,14 @@ public class PutAlgorithmResponseBucketGroupStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the method.
+   * Gets the inputs.
    *
-   * A bucket generator method. Accepted value is BucketGenerator.StopToken.
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
-   * @return the method
+   * @return the inputs
    */
-  public String getMethod() {
-    return this.method;
+  public List<Long> getInputs() {
+    return this.inputs;
   }
 
   /**
@@ -80,6 +69,17 @@ public class PutAlgorithmResponseBucketGroupStep extends DynamicModel<Object> {
    */
   public List<List<String>> getFields() {
     return this.fields;
+  }
+
+  /**
+   * Gets the method.
+   *
+   * A bucket generator method. Accepted value is BucketGenerator.StopToken.
+   *
+   * @return the method
+   */
+  public String getMethod() {
+    return this.method;
   }
 
   /**

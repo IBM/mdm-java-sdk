@@ -37,9 +37,9 @@ public class GetSummaryResponseTest {
   @Test
   public void testGetSummaryResponse() throws Throwable {
     GetSummaryResponse getSummaryResponseModel = new GetSummaryResponse();
-    assertNull(getSummaryResponseModel.getTotalRecords());
-    assertNull(getSummaryResponseModel.getSingletonEntityCount());
     assertNull(getSummaryResponseModel.getStatsAndEntities());
     assertNull(getSummaryResponseModel.getUniqueSourceCount());
+    assertNull(getSummaryResponseModel.getTotalRecords());
+    assertNull(getSummaryResponseModel.getSingletonEntityCount());
   }
 }

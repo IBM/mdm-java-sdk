@@ -21,11 +21,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class PutDataModelResponseAttribute extends GenericModel {
 
   protected String classification;
-  protected Boolean indexed;
   @SerializedName("matching_type")
   protected String matchingType;
   @SerializedName("attribute_type")
   protected String attributeType;
+  protected Boolean indexed;
   protected String description;
   protected String cardinality;
   protected String label;
@@ -39,17 +39,6 @@ public class PutDataModelResponseAttribute extends GenericModel {
    */
   public String getClassification() {
     return classification;
-  }
-
-  /**
-   * Gets the indexed.
-   *
-   * User defined indexed indicator. The default value is true.
-   *
-   * @return the indexed
-   */
-  public Boolean isIndexed() {
-    return indexed;
   }
 
   /**
@@ -73,6 +62,17 @@ public class PutDataModelResponseAttribute extends GenericModel {
    */
   public String getAttributeType() {
     return attributeType;
+  }
+
+  /**
+   * Gets the indexed.
+   *
+   * User defined indexed indicator. The default value is true.
+   *
+   * @return the indexed
+   */
+  public Boolean isIndexed() {
+    return indexed;
   }
 
   /**

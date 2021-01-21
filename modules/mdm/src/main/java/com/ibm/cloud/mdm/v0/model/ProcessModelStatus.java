@@ -16,26 +16,50 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * process response.
+ * Process Model Status.
  */
-public class ProcessResponseProcess extends GenericModel {
+public class ProcessModelStatus extends GenericModel {
 
+  @SerializedName("record_type_label")
+  protected String recordTypeLabel;
   @SerializedName("record_type")
   protected String recordType;
-  protected String status;
   @SerializedName("process_name")
   protected String processName;
+  protected String status;
   protected String message;
+
+  /**
+   * Gets the recordTypeLabel.
+   *
+   * record type label.
+   *
+   * @return the recordTypeLabel
+   */
+  public String getRecordTypeLabel() {
+    return recordTypeLabel;
+  }
 
   /**
    * Gets the recordType.
    *
-   * record_type.
+   * record type.
    *
    * @return the recordType
    */
   public String getRecordType() {
     return recordType;
+  }
+
+  /**
+   * Gets the processName.
+   *
+   * process name.
+   *
+   * @return the processName
+   */
+  public String getProcessName() {
+    return processName;
   }
 
   /**
@@ -47,17 +71,6 @@ public class ProcessResponseProcess extends GenericModel {
    */
   public String getStatus() {
     return status;
-  }
-
-  /**
-   * Gets the processName.
-   *
-   * process_name.
-   *
-   * @return the processName
-   */
-  public String getProcessName() {
-    return processName;
   }
 
   /**

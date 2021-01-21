@@ -32,9 +32,9 @@ public class PropertyTest {
   @Test
   public void testProperty() throws Throwable {
     Property propertyModel = new Property();
-    assertNull(propertyModel.getDesignation());
     assertNull(propertyModel.getDefaultDisplayName());
     assertNull(propertyModel.getDataType());
+    assertNull(propertyModel.getDesignation());
     assertNull(propertyModel.getName());
   }
 }

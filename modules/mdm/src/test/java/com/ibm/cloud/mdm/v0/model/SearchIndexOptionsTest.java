@@ -33,14 +33,14 @@ public class SearchIndexOptionsTest {
   @Test
   public void testSearchIndexOptions() throws Throwable {
     CompareRecordsRequestAttributes compareRecordsRequestAttributesModel = new CompareRecordsRequestAttributes.Builder()
-      .recordLastUpdated("testString")
       .recordId("testString")
       .recordSource("testString")
+      .recordLastUpdated("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(compareRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
     assertEquals(compareRecordsRequestAttributesModel.getRecordId(), "testString");
     assertEquals(compareRecordsRequestAttributesModel.getRecordSource(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
     assertEquals(compareRecordsRequestAttributesModel.get("foo"), "testString");
 
     SearchIndexOptions searchIndexOptionsModel = new SearchIndexOptions.Builder()

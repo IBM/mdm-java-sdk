@@ -20,10 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelSystemProperty extends GenericModel {
 
-  protected Boolean indexed;
+  protected Boolean editable;
   @SerializedName("data_type")
   protected String dataType;
-  protected Boolean editable;
+  protected Boolean indexed;
   protected String description;
   protected String label;
 
@@ -31,16 +31,16 @@ public class DataModelSystemProperty extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private Boolean indexed;
-    private String dataType;
     private Boolean editable;
+    private String dataType;
+    private Boolean indexed;
     private String description;
     private String label;
 
     private Builder(DataModelSystemProperty dataModelSystemProperty) {
-      this.indexed = dataModelSystemProperty.indexed;
-      this.dataType = dataModelSystemProperty.dataType;
       this.editable = dataModelSystemProperty.editable;
+      this.dataType = dataModelSystemProperty.dataType;
+      this.indexed = dataModelSystemProperty.indexed;
       this.description = dataModelSystemProperty.description;
       this.label = dataModelSystemProperty.label;
     }
@@ -72,13 +72,13 @@ public class DataModelSystemProperty extends GenericModel {
     }
 
     /**
-     * Set the indexed.
+     * Set the editable.
      *
-     * @param indexed the indexed
+     * @param editable the editable
      * @return the DataModelSystemProperty builder
      */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
+    public Builder editable(Boolean editable) {
+      this.editable = editable;
       return this;
     }
 
@@ -94,13 +94,13 @@ public class DataModelSystemProperty extends GenericModel {
     }
 
     /**
-     * Set the editable.
+     * Set the indexed.
      *
-     * @param editable the editable
+     * @param indexed the indexed
      * @return the DataModelSystemProperty builder
      */
-    public Builder editable(Boolean editable) {
-      this.editable = editable;
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
       return this;
     }
 
@@ -132,9 +132,9 @@ public class DataModelSystemProperty extends GenericModel {
       "dataType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    indexed = builder.indexed;
-    dataType = builder.dataType;
     editable = builder.editable;
+    dataType = builder.dataType;
+    indexed = builder.indexed;
     description = builder.description;
     label = builder.label;
   }
@@ -149,14 +149,14 @@ public class DataModelSystemProperty extends GenericModel {
   }
 
   /**
-   * Gets the indexed.
+   * Gets the editable.
    *
-   * System pre-defined indexed indicator. The default value is true.
+   * System pre-defined editable indicator. The default value is false.
    *
-   * @return the indexed
+   * @return the editable
    */
-  public Boolean indexed() {
-    return indexed;
+  public Boolean editable() {
+    return editable;
   }
 
   /**
@@ -171,14 +171,14 @@ public class DataModelSystemProperty extends GenericModel {
   }
 
   /**
-   * Gets the editable.
+   * Gets the indexed.
    *
-   * System pre-defined editable indicator. The default value is false.
+   * System pre-defined indexed indicator. The default value is true.
    *
-   * @return the editable
+   * @return the indexed
    */
-  public Boolean editable() {
-    return editable;
+  public Boolean indexed() {
+    return indexed;
   }
 
   /**

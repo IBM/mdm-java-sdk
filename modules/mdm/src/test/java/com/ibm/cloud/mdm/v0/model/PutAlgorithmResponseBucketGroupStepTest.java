@@ -32,10 +32,10 @@ public class PutAlgorithmResponseBucketGroupStepTest {
   @Test
   public void testPutAlgorithmResponseBucketGroupStep() throws Throwable {
     PutAlgorithmResponseBucketGroupStep putAlgorithmResponseBucketGroupStepModel = new PutAlgorithmResponseBucketGroupStep();
-    assertNull(putAlgorithmResponseBucketGroupStepModel.getInputs());
     assertNull(putAlgorithmResponseBucketGroupStepModel.isOrder());
-    assertNull(putAlgorithmResponseBucketGroupStepModel.getMethod());
+    assertNull(putAlgorithmResponseBucketGroupStepModel.getInputs());
     assertNull(putAlgorithmResponseBucketGroupStepModel.getFields());
+    assertNull(putAlgorithmResponseBucketGroupStepModel.getMethod());
     assertNull(putAlgorithmResponseBucketGroupStepModel.getLabel());
   }
 }

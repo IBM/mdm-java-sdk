@@ -31,15 +31,7 @@ public class PublishModelOptionsTest {
 
   @Test
   public void testPublishModelOptions() throws Throwable {
-    PublishModelOptions publishModelOptionsModel = new PublishModelOptions.Builder()
-      .crn("testString")
-      .build();
-    assertEquals(publishModelOptionsModel.crn(), "testString");
+    PublishModelOptions publishModelOptionsModel = new PublishModelOptions();
+    assertNotNull(publishModelOptionsModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testPublishModelOptionsError() throws Throwable {
-    new PublishModelOptions.Builder().build();
-  }
-
 }

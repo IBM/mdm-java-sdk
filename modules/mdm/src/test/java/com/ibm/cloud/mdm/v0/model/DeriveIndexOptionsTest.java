@@ -36,14 +36,14 @@ public class DeriveIndexOptionsTest {
   @Test
   public void testDeriveIndexOptions() throws Throwable {
     DeriveRecordsRequestAttributes deriveRecordsRequestAttributesModel = new DeriveRecordsRequestAttributes.Builder()
-      .recordLastUpdated("testString")
       .recordId("testString")
       .recordSource("testString")
+      .recordLastUpdated("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(deriveRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
     assertEquals(deriveRecordsRequestAttributesModel.getRecordId(), "testString");
     assertEquals(deriveRecordsRequestAttributesModel.getRecordSource(), "testString");
+    assertEquals(deriveRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
     assertEquals(deriveRecordsRequestAttributesModel.get("foo"), "testString");
 
     DeriveRecordsRequestRecord deriveRecordsRequestRecordModel = new DeriveRecordsRequestRecord.Builder()

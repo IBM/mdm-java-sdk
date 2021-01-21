@@ -24,12 +24,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class GetIndexResponse extends GenericModel {
 
   protected List<Long> buckets;
+  @SerializedName("self_scores")
+  protected Map<String, Object> selfScores;
   @SerializedName("standardized_values")
   protected String standardizedValues;
   @SerializedName("record_number")
   protected String recordNumber;
-  @SerializedName("self_scores")
-  protected Map<String, Object> selfScores;
 
   /**
    * Gets the buckets.
@@ -40,6 +40,17 @@ public class GetIndexResponse extends GenericModel {
    */
   public List<Long> getBuckets() {
     return buckets;
+  }
+
+  /**
+   * Gets the selfScores.
+   *
+   * Collection of self comparison scores of the source record for each entity type.
+   *
+   * @return the selfScores
+   */
+  public Map<String, Object> getSelfScores() {
+    return selfScores;
   }
 
   /**
@@ -62,17 +73,6 @@ public class GetIndexResponse extends GenericModel {
    */
   public String getRecordNumber() {
     return recordNumber;
-  }
-
-  /**
-   * Gets the selfScores.
-   *
-   * Collection of self comparison scores of the source record for each entity type.
-   *
-   * @return the selfScores
-   */
-  public Map<String, Object> getSelfScores() {
-    return selfScores;
   }
 }
 

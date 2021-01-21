@@ -19,19 +19,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseRelationshipRule extends GenericModel {
 
-  protected PutDataModelResponseRelationshipEndpoint source;
   protected PutDataModelResponseRelationshipEndpoint target;
-
-  /**
-   * Gets the source.
-   *
-   * Defines record types or entity types allowed as relationship endpoint.
-   *
-   * @return the source
-   */
-  public PutDataModelResponseRelationshipEndpoint getSource() {
-    return source;
-  }
+  protected PutDataModelResponseRelationshipEndpoint source;
 
   /**
    * Gets the target.
@@ -42,6 +31,17 @@ public class PutDataModelResponseRelationshipRule extends GenericModel {
    */
   public PutDataModelResponseRelationshipEndpoint getTarget() {
     return target;
+  }
+
+  /**
+   * Gets the source.
+   *
+   * Defines record types or entity types allowed as relationship endpoint.
+   *
+   * @return the source
+   */
+  public PutDataModelResponseRelationshipEndpoint getSource() {
+    return source;
   }
 }
 

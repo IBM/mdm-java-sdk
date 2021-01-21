@@ -20,21 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseEntityTypeSystemProperties extends GenericModel {
 
-  @SerializedName("entity_last_updated")
-  protected PutDataModelResponseSystemProperty entityLastUpdated;
   @SerializedName("entity_id")
   protected PutDataModelResponseSystemProperty entityId;
-
-  /**
-   * Gets the entityLastUpdated.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the entityLastUpdated
-   */
-  public PutDataModelResponseSystemProperty getEntityLastUpdated() {
-    return entityLastUpdated;
-  }
+  @SerializedName("entity_last_updated")
+  protected PutDataModelResponseSystemProperty entityLastUpdated;
 
   /**
    * Gets the entityId.
@@ -45,6 +34,17 @@ public class PutDataModelResponseEntityTypeSystemProperties extends GenericModel
    */
   public PutDataModelResponseSystemProperty getEntityId() {
     return entityId;
+  }
+
+  /**
+   * Gets the entityLastUpdated.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the entityLastUpdated
+   */
+  public PutDataModelResponseSystemProperty getEntityLastUpdated() {
+    return entityLastUpdated;
   }
 }
 

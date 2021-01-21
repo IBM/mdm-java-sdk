@@ -24,10 +24,10 @@ public class RulesResponseEntityRule extends GenericModel {
   protected String ruleType;
   @SerializedName("src_recno")
   protected String srcRecno;
-  @SerializedName("last_updated")
-  protected Long lastUpdated;
   @SerializedName("target_recno")
   protected String targetRecno;
+  @SerializedName("last_updated")
+  protected Long lastUpdated;
   protected String description;
   protected String user;
 
@@ -54,17 +54,6 @@ public class RulesResponseEntityRule extends GenericModel {
   }
 
   /**
-   * Gets the lastUpdated.
-   *
-   * System generated timestamp when the linkage rule was last updated.
-   *
-   * @return the lastUpdated
-   */
-  public Long getLastUpdated() {
-    return lastUpdated;
-  }
-
-  /**
    * Gets the targetRecno.
    *
    * The other record number in linkage rule.
@@ -73,6 +62,17 @@ public class RulesResponseEntityRule extends GenericModel {
    */
   public String getTargetRecno() {
     return targetRecno;
+  }
+
+  /**
+   * Gets the lastUpdated.
+   *
+   * System generated timestamp when the linkage rule was last updated.
+   *
+   * @return the lastUpdated
+   */
+  public Long getLastUpdated() {
+    return lastUpdated;
   }
 
   /**

@@ -35,7 +35,7 @@ public class PutDataModelResponseRelationshipRuleTest {
   @Test
   public void testPutDataModelResponseRelationshipRule() throws Throwable {
     PutDataModelResponseRelationshipRule putDataModelResponseRelationshipRuleModel = new PutDataModelResponseRelationshipRule();
-    assertNull(putDataModelResponseRelationshipRuleModel.getSource());
     assertNull(putDataModelResponseRelationshipRuleModel.getTarget());
+    assertNull(putDataModelResponseRelationshipRuleModel.getSource());
   }
 }

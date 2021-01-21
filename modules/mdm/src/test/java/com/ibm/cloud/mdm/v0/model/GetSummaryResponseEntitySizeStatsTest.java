@@ -32,9 +32,9 @@ public class GetSummaryResponseEntitySizeStatsTest {
   @Test
   public void testGetSummaryResponseEntitySizeStats() throws Throwable {
     GetSummaryResponseEntitySizeStats getSummaryResponseEntitySizeStatsModel = new GetSummaryResponseEntitySizeStats();
-    assertNull(getSummaryResponseEntitySizeStatsModel.getAverage());
     assertNull(getSummaryResponseEntitySizeStatsModel.getVariance());
     assertNull(getSummaryResponseEntitySizeStatsModel.getStandardDeviation());
+    assertNull(getSummaryResponseEntitySizeStatsModel.getAverage());
     assertNull(getSummaryResponseEntitySizeStatsModel.getCount());
     assertNull(getSummaryResponseEntitySizeStatsModel.getMin());
     assertNull(getSummaryResponseEntitySizeStatsModel.getMax());

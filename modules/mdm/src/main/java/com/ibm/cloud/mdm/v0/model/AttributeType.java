@@ -21,25 +21,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AttributeType extends GenericModel {
 
-  protected String label;
-  protected String description;
   protected String classification;
   protected Map<String, FieldType> fields;
+  protected String label;
+  protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
-    private String description;
     private String classification;
     private Map<String, FieldType> fields;
+    private String label;
+    private String description;
 
     private Builder(AttributeType attributeType) {
-      this.label = attributeType.label;
-      this.description = attributeType.description;
       this.classification = attributeType.classification;
       this.fields = attributeType.fields;
+      this.label = attributeType.label;
+      this.description = attributeType.description;
     }
 
     /**
@@ -67,28 +67,6 @@ public class AttributeType extends GenericModel {
     }
 
     /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the AttributeType builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the AttributeType builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
      * Set the classification.
      *
      * @param classification the classification
@@ -109,15 +87,37 @@ public class AttributeType extends GenericModel {
       this.fields = fields;
       return this;
     }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the AttributeType builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the AttributeType builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
   }
 
   protected AttributeType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    label = builder.label;
-    description = builder.description;
     classification = builder.classification;
     fields = builder.fields;
+    label = builder.label;
+    description = builder.description;
   }
 
   /**
@@ -127,28 +127,6 @@ public class AttributeType extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the label.
-   *
-   * label description.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
-   * Gets the description.
-   *
-   * attribute description.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
   }
 
   /**
@@ -171,6 +149,28 @@ public class AttributeType extends GenericModel {
    */
   public Map<String, FieldType> fields() {
     return fields;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * label description.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * attribute description.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
   }
 }
 

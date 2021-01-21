@@ -45,11 +45,11 @@ public class InstanceMetadataTest {
     assertEquals(instanceMetadataProjectModel.projectName(), "testString");
 
     InstanceMetadataCatalog instanceMetadataCatalogModel = new InstanceMetadataCatalog.Builder()
-      .catalogId("testString")
       .catalogInstance("testString")
+      .catalogId("testString")
       .build();
-    assertEquals(instanceMetadataCatalogModel.catalogId(), "testString");
     assertEquals(instanceMetadataCatalogModel.catalogInstance(), "testString");
+    assertEquals(instanceMetadataCatalogModel.catalogId(), "testString");
 
     InstanceMetadata instanceMetadataModel = new InstanceMetadata.Builder()
       .projects(new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)))

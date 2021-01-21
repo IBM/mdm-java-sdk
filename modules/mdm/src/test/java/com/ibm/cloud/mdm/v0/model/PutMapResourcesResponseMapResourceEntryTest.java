@@ -32,11 +32,11 @@ public class PutMapResourcesResponseMapResourceEntryTest {
   @Test
   public void testPutMapResourcesResponseMapResourceEntry() throws Throwable {
     PutMapResourcesResponseMapResourceEntry putMapResourcesResponseMapResourceEntryModel = new PutMapResourcesResponseMapResourceEntry();
-    assertNull(putMapResourcesResponseMapResourceEntryModel.getDataType());
     assertNull(putMapResourcesResponseMapResourceEntryModel.getRegex());
+    assertNull(putMapResourcesResponseMapResourceEntryModel.getDataType());
     assertNull(putMapResourcesResponseMapResourceEntryModel.getCardinality());
-    assertNull(putMapResourcesResponseMapResourceEntryModel.getValues());
     assertNull(putMapResourcesResponseMapResourceEntryModel.getKey());
+    assertNull(putMapResourcesResponseMapResourceEntryModel.getValues());
     assertNull(putMapResourcesResponseMapResourceEntryModel.getCategory());
   }
 }

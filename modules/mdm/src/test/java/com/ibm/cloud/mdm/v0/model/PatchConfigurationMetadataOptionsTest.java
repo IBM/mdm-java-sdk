@@ -32,13 +32,11 @@ public class PatchConfigurationMetadataOptionsTest {
   @Test
   public void testPatchConfigurationMetadataOptions() throws Throwable {
     PatchConfigurationMetadataOptions patchConfigurationMetadataOptionsModel = new PatchConfigurationMetadataOptions.Builder()
-      .crn("testString")
       .description("Example configuration")
       .name("Configuration 1")
       .projectId("0e4bb17d-4871-40a5-b5a1-55b2866fe000")
       .catalogId("ee1de5f6-54da-4246-95bc-7bc282151000")
       .build();
-    assertEquals(patchConfigurationMetadataOptionsModel.crn(), "testString");
     assertEquals(patchConfigurationMetadataOptionsModel.description(), "Example configuration");
     assertEquals(patchConfigurationMetadataOptionsModel.name(), "Configuration 1");
     assertEquals(patchConfigurationMetadataOptionsModel.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");

@@ -26,20 +26,20 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmBucketStep extends DynamicModel<Object> {
 
-  @SerializedName("inputs")
-  protected List<Long> inputs;
   @SerializedName("order")
   protected Boolean order;
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
-  @SerializedName("method")
-  protected String method;
+  @SerializedName("inputs")
+  protected List<Long> inputs;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
   @SerializedName("fields")
   protected List<String> fields;
+  @SerializedName("method")
+  protected String method;
   @SerializedName("label")
   protected String label;
 
@@ -51,24 +51,24 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private List<Long> inputs;
     private Boolean order;
-    private String comparisonResource;
     private String setResource;
     private String mapResource;
-    private String method;
+    private List<Long> inputs;
+    private String comparisonResource;
     private List<String> fields;
+    private String method;
     private String label;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmBucketStep algorithmBucketStep) {
-      this.inputs = algorithmBucketStep.inputs;
       this.order = algorithmBucketStep.order;
-      this.comparisonResource = algorithmBucketStep.comparisonResource;
       this.setResource = algorithmBucketStep.setResource;
       this.mapResource = algorithmBucketStep.mapResource;
-      this.method = algorithmBucketStep.method;
+      this.inputs = algorithmBucketStep.inputs;
+      this.comparisonResource = algorithmBucketStep.comparisonResource;
       this.fields = algorithmBucketStep.fields;
+      this.method = algorithmBucketStep.method;
       this.label = algorithmBucketStep.label;
       this.dynamicProperties = algorithmBucketStep.getProperties();
     }
@@ -132,18 +132,6 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
-     *
-     * @param inputs the inputs
-     * @return the AlgorithmBucketStep builder
-     */
-    public Builder inputs(List<Long> inputs) {
-      this.inputs = inputs;
-      return this;
-    }
-
-    /**
      * Set the order.
      *
      * @param order the order
@@ -151,17 +139,6 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
      */
     public Builder order(Boolean order) {
       this.order = order;
-      return this;
-    }
-
-    /**
-     * Set the comparisonResource.
-     *
-     * @param comparisonResource the comparisonResource
-     * @return the AlgorithmBucketStep builder
-     */
-    public Builder comparisonResource(String comparisonResource) {
-      this.comparisonResource = comparisonResource;
       return this;
     }
 
@@ -188,13 +165,25 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the method.
+     * Set the inputs.
+     * Existing inputs will be replaced.
      *
-     * @param method the method
+     * @param inputs the inputs
      * @return the AlgorithmBucketStep builder
      */
-    public Builder method(String method) {
-      this.method = method;
+    public Builder inputs(List<Long> inputs) {
+      this.inputs = inputs;
+      return this;
+    }
+
+    /**
+     * Set the comparisonResource.
+     *
+     * @param comparisonResource the comparisonResource
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder comparisonResource(String comparisonResource) {
+      this.comparisonResource = comparisonResource;
       return this;
     }
 
@@ -207,6 +196,17 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
      */
     public Builder fields(List<String> fields) {
       this.fields = fields;
+      return this;
+    }
+
+    /**
+     * Set the method.
+     *
+     * @param method the method
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder method(String method) {
+      this.method = method;
       return this;
     }
 
@@ -244,13 +244,13 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
       "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    inputs = builder.inputs;
     order = builder.order;
-    comparisonResource = builder.comparisonResource;
     setResource = builder.setResource;
     mapResource = builder.mapResource;
-    method = builder.method;
+    inputs = builder.inputs;
+    comparisonResource = builder.comparisonResource;
     fields = builder.fields;
+    method = builder.method;
     label = builder.label;
     this.setProperties(builder.dynamicProperties);
   }
@@ -262,26 +262,6 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> getInputs() {
-    return this.inputs;
-  }
-
-  /**
-   * Sets the inputs.
-   *
-   * @param inputs the new inputs
-   */
-  public void setInputs(final List<Long> inputs) {
-    this.inputs = inputs;
   }
 
   /**
@@ -302,26 +282,6 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    */
   public void setOrder(final Boolean order) {
     this.order = order;
-  }
-
-  /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String getComparisonResource() {
-    return this.comparisonResource;
-  }
-
-  /**
-   * Sets the comparisonResource.
-   *
-   * @param comparisonResource the new comparisonResource
-   */
-  public void setComparisonResource(final String comparisonResource) {
-    this.comparisonResource = comparisonResource;
   }
 
   /**
@@ -365,24 +325,43 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the method.
+   * Gets the inputs.
    *
-   * A bucket generator method. One of: BucketGenerator.StopToken, BucketGenerator.NGram, BucketGenerator.Normphone,
-   * BucketGenerator.PickToken or BucketGenerator.MapToken.
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
-   * @return the method
+   * @return the inputs
    */
-  public String getMethod() {
-    return this.method;
+  public List<Long> getInputs() {
+    return this.inputs;
   }
 
   /**
-   * Sets the method.
+   * Sets the inputs.
    *
-   * @param method the new method
+   * @param inputs the new inputs
    */
-  public void setMethod(final String method) {
-    this.method = method;
+  public void setInputs(final List<Long> inputs) {
+    this.inputs = inputs;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String getComparisonResource() {
+    return this.comparisonResource;
+  }
+
+  /**
+   * Sets the comparisonResource.
+   *
+   * @param comparisonResource the new comparisonResource
+   */
+  public void setComparisonResource(final String comparisonResource) {
+    this.comparisonResource = comparisonResource;
   }
 
   /**
@@ -403,6 +382,27 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    */
   public void setFields(final List<String> fields) {
     this.fields = fields;
+  }
+
+  /**
+   * Gets the method.
+   *
+   * A bucket generator method. One of: BucketGenerator.StopToken, BucketGenerator.NGram, BucketGenerator.Normphone,
+   * BucketGenerator.PickToken or BucketGenerator.MapToken.
+   *
+   * @return the method
+   */
+  public String getMethod() {
+    return this.method;
+  }
+
+  /**
+   * Sets the method.
+   *
+   * @param method the new method
+   */
+  public void setMethod(final String method) {
+    this.method = method;
   }
 
   /**

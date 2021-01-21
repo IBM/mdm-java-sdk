@@ -33,10 +33,8 @@ public class SuggestMatchingAttributesOptionsTest {
   public void testSuggestMatchingAttributesOptions() throws Throwable {
     SuggestMatchingAttributesOptions suggestMatchingAttributesOptionsModel = new SuggestMatchingAttributesOptions.Builder()
       .recordType("testString")
-      .crn("testString")
       .build();
     assertEquals(suggestMatchingAttributesOptionsModel.recordType(), "testString");
-    assertEquals(suggestMatchingAttributesOptionsModel.crn(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

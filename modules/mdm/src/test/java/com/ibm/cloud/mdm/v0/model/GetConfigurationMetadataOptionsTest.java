@@ -31,15 +31,7 @@ public class GetConfigurationMetadataOptionsTest {
 
   @Test
   public void testGetConfigurationMetadataOptions() throws Throwable {
-    GetConfigurationMetadataOptions getConfigurationMetadataOptionsModel = new GetConfigurationMetadataOptions.Builder()
-      .crn("testString")
-      .build();
-    assertEquals(getConfigurationMetadataOptionsModel.crn(), "testString");
+    GetConfigurationMetadataOptions getConfigurationMetadataOptionsModel = new GetConfigurationMetadataOptions();
+    assertNotNull(getConfigurationMetadataOptionsModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGetConfigurationMetadataOptionsError() throws Throwable {
-    new GetConfigurationMetadataOptions.Builder().build();
-  }
-
 }

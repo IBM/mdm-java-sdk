@@ -35,8 +35,8 @@ public class PutDataModelResponseRecordTypeSystemPropertiesTest {
     PutDataModelResponseRecordTypeSystemProperties putDataModelResponseRecordTypeSystemPropertiesModel = new PutDataModelResponseRecordTypeSystemProperties();
     assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getCollectionId());
     assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordLastUpdated());
-    assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordSource());
-    assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordNumber());
     assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordId());
+    assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordNumber());
+    assertNull(putDataModelResponseRecordTypeSystemPropertiesModel.getRecordSource());
   }
 }
