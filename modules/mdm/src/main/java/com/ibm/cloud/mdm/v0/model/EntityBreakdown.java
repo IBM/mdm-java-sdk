@@ -20,24 +20,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class EntityBreakdown extends GenericModel {
 
-  protected String average;
   @SerializedName("standard_deviation")
   protected String standardDeviation;
+  protected String average;
   protected String variance;
   protected String count;
   protected String min;
   protected String max;
-
-  /**
-   * Gets the average.
-   *
-   * average.
-   *
-   * @return the average
-   */
-  public String getAverage() {
-    return average;
-  }
 
   /**
    * Gets the standardDeviation.
@@ -48,6 +37,17 @@ public class EntityBreakdown extends GenericModel {
    */
   public String getStandardDeviation() {
     return standardDeviation;
+  }
+
+  /**
+   * Gets the average.
+   *
+   * average.
+   *
+   * @return the average
+   */
+  public String getAverage() {
+    return average;
   }
 
   /**

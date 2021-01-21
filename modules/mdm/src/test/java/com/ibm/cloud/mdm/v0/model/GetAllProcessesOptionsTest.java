@@ -32,16 +32,8 @@ public class GetAllProcessesOptionsTest {
   @Test
   public void testGetAllProcessesOptions() throws Throwable {
     GetAllProcessesOptions getAllProcessesOptionsModel = new GetAllProcessesOptions.Builder()
-      .crn("testString")
       .status("status")
       .build();
-    assertEquals(getAllProcessesOptionsModel.crn(), "testString");
     assertEquals(getAllProcessesOptionsModel.status(), "status");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGetAllProcessesOptionsError() throws Throwable {
-    new GetAllProcessesOptions.Builder().build();
-  }
-
 }

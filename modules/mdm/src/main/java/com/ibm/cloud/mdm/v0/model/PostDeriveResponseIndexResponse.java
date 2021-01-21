@@ -26,14 +26,14 @@ public class PostDeriveResponseIndexResponse extends DynamicModel<Object> {
 
   @SerializedName("buckets")
   protected List<Long> buckets;
-  @SerializedName("record_type")
-  protected String recordType;
   @SerializedName("standardized_values")
   protected Map<String, Object> standardizedValues;
   @SerializedName("record_id")
   protected String recordId;
   @SerializedName("record_source")
   protected String recordSource;
+  @SerializedName("record_type")
+  protected String recordType;
 
   public PostDeriveResponseIndexResponse() {
     super(new TypeToken<Object>() { });
@@ -48,17 +48,6 @@ public class PostDeriveResponseIndexResponse extends DynamicModel<Object> {
    */
   public List<Long> getBuckets() {
     return this.buckets;
-  }
-
-  /**
-   * Gets the recordType.
-   *
-   * The data type identifier of the record, ie. person, organization.
-   *
-   * @return the recordType
-   */
-  public String getRecordType() {
-    return this.recordType;
   }
 
   /**
@@ -92,5 +81,16 @@ public class PostDeriveResponseIndexResponse extends DynamicModel<Object> {
    */
   public String getRecordSource() {
     return this.recordSource;
+  }
+
+  /**
+   * Gets the recordType.
+   *
+   * The data type identifier of the record, ie. person, organization.
+   *
+   * @return the recordType
+   */
+  public String getRecordType() {
+    return this.recordType;
   }
 }

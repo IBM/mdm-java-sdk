@@ -33,10 +33,8 @@ public class GetConfigDataModelAttributesOptionsTest {
   public void testGetConfigDataModelAttributesOptions() throws Throwable {
     GetConfigDataModelAttributesOptions getConfigDataModelAttributesOptionsModel = new GetConfigDataModelAttributesOptions.Builder()
       .recordType("testString")
-      .crn("testString")
       .build();
     assertEquals(getConfigDataModelAttributesOptionsModel.recordType(), "testString");
-    assertEquals(getConfigDataModelAttributesOptionsModel.crn(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

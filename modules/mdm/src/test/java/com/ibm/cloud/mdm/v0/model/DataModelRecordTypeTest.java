@@ -42,17 +42,17 @@ public class DataModelRecordTypeTest {
 
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
       .classification("testString")
-      .indexed(true)
       .matchingType("testString")
       .attributeType("testString")
+      .indexed(true)
       .description("testString")
       .cardinality("testString")
       .label("testString")
       .build();
     assertEquals(dataModelAttributeModel.classification(), "testString");
-    assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelAttributeModel.matchingType(), "testString");
     assertEquals(dataModelAttributeModel.attributeType(), "testString");
+    assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelAttributeModel.description(), "testString");
     assertEquals(dataModelAttributeModel.cardinality(), "testString");
     assertEquals(dataModelAttributeModel.label(), "testString");

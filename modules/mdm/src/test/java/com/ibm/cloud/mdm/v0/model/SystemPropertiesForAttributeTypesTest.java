@@ -32,27 +32,27 @@ public class SystemPropertiesForAttributeTypesTest {
   @Test
   public void testSystemPropertiesForAttributeTypes() throws Throwable {
     SystemPropertiesForAttributeTypes systemPropertiesForAttributeTypesModel = new SystemPropertiesForAttributeTypes.Builder()
-      .label("testString")
       .editable(true)
-      .description("testString")
       .dataType("testString")
       .indexed(true)
+      .label("testString")
+      .description("testString")
       .build();
-    assertEquals(systemPropertiesForAttributeTypesModel.label(), "testString");
     assertEquals(systemPropertiesForAttributeTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForAttributeTypesModel.description(), "testString");
     assertEquals(systemPropertiesForAttributeTypesModel.dataType(), "testString");
     assertEquals(systemPropertiesForAttributeTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForAttributeTypesModel.label(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModel.description(), "testString");
 
     String json = TestUtilities.serialize(systemPropertiesForAttributeTypesModel);
 
     SystemPropertiesForAttributeTypes systemPropertiesForAttributeTypesModelNew = TestUtilities.deserialize(json, SystemPropertiesForAttributeTypes.class);
     assertTrue(systemPropertiesForAttributeTypesModelNew instanceof SystemPropertiesForAttributeTypes);
-    assertEquals(systemPropertiesForAttributeTypesModelNew.label(), "testString");
     assertEquals(systemPropertiesForAttributeTypesModelNew.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForAttributeTypesModelNew.description(), "testString");
     assertEquals(systemPropertiesForAttributeTypesModelNew.dataType(), "testString");
     assertEquals(systemPropertiesForAttributeTypesModelNew.indexed(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForAttributeTypesModelNew.label(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModelNew.description(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

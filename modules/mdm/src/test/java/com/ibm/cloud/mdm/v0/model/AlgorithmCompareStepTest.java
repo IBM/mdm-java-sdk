@@ -34,21 +34,21 @@ public class AlgorithmCompareStepTest {
   @Test
   public void testAlgorithmCompareStep() throws Throwable {
     AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .comparisonResource("testString")
       .setResource("testString")
       .mapResource("testString")
-      .method("testString")
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .comparisonResource("testString")
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .method("testString")
       .label("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmCompareStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmCompareStepModel.getComparisonResource(), "testString");
     assertEquals(algorithmCompareStepModel.getSetResource(), "testString");
     assertEquals(algorithmCompareStepModel.getMapResource(), "testString");
-    assertEquals(algorithmCompareStepModel.getMethod(), "testString");
+    assertEquals(algorithmCompareStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
+    assertEquals(algorithmCompareStepModel.getComparisonResource(), "testString");
     assertEquals(algorithmCompareStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmCompareStepModel.getMethod(), "testString");
     assertEquals(algorithmCompareStepModel.getLabel(), "testString");
     assertEquals(algorithmCompareStepModel.get("foo"), "testString");
 
@@ -56,9 +56,9 @@ public class AlgorithmCompareStepTest {
 
     AlgorithmCompareStep algorithmCompareStepModelNew = TestUtilities.deserialize(json, AlgorithmCompareStep.class);
     assertTrue(algorithmCompareStepModelNew instanceof AlgorithmCompareStep);
-    assertEquals(algorithmCompareStepModelNew.getComparisonResource(), "testString");
     assertEquals(algorithmCompareStepModelNew.getSetResource(), "testString");
     assertEquals(algorithmCompareStepModelNew.getMapResource(), "testString");
+    assertEquals(algorithmCompareStepModelNew.getComparisonResource(), "testString");
     assertEquals(algorithmCompareStepModelNew.getMethod(), "testString");
     assertEquals(algorithmCompareStepModelNew.getLabel(), "testString");
     assertEquals(algorithmCompareStepModelNew.get("foo"), "testString");

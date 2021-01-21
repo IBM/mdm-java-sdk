@@ -23,30 +23,19 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class PutAlgorithmResponseBucketGenerator extends DynamicModel<Object> {
 
-  @SerializedName("bucket_group_recipe")
-  protected List<PutAlgorithmResponseBucketGroupStep> bucketGroupRecipe;
   @SerializedName("maximum_bucket_size")
   protected Long maximumBucketSize;
   @SerializedName("bucket_recipe")
   protected List<PutAlgorithmResponseBucketStep> bucketRecipe;
   @SerializedName("inputs")
   protected List<PutAlgorithmResponseInput> inputs;
+  @SerializedName("bucket_group_recipe")
+  protected List<PutAlgorithmResponseBucketGroupStep> bucketGroupRecipe;
   @SerializedName("label")
   protected String label;
 
   public PutAlgorithmResponseBucketGenerator() {
     super(new TypeToken<Object>() { });
-  }
-
-  /**
-   * Gets the bucketGroupRecipe.
-   *
-   * Collection of bucket group generator steps.
-   *
-   * @return the bucketGroupRecipe
-   */
-  public List<PutAlgorithmResponseBucketGroupStep> getBucketGroupRecipe() {
-    return this.bucketGroupRecipe;
   }
 
   /**
@@ -80,6 +69,17 @@ public class PutAlgorithmResponseBucketGenerator extends DynamicModel<Object> {
    */
   public List<PutAlgorithmResponseInput> getInputs() {
     return this.inputs;
+  }
+
+  /**
+   * Gets the bucketGroupRecipe.
+   *
+   * Collection of bucket group generator steps.
+   *
+   * @return the bucketGroupRecipe
+   */
+  public List<PutAlgorithmResponseBucketGroupStep> getBucketGroupRecipe() {
+    return this.bucketGroupRecipe;
   }
 
   /**

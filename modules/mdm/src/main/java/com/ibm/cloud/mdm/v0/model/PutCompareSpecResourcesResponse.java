@@ -20,12 +20,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutCompareSpecResourcesResponse extends GenericModel {
 
+  @SerializedName("compare_spec_resources")
+  protected PutCompareSpecResourcesResponseCompareSpecResources compareSpecResources;
   @SerializedName("flow_id")
   protected String flowId;
   @SerializedName("flow_state")
   protected String flowState;
-  @SerializedName("compare_spec_resources")
-  protected PutCompareSpecResourcesResponseCompareSpecResources compareSpecResources;
+
+  /**
+   * Gets the compareSpecResources.
+   *
+   * A single comparison resource used to customize comparison logic of a matching algorithm.
+   *
+   * @return the compareSpecResources
+   */
+  public PutCompareSpecResourcesResponseCompareSpecResources getCompareSpecResources() {
+    return compareSpecResources;
+  }
 
   /**
    * Gets the flowId.
@@ -47,17 +58,6 @@ public class PutCompareSpecResourcesResponse extends GenericModel {
    */
   public String getFlowState() {
     return flowState;
-  }
-
-  /**
-   * Gets the compareSpecResources.
-   *
-   * A single comparison resource used to customize comparison logic of a matching algorithm.
-   *
-   * @return the compareSpecResources
-   */
-  public PutCompareSpecResourcesResponseCompareSpecResources getCompareSpecResources() {
-    return compareSpecResources;
   }
 }
 

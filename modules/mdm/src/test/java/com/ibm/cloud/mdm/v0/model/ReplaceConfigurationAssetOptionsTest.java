@@ -53,14 +53,12 @@ public class ReplaceConfigurationAssetOptionsTest {
 
     ReplaceConfigurationAssetOptions replaceConfigurationAssetOptionsModel = new ReplaceConfigurationAssetOptions.Builder()
       .assetId("testString")
-      .crn("testString")
       .assetName("Person10k.csv")
       .assetStatus("Mapped")
       .assetCreatedDate("testString")
       .assetMappings(new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)))
       .build();
     assertEquals(replaceConfigurationAssetOptionsModel.assetId(), "testString");
-    assertEquals(replaceConfigurationAssetOptionsModel.crn(), "testString");
     assertEquals(replaceConfigurationAssetOptionsModel.assetName(), "Person10k.csv");
     assertEquals(replaceConfigurationAssetOptionsModel.assetStatus(), "Mapped");
     assertEquals(replaceConfigurationAssetOptionsModel.assetCreatedDate(), "testString");

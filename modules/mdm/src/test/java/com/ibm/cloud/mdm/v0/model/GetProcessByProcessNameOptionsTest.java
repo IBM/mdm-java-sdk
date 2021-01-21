@@ -33,11 +33,9 @@ public class GetProcessByProcessNameOptionsTest {
   public void testGetProcessByProcessNameOptions() throws Throwable {
     GetProcessByProcessNameOptions getProcessByProcessNameOptionsModel = new GetProcessByProcessNameOptions.Builder()
       .processName("testString")
-      .crn("testString")
       .recordType("person")
       .build();
     assertEquals(getProcessByProcessNameOptionsModel.processName(), "testString");
-    assertEquals(getProcessByProcessNameOptionsModel.crn(), "testString");
     assertEquals(getProcessByProcessNameOptionsModel.recordType(), "person");
   }
 

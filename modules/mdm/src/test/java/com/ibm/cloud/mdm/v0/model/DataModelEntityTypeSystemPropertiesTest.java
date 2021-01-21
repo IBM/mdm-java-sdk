@@ -33,31 +33,31 @@ public class DataModelEntityTypeSystemPropertiesTest {
   @Test
   public void testDataModelEntityTypeSystemProperties() throws Throwable {
     DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
-      .indexed(true)
-      .dataType("testString")
       .editable(true)
+      .dataType("testString")
+      .indexed(true)
       .description("testString")
       .label("testString")
       .build();
-    assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
     assertEquals(dataModelSystemPropertyModel.editable(), Boolean.valueOf(true));
+    assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
+    assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModel.description(), "testString");
     assertEquals(dataModelSystemPropertyModel.label(), "testString");
 
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-      .entityLastUpdated(dataModelSystemPropertyModel)
       .entityId(dataModelSystemPropertyModel)
+      .entityLastUpdated(dataModelSystemPropertyModel)
       .build();
-    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityLastUpdated(), dataModelSystemPropertyModel);
     assertEquals(dataModelEntityTypeSystemPropertiesModel.entityId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityLastUpdated(), dataModelSystemPropertyModel);
 
     String json = TestUtilities.serialize(dataModelEntityTypeSystemPropertiesModel);
 
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModelNew = TestUtilities.deserialize(json, DataModelEntityTypeSystemProperties.class);
     assertTrue(dataModelEntityTypeSystemPropertiesModelNew instanceof DataModelEntityTypeSystemProperties);
-    assertEquals(dataModelEntityTypeSystemPropertiesModelNew.entityLastUpdated().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelEntityTypeSystemPropertiesModelNew.entityId().toString(), dataModelSystemPropertyModel.toString());
+    assertEquals(dataModelEntityTypeSystemPropertiesModelNew.entityLastUpdated().toString(), dataModelSystemPropertyModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -21,7 +21,6 @@ public class InitiateMatchingOptions extends GenericModel {
 
   protected String recordType;
   protected String entityType;
-  protected String crn;
 
   /**
    * Builder.
@@ -29,12 +28,10 @@ public class InitiateMatchingOptions extends GenericModel {
   public static class Builder {
     private String recordType;
     private String entityType;
-    private String crn;
 
     private Builder(InitiateMatchingOptions initiateMatchingOptions) {
       this.recordType = initiateMatchingOptions.recordType;
       this.entityType = initiateMatchingOptions.entityType;
-      this.crn = initiateMatchingOptions.crn;
     }
 
     /**
@@ -48,12 +45,10 @@ public class InitiateMatchingOptions extends GenericModel {
      *
      * @param recordType the recordType
      * @param entityType the entityType
-     * @param crn the crn
      */
-    public Builder(String recordType, String entityType, String crn) {
+    public Builder(String recordType, String entityType) {
       this.recordType = recordType;
       this.entityType = entityType;
-      this.crn = crn;
     }
 
     /**
@@ -86,17 +81,6 @@ public class InitiateMatchingOptions extends GenericModel {
       this.entityType = entityType;
       return this;
     }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the InitiateMatchingOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
-    }
   }
 
   protected InitiateMatchingOptions(Builder builder) {
@@ -104,11 +88,8 @@ public class InitiateMatchingOptions extends GenericModel {
       "recordType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityType,
       "entityType cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     recordType = builder.recordType;
     entityType = builder.entityType;
-    crn = builder.crn;
   }
 
   /**
@@ -140,17 +121,6 @@ public class InitiateMatchingOptions extends GenericModel {
    */
   public String entityType() {
     return entityType;
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The cloud resource name of the service.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 }
 

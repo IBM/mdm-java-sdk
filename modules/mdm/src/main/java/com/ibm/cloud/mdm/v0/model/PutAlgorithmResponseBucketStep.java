@@ -23,36 +23,25 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class PutAlgorithmResponseBucketStep extends DynamicModel<Object> {
 
-  @SerializedName("inputs")
-  protected List<Long> inputs;
   @SerializedName("order")
   protected Boolean order;
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
-  @SerializedName("method")
-  protected String method;
+  @SerializedName("inputs")
+  protected List<Long> inputs;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
   @SerializedName("fields")
   protected List<String> fields;
+  @SerializedName("method")
+  protected String method;
   @SerializedName("label")
   protected String label;
 
   public PutAlgorithmResponseBucketStep() {
     super(new TypeToken<Object>() { });
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> getInputs() {
-    return this.inputs;
   }
 
   /**
@@ -64,17 +53,6 @@ public class PutAlgorithmResponseBucketStep extends DynamicModel<Object> {
    */
   public Boolean isOrder() {
     return this.order;
-  }
-
-  /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String getComparisonResource() {
-    return this.comparisonResource;
   }
 
   /**
@@ -100,15 +78,25 @@ public class PutAlgorithmResponseBucketStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the method.
+   * Gets the inputs.
    *
-   * A bucket generator method. One of: BucketGenerator.StopToken, BucketGenerator.NGram, BucketGenerator.Normphone,
-   * BucketGenerator.PickToken or BucketGenerator.MapToken.
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
-   * @return the method
+   * @return the inputs
    */
-  public String getMethod() {
-    return this.method;
+  public List<Long> getInputs() {
+    return this.inputs;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String getComparisonResource() {
+    return this.comparisonResource;
   }
 
   /**
@@ -120,6 +108,18 @@ public class PutAlgorithmResponseBucketStep extends DynamicModel<Object> {
    */
   public List<String> getFields() {
     return this.fields;
+  }
+
+  /**
+   * Gets the method.
+   *
+   * A bucket generator method. One of: BucketGenerator.StopToken, BucketGenerator.NGram, BucketGenerator.Normphone,
+   * BucketGenerator.PickToken or BucketGenerator.MapToken.
+   *
+   * @return the method
+   */
+  public String getMethod() {
+    return this.method;
   }
 
   /**

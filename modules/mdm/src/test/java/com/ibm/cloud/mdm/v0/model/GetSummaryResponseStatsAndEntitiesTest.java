@@ -35,7 +35,7 @@ public class GetSummaryResponseStatsAndEntitiesTest {
   public void testGetSummaryResponseStatsAndEntities() throws Throwable {
     GetSummaryResponseStatsAndEntities getSummaryResponseStatsAndEntitiesModel = new GetSummaryResponseStatsAndEntities();
     assertNull(getSummaryResponseStatsAndEntitiesModel.getEntitiesCountList());
-    assertNull(getSummaryResponseStatsAndEntitiesModel.getEntitySizeStats());
     assertNull(getSummaryResponseStatsAndEntitiesModel.getLargestEntitiesList());
+    assertNull(getSummaryResponseStatsAndEntitiesModel.getEntitySizeStats());
   }
 }

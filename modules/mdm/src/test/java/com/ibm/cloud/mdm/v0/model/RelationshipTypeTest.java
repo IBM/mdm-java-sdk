@@ -59,18 +59,18 @@ public class RelationshipTypeTest {
     assertEquals(ruleModel.source(), sourceObjectModel);
 
     Attribute attributeModel = new Attribute.Builder()
+      .label("testString")
       .description("testString")
       .attributeType("testString")
       .classification("testString")
       .indexed(true)
-      .label("testString")
       .cardinality("testString")
       .build();
+    assertEquals(attributeModel.label(), "testString");
     assertEquals(attributeModel.description(), "testString");
     assertEquals(attributeModel.attributeType(), "testString");
     assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModel.label(), "testString");
     assertEquals(attributeModel.cardinality(), "testString");
 
     RelationshipType relationshipTypeModel = new RelationshipType.Builder()
@@ -78,8 +78,8 @@ public class RelationshipTypeTest {
       .labelFromTarget("testString")
       .directional(true)
       .rules(new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)))
-      .cardinality("testString")
       .description("testString")
+      .cardinality("testString")
       .attributes(new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } })
       .label("testString")
       .build();
@@ -87,8 +87,8 @@ public class RelationshipTypeTest {
     assertEquals(relationshipTypeModel.labelFromTarget(), "testString");
     assertEquals(relationshipTypeModel.directional(), Boolean.valueOf(true));
     assertEquals(relationshipTypeModel.rules(), new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)));
-    assertEquals(relationshipTypeModel.cardinality(), "testString");
     assertEquals(relationshipTypeModel.description(), "testString");
+    assertEquals(relationshipTypeModel.cardinality(), "testString");
     assertEquals(relationshipTypeModel.attributes(), new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } });
     assertEquals(relationshipTypeModel.label(), "testString");
 
@@ -99,8 +99,8 @@ public class RelationshipTypeTest {
     assertEquals(relationshipTypeModelNew.labelFromSource(), "testString");
     assertEquals(relationshipTypeModelNew.labelFromTarget(), "testString");
     assertEquals(relationshipTypeModelNew.directional(), Boolean.valueOf(true));
-    assertEquals(relationshipTypeModelNew.cardinality(), "testString");
     assertEquals(relationshipTypeModelNew.description(), "testString");
+    assertEquals(relationshipTypeModelNew.cardinality(), "testString");
     assertEquals(relationshipTypeModelNew.label(), "testString");
   }
 

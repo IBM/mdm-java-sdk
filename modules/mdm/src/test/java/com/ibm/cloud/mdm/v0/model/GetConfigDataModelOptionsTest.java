@@ -31,15 +31,7 @@ public class GetConfigDataModelOptionsTest {
 
   @Test
   public void testGetConfigDataModelOptions() throws Throwable {
-    GetConfigDataModelOptions getConfigDataModelOptionsModel = new GetConfigDataModelOptions.Builder()
-      .crn("testString")
-      .build();
-    assertEquals(getConfigDataModelOptionsModel.crn(), "testString");
+    GetConfigDataModelOptions getConfigDataModelOptionsModel = new GetConfigDataModelOptions();
+    assertNotNull(getConfigDataModelOptionsModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGetConfigDataModelOptionsError() throws Throwable {
-    new GetConfigDataModelOptions.Builder().build();
-  }
-
 }

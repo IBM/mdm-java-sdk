@@ -32,8 +32,8 @@ public class PutAlgorithmResponseEncryptionTest {
   @Test
   public void testPutAlgorithmResponseEncryption() throws Throwable {
     PutAlgorithmResponseEncryption putAlgorithmResponseEncryptionModel = new PutAlgorithmResponseEncryption();
-    assertNull(putAlgorithmResponseEncryptionModel.getSubType());
     assertNull(putAlgorithmResponseEncryptionModel.getPubKey());
+    assertNull(putAlgorithmResponseEncryptionModel.getSubType());
     assertNull(putAlgorithmResponseEncryptionModel.getType());
     assertNull(putAlgorithmResponseEncryptionModel.isEnabled());
   }

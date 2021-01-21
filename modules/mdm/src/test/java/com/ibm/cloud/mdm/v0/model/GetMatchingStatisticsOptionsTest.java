@@ -33,10 +33,8 @@ public class GetMatchingStatisticsOptionsTest {
   public void testGetMatchingStatisticsOptions() throws Throwable {
     GetMatchingStatisticsOptions getMatchingStatisticsOptionsModel = new GetMatchingStatisticsOptions.Builder()
       .recordType("testString")
-      .crn("testString")
       .build();
     assertEquals(getMatchingStatisticsOptionsModel.recordType(), "testString");
-    assertEquals(getMatchingStatisticsOptionsModel.crn(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

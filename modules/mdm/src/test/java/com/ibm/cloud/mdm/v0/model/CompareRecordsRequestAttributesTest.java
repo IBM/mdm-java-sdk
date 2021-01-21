@@ -32,23 +32,23 @@ public class CompareRecordsRequestAttributesTest {
   @Test
   public void testCompareRecordsRequestAttributes() throws Throwable {
     CompareRecordsRequestAttributes compareRecordsRequestAttributesModel = new CompareRecordsRequestAttributes.Builder()
-      .recordLastUpdated("testString")
       .recordId("testString")
       .recordSource("testString")
+      .recordLastUpdated("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(compareRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
     assertEquals(compareRecordsRequestAttributesModel.getRecordId(), "testString");
     assertEquals(compareRecordsRequestAttributesModel.getRecordSource(), "testString");
+    assertEquals(compareRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
     assertEquals(compareRecordsRequestAttributesModel.get("foo"), "testString");
 
     String json = TestUtilities.serialize(compareRecordsRequestAttributesModel);
 
     CompareRecordsRequestAttributes compareRecordsRequestAttributesModelNew = TestUtilities.deserialize(json, CompareRecordsRequestAttributes.class);
     assertTrue(compareRecordsRequestAttributesModelNew instanceof CompareRecordsRequestAttributes);
-    assertEquals(compareRecordsRequestAttributesModelNew.getRecordLastUpdated(), "testString");
     assertEquals(compareRecordsRequestAttributesModelNew.getRecordId(), "testString");
     assertEquals(compareRecordsRequestAttributesModelNew.getRecordSource(), "testString");
+    assertEquals(compareRecordsRequestAttributesModelNew.getRecordLastUpdated(), "testString");
     assertEquals(compareRecordsRequestAttributesModelNew.get("foo"), "testString");
   }
 }

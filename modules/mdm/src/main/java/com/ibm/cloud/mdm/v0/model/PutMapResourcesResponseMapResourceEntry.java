@@ -22,13 +22,24 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutMapResourcesResponseMapResourceEntry extends GenericModel {
 
+  protected List<String> regex;
   @SerializedName("data_type")
   protected String dataType;
-  protected List<String> regex;
   protected String cardinality;
-  protected List<String> values;
   protected String key;
+  protected List<String> values;
   protected String category;
+
+  /**
+   * Gets the regex.
+   *
+   * Collection of applicable regular expressions.
+   *
+   * @return the regex
+   */
+  public List<String> getRegex() {
+    return regex;
+  }
 
   /**
    * Gets the dataType.
@@ -43,17 +54,6 @@ public class PutMapResourcesResponseMapResourceEntry extends GenericModel {
   }
 
   /**
-   * Gets the regex.
-   *
-   * Collection of applicable regular expressions.
-   *
-   * @return the regex
-   */
-  public List<String> getRegex() {
-    return regex;
-  }
-
-  /**
    * Gets the cardinality.
    *
    * The cardinality of map entry, when applicable.
@@ -65,17 +65,6 @@ public class PutMapResourcesResponseMapResourceEntry extends GenericModel {
   }
 
   /**
-   * Gets the values.
-   *
-   * Collection of user defined values mapped to the key.
-   *
-   * @return the values
-   */
-  public List<String> getValues() {
-    return values;
-  }
-
-  /**
    * Gets the key.
    *
    * User defined key (i.e. Ron).
@@ -84,6 +73,17 @@ public class PutMapResourcesResponseMapResourceEntry extends GenericModel {
    */
   public String getKey() {
     return key;
+  }
+
+  /**
+   * Gets the values.
+   *
+   * Collection of user defined values mapped to the key.
+   *
+   * @return the values
+   */
+  public List<String> getValues() {
+    return values;
   }
 
   /**

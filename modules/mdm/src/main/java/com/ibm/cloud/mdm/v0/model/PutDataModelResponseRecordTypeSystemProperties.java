@@ -24,12 +24,12 @@ public class PutDataModelResponseRecordTypeSystemProperties extends GenericModel
   protected PutDataModelResponseSystemProperty collectionId;
   @SerializedName("record_last_updated")
   protected PutDataModelResponseSystemProperty recordLastUpdated;
-  @SerializedName("record_source")
-  protected PutDataModelResponseSystemProperty recordSource;
-  @SerializedName("record_number")
-  protected PutDataModelResponseSystemProperty recordNumber;
   @SerializedName("record_id")
   protected PutDataModelResponseSystemProperty recordId;
+  @SerializedName("record_number")
+  protected PutDataModelResponseSystemProperty recordNumber;
+  @SerializedName("record_source")
+  protected PutDataModelResponseSystemProperty recordSource;
 
   /**
    * Gets the collectionId.
@@ -54,14 +54,14 @@ public class PutDataModelResponseRecordTypeSystemProperties extends GenericModel
   }
 
   /**
-   * Gets the recordSource.
+   * Gets the recordId.
    *
    * Defines metadata of a system property.
    *
-   * @return the recordSource
+   * @return the recordId
    */
-  public PutDataModelResponseSystemProperty getRecordSource() {
-    return recordSource;
+  public PutDataModelResponseSystemProperty getRecordId() {
+    return recordId;
   }
 
   /**
@@ -76,14 +76,14 @@ public class PutDataModelResponseRecordTypeSystemProperties extends GenericModel
   }
 
   /**
-   * Gets the recordId.
+   * Gets the recordSource.
    *
    * Defines metadata of a system property.
    *
-   * @return the recordId
+   * @return the recordSource
    */
-  public PutDataModelResponseSystemProperty getRecordId() {
-    return recordId;
+  public PutDataModelResponseSystemProperty getRecordSource() {
+    return recordSource;
   }
 }
 

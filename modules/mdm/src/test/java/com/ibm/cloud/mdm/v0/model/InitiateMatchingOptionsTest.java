@@ -34,11 +34,9 @@ public class InitiateMatchingOptionsTest {
     InitiateMatchingOptions initiateMatchingOptionsModel = new InitiateMatchingOptions.Builder()
       .recordType("testString")
       .entityType("person_entity")
-      .crn("testString")
       .build();
     assertEquals(initiateMatchingOptionsModel.recordType(), "testString");
     assertEquals(initiateMatchingOptionsModel.entityType(), "person_entity");
-    assertEquals(initiateMatchingOptionsModel.crn(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

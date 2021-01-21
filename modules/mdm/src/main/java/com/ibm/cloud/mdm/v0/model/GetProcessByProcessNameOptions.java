@@ -20,7 +20,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class GetProcessByProcessNameOptions extends GenericModel {
 
   protected String processName;
-  protected String crn;
   protected String recordType;
 
   /**
@@ -28,12 +27,10 @@ public class GetProcessByProcessNameOptions extends GenericModel {
    */
   public static class Builder {
     private String processName;
-    private String crn;
     private String recordType;
 
     private Builder(GetProcessByProcessNameOptions getProcessByProcessNameOptions) {
       this.processName = getProcessByProcessNameOptions.processName;
-      this.crn = getProcessByProcessNameOptions.crn;
       this.recordType = getProcessByProcessNameOptions.recordType;
     }
 
@@ -47,11 +44,9 @@ public class GetProcessByProcessNameOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param processName the processName
-     * @param crn the crn
      */
-    public Builder(String processName, String crn) {
+    public Builder(String processName) {
       this.processName = processName;
-      this.crn = crn;
     }
 
     /**
@@ -75,17 +70,6 @@ public class GetProcessByProcessNameOptions extends GenericModel {
     }
 
     /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the GetProcessByProcessNameOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
-    }
-
-    /**
      * Set the recordType.
      *
      * @param recordType the recordType
@@ -100,10 +84,7 @@ public class GetProcessByProcessNameOptions extends GenericModel {
   protected GetProcessByProcessNameOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.processName,
       "processName cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     processName = builder.processName;
-    crn = builder.crn;
     recordType = builder.recordType;
   }
 
@@ -125,17 +106,6 @@ public class GetProcessByProcessNameOptions extends GenericModel {
    */
   public String processName() {
     return processName;
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The cloud resource name of the service.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

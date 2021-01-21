@@ -13,8 +13,7 @@
 
 package com.ibm.cloud.mdm.v0.model;
 
-import com.ibm.cloud.mdm.v0.model.ProcessResponse;
-import com.ibm.cloud.mdm.v0.model.ProcessResponseProcess;
+import com.ibm.cloud.mdm.v0.model.ProcessModelStatus;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -24,15 +23,19 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the ProcessResponse model.
+ * Unit test class for the ProcessModelStatus model.
  */
-public class ProcessResponseTest {
+public class ProcessModelStatusTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testProcessResponse() throws Throwable {
-    ProcessResponse processResponseModel = new ProcessResponse();
-    assertNull(processResponseModel.getProcess());
+  public void testProcessModelStatus() throws Throwable {
+    ProcessModelStatus processModelStatusModel = new ProcessModelStatus();
+    assertNull(processModelStatusModel.getRecordTypeLabel());
+    assertNull(processModelStatusModel.getRecordType());
+    assertNull(processModelStatusModel.getProcessName());
+    assertNull(processModelStatusModel.getStatus());
+    assertNull(processModelStatusModel.getMessage());
   }
 }

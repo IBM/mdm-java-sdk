@@ -33,9 +33,6 @@ public class PutDataModelResponseRelationshipTypeSystemPropertiesTest {
   @Test
   public void testPutDataModelResponseRelationshipTypeSystemProperties() throws Throwable {
     PutDataModelResponseRelationshipTypeSystemProperties putDataModelResponseRelationshipTypeSystemPropertiesModel = new PutDataModelResponseRelationshipTypeSystemProperties();
-    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getToRecordSource());
-    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipId());
-    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipType());
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getFromRecordId());
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getToRecordId());
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipNumber());
@@ -46,5 +43,8 @@ public class PutDataModelResponseRelationshipTypeSystemPropertiesTest {
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getFromRecordNumber());
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipSource());
     assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getFromRecordSource());
+    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getToRecordSource());
+    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipId());
+    assertNull(putDataModelResponseRelationshipTypeSystemPropertiesModel.getRelationshipType());
   }
 }

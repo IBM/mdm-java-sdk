@@ -23,7 +23,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ReplaceConfigurationAssetOptions extends GenericModel {
 
   protected String assetId;
-  protected String crn;
   protected String assetName;
   protected String assetStatus;
   protected String assetCreatedDate;
@@ -34,7 +33,6 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
    */
   public static class Builder {
     private String assetId;
-    private String crn;
     private String assetName;
     private String assetStatus;
     private String assetCreatedDate;
@@ -42,7 +40,6 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
 
     private Builder(ReplaceConfigurationAssetOptions replaceConfigurationAssetOptions) {
       this.assetId = replaceConfigurationAssetOptions.assetId;
-      this.crn = replaceConfigurationAssetOptions.crn;
       this.assetName = replaceConfigurationAssetOptions.assetName;
       this.assetStatus = replaceConfigurationAssetOptions.assetStatus;
       this.assetCreatedDate = replaceConfigurationAssetOptions.assetCreatedDate;
@@ -59,13 +56,11 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param assetId the assetId
-     * @param crn the crn
      * @param assetName the assetName
      * @param assetStatus the assetStatus
      */
-    public Builder(String assetId, String crn, String assetName, String assetStatus) {
+    public Builder(String assetId, String assetName, String assetStatus) {
       this.assetId = assetId;
-      this.crn = crn;
       this.assetName = assetName;
       this.assetStatus = assetStatus;
     }
@@ -103,17 +98,6 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
      */
     public Builder assetId(String assetId) {
       this.assetId = assetId;
-      return this;
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the ReplaceConfigurationAssetOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
       return this;
     }
 
@@ -166,14 +150,11 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
   protected ReplaceConfigurationAssetOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.assetId,
       "assetId cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetName,
       "assetName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetStatus,
       "assetStatus cannot be null");
     assetId = builder.assetId;
-    crn = builder.crn;
     assetName = builder.assetName;
     assetStatus = builder.assetStatus;
     assetCreatedDate = builder.assetCreatedDate;
@@ -198,17 +179,6 @@ public class ReplaceConfigurationAssetOptions extends GenericModel {
    */
   public String assetId() {
     return assetId;
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The cloud resource name of the service.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

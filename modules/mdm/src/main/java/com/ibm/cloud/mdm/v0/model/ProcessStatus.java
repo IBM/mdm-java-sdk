@@ -12,7 +12,6 @@
  */
 package com.ibm.cloud.mdm.v0.model;
 
-import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,23 +19,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ProcessStatus extends GenericModel {
 
-  @SerializedName("record_type")
-  protected String recordType;
   protected String status;
-  @SerializedName("process_name")
-  protected String processName;
   protected String message;
-
-  /**
-   * Gets the recordType.
-   *
-   * record_type.
-   *
-   * @return the recordType
-   */
-  public String getRecordType() {
-    return recordType;
-  }
 
   /**
    * Gets the status.
@@ -47,17 +31,6 @@ public class ProcessStatus extends GenericModel {
    */
   public String getStatus() {
     return status;
-  }
-
-  /**
-   * Gets the processName.
-   *
-   * process_name.
-   *
-   * @return the processName
-   */
-  public String getProcessName() {
-    return processName;
   }
 
   /**

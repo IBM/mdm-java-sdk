@@ -19,7 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PatchConfigurationMetadataOptions extends GenericModel {
 
-  protected String crn;
   protected String description;
   protected String name;
   protected String projectId;
@@ -29,14 +28,12 @@ public class PatchConfigurationMetadataOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String description;
     private String name;
     private String projectId;
     private String catalogId;
 
     private Builder(PatchConfigurationMetadataOptions patchConfigurationMetadataOptions) {
-      this.crn = patchConfigurationMetadataOptions.crn;
       this.description = patchConfigurationMetadataOptions.description;
       this.name = patchConfigurationMetadataOptions.name;
       this.projectId = patchConfigurationMetadataOptions.projectId;
@@ -52,12 +49,10 @@ public class PatchConfigurationMetadataOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param description the description
      * @param name the name
      */
-    public Builder(String crn, String description, String name) {
-      this.crn = crn;
+    public Builder(String description, String name) {
       this.description = description;
       this.name = name;
     }
@@ -69,17 +64,6 @@ public class PatchConfigurationMetadataOptions extends GenericModel {
      */
     public PatchConfigurationMetadataOptions build() {
       return new PatchConfigurationMetadataOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the PatchConfigurationMetadataOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -142,13 +126,10 @@ public class PatchConfigurationMetadataOptions extends GenericModel {
   }
 
   protected PatchConfigurationMetadataOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.description,
       "description cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,
       "name cannot be null");
-    crn = builder.crn;
     description = builder.description;
     name = builder.name;
     projectId = builder.projectId;
@@ -162,17 +143,6 @@ public class PatchConfigurationMetadataOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The cloud resource name of the service.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

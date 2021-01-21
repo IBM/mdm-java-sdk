@@ -19,19 +19,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRelationshipRule extends GenericModel {
 
-  protected DataModelRelationshipEndpoint source;
   protected DataModelRelationshipEndpoint target;
+  protected DataModelRelationshipEndpoint source;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private DataModelRelationshipEndpoint source;
     private DataModelRelationshipEndpoint target;
+    private DataModelRelationshipEndpoint source;
 
     private Builder(DataModelRelationshipRule dataModelRelationshipRule) {
-      this.source = dataModelRelationshipRule.source;
       this.target = dataModelRelationshipRule.target;
+      this.source = dataModelRelationshipRule.source;
     }
 
     /**
@@ -50,17 +50,6 @@ public class DataModelRelationshipRule extends GenericModel {
     }
 
     /**
-     * Set the source.
-     *
-     * @param source the source
-     * @return the DataModelRelationshipRule builder
-     */
-    public Builder source(DataModelRelationshipEndpoint source) {
-      this.source = source;
-      return this;
-    }
-
-    /**
      * Set the target.
      *
      * @param target the target
@@ -70,11 +59,22 @@ public class DataModelRelationshipRule extends GenericModel {
       this.target = target;
       return this;
     }
+
+    /**
+     * Set the source.
+     *
+     * @param source the source
+     * @return the DataModelRelationshipRule builder
+     */
+    public Builder source(DataModelRelationshipEndpoint source) {
+      this.source = source;
+      return this;
+    }
   }
 
   protected DataModelRelationshipRule(Builder builder) {
-    source = builder.source;
     target = builder.target;
+    source = builder.source;
   }
 
   /**
@@ -87,17 +87,6 @@ public class DataModelRelationshipRule extends GenericModel {
   }
 
   /**
-   * Gets the source.
-   *
-   * Defines record types or entity types allowed as relationship endpoint.
-   *
-   * @return the source
-   */
-  public DataModelRelationshipEndpoint source() {
-    return source;
-  }
-
-  /**
    * Gets the target.
    *
    * Defines record types or entity types allowed as relationship endpoint.
@@ -106,6 +95,17 @@ public class DataModelRelationshipRule extends GenericModel {
    */
   public DataModelRelationshipEndpoint target() {
     return target;
+  }
+
+  /**
+   * Gets the source.
+   *
+   * Defines record types or entity types allowed as relationship endpoint.
+   *
+   * @return the source
+   */
+  public DataModelRelationshipEndpoint source() {
+    return source;
   }
 }
 

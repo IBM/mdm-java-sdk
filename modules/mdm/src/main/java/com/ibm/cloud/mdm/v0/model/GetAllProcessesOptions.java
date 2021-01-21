@@ -19,18 +19,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetAllProcessesOptions extends GenericModel {
 
-  protected String crn;
   protected String status;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String status;
 
     private Builder(GetAllProcessesOptions getAllProcessesOptions) {
-      this.crn = getAllProcessesOptions.crn;
       this.status = getAllProcessesOptions.status;
     }
 
@@ -41,32 +38,12 @@ public class GetAllProcessesOptions extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param crn the crn
-     */
-    public Builder(String crn) {
-      this.crn = crn;
-    }
-
-    /**
      * Builds a GetAllProcessesOptions.
      *
      * @return the new GetAllProcessesOptions instance
      */
     public GetAllProcessesOptions build() {
       return new GetAllProcessesOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the GetAllProcessesOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -82,9 +59,6 @@ public class GetAllProcessesOptions extends GenericModel {
   }
 
   protected GetAllProcessesOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    crn = builder.crn;
     status = builder.status;
   }
 
@@ -95,17 +69,6 @@ public class GetAllProcessesOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The cloud resource name of the service.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

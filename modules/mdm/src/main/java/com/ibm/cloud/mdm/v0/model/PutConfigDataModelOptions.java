@@ -21,7 +21,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutConfigDataModelOptions extends GenericModel {
 
-  protected String crn;
   protected Map<String, RecordType> recordTypes;
   protected Map<String, AttributeType> attributeTypes;
   protected Map<String, RelationshipType> relationshipTypes;
@@ -32,7 +31,6 @@ public class PutConfigDataModelOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private Map<String, RecordType> recordTypes;
     private Map<String, AttributeType> attributeTypes;
     private Map<String, RelationshipType> relationshipTypes;
@@ -40,7 +38,6 @@ public class PutConfigDataModelOptions extends GenericModel {
     private Map<String, SystemProperties> systemProperties;
 
     private Builder(PutConfigDataModelOptions putConfigDataModelOptions) {
-      this.crn = putConfigDataModelOptions.crn;
       this.recordTypes = putConfigDataModelOptions.recordTypes;
       this.attributeTypes = putConfigDataModelOptions.attributeTypes;
       this.relationshipTypes = putConfigDataModelOptions.relationshipTypes;
@@ -55,32 +52,12 @@ public class PutConfigDataModelOptions extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param crn the crn
-     */
-    public Builder(String crn) {
-      this.crn = crn;
-    }
-
-    /**
      * Builds a PutConfigDataModelOptions.
      *
      * @return the new PutConfigDataModelOptions instance
      */
     public PutConfigDataModelOptions build() {
       return new PutConfigDataModelOptions(this);
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the PutConfigDataModelOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
     }
 
     /**
@@ -155,9 +132,6 @@ public class PutConfigDataModelOptions extends GenericModel {
   }
 
   protected PutConfigDataModelOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
-    crn = builder.crn;
     recordTypes = builder.recordTypes;
     attributeTypes = builder.attributeTypes;
     relationshipTypes = builder.relationshipTypes;
@@ -172,17 +146,6 @@ public class PutConfigDataModelOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The cloud resource name of the service.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

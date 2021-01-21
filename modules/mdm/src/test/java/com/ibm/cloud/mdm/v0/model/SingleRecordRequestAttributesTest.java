@@ -32,23 +32,23 @@ public class SingleRecordRequestAttributesTest {
   @Test
   public void testSingleRecordRequestAttributes() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
-      .recordLastUpdated("testString")
       .recordId("testString")
       .recordSource("testString")
+      .recordLastUpdated("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
+    assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
     String json = TestUtilities.serialize(singleRecordRequestAttributesModel);
 
     SingleRecordRequestAttributes singleRecordRequestAttributesModelNew = TestUtilities.deserialize(json, SingleRecordRequestAttributes.class);
     assertTrue(singleRecordRequestAttributesModelNew instanceof SingleRecordRequestAttributes);
-    assertEquals(singleRecordRequestAttributesModelNew.getRecordLastUpdated(), "testString");
     assertEquals(singleRecordRequestAttributesModelNew.getRecordId(), "testString");
     assertEquals(singleRecordRequestAttributesModelNew.getRecordSource(), "testString");
+    assertEquals(singleRecordRequestAttributesModelNew.getRecordLastUpdated(), "testString");
     assertEquals(singleRecordRequestAttributesModelNew.get("foo"), "testString");
   }
 }

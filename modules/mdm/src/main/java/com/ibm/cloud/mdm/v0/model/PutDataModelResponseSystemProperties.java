@@ -20,25 +20,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseSystemProperties extends GenericModel {
 
-  @SerializedName("record_types")
-  protected PutDataModelResponseRecordTypeSystemProperties recordTypes;
   @SerializedName("entity_types")
   protected PutDataModelResponseEntityTypeSystemProperties entityTypes;
-  @SerializedName("attribute_types")
-  protected PutDataModelResponseAttributeTypeSystemProperties attributeTypes;
   @SerializedName("relationship_types")
   protected PutDataModelResponseRelationshipTypeSystemProperties relationshipTypes;
-
-  /**
-   * Gets the recordTypes.
-   *
-   * Defines metadata of system properties of record types.
-   *
-   * @return the recordTypes
-   */
-  public PutDataModelResponseRecordTypeSystemProperties getRecordTypes() {
-    return recordTypes;
-  }
+  @SerializedName("record_types")
+  protected PutDataModelResponseRecordTypeSystemProperties recordTypes;
+  @SerializedName("attribute_types")
+  protected PutDataModelResponseAttributeTypeSystemProperties attributeTypes;
 
   /**
    * Gets the entityTypes.
@@ -52,17 +41,6 @@ public class PutDataModelResponseSystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the attributeTypes.
-   *
-   * Defines metadata of system properties of all attribute types.
-   *
-   * @return the attributeTypes
-   */
-  public PutDataModelResponseAttributeTypeSystemProperties getAttributeTypes() {
-    return attributeTypes;
-  }
-
-  /**
    * Gets the relationshipTypes.
    *
    * Defines metadata of system properties of all relationship types.
@@ -71,6 +49,28 @@ public class PutDataModelResponseSystemProperties extends GenericModel {
    */
   public PutDataModelResponseRelationshipTypeSystemProperties getRelationshipTypes() {
     return relationshipTypes;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Defines metadata of system properties of record types.
+   *
+   * @return the recordTypes
+   */
+  public PutDataModelResponseRecordTypeSystemProperties getRecordTypes() {
+    return recordTypes;
+  }
+
+  /**
+   * Gets the attributeTypes.
+   *
+   * Defines metadata of system properties of all attribute types.
+   *
+   * @return the attributeTypes
+   */
+  public PutDataModelResponseAttributeTypeSystemProperties getAttributeTypes() {
+    return attributeTypes;
   }
 }
 

@@ -20,24 +20,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetSummaryResponseEntitySizeStats extends GenericModel {
 
-  protected Float average;
   protected Float variance;
   @SerializedName("standard_deviation")
   protected Float standardDeviation;
+  protected Float average;
   protected Long count;
   protected Long min;
   protected Long max;
-
-  /**
-   * Gets the average.
-   *
-   * Average value of all entity sizes.
-   *
-   * @return the average
-   */
-  public Float getAverage() {
-    return average;
-  }
 
   /**
    * Gets the variance.
@@ -59,6 +48,17 @@ public class GetSummaryResponseEntitySizeStats extends GenericModel {
    */
   public Float getStandardDeviation() {
     return standardDeviation;
+  }
+
+  /**
+   * Gets the average.
+   *
+   * Average value of all entity sizes.
+   *
+   * @return the average
+   */
+  public Float getAverage() {
+    return average;
   }
 
   /**

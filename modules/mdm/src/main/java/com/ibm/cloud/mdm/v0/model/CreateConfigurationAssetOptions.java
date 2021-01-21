@@ -22,7 +22,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CreateConfigurationAssetOptions extends GenericModel {
 
-  protected String crn;
   protected String assetId;
   protected String assetName;
   protected String assetStatus;
@@ -33,7 +32,6 @@ public class CreateConfigurationAssetOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String crn;
     private String assetId;
     private String assetName;
     private String assetStatus;
@@ -41,7 +39,6 @@ public class CreateConfigurationAssetOptions extends GenericModel {
     private List<AssetMapping> assetMappings;
 
     private Builder(CreateConfigurationAssetOptions createConfigurationAssetOptions) {
-      this.crn = createConfigurationAssetOptions.crn;
       this.assetId = createConfigurationAssetOptions.assetId;
       this.assetName = createConfigurationAssetOptions.assetName;
       this.assetStatus = createConfigurationAssetOptions.assetStatus;
@@ -58,13 +55,11 @@ public class CreateConfigurationAssetOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param crn the crn
      * @param assetId the assetId
      * @param assetName the assetName
      * @param assetStatus the assetStatus
      */
-    public Builder(String crn, String assetId, String assetName, String assetStatus) {
-      this.crn = crn;
+    public Builder(String assetId, String assetName, String assetStatus) {
       this.assetId = assetId;
       this.assetName = assetName;
       this.assetStatus = assetStatus;
@@ -92,17 +87,6 @@ public class CreateConfigurationAssetOptions extends GenericModel {
         this.assetMappings = new ArrayList<AssetMapping>();
       }
       this.assetMappings.add(assetMappings);
-      return this;
-    }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the CreateConfigurationAssetOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
       return this;
     }
 
@@ -164,15 +148,12 @@ public class CreateConfigurationAssetOptions extends GenericModel {
   }
 
   protected CreateConfigurationAssetOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetId,
       "assetId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetName,
       "assetName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetStatus,
       "assetStatus cannot be null");
-    crn = builder.crn;
     assetId = builder.assetId;
     assetName = builder.assetName;
     assetStatus = builder.assetStatus;
@@ -187,17 +168,6 @@ public class CreateConfigurationAssetOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The cloud resource name of the service.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 
   /**

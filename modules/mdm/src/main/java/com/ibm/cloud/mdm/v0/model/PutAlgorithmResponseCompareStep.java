@@ -23,45 +23,23 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class PutAlgorithmResponseCompareStep extends DynamicModel<Object> {
 
-  @SerializedName("inputs")
-  protected List<Long> inputs;
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
-  @SerializedName("method")
-  protected String method;
+  @SerializedName("inputs")
+  protected List<Long> inputs;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
   @SerializedName("fields")
   protected List<String> fields;
+  @SerializedName("method")
+  protected String method;
   @SerializedName("label")
   protected String label;
 
   public PutAlgorithmResponseCompareStep() {
     super(new TypeToken<Object>() { });
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> getInputs() {
-    return this.inputs;
-  }
-
-  /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String getComparisonResource() {
-    return this.comparisonResource;
   }
 
   /**
@@ -87,15 +65,25 @@ public class PutAlgorithmResponseCompareStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the method.
+   * Gets the inputs.
    *
-   * A compare method. One of: CompareMethod.AddressCompare, CompareMethod.DateCompare, CompareMethod.EmailCompare,
-   * CompareMethod.SingleTokenCompare or CompareMethod.NameCompare.
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
-   * @return the method
+   * @return the inputs
    */
-  public String getMethod() {
-    return this.method;
+  public List<Long> getInputs() {
+    return this.inputs;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String getComparisonResource() {
+    return this.comparisonResource;
   }
 
   /**
@@ -107,6 +95,18 @@ public class PutAlgorithmResponseCompareStep extends DynamicModel<Object> {
    */
   public List<String> getFields() {
     return this.fields;
+  }
+
+  /**
+   * Gets the method.
+   *
+   * A compare method. One of: CompareMethod.AddressCompare, CompareMethod.DateCompare, CompareMethod.EmailCompare,
+   * CompareMethod.SingleTokenCompare or CompareMethod.NameCompare.
+   *
+   * @return the method
+   */
+  public String getMethod() {
+    return this.method;
   }
 
   /**

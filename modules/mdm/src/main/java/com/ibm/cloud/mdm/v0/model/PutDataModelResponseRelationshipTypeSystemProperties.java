@@ -20,12 +20,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutDataModelResponseRelationshipTypeSystemProperties extends GenericModel {
 
-  @SerializedName("to_record_source")
-  protected PutDataModelResponseSystemProperty toRecordSource;
-  @SerializedName("relationship_id")
-  protected PutDataModelResponseSystemProperty relationshipId;
-  @SerializedName("relationship_type")
-  protected PutDataModelResponseSystemProperty relationshipType;
   @SerializedName("from_record_id")
   protected PutDataModelResponseSystemProperty fromRecordId;
   @SerializedName("to_record_id")
@@ -46,39 +40,12 @@ public class PutDataModelResponseRelationshipTypeSystemProperties extends Generi
   protected PutDataModelResponseSystemProperty relationshipSource;
   @SerializedName("from_record_source")
   protected PutDataModelResponseSystemProperty fromRecordSource;
-
-  /**
-   * Gets the toRecordSource.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the toRecordSource
-   */
-  public PutDataModelResponseSystemProperty getToRecordSource() {
-    return toRecordSource;
-  }
-
-  /**
-   * Gets the relationshipId.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the relationshipId
-   */
-  public PutDataModelResponseSystemProperty getRelationshipId() {
-    return relationshipId;
-  }
-
-  /**
-   * Gets the relationshipType.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the relationshipType
-   */
-  public PutDataModelResponseSystemProperty getRelationshipType() {
-    return relationshipType;
-  }
+  @SerializedName("to_record_source")
+  protected PutDataModelResponseSystemProperty toRecordSource;
+  @SerializedName("relationship_id")
+  protected PutDataModelResponseSystemProperty relationshipId;
+  @SerializedName("relationship_type")
+  protected PutDataModelResponseSystemProperty relationshipType;
 
   /**
    * Gets the fromRecordId.
@@ -188,6 +155,39 @@ public class PutDataModelResponseRelationshipTypeSystemProperties extends Generi
    */
   public PutDataModelResponseSystemProperty getFromRecordSource() {
     return fromRecordSource;
+  }
+
+  /**
+   * Gets the toRecordSource.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the toRecordSource
+   */
+  public PutDataModelResponseSystemProperty getToRecordSource() {
+    return toRecordSource;
+  }
+
+  /**
+   * Gets the relationshipId.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the relationshipId
+   */
+  public PutDataModelResponseSystemProperty getRelationshipId() {
+    return relationshipId;
+  }
+
+  /**
+   * Gets the relationshipType.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the relationshipType
+   */
+  public PutDataModelResponseSystemProperty getRelationshipType() {
+    return relationshipType;
   }
 }
 

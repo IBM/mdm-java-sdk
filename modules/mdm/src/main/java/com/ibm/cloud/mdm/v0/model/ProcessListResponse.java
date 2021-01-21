@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ProcessListResponse extends GenericModel {
 
-  protected List<ProcessStatus> processes;
+  protected List<ProcessModelStatus> processes;
 
   /**
    * Gets the processes.
@@ -30,7 +30,7 @@ public class ProcessListResponse extends GenericModel {
    *
    * @return the processes
    */
-  public List<ProcessStatus> getProcesses() {
+  public List<ProcessModelStatus> getProcesses() {
     return processes;
   }
 }

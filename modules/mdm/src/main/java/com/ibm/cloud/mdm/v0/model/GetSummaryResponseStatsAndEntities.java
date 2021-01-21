@@ -24,10 +24,10 @@ public class GetSummaryResponseStatsAndEntities extends GenericModel {
 
   @SerializedName("entities_count_list")
   protected List<GetSummaryResponseEntities> entitiesCountList;
-  @SerializedName("entity_size_stats")
-  protected GetSummaryResponseEntitySizeStats entitySizeStats;
   @SerializedName("largest_entities_list")
   protected List<GetSummaryResponseEntities> largestEntitiesList;
+  @SerializedName("entity_size_stats")
+  protected GetSummaryResponseEntitySizeStats entitySizeStats;
 
   /**
    * Gets the entitiesCountList.
@@ -41,17 +41,6 @@ public class GetSummaryResponseStatsAndEntities extends GenericModel {
   }
 
   /**
-   * Gets the entitySizeStats.
-   *
-   * Entity size statistics.
-   *
-   * @return the entitySizeStats
-   */
-  public GetSummaryResponseEntitySizeStats getEntitySizeStats() {
-    return entitySizeStats;
-  }
-
-  /**
    * Gets the largestEntitiesList.
    *
    * Collection of top large entities as per the value of max_result.
@@ -60,6 +49,17 @@ public class GetSummaryResponseStatsAndEntities extends GenericModel {
    */
   public List<GetSummaryResponseEntities> getLargestEntitiesList() {
     return largestEntitiesList;
+  }
+
+  /**
+   * Gets the entitySizeStats.
+   *
+   * Entity size statistics.
+   *
+   * @return the entitySizeStats
+   */
+  public GetSummaryResponseEntitySizeStats getEntitySizeStats() {
+    return entitySizeStats;
   }
 }
 

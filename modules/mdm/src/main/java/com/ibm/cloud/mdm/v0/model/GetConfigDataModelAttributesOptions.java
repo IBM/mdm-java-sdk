@@ -20,18 +20,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class GetConfigDataModelAttributesOptions extends GenericModel {
 
   protected String recordType;
-  protected String crn;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String recordType;
-    private String crn;
 
     private Builder(GetConfigDataModelAttributesOptions getConfigDataModelAttributesOptions) {
       this.recordType = getConfigDataModelAttributesOptions.recordType;
-      this.crn = getConfigDataModelAttributesOptions.crn;
     }
 
     /**
@@ -44,11 +41,9 @@ public class GetConfigDataModelAttributesOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param recordType the recordType
-     * @param crn the crn
      */
-    public Builder(String recordType, String crn) {
+    public Builder(String recordType) {
       this.recordType = recordType;
-      this.crn = crn;
     }
 
     /**
@@ -70,26 +65,12 @@ public class GetConfigDataModelAttributesOptions extends GenericModel {
       this.recordType = recordType;
       return this;
     }
-
-    /**
-     * Set the crn.
-     *
-     * @param crn the crn
-     * @return the GetConfigDataModelAttributesOptions builder
-     */
-    public Builder crn(String crn) {
-      this.crn = crn;
-      return this;
-    }
   }
 
   protected GetConfigDataModelAttributesOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
       "recordType cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
-      "crn cannot be null");
     recordType = builder.recordType;
-    crn = builder.crn;
   }
 
   /**
@@ -110,17 +91,6 @@ public class GetConfigDataModelAttributesOptions extends GenericModel {
    */
   public String recordType() {
     return recordType;
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The cloud resource name of the service.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
   }
 }
 

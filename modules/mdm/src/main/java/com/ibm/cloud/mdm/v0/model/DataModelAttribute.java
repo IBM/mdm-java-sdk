@@ -21,11 +21,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DataModelAttribute extends GenericModel {
 
   protected String classification;
-  protected Boolean indexed;
   @SerializedName("matching_type")
   protected String matchingType;
   @SerializedName("attribute_type")
   protected String attributeType;
+  protected Boolean indexed;
   protected String description;
   protected String cardinality;
   protected String label;
@@ -35,18 +35,18 @@ public class DataModelAttribute extends GenericModel {
    */
   public static class Builder {
     private String classification;
-    private Boolean indexed;
     private String matchingType;
     private String attributeType;
+    private Boolean indexed;
     private String description;
     private String cardinality;
     private String label;
 
     private Builder(DataModelAttribute dataModelAttribute) {
       this.classification = dataModelAttribute.classification;
-      this.indexed = dataModelAttribute.indexed;
       this.matchingType = dataModelAttribute.matchingType;
       this.attributeType = dataModelAttribute.attributeType;
+      this.indexed = dataModelAttribute.indexed;
       this.description = dataModelAttribute.description;
       this.cardinality = dataModelAttribute.cardinality;
       this.label = dataModelAttribute.label;
@@ -90,17 +90,6 @@ public class DataModelAttribute extends GenericModel {
     }
 
     /**
-     * Set the indexed.
-     *
-     * @param indexed the indexed
-     * @return the DataModelAttribute builder
-     */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
-      return this;
-    }
-
-    /**
      * Set the matchingType.
      *
      * @param matchingType the matchingType
@@ -119,6 +108,17 @@ public class DataModelAttribute extends GenericModel {
      */
     public Builder attributeType(String attributeType) {
       this.attributeType = attributeType;
+      return this;
+    }
+
+    /**
+     * Set the indexed.
+     *
+     * @param indexed the indexed
+     * @return the DataModelAttribute builder
+     */
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
       return this;
     }
 
@@ -162,9 +162,9 @@ public class DataModelAttribute extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
     classification = builder.classification;
-    indexed = builder.indexed;
     matchingType = builder.matchingType;
     attributeType = builder.attributeType;
+    indexed = builder.indexed;
     description = builder.description;
     cardinality = builder.cardinality;
     label = builder.label;
@@ -191,17 +191,6 @@ public class DataModelAttribute extends GenericModel {
   }
 
   /**
-   * Gets the indexed.
-   *
-   * User defined indexed indicator. The default value is true.
-   *
-   * @return the indexed
-   */
-  public Boolean indexed() {
-    return indexed;
-  }
-
-  /**
    * Gets the matchingType.
    *
    * User defined matching type (only applicable to record type), one of PERSONNAME, ORGNAME, GENDER, DATE, EMAIL,
@@ -222,6 +211,17 @@ public class DataModelAttribute extends GenericModel {
    */
   public String attributeType() {
     return attributeType;
+  }
+
+  /**
+   * Gets the indexed.
+   *
+   * User defined indexed indicator. The default value is true.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
   }
 
   /**

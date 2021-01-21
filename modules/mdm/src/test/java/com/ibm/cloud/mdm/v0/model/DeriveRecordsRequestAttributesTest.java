@@ -32,23 +32,23 @@ public class DeriveRecordsRequestAttributesTest {
   @Test
   public void testDeriveRecordsRequestAttributes() throws Throwable {
     DeriveRecordsRequestAttributes deriveRecordsRequestAttributesModel = new DeriveRecordsRequestAttributes.Builder()
-      .recordLastUpdated("testString")
       .recordId("testString")
       .recordSource("testString")
+      .recordLastUpdated("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(deriveRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
     assertEquals(deriveRecordsRequestAttributesModel.getRecordId(), "testString");
     assertEquals(deriveRecordsRequestAttributesModel.getRecordSource(), "testString");
+    assertEquals(deriveRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
     assertEquals(deriveRecordsRequestAttributesModel.get("foo"), "testString");
 
     String json = TestUtilities.serialize(deriveRecordsRequestAttributesModel);
 
     DeriveRecordsRequestAttributes deriveRecordsRequestAttributesModelNew = TestUtilities.deserialize(json, DeriveRecordsRequestAttributes.class);
     assertTrue(deriveRecordsRequestAttributesModelNew instanceof DeriveRecordsRequestAttributes);
-    assertEquals(deriveRecordsRequestAttributesModelNew.getRecordLastUpdated(), "testString");
     assertEquals(deriveRecordsRequestAttributesModelNew.getRecordId(), "testString");
     assertEquals(deriveRecordsRequestAttributesModelNew.getRecordSource(), "testString");
+    assertEquals(deriveRecordsRequestAttributesModelNew.getRecordLastUpdated(), "testString");
     assertEquals(deriveRecordsRequestAttributesModelNew.get("foo"), "testString");
   }
 }

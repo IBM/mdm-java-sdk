@@ -33,15 +33,15 @@ public class DataModelAttributeTypeSystemPropertiesTest {
   @Test
   public void testDataModelAttributeTypeSystemProperties() throws Throwable {
     DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
-      .indexed(true)
-      .dataType("testString")
       .editable(true)
+      .dataType("testString")
+      .indexed(true)
       .description("testString")
       .label("testString")
       .build();
-    assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
     assertEquals(dataModelSystemPropertyModel.editable(), Boolean.valueOf(true));
+    assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
+    assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModel.description(), "testString");
     assertEquals(dataModelSystemPropertyModel.label(), "testString");
 
