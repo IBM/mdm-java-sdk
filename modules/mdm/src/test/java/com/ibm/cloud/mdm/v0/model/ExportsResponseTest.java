@@ -22,6 +22,7 @@ import com.ibm.cloud.mdm.v0.model.SearchFilterRequest;
 import com.ibm.cloud.mdm.v0.model.SearchQueryRequest;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.sdk.core.util.DateUtils;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;

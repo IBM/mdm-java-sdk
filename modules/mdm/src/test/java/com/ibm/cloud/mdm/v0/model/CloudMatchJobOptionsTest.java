@@ -34,10 +34,14 @@ public class CloudMatchJobOptionsTest {
     CloudMatchJobOptions cloudMatchJobOptionsModel = new CloudMatchJobOptions.Builder()
       .recordType("person")
       .entityType("person_entity")
+      .doForce(true)
+      .doAnalytics(true)
       .doReplicate(true)
       .build();
     assertEquals(cloudMatchJobOptionsModel.recordType(), "person");
     assertEquals(cloudMatchJobOptionsModel.entityType(), "person_entity");
+    assertEquals(cloudMatchJobOptionsModel.doForce(), Boolean.valueOf(true));
+    assertEquals(cloudMatchJobOptionsModel.doAnalytics(), Boolean.valueOf(true));
     assertEquals(cloudMatchJobOptionsModel.doReplicate(), Boolean.valueOf(true));
   }
 }

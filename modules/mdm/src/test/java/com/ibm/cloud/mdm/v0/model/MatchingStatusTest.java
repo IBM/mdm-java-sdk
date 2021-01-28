@@ -32,7 +32,7 @@ public class MatchingStatusTest {
   @Test
   public void testMatchingStatus() throws Throwable {
     MatchingStatus matchingStatusModel = new MatchingStatus();
-    assertNull(matchingStatusModel.getStatus());
     assertNull(matchingStatusModel.getMessage());
+    assertNull(matchingStatusModel.getStatus());
   }
 }

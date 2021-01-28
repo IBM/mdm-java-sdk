@@ -22,20 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetCloudJobSummaryResponse extends GenericModel {
 
-  protected Map<String, Object> metrics;
   @SerializedName("job_id")
   protected String jobId;
-
-  /**
-   * Gets the metrics.
-   *
-   * Collection of key value pairs representing key metrics of a given job.
-   *
-   * @return the metrics
-   */
-  public Map<String, Object> getMetrics() {
-    return metrics;
-  }
+  protected Map<String, Object> metrics;
 
   /**
    * Gets the jobId.
@@ -46,6 +35,17 @@ public class GetCloudJobSummaryResponse extends GenericModel {
    */
   public String getJobId() {
     return jobId;
+  }
+
+  /**
+   * Gets the metrics.
+   *
+   * Collection of key value pairs representing key metrics of a given job.
+   *
+   * @return the metrics
+   */
+  public Map<String, Object> getMetrics() {
+    return metrics;
   }
 }
 

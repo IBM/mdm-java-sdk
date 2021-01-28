@@ -24,41 +24,30 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class PostDeriveResponseIndexResponse extends DynamicModel<Object> {
 
-  @SerializedName("buckets")
-  protected List<Long> buckets;
-  @SerializedName("standardized_values")
-  protected Map<String, Object> standardizedValues;
+  @SerializedName("record_type")
+  protected String recordType;
   @SerializedName("record_id")
   protected String recordId;
   @SerializedName("record_source")
   protected String recordSource;
-  @SerializedName("record_type")
-  protected String recordType;
+  @SerializedName("buckets")
+  protected List<Long> buckets;
+  @SerializedName("standardized_values")
+  protected Map<String, Object> standardizedValues;
 
   public PostDeriveResponseIndexResponse() {
     super(new TypeToken<Object>() { });
   }
 
   /**
-   * Gets the buckets.
+   * Gets the recordType.
    *
-   * Collection of a record's bucket hashes, primarily used for efficient entity resolution.
+   * The data type identifier of the record, ie. person, organization.
    *
-   * @return the buckets
+   * @return the recordType
    */
-  public List<Long> getBuckets() {
-    return this.buckets;
-  }
-
-  /**
-   * Gets the standardizedValues.
-   *
-   * Collection of a record's standardized values, primarily used for record comparison.
-   *
-   * @return the standardizedValues
-   */
-  public Map<String, Object> getStandardizedValues() {
-    return this.standardizedValues;
+  public String getRecordType() {
+    return this.recordType;
   }
 
   /**
@@ -84,13 +73,24 @@ public class PostDeriveResponseIndexResponse extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the recordType.
+   * Gets the buckets.
    *
-   * The data type identifier of the record, ie. person, organization.
+   * Collection of a record's bucket hashes, primarily used for efficient entity resolution.
    *
-   * @return the recordType
+   * @return the buckets
    */
-  public String getRecordType() {
-    return this.recordType;
+  public List<Long> getBuckets() {
+    return this.buckets;
+  }
+
+  /**
+   * Gets the standardizedValues.
+   *
+   * Collection of a record's standardized values, primarily used for record comparison.
+   *
+   * @return the standardizedValues
+   */
+  public Map<String, Object> getStandardizedValues() {
+    return this.standardizedValues;
   }
 }

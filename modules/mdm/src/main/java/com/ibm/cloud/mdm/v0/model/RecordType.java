@@ -22,9 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RecordType extends GenericModel {
 
-  protected String label;
   @SerializedName("entity_types")
   protected Map<String, EntityType> entityTypes;
+  protected String label;
   protected String description;
   protected Map<String, Attribute> attributes;
 
@@ -32,14 +32,14 @@ public class RecordType extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String label;
     private Map<String, EntityType> entityTypes;
+    private String label;
     private String description;
     private Map<String, Attribute> attributes;
 
     private Builder(RecordType recordType) {
-      this.label = recordType.label;
       this.entityTypes = recordType.entityTypes;
+      this.label = recordType.label;
       this.description = recordType.description;
       this.attributes = recordType.attributes;
     }
@@ -69,17 +69,6 @@ public class RecordType extends GenericModel {
     }
 
     /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the RecordType builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
      * Set the entityTypes.
      *
      * @param entityTypes the entityTypes
@@ -87,6 +76,17 @@ public class RecordType extends GenericModel {
      */
     public Builder entityTypes(Map<String, EntityType> entityTypes) {
       this.entityTypes = entityTypes;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the RecordType builder
+     */
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -116,8 +116,8 @@ public class RecordType extends GenericModel {
   protected RecordType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    label = builder.label;
     entityTypes = builder.entityTypes;
+    label = builder.label;
     description = builder.description;
     attributes = builder.attributes;
   }
@@ -132,17 +132,6 @@ public class RecordType extends GenericModel {
   }
 
   /**
-   * Gets the label.
-   *
-   * label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
    * Gets the entityTypes.
    *
    * entity Types.
@@ -151,6 +140,17 @@ public class RecordType extends GenericModel {
    */
   public Map<String, EntityType> entityTypes() {
     return entityTypes;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**

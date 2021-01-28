@@ -13,7 +13,6 @@
 
 package com.ibm.cloud.mdm.v0.model;
 
-import com.ibm.cloud.mdm.v0.model.CriteriaRequest;
 import com.ibm.cloud.mdm.v0.model.DataSearchOptions;
 import com.ibm.cloud.mdm.v0.model.ExpressionRequest;
 import com.ibm.cloud.mdm.v0.model.SearchFilterRequest;
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import org.apache.commons.io.IOUtils;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -63,30 +61,19 @@ public class DataSearchOptionsTest {
     assertEquals(searchFilterRequestModel.type(), "record");
     assertEquals(searchFilterRequestModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
-    CriteriaRequest criteriaRequestModel = new CriteriaRequest.Builder()
+    DataSearchOptions dataSearchOptionsModel = new DataSearchOptions.Builder()
       .searchType("record")
       .query(searchQueryRequestModel)
       .filters(new java.util.ArrayList<SearchFilterRequest>(java.util.Arrays.asList(searchFilterRequestModel)))
-      .build();
-    assertEquals(criteriaRequestModel.searchType(), "record");
-    assertEquals(criteriaRequestModel.query(), searchQueryRequestModel);
-    assertEquals(criteriaRequestModel.filters(), new java.util.ArrayList<SearchFilterRequest>(java.util.Arrays.asList(searchFilterRequestModel)));
-
-    DataSearchOptions dataSearchOptionsModel = new DataSearchOptions.Builder()
-      .accept("application/json")
-      .incomingCriteria(criteriaRequestModel)
-      .body(TestUtilities.createMockStream("This is a mock file."))
-      .contentType("application/json")
       .returnType("results")
       .limit(Long.valueOf("50"))
       .offset(Long.valueOf("26"))
       .include(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(dataSearchOptionsModel.accept(), "application/json");
-    assertEquals(dataSearchOptionsModel.incomingCriteria(), criteriaRequestModel);
-    assertEquals(IOUtils.toString(dataSearchOptionsModel.body()), IOUtils.toString(TestUtilities.createMockStream("This is a mock file.")));
-    assertEquals(dataSearchOptionsModel.contentType(), "application/json");
+    assertEquals(dataSearchOptionsModel.searchType(), "record");
+    assertEquals(dataSearchOptionsModel.query(), searchQueryRequestModel);
+    assertEquals(dataSearchOptionsModel.filters(), new java.util.ArrayList<SearchFilterRequest>(java.util.Arrays.asList(searchFilterRequestModel)));
     assertEquals(dataSearchOptionsModel.returnType(), "results");
     assertEquals(dataSearchOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(dataSearchOptionsModel.offset(), Long.valueOf("26"));

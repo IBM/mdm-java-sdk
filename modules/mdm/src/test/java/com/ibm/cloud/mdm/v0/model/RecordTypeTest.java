@@ -34,11 +34,11 @@ public class RecordTypeTest {
   @Test
   public void testRecordType() throws Throwable {
     EntityType entityTypeModel = new EntityType.Builder()
-      .label("testString")
       .description("testString")
+      .label("testString")
       .build();
-    assertEquals(entityTypeModel.label(), "testString");
     assertEquals(entityTypeModel.description(), "testString");
+    assertEquals(entityTypeModel.label(), "testString");
 
     Attribute attributeModel = new Attribute.Builder()
       .label("testString")
@@ -56,13 +56,13 @@ public class RecordTypeTest {
     assertEquals(attributeModel.cardinality(), "testString");
 
     RecordType recordTypeModel = new RecordType.Builder()
-      .label("testString")
       .entityTypes(new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } })
+      .label("testString")
       .description("testString")
       .attributes(new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } })
       .build();
-    assertEquals(recordTypeModel.label(), "testString");
     assertEquals(recordTypeModel.entityTypes(), new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } });
+    assertEquals(recordTypeModel.label(), "testString");
     assertEquals(recordTypeModel.description(), "testString");
     assertEquals(recordTypeModel.attributes(), new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } });
 

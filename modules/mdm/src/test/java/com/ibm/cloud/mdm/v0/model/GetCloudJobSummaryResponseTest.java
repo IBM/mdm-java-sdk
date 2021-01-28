@@ -32,7 +32,7 @@ public class GetCloudJobSummaryResponseTest {
   @Test
   public void testGetCloudJobSummaryResponse() throws Throwable {
     GetCloudJobSummaryResponse getCloudJobSummaryResponseModel = new GetCloudJobSummaryResponse();
-    assertNull(getCloudJobSummaryResponseModel.getMetrics());
     assertNull(getCloudJobSummaryResponseModel.getJobId());
+    assertNull(getCloudJobSummaryResponseModel.getMetrics());
   }
 }

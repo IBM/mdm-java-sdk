@@ -30,8 +30,8 @@ public class RelationshipType extends GenericModel {
   protected String labelFromTarget;
   protected Boolean directional;
   protected List<Rule> rules;
-  protected String description;
   protected String cardinality;
+  protected String description;
   protected Map<String, Attribute> attributes;
   protected String label;
 
@@ -43,8 +43,8 @@ public class RelationshipType extends GenericModel {
     private String labelFromTarget;
     private Boolean directional;
     private List<Rule> rules;
-    private String description;
     private String cardinality;
+    private String description;
     private Map<String, Attribute> attributes;
     private String label;
 
@@ -53,8 +53,8 @@ public class RelationshipType extends GenericModel {
       this.labelFromTarget = relationshipType.labelFromTarget;
       this.directional = relationshipType.directional;
       this.rules = relationshipType.rules;
-      this.description = relationshipType.description;
       this.cardinality = relationshipType.cardinality;
+      this.description = relationshipType.description;
       this.attributes = relationshipType.attributes;
       this.label = relationshipType.label;
     }
@@ -145,17 +145,6 @@ public class RelationshipType extends GenericModel {
     }
 
     /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the RelationshipType builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
      * Set the cardinality.
      *
      * @param cardinality the cardinality
@@ -163,6 +152,17 @@ public class RelationshipType extends GenericModel {
      */
     public Builder cardinality(String cardinality) {
       this.cardinality = cardinality;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the RelationshipType builder
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -196,8 +196,8 @@ public class RelationshipType extends GenericModel {
     labelFromTarget = builder.labelFromTarget;
     directional = builder.directional;
     rules = builder.rules;
-    description = builder.description;
     cardinality = builder.cardinality;
+    description = builder.description;
     attributes = builder.attributes;
     label = builder.label;
   }
@@ -256,17 +256,6 @@ public class RelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the description.
-   *
-   * description.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
    * Gets the cardinality.
    *
    * cardinality.
@@ -275,6 +264,17 @@ public class RelationshipType extends GenericModel {
    */
   public String cardinality() {
     return cardinality;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * description.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
   }
 
   /**

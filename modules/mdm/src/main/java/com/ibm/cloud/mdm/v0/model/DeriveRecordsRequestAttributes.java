@@ -24,12 +24,12 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class DeriveRecordsRequestAttributes extends DynamicModel<Object> {
 
+  @SerializedName("record_last_updated")
+  protected Long recordLastUpdated;
   @SerializedName("record_id")
   protected String recordId;
   @SerializedName("record_source")
   protected String recordSource;
-  @SerializedName("record_last_updated")
-  protected String recordLastUpdated;
 
   public DeriveRecordsRequestAttributes() {
     super(new TypeToken<Object>() { });
@@ -39,15 +39,15 @@ public class DeriveRecordsRequestAttributes extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
+    private Long recordLastUpdated;
     private String recordId;
     private String recordSource;
-    private String recordLastUpdated;
     private Map<String, Object> dynamicProperties;
 
     private Builder(DeriveRecordsRequestAttributes deriveRecordsRequestAttributes) {
+      this.recordLastUpdated = deriveRecordsRequestAttributes.recordLastUpdated;
       this.recordId = deriveRecordsRequestAttributes.recordId;
       this.recordSource = deriveRecordsRequestAttributes.recordSource;
-      this.recordLastUpdated = deriveRecordsRequestAttributes.recordLastUpdated;
       this.dynamicProperties = deriveRecordsRequestAttributes.getProperties();
     }
 
@@ -64,6 +64,17 @@ public class DeriveRecordsRequestAttributes extends DynamicModel<Object> {
      */
     public DeriveRecordsRequestAttributes build() {
       return new DeriveRecordsRequestAttributes(this);
+    }
+
+    /**
+     * Set the recordLastUpdated.
+     *
+     * @param recordLastUpdated the recordLastUpdated
+     * @return the DeriveRecordsRequestAttributes builder
+     */
+    public Builder recordLastUpdated(long recordLastUpdated) {
+      this.recordLastUpdated = recordLastUpdated;
+      return this;
     }
 
     /**
@@ -89,17 +100,6 @@ public class DeriveRecordsRequestAttributes extends DynamicModel<Object> {
     }
 
     /**
-     * Set the recordLastUpdated.
-     *
-     * @param recordLastUpdated the recordLastUpdated
-     * @return the DeriveRecordsRequestAttributes builder
-     */
-    public Builder recordLastUpdated(String recordLastUpdated) {
-      this.recordLastUpdated = recordLastUpdated;
-      return this;
-    }
-
-    /**
      * Add an arbitrary property.
      *
      * @param name the name of the property to add
@@ -118,9 +118,9 @@ public class DeriveRecordsRequestAttributes extends DynamicModel<Object> {
 
   protected DeriveRecordsRequestAttributes(Builder builder) {
     super(new TypeToken<Object>() { });
+    recordLastUpdated = builder.recordLastUpdated;
     recordId = builder.recordId;
     recordSource = builder.recordSource;
-    recordLastUpdated = builder.recordLastUpdated;
     this.setProperties(builder.dynamicProperties);
   }
 
@@ -131,6 +131,26 @@ public class DeriveRecordsRequestAttributes extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the recordLastUpdated.
+   *
+   * System generated timestamp when the record was last updated.
+   *
+   * @return the recordLastUpdated
+   */
+  public Long getRecordLastUpdated() {
+    return this.recordLastUpdated;
+  }
+
+  /**
+   * Sets the recordLastUpdated.
+   *
+   * @param recordLastUpdated the new recordLastUpdated
+   */
+  public void setRecordLastUpdated(final long recordLastUpdated) {
+    this.recordLastUpdated = recordLastUpdated;
   }
 
   /**
@@ -171,25 +191,5 @@ public class DeriveRecordsRequestAttributes extends DynamicModel<Object> {
    */
   public void setRecordSource(final String recordSource) {
     this.recordSource = recordSource;
-  }
-
-  /**
-   * Gets the recordLastUpdated.
-   *
-   * System generated timestamp when the record was last updated.
-   *
-   * @return the recordLastUpdated
-   */
-  public String getRecordLastUpdated() {
-    return this.recordLastUpdated;
-  }
-
-  /**
-   * Sets the recordLastUpdated.
-   *
-   * @param recordLastUpdated the new recordLastUpdated
-   */
-  public void setRecordLastUpdated(final String recordLastUpdated) {
-    this.recordLastUpdated = recordLastUpdated;
   }
 }

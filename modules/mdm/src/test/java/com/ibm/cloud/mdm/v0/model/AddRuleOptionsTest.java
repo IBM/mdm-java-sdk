@@ -44,11 +44,11 @@ public class AddRuleOptionsTest {
     assertEquals(rulesRequestRuleModel.description(), "testString");
 
     AddRuleOptions addRuleOptionsModel = new AddRuleOptions.Builder()
-      .entityType("testString")
       .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
+      .entityType("testString")
       .build();
-    assertEquals(addRuleOptionsModel.entityType(), "testString");
     assertEquals(addRuleOptionsModel.rules(), new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)));
+    assertEquals(addRuleOptionsModel.entityType(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
