@@ -36,56 +36,56 @@ public class SystemPropertiesTest {
   @Test
   public void testSystemProperties() throws Throwable {
     SystemPropertiesForEntityTypes systemPropertiesForEntityTypesModel = new SystemPropertiesForEntityTypes.Builder()
-      .editable(true)
-      .dataType("testString")
-      .indexed(true)
       .label("testString")
       .description("testString")
+      .indexed(true)
+      .dataType("testString")
+      .editable(true)
       .build();
-    assertEquals(systemPropertiesForEntityTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForEntityTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesForEntityTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(systemPropertiesForEntityTypesModel.label(), "testString");
     assertEquals(systemPropertiesForEntityTypesModel.description(), "testString");
+    assertEquals(systemPropertiesForEntityTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForEntityTypesModel.dataType(), "testString");
+    assertEquals(systemPropertiesForEntityTypesModel.editable(), Boolean.valueOf(true));
 
     SystemPropertiesForRecordTypes systemPropertiesForRecordTypesModel = new SystemPropertiesForRecordTypes.Builder()
-      .editable(true)
-      .dataType("testString")
-      .indexed(true)
       .label("testString")
       .description("testString")
+      .indexed(true)
+      .dataType("testString")
+      .editable(true)
       .build();
-    assertEquals(systemPropertiesForRecordTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForRecordTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesForRecordTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(systemPropertiesForRecordTypesModel.label(), "testString");
     assertEquals(systemPropertiesForRecordTypesModel.description(), "testString");
+    assertEquals(systemPropertiesForRecordTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForRecordTypesModel.dataType(), "testString");
+    assertEquals(systemPropertiesForRecordTypesModel.editable(), Boolean.valueOf(true));
 
     SystemPropertiesForAttributeTypes systemPropertiesForAttributeTypesModel = new SystemPropertiesForAttributeTypes.Builder()
-      .editable(true)
-      .dataType("testString")
-      .indexed(true)
       .label("testString")
       .description("testString")
+      .indexed(true)
+      .dataType("testString")
+      .editable(true)
       .build();
-    assertEquals(systemPropertiesForAttributeTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForAttributeTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesForAttributeTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(systemPropertiesForAttributeTypesModel.label(), "testString");
     assertEquals(systemPropertiesForAttributeTypesModel.description(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForAttributeTypesModel.dataType(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModel.editable(), Boolean.valueOf(true));
 
     SystemPropertiesForRelationshipTypes systemPropertiesForRelationshipTypesModel = new SystemPropertiesForRelationshipTypes.Builder()
-      .editable(true)
-      .dataType("testString")
-      .indexed(true)
       .label("testString")
       .description("testString")
+      .indexed(true)
+      .dataType("testString")
+      .editable(true)
       .build();
-    assertEquals(systemPropertiesForRelationshipTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForRelationshipTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesForRelationshipTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(systemPropertiesForRelationshipTypesModel.label(), "testString");
     assertEquals(systemPropertiesForRelationshipTypesModel.description(), "testString");
+    assertEquals(systemPropertiesForRelationshipTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForRelationshipTypesModel.dataType(), "testString");
+    assertEquals(systemPropertiesForRelationshipTypesModel.editable(), Boolean.valueOf(true));
 
     SystemProperties systemPropertiesModel = new SystemProperties.Builder()
       .entityTypes(systemPropertiesForEntityTypesModel)

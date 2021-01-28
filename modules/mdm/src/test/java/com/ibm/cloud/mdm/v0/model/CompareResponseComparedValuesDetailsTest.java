@@ -32,10 +32,10 @@ public class CompareResponseComparedValuesDetailsTest {
   @Test
   public void testCompareResponseComparedValuesDetails() throws Throwable {
     CompareResponseComparedValuesDetails compareResponseComparedValuesDetailsModel = new CompareResponseComparedValuesDetails();
-    assertNull(compareResponseComparedValuesDetailsModel.getDistance());
-    assertNull(compareResponseComparedValuesDetailsModel.getFeatureVector());
     assertNull(compareResponseComparedValuesDetailsModel.getDetails());
+    assertNull(compareResponseComparedValuesDetailsModel.getFeatureVector());
     assertNull(compareResponseComparedValuesDetailsModel.getScore());
+    assertNull(compareResponseComparedValuesDetailsModel.getDistance());
     assertNull(compareResponseComparedValuesDetailsModel.getValues());
     assertNull(compareResponseComparedValuesDetailsModel.getTypes());
   }

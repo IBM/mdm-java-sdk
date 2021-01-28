@@ -35,8 +35,8 @@ public class PostSearchResponseMethodTest {
   @Test
   public void testPostSearchResponseMethod() throws Throwable {
     PostSearchResponseMethod postSearchResponseMethodModel = new PostSearchResponseMethod();
-    assertNull(postSearchResponseMethodModel.getComparisons());
     assertNull(postSearchResponseMethodModel.getScore());
+    assertNull(postSearchResponseMethodModel.getComparisons());
     assertNull(postSearchResponseMethodModel.getMethod());
   }
 }

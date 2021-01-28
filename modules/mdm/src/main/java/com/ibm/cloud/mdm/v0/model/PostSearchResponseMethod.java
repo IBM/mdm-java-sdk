@@ -21,20 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PostSearchResponseMethod extends GenericModel {
 
-  protected List<PostSearchResponseComparison> comparisons;
   protected Float score;
+  protected List<PostSearchResponseComparison> comparisons;
   protected Long method;
-
-  /**
-   * Gets the comparisons.
-   *
-   * Collection of details of all compared values.
-   *
-   * @return the comparisons
-   */
-  public List<PostSearchResponseComparison> getComparisons() {
-    return comparisons;
-  }
 
   /**
    * Gets the score.
@@ -45,6 +34,17 @@ public class PostSearchResponseMethod extends GenericModel {
    */
   public Float getScore() {
     return score;
+  }
+
+  /**
+   * Gets the comparisons.
+   *
+   * Collection of details of all compared values.
+   *
+   * @return the comparisons
+   */
+  public List<PostSearchResponseComparison> getComparisons() {
+    return comparisons;
   }
 
   /**

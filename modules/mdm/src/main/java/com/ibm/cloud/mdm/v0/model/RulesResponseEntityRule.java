@@ -20,16 +20,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RulesResponseEntityRule extends GenericModel {
 
+  @SerializedName("target_recno")
+  protected String targetRecno;
   @SerializedName("rule_type")
   protected String ruleType;
   @SerializedName("src_recno")
   protected String srcRecno;
-  @SerializedName("target_recno")
-  protected String targetRecno;
   @SerializedName("last_updated")
   protected Long lastUpdated;
-  protected String description;
   protected String user;
+  protected String description;
+
+  /**
+   * Gets the targetRecno.
+   *
+   * The other record number in linkage rule.
+   *
+   * @return the targetRecno
+   */
+  public String getTargetRecno() {
+    return targetRecno;
+  }
 
   /**
    * Gets the ruleType.
@@ -54,17 +65,6 @@ public class RulesResponseEntityRule extends GenericModel {
   }
 
   /**
-   * Gets the targetRecno.
-   *
-   * The other record number in linkage rule.
-   *
-   * @return the targetRecno
-   */
-  public String getTargetRecno() {
-    return targetRecno;
-  }
-
-  /**
    * Gets the lastUpdated.
    *
    * System generated timestamp when the linkage rule was last updated.
@@ -76,17 +76,6 @@ public class RulesResponseEntityRule extends GenericModel {
   }
 
   /**
-   * Gets the description.
-   *
-   * User defined description for the linkage rule.
-   *
-   * @return the description
-   */
-  public String getDescription() {
-    return description;
-  }
-
-  /**
    * Gets the user.
    *
    * Creator of the linkage rule.
@@ -95,6 +84,17 @@ public class RulesResponseEntityRule extends GenericModel {
    */
   public String getUser() {
     return user;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * User defined description for the linkage rule.
+   *
+   * @return the description
+   */
+  public String getDescription() {
+    return description;
   }
 }
 

@@ -32,20 +32,20 @@ public class PublishDataRequestCosDetailsCatalogTest {
   @Test
   public void testPublishDataRequestCosDetailsCatalog() throws Throwable {
     PublishDataRequestCosDetailsCatalog publishDataRequestCosDetailsCatalogModel = new PublishDataRequestCosDetailsCatalog.Builder()
-      .cosEndpoint("testString")
-      .cosBucketName("testString")
       .cosApiKey("testString")
+      .cosBucketName("testString")
+      .cosEndpoint("testString")
       .build();
-    assertEquals(publishDataRequestCosDetailsCatalogModel.cosEndpoint(), "testString");
-    assertEquals(publishDataRequestCosDetailsCatalogModel.cosBucketName(), "testString");
     assertEquals(publishDataRequestCosDetailsCatalogModel.cosApiKey(), "testString");
+    assertEquals(publishDataRequestCosDetailsCatalogModel.cosBucketName(), "testString");
+    assertEquals(publishDataRequestCosDetailsCatalogModel.cosEndpoint(), "testString");
 
     String json = TestUtilities.serialize(publishDataRequestCosDetailsCatalogModel);
 
     PublishDataRequestCosDetailsCatalog publishDataRequestCosDetailsCatalogModelNew = TestUtilities.deserialize(json, PublishDataRequestCosDetailsCatalog.class);
     assertTrue(publishDataRequestCosDetailsCatalogModelNew instanceof PublishDataRequestCosDetailsCatalog);
-    assertEquals(publishDataRequestCosDetailsCatalogModelNew.cosEndpoint(), "testString");
-    assertEquals(publishDataRequestCosDetailsCatalogModelNew.cosBucketName(), "testString");
     assertEquals(publishDataRequestCosDetailsCatalogModelNew.cosApiKey(), "testString");
+    assertEquals(publishDataRequestCosDetailsCatalogModelNew.cosBucketName(), "testString");
+    assertEquals(publishDataRequestCosDetailsCatalogModelNew.cosEndpoint(), "testString");
   }
 }

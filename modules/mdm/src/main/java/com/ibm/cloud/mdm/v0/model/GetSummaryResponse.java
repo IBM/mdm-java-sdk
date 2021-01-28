@@ -20,36 +20,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetSummaryResponse extends GenericModel {
 
-  @SerializedName("stats_and_entities")
-  protected GetSummaryResponseStatsAndEntities statsAndEntities;
-  @SerializedName("unique_source_count")
-  protected Long uniqueSourceCount;
   @SerializedName("total_records")
   protected Long totalRecords;
   @SerializedName("singleton_entity_count")
   protected Long singletonEntityCount;
-
-  /**
-   * Gets the statsAndEntities.
-   *
-   * Statistical information of entities.
-   *
-   * @return the statsAndEntities
-   */
-  public GetSummaryResponseStatsAndEntities getStatsAndEntities() {
-    return statsAndEntities;
-  }
-
-  /**
-   * Gets the uniqueSourceCount.
-   *
-   * The number of source systems in the derived matching data.
-   *
-   * @return the uniqueSourceCount
-   */
-  public Long getUniqueSourceCount() {
-    return uniqueSourceCount;
-  }
+  @SerializedName("stats_and_entities")
+  protected GetSummaryResponseStatsAndEntities statsAndEntities;
+  @SerializedName("unique_source_count")
+  protected Long uniqueSourceCount;
 
   /**
    * Gets the totalRecords.
@@ -71,6 +49,28 @@ public class GetSummaryResponse extends GenericModel {
    */
   public Long getSingletonEntityCount() {
     return singletonEntityCount;
+  }
+
+  /**
+   * Gets the statsAndEntities.
+   *
+   * Statistical information of entities.
+   *
+   * @return the statsAndEntities
+   */
+  public GetSummaryResponseStatsAndEntities getStatsAndEntities() {
+    return statsAndEntities;
+  }
+
+  /**
+   * Gets the uniqueSourceCount.
+   *
+   * The number of source systems in the derived matching data.
+   *
+   * @return the uniqueSourceCount
+   */
+  public Long getUniqueSourceCount() {
+    return uniqueSourceCount;
   }
 }
 

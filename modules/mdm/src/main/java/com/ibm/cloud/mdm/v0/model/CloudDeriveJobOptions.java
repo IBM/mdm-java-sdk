@@ -20,6 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CloudDeriveJobOptions extends GenericModel {
 
   protected String recordType;
+  protected Boolean doForce;
   protected String csvFile;
   protected String csvColumn;
   protected String cosEndpoint;
@@ -32,6 +33,7 @@ public class CloudDeriveJobOptions extends GenericModel {
    */
   public static class Builder {
     private String recordType;
+    private Boolean doForce;
     private String csvFile;
     private String csvColumn;
     private String cosEndpoint;
@@ -41,6 +43,7 @@ public class CloudDeriveJobOptions extends GenericModel {
 
     private Builder(CloudDeriveJobOptions cloudDeriveJobOptions) {
       this.recordType = cloudDeriveJobOptions.recordType;
+      this.doForce = cloudDeriveJobOptions.doForce;
       this.csvFile = cloudDeriveJobOptions.csvFile;
       this.csvColumn = cloudDeriveJobOptions.csvColumn;
       this.cosEndpoint = cloudDeriveJobOptions.cosEndpoint;
@@ -72,6 +75,17 @@ public class CloudDeriveJobOptions extends GenericModel {
      */
     public Builder recordType(String recordType) {
       this.recordType = recordType;
+      return this;
+    }
+
+    /**
+     * Set the doForce.
+     *
+     * @param doForce the doForce
+     * @return the CloudDeriveJobOptions builder
+     */
+    public Builder doForce(Boolean doForce) {
+      this.doForce = doForce;
       return this;
     }
 
@@ -144,6 +158,7 @@ public class CloudDeriveJobOptions extends GenericModel {
 
   protected CloudDeriveJobOptions(Builder builder) {
     recordType = builder.recordType;
+    doForce = builder.doForce;
     csvFile = builder.csvFile;
     csvColumn = builder.csvColumn;
     cosEndpoint = builder.cosEndpoint;
@@ -170,6 +185,17 @@ public class CloudDeriveJobOptions extends GenericModel {
    */
   public String recordType() {
     return recordType;
+  }
+
+  /**
+   * Gets the doForce.
+   *
+   * Force to re-derive all records, default is false.
+   *
+   * @return the doForce
+   */
+  public Boolean doForce() {
+    return doForce;
   }
 
   /**

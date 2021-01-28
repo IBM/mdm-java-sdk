@@ -21,6 +21,8 @@ public class CloudMatchJobOptions extends GenericModel {
 
   protected String recordType;
   protected String entityType;
+  protected Boolean doForce;
+  protected Boolean doAnalytics;
   protected Boolean doReplicate;
 
   /**
@@ -29,11 +31,15 @@ public class CloudMatchJobOptions extends GenericModel {
   public static class Builder {
     private String recordType;
     private String entityType;
+    private Boolean doForce;
+    private Boolean doAnalytics;
     private Boolean doReplicate;
 
     private Builder(CloudMatchJobOptions cloudMatchJobOptions) {
       this.recordType = cloudMatchJobOptions.recordType;
       this.entityType = cloudMatchJobOptions.entityType;
+      this.doForce = cloudMatchJobOptions.doForce;
+      this.doAnalytics = cloudMatchJobOptions.doAnalytics;
       this.doReplicate = cloudMatchJobOptions.doReplicate;
     }
 
@@ -75,6 +81,28 @@ public class CloudMatchJobOptions extends GenericModel {
     }
 
     /**
+     * Set the doForce.
+     *
+     * @param doForce the doForce
+     * @return the CloudMatchJobOptions builder
+     */
+    public Builder doForce(Boolean doForce) {
+      this.doForce = doForce;
+      return this;
+    }
+
+    /**
+     * Set the doAnalytics.
+     *
+     * @param doAnalytics the doAnalytics
+     * @return the CloudMatchJobOptions builder
+     */
+    public Builder doAnalytics(Boolean doAnalytics) {
+      this.doAnalytics = doAnalytics;
+      return this;
+    }
+
+    /**
      * Set the doReplicate.
      *
      * @param doReplicate the doReplicate
@@ -89,6 +117,8 @@ public class CloudMatchJobOptions extends GenericModel {
   protected CloudMatchJobOptions(Builder builder) {
     recordType = builder.recordType;
     entityType = builder.entityType;
+    doForce = builder.doForce;
+    doAnalytics = builder.doAnalytics;
     doReplicate = builder.doReplicate;
   }
 
@@ -121,6 +151,28 @@ public class CloudMatchJobOptions extends GenericModel {
    */
   public String entityType() {
     return entityType;
+  }
+
+  /**
+   * Gets the doForce.
+   *
+   * Force to re-match all records, default is false.
+   *
+   * @return the doForce
+   */
+  public Boolean doForce() {
+    return doForce;
+  }
+
+  /**
+   * Gets the doAnalytics.
+   *
+   * collect analysis report, default is false.
+   *
+   * @return the doAnalytics
+   */
+  public Boolean doAnalytics() {
+    return doAnalytics;
   }
 
   /**

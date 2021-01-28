@@ -32,18 +32,18 @@ public class EntityTypeTest {
   @Test
   public void testEntityType() throws Throwable {
     EntityType entityTypeModel = new EntityType.Builder()
-      .label("testString")
       .description("testString")
+      .label("testString")
       .build();
-    assertEquals(entityTypeModel.label(), "testString");
     assertEquals(entityTypeModel.description(), "testString");
+    assertEquals(entityTypeModel.label(), "testString");
 
     String json = TestUtilities.serialize(entityTypeModel);
 
     EntityType entityTypeModelNew = TestUtilities.deserialize(json, EntityType.class);
     assertTrue(entityTypeModelNew instanceof EntityType);
-    assertEquals(entityTypeModelNew.label(), "testString");
     assertEquals(entityTypeModelNew.description(), "testString");
+    assertEquals(entityTypeModelNew.label(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

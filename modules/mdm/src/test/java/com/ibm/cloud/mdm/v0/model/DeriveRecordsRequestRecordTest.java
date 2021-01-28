@@ -33,14 +33,14 @@ public class DeriveRecordsRequestRecordTest {
   @Test
   public void testDeriveRecordsRequestRecord() throws Throwable {
     DeriveRecordsRequestAttributes deriveRecordsRequestAttributesModel = new DeriveRecordsRequestAttributes.Builder()
+      .recordLastUpdated(Long.valueOf("26"))
       .recordId("testString")
       .recordSource("testString")
-      .recordLastUpdated("testString")
       .add("foo", "testString")
       .build();
+    assertEquals(deriveRecordsRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
     assertEquals(deriveRecordsRequestAttributesModel.getRecordId(), "testString");
     assertEquals(deriveRecordsRequestAttributesModel.getRecordSource(), "testString");
-    assertEquals(deriveRecordsRequestAttributesModel.getRecordLastUpdated(), "testString");
     assertEquals(deriveRecordsRequestAttributesModel.get("foo"), "testString");
 
     DeriveRecordsRequestRecord deriveRecordsRequestRecordModel = new DeriveRecordsRequestRecord.Builder()

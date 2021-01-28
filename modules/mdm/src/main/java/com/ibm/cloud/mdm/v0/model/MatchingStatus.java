@@ -19,19 +19,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class MatchingStatus extends GenericModel {
 
-  protected String status;
   protected String message;
-
-  /**
-   * Gets the status.
-   *
-   * status of match.
-   *
-   * @return the status
-   */
-  public String getStatus() {
-    return status;
-  }
+  protected String status;
 
   /**
    * Gets the message.
@@ -42,6 +31,17 @@ public class MatchingStatus extends GenericModel {
    */
   public String getMessage() {
     return message;
+  }
+
+  /**
+   * Gets the status.
+   *
+   * status of match.
+   *
+   * @return the status
+   */
+  public String getStatus() {
+    return status;
   }
 }
 

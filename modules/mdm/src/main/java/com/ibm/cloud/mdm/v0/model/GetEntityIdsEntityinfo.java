@@ -20,21 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetEntityIdsEntityinfo extends GenericModel {
 
-  @SerializedName("entity_id")
-  protected String entityId;
   @SerializedName("entity_type")
   protected String entityType;
-
-  /**
-   * Gets the entityId.
-   *
-   * The entity identifier of an entity as assigned by the system.
-   *
-   * @return the entityId
-   */
-  public String getEntityId() {
-    return entityId;
-  }
+  @SerializedName("entity_id")
+  protected String entityId;
 
   /**
    * Gets the entityType.
@@ -45,6 +34,17 @@ public class GetEntityIdsEntityinfo extends GenericModel {
    */
   public String getEntityType() {
     return entityType;
+  }
+
+  /**
+   * Gets the entityId.
+   *
+   * The entity identifier of an entity as assigned by the system.
+   *
+   * @return the entityId
+   */
+  public String getEntityId() {
+    return entityId;
   }
 }
 

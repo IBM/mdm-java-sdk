@@ -33,6 +33,7 @@ public class CloudDeriveJobOptionsTest {
   public void testCloudDeriveJobOptions() throws Throwable {
     CloudDeriveJobOptions cloudDeriveJobOptionsModel = new CloudDeriveJobOptions.Builder()
       .recordType("person")
+      .doForce(true)
       .csvFile("/usr/mdm-matching/sample/person-100.tsv")
       .csvColumn("record_source,,record_id,legal_name.given_name,legal_name.last_name,primary_residence.address_line1,primary_residence.city,primary_residence.province_state,primary_residence.zip_postal_code,,home_telephone.phone_number,business_address.address_line1,business_address.city,business_address.province_state,business_address.zip_postal_code,,home_telephone.phone_number.1,social_security_number.identification_number,health_card.identification_number,birth_date.value,gender.value")
       .cosEndpoint("http://s3.us-south.cloud-object-storage.appdomain.cloud")
@@ -41,6 +42,7 @@ public class CloudDeriveJobOptionsTest {
       .cosSecretKey("<hex string>")
       .build();
     assertEquals(cloudDeriveJobOptionsModel.recordType(), "person");
+    assertEquals(cloudDeriveJobOptionsModel.doForce(), Boolean.valueOf(true));
     assertEquals(cloudDeriveJobOptionsModel.csvFile(), "/usr/mdm-matching/sample/person-100.tsv");
     assertEquals(cloudDeriveJobOptionsModel.csvColumn(), "record_source,,record_id,legal_name.given_name,legal_name.last_name,primary_residence.address_line1,primary_residence.city,primary_residence.province_state,primary_residence.zip_postal_code,,home_telephone.phone_number,business_address.address_line1,business_address.city,business_address.province_state,business_address.zip_postal_code,,home_telephone.phone_number.1,social_security_number.identification_number,health_card.identification_number,birth_date.value,gender.value");
     assertEquals(cloudDeriveJobOptionsModel.cosEndpoint(), "http://s3.us-south.cloud-object-storage.appdomain.cloud");

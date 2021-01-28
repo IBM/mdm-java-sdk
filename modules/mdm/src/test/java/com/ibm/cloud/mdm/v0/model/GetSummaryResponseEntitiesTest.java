@@ -32,7 +32,7 @@ public class GetSummaryResponseEntitiesTest {
   @Test
   public void testGetSummaryResponseEntities() throws Throwable {
     GetSummaryResponseEntities getSummaryResponseEntitiesModel = new GetSummaryResponseEntities();
-    assertNull(getSummaryResponseEntitiesModel.getEntitySize());
     assertNull(getSummaryResponseEntitiesModel.getEntityId());
+    assertNull(getSummaryResponseEntitiesModel.getEntitySize());
   }
 }

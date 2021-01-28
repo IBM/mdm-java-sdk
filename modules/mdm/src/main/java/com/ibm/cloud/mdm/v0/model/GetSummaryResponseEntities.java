@@ -20,21 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetSummaryResponseEntities extends GenericModel {
 
-  @SerializedName("entity_size")
-  protected Long entitySize;
   @SerializedName("entity_id")
   protected Long entityId;
-
-  /**
-   * Gets the entitySize.
-   *
-   * The number of records in an entity.
-   *
-   * @return the entitySize
-   */
-  public Long getEntitySize() {
-    return entitySize;
-  }
+  @SerializedName("entity_size")
+  protected Long entitySize;
 
   /**
    * Gets the entityId.
@@ -45,6 +34,17 @@ public class GetSummaryResponseEntities extends GenericModel {
    */
   public Long getEntityId() {
     return entityId;
+  }
+
+  /**
+   * Gets the entitySize.
+   *
+   * The number of records in an entity.
+   *
+   * @return the entitySize
+   */
+  public Long getEntitySize() {
+    return entitySize;
   }
 }
 

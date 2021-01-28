@@ -21,12 +21,12 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class PostCloudJobResponse extends DynamicModel<Object> {
 
+  @SerializedName("job_name")
+  protected String jobName;
   @SerializedName("last_updated_at")
   protected String lastUpdatedAt;
   @SerializedName("created_at")
   protected String createdAt;
-  @SerializedName("job_name")
-  protected String jobName;
   @SerializedName("status")
   protected String status;
   @SerializedName("id")
@@ -34,6 +34,17 @@ public class PostCloudJobResponse extends DynamicModel<Object> {
 
   public PostCloudJobResponse() {
     super(new TypeToken<Object>() { });
+  }
+
+  /**
+   * Gets the jobName.
+   *
+   * System defined name of a given job e.g. match-bulkderiver.
+   *
+   * @return the jobName
+   */
+  public String getJobName() {
+    return this.jobName;
   }
 
   /**
@@ -56,17 +67,6 @@ public class PostCloudJobResponse extends DynamicModel<Object> {
    */
   public String getCreatedAt() {
     return this.createdAt;
-  }
-
-  /**
-   * Gets the jobName.
-   *
-   * System defined name of a given job e.g. match-bulkderiver.
-   *
-   * @return the jobName
-   */
-  public String getJobName() {
-    return this.jobName;
   }
 
   /**

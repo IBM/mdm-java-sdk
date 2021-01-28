@@ -20,25 +20,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PublishDataRequestCosDetailsCatalog extends GenericModel {
 
-  @SerializedName("cos_endpoint")
-  protected String cosEndpoint;
-  @SerializedName("cos_bucket_name")
-  protected String cosBucketName;
   @SerializedName("cos_api_key")
   protected String cosApiKey;
+  @SerializedName("cos_bucket_name")
+  protected String cosBucketName;
+  @SerializedName("cos_endpoint")
+  protected String cosEndpoint;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String cosEndpoint;
-    private String cosBucketName;
     private String cosApiKey;
+    private String cosBucketName;
+    private String cosEndpoint;
 
     private Builder(PublishDataRequestCosDetailsCatalog publishDataRequestCosDetailsCatalog) {
-      this.cosEndpoint = publishDataRequestCosDetailsCatalog.cosEndpoint;
-      this.cosBucketName = publishDataRequestCosDetailsCatalog.cosBucketName;
       this.cosApiKey = publishDataRequestCosDetailsCatalog.cosApiKey;
+      this.cosBucketName = publishDataRequestCosDetailsCatalog.cosBucketName;
+      this.cosEndpoint = publishDataRequestCosDetailsCatalog.cosEndpoint;
     }
 
     /**
@@ -57,13 +57,13 @@ public class PublishDataRequestCosDetailsCatalog extends GenericModel {
     }
 
     /**
-     * Set the cosEndpoint.
+     * Set the cosApiKey.
      *
-     * @param cosEndpoint the cosEndpoint
+     * @param cosApiKey the cosApiKey
      * @return the PublishDataRequestCosDetailsCatalog builder
      */
-    public Builder cosEndpoint(String cosEndpoint) {
-      this.cosEndpoint = cosEndpoint;
+    public Builder cosApiKey(String cosApiKey) {
+      this.cosApiKey = cosApiKey;
       return this;
     }
 
@@ -79,21 +79,21 @@ public class PublishDataRequestCosDetailsCatalog extends GenericModel {
     }
 
     /**
-     * Set the cosApiKey.
+     * Set the cosEndpoint.
      *
-     * @param cosApiKey the cosApiKey
+     * @param cosEndpoint the cosEndpoint
      * @return the PublishDataRequestCosDetailsCatalog builder
      */
-    public Builder cosApiKey(String cosApiKey) {
-      this.cosApiKey = cosApiKey;
+    public Builder cosEndpoint(String cosEndpoint) {
+      this.cosEndpoint = cosEndpoint;
       return this;
     }
   }
 
   protected PublishDataRequestCosDetailsCatalog(Builder builder) {
-    cosEndpoint = builder.cosEndpoint;
-    cosBucketName = builder.cosBucketName;
     cosApiKey = builder.cosApiKey;
+    cosBucketName = builder.cosBucketName;
+    cosEndpoint = builder.cosEndpoint;
   }
 
   /**
@@ -106,14 +106,14 @@ public class PublishDataRequestCosDetailsCatalog extends GenericModel {
   }
 
   /**
-   * Gets the cosEndpoint.
+   * Gets the cosApiKey.
    *
-   * Cos endpoint.
+   * Cos api key.
    *
-   * @return the cosEndpoint
+   * @return the cosApiKey
    */
-  public String cosEndpoint() {
-    return cosEndpoint;
+  public String cosApiKey() {
+    return cosApiKey;
   }
 
   /**
@@ -128,14 +128,14 @@ public class PublishDataRequestCosDetailsCatalog extends GenericModel {
   }
 
   /**
-   * Gets the cosApiKey.
+   * Gets the cosEndpoint.
    *
-   * Cos api key.
+   * Cos endpoint.
    *
-   * @return the cosApiKey
+   * @return the cosEndpoint
    */
-  public String cosApiKey() {
-    return cosApiKey;
+  public String cosEndpoint() {
+    return cosEndpoint;
   }
 }
 

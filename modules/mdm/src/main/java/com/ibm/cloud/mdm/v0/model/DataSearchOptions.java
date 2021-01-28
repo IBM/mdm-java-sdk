@@ -12,20 +12,23 @@
  */
 package com.ibm.cloud.mdm.v0.model;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
-import com.ibm.cloud.sdk.core.util.StringHelper;
 
 /**
  * The dataSearch options.
  */
 public class DataSearchOptions extends GenericModel {
+
+  /**
+   * The type of data to search against. Search type of 'ENTITY' is not supported.
+   */
+  public interface SearchType {
+    /** record. */
+    String RECORD = "record";
+  }
 
   /**
    * The type of results to return from the search.
@@ -37,10 +40,9 @@ public class DataSearchOptions extends GenericModel {
     String RESULTS_AS_ENTITIES = "results_as_entities";
   }
 
-  protected String accept;
-  protected CriteriaRequest incomingCriteria;
-  protected InputStream body;
-  protected String contentType;
+  protected String searchType;
+  protected SearchQueryRequest query;
+  protected List<SearchFilterRequest> filters;
   protected String returnType;
   protected Long limit;
   protected Long offset;
@@ -51,10 +53,9 @@ public class DataSearchOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String accept;
-    private CriteriaRequest incomingCriteria;
-    private InputStream body;
-    private String contentType;
+    private String searchType;
+    private SearchQueryRequest query;
+    private List<SearchFilterRequest> filters;
     private String returnType;
     private Long limit;
     private Long offset;
@@ -62,10 +63,9 @@ public class DataSearchOptions extends GenericModel {
     private List<String> exclude;
 
     private Builder(DataSearchOptions dataSearchOptions) {
-      this.accept = dataSearchOptions.accept;
-      this.incomingCriteria = dataSearchOptions.incomingCriteria;
-      this.body = dataSearchOptions.body;
-      this.contentType = dataSearchOptions.contentType;
+      this.searchType = dataSearchOptions.searchType;
+      this.query = dataSearchOptions.query;
+      this.filters = dataSearchOptions.filters;
       this.returnType = dataSearchOptions.returnType;
       this.limit = dataSearchOptions.limit;
       this.offset = dataSearchOptions.offset;
@@ -86,6 +86,22 @@ public class DataSearchOptions extends GenericModel {
      */
     public DataSearchOptions build() {
       return new DataSearchOptions(this);
+    }
+
+    /**
+     * Adds an filters to filters.
+     *
+     * @param filters the new filters
+     * @return the DataSearchOptions builder
+     */
+    public Builder addFilters(SearchFilterRequest filters) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(filters,
+        "filters cannot be null");
+      if (this.filters == null) {
+        this.filters = new ArrayList<SearchFilterRequest>();
+      }
+      this.filters.add(filters);
+      return this;
     }
 
     /**
@@ -121,35 +137,36 @@ public class DataSearchOptions extends GenericModel {
     }
 
     /**
-     * Set the accept.
+     * Set the searchType.
      *
-     * @param accept the accept
+     * @param searchType the searchType
      * @return the DataSearchOptions builder
      */
-    public Builder accept(String accept) {
-      this.accept = accept;
+    public Builder searchType(String searchType) {
+      this.searchType = searchType;
       return this;
     }
 
     /**
-     * Set the body.
+     * Set the query.
      *
-     * @param body the body
+     * @param query the query
      * @return the DataSearchOptions builder
      */
-    public Builder body(InputStream body) {
-      this.body = body;
+    public Builder query(SearchQueryRequest query) {
+      this.query = query;
       return this;
     }
 
     /**
-     * Set the contentType.
+     * Set the filters.
+     * Existing filters will be replaced.
      *
-     * @param contentType the contentType
+     * @param filters the filters
      * @return the DataSearchOptions builder
      */
-    public Builder contentType(String contentType) {
-      this.contentType = contentType;
+    public Builder filters(List<SearchFilterRequest> filters) {
+      this.filters = filters;
       return this;
     }
 
@@ -211,59 +228,23 @@ public class DataSearchOptions extends GenericModel {
     }
 
     /**
-     * Set the incomingCriteria.
+     * Set the criteriaRequest.
      *
-     * @param incomingCriteria the incomingCriteria
+     * @param criteriaRequest the criteriaRequest
      * @return the DataSearchOptions builder
      */
-    public Builder incomingCriteria(CriteriaRequest incomingCriteria) {
-      this.incomingCriteria = incomingCriteria;
-      this.contentType = "application/json";
-      return this;
-    }
-
-    /**
-     * Set the body.
-     *
-     * @param body the body
-     * @return the DataSearchOptions builder
-     *
-     * @throws FileNotFoundException if the file could not be found
-     */
-    public Builder body(File body) throws FileNotFoundException {
-      this.body = new FileInputStream(body);
-      return this;
-    }
-
-    /**
-     * Set the body.
-     *
-     * @param body the body
-     * @return the DataSearchOptions builder
-     */
-    public Builder body(String body) {
-      this.body = StringHelper.toInputStream(body);
-      return this;
-    }
-
-    /**
-     * Set the text.
-     *
-     * @param text the text
-     * @return the DataSearchOptions builder
-     */
-    public Builder text(String text) {
-      this.body(text);
-      this.contentType = "text/plain";
+    public Builder criteriaRequest(CriteriaRequest criteriaRequest) {
+      this.searchType = criteriaRequest.searchType();
+      this.query = criteriaRequest.query();
+      this.filters = criteriaRequest.filters();
       return this;
     }
   }
 
   protected DataSearchOptions(Builder builder) {
-    accept = builder.accept;
-    incomingCriteria = builder.incomingCriteria;
-    body = builder.body;
-    contentType = builder.contentType;
+    searchType = builder.searchType;
+    query = builder.query;
+    filters = builder.filters;
     returnType = builder.returnType;
     limit = builder.limit;
     offset = builder.offset;
@@ -281,49 +262,36 @@ public class DataSearchOptions extends GenericModel {
   }
 
   /**
-   * Gets the accept.
+   * Gets the searchType.
    *
-   * The type of the response: application/json, application/xml, or text/plain. A character encoding can be specified
-   * by including a `charset` parameter. For example, 'text/plain;charset=utf-8'.
+   * The type of data to search against. Search type of 'ENTITY' is not supported.
    *
-   * @return the accept
+   * @return the searchType
    */
-  public String accept() {
-    return accept;
+  public String searchType() {
+    return searchType;
   }
 
   /**
-   * Gets the incomingCriteria.
+   * Gets the query.
    *
-   * Valid input defining the search criteria.
+   * A search query.
    *
-   * @return the incomingCriteria
+   * @return the query
    */
-  public CriteriaRequest incomingCriteria() {
-    return incomingCriteria;
+  public SearchQueryRequest query() {
+    return query;
   }
 
   /**
-   * Gets the body.
+   * Gets the filters.
    *
-   * Valid input defining the search criteria.
+   * The search filters to apply to the results of the query.
    *
-   * @return the body
+   * @return the filters
    */
-  public InputStream body() {
-    return body;
-  }
-
-  /**
-   * Gets the contentType.
-   *
-   * The type of the input. A character encoding can be specified by including a `charset` parameter. For example,
-   * 'text/plain;charset=utf-8'.
-   *
-   * @return the contentType
-   */
-  public String contentType() {
-    return contentType;
+  public List<SearchFilterRequest> filters() {
+    return filters;
   }
 
   /**

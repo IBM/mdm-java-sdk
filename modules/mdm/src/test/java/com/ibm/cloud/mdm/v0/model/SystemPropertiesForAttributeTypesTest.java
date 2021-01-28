@@ -32,27 +32,27 @@ public class SystemPropertiesForAttributeTypesTest {
   @Test
   public void testSystemPropertiesForAttributeTypes() throws Throwable {
     SystemPropertiesForAttributeTypes systemPropertiesForAttributeTypesModel = new SystemPropertiesForAttributeTypes.Builder()
-      .editable(true)
-      .dataType("testString")
-      .indexed(true)
       .label("testString")
       .description("testString")
+      .indexed(true)
+      .dataType("testString")
+      .editable(true)
       .build();
-    assertEquals(systemPropertiesForAttributeTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForAttributeTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesForAttributeTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(systemPropertiesForAttributeTypesModel.label(), "testString");
     assertEquals(systemPropertiesForAttributeTypesModel.description(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForAttributeTypesModel.dataType(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModel.editable(), Boolean.valueOf(true));
 
     String json = TestUtilities.serialize(systemPropertiesForAttributeTypesModel);
 
     SystemPropertiesForAttributeTypes systemPropertiesForAttributeTypesModelNew = TestUtilities.deserialize(json, SystemPropertiesForAttributeTypes.class);
     assertTrue(systemPropertiesForAttributeTypesModelNew instanceof SystemPropertiesForAttributeTypes);
-    assertEquals(systemPropertiesForAttributeTypesModelNew.editable(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesForAttributeTypesModelNew.dataType(), "testString");
-    assertEquals(systemPropertiesForAttributeTypesModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(systemPropertiesForAttributeTypesModelNew.label(), "testString");
     assertEquals(systemPropertiesForAttributeTypesModelNew.description(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModelNew.indexed(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesForAttributeTypesModelNew.dataType(), "testString");
+    assertEquals(systemPropertiesForAttributeTypesModelNew.editable(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

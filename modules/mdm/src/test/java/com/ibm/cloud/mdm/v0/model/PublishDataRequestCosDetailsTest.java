@@ -34,22 +34,22 @@ public class PublishDataRequestCosDetailsTest {
   @Test
   public void testPublishDataRequestCosDetails() throws Throwable {
     PublishDataRequestCosDetailsProject publishDataRequestCosDetailsProjectModel = new PublishDataRequestCosDetailsProject.Builder()
-      .cosEndpoint("testString")
-      .cosBucketName("testString")
       .cosApiKey("testString")
+      .cosBucketName("testString")
+      .cosEndpoint("testString")
       .build();
-    assertEquals(publishDataRequestCosDetailsProjectModel.cosEndpoint(), "testString");
-    assertEquals(publishDataRequestCosDetailsProjectModel.cosBucketName(), "testString");
     assertEquals(publishDataRequestCosDetailsProjectModel.cosApiKey(), "testString");
+    assertEquals(publishDataRequestCosDetailsProjectModel.cosBucketName(), "testString");
+    assertEquals(publishDataRequestCosDetailsProjectModel.cosEndpoint(), "testString");
 
     PublishDataRequestCosDetailsCatalog publishDataRequestCosDetailsCatalogModel = new PublishDataRequestCosDetailsCatalog.Builder()
-      .cosEndpoint("testString")
-      .cosBucketName("testString")
       .cosApiKey("testString")
+      .cosBucketName("testString")
+      .cosEndpoint("testString")
       .build();
-    assertEquals(publishDataRequestCosDetailsCatalogModel.cosEndpoint(), "testString");
-    assertEquals(publishDataRequestCosDetailsCatalogModel.cosBucketName(), "testString");
     assertEquals(publishDataRequestCosDetailsCatalogModel.cosApiKey(), "testString");
+    assertEquals(publishDataRequestCosDetailsCatalogModel.cosBucketName(), "testString");
+    assertEquals(publishDataRequestCosDetailsCatalogModel.cosEndpoint(), "testString");
 
     PublishDataRequestCosDetails publishDataRequestCosDetailsModel = new PublishDataRequestCosDetails.Builder()
       .project(publishDataRequestCosDetailsProjectModel)
