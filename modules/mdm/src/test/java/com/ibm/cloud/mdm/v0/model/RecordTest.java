@@ -32,29 +32,17 @@ public class RecordTest {
   @Test
   public void testRecord() throws Throwable {
     Record recordModel = new Record.Builder()
-      .type("testString")
       .id("testString")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .typeName("testString")
-      .entityCount(Long.valueOf("26"))
-      .recordNumber(Long.valueOf("26"))
       .build();
-    assertEquals(recordModel.type(), "testString");
     assertEquals(recordModel.id(), "testString");
     assertEquals(recordModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
-    assertEquals(recordModel.typeName(), "testString");
-    assertEquals(recordModel.entityCount(), Long.valueOf("26"));
-    assertEquals(recordModel.recordNumber(), Long.valueOf("26"));
 
     String json = TestUtilities.serialize(recordModel);
 
     Record recordModelNew = TestUtilities.deserialize(json, Record.class);
     assertTrue(recordModelNew instanceof Record);
-    assertEquals(recordModelNew.type(), "testString");
     assertEquals(recordModelNew.id(), "testString");
-    assertEquals(recordModelNew.typeName(), "testString");
-    assertEquals(recordModelNew.entityCount(), Long.valueOf("26"));
-    assertEquals(recordModelNew.recordNumber(), Long.valueOf("26"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

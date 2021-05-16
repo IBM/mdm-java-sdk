@@ -23,21 +23,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class AlgorithmCompareMethod extends GenericModel {
 
   protected List<Float> weights;
-  protected List<AlgorithmMethods> methods;
   protected String label;
+  protected List<AlgorithmMethods> methods;
 
   /**
    * Builder.
    */
   public static class Builder {
     private List<Float> weights;
-    private List<AlgorithmMethods> methods;
     private String label;
+    private List<AlgorithmMethods> methods;
 
     private Builder(AlgorithmCompareMethod algorithmCompareMethod) {
       this.weights = algorithmCompareMethod.weights;
-      this.methods = algorithmCompareMethod.methods;
       this.label = algorithmCompareMethod.label;
+      this.methods = algorithmCompareMethod.methods;
     }
 
     /**
@@ -109,6 +109,17 @@ public class AlgorithmCompareMethod extends GenericModel {
     }
 
     /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the AlgorithmCompareMethod builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
      * Set the methods.
      * Existing methods will be replaced.
      *
@@ -119,25 +130,14 @@ public class AlgorithmCompareMethod extends GenericModel {
       this.methods = methods;
       return this;
     }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the AlgorithmCompareMethod builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
   }
 
   protected AlgorithmCompareMethod(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
     weights = builder.weights;
-    methods = builder.methods;
     label = builder.label;
+    methods = builder.methods;
   }
 
   /**
@@ -161,17 +161,6 @@ public class AlgorithmCompareMethod extends GenericModel {
   }
 
   /**
-   * Gets the methods.
-   *
-   * Collection of compare methods, considered in the same group.
-   *
-   * @return the methods
-   */
-  public List<AlgorithmMethods> methods() {
-    return methods;
-  }
-
-  /**
    * Gets the label.
    *
    * User defined translatable label.
@@ -180,6 +169,17 @@ public class AlgorithmCompareMethod extends GenericModel {
    */
   public String label() {
     return label;
+  }
+
+  /**
+   * Gets the methods.
+   *
+   * Collection of compare methods, considered in the same group.
+   *
+   * @return the methods
+   */
+  public List<AlgorithmMethods> methods() {
+    return methods;
   }
 }
 

@@ -13,9 +13,9 @@
 
 package com.ibm.cloud.mdm.v0.model;
 
+import com.ibm.cloud.mdm.v0.model.CompareSpecResource;
+import com.ibm.cloud.mdm.v0.model.CompareSpecResourceFeatureCategory;
 import com.ibm.cloud.mdm.v0.model.PutCompareSpecResourcesResponse;
-import com.ibm.cloud.mdm.v0.model.PutCompareSpecResourcesResponseCompareSpecResources;
-import com.ibm.cloud.mdm.v0.model.PutCompareSpecResourcesResponseFeatureCategory;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -37,7 +37,7 @@ public class PutCompareSpecResourcesResponseTest {
   public void testPutCompareSpecResourcesResponse() throws Throwable {
     PutCompareSpecResourcesResponse putCompareSpecResourcesResponseModel = new PutCompareSpecResourcesResponse();
     assertNull(putCompareSpecResourcesResponseModel.getCompareSpecResources());
-    assertNull(putCompareSpecResourcesResponseModel.getFlowId());
     assertNull(putCompareSpecResourcesResponseModel.getFlowState());
+    assertNull(putCompareSpecResourcesResponseModel.getFlowId());
   }
 }

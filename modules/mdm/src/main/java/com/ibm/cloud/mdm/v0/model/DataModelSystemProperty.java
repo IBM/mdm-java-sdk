@@ -21,28 +21,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DataModelSystemProperty extends GenericModel {
 
   protected Boolean editable;
+  protected String label;
+  protected Boolean indexed;
   @SerializedName("data_type")
   protected String dataType;
-  protected Boolean indexed;
   protected String description;
-  protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
     private Boolean editable;
-    private String dataType;
-    private Boolean indexed;
-    private String description;
     private String label;
+    private Boolean indexed;
+    private String dataType;
+    private String description;
 
     private Builder(DataModelSystemProperty dataModelSystemProperty) {
       this.editable = dataModelSystemProperty.editable;
-      this.dataType = dataModelSystemProperty.dataType;
-      this.indexed = dataModelSystemProperty.indexed;
-      this.description = dataModelSystemProperty.description;
       this.label = dataModelSystemProperty.label;
+      this.indexed = dataModelSystemProperty.indexed;
+      this.dataType = dataModelSystemProperty.dataType;
+      this.description = dataModelSystemProperty.description;
     }
 
     /**
@@ -54,12 +54,12 @@ public class DataModelSystemProperty extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param dataType the dataType
      * @param label the label
+     * @param dataType the dataType
      */
-    public Builder(String dataType, String label) {
-      this.dataType = dataType;
+    public Builder(String label, String dataType) {
       this.label = label;
+      this.dataType = dataType;
     }
 
     /**
@@ -83,13 +83,13 @@ public class DataModelSystemProperty extends GenericModel {
     }
 
     /**
-     * Set the dataType.
+     * Set the label.
      *
-     * @param dataType the dataType
+     * @param label the label
      * @return the DataModelSystemProperty builder
      */
-    public Builder dataType(String dataType) {
-      this.dataType = dataType;
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -105,6 +105,17 @@ public class DataModelSystemProperty extends GenericModel {
     }
 
     /**
+     * Set the dataType.
+     *
+     * @param dataType the dataType
+     * @return the DataModelSystemProperty builder
+     */
+    public Builder dataType(String dataType) {
+      this.dataType = dataType;
+      return this;
+    }
+
+    /**
      * Set the description.
      *
      * @param description the description
@@ -114,29 +125,18 @@ public class DataModelSystemProperty extends GenericModel {
       this.description = description;
       return this;
     }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the DataModelSystemProperty builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
   }
 
   protected DataModelSystemProperty(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
-      "dataType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
+      "dataType cannot be null");
     editable = builder.editable;
-    dataType = builder.dataType;
-    indexed = builder.indexed;
-    description = builder.description;
     label = builder.label;
+    indexed = builder.indexed;
+    dataType = builder.dataType;
+    description = builder.description;
   }
 
   /**
@@ -160,14 +160,14 @@ public class DataModelSystemProperty extends GenericModel {
   }
 
   /**
-   * Gets the dataType.
+   * Gets the label.
    *
-   * System pre-defined data type. One of: String or Long.
+   * System pre-defined label.
    *
-   * @return the dataType
+   * @return the label
    */
-  public String dataType() {
-    return dataType;
+  public String label() {
+    return label;
   }
 
   /**
@@ -182,6 +182,17 @@ public class DataModelSystemProperty extends GenericModel {
   }
 
   /**
+   * Gets the dataType.
+   *
+   * System pre-defined data type. One of: String or Long.
+   *
+   * @return the dataType
+   */
+  public String dataType() {
+    return dataType;
+  }
+
+  /**
    * Gets the description.
    *
    * System pre-defined description.
@@ -190,17 +201,6 @@ public class DataModelSystemProperty extends GenericModel {
    */
   public String description() {
     return description;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * System pre-defined label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 }
 

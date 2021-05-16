@@ -16,32 +16,21 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Property.
+ * Property details.
  */
 public class Property extends GenericModel {
 
-  @SerializedName("default_display_name")
-  protected String defaultDisplayName;
   @SerializedName("data_type")
   protected String dataType;
   protected String designation;
+  @SerializedName("default_display_name")
+  protected String defaultDisplayName;
   protected String name;
-
-  /**
-   * Gets the defaultDisplayName.
-   *
-   * display name.
-   *
-   * @return the defaultDisplayName
-   */
-  public String getDefaultDisplayName() {
-    return defaultDisplayName;
-  }
 
   /**
    * Gets the dataType.
    *
-   * data type.
+   * The data type of this property.
    *
    * @return the dataType
    */
@@ -52,7 +41,7 @@ public class Property extends GenericModel {
   /**
    * Gets the designation.
    *
-   * designation.
+   * The designation of this property.
    *
    * @return the designation
    */
@@ -61,9 +50,20 @@ public class Property extends GenericModel {
   }
 
   /**
+   * Gets the defaultDisplayName.
+   *
+   * The displayable text for this property.
+   *
+   * @return the defaultDisplayName
+   */
+  public String getDefaultDisplayName() {
+    return defaultDisplayName;
+  }
+
+  /**
    * Gets the name.
    *
-   * name.
+   * The name of this property.
    *
    * @return the name
    */

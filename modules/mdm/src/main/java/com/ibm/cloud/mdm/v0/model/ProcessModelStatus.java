@@ -16,7 +16,7 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Process Model Status.
+ * Details of the Process.
  */
 public class ProcessModelStatus extends GenericModel {
 
@@ -26,13 +26,15 @@ public class ProcessModelStatus extends GenericModel {
   protected String recordType;
   @SerializedName("process_name")
   protected String processName;
+  @SerializedName("process_count")
+  protected String processCount;
   protected String status;
   protected String message;
 
   /**
    * Gets the recordTypeLabel.
    *
-   * record type label.
+   * The displayable text for the record type.
    *
    * @return the recordTypeLabel
    */
@@ -43,7 +45,7 @@ public class ProcessModelStatus extends GenericModel {
   /**
    * Gets the recordType.
    *
-   * record type.
+   * The data type identifier of source records under processing.
    *
    * @return the recordType
    */
@@ -54,7 +56,7 @@ public class ProcessModelStatus extends GenericModel {
   /**
    * Gets the processName.
    *
-   * process name.
+   * Name of the Process.
    *
    * @return the processName
    */
@@ -63,9 +65,20 @@ public class ProcessModelStatus extends GenericModel {
   }
 
   /**
+   * Gets the processCount.
+   *
+   * Count of process of this process name under execution.
+   *
+   * @return the processCount
+   */
+  public String getProcessCount() {
+    return processCount;
+  }
+
+  /**
    * Gets the status.
    *
-   * status.
+   * Status of the Process execution.
    *
    * @return the status
    */
@@ -76,7 +89,7 @@ public class ProcessModelStatus extends GenericModel {
   /**
    * Gets the message.
    *
-   * message.
+   * Additional details about the Process execution.
    *
    * @return the message
    */

@@ -32,7 +32,7 @@ public class MatchAttributeTest {
   @Test
   public void testMatchAttribute() throws Throwable {
     MatchAttribute matchAttributeModel = new MatchAttribute();
-    assertNull(matchAttributeModel.getMatchingAttributeDefaultDisplayName());
     assertNull(matchAttributeModel.getMatchingAttributeName());
+    assertNull(matchAttributeModel.getMatchingAttributeDefaultDisplayName());
   }
 }

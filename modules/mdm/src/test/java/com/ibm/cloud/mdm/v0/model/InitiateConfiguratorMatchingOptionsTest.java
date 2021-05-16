@@ -34,9 +34,11 @@ public class InitiateConfiguratorMatchingOptionsTest {
     InitiateConfiguratorMatchingOptions initiateConfiguratorMatchingOptionsModel = new InitiateConfiguratorMatchingOptions.Builder()
       .recordType("testString")
       .entityType("person_entity")
+      .doDerive(true)
       .build();
     assertEquals(initiateConfiguratorMatchingOptionsModel.recordType(), "testString");
     assertEquals(initiateConfiguratorMatchingOptionsModel.entityType(), "person_entity");
+    assertEquals(initiateConfiguratorMatchingOptionsModel.doDerive(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

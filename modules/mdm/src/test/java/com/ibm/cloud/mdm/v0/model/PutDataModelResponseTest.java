@@ -13,22 +13,22 @@
 
 package com.ibm.cloud.mdm.v0.model;
 
+import com.ibm.cloud.mdm.v0.model.DataModel;
+import com.ibm.cloud.mdm.v0.model.DataModelAttribute;
+import com.ibm.cloud.mdm.v0.model.DataModelAttributeType;
+import com.ibm.cloud.mdm.v0.model.DataModelAttributeTypeSystemProperties;
+import com.ibm.cloud.mdm.v0.model.DataModelEntityType;
+import com.ibm.cloud.mdm.v0.model.DataModelEntityTypeSystemProperties;
+import com.ibm.cloud.mdm.v0.model.DataModelField;
+import com.ibm.cloud.mdm.v0.model.DataModelRecordType;
+import com.ibm.cloud.mdm.v0.model.DataModelRecordTypeSystemProperties;
+import com.ibm.cloud.mdm.v0.model.DataModelRelationshipEndpoint;
+import com.ibm.cloud.mdm.v0.model.DataModelRelationshipRule;
+import com.ibm.cloud.mdm.v0.model.DataModelRelationshipType;
+import com.ibm.cloud.mdm.v0.model.DataModelRelationshipTypeSystemProperties;
+import com.ibm.cloud.mdm.v0.model.DataModelSystemProperties;
+import com.ibm.cloud.mdm.v0.model.DataModelSystemProperty;
 import com.ibm.cloud.mdm.v0.model.PutDataModelResponse;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseAttribute;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseAttributeType;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseAttributeTypeSystemProperties;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseDataModel;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseEntityType;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseEntityTypeSystemProperties;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseField;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseRecordType;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseRecordTypeSystemProperties;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseRelationshipEndpoint;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseRelationshipRule;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseRelationshipType;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseRelationshipTypeSystemProperties;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseSystemProperties;
-import com.ibm.cloud.mdm.v0.model.PutDataModelResponseSystemProperty;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -49,8 +49,8 @@ public class PutDataModelResponseTest {
   @Test
   public void testPutDataModelResponse() throws Throwable {
     PutDataModelResponse putDataModelResponseModel = new PutDataModelResponse();
-    assertNull(putDataModelResponseModel.getFlowId());
-    assertNull(putDataModelResponseModel.getFlowState());
     assertNull(putDataModelResponseModel.getDataModel());
+    assertNull(putDataModelResponseModel.getFlowState());
+    assertNull(putDataModelResponseModel.getFlowId());
   }
 }

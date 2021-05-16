@@ -13,19 +13,19 @@
 
 package com.ibm.cloud.mdm.v0.model;
 
+import com.ibm.cloud.mdm.v0.model.Algorithm;
+import com.ibm.cloud.mdm.v0.model.AlgorithmBucketGenerator;
+import com.ibm.cloud.mdm.v0.model.AlgorithmBucketGroupStep;
+import com.ibm.cloud.mdm.v0.model.AlgorithmBucketStep;
+import com.ibm.cloud.mdm.v0.model.AlgorithmCompareMethod;
+import com.ibm.cloud.mdm.v0.model.AlgorithmCompareStep;
+import com.ibm.cloud.mdm.v0.model.AlgorithmEncryption;
+import com.ibm.cloud.mdm.v0.model.AlgorithmEntityType;
+import com.ibm.cloud.mdm.v0.model.AlgorithmInput;
+import com.ibm.cloud.mdm.v0.model.AlgorithmMethods;
+import com.ibm.cloud.mdm.v0.model.AlgorithmStandardizer;
+import com.ibm.cloud.mdm.v0.model.AlgorithmStandardizerStep;
 import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponse;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseAlgorithm;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseBucketGenerator;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseBucketGroupStep;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseBucketStep;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseCompareMethod;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseCompareStep;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseEncryption;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseEntityType;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseInput;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseMethods;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseStandardizer;
-import com.ibm.cloud.mdm.v0.model.PutAlgorithmResponseStandardizerStep;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -46,8 +46,8 @@ public class PutAlgorithmResponseTest {
   @Test
   public void testPutAlgorithmResponse() throws Throwable {
     PutAlgorithmResponse putAlgorithmResponseModel = new PutAlgorithmResponse();
-    assertNull(putAlgorithmResponseModel.getFlowId());
-    assertNull(putAlgorithmResponseModel.getFlowState());
     assertNull(putAlgorithmResponseModel.getAlgorithm());
+    assertNull(putAlgorithmResponseModel.getFlowState());
+    assertNull(putAlgorithmResponseModel.getFlowId());
   }
 }

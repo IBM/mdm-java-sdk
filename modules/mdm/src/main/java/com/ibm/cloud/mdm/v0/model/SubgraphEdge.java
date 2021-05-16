@@ -32,12 +32,12 @@ public class SubgraphEdge extends GenericModel {
   protected String type;
   @SerializedName("type_name")
   protected String typeName;
-  @SerializedName("display_name")
-  protected String displayName;
   @SerializedName("source_id")
   protected String sourceId;
   @SerializedName("target_id")
   protected String targetId;
+  @SerializedName("display_name")
+  protected String displayName;
 
   /**
    * Gets the id.
@@ -73,17 +73,6 @@ public class SubgraphEdge extends GenericModel {
   }
 
   /**
-   * Gets the displayName.
-   *
-   * The name to be displayed on a graph view.
-   *
-   * @return the displayName
-   */
-  public String getDisplayName() {
-    return displayName;
-  }
-
-  /**
    * Gets the sourceId.
    *
    * The identifier of the source vertex.
@@ -103,6 +92,17 @@ public class SubgraphEdge extends GenericModel {
    */
   public String getTargetId() {
     return targetId;
+  }
+
+  /**
+   * Gets the displayName.
+   *
+   * The name to be displayed on a graph view.
+   *
+   * @return the displayName
+   */
+  public String getDisplayName() {
+    return displayName;
   }
 }
 

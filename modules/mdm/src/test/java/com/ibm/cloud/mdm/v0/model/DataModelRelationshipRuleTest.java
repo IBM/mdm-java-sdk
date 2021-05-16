@@ -35,24 +35,24 @@ public class DataModelRelationshipRuleTest {
   @Test
   public void testDataModelRelationshipRule() throws Throwable {
     DataModelRelationshipEndpoint dataModelRelationshipEndpointModel = new DataModelRelationshipEndpoint.Builder()
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(dataModelRelationshipEndpointModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(dataModelRelationshipEndpointModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(dataModelRelationshipEndpointModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     DataModelRelationshipRule dataModelRelationshipRuleModel = new DataModelRelationshipRule.Builder()
-      .target(dataModelRelationshipEndpointModel)
       .source(dataModelRelationshipEndpointModel)
+      .target(dataModelRelationshipEndpointModel)
       .build();
-    assertEquals(dataModelRelationshipRuleModel.target(), dataModelRelationshipEndpointModel);
     assertEquals(dataModelRelationshipRuleModel.source(), dataModelRelationshipEndpointModel);
+    assertEquals(dataModelRelationshipRuleModel.target(), dataModelRelationshipEndpointModel);
 
     String json = TestUtilities.serialize(dataModelRelationshipRuleModel);
 
     DataModelRelationshipRule dataModelRelationshipRuleModelNew = TestUtilities.deserialize(json, DataModelRelationshipRule.class);
     assertTrue(dataModelRelationshipRuleModelNew instanceof DataModelRelationshipRule);
-    assertEquals(dataModelRelationshipRuleModelNew.target().toString(), dataModelRelationshipEndpointModel.toString());
     assertEquals(dataModelRelationshipRuleModelNew.source().toString(), dataModelRelationshipEndpointModel.toString());
+    assertEquals(dataModelRelationshipRuleModelNew.target().toString(), dataModelRelationshipEndpointModel.toString());
   }
 }

@@ -34,18 +34,18 @@ public class MapResourceEntryTest {
   @Test
   public void testMapResourceEntry() throws Throwable {
     MapResourceEntry mapResourceEntryModel = new MapResourceEntry.Builder()
-      .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .dataType("testString")
+      .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .cardinality("testString")
-      .key("testString")
       .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .key("testString")
       .category("testString")
       .build();
-    assertEquals(mapResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(mapResourceEntryModel.dataType(), "testString");
+    assertEquals(mapResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(mapResourceEntryModel.cardinality(), "testString");
-    assertEquals(mapResourceEntryModel.key(), "testString");
     assertEquals(mapResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(mapResourceEntryModel.key(), "testString");
     assertEquals(mapResourceEntryModel.category(), "testString");
 
     String json = TestUtilities.serialize(mapResourceEntryModel);

@@ -21,6 +21,7 @@ public class InitiateConfiguratorMatchingOptions extends GenericModel {
 
   protected String recordType;
   protected String entityType;
+  protected Boolean doDerive;
 
   /**
    * Builder.
@@ -28,10 +29,12 @@ public class InitiateConfiguratorMatchingOptions extends GenericModel {
   public static class Builder {
     private String recordType;
     private String entityType;
+    private Boolean doDerive;
 
     private Builder(InitiateConfiguratorMatchingOptions initiateConfiguratorMatchingOptions) {
       this.recordType = initiateConfiguratorMatchingOptions.recordType;
       this.entityType = initiateConfiguratorMatchingOptions.entityType;
+      this.doDerive = initiateConfiguratorMatchingOptions.doDerive;
     }
 
     /**
@@ -81,6 +84,17 @@ public class InitiateConfiguratorMatchingOptions extends GenericModel {
       this.entityType = entityType;
       return this;
     }
+
+    /**
+     * Set the doDerive.
+     *
+     * @param doDerive the doDerive
+     * @return the InitiateConfiguratorMatchingOptions builder
+     */
+    public Builder doDerive(Boolean doDerive) {
+      this.doDerive = doDerive;
+      return this;
+    }
   }
 
   protected InitiateConfiguratorMatchingOptions(Builder builder) {
@@ -90,6 +104,7 @@ public class InitiateConfiguratorMatchingOptions extends GenericModel {
       "entityType cannot be null");
     recordType = builder.recordType;
     entityType = builder.entityType;
+    doDerive = builder.doDerive;
   }
 
   /**
@@ -121,6 +136,17 @@ public class InitiateConfiguratorMatchingOptions extends GenericModel {
    */
   public String entityType() {
     return entityType;
+  }
+
+  /**
+   * Gets the doDerive.
+   *
+   * Flag to enable/disable derive operation when performing match operation.
+   *
+   * @return the doDerive
+   */
+  public Boolean doDerive() {
+    return doDerive;
   }
 }
 

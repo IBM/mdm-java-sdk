@@ -34,21 +34,22 @@ public class DataModelRelationshipTypeSystemPropertiesTest {
   public void testDataModelRelationshipTypeSystemProperties() throws Throwable {
     DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
       .editable(true)
-      .dataType("testString")
-      .indexed(true)
-      .description("testString")
       .label("testString")
+      .indexed(true)
+      .dataType("testString")
+      .description("testString")
       .build();
     assertEquals(dataModelSystemPropertyModel.editable(), Boolean.valueOf(true));
-    assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
-    assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelSystemPropertyModel.description(), "testString");
     assertEquals(dataModelSystemPropertyModel.label(), "testString");
+    assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
+    assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
+    assertEquals(dataModelSystemPropertyModel.description(), "testString");
 
     DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+      .relationshipType(dataModelSystemPropertyModel)
+      .relationshipNumber(dataModelSystemPropertyModel)
       .fromRecordId(dataModelSystemPropertyModel)
       .toRecordId(dataModelSystemPropertyModel)
-      .relationshipNumber(dataModelSystemPropertyModel)
       .toRecordType(dataModelSystemPropertyModel)
       .relationshipLastUpdated(dataModelSystemPropertyModel)
       .fromRecordType(dataModelSystemPropertyModel)
@@ -58,11 +59,11 @@ public class DataModelRelationshipTypeSystemPropertiesTest {
       .fromRecordSource(dataModelSystemPropertyModel)
       .toRecordSource(dataModelSystemPropertyModel)
       .relationshipId(dataModelSystemPropertyModel)
-      .relationshipType(dataModelSystemPropertyModel)
       .build();
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipType(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipNumber(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordId(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordId(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipNumber(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordType(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipLastUpdated(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordType(), dataModelSystemPropertyModel);
@@ -72,15 +73,15 @@ public class DataModelRelationshipTypeSystemPropertiesTest {
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipId(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipType(), dataModelSystemPropertyModel);
 
     String json = TestUtilities.serialize(dataModelRelationshipTypeSystemPropertiesModel);
 
     DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModelNew = TestUtilities.deserialize(json, DataModelRelationshipTypeSystemProperties.class);
     assertTrue(dataModelRelationshipTypeSystemPropertiesModelNew instanceof DataModelRelationshipTypeSystemProperties);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.relationshipType().toString(), dataModelSystemPropertyModel.toString());
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.relationshipNumber().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.fromRecordId().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.toRecordId().toString(), dataModelSystemPropertyModel.toString());
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.relationshipNumber().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.toRecordType().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.relationshipLastUpdated().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.fromRecordType().toString(), dataModelSystemPropertyModel.toString());
@@ -90,7 +91,6 @@ public class DataModelRelationshipTypeSystemPropertiesTest {
     assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.fromRecordSource().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.toRecordSource().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.relationshipId().toString(), dataModelSystemPropertyModel.toString());
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModelNew.relationshipType().toString(), dataModelSystemPropertyModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

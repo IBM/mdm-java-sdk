@@ -34,13 +34,13 @@ public class SetResourceEntryTest {
   @Test
   public void testSetResourceEntry() throws Throwable {
     SetResourceEntry setResourceEntryModel = new SetResourceEntry.Builder()
-      .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .dataType("testString")
+      .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .category("testString")
       .build();
-    assertEquals(setResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(setResourceEntryModel.dataType(), "testString");
+    assertEquals(setResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(setResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(setResourceEntryModel.category(), "testString");
 

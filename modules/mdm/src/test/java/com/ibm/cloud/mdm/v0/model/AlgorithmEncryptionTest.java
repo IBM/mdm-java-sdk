@@ -36,21 +36,21 @@ public class AlgorithmEncryptionTest {
     AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
       .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .subType("testString")
-      .type("testString")
       .enabled(true)
+      .type("testString")
       .build();
     assertEquals(algorithmEncryptionModel.pubKey(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmEncryptionModel.subType(), "testString");
-    assertEquals(algorithmEncryptionModel.type(), "testString");
     assertEquals(algorithmEncryptionModel.enabled(), Boolean.valueOf(true));
+    assertEquals(algorithmEncryptionModel.type(), "testString");
 
     String json = TestUtilities.serialize(algorithmEncryptionModel);
 
     AlgorithmEncryption algorithmEncryptionModelNew = TestUtilities.deserialize(json, AlgorithmEncryption.class);
     assertTrue(algorithmEncryptionModelNew instanceof AlgorithmEncryption);
     assertEquals(algorithmEncryptionModelNew.subType(), "testString");
-    assertEquals(algorithmEncryptionModelNew.type(), "testString");
     assertEquals(algorithmEncryptionModelNew.enabled(), Boolean.valueOf(true));
+    assertEquals(algorithmEncryptionModelNew.type(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -32,7 +32,5 @@ public class StatisticTest {
   @Test
   public void testStatistic() throws Throwable {
     Statistic statisticModel = new Statistic();
-    assertNull(statisticModel.getKey());
-    assertNull(statisticModel.getSize());
   }
 }

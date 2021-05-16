@@ -15,28 +15,28 @@ package com.ibm.cloud.mdm.v0.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Field Type.
+ * Field Type details.
  */
 public class FieldType extends GenericModel {
 
-  protected String label;
-  protected Boolean indexed;
   protected String description;
+  protected Boolean indexed;
+  protected String label;
   protected String classification;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
-    private Boolean indexed;
     private String description;
+    private Boolean indexed;
+    private String label;
     private String classification;
 
     private Builder(FieldType fieldType) {
-      this.label = fieldType.label;
-      this.indexed = fieldType.indexed;
       this.description = fieldType.description;
+      this.indexed = fieldType.indexed;
+      this.label = fieldType.label;
       this.classification = fieldType.classification;
     }
 
@@ -65,13 +65,13 @@ public class FieldType extends GenericModel {
     }
 
     /**
-     * Set the label.
+     * Set the description.
      *
-     * @param label the label
+     * @param description the description
      * @return the FieldType builder
      */
-    public Builder label(String label) {
-      this.label = label;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -87,13 +87,13 @@ public class FieldType extends GenericModel {
     }
 
     /**
-     * Set the description.
+     * Set the label.
      *
-     * @param description the description
+     * @param label the label
      * @return the FieldType builder
      */
-    public Builder description(String description) {
-      this.description = description;
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -112,9 +112,9 @@ public class FieldType extends GenericModel {
   protected FieldType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    label = builder.label;
-    indexed = builder.indexed;
     description = builder.description;
+    indexed = builder.indexed;
+    label = builder.label;
     classification = builder.classification;
   }
 
@@ -128,31 +128,9 @@ public class FieldType extends GenericModel {
   }
 
   /**
-   * Gets the label.
-   *
-   * label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
-   * Gets the indexed.
-   *
-   * indexed.
-   *
-   * @return the indexed
-   */
-  public Boolean indexed() {
-    return indexed;
-  }
-
-  /**
    * Gets the description.
    *
-   * field description.
+   * The description of the field type.
    *
    * @return the description
    */
@@ -161,9 +139,31 @@ public class FieldType extends GenericModel {
   }
 
   /**
+   * Gets the indexed.
+   *
+   * Specifies whether the field type is indexed for text searches.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * The displayable text for this field type.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
+  }
+
+  /**
    * Gets the classification.
    *
-   * classification.
+   * The classification of the field type.
    *
    * @return the classification
    */

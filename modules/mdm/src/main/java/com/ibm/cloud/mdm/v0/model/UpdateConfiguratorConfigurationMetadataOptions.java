@@ -19,25 +19,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateConfiguratorConfigurationMetadataOptions extends GenericModel {
 
-  protected String description;
-  protected String name;
   protected String projectId;
   protected String catalogId;
+  protected String description;
+  protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String description;
-    private String name;
     private String projectId;
     private String catalogId;
+    private String description;
+    private String name;
 
     private Builder(UpdateConfiguratorConfigurationMetadataOptions updateConfiguratorConfigurationMetadataOptions) {
-      this.description = updateConfiguratorConfigurationMetadataOptions.description;
-      this.name = updateConfiguratorConfigurationMetadataOptions.name;
       this.projectId = updateConfiguratorConfigurationMetadataOptions.projectId;
       this.catalogId = updateConfiguratorConfigurationMetadataOptions.catalogId;
+      this.description = updateConfiguratorConfigurationMetadataOptions.description;
+      this.name = updateConfiguratorConfigurationMetadataOptions.name;
     }
 
     /**
@@ -47,45 +47,12 @@ public class UpdateConfiguratorConfigurationMetadataOptions extends GenericModel
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param description the description
-     * @param name the name
-     */
-    public Builder(String description, String name) {
-      this.description = description;
-      this.name = name;
-    }
-
-    /**
      * Builds a UpdateConfiguratorConfigurationMetadataOptions.
      *
      * @return the new UpdateConfiguratorConfigurationMetadataOptions instance
      */
     public UpdateConfiguratorConfigurationMetadataOptions build() {
       return new UpdateConfiguratorConfigurationMetadataOptions(this);
-    }
-
-    /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the UpdateConfiguratorConfigurationMetadataOptions builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the UpdateConfiguratorConfigurationMetadataOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
     }
 
     /**
@@ -111,29 +78,47 @@ public class UpdateConfiguratorConfigurationMetadataOptions extends GenericModel
     }
 
     /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the UpdateConfiguratorConfigurationMetadataOptions builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the UpdateConfiguratorConfigurationMetadataOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
      * Set the configurationMetadata.
      *
      * @param configurationMetadata the configurationMetadata
      * @return the UpdateConfiguratorConfigurationMetadataOptions builder
      */
     public Builder configurationMetadata(ConfigurationMetadata configurationMetadata) {
-      this.description = configurationMetadata.description();
-      this.name = configurationMetadata.name();
       this.projectId = configurationMetadata.projectId();
       this.catalogId = configurationMetadata.catalogId();
+      this.description = configurationMetadata.description();
+      this.name = configurationMetadata.name();
       return this;
     }
   }
 
   protected UpdateConfiguratorConfigurationMetadataOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.description,
-      "description cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,
-      "name cannot be null");
-    description = builder.description;
-    name = builder.name;
     projectId = builder.projectId;
     catalogId = builder.catalogId;
+    description = builder.description;
+    name = builder.name;
   }
 
   /**
@@ -146,31 +131,9 @@ public class UpdateConfiguratorConfigurationMetadataOptions extends GenericModel
   }
 
   /**
-   * Gets the description.
-   *
-   * description of the configuration.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * name of the configuration.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
    * Gets the projectId.
    *
-   * project id of the corresponding wkc project.
+   * The project id of the linked WKC project.
    *
    * @return the projectId
    */
@@ -181,12 +144,34 @@ public class UpdateConfiguratorConfigurationMetadataOptions extends GenericModel
   /**
    * Gets the catalogId.
    *
-   * catalog id of the corresponding wkc project.
+   * The catalog id from the linked WKC project.
    *
    * @return the catalogId
    */
   public String catalogId() {
     return catalogId;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * The description of the Configuration metadata.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The name of the Configuration metadata.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 }
 

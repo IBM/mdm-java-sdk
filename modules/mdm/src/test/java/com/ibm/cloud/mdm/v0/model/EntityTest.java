@@ -31,11 +31,23 @@ public class EntityTest {
 
   @Test
   public void testEntity() throws Throwable {
-    Entity entityModel = new Entity();
-    assertNull(entityModel.getType());
-    assertNull(entityModel.getId());
-    assertNull(entityModel.getAttributes());
-    assertNull(entityModel.getTypeName());
-    assertNull(entityModel.getRecordCount());
+    Entity entityModel = new Entity.Builder()
+      .id("testString")
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .build();
+    assertEquals(entityModel.id(), "testString");
+    assertEquals(entityModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+
+    String json = TestUtilities.serialize(entityModel);
+
+    Entity entityModelNew = TestUtilities.deserialize(json, Entity.class);
+    assertTrue(entityModelNew instanceof Entity);
+    assertEquals(entityModelNew.id(), "testString");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testEntityError() throws Throwable {
+    new Entity.Builder().build();
+  }
+
 }

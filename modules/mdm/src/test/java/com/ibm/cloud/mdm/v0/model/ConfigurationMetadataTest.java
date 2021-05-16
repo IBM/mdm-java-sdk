@@ -34,13 +34,13 @@ public class ConfigurationMetadataTest {
     ConfigurationMetadata configurationMetadataModel = new ConfigurationMetadata.Builder()
       .projectId("0e4bb17d-4871-40a5-b5a1-55b2866fe000")
       .catalogId("ee1de5f6-54da-4246-95bc-7bc282151000")
-      .description("Example configuration")
-      .name("Configuration 1")
+      .description("testString")
+      .name("testString")
       .build();
     assertEquals(configurationMetadataModel.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");
     assertEquals(configurationMetadataModel.catalogId(), "ee1de5f6-54da-4246-95bc-7bc282151000");
-    assertEquals(configurationMetadataModel.description(), "Example configuration");
-    assertEquals(configurationMetadataModel.name(), "Configuration 1");
+    assertEquals(configurationMetadataModel.description(), "testString");
+    assertEquals(configurationMetadataModel.name(), "testString");
 
     String json = TestUtilities.serialize(configurationMetadataModel);
 
@@ -48,13 +48,7 @@ public class ConfigurationMetadataTest {
     assertTrue(configurationMetadataModelNew instanceof ConfigurationMetadata);
     assertEquals(configurationMetadataModelNew.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");
     assertEquals(configurationMetadataModelNew.catalogId(), "ee1de5f6-54da-4246-95bc-7bc282151000");
-    assertEquals(configurationMetadataModelNew.description(), "Example configuration");
-    assertEquals(configurationMetadataModelNew.name(), "Configuration 1");
+    assertEquals(configurationMetadataModelNew.description(), "testString");
+    assertEquals(configurationMetadataModelNew.name(), "testString");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testConfigurationMetadataError() throws Throwable {
-    new ConfigurationMetadata.Builder().build();
-  }
-
 }

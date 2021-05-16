@@ -14,34 +14,22 @@ package com.ibm.cloud.mdm.v0.model;
 
 import java.util.Map;
 
-import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
-
 /**
  * Information about a relationship.
  */
-public class Relationship extends GenericModel {
+public class Relationship extends ElementWithAttributes {
 
-  protected String type;
-  protected String id;
-  protected Map<String, Object> attributes;
-  @SerializedName("type_name")
-  protected String typeName;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String type;
     private String id;
     private Map<String, Object> attributes;
-    private String typeName;
 
-    private Builder(Relationship relationship) {
-      this.type = relationship.type;
+    public Builder(Relationship relationship) {
       this.id = relationship.id;
       this.attributes = relationship.attributes;
-      this.typeName = relationship.typeName;
     }
 
     /**
@@ -69,17 +57,6 @@ public class Relationship extends GenericModel {
     }
 
     /**
-     * Set the type.
-     *
-     * @param type the type
-     * @return the Relationship builder
-     */
-    public Builder type(String type) {
-      this.type = type;
-      return this;
-    }
-
-    /**
      * Set the id.
      *
      * @param id the id
@@ -100,26 +77,13 @@ public class Relationship extends GenericModel {
       this.attributes = attributes;
       return this;
     }
-
-    /**
-     * Set the typeName.
-     *
-     * @param typeName the typeName
-     * @return the Relationship builder
-     */
-    public Builder typeName(String typeName) {
-      this.typeName = typeName;
-      return this;
-    }
   }
 
   protected Relationship(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
       "attributes cannot be null");
-    type = builder.type;
     id = builder.id;
     attributes = builder.attributes;
-    typeName = builder.typeName;
   }
 
   /**
@@ -129,50 +93,6 @@ public class Relationship extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the type.
-   *
-   * The type of the element.
-   *
-   * @return the type
-   */
-  public String type() {
-    return type;
-  }
-
-  /**
-   * Gets the id.
-   *
-   * The id of the element.
-   *
-   * @return the id
-   */
-  public String id() {
-    return id;
-  }
-
-  /**
-   * Gets the attributes.
-   *
-   * list of the attributes of the element.
-   *
-   * @return the attributes
-   */
-  public Map<String, Object> attributes() {
-    return attributes;
-  }
-
-  /**
-   * Gets the typeName.
-   *
-   * The name of the relationship type.
-   *
-   * @return the typeName
-   */
-  public String typeName() {
-    return typeName;
   }
 }
 

@@ -29,11 +29,10 @@ public class ElementWithAttributesTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
   public void testElementWithAttributes() throws Throwable {
     ElementWithAttributes elementWithAttributesModel = new ElementWithAttributes();
-    assertNull(elementWithAttributesModel.getType());
-    assertNull(elementWithAttributesModel.getId());
-    assertNull(elementWithAttributesModel.getAttributes());
+    assertNotNull(elementWithAttributesModel);
   }
 }

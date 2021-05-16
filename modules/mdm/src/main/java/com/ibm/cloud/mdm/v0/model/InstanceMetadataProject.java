@@ -22,6 +22,8 @@ public class InstanceMetadataProject extends GenericModel {
 
   @SerializedName("project_id")
   protected String projectId;
+  @SerializedName("data_asset_id")
+  protected String dataAssetId;
   @SerializedName("asset_id")
   protected String assetId;
   @SerializedName("project_name")
@@ -32,11 +34,13 @@ public class InstanceMetadataProject extends GenericModel {
    */
   public static class Builder {
     private String projectId;
+    private String dataAssetId;
     private String assetId;
     private String projectName;
 
     private Builder(InstanceMetadataProject instanceMetadataProject) {
       this.projectId = instanceMetadataProject.projectId;
+      this.dataAssetId = instanceMetadataProject.dataAssetId;
       this.assetId = instanceMetadataProject.assetId;
       this.projectName = instanceMetadataProject.projectName;
     }
@@ -77,6 +81,17 @@ public class InstanceMetadataProject extends GenericModel {
     }
 
     /**
+     * Set the dataAssetId.
+     *
+     * @param dataAssetId the dataAssetId
+     * @return the InstanceMetadataProject builder
+     */
+    public Builder dataAssetId(String dataAssetId) {
+      this.dataAssetId = dataAssetId;
+      return this;
+    }
+
+    /**
      * Set the assetId.
      *
      * @param assetId the assetId
@@ -103,6 +118,7 @@ public class InstanceMetadataProject extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.projectId,
       "projectId cannot be null");
     projectId = builder.projectId;
+    dataAssetId = builder.dataAssetId;
     assetId = builder.assetId;
     projectName = builder.projectName;
   }
@@ -125,6 +141,17 @@ public class InstanceMetadataProject extends GenericModel {
    */
   public String projectId() {
     return projectId;
+  }
+
+  /**
+   * Gets the dataAssetId.
+   *
+   * Identifier for the data asset created on the project.
+   *
+   * @return the dataAssetId
+   */
+  public String dataAssetId() {
+    return dataAssetId;
   }
 
   /**

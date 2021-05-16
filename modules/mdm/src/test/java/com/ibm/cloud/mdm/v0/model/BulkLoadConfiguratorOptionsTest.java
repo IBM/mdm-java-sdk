@@ -14,9 +14,9 @@
 package com.ibm.cloud.mdm.v0.model;
 
 import com.ibm.cloud.mdm.v0.model.BulkLoadConfiguratorOptions;
-import com.ibm.cloud.mdm.v0.model.PublishDataRequestCosDetails;
-import com.ibm.cloud.mdm.v0.model.PublishDataRequestCosDetailsCatalog;
-import com.ibm.cloud.mdm.v0.model.PublishDataRequestCosDetailsProject;
+import com.ibm.cloud.mdm.v0.model.PublishDataRequestAssetSourceDetails;
+import com.ibm.cloud.mdm.v0.model.PublishDataRequestAssetSourceDetailsCatalog;
+import com.ibm.cloud.mdm.v0.model.PublishDataRequestAssetSourceDetailsProject;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -34,35 +34,39 @@ public class BulkLoadConfiguratorOptionsTest {
 
   @Test
   public void testBulkLoadConfiguratorOptions() throws Throwable {
-    PublishDataRequestCosDetailsProject publishDataRequestCosDetailsProjectModel = new PublishDataRequestCosDetailsProject.Builder()
-      .cosApiKey("testString")
+    PublishDataRequestAssetSourceDetailsProject publishDataRequestAssetSourceDetailsProjectModel = new PublishDataRequestAssetSourceDetailsProject.Builder()
       .cosBucketName("testString")
-      .cosEndpoint("testString")
-      .build();
-    assertEquals(publishDataRequestCosDetailsProjectModel.cosApiKey(), "testString");
-    assertEquals(publishDataRequestCosDetailsProjectModel.cosBucketName(), "testString");
-    assertEquals(publishDataRequestCosDetailsProjectModel.cosEndpoint(), "testString");
-
-    PublishDataRequestCosDetailsCatalog publishDataRequestCosDetailsCatalogModel = new PublishDataRequestCosDetailsCatalog.Builder()
       .cosApiKey("testString")
-      .cosBucketName("testString")
       .cosEndpoint("testString")
+      .id("testString")
       .build();
-    assertEquals(publishDataRequestCosDetailsCatalogModel.cosApiKey(), "testString");
-    assertEquals(publishDataRequestCosDetailsCatalogModel.cosBucketName(), "testString");
-    assertEquals(publishDataRequestCosDetailsCatalogModel.cosEndpoint(), "testString");
+    assertEquals(publishDataRequestAssetSourceDetailsProjectModel.cosBucketName(), "testString");
+    assertEquals(publishDataRequestAssetSourceDetailsProjectModel.cosApiKey(), "testString");
+    assertEquals(publishDataRequestAssetSourceDetailsProjectModel.cosEndpoint(), "testString");
+    assertEquals(publishDataRequestAssetSourceDetailsProjectModel.id(), "testString");
 
-    PublishDataRequestCosDetails publishDataRequestCosDetailsModel = new PublishDataRequestCosDetails.Builder()
-      .project(publishDataRequestCosDetailsProjectModel)
-      .catalog(publishDataRequestCosDetailsCatalogModel)
+    PublishDataRequestAssetSourceDetailsCatalog publishDataRequestAssetSourceDetailsCatalogModel = new PublishDataRequestAssetSourceDetailsCatalog.Builder()
+      .cosBucketName("testString")
+      .cosApiKey("testString")
+      .cosEndpoint("testString")
+      .id("testString")
       .build();
-    assertEquals(publishDataRequestCosDetailsModel.project(), publishDataRequestCosDetailsProjectModel);
-    assertEquals(publishDataRequestCosDetailsModel.catalog(), publishDataRequestCosDetailsCatalogModel);
+    assertEquals(publishDataRequestAssetSourceDetailsCatalogModel.cosBucketName(), "testString");
+    assertEquals(publishDataRequestAssetSourceDetailsCatalogModel.cosApiKey(), "testString");
+    assertEquals(publishDataRequestAssetSourceDetailsCatalogModel.cosEndpoint(), "testString");
+    assertEquals(publishDataRequestAssetSourceDetailsCatalogModel.id(), "testString");
+
+    PublishDataRequestAssetSourceDetails publishDataRequestAssetSourceDetailsModel = new PublishDataRequestAssetSourceDetails.Builder()
+      .project(publishDataRequestAssetSourceDetailsProjectModel)
+      .catalog(publishDataRequestAssetSourceDetailsCatalogModel)
+      .build();
+    assertEquals(publishDataRequestAssetSourceDetailsModel.project(), publishDataRequestAssetSourceDetailsProjectModel);
+    assertEquals(publishDataRequestAssetSourceDetailsModel.catalog(), publishDataRequestAssetSourceDetailsCatalogModel);
 
     BulkLoadConfiguratorOptions bulkLoadConfiguratorOptionsModel = new BulkLoadConfiguratorOptions.Builder()
-      .cosDetails(publishDataRequestCosDetailsModel)
+      .assetSourceDetails(publishDataRequestAssetSourceDetailsModel)
       .build();
-    assertEquals(bulkLoadConfiguratorOptionsModel.cosDetails(), publishDataRequestCosDetailsModel);
+    assertEquals(bulkLoadConfiguratorOptionsModel.assetSourceDetails(), publishDataRequestAssetSourceDetailsModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

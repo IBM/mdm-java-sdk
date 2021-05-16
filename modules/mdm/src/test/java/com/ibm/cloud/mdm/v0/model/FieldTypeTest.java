@@ -32,23 +32,23 @@ public class FieldTypeTest {
   @Test
   public void testFieldType() throws Throwable {
     FieldType fieldTypeModel = new FieldType.Builder()
-      .label("testString")
-      .indexed(true)
       .description("testString")
+      .indexed(true)
+      .label("testString")
       .classification("testString")
       .build();
-    assertEquals(fieldTypeModel.label(), "testString");
-    assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
     assertEquals(fieldTypeModel.description(), "testString");
+    assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
+    assertEquals(fieldTypeModel.label(), "testString");
     assertEquals(fieldTypeModel.classification(), "testString");
 
     String json = TestUtilities.serialize(fieldTypeModel);
 
     FieldType fieldTypeModelNew = TestUtilities.deserialize(json, FieldType.class);
     assertTrue(fieldTypeModelNew instanceof FieldType);
-    assertEquals(fieldTypeModelNew.label(), "testString");
-    assertEquals(fieldTypeModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(fieldTypeModelNew.description(), "testString");
+    assertEquals(fieldTypeModelNew.indexed(), Boolean.valueOf(true));
+    assertEquals(fieldTypeModelNew.label(), "testString");
     assertEquals(fieldTypeModelNew.classification(), "testString");
   }
 

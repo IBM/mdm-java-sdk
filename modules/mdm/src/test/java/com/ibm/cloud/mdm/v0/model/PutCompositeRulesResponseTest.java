@@ -13,11 +13,11 @@
 
 package com.ibm.cloud.mdm.v0.model;
 
+import com.ibm.cloud.mdm.v0.model.CompositeRules;
+import com.ibm.cloud.mdm.v0.model.CompositeRulesRecordType;
+import com.ibm.cloud.mdm.v0.model.CompositeRulesRule;
+import com.ibm.cloud.mdm.v0.model.CompositeRulesRules;
 import com.ibm.cloud.mdm.v0.model.PutCompositeRulesResponse;
-import com.ibm.cloud.mdm.v0.model.PutCompositeRulesResponseCompositeRules;
-import com.ibm.cloud.mdm.v0.model.PutCompositeRulesResponseRecordType;
-import com.ibm.cloud.mdm.v0.model.PutCompositeRulesResponseRule;
-import com.ibm.cloud.mdm.v0.model.PutCompositeRulesResponseRules;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -38,8 +38,8 @@ public class PutCompositeRulesResponseTest {
   @Test
   public void testPutCompositeRulesResponse() throws Throwable {
     PutCompositeRulesResponse putCompositeRulesResponseModel = new PutCompositeRulesResponse();
-    assertNull(putCompositeRulesResponseModel.getCompositeRules());
-    assertNull(putCompositeRulesResponseModel.getFlowId());
     assertNull(putCompositeRulesResponseModel.getFlowState());
+    assertNull(putCompositeRulesResponseModel.getFlowId());
+    assertNull(putCompositeRulesResponseModel.getCompositeRules());
   }
 }

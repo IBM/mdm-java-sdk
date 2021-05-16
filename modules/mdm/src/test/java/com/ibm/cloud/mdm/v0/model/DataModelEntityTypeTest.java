@@ -32,18 +32,18 @@ public class DataModelEntityTypeTest {
   @Test
   public void testDataModelEntityType() throws Throwable {
     DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
-      .description("testString")
       .label("testString")
+      .description("testString")
       .build();
-    assertEquals(dataModelEntityTypeModel.description(), "testString");
     assertEquals(dataModelEntityTypeModel.label(), "testString");
+    assertEquals(dataModelEntityTypeModel.description(), "testString");
 
     String json = TestUtilities.serialize(dataModelEntityTypeModel);
 
     DataModelEntityType dataModelEntityTypeModelNew = TestUtilities.deserialize(json, DataModelEntityType.class);
     assertTrue(dataModelEntityTypeModelNew instanceof DataModelEntityType);
-    assertEquals(dataModelEntityTypeModelNew.description(), "testString");
     assertEquals(dataModelEntityTypeModelNew.label(), "testString");
+    assertEquals(dataModelEntityTypeModelNew.description(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

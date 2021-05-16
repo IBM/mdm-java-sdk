@@ -13,8 +13,8 @@
 
 package com.ibm.cloud.mdm.v0.model;
 
+import com.ibm.cloud.mdm.v0.model.MapResourceEntry;
 import com.ibm.cloud.mdm.v0.model.PutMapResourcesResponse;
-import com.ibm.cloud.mdm.v0.model.PutMapResourcesResponseMapResourceEntry;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -35,8 +35,8 @@ public class PutMapResourcesResponseTest {
   @Test
   public void testPutMapResourcesResponse() throws Throwable {
     PutMapResourcesResponse putMapResourcesResponseModel = new PutMapResourcesResponse();
-    assertNull(putMapResourcesResponseModel.getFlowId());
-    assertNull(putMapResourcesResponseModel.getFlowState());
     assertNull(putMapResourcesResponseModel.getMapResources());
+    assertNull(putMapResourcesResponseModel.getFlowState());
+    assertNull(putMapResourcesResponseModel.getFlowId());
   }
 }

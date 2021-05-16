@@ -25,7 +25,7 @@ public class ProcessStatus extends GenericModel {
   /**
    * Gets the status.
    *
-   * status.
+   * Status of the Process execution.
    *
    * @return the status
    */
@@ -36,7 +36,7 @@ public class ProcessStatus extends GenericModel {
   /**
    * Gets the message.
    *
-   * message.
+   * Additional details about the Process status.
    *
    * @return the message
    */

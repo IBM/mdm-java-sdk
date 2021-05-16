@@ -19,25 +19,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelField extends GenericModel {
 
+  protected String label;
   protected String classification;
   protected Boolean indexed;
   protected String description;
-  protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String label;
     private String classification;
     private Boolean indexed;
     private String description;
-    private String label;
 
     private Builder(DataModelField dataModelField) {
+      this.label = dataModelField.label;
       this.classification = dataModelField.classification;
       this.indexed = dataModelField.indexed;
       this.description = dataModelField.description;
-      this.label = dataModelField.label;
     }
 
     /**
@@ -62,6 +62,17 @@ public class DataModelField extends GenericModel {
      */
     public DataModelField build() {
       return new DataModelField(this);
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the DataModelField builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
     }
 
     /**
@@ -96,26 +107,15 @@ public class DataModelField extends GenericModel {
       this.description = description;
       return this;
     }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the DataModelField builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
   }
 
   protected DataModelField(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    label = builder.label;
     classification = builder.classification;
     indexed = builder.indexed;
     description = builder.description;
-    label = builder.label;
   }
 
   /**
@@ -125,6 +125,17 @@ public class DataModelField extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**
@@ -158,17 +169,6 @@ public class DataModelField extends GenericModel {
    */
   public String description() {
     return description;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 }
 
