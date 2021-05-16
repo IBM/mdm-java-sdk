@@ -16,16 +16,16 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Attributes.
+ * Details of the Data Model Attribute.
  */
 public class Attribute extends GenericModel {
 
   protected String label;
-  protected String description;
   @SerializedName("attribute_type")
   protected String attributeType;
-  protected String classification;
+  protected String description;
   protected Boolean indexed;
+  protected String classification;
   protected String cardinality;
 
   /**
@@ -33,18 +33,18 @@ public class Attribute extends GenericModel {
    */
   public static class Builder {
     private String label;
-    private String description;
     private String attributeType;
-    private String classification;
+    private String description;
     private Boolean indexed;
+    private String classification;
     private String cardinality;
 
     private Builder(Attribute attribute) {
       this.label = attribute.label;
-      this.description = attribute.description;
       this.attributeType = attribute.attributeType;
-      this.classification = attribute.classification;
+      this.description = attribute.description;
       this.indexed = attribute.indexed;
+      this.classification = attribute.classification;
       this.cardinality = attribute.cardinality;
     }
 
@@ -86,17 +86,6 @@ public class Attribute extends GenericModel {
     }
 
     /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the Attribute builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
      * Set the attributeType.
      *
      * @param attributeType the attributeType
@@ -108,13 +97,13 @@ public class Attribute extends GenericModel {
     }
 
     /**
-     * Set the classification.
+     * Set the description.
      *
-     * @param classification the classification
+     * @param description the description
      * @return the Attribute builder
      */
-    public Builder classification(String classification) {
-      this.classification = classification;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -126,6 +115,17 @@ public class Attribute extends GenericModel {
      */
     public Builder indexed(Boolean indexed) {
       this.indexed = indexed;
+      return this;
+    }
+
+    /**
+     * Set the classification.
+     *
+     * @param classification the classification
+     * @return the Attribute builder
+     */
+    public Builder classification(String classification) {
+      this.classification = classification;
       return this;
     }
 
@@ -147,10 +147,10 @@ public class Attribute extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
       "attributeType cannot be null");
     label = builder.label;
-    description = builder.description;
     attributeType = builder.attributeType;
-    classification = builder.classification;
+    description = builder.description;
     indexed = builder.indexed;
+    classification = builder.classification;
     cardinality = builder.cardinality;
   }
 
@@ -166,7 +166,7 @@ public class Attribute extends GenericModel {
   /**
    * Gets the label.
    *
-   * attributes label.
+   * The displayable text for this Attribute element.
    *
    * @return the label
    */
@@ -175,20 +175,9 @@ public class Attribute extends GenericModel {
   }
 
   /**
-   * Gets the description.
-   *
-   * attributes description.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
    * Gets the attributeType.
    *
-   * attribute type.
+   * The data type of this Attribute element.
    *
    * @return the attributeType
    */
@@ -197,20 +186,20 @@ public class Attribute extends GenericModel {
   }
 
   /**
-   * Gets the classification.
+   * Gets the description.
    *
-   * classification.
+   * The description of this Data Model Attribute.
    *
-   * @return the classification
+   * @return the description
    */
-  public String classification() {
-    return classification;
+  public String description() {
+    return description;
   }
 
   /**
    * Gets the indexed.
    *
-   * index.
+   * Specifies whether the field property is indexed for text searches.
    *
    * @return the indexed
    */
@@ -219,9 +208,20 @@ public class Attribute extends GenericModel {
   }
 
   /**
+   * Gets the classification.
+   *
+   * The classification of this Data Model Attribute.
+   *
+   * @return the classification
+   */
+  public String classification() {
+    return classification;
+  }
+
+  /**
    * Gets the cardinality.
    *
-   * cardinality.
+   * The number of data points the specific attribute can represen.
    *
    * @return the cardinality
    */

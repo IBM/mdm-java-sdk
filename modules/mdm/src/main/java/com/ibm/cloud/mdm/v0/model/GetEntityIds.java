@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetEntityIds extends GenericModel {
 
-  protected List<GetEntityIdsEntityinfo> entities;
+  protected List<GetEntityIdsEntity> entities;
 
   /**
    * Gets the entities.
@@ -30,7 +30,7 @@ public class GetEntityIds extends GenericModel {
    *
    * @return the entities
    */
-  public List<GetEntityIdsEntityinfo> getEntities() {
+  public List<GetEntityIdsEntity> getEntities() {
     return entities;
   }
 }

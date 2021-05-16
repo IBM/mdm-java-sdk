@@ -15,23 +15,23 @@ package com.ibm.cloud.mdm.v0.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Entity Type.
+ * Entity Type details.
  */
 public class EntityType extends GenericModel {
 
-  protected String description;
   protected String label;
+  protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String description;
     private String label;
+    private String description;
 
     private Builder(EntityType entityType) {
-      this.description = entityType.description;
       this.label = entityType.label;
+      this.description = entityType.description;
     }
 
     /**
@@ -59,17 +59,6 @@ public class EntityType extends GenericModel {
     }
 
     /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the EntityType builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
      * Set the label.
      *
      * @param label the label
@@ -79,13 +68,24 @@ public class EntityType extends GenericModel {
       this.label = label;
       return this;
     }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the EntityType builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
   }
 
   protected EntityType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    description = builder.description;
     label = builder.label;
+    description = builder.description;
   }
 
   /**
@@ -98,25 +98,25 @@ public class EntityType extends GenericModel {
   }
 
   /**
-   * Gets the description.
-   *
-   * entity description.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
    * Gets the label.
    *
-   * label.
+   * The displayable text for this entity type element.
    *
    * @return the label
    */
   public String label() {
     return label;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * The description of this entity type element.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
   }
 }
 

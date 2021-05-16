@@ -15,33 +15,33 @@ package com.ibm.cloud.mdm.v0.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Matching Status object.
+ * Status of the match process execution.
  */
 public class MatchingStatus extends GenericModel {
 
-  protected String message;
   protected String status;
-
-  /**
-   * Gets the message.
-   *
-   * message.
-   *
-   * @return the message
-   */
-  public String getMessage() {
-    return message;
-  }
+  protected String message;
 
   /**
    * Gets the status.
    *
-   * status of match.
+   * Status of the match process execution.
    *
    * @return the status
    */
   public String getStatus() {
     return status;
+  }
+
+  /**
+   * Gets the message.
+   *
+   * Additional details of the match process execution.
+   *
+   * @return the message
+   */
+  public String getMessage() {
+    return message;
   }
 }
 

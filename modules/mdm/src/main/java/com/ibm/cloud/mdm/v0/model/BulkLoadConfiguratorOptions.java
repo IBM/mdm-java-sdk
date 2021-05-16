@@ -19,16 +19,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class BulkLoadConfiguratorOptions extends GenericModel {
 
-  protected PublishDataRequestCosDetails cosDetails;
+  protected PublishDataRequestAssetSourceDetails assetSourceDetails;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private PublishDataRequestCosDetails cosDetails;
+    private PublishDataRequestAssetSourceDetails assetSourceDetails;
 
     private Builder(BulkLoadConfiguratorOptions bulkLoadConfiguratorOptions) {
-      this.cosDetails = bulkLoadConfiguratorOptions.cosDetails;
+      this.assetSourceDetails = bulkLoadConfiguratorOptions.assetSourceDetails;
     }
 
     /**
@@ -40,10 +40,10 @@ public class BulkLoadConfiguratorOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param cosDetails the cosDetails
+     * @param assetSourceDetails the assetSourceDetails
      */
-    public Builder(PublishDataRequestCosDetails cosDetails) {
-      this.cosDetails = cosDetails;
+    public Builder(PublishDataRequestAssetSourceDetails assetSourceDetails) {
+      this.assetSourceDetails = assetSourceDetails;
     }
 
     /**
@@ -56,21 +56,21 @@ public class BulkLoadConfiguratorOptions extends GenericModel {
     }
 
     /**
-     * Set the cosDetails.
+     * Set the assetSourceDetails.
      *
-     * @param cosDetails the cosDetails
+     * @param assetSourceDetails the assetSourceDetails
      * @return the BulkLoadConfiguratorOptions builder
      */
-    public Builder cosDetails(PublishDataRequestCosDetails cosDetails) {
-      this.cosDetails = cosDetails;
+    public Builder assetSourceDetails(PublishDataRequestAssetSourceDetails assetSourceDetails) {
+      this.assetSourceDetails = assetSourceDetails;
       return this;
     }
   }
 
   protected BulkLoadConfiguratorOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cosDetails,
-      "cosDetails cannot be null");
-    cosDetails = builder.cosDetails;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetSourceDetails,
+      "assetSourceDetails cannot be null");
+    assetSourceDetails = builder.assetSourceDetails;
   }
 
   /**
@@ -83,14 +83,14 @@ public class BulkLoadConfiguratorOptions extends GenericModel {
   }
 
   /**
-   * Gets the cosDetails.
+   * Gets the assetSourceDetails.
    *
-   * cos details for asset sources.
+   * The asset source details for the data asset to be published.
    *
-   * @return the cosDetails
+   * @return the assetSourceDetails
    */
-  public PublishDataRequestCosDetails cosDetails() {
-    return cosDetails;
+  public PublishDataRequestAssetSourceDetails assetSourceDetails() {
+    return assetSourceDetails;
   }
 }
 

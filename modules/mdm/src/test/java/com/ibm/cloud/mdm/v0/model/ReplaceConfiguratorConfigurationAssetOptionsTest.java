@@ -39,7 +39,7 @@ public class ReplaceConfiguratorConfigurationAssetOptionsTest {
       .dataMappingName("gender")
       .excludeColumn(false)
       .autoMapped(true)
-      .completenessPercent("string")
+      .completenessPercent("100.0")
       .dataMappingAttributeType("string")
       .key("COLUMN 1")
       .build();
@@ -47,22 +47,22 @@ public class ReplaceConfiguratorConfigurationAssetOptionsTest {
     assertEquals(assetMappingModel.dataMappingName(), "gender");
     assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
-    assertEquals(assetMappingModel.completenessPercent(), "string");
+    assertEquals(assetMappingModel.completenessPercent(), "100.0");
     assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.key(), "COLUMN 1");
 
     ReplaceConfiguratorConfigurationAssetOptions replaceConfiguratorConfigurationAssetOptionsModel = new ReplaceConfiguratorConfigurationAssetOptions.Builder()
       .assetId("testString")
-      .assetStatus("Mapped")
       .assetName("Person10k.csv")
-      .assetCreatedDate("testString")
+      .assetStatus("Mapped")
       .assetMappings(new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)))
+      .assetCreatedDate("testString")
       .build();
     assertEquals(replaceConfiguratorConfigurationAssetOptionsModel.assetId(), "testString");
-    assertEquals(replaceConfiguratorConfigurationAssetOptionsModel.assetStatus(), "Mapped");
     assertEquals(replaceConfiguratorConfigurationAssetOptionsModel.assetName(), "Person10k.csv");
-    assertEquals(replaceConfiguratorConfigurationAssetOptionsModel.assetCreatedDate(), "testString");
+    assertEquals(replaceConfiguratorConfigurationAssetOptionsModel.assetStatus(), "Mapped");
     assertEquals(replaceConfiguratorConfigurationAssetOptionsModel.assetMappings(), new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)));
+    assertEquals(replaceConfiguratorConfigurationAssetOptionsModel.assetCreatedDate(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

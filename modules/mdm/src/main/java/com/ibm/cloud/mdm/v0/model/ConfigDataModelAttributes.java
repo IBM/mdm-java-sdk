@@ -17,7 +17,7 @@ import java.util.List;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * current Config Data Model attributes based on record type.
+ * The Config Data Model attributes for a record type.
  */
 public class ConfigDataModelAttributes extends GenericModel {
 
@@ -26,7 +26,7 @@ public class ConfigDataModelAttributes extends GenericModel {
   /**
    * Gets the attributes.
    *
-   * config datamodel attribute.
+   * Collection of Data Model Attribute property for a record type.
    *
    * @return the attributes
    */

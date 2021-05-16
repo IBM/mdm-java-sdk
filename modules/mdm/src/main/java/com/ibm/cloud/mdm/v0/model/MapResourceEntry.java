@@ -23,31 +23,31 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class MapResourceEntry extends GenericModel {
 
-  protected List<String> regex;
   @SerializedName("data_type")
   protected String dataType;
+  protected List<String> regex;
   protected String cardinality;
-  protected String key;
   protected List<String> values;
+  protected String key;
   protected String category;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<String> regex;
     private String dataType;
+    private List<String> regex;
     private String cardinality;
-    private String key;
     private List<String> values;
+    private String key;
     private String category;
 
     private Builder(MapResourceEntry mapResourceEntry) {
-      this.regex = mapResourceEntry.regex;
       this.dataType = mapResourceEntry.dataType;
+      this.regex = mapResourceEntry.regex;
       this.cardinality = mapResourceEntry.cardinality;
-      this.key = mapResourceEntry.key;
       this.values = mapResourceEntry.values;
+      this.key = mapResourceEntry.key;
       this.category = mapResourceEntry.category;
     }
 
@@ -110,6 +110,17 @@ public class MapResourceEntry extends GenericModel {
     }
 
     /**
+     * Set the dataType.
+     *
+     * @param dataType the dataType
+     * @return the MapResourceEntry builder
+     */
+    public Builder dataType(String dataType) {
+      this.dataType = dataType;
+      return this;
+    }
+
+    /**
      * Set the regex.
      * Existing regex will be replaced.
      *
@@ -118,17 +129,6 @@ public class MapResourceEntry extends GenericModel {
      */
     public Builder regex(List<String> regex) {
       this.regex = regex;
-      return this;
-    }
-
-    /**
-     * Set the dataType.
-     *
-     * @param dataType the dataType
-     * @return the MapResourceEntry builder
-     */
-    public Builder dataType(String dataType) {
-      this.dataType = dataType;
       return this;
     }
 
@@ -144,17 +144,6 @@ public class MapResourceEntry extends GenericModel {
     }
 
     /**
-     * Set the key.
-     *
-     * @param key the key
-     * @return the MapResourceEntry builder
-     */
-    public Builder key(String key) {
-      this.key = key;
-      return this;
-    }
-
-    /**
      * Set the values.
      * Existing values will be replaced.
      *
@@ -163,6 +152,17 @@ public class MapResourceEntry extends GenericModel {
      */
     public Builder values(List<String> values) {
       this.values = values;
+      return this;
+    }
+
+    /**
+     * Set the key.
+     *
+     * @param key the key
+     * @return the MapResourceEntry builder
+     */
+    public Builder key(String key) {
+      this.key = key;
       return this;
     }
 
@@ -183,11 +183,11 @@ public class MapResourceEntry extends GenericModel {
       "regex cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.values,
       "values cannot be null");
-    regex = builder.regex;
     dataType = builder.dataType;
+    regex = builder.regex;
     cardinality = builder.cardinality;
-    key = builder.key;
     values = builder.values;
+    key = builder.key;
     category = builder.category;
   }
 
@@ -198,17 +198,6 @@ public class MapResourceEntry extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the regex.
-   *
-   * Collection of applicable regular expressions.
-   *
-   * @return the regex
-   */
-  public List<String> regex() {
-    return regex;
   }
 
   /**
@@ -224,6 +213,17 @@ public class MapResourceEntry extends GenericModel {
   }
 
   /**
+   * Gets the regex.
+   *
+   * Collection of applicable regular expressions.
+   *
+   * @return the regex
+   */
+  public List<String> regex() {
+    return regex;
+  }
+
+  /**
    * Gets the cardinality.
    *
    * The cardinality of map entry, when applicable.
@@ -235,17 +235,6 @@ public class MapResourceEntry extends GenericModel {
   }
 
   /**
-   * Gets the key.
-   *
-   * User defined key (i.e. Ron).
-   *
-   * @return the key
-   */
-  public String key() {
-    return key;
-  }
-
-  /**
    * Gets the values.
    *
    * Collection of user defined values mapped to the key.
@@ -254,6 +243,17 @@ public class MapResourceEntry extends GenericModel {
    */
   public List<String> values() {
     return values;
+  }
+
+  /**
+   * Gets the key.
+   *
+   * User defined key (i.e. Ron).
+   *
+   * @return the key
+   */
+  public String key() {
+    return key;
   }
 
   /**

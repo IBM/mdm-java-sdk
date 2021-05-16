@@ -23,13 +23,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class GetFlowResponse extends GenericModel {
 
   protected List<String> rejections;
-  @SerializedName("flow_type")
-  protected String flowType;
-  protected List<String> approvals;
-  @SerializedName("flow_id")
-  protected String flowId;
   @SerializedName("flow_state")
   protected String flowState;
+  @SerializedName("flow_id")
+  protected String flowId;
+  protected List<String> approvals;
+  @SerializedName("flow_type")
+  protected String flowType;
   protected Boolean active;
 
   /**
@@ -44,26 +44,14 @@ public class GetFlowResponse extends GenericModel {
   }
 
   /**
-   * Gets the flowType.
+   * Gets the flowState.
    *
-   * Type of flow. One of: data_model, algorithm, compare_spec_resources, composite_rules, map_resources or
-   * set_resources.
+   * Current state of flow according to its state machine.
    *
-   * @return the flowType
+   * @return the flowState
    */
-  public String getFlowType() {
-    return flowType;
-  }
-
-  /**
-   * Gets the approvals.
-   *
-   * Collection of authorized approvers that approved the flow.
-   *
-   * @return the approvals
-   */
-  public List<String> getApprovals() {
-    return approvals;
+  public String getFlowState() {
+    return flowState;
   }
 
   /**
@@ -78,14 +66,26 @@ public class GetFlowResponse extends GenericModel {
   }
 
   /**
-   * Gets the flowState.
+   * Gets the approvals.
    *
-   * Current state of flow according to its state machine.
+   * Collection of authorized approvers that approved the flow.
    *
-   * @return the flowState
+   * @return the approvals
    */
-  public String getFlowState() {
-    return flowState;
+  public List<String> getApprovals() {
+    return approvals;
+  }
+
+  /**
+   * Gets the flowType.
+   *
+   * Type of flow. One of: data_model, algorithm, compare_spec_resources, composite_rules, map_resources or
+   * set_resources.
+   *
+   * @return the flowType
+   */
+  public String getFlowType() {
+    return flowType;
   }
 
   /**

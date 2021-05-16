@@ -32,20 +32,14 @@ public class UpdateConfiguratorConfigurationMetadataOptionsTest {
   @Test
   public void testUpdateConfiguratorConfigurationMetadataOptions() throws Throwable {
     UpdateConfiguratorConfigurationMetadataOptions updateConfiguratorConfigurationMetadataOptionsModel = new UpdateConfiguratorConfigurationMetadataOptions.Builder()
-      .description("Example configuration")
-      .name("Configuration 1")
       .projectId("0e4bb17d-4871-40a5-b5a1-55b2866fe000")
       .catalogId("ee1de5f6-54da-4246-95bc-7bc282151000")
+      .description("testString")
+      .name("testString")
       .build();
-    assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.description(), "Example configuration");
-    assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.name(), "Configuration 1");
     assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");
     assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.catalogId(), "ee1de5f6-54da-4246-95bc-7bc282151000");
+    assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.description(), "testString");
+    assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.name(), "testString");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testUpdateConfiguratorConfigurationMetadataOptionsError() throws Throwable {
-    new UpdateConfiguratorConfigurationMetadataOptions.Builder().build();
-  }
-
 }

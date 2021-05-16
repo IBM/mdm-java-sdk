@@ -18,16 +18,16 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * data model in configurator space.
+ * Collection of locale, record types, relationship types, system properties definition in configuration space.
  */
 public class ConfigDataModel extends GenericModel {
 
   @SerializedName("record_types")
   protected Map<String, RecordType> recordTypes;
-  @SerializedName("attribute_types")
-  protected Map<String, AttributeType> attributeTypes;
   @SerializedName("relationship_types")
   protected Map<String, RelationshipType> relationshipTypes;
+  @SerializedName("attribute_types")
+  protected Map<String, AttributeType> attributeTypes;
   protected String locale;
   @SerializedName("system_properties")
   protected Map<String, SystemProperties> systemProperties;
@@ -37,15 +37,15 @@ public class ConfigDataModel extends GenericModel {
    */
   public static class Builder {
     private Map<String, RecordType> recordTypes;
-    private Map<String, AttributeType> attributeTypes;
     private Map<String, RelationshipType> relationshipTypes;
+    private Map<String, AttributeType> attributeTypes;
     private String locale;
     private Map<String, SystemProperties> systemProperties;
 
     private Builder(ConfigDataModel configDataModel) {
       this.recordTypes = configDataModel.recordTypes;
-      this.attributeTypes = configDataModel.attributeTypes;
       this.relationshipTypes = configDataModel.relationshipTypes;
+      this.attributeTypes = configDataModel.attributeTypes;
       this.locale = configDataModel.locale;
       this.systemProperties = configDataModel.systemProperties;
     }
@@ -77,17 +77,6 @@ public class ConfigDataModel extends GenericModel {
     }
 
     /**
-     * Set the attributeTypes.
-     *
-     * @param attributeTypes the attributeTypes
-     * @return the ConfigDataModel builder
-     */
-    public Builder attributeTypes(Map<String, AttributeType> attributeTypes) {
-      this.attributeTypes = attributeTypes;
-      return this;
-    }
-
-    /**
      * Set the relationshipTypes.
      *
      * @param relationshipTypes the relationshipTypes
@@ -95,6 +84,17 @@ public class ConfigDataModel extends GenericModel {
      */
     public Builder relationshipTypes(Map<String, RelationshipType> relationshipTypes) {
       this.relationshipTypes = relationshipTypes;
+      return this;
+    }
+
+    /**
+     * Set the attributeTypes.
+     *
+     * @param attributeTypes the attributeTypes
+     * @return the ConfigDataModel builder
+     */
+    public Builder attributeTypes(Map<String, AttributeType> attributeTypes) {
+      this.attributeTypes = attributeTypes;
       return this;
     }
 
@@ -123,8 +123,8 @@ public class ConfigDataModel extends GenericModel {
 
   protected ConfigDataModel(Builder builder) {
     recordTypes = builder.recordTypes;
-    attributeTypes = builder.attributeTypes;
     relationshipTypes = builder.relationshipTypes;
+    attributeTypes = builder.attributeTypes;
     locale = builder.locale;
     systemProperties = builder.systemProperties;
   }
@@ -141,7 +141,7 @@ public class ConfigDataModel extends GenericModel {
   /**
    * Gets the recordTypes.
    *
-   * record types.
+   * Collection of record data types.
    *
    * @return the recordTypes
    */
@@ -150,20 +150,9 @@ public class ConfigDataModel extends GenericModel {
   }
 
   /**
-   * Gets the attributeTypes.
-   *
-   * attribute types.
-   *
-   * @return the attributeTypes
-   */
-  public Map<String, AttributeType> attributeTypes() {
-    return attributeTypes;
-  }
-
-  /**
    * Gets the relationshipTypes.
    *
-   * relationship types.
+   * The collection of data relationship types.
    *
    * @return the relationshipTypes
    */
@@ -172,9 +161,20 @@ public class ConfigDataModel extends GenericModel {
   }
 
   /**
+   * Gets the attributeTypes.
+   *
+   * Collection of data attribute types.
+   *
+   * @return the attributeTypes
+   */
+  public Map<String, AttributeType> attributeTypes() {
+    return attributeTypes;
+  }
+
+  /**
    * Gets the locale.
    *
-   * locale.
+   * The locale of the data model.
    *
    * @return the locale
    */
@@ -185,7 +185,7 @@ public class ConfigDataModel extends GenericModel {
   /**
    * Gets the systemProperties.
    *
-   * system properties.
+   * Collection of system properties.
    *
    * @return the systemProperties
    */

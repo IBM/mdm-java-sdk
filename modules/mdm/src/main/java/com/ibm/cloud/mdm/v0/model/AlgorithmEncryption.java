@@ -27,8 +27,8 @@ public class AlgorithmEncryption extends GenericModel {
   protected List<String> pubKey;
   @SerializedName("sub_type")
   protected String subType;
-  protected String type;
   protected Boolean enabled;
+  protected String type;
 
   /**
    * Builder.
@@ -36,14 +36,14 @@ public class AlgorithmEncryption extends GenericModel {
   public static class Builder {
     private List<String> pubKey;
     private String subType;
-    private String type;
     private Boolean enabled;
+    private String type;
 
     private Builder(AlgorithmEncryption algorithmEncryption) {
       this.pubKey = algorithmEncryption.pubKey;
       this.subType = algorithmEncryption.subType;
-      this.type = algorithmEncryption.type;
       this.enabled = algorithmEncryption.enabled;
+      this.type = algorithmEncryption.type;
     }
 
     /**
@@ -57,14 +57,14 @@ public class AlgorithmEncryption extends GenericModel {
      *
      * @param pubKey the pubKey
      * @param subType the subType
-     * @param type the type
      * @param enabled the enabled
+     * @param type the type
      */
-    public Builder(List<String> pubKey, String subType, String type, Boolean enabled) {
+    public Builder(List<String> pubKey, String subType, Boolean enabled, String type) {
       this.pubKey = pubKey;
       this.subType = subType;
-      this.type = type;
       this.enabled = enabled;
+      this.type = type;
     }
 
     /**
@@ -116,17 +116,6 @@ public class AlgorithmEncryption extends GenericModel {
     }
 
     /**
-     * Set the type.
-     *
-     * @param type the type
-     * @return the AlgorithmEncryption builder
-     */
-    public Builder type(String type) {
-      this.type = type;
-      return this;
-    }
-
-    /**
      * Set the enabled.
      *
      * @param enabled the enabled
@@ -136,6 +125,17 @@ public class AlgorithmEncryption extends GenericModel {
       this.enabled = enabled;
       return this;
     }
+
+    /**
+     * Set the type.
+     *
+     * @param type the type
+     * @return the AlgorithmEncryption builder
+     */
+    public Builder type(String type) {
+      this.type = type;
+      return this;
+    }
   }
 
   protected AlgorithmEncryption(Builder builder) {
@@ -143,14 +143,14 @@ public class AlgorithmEncryption extends GenericModel {
       "pubKey cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subType,
       "subType cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,
-      "type cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.enabled,
       "enabled cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,
+      "type cannot be null");
     pubKey = builder.pubKey;
     subType = builder.subType;
-    type = builder.type;
     enabled = builder.enabled;
+    type = builder.type;
   }
 
   /**
@@ -185,17 +185,6 @@ public class AlgorithmEncryption extends GenericModel {
   }
 
   /**
-   * Gets the type.
-   *
-   * Asymmetric encryption type (i.e. RSA).
-   *
-   * @return the type
-   */
-  public String type() {
-    return type;
-  }
-
-  /**
    * Gets the enabled.
    *
    * Asymmetric encryption enabled indicator, true or false.
@@ -204,6 +193,17 @@ public class AlgorithmEncryption extends GenericModel {
    */
   public Boolean enabled() {
     return enabled;
+  }
+
+  /**
+   * Gets the type.
+   *
+   * Asymmetric encryption type (i.e. RSA).
+   *
+   * @return the type
+   */
+  public String type() {
+    return type;
   }
 }
 

@@ -14,7 +14,7 @@
 package com.ibm.cloud.mdm.v0.model;
 
 import com.ibm.cloud.mdm.v0.model.GetEntityIds;
-import com.ibm.cloud.mdm.v0.model.GetEntityIdsEntityinfo;
+import com.ibm.cloud.mdm.v0.model.GetEntityIdsEntity;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

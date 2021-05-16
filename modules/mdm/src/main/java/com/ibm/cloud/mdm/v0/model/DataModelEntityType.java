@@ -19,19 +19,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelEntityType extends GenericModel {
 
-  protected String description;
   protected String label;
+  protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String description;
     private String label;
+    private String description;
 
     private Builder(DataModelEntityType dataModelEntityType) {
-      this.description = dataModelEntityType.description;
       this.label = dataModelEntityType.label;
+      this.description = dataModelEntityType.description;
     }
 
     /**
@@ -59,17 +59,6 @@ public class DataModelEntityType extends GenericModel {
     }
 
     /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the DataModelEntityType builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
      * Set the label.
      *
      * @param label the label
@@ -79,13 +68,24 @@ public class DataModelEntityType extends GenericModel {
       this.label = label;
       return this;
     }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the DataModelEntityType builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
   }
 
   protected DataModelEntityType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    description = builder.description;
     label = builder.label;
+    description = builder.description;
   }
 
   /**
@@ -98,17 +98,6 @@ public class DataModelEntityType extends GenericModel {
   }
 
   /**
-   * Gets the description.
-   *
-   * Read-only description of entity type.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
    * Gets the label.
    *
    * Read-only label of entity type.
@@ -117,6 +106,17 @@ public class DataModelEntityType extends GenericModel {
    */
   public String label() {
     return label;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * Read-only description of entity type.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
   }
 }
 

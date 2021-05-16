@@ -25,38 +25,38 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DataModelRelationshipType extends GenericModel {
 
   protected Boolean directional;
-  @SerializedName("label_from_target")
-  protected String labelFromTarget;
+  protected String label;
   protected List<DataModelRelationshipRule> rules;
   @SerializedName("label_from_source")
   protected String labelFromSource;
+  @SerializedName("label_from_target")
+  protected String labelFromTarget;
   protected String description;
   protected String cardinality;
   protected Map<String, DataModelAttribute> attributes;
-  protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
     private Boolean directional;
-    private String labelFromTarget;
+    private String label;
     private List<DataModelRelationshipRule> rules;
     private String labelFromSource;
+    private String labelFromTarget;
     private String description;
     private String cardinality;
     private Map<String, DataModelAttribute> attributes;
-    private String label;
 
     private Builder(DataModelRelationshipType dataModelRelationshipType) {
       this.directional = dataModelRelationshipType.directional;
-      this.labelFromTarget = dataModelRelationshipType.labelFromTarget;
+      this.label = dataModelRelationshipType.label;
       this.rules = dataModelRelationshipType.rules;
       this.labelFromSource = dataModelRelationshipType.labelFromSource;
+      this.labelFromTarget = dataModelRelationshipType.labelFromTarget;
       this.description = dataModelRelationshipType.description;
       this.cardinality = dataModelRelationshipType.cardinality;
       this.attributes = dataModelRelationshipType.attributes;
-      this.label = dataModelRelationshipType.label;
     }
 
     /**
@@ -111,13 +111,13 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the labelFromTarget.
+     * Set the label.
      *
-     * @param labelFromTarget the labelFromTarget
+     * @param label the label
      * @return the DataModelRelationshipType builder
      */
-    public Builder labelFromTarget(String labelFromTarget) {
-      this.labelFromTarget = labelFromTarget;
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -141,6 +141,17 @@ public class DataModelRelationshipType extends GenericModel {
      */
     public Builder labelFromSource(String labelFromSource) {
       this.labelFromSource = labelFromSource;
+      return this;
+    }
+
+    /**
+     * Set the labelFromTarget.
+     *
+     * @param labelFromTarget the labelFromTarget
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder labelFromTarget(String labelFromTarget) {
+      this.labelFromTarget = labelFromTarget;
       return this;
     }
 
@@ -176,30 +187,19 @@ public class DataModelRelationshipType extends GenericModel {
       this.attributes = attributes;
       return this;
     }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the DataModelRelationshipType builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
   }
 
   protected DataModelRelationshipType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
     directional = builder.directional;
-    labelFromTarget = builder.labelFromTarget;
+    label = builder.label;
     rules = builder.rules;
     labelFromSource = builder.labelFromSource;
+    labelFromTarget = builder.labelFromTarget;
     description = builder.description;
     cardinality = builder.cardinality;
     attributes = builder.attributes;
-    label = builder.label;
   }
 
   /**
@@ -223,14 +223,14 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the labelFromTarget.
+   * Gets the label.
    *
-   * User defined translatable label of 'to' endpoint in the relationship.
+   * User defined translatable label.
    *
-   * @return the labelFromTarget
+   * @return the label
    */
-  public String labelFromTarget() {
-    return labelFromTarget;
+  public String label() {
+    return label;
   }
 
   /**
@@ -253,6 +253,17 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public String labelFromSource() {
     return labelFromSource;
+  }
+
+  /**
+   * Gets the labelFromTarget.
+   *
+   * User defined translatable label of 'to' endpoint in the relationship.
+   *
+   * @return the labelFromTarget
+   */
+  public String labelFromTarget() {
+    return labelFromTarget;
   }
 
   /**
@@ -286,17 +297,6 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public Map<String, DataModelAttribute> attributes() {
     return attributes;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 }
 

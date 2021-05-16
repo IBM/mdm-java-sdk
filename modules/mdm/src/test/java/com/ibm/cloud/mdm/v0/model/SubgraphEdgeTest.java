@@ -35,8 +35,8 @@ public class SubgraphEdgeTest {
     assertNull(subgraphEdgeModel.getId());
     assertNull(subgraphEdgeModel.getType());
     assertNull(subgraphEdgeModel.getTypeName());
-    assertNull(subgraphEdgeModel.getDisplayName());
     assertNull(subgraphEdgeModel.getSourceId());
     assertNull(subgraphEdgeModel.getTargetId());
+    assertNull(subgraphEdgeModel.getDisplayName());
   }
 }

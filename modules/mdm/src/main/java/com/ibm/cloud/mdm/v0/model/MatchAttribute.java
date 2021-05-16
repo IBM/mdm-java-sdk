@@ -16,35 +16,35 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Match Attribute.
+ * The details of attributes for match process.
  */
 public class MatchAttribute extends GenericModel {
 
-  @SerializedName("matching_attribute_default_display_name")
-  protected String matchingAttributeDefaultDisplayName;
   @SerializedName("matching_attribute_name")
   protected String matchingAttributeName;
-
-  /**
-   * Gets the matchingAttributeDefaultDisplayName.
-   *
-   * matching attribute display name.
-   *
-   * @return the matchingAttributeDefaultDisplayName
-   */
-  public String getMatchingAttributeDefaultDisplayName() {
-    return matchingAttributeDefaultDisplayName;
-  }
+  @SerializedName("matching_attribute_default_display_name")
+  protected String matchingAttributeDefaultDisplayName;
 
   /**
    * Gets the matchingAttributeName.
    *
-   * matching attribute name.
+   * The name of the attribute for running match process.
    *
    * @return the matchingAttributeName
    */
   public String getMatchingAttributeName() {
     return matchingAttributeName;
+  }
+
+  /**
+   * Gets the matchingAttributeDefaultDisplayName.
+   *
+   * The displayable text name for the attribute for running match process.
+   *
+   * @return the matchingAttributeDefaultDisplayName
+   */
+  public String getMatchingAttributeDefaultDisplayName() {
+    return matchingAttributeDefaultDisplayName;
   }
 }
 

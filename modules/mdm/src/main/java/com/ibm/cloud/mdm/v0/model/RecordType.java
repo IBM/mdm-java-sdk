@@ -18,30 +18,30 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Record Type.
+ * The data type identifier of Records.
  */
 public class RecordType extends GenericModel {
 
-  @SerializedName("entity_types")
-  protected Map<String, EntityType> entityTypes;
-  protected String label;
   protected String description;
   protected Map<String, Attribute> attributes;
+  protected String label;
+  @SerializedName("entity_types")
+  protected Map<String, EntityType> entityTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Map<String, EntityType> entityTypes;
-    private String label;
     private String description;
     private Map<String, Attribute> attributes;
+    private String label;
+    private Map<String, EntityType> entityTypes;
 
     private Builder(RecordType recordType) {
-      this.entityTypes = recordType.entityTypes;
-      this.label = recordType.label;
       this.description = recordType.description;
       this.attributes = recordType.attributes;
+      this.label = recordType.label;
+      this.entityTypes = recordType.entityTypes;
     }
 
     /**
@@ -69,28 +69,6 @@ public class RecordType extends GenericModel {
     }
 
     /**
-     * Set the entityTypes.
-     *
-     * @param entityTypes the entityTypes
-     * @return the RecordType builder
-     */
-    public Builder entityTypes(Map<String, EntityType> entityTypes) {
-      this.entityTypes = entityTypes;
-      return this;
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the RecordType builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
      * Set the description.
      *
      * @param description the description
@@ -111,15 +89,37 @@ public class RecordType extends GenericModel {
       this.attributes = attributes;
       return this;
     }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the RecordType builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the entityTypes.
+     *
+     * @param entityTypes the entityTypes
+     * @return the RecordType builder
+     */
+    public Builder entityTypes(Map<String, EntityType> entityTypes) {
+      this.entityTypes = entityTypes;
+      return this;
+    }
   }
 
   protected RecordType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    entityTypes = builder.entityTypes;
-    label = builder.label;
     description = builder.description;
     attributes = builder.attributes;
+    label = builder.label;
+    entityTypes = builder.entityTypes;
   }
 
   /**
@@ -132,31 +132,9 @@ public class RecordType extends GenericModel {
   }
 
   /**
-   * Gets the entityTypes.
-   *
-   * entity Types.
-   *
-   * @return the entityTypes
-   */
-  public Map<String, EntityType> entityTypes() {
-    return entityTypes;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
    * Gets the description.
    *
-   * record description.
+   * The description of the record type element.
    *
    * @return the description
    */
@@ -167,12 +145,34 @@ public class RecordType extends GenericModel {
   /**
    * Gets the attributes.
    *
-   * record attributes.
+   * Collection of attributes belonging to this record type element.
    *
    * @return the attributes
    */
   public Map<String, Attribute> attributes() {
     return attributes;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * The displayable text label for this record type element.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
+  }
+
+  /**
+   * Gets the entityTypes.
+   *
+   * Collection of entity types belonging to this record type element.
+   *
+   * @return the entityTypes
+   */
+  public Map<String, EntityType> entityTypes() {
+    return entityTypes;
   }
 }
 

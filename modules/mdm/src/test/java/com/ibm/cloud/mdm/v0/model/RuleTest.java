@@ -14,8 +14,8 @@
 package com.ibm.cloud.mdm.v0.model;
 
 import com.ibm.cloud.mdm.v0.model.Rule;
-import com.ibm.cloud.mdm.v0.model.SourceObject;
-import com.ibm.cloud.mdm.v0.model.TargetObject;
+import com.ibm.cloud.mdm.v0.model.Source;
+import com.ibm.cloud.mdm.v0.model.Target;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -35,32 +35,32 @@ public class RuleTest {
 
   @Test
   public void testRule() throws Throwable {
-    TargetObject targetObjectModel = new TargetObject.Builder()
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    Target targetModel = new Target.Builder()
       .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(targetObjectModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(targetObjectModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(targetModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(targetModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
-    SourceObject sourceObjectModel = new SourceObject.Builder()
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    Source sourceModel = new Source.Builder()
       .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(sourceObjectModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(sourceObjectModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(sourceModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(sourceModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     Rule ruleModel = new Rule.Builder()
-      .target(targetObjectModel)
-      .source(sourceObjectModel)
+      .target(targetModel)
+      .source(sourceModel)
       .build();
-    assertEquals(ruleModel.target(), targetObjectModel);
-    assertEquals(ruleModel.source(), sourceObjectModel);
+    assertEquals(ruleModel.target(), targetModel);
+    assertEquals(ruleModel.source(), sourceModel);
 
     String json = TestUtilities.serialize(ruleModel);
 
     Rule ruleModelNew = TestUtilities.deserialize(json, Rule.class);
     assertTrue(ruleModelNew instanceof Rule);
-    assertEquals(ruleModelNew.target().toString(), targetObjectModel.toString());
-    assertEquals(ruleModelNew.source().toString(), sourceObjectModel.toString());
+    assertEquals(ruleModelNew.target().toString(), targetModel.toString());
+    assertEquals(ruleModelNew.source().toString(), sourceModel.toString());
   }
 }

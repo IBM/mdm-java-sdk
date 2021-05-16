@@ -36,7 +36,7 @@ public class AssetMappingTest {
       .dataMappingName("gender")
       .excludeColumn(false)
       .autoMapped(true)
-      .completenessPercent("string")
+      .completenessPercent("100.0")
       .dataMappingAttributeType("string")
       .key("COLUMN 1")
       .build();
@@ -44,7 +44,7 @@ public class AssetMappingTest {
     assertEquals(assetMappingModel.dataMappingName(), "gender");
     assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
-    assertEquals(assetMappingModel.completenessPercent(), "string");
+    assertEquals(assetMappingModel.completenessPercent(), "100.0");
     assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.key(), "COLUMN 1");
 
@@ -56,7 +56,7 @@ public class AssetMappingTest {
     assertEquals(assetMappingModelNew.dataMappingName(), "gender");
     assertEquals(assetMappingModelNew.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModelNew.autoMapped(), Boolean.valueOf(true));
-    assertEquals(assetMappingModelNew.completenessPercent(), "string");
+    assertEquals(assetMappingModelNew.completenessPercent(), "100.0");
     assertEquals(assetMappingModelNew.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModelNew.key(), "COLUMN 1");
   }

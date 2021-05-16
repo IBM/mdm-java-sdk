@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SystemProperties extends GenericModel {
 
-  @SerializedName("entity_types")
-  protected SystemPropertiesForEntityTypes entityTypes;
   @SerializedName("record_types")
-  protected SystemPropertiesForRecordTypes recordTypes;
-  @SerializedName("attribute_types")
-  protected SystemPropertiesForAttributeTypes attributeTypes;
+  protected RecordTypes recordTypes;
+  @SerializedName("entity_types")
+  protected EntityTypes entityTypes;
   @SerializedName("relationship_types")
-  protected SystemPropertiesForRelationshipTypes relationshipTypes;
+  protected SystemPropertiesRelationshipTypes relationshipTypes;
+  @SerializedName("attribute_types")
+  protected AttributeTypes attributeTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private SystemPropertiesForEntityTypes entityTypes;
-    private SystemPropertiesForRecordTypes recordTypes;
-    private SystemPropertiesForAttributeTypes attributeTypes;
-    private SystemPropertiesForRelationshipTypes relationshipTypes;
+    private RecordTypes recordTypes;
+    private EntityTypes entityTypes;
+    private SystemPropertiesRelationshipTypes relationshipTypes;
+    private AttributeTypes attributeTypes;
 
     private Builder(SystemProperties systemProperties) {
-      this.entityTypes = systemProperties.entityTypes;
       this.recordTypes = systemProperties.recordTypes;
-      this.attributeTypes = systemProperties.attributeTypes;
+      this.entityTypes = systemProperties.entityTypes;
       this.relationshipTypes = systemProperties.relationshipTypes;
+      this.attributeTypes = systemProperties.attributeTypes;
     }
 
     /**
@@ -61,35 +61,24 @@ public class SystemProperties extends GenericModel {
     }
 
     /**
-     * Set the entityTypes.
-     *
-     * @param entityTypes the entityTypes
-     * @return the SystemProperties builder
-     */
-    public Builder entityTypes(SystemPropertiesForEntityTypes entityTypes) {
-      this.entityTypes = entityTypes;
-      return this;
-    }
-
-    /**
      * Set the recordTypes.
      *
      * @param recordTypes the recordTypes
      * @return the SystemProperties builder
      */
-    public Builder recordTypes(SystemPropertiesForRecordTypes recordTypes) {
+    public Builder recordTypes(RecordTypes recordTypes) {
       this.recordTypes = recordTypes;
       return this;
     }
 
     /**
-     * Set the attributeTypes.
+     * Set the entityTypes.
      *
-     * @param attributeTypes the attributeTypes
+     * @param entityTypes the entityTypes
      * @return the SystemProperties builder
      */
-    public Builder attributeTypes(SystemPropertiesForAttributeTypes attributeTypes) {
-      this.attributeTypes = attributeTypes;
+    public Builder entityTypes(EntityTypes entityTypes) {
+      this.entityTypes = entityTypes;
       return this;
     }
 
@@ -99,17 +88,28 @@ public class SystemProperties extends GenericModel {
      * @param relationshipTypes the relationshipTypes
      * @return the SystemProperties builder
      */
-    public Builder relationshipTypes(SystemPropertiesForRelationshipTypes relationshipTypes) {
+    public Builder relationshipTypes(SystemPropertiesRelationshipTypes relationshipTypes) {
       this.relationshipTypes = relationshipTypes;
+      return this;
+    }
+
+    /**
+     * Set the attributeTypes.
+     *
+     * @param attributeTypes the attributeTypes
+     * @return the SystemProperties builder
+     */
+    public Builder attributeTypes(AttributeTypes attributeTypes) {
+      this.attributeTypes = attributeTypes;
       return this;
     }
   }
 
   protected SystemProperties(Builder builder) {
-    entityTypes = builder.entityTypes;
     recordTypes = builder.recordTypes;
-    attributeTypes = builder.attributeTypes;
+    entityTypes = builder.entityTypes;
     relationshipTypes = builder.relationshipTypes;
+    attributeTypes = builder.attributeTypes;
   }
 
   /**
@@ -122,47 +122,47 @@ public class SystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the entityTypes.
-   *
-   * entity types.
-   *
-   * @return the entityTypes
-   */
-  public SystemPropertiesForEntityTypes entityTypes() {
-    return entityTypes;
-  }
-
-  /**
    * Gets the recordTypes.
    *
-   * record types.
+   * System property for record type.
    *
    * @return the recordTypes
    */
-  public SystemPropertiesForRecordTypes recordTypes() {
+  public RecordTypes recordTypes() {
     return recordTypes;
   }
 
   /**
-   * Gets the attributeTypes.
+   * Gets the entityTypes.
    *
-   * attribute Types.
+   * System property for entity type.
    *
-   * @return the attributeTypes
+   * @return the entityTypes
    */
-  public SystemPropertiesForAttributeTypes attributeTypes() {
-    return attributeTypes;
+  public EntityTypes entityTypes() {
+    return entityTypes;
   }
 
   /**
    * Gets the relationshipTypes.
    *
-   * relationship types.
+   * System properties for relationship type.
    *
    * @return the relationshipTypes
    */
-  public SystemPropertiesForRelationshipTypes relationshipTypes() {
+  public SystemPropertiesRelationshipTypes relationshipTypes() {
     return relationshipTypes;
+  }
+
+  /**
+   * Gets the attributeTypes.
+   *
+   * System properties for attribute type.
+   *
+   * @return the attributeTypes
+   */
+  public AttributeTypes attributeTypes() {
+    return attributeTypes;
   }
 }
 

@@ -18,12 +18,10 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * asset.
+ * Details of the Data Asset.
  */
 public class Asset extends GenericModel {
 
-  @SerializedName("asset_created_date")
-  protected String assetCreatedDate;
   @SerializedName("asset_mappings")
   protected List<AssetMapping> assetMappings;
   @SerializedName("asset_id")
@@ -32,24 +30,15 @@ public class Asset extends GenericModel {
   protected String assetLastUpdatedDate;
   @SerializedName("asset_status")
   protected String assetStatus;
+  @SerializedName("asset_created_date")
+  protected String assetCreatedDate;
   @SerializedName("asset_name")
   protected String assetName;
 
   /**
-   * Gets the assetCreatedDate.
-   *
-   * asset created date.
-   *
-   * @return the assetCreatedDate
-   */
-  public String getAssetCreatedDate() {
-    return assetCreatedDate;
-  }
-
-  /**
    * Gets the assetMappings.
    *
-   * list of columns mapped with data model.
+   * The details of Data asset column mappings to the data model.
    *
    * @return the assetMappings
    */
@@ -60,7 +49,7 @@ public class Asset extends GenericModel {
   /**
    * Gets the assetId.
    *
-   * asset id.
+   * The identifier of the Data asset.
    *
    * @return the assetId
    */
@@ -71,7 +60,7 @@ public class Asset extends GenericModel {
   /**
    * Gets the assetLastUpdatedDate.
    *
-   * asset last updated date.
+   * The last updated date of the Data asset metadata.
    *
    * @return the assetLastUpdatedDate
    */
@@ -82,7 +71,7 @@ public class Asset extends GenericModel {
   /**
    * Gets the assetStatus.
    *
-   * asset status.
+   * The status of the Data asset.
    *
    * @return the assetStatus
    */
@@ -91,9 +80,20 @@ public class Asset extends GenericModel {
   }
 
   /**
+   * Gets the assetCreatedDate.
+   *
+   * The date of the Data asset creation.
+   *
+   * @return the assetCreatedDate
+   */
+  public String getAssetCreatedDate() {
+    return assetCreatedDate;
+  }
+
+  /**
    * Gets the assetName.
    *
-   * asset name.
+   * The name of the Data asset.
    *
    * @return the assetName
    */

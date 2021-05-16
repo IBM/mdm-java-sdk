@@ -16,7 +16,7 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Asset data mapping object for column in asset.
+ * Details of Data Asset column mappings with the data model.
  */
 public class AssetMapping extends GenericModel {
 
@@ -171,7 +171,7 @@ public class AssetMapping extends GenericModel {
   /**
    * Gets the classifiedClass.
    *
-   * classified class.
+   * The classified class of the Data Asset column.
    *
    * @return the classifiedClass
    */
@@ -182,7 +182,7 @@ public class AssetMapping extends GenericModel {
   /**
    * Gets the dataMappingName.
    *
-   * attribute name.
+   * The Data mapping name of the Data Asset column.
    *
    * @return the dataMappingName
    */
@@ -193,7 +193,7 @@ public class AssetMapping extends GenericModel {
   /**
    * Gets the excludeColumn.
    *
-   * exclude column from mapping.
+   * Specifies whether this Data Asset column is excluded from mapping.
    *
    * @return the excludeColumn
    */
@@ -204,7 +204,7 @@ public class AssetMapping extends GenericModel {
   /**
    * Gets the autoMapped.
    *
-   * auto mapped by suggestions.
+   * Specifies whether this data asset column is automatically mapped.
    *
    * @return the autoMapped
    */
@@ -215,7 +215,7 @@ public class AssetMapping extends GenericModel {
   /**
    * Gets the completenessPercent.
    *
-   * completeness percent of the column.
+   * The data values completeness percentage of the Data asset column.
    *
    * @return the completenessPercent
    */
@@ -226,7 +226,7 @@ public class AssetMapping extends GenericModel {
   /**
    * Gets the dataMappingAttributeType.
    *
-   * data mapping attribute type.
+   * The attribute type mapped to this Data Asset column.
    *
    * @return the dataMappingAttributeType
    */
@@ -237,7 +237,7 @@ public class AssetMapping extends GenericModel {
   /**
    * Gets the key.
    *
-   * key.
+   * The key of the Data Asset column.
    *
    * @return the key
    */

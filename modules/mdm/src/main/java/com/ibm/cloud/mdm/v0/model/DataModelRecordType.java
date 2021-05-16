@@ -22,26 +22,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRecordType extends GenericModel {
 
+  protected String label;
   @SerializedName("entity_types")
   protected Map<String, DataModelEntityType> entityTypes;
   protected String description;
   protected Map<String, DataModelAttribute> attributes;
-  protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String label;
     private Map<String, DataModelEntityType> entityTypes;
     private String description;
     private Map<String, DataModelAttribute> attributes;
-    private String label;
 
     private Builder(DataModelRecordType dataModelRecordType) {
+      this.label = dataModelRecordType.label;
       this.entityTypes = dataModelRecordType.entityTypes;
       this.description = dataModelRecordType.description;
       this.attributes = dataModelRecordType.attributes;
-      this.label = dataModelRecordType.label;
     }
 
     /**
@@ -53,12 +53,12 @@ public class DataModelRecordType extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param attributes the attributes
      * @param label the label
+     * @param attributes the attributes
      */
-    public Builder(Map<String, DataModelAttribute> attributes, String label) {
-      this.attributes = attributes;
+    public Builder(String label, Map<String, DataModelAttribute> attributes) {
       this.label = label;
+      this.attributes = attributes;
     }
 
     /**
@@ -68,6 +68,17 @@ public class DataModelRecordType extends GenericModel {
      */
     public DataModelRecordType build() {
       return new DataModelRecordType(this);
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the DataModelRecordType builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
     }
 
     /**
@@ -102,28 +113,17 @@ public class DataModelRecordType extends GenericModel {
       this.attributes = attributes;
       return this;
     }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the DataModelRecordType builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
   }
 
   protected DataModelRecordType(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
-      "attributes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
+      "attributes cannot be null");
+    label = builder.label;
     entityTypes = builder.entityTypes;
     description = builder.description;
     attributes = builder.attributes;
-    label = builder.label;
   }
 
   /**
@@ -133,6 +133,17 @@ public class DataModelRecordType extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**
@@ -166,17 +177,6 @@ public class DataModelRecordType extends GenericModel {
    */
   public Map<String, DataModelAttribute> attributes() {
     return attributes;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 }
 

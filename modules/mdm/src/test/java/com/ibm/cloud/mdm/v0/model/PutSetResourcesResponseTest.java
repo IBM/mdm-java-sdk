@@ -14,7 +14,7 @@
 package com.ibm.cloud.mdm.v0.model;
 
 import com.ibm.cloud.mdm.v0.model.PutSetResourcesResponse;
-import com.ibm.cloud.mdm.v0.model.PutSetResourcesResponseSetResourceEntry;
+import com.ibm.cloud.mdm.v0.model.SetResourceEntry;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -35,8 +35,8 @@ public class PutSetResourcesResponseTest {
   @Test
   public void testPutSetResourcesResponse() throws Throwable {
     PutSetResourcesResponse putSetResourcesResponseModel = new PutSetResourcesResponse();
+    assertNull(putSetResourcesResponseModel.getFlowState());
     assertNull(putSetResourcesResponseModel.getFlowId());
     assertNull(putSetResourcesResponseModel.getSetResources());
-    assertNull(putSetResourcesResponseModel.getFlowState());
   }
 }

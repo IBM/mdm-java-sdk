@@ -20,43 +20,43 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Relationship Type.
+ * Relationship Type definition.
  */
 public class RelationshipType extends GenericModel {
 
+  protected String label;
+  protected List<Rule> rules;
   @SerializedName("label_from_source")
   protected String labelFromSource;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
   protected Boolean directional;
-  protected List<Rule> rules;
-  protected String cardinality;
   protected String description;
+  protected String cardinality;
   protected Map<String, Attribute> attributes;
-  protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String label;
+    private List<Rule> rules;
     private String labelFromSource;
     private String labelFromTarget;
     private Boolean directional;
-    private List<Rule> rules;
-    private String cardinality;
     private String description;
+    private String cardinality;
     private Map<String, Attribute> attributes;
-    private String label;
 
     private Builder(RelationshipType relationshipType) {
+      this.label = relationshipType.label;
+      this.rules = relationshipType.rules;
       this.labelFromSource = relationshipType.labelFromSource;
       this.labelFromTarget = relationshipType.labelFromTarget;
       this.directional = relationshipType.directional;
-      this.rules = relationshipType.rules;
-      this.cardinality = relationshipType.cardinality;
       this.description = relationshipType.description;
+      this.cardinality = relationshipType.cardinality;
       this.attributes = relationshipType.attributes;
-      this.label = relationshipType.label;
     }
 
     /**
@@ -100,6 +100,29 @@ public class RelationshipType extends GenericModel {
     }
 
     /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the RelationshipType builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the rules.
+     * Existing rules will be replaced.
+     *
+     * @param rules the rules
+     * @return the RelationshipType builder
+     */
+    public Builder rules(List<Rule> rules) {
+      this.rules = rules;
+      return this;
+    }
+
+    /**
      * Set the labelFromSource.
      *
      * @param labelFromSource the labelFromSource
@@ -133,14 +156,13 @@ public class RelationshipType extends GenericModel {
     }
 
     /**
-     * Set the rules.
-     * Existing rules will be replaced.
+     * Set the description.
      *
-     * @param rules the rules
+     * @param description the description
      * @return the RelationshipType builder
      */
-    public Builder rules(List<Rule> rules) {
-      this.rules = rules;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -156,17 +178,6 @@ public class RelationshipType extends GenericModel {
     }
 
     /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the RelationshipType builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
      * Set the attributes.
      *
      * @param attributes the attributes
@@ -176,30 +187,19 @@ public class RelationshipType extends GenericModel {
       this.attributes = attributes;
       return this;
     }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the RelationshipType builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
   }
 
   protected RelationshipType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    label = builder.label;
+    rules = builder.rules;
     labelFromSource = builder.labelFromSource;
     labelFromTarget = builder.labelFromTarget;
     directional = builder.directional;
-    rules = builder.rules;
-    cardinality = builder.cardinality;
     description = builder.description;
+    cardinality = builder.cardinality;
     attributes = builder.attributes;
-    label = builder.label;
   }
 
   /**
@@ -212,9 +212,31 @@ public class RelationshipType extends GenericModel {
   }
 
   /**
+   * Gets the label.
+   *
+   * The displayable text for this relationship element.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
+  }
+
+  /**
+   * Gets the rules.
+   *
+   * Collection of Relationship Rules.
+   *
+   * @return the rules
+   */
+  public List<Rule> rules() {
+    return rules;
+  }
+
+  /**
    * Gets the labelFromSource.
    *
-   * label from source.
+   * The default label display text of a source record's relationship.
    *
    * @return the labelFromSource
    */
@@ -225,7 +247,7 @@ public class RelationshipType extends GenericModel {
   /**
    * Gets the labelFromTarget.
    *
-   * label from target.
+   * The default label display text of a target record's relationship.
    *
    * @return the labelFromTarget
    */
@@ -236,7 +258,7 @@ public class RelationshipType extends GenericModel {
   /**
    * Gets the directional.
    *
-   * is directional.
+   * Specifies whether the relationship is directional.
    *
    * @return the directional
    */
@@ -245,31 +267,9 @@ public class RelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the rules.
-   *
-   * rules.
-   *
-   * @return the rules
-   */
-  public List<Rule> rules() {
-    return rules;
-  }
-
-  /**
-   * Gets the cardinality.
-   *
-   * cardinality.
-   *
-   * @return the cardinality
-   */
-  public String cardinality() {
-    return cardinality;
-  }
-
-  /**
    * Gets the description.
    *
-   * description.
+   * The description of the model element.
    *
    * @return the description
    */
@@ -278,25 +278,25 @@ public class RelationshipType extends GenericModel {
   }
 
   /**
+   * Gets the cardinality.
+   *
+   * The number of data points the specific property can represent.
+   *
+   * @return the cardinality
+   */
+  public String cardinality() {
+    return cardinality;
+  }
+
+  /**
    * Gets the attributes.
    *
-   * attributes.
+   * Collection of attributes.
    *
    * @return the attributes
    */
   public Map<String, Attribute> attributes() {
     return attributes;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 }
 

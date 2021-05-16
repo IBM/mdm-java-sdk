@@ -16,23 +16,34 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * status.
+ * The status of match process execution.
  */
 public class Status extends GenericModel {
 
+  @SerializedName("bucket_count")
+  protected Long bucketCount;
   @SerializedName("date_completed")
   protected String dateCompleted;
   @SerializedName("comparison_count")
-  protected String comparisonCount;
-  @SerializedName("bucket_count")
-  protected String bucketCount;
+  protected Long comparisonCount;
   @SerializedName("run_time")
-  protected String runTime;
+  protected Long runTime;
+
+  /**
+   * Gets the bucketCount.
+   *
+   * Count of the comparison buckets created during match process.
+   *
+   * @return the bucketCount
+   */
+  public Long getBucketCount() {
+    return bucketCount;
+  }
 
   /**
    * Gets the dateCompleted.
    *
-   * date of last matching completed.
+   * The match process execution completion date.
    *
    * @return the dateCompleted
    */
@@ -43,33 +54,22 @@ public class Status extends GenericModel {
   /**
    * Gets the comparisonCount.
    *
-   * comparison count.
+   * Count of the comparisons made during match process.
    *
    * @return the comparisonCount
    */
-  public String getComparisonCount() {
+  public Long getComparisonCount() {
     return comparisonCount;
-  }
-
-  /**
-   * Gets the bucketCount.
-   *
-   * bucket count.
-   *
-   * @return the bucketCount
-   */
-  public String getBucketCount() {
-    return bucketCount;
   }
 
   /**
    * Gets the runTime.
    *
-   * total time required to run match.
+   * The total time consumed to run match process.
    *
    * @return the runTime
    */
-  public String getRunTime() {
+  public Long getRunTime() {
     return runTime;
   }
 }

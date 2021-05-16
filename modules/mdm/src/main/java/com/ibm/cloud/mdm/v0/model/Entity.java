@@ -14,75 +14,85 @@ package com.ibm.cloud.mdm.v0.model;
 
 import java.util.Map;
 
-import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
-
 /**
- * The information about an entity.
+ * Information about an entity.
  */
-public class Entity extends GenericModel {
+public class Entity extends ElementWithAttributes {
 
-  protected String type;
-  protected String id;
-  protected Map<String, Object> attributes;
-  @SerializedName("type_name")
-  protected String typeName;
-  @SerializedName("record_count")
-  protected Long recordCount;
 
   /**
-   * Gets the type.
-   *
-   * The type of the element.
-   *
-   * @return the type
+   * Builder.
    */
-  public String getType() {
-    return type;
+  public static class Builder {
+    private String id;
+    private Map<String, Object> attributes;
+
+    public Builder(Entity entity) {
+      this.id = entity.id;
+      this.attributes = entity.attributes;
+    }
+
+    /**
+     * Instantiates a new builder.
+     */
+    public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param attributes the attributes
+     */
+    public Builder(Map<String, Object> attributes) {
+      this.attributes = attributes;
+    }
+
+    /**
+     * Builds a Entity.
+     *
+     * @return the new Entity instance
+     */
+    public Entity build() {
+      return new Entity(this);
+    }
+
+    /**
+     * Set the id.
+     *
+     * @param id the id
+     * @return the Entity builder
+     */
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
+
+    /**
+     * Set the attributes.
+     *
+     * @param attributes the attributes
+     * @return the Entity builder
+     */
+    public Builder attributes(Map<String, Object> attributes) {
+      this.attributes = attributes;
+      return this;
+    }
+  }
+
+  protected Entity(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
+      "attributes cannot be null");
+    id = builder.id;
+    attributes = builder.attributes;
   }
 
   /**
-   * Gets the id.
+   * New builder.
    *
-   * The id of the element.
-   *
-   * @return the id
+   * @return a Entity builder
    */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the attributes.
-   *
-   * list of the attributes of the element.
-   *
-   * @return the attributes
-   */
-  public Map<String, Object> getAttributes() {
-    return attributes;
-  }
-
-  /**
-   * Gets the typeName.
-   *
-   * The name of the entity type.
-   *
-   * @return the typeName
-   */
-  public String getTypeName() {
-    return typeName;
-  }
-
-  /**
-   * Gets the recordCount.
-   *
-   * The number of records derived and linked to the entity.
-   *
-   * @return the recordCount
-   */
-  public Long getRecordCount() {
-    return recordCount;
+  public Builder newBuilder() {
+    return new Builder(this);
   }
 }
 

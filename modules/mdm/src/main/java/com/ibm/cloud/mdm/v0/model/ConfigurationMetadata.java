@@ -16,7 +16,7 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Configuration metadata object.
+ * Configuration metadata details.
  */
 public class ConfigurationMetadata extends GenericModel {
 
@@ -52,17 +52,6 @@ public class ConfigurationMetadata extends GenericModel {
      * Instantiates a new builder.
      */
     public Builder() {
-    }
-
-    /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param description the description
-     * @param name the name
-     */
-    public Builder(String description, String name) {
-      this.description = description;
-      this.name = name;
     }
 
     /**
@@ -120,10 +109,6 @@ public class ConfigurationMetadata extends GenericModel {
   }
 
   protected ConfigurationMetadata(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.description,
-      "description cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,
-      "name cannot be null");
     projectId = builder.projectId;
     catalogId = builder.catalogId;
     description = builder.description;
@@ -142,7 +127,7 @@ public class ConfigurationMetadata extends GenericModel {
   /**
    * Gets the projectId.
    *
-   * project id of the corresponding wkc project.
+   * The project id of the linked WKC project.
    *
    * @return the projectId
    */
@@ -153,7 +138,7 @@ public class ConfigurationMetadata extends GenericModel {
   /**
    * Gets the catalogId.
    *
-   * catalog id of the corresponding wkc project.
+   * The catalog id from the linked WKC project.
    *
    * @return the catalogId
    */
@@ -164,7 +149,7 @@ public class ConfigurationMetadata extends GenericModel {
   /**
    * Gets the lastUpdateDate.
    *
-   * last update date of project metadata.
+   * Last updated date of this Configuration metadata.
    *
    * @return the lastUpdateDate
    */
@@ -175,7 +160,7 @@ public class ConfigurationMetadata extends GenericModel {
   /**
    * Gets the createdDate.
    *
-   * created date of configuration metadata.
+   * The date of Configuration metadata creation.
    *
    * @return the createdDate
    */
@@ -186,7 +171,7 @@ public class ConfigurationMetadata extends GenericModel {
   /**
    * Gets the description.
    *
-   * description of the configuration.
+   * The description of the Configuration metadata.
    *
    * @return the description
    */
@@ -197,7 +182,7 @@ public class ConfigurationMetadata extends GenericModel {
   /**
    * Gets the name.
    *
-   * name of the configuration.
+   * The name of the Configuration metadata.
    *
    * @return the name
    */
@@ -208,7 +193,7 @@ public class ConfigurationMetadata extends GenericModel {
   /**
    * Gets the id.
    *
-   * id of this configuration metadata.
+   * The identifier of this Configuration metadata.
    *
    * @return the id
    */

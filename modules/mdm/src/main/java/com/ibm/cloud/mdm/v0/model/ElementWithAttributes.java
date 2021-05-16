@@ -20,21 +20,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * An element with attributes.
  */
 public class ElementWithAttributes extends GenericModel {
-
-  protected String type;
-  protected String id;
-  protected Map<String, Object> attributes;
-
-  /**
-   * Gets the type.
-   *
-   * The type of the element.
-   *
-   * @return the type
-   */
-  public String getType() {
-    return type;
+  @SuppressWarnings("unused")
+  protected static String discriminatorPropertyName = "type";
+  protected static java.util.Map<String, Class<?>> discriminatorMapping;
+  static {
+    discriminatorMapping = new java.util.HashMap<>();
+    discriminatorMapping.put("record", Record.class);
+    discriminatorMapping.put("relationship", Relationship.class);
+    discriminatorMapping.put("entity", Entity.class);
   }
+
+  protected String id;
+  protected String type;
+  protected Map<String, Object> attributes;
 
   /**
    * Gets the id.
@@ -43,18 +41,29 @@ public class ElementWithAttributes extends GenericModel {
    *
    * @return the id
    */
-  public String getId() {
+  public String id() {
     return id;
+  }
+
+  /**
+   * Gets the type.
+   *
+   * The type of the element.
+   *
+   * @return the type
+   */
+  public String type() {
+    return type;
   }
 
   /**
    * Gets the attributes.
    *
-   * list of the attributes of the element.
+   * The list of the attributes of the element.
    *
    * @return the attributes
    */
-  public Map<String, Object> getAttributes() {
+  public Map<String, Object> attributes() {
     return attributes;
   }
 }

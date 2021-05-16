@@ -100,7 +100,7 @@ public class GetConfiguratorProcessOptions extends GenericModel {
   /**
    * Gets the processName.
    *
-   * Unique process name to get the process status. i.e. publish_model, publish_data, match.
+   * Unique process name to get the process status. i.e. publish_model, publish_data, match, delete_asset.
    *
    * @return the processName
    */

@@ -131,7 +131,7 @@ public class SuggestConfiguratorDataMappingsOptions extends GenericModel {
   /**
    * Gets the columns.
    *
-   * columns with list of object having key and wkc identified class.
+   * The collection of data mapping columns having key and WKC identified class.
    *
    * @return the columns
    */

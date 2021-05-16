@@ -32,23 +32,17 @@ public class RelationshipTest {
   @Test
   public void testRelationship() throws Throwable {
     Relationship relationshipModel = new Relationship.Builder()
-      .type("testString")
       .id("testString")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .typeName("testString")
       .build();
-    assertEquals(relationshipModel.type(), "testString");
     assertEquals(relationshipModel.id(), "testString");
     assertEquals(relationshipModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
-    assertEquals(relationshipModel.typeName(), "testString");
 
     String json = TestUtilities.serialize(relationshipModel);
 
     Relationship relationshipModelNew = TestUtilities.deserialize(json, Relationship.class);
     assertTrue(relationshipModelNew instanceof Relationship);
-    assertEquals(relationshipModelNew.type(), "testString");
     assertEquals(relationshipModelNew.id(), "testString");
-    assertEquals(relationshipModelNew.typeName(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

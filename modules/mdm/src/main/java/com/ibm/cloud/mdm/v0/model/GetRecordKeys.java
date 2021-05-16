@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetRecordKeys extends GenericModel {
 
-  protected List<GetRecordKeysRecordinfo> records;
+  protected List<GetRecordKeysRecord> records;
 
   /**
    * Gets the records.
@@ -30,7 +30,7 @@ public class GetRecordKeys extends GenericModel {
    *
    * @return the records
    */
-  public List<GetRecordKeysRecordinfo> getRecords() {
+  public List<GetRecordKeysRecord> getRecords() {
     return records;
   }
 }
