@@ -33,10 +33,10 @@ public class GetSummaryEntitySizeStatsTest {
   public void testGetSummaryEntitySizeStats() throws Throwable {
     GetSummaryEntitySizeStats getSummaryEntitySizeStatsModel = new GetSummaryEntitySizeStats();
     assertNull(getSummaryEntitySizeStatsModel.getAverage());
-    assertNull(getSummaryEntitySizeStatsModel.getMin());
-    assertNull(getSummaryEntitySizeStatsModel.getMax());
     assertNull(getSummaryEntitySizeStatsModel.getVariance());
     assertNull(getSummaryEntitySizeStatsModel.getStandardDeviation());
     assertNull(getSummaryEntitySizeStatsModel.getCount());
+    assertNull(getSummaryEntitySizeStatsModel.getMin());
+    assertNull(getSummaryEntitySizeStatsModel.getMax());
   }
 }

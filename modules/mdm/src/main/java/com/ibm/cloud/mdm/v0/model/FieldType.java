@@ -19,24 +19,24 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class FieldType extends GenericModel {
 
-  protected String description;
   protected Boolean indexed;
   protected String label;
+  protected String description;
   protected String classification;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String description;
     private Boolean indexed;
     private String label;
+    private String description;
     private String classification;
 
     private Builder(FieldType fieldType) {
-      this.description = fieldType.description;
       this.indexed = fieldType.indexed;
       this.label = fieldType.label;
+      this.description = fieldType.description;
       this.classification = fieldType.classification;
     }
 
@@ -65,17 +65,6 @@ public class FieldType extends GenericModel {
     }
 
     /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the FieldType builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
      * Set the indexed.
      *
      * @param indexed the indexed
@@ -98,6 +87,17 @@ public class FieldType extends GenericModel {
     }
 
     /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the FieldType builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+
+    /**
      * Set the classification.
      *
      * @param classification the classification
@@ -112,9 +112,9 @@ public class FieldType extends GenericModel {
   protected FieldType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    description = builder.description;
     indexed = builder.indexed;
     label = builder.label;
+    description = builder.description;
     classification = builder.classification;
   }
 
@@ -125,17 +125,6 @@ public class FieldType extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the description.
-   *
-   * The description of the field type.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
   }
 
   /**
@@ -158,6 +147,17 @@ public class FieldType extends GenericModel {
    */
   public String label() {
     return label;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * The description of the field type.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
   }
 
   /**

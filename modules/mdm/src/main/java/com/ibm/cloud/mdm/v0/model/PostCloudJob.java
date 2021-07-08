@@ -21,12 +21,12 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class PostCloudJob extends DynamicModel<Object> {
 
-  @SerializedName("last_updated_at")
-  protected String lastUpdatedAt;
   @SerializedName("job_name")
   protected String jobName;
   @SerializedName("created_at")
   protected String createdAt;
+  @SerializedName("last_updated_at")
+  protected String lastUpdatedAt;
   @SerializedName("status")
   protected String status;
   @SerializedName("id")
@@ -34,17 +34,6 @@ public class PostCloudJob extends DynamicModel<Object> {
 
   public PostCloudJob() {
     super(new TypeToken<Object>() { });
-  }
-
-  /**
-   * Gets the lastUpdatedAt.
-   *
-   * System generated timestamp when a job was last updated.
-   *
-   * @return the lastUpdatedAt
-   */
-  public String getLastUpdatedAt() {
-    return this.lastUpdatedAt;
   }
 
   /**
@@ -67,6 +56,17 @@ public class PostCloudJob extends DynamicModel<Object> {
    */
   public String getCreatedAt() {
     return this.createdAt;
+  }
+
+  /**
+   * Gets the lastUpdatedAt.
+   *
+   * System generated timestamp when a job was last updated.
+   *
+   * @return the lastUpdatedAt
+   */
+  public String getLastUpdatedAt() {
+    return this.lastUpdatedAt;
   }
 
   /**

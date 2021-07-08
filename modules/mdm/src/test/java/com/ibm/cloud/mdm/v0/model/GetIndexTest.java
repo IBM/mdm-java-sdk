@@ -32,9 +32,9 @@ public class GetIndexTest {
   @Test
   public void testGetIndex() throws Throwable {
     GetIndex getIndexModel = new GetIndex();
+    assertNull(getIndexModel.getStandardizedValues());
     assertNull(getIndexModel.getRecordNumber());
     assertNull(getIndexModel.getSelfScores());
     assertNull(getIndexModel.getBuckets());
-    assertNull(getIndexModel.getStandardizedValues());
   }
 }

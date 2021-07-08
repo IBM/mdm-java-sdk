@@ -32,9 +32,9 @@ public class PostCloudJobTest {
   @Test
   public void testPostCloudJob() throws Throwable {
     PostCloudJob postCloudJobModel = new PostCloudJob();
-    assertNull(postCloudJobModel.getLastUpdatedAt());
     assertNull(postCloudJobModel.getJobName());
     assertNull(postCloudJobModel.getCreatedAt());
+    assertNull(postCloudJobModel.getLastUpdatedAt());
     assertNull(postCloudJobModel.getStatus());
     assertNull(postCloudJobModel.getId());
   }

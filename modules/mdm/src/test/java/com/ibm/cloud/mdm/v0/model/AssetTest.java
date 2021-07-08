@@ -33,11 +33,11 @@ public class AssetTest {
   @Test
   public void testAsset() throws Throwable {
     Asset assetModel = new Asset();
-    assertNull(assetModel.getAssetMappings());
     assertNull(assetModel.getAssetId());
     assertNull(assetModel.getAssetLastUpdatedDate());
     assertNull(assetModel.getAssetStatus());
     assertNull(assetModel.getAssetCreatedDate());
+    assertNull(assetModel.getAssetMappings());
     assertNull(assetModel.getAssetName());
   }
 }

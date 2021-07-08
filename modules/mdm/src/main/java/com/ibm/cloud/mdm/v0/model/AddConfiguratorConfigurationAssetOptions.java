@@ -22,28 +22,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AddConfiguratorConfigurationAssetOptions extends GenericModel {
 
-  protected String assetName;
-  protected String assetStatus;
   protected String assetId;
-  protected List<AssetMapping> assetMappings;
+  protected String assetStatus;
+  protected String assetName;
   protected String assetCreatedDate;
+  protected List<AssetMapping> assetMappings;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String assetName;
-    private String assetStatus;
     private String assetId;
-    private List<AssetMapping> assetMappings;
+    private String assetStatus;
+    private String assetName;
     private String assetCreatedDate;
+    private List<AssetMapping> assetMappings;
 
     private Builder(AddConfiguratorConfigurationAssetOptions addConfiguratorConfigurationAssetOptions) {
-      this.assetName = addConfiguratorConfigurationAssetOptions.assetName;
-      this.assetStatus = addConfiguratorConfigurationAssetOptions.assetStatus;
       this.assetId = addConfiguratorConfigurationAssetOptions.assetId;
-      this.assetMappings = addConfiguratorConfigurationAssetOptions.assetMappings;
+      this.assetStatus = addConfiguratorConfigurationAssetOptions.assetStatus;
+      this.assetName = addConfiguratorConfigurationAssetOptions.assetName;
       this.assetCreatedDate = addConfiguratorConfigurationAssetOptions.assetCreatedDate;
+      this.assetMappings = addConfiguratorConfigurationAssetOptions.assetMappings;
     }
 
     /**
@@ -55,14 +55,14 @@ public class AddConfiguratorConfigurationAssetOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param assetName the assetName
-     * @param assetStatus the assetStatus
      * @param assetId the assetId
+     * @param assetStatus the assetStatus
+     * @param assetName the assetName
      */
-    public Builder(String assetName, String assetStatus, String assetId) {
-      this.assetName = assetName;
-      this.assetStatus = assetStatus;
+    public Builder(String assetId, String assetStatus, String assetName) {
       this.assetId = assetId;
+      this.assetStatus = assetStatus;
+      this.assetName = assetName;
     }
 
     /**
@@ -91,13 +91,13 @@ public class AddConfiguratorConfigurationAssetOptions extends GenericModel {
     }
 
     /**
-     * Set the assetName.
+     * Set the assetId.
      *
-     * @param assetName the assetName
+     * @param assetId the assetId
      * @return the AddConfiguratorConfigurationAssetOptions builder
      */
-    public Builder assetName(String assetName) {
-      this.assetName = assetName;
+    public Builder assetId(String assetId) {
+      this.assetId = assetId;
       return this;
     }
 
@@ -113,13 +113,24 @@ public class AddConfiguratorConfigurationAssetOptions extends GenericModel {
     }
 
     /**
-     * Set the assetId.
+     * Set the assetName.
      *
-     * @param assetId the assetId
+     * @param assetName the assetName
      * @return the AddConfiguratorConfigurationAssetOptions builder
      */
-    public Builder assetId(String assetId) {
-      this.assetId = assetId;
+    public Builder assetName(String assetName) {
+      this.assetName = assetName;
+      return this;
+    }
+
+    /**
+     * Set the assetCreatedDate.
+     *
+     * @param assetCreatedDate the assetCreatedDate
+     * @return the AddConfiguratorConfigurationAssetOptions builder
+     */
+    public Builder assetCreatedDate(String assetCreatedDate) {
+      this.assetCreatedDate = assetCreatedDate;
       return this;
     }
 
@@ -134,31 +145,20 @@ public class AddConfiguratorConfigurationAssetOptions extends GenericModel {
       this.assetMappings = assetMappings;
       return this;
     }
-
-    /**
-     * Set the assetCreatedDate.
-     *
-     * @param assetCreatedDate the assetCreatedDate
-     * @return the AddConfiguratorConfigurationAssetOptions builder
-     */
-    public Builder assetCreatedDate(String assetCreatedDate) {
-      this.assetCreatedDate = assetCreatedDate;
-      return this;
-    }
   }
 
   protected AddConfiguratorConfigurationAssetOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetName,
-      "assetName cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetStatus,
-      "assetStatus cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetId,
       "assetId cannot be null");
-    assetName = builder.assetName;
-    assetStatus = builder.assetStatus;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetStatus,
+      "assetStatus cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.assetName,
+      "assetName cannot be null");
     assetId = builder.assetId;
-    assetMappings = builder.assetMappings;
+    assetStatus = builder.assetStatus;
+    assetName = builder.assetName;
     assetCreatedDate = builder.assetCreatedDate;
+    assetMappings = builder.assetMappings;
   }
 
   /**
@@ -168,28 +168,6 @@ public class AddConfiguratorConfigurationAssetOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the assetName.
-   *
-   * The name of the Data Asset.
-   *
-   * @return the assetName
-   */
-  public String assetName() {
-    return assetName;
-  }
-
-  /**
-   * Gets the assetStatus.
-   *
-   * The status of the Data Asset.
-   *
-   * @return the assetStatus
-   */
-  public String assetStatus() {
-    return assetStatus;
   }
 
   /**
@@ -204,14 +182,25 @@ public class AddConfiguratorConfigurationAssetOptions extends GenericModel {
   }
 
   /**
-   * Gets the assetMappings.
+   * Gets the assetStatus.
    *
-   * The collection of Data Asset column mappings with the data model.
+   * The status of the Data Asset.
    *
-   * @return the assetMappings
+   * @return the assetStatus
    */
-  public List<AssetMapping> assetMappings() {
-    return assetMappings;
+  public String assetStatus() {
+    return assetStatus;
+  }
+
+  /**
+   * Gets the assetName.
+   *
+   * The name of the Data Asset.
+   *
+   * @return the assetName
+   */
+  public String assetName() {
+    return assetName;
   }
 
   /**
@@ -223,6 +212,17 @@ public class AddConfiguratorConfigurationAssetOptions extends GenericModel {
    */
   public String assetCreatedDate() {
     return assetCreatedDate;
+  }
+
+  /**
+   * Gets the assetMappings.
+   *
+   * The collection of Data Asset column mappings with the data model.
+   *
+   * @return the assetMappings
+   */
+  public List<AssetMapping> assetMappings() {
+    return assetMappings;
   }
 }
 

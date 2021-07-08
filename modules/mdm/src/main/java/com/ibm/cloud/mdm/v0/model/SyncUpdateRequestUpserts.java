@@ -22,15 +22,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SyncUpdateRequestUpserts extends GenericModel {
 
-  protected List<Record> records;
-  protected List<Relationship> relationships;
+  protected List<DataRecord> records;
+  protected List<DataRelationship> relationships;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<Record> records;
-    private List<Relationship> relationships;
+    private List<DataRecord> records;
+    private List<DataRelationship> relationships;
 
     private Builder(SyncUpdateRequestUpserts syncUpdateRequestUpserts) {
       this.records = syncUpdateRequestUpserts.records;
@@ -58,11 +58,11 @@ public class SyncUpdateRequestUpserts extends GenericModel {
      * @param records the new records
      * @return the SyncUpdateRequestUpserts builder
      */
-    public Builder addRecords(Record records) {
+    public Builder addRecords(DataRecord records) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(records,
         "records cannot be null");
       if (this.records == null) {
-        this.records = new ArrayList<Record>();
+        this.records = new ArrayList<DataRecord>();
       }
       this.records.add(records);
       return this;
@@ -74,11 +74,11 @@ public class SyncUpdateRequestUpserts extends GenericModel {
      * @param relationships the new relationships
      * @return the SyncUpdateRequestUpserts builder
      */
-    public Builder addRelationships(Relationship relationships) {
+    public Builder addRelationships(DataRelationship relationships) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(relationships,
         "relationships cannot be null");
       if (this.relationships == null) {
-        this.relationships = new ArrayList<Relationship>();
+        this.relationships = new ArrayList<DataRelationship>();
       }
       this.relationships.add(relationships);
       return this;
@@ -91,7 +91,7 @@ public class SyncUpdateRequestUpserts extends GenericModel {
      * @param records the records
      * @return the SyncUpdateRequestUpserts builder
      */
-    public Builder records(List<Record> records) {
+    public Builder records(List<DataRecord> records) {
       this.records = records;
       return this;
     }
@@ -103,7 +103,7 @@ public class SyncUpdateRequestUpserts extends GenericModel {
      * @param relationships the relationships
      * @return the SyncUpdateRequestUpserts builder
      */
-    public Builder relationships(List<Relationship> relationships) {
+    public Builder relationships(List<DataRelationship> relationships) {
       this.relationships = relationships;
       return this;
     }
@@ -130,7 +130,7 @@ public class SyncUpdateRequestUpserts extends GenericModel {
    *
    * @return the records
    */
-  public List<Record> records() {
+  public List<DataRecord> records() {
     return records;
   }
 
@@ -141,7 +141,7 @@ public class SyncUpdateRequestUpserts extends GenericModel {
    *
    * @return the relationships
    */
-  public List<Relationship> relationships() {
+  public List<DataRelationship> relationships() {
     return relationships;
   }
 }

@@ -23,38 +23,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataResponse extends GenericModel {
 
-  protected String label;
-  @SerializedName("bulkload_bucket")
-  protected Map<String, Object> bulkloadBucket;
+  protected List<InstanceMetadataResponseProject> projects;
   protected List<InstanceMetadataResponseCatalog> catalogs;
   @SerializedName("job_project_id")
   protected String jobProjectId;
-  protected List<InstanceMetadataResponseProject> projects;
-  @SerializedName("cos_crn")
-  protected String cosCrn;
   @SerializedName("cos_endpoint")
   protected String cosEndpoint;
+  @SerializedName("cos_crn")
+  protected String cosCrn;
+  @SerializedName("bulkload_bucket")
+  protected Map<String, Object> bulkloadBucket;
+  protected String label;
 
   /**
-   * Gets the label.
+   * Gets the projects.
    *
-   * Label for instance metadata.
+   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
    *
-   * @return the label
+   * @return the projects
    */
-  public String getLabel() {
-    return label;
-  }
-
-  /**
-   * Gets the bulkloadBucket.
-   *
-   * Bulkload Bucket credentials.
-   *
-   * @return the bulkloadBucket
-   */
-  public Map<String, Object> getBulkloadBucket() {
-    return bulkloadBucket;
+  public List<InstanceMetadataResponseProject> getProjects() {
+    return projects;
   }
 
   /**
@@ -80,14 +69,14 @@ public class InstanceMetadataResponse extends GenericModel {
   }
 
   /**
-   * Gets the projects.
+   * Gets the cosEndpoint.
    *
-   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
+   * Endpoint of a cloud object storage.
    *
-   * @return the projects
+   * @return the cosEndpoint
    */
-  public List<InstanceMetadataResponseProject> getProjects() {
-    return projects;
+  public String getCosEndpoint() {
+    return cosEndpoint;
   }
 
   /**
@@ -102,14 +91,25 @@ public class InstanceMetadataResponse extends GenericModel {
   }
 
   /**
-   * Gets the cosEndpoint.
+   * Gets the bulkloadBucket.
    *
-   * Endpoint of a cloud object storage.
+   * Bulkload Bucket credentials.
    *
-   * @return the cosEndpoint
+   * @return the bulkloadBucket
    */
-  public String getCosEndpoint() {
-    return cosEndpoint;
+  public Map<String, Object> getBulkloadBucket() {
+    return bulkloadBucket;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * Label for instance metadata.
+   *
+   * @return the label
+   */
+  public String getLabel() {
+    return label;
   }
 }
 

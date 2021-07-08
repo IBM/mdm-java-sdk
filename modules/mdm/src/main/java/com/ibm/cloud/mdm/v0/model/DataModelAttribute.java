@@ -20,13 +20,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelAttribute extends GenericModel {
 
-  protected String label;
   protected String classification;
+  protected Boolean indexed;
+  protected String label;
   @SerializedName("matching_type")
   protected String matchingType;
   @SerializedName("attribute_type")
   protected String attributeType;
-  protected Boolean indexed;
   protected String description;
   protected String cardinality;
 
@@ -34,20 +34,20 @@ public class DataModelAttribute extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String label;
     private String classification;
+    private Boolean indexed;
+    private String label;
     private String matchingType;
     private String attributeType;
-    private Boolean indexed;
     private String description;
     private String cardinality;
 
     private Builder(DataModelAttribute dataModelAttribute) {
-      this.label = dataModelAttribute.label;
       this.classification = dataModelAttribute.classification;
+      this.indexed = dataModelAttribute.indexed;
+      this.label = dataModelAttribute.label;
       this.matchingType = dataModelAttribute.matchingType;
       this.attributeType = dataModelAttribute.attributeType;
-      this.indexed = dataModelAttribute.indexed;
       this.description = dataModelAttribute.description;
       this.cardinality = dataModelAttribute.cardinality;
     }
@@ -79,17 +79,6 @@ public class DataModelAttribute extends GenericModel {
     }
 
     /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the DataModelAttribute builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
      * Set the classification.
      *
      * @param classification the classification
@@ -97,6 +86,28 @@ public class DataModelAttribute extends GenericModel {
      */
     public Builder classification(String classification) {
       this.classification = classification;
+      return this;
+    }
+
+    /**
+     * Set the indexed.
+     *
+     * @param indexed the indexed
+     * @return the DataModelAttribute builder
+     */
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the DataModelAttribute builder
+     */
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -119,17 +130,6 @@ public class DataModelAttribute extends GenericModel {
      */
     public Builder attributeType(String attributeType) {
       this.attributeType = attributeType;
-      return this;
-    }
-
-    /**
-     * Set the indexed.
-     *
-     * @param indexed the indexed
-     * @return the DataModelAttribute builder
-     */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
       return this;
     }
 
@@ -161,11 +161,11 @@ public class DataModelAttribute extends GenericModel {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
       "attributeType cannot be null");
-    label = builder.label;
     classification = builder.classification;
+    indexed = builder.indexed;
+    label = builder.label;
     matchingType = builder.matchingType;
     attributeType = builder.attributeType;
-    indexed = builder.indexed;
     description = builder.description;
     cardinality = builder.cardinality;
   }
@@ -180,17 +180,6 @@ public class DataModelAttribute extends GenericModel {
   }
 
   /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
    * Gets the classification.
    *
    * User defined classification.
@@ -199,6 +188,28 @@ public class DataModelAttribute extends GenericModel {
    */
   public String classification() {
     return classification;
+  }
+
+  /**
+   * Gets the indexed.
+   *
+   * User defined indexed indicator. The default value is true.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**
@@ -222,17 +233,6 @@ public class DataModelAttribute extends GenericModel {
    */
   public String attributeType() {
     return attributeType;
-  }
-
-  /**
-   * Gets the indexed.
-   *
-   * User defined indexed indicator. The default value is true.
-   *
-   * @return the indexed
-   */
-  public Boolean indexed() {
-    return indexed;
   }
 
   /**

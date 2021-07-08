@@ -23,34 +23,34 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReplaceModelInstanceMetadataOptions extends GenericModel {
 
-  protected String label;
-  protected Map<String, Object> bulkloadBucket;
+  protected List<InstanceMetadataProject> projects;
   protected List<InstanceMetadataCatalog> catalogs;
   protected String jobProjectId;
-  protected List<InstanceMetadataProject> projects;
-  protected String cosCrn;
   protected String cosEndpoint;
+  protected String cosCrn;
+  protected Map<String, Object> bulkloadBucket;
+  protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
-    private Map<String, Object> bulkloadBucket;
+    private List<InstanceMetadataProject> projects;
     private List<InstanceMetadataCatalog> catalogs;
     private String jobProjectId;
-    private List<InstanceMetadataProject> projects;
-    private String cosCrn;
     private String cosEndpoint;
+    private String cosCrn;
+    private Map<String, Object> bulkloadBucket;
+    private String label;
 
     private Builder(ReplaceModelInstanceMetadataOptions replaceModelInstanceMetadataOptions) {
-      this.label = replaceModelInstanceMetadataOptions.label;
-      this.bulkloadBucket = replaceModelInstanceMetadataOptions.bulkloadBucket;
+      this.projects = replaceModelInstanceMetadataOptions.projects;
       this.catalogs = replaceModelInstanceMetadataOptions.catalogs;
       this.jobProjectId = replaceModelInstanceMetadataOptions.jobProjectId;
-      this.projects = replaceModelInstanceMetadataOptions.projects;
-      this.cosCrn = replaceModelInstanceMetadataOptions.cosCrn;
       this.cosEndpoint = replaceModelInstanceMetadataOptions.cosEndpoint;
+      this.cosCrn = replaceModelInstanceMetadataOptions.cosCrn;
+      this.bulkloadBucket = replaceModelInstanceMetadataOptions.bulkloadBucket;
+      this.label = replaceModelInstanceMetadataOptions.label;
     }
 
     /**
@@ -66,22 +66,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
      */
     public ReplaceModelInstanceMetadataOptions build() {
       return new ReplaceModelInstanceMetadataOptions(this);
-    }
-
-    /**
-     * Adds an catalogs to catalogs.
-     *
-     * @param catalogs the new catalogs
-     * @return the ReplaceModelInstanceMetadataOptions builder
-     */
-    public Builder addCatalogs(InstanceMetadataCatalog catalogs) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(catalogs,
-        "catalogs cannot be null");
-      if (this.catalogs == null) {
-        this.catalogs = new ArrayList<InstanceMetadataCatalog>();
-      }
-      this.catalogs.add(catalogs);
-      return this;
     }
 
     /**
@@ -101,24 +85,30 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Set the label.
+     * Adds an catalogs to catalogs.
      *
-     * @param label the label
+     * @param catalogs the new catalogs
      * @return the ReplaceModelInstanceMetadataOptions builder
      */
-    public Builder label(String label) {
-      this.label = label;
+    public Builder addCatalogs(InstanceMetadataCatalog catalogs) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(catalogs,
+        "catalogs cannot be null");
+      if (this.catalogs == null) {
+        this.catalogs = new ArrayList<InstanceMetadataCatalog>();
+      }
+      this.catalogs.add(catalogs);
       return this;
     }
 
     /**
-     * Set the bulkloadBucket.
+     * Set the projects.
+     * Existing projects will be replaced.
      *
-     * @param bulkloadBucket the bulkloadBucket
+     * @param projects the projects
      * @return the ReplaceModelInstanceMetadataOptions builder
      */
-    public Builder bulkloadBucket(Map<String, Object> bulkloadBucket) {
-      this.bulkloadBucket = bulkloadBucket;
+    public Builder projects(List<InstanceMetadataProject> projects) {
+      this.projects = projects;
       return this;
     }
 
@@ -146,14 +136,13 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Set the projects.
-     * Existing projects will be replaced.
+     * Set the cosEndpoint.
      *
-     * @param projects the projects
+     * @param cosEndpoint the cosEndpoint
      * @return the ReplaceModelInstanceMetadataOptions builder
      */
-    public Builder projects(List<InstanceMetadataProject> projects) {
-      this.projects = projects;
+    public Builder cosEndpoint(String cosEndpoint) {
+      this.cosEndpoint = cosEndpoint;
       return this;
     }
 
@@ -169,25 +158,36 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Set the cosEndpoint.
+     * Set the bulkloadBucket.
      *
-     * @param cosEndpoint the cosEndpoint
+     * @param bulkloadBucket the bulkloadBucket
      * @return the ReplaceModelInstanceMetadataOptions builder
      */
-    public Builder cosEndpoint(String cosEndpoint) {
-      this.cosEndpoint = cosEndpoint;
+    public Builder bulkloadBucket(Map<String, Object> bulkloadBucket) {
+      this.bulkloadBucket = bulkloadBucket;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
   }
 
   protected ReplaceModelInstanceMetadataOptions(Builder builder) {
-    label = builder.label;
-    bulkloadBucket = builder.bulkloadBucket;
+    projects = builder.projects;
     catalogs = builder.catalogs;
     jobProjectId = builder.jobProjectId;
-    projects = builder.projects;
-    cosCrn = builder.cosCrn;
     cosEndpoint = builder.cosEndpoint;
+    cosCrn = builder.cosCrn;
+    bulkloadBucket = builder.bulkloadBucket;
+    label = builder.label;
   }
 
   /**
@@ -200,25 +200,14 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
   }
 
   /**
-   * Gets the label.
+   * Gets the projects.
    *
-   * Label for instance metadata.
+   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
    *
-   * @return the label
+   * @return the projects
    */
-  public String label() {
-    return label;
-  }
-
-  /**
-   * Gets the bulkloadBucket.
-   *
-   * Bulkload Bucket credentials.
-   *
-   * @return the bulkloadBucket
-   */
-  public Map<String, Object> bulkloadBucket() {
-    return bulkloadBucket;
+  public List<InstanceMetadataProject> projects() {
+    return projects;
   }
 
   /**
@@ -244,14 +233,14 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
   }
 
   /**
-   * Gets the projects.
+   * Gets the cosEndpoint.
    *
-   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
+   * Endpoint of a cloud object storage.
    *
-   * @return the projects
+   * @return the cosEndpoint
    */
-  public List<InstanceMetadataProject> projects() {
-    return projects;
+  public String cosEndpoint() {
+    return cosEndpoint;
   }
 
   /**
@@ -266,14 +255,25 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
   }
 
   /**
-   * Gets the cosEndpoint.
+   * Gets the bulkloadBucket.
    *
-   * Endpoint of a cloud object storage.
+   * Bulkload Bucket credentials.
    *
-   * @return the cosEndpoint
+   * @return the bulkloadBucket
    */
-  public String cosEndpoint() {
-    return cosEndpoint;
+  public Map<String, Object> bulkloadBucket() {
+    return bulkloadBucket;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * Label for instance metadata.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 }
 

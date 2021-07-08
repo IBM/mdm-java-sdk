@@ -30,6 +30,8 @@ public class BulkLoadRequestDataStructureRecordPropertiesContents extends Generi
     String JSON = "json";
   }
 
+  @SerializedName("collection_id")
+  protected String collectionId;
   @SerializedName("record_type")
   protected String recordType;
   @SerializedName("relationship_type")
@@ -45,6 +47,7 @@ public class BulkLoadRequestDataStructureRecordPropertiesContents extends Generi
    * Builder.
    */
   public static class Builder {
+    private String collectionId;
     private String recordType;
     private String relationshipType;
     private String defaultSource;
@@ -52,6 +55,7 @@ public class BulkLoadRequestDataStructureRecordPropertiesContents extends Generi
     private BulkLoadRequestDataStructureRecordPropertiesContentsCsvOptions csvOptions;
 
     private Builder(BulkLoadRequestDataStructureRecordPropertiesContents bulkLoadRequestDataStructureRecordPropertiesContents) {
+      this.collectionId = bulkLoadRequestDataStructureRecordPropertiesContents.collectionId;
       this.recordType = bulkLoadRequestDataStructureRecordPropertiesContents.recordType;
       this.relationshipType = bulkLoadRequestDataStructureRecordPropertiesContents.relationshipType;
       this.defaultSource = bulkLoadRequestDataStructureRecordPropertiesContents.defaultSource;
@@ -81,6 +85,17 @@ public class BulkLoadRequestDataStructureRecordPropertiesContents extends Generi
      */
     public BulkLoadRequestDataStructureRecordPropertiesContents build() {
       return new BulkLoadRequestDataStructureRecordPropertiesContents(this);
+    }
+
+    /**
+     * Set the collectionId.
+     *
+     * @param collectionId the collectionId
+     * @return the BulkLoadRequestDataStructureRecordPropertiesContents builder
+     */
+    public Builder collectionId(String collectionId) {
+      this.collectionId = collectionId;
+      return this;
     }
 
     /**
@@ -142,6 +157,7 @@ public class BulkLoadRequestDataStructureRecordPropertiesContents extends Generi
   protected BulkLoadRequestDataStructureRecordPropertiesContents(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fileType,
       "fileType cannot be null");
+    collectionId = builder.collectionId;
     recordType = builder.recordType;
     relationshipType = builder.relationshipType;
     defaultSource = builder.defaultSource;
@@ -156,6 +172,17 @@ public class BulkLoadRequestDataStructureRecordPropertiesContents extends Generi
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the collectionId.
+   *
+   * The collection id to use for the bulk load data.
+   *
+   * @return the collectionId
+   */
+  public String collectionId() {
+    return collectionId;
   }
 
   /**

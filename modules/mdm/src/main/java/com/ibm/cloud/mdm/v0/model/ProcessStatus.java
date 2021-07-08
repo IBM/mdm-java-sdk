@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.mdm.v0.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,8 +21,20 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ProcessStatus extends GenericModel {
 
+  protected Map<String, String> summary;
   protected String status;
   protected String message;
+
+  /**
+   * Gets the summary.
+   *
+   * Optional summary of the processes.
+   *
+   * @return the summary
+   */
+  public Map<String, String> getSummary() {
+    return summary;
+  }
 
   /**
    * Gets the status.

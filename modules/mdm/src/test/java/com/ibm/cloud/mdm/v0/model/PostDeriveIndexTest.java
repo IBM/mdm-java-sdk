@@ -32,10 +32,10 @@ public class PostDeriveIndexTest {
   @Test
   public void testPostDeriveIndex() throws Throwable {
     PostDeriveIndex postDeriveIndexModel = new PostDeriveIndex();
-    assertNull(postDeriveIndexModel.getRecordId());
-    assertNull(postDeriveIndexModel.getRecordSource());
-    assertNull(postDeriveIndexModel.getRecordType());
-    assertNull(postDeriveIndexModel.getBuckets());
     assertNull(postDeriveIndexModel.getStandardizedValues());
+    assertNull(postDeriveIndexModel.getRecordType());
+    assertNull(postDeriveIndexModel.getRecordId());
+    assertNull(postDeriveIndexModel.getBuckets());
+    assertNull(postDeriveIndexModel.getRecordSource());
   }
 }

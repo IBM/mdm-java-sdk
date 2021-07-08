@@ -21,28 +21,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateModelDataModelOptions extends GenericModel {
 
-  protected Map<String, DataModelRecordType> recordTypes;
   protected Map<String, DataModelRelationshipType> relationshipTypes;
   protected Map<String, DataModelAttributeType> attributeTypes;
-  protected String locale;
+  protected Map<String, DataModelRecordType> recordTypes;
   protected DataModelSystemProperties systemProperties;
+  protected String locale;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Map<String, DataModelRecordType> recordTypes;
     private Map<String, DataModelRelationshipType> relationshipTypes;
     private Map<String, DataModelAttributeType> attributeTypes;
-    private String locale;
+    private Map<String, DataModelRecordType> recordTypes;
     private DataModelSystemProperties systemProperties;
+    private String locale;
 
     private Builder(UpdateModelDataModelOptions updateModelDataModelOptions) {
-      this.recordTypes = updateModelDataModelOptions.recordTypes;
       this.relationshipTypes = updateModelDataModelOptions.relationshipTypes;
       this.attributeTypes = updateModelDataModelOptions.attributeTypes;
-      this.locale = updateModelDataModelOptions.locale;
+      this.recordTypes = updateModelDataModelOptions.recordTypes;
       this.systemProperties = updateModelDataModelOptions.systemProperties;
+      this.locale = updateModelDataModelOptions.locale;
     }
 
     /**
@@ -54,18 +54,18 @@ public class UpdateModelDataModelOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param recordTypes the recordTypes
      * @param relationshipTypes the relationshipTypes
      * @param attributeTypes the attributeTypes
-     * @param locale the locale
+     * @param recordTypes the recordTypes
      * @param systemProperties the systemProperties
+     * @param locale the locale
      */
-    public Builder(Map<String, DataModelRecordType> recordTypes, Map<String, DataModelRelationshipType> relationshipTypes, Map<String, DataModelAttributeType> attributeTypes, String locale, DataModelSystemProperties systemProperties) {
-      this.recordTypes = recordTypes;
+    public Builder(Map<String, DataModelRelationshipType> relationshipTypes, Map<String, DataModelAttributeType> attributeTypes, Map<String, DataModelRecordType> recordTypes, DataModelSystemProperties systemProperties, String locale) {
       this.relationshipTypes = relationshipTypes;
       this.attributeTypes = attributeTypes;
-      this.locale = locale;
+      this.recordTypes = recordTypes;
       this.systemProperties = systemProperties;
+      this.locale = locale;
     }
 
     /**
@@ -75,17 +75,6 @@ public class UpdateModelDataModelOptions extends GenericModel {
      */
     public UpdateModelDataModelOptions build() {
       return new UpdateModelDataModelOptions(this);
-    }
-
-    /**
-     * Set the recordTypes.
-     *
-     * @param recordTypes the recordTypes
-     * @return the UpdateModelDataModelOptions builder
-     */
-    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
-      this.recordTypes = recordTypes;
-      return this;
     }
 
     /**
@@ -111,13 +100,13 @@ public class UpdateModelDataModelOptions extends GenericModel {
     }
 
     /**
-     * Set the locale.
+     * Set the recordTypes.
      *
-     * @param locale the locale
+     * @param recordTypes the recordTypes
      * @return the UpdateModelDataModelOptions builder
      */
-    public Builder locale(String locale) {
-      this.locale = locale;
+    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
+      this.recordTypes = recordTypes;
       return this;
     }
 
@@ -133,37 +122,48 @@ public class UpdateModelDataModelOptions extends GenericModel {
     }
 
     /**
+     * Set the locale.
+     *
+     * @param locale the locale
+     * @return the UpdateModelDataModelOptions builder
+     */
+    public Builder locale(String locale) {
+      this.locale = locale;
+      return this;
+    }
+
+    /**
      * Set the dataModel.
      *
      * @param dataModel the dataModel
      * @return the UpdateModelDataModelOptions builder
      */
     public Builder dataModel(DataModel dataModel) {
-      this.recordTypes = dataModel.recordTypes();
       this.relationshipTypes = dataModel.relationshipTypes();
       this.attributeTypes = dataModel.attributeTypes();
-      this.locale = dataModel.locale();
+      this.recordTypes = dataModel.recordTypes();
       this.systemProperties = dataModel.systemProperties();
+      this.locale = dataModel.locale();
       return this;
     }
   }
 
   protected UpdateModelDataModelOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
-      "recordTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
       "relationshipTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
       "attributeTypes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
-      "locale cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
+      "recordTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.systemProperties,
       "systemProperties cannot be null");
-    recordTypes = builder.recordTypes;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
+      "locale cannot be null");
     relationshipTypes = builder.relationshipTypes;
     attributeTypes = builder.attributeTypes;
-    locale = builder.locale;
+    recordTypes = builder.recordTypes;
     systemProperties = builder.systemProperties;
+    locale = builder.locale;
   }
 
   /**
@@ -173,17 +173,6 @@ public class UpdateModelDataModelOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the recordTypes.
-   *
-   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
-   *
-   * @return the recordTypes
-   */
-  public Map<String, DataModelRecordType> recordTypes() {
-    return recordTypes;
   }
 
   /**
@@ -209,14 +198,14 @@ public class UpdateModelDataModelOptions extends GenericModel {
   }
 
   /**
-   * Gets the locale.
+   * Gets the recordTypes.
    *
-   * The request language and location (i.e. enUS).
+   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
    *
-   * @return the locale
+   * @return the recordTypes
    */
-  public String locale() {
-    return locale;
+  public Map<String, DataModelRecordType> recordTypes() {
+    return recordTypes;
   }
 
   /**
@@ -228,6 +217,17 @@ public class UpdateModelDataModelOptions extends GenericModel {
    */
   public DataModelSystemProperties systemProperties() {
     return systemProperties;
+  }
+
+  /**
+   * Gets the locale.
+   *
+   * The request language and location (i.e. enUS).
+   *
+   * @return the locale
+   */
+  public String locale() {
+    return locale;
   }
 }
 

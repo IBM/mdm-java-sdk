@@ -22,28 +22,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetMatchingEntityDetailOptions extends GenericModel {
 
-  protected String entityType;
   protected String recordType;
-  protected List<String> entityNumber;
+  protected String entityType;
   protected Float minScore;
   protected List<String> recordNumbers;
+  protected List<String> entityNumber;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String entityType;
     private String recordType;
-    private List<String> entityNumber;
+    private String entityType;
     private Float minScore;
     private List<String> recordNumbers;
+    private List<String> entityNumber;
 
     private Builder(GetMatchingEntityDetailOptions getMatchingEntityDetailOptions) {
-      this.entityType = getMatchingEntityDetailOptions.entityType;
       this.recordType = getMatchingEntityDetailOptions.recordType;
-      this.entityNumber = getMatchingEntityDetailOptions.entityNumber;
+      this.entityType = getMatchingEntityDetailOptions.entityType;
       this.minScore = getMatchingEntityDetailOptions.minScore;
       this.recordNumbers = getMatchingEntityDetailOptions.recordNumbers;
+      this.entityNumber = getMatchingEntityDetailOptions.entityNumber;
     }
 
     /**
@@ -55,12 +55,12 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param entityType the entityType
      * @param recordType the recordType
+     * @param entityType the entityType
      */
-    public Builder(String entityType, String recordType) {
-      this.entityType = entityType;
+    public Builder(String recordType, String entityType) {
       this.recordType = recordType;
+      this.entityType = entityType;
     }
 
     /**
@@ -70,22 +70,6 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
      */
     public GetMatchingEntityDetailOptions build() {
       return new GetMatchingEntityDetailOptions(this);
-    }
-
-    /**
-     * Adds an entityNumber to entityNumber.
-     *
-     * @param entityNumber the new entityNumber
-     * @return the GetMatchingEntityDetailOptions builder
-     */
-    public Builder addEntityNumber(String entityNumber) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(entityNumber,
-        "entityNumber cannot be null");
-      if (this.entityNumber == null) {
-        this.entityNumber = new ArrayList<String>();
-      }
-      this.entityNumber.add(entityNumber);
-      return this;
     }
 
     /**
@@ -105,13 +89,18 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
     }
 
     /**
-     * Set the entityType.
+     * Adds an entityNumber to entityNumber.
      *
-     * @param entityType the entityType
+     * @param entityNumber the new entityNumber
      * @return the GetMatchingEntityDetailOptions builder
      */
-    public Builder entityType(String entityType) {
-      this.entityType = entityType;
+    public Builder addEntityNumber(String entityNumber) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(entityNumber,
+        "entityNumber cannot be null");
+      if (this.entityNumber == null) {
+        this.entityNumber = new ArrayList<String>();
+      }
+      this.entityNumber.add(entityNumber);
       return this;
     }
 
@@ -127,14 +116,13 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
     }
 
     /**
-     * Set the entityNumber.
-     * Existing entityNumber will be replaced.
+     * Set the entityType.
      *
-     * @param entityNumber the entityNumber
+     * @param entityType the entityType
      * @return the GetMatchingEntityDetailOptions builder
      */
-    public Builder entityNumber(List<String> entityNumber) {
-      this.entityNumber = entityNumber;
+    public Builder entityType(String entityType) {
+      this.entityType = entityType;
       return this;
     }
 
@@ -160,18 +148,30 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
       this.recordNumbers = recordNumbers;
       return this;
     }
+
+    /**
+     * Set the entityNumber.
+     * Existing entityNumber will be replaced.
+     *
+     * @param entityNumber the entityNumber
+     * @return the GetMatchingEntityDetailOptions builder
+     */
+    public Builder entityNumber(List<String> entityNumber) {
+      this.entityNumber = entityNumber;
+      return this;
+    }
   }
 
   protected GetMatchingEntityDetailOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityType,
-      "entityType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
       "recordType cannot be null");
-    entityType = builder.entityType;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityType,
+      "entityType cannot be null");
     recordType = builder.recordType;
-    entityNumber = builder.entityNumber;
+    entityType = builder.entityType;
     minScore = builder.minScore;
     recordNumbers = builder.recordNumbers;
+    entityNumber = builder.entityNumber;
   }
 
   /**
@@ -181,17 +181,6 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the entityType.
-   *
-   * The data type identifier of entity, ie. person_entity, organization_entity, household_entity.
-   *
-   * @return the entityType
-   */
-  public String entityType() {
-    return entityType;
   }
 
   /**
@@ -206,14 +195,14 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
   }
 
   /**
-   * Gets the entityNumber.
+   * Gets the entityType.
    *
-   * Collection of entity numbers.
+   * The data type identifier of entity, ie. person_entity, organization_entity, household_entity.
    *
-   * @return the entityNumber
+   * @return the entityType
    */
-  public List<String> entityNumber() {
-    return entityNumber;
+  public String entityType() {
+    return entityType;
   }
 
   /**
@@ -236,6 +225,17 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
    */
   public List<String> recordNumbers() {
     return recordNumbers;
+  }
+
+  /**
+   * Gets the entityNumber.
+   *
+   * Collection of entity numbers.
+   *
+   * @return the entityNumber
+   */
+  public List<String> entityNumber() {
+    return entityNumber;
   }
 }
 

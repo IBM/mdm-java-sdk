@@ -24,41 +24,30 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class PostDeriveIndex extends DynamicModel<Object> {
 
-  @SerializedName("record_id")
-  protected String recordId;
-  @SerializedName("record_source")
-  protected String recordSource;
-  @SerializedName("record_type")
-  protected String recordType;
-  @SerializedName("buckets")
-  protected List<Long> buckets;
   @SerializedName("standardized_values")
   protected Map<String, Object> standardizedValues;
+  @SerializedName("record_type")
+  protected String recordType;
+  @SerializedName("record_id")
+  protected String recordId;
+  @SerializedName("buckets")
+  protected List<Long> buckets;
+  @SerializedName("record_source")
+  protected String recordSource;
 
   public PostDeriveIndex() {
     super(new TypeToken<Object>() { });
   }
 
   /**
-   * Gets the recordId.
+   * Gets the standardizedValues.
    *
-   * The identifier of the record.
+   * Collection of a record's standardized values, primarily used for record comparison.
    *
-   * @return the recordId
+   * @return the standardizedValues
    */
-  public String getRecordId() {
-    return this.recordId;
-  }
-
-  /**
-   * Gets the recordSource.
-   *
-   * The source system name of a record.
-   *
-   * @return the recordSource
-   */
-  public String getRecordSource() {
-    return this.recordSource;
+  public Map<String, Object> getStandardizedValues() {
+    return this.standardizedValues;
   }
 
   /**
@@ -73,6 +62,17 @@ public class PostDeriveIndex extends DynamicModel<Object> {
   }
 
   /**
+   * Gets the recordId.
+   *
+   * The identifier of the record.
+   *
+   * @return the recordId
+   */
+  public String getRecordId() {
+    return this.recordId;
+  }
+
+  /**
    * Gets the buckets.
    *
    * Collection of a record's bucket hashes, primarily used for efficient entity resolution.
@@ -84,13 +84,13 @@ public class PostDeriveIndex extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the standardizedValues.
+   * Gets the recordSource.
    *
-   * Collection of a record's standardized values, primarily used for record comparison.
+   * The source system name of a record.
    *
-   * @return the standardizedValues
+   * @return the recordSource
    */
-  public Map<String, Object> getStandardizedValues() {
-    return this.standardizedValues;
+  public String getRecordSource() {
+    return this.recordSource;
   }
 }

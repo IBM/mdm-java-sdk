@@ -34,17 +34,17 @@ public class GetMatchingEntityDetailOptionsTest {
   @Test
   public void testGetMatchingEntityDetailOptions() throws Throwable {
     GetMatchingEntityDetailOptions getMatchingEntityDetailOptionsModel = new GetMatchingEntityDetailOptions.Builder()
-      .entityType("testString")
       .recordType("testString")
-      .entityNumber(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .entityType("testString")
       .minScore(Float.valueOf("36.0"))
       .recordNumbers(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .entityNumber(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(getMatchingEntityDetailOptionsModel.entityType(), "testString");
     assertEquals(getMatchingEntityDetailOptionsModel.recordType(), "testString");
-    assertEquals(getMatchingEntityDetailOptionsModel.entityNumber(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(getMatchingEntityDetailOptionsModel.entityType(), "testString");
     assertEquals(getMatchingEntityDetailOptionsModel.minScore(), Float.valueOf("36.0"));
     assertEquals(getMatchingEntityDetailOptionsModel.recordNumbers(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(getMatchingEntityDetailOptionsModel.entityNumber(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

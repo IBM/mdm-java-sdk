@@ -32,23 +32,23 @@ public class DataModelFieldTest {
   @Test
   public void testDataModelField() throws Throwable {
     DataModelField dataModelFieldModel = new DataModelField.Builder()
-      .label("testString")
       .classification("testString")
       .indexed(true)
+      .label("testString")
       .description("testString")
       .build();
-    assertEquals(dataModelFieldModel.label(), "testString");
     assertEquals(dataModelFieldModel.classification(), "testString");
     assertEquals(dataModelFieldModel.indexed(), Boolean.valueOf(true));
+    assertEquals(dataModelFieldModel.label(), "testString");
     assertEquals(dataModelFieldModel.description(), "testString");
 
     String json = TestUtilities.serialize(dataModelFieldModel);
 
     DataModelField dataModelFieldModelNew = TestUtilities.deserialize(json, DataModelField.class);
     assertTrue(dataModelFieldModelNew instanceof DataModelField);
-    assertEquals(dataModelFieldModelNew.label(), "testString");
     assertEquals(dataModelFieldModelNew.classification(), "testString");
     assertEquals(dataModelFieldModelNew.indexed(), Boolean.valueOf(true));
+    assertEquals(dataModelFieldModelNew.label(), "testString");
     assertEquals(dataModelFieldModelNew.description(), "testString");
   }
 

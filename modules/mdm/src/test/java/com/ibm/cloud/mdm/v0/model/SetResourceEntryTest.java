@@ -34,22 +34,22 @@ public class SetResourceEntryTest {
   @Test
   public void testSetResourceEntry() throws Throwable {
     SetResourceEntry setResourceEntryModel = new SetResourceEntry.Builder()
-      .dataType("testString")
-      .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .category("testString")
+      .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .dataType("testString")
+      .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(setResourceEntryModel.dataType(), "testString");
-    assertEquals(setResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(setResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(setResourceEntryModel.category(), "testString");
+    assertEquals(setResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(setResourceEntryModel.dataType(), "testString");
+    assertEquals(setResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     String json = TestUtilities.serialize(setResourceEntryModel);
 
     SetResourceEntry setResourceEntryModelNew = TestUtilities.deserialize(json, SetResourceEntry.class);
     assertTrue(setResourceEntryModelNew instanceof SetResourceEntry);
-    assertEquals(setResourceEntryModelNew.dataType(), "testString");
     assertEquals(setResourceEntryModelNew.category(), "testString");
+    assertEquals(setResourceEntryModelNew.dataType(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

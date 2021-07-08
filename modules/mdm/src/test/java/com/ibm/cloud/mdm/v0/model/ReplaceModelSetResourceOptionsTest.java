@@ -35,15 +35,15 @@ public class ReplaceModelSetResourceOptionsTest {
   @Test
   public void testReplaceModelSetResourceOptions() throws Throwable {
     SetResourceEntry setResourceEntryModel = new SetResourceEntry.Builder()
-      .dataType("testString")
-      .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .category("testString")
+      .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .dataType("testString")
+      .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(setResourceEntryModel.dataType(), "testString");
-    assertEquals(setResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(setResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(setResourceEntryModel.category(), "testString");
+    assertEquals(setResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(setResourceEntryModel.dataType(), "testString");
+    assertEquals(setResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     ReplaceModelSetResourceOptions replaceModelSetResourceOptionsModel = new ReplaceModelSetResourceOptions.Builder()
       .resourceName("testString")

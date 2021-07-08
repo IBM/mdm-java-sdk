@@ -37,13 +37,6 @@ public class RelationshipTypeTest {
 
   @Test
   public void testRelationshipType() throws Throwable {
-    Target targetModel = new Target.Builder()
-      .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .build();
-    assertEquals(targetModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(targetModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-
     Source sourceModel = new Source.Builder()
       .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
@@ -51,26 +44,33 @@ public class RelationshipTypeTest {
     assertEquals(sourceModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(sourceModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
-    Rule ruleModel = new Rule.Builder()
-      .target(targetModel)
-      .source(sourceModel)
+    Target targetModel = new Target.Builder()
+      .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(ruleModel.target(), targetModel);
+    assertEquals(targetModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(targetModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+
+    Rule ruleModel = new Rule.Builder()
+      .source(sourceModel)
+      .target(targetModel)
+      .build();
     assertEquals(ruleModel.source(), sourceModel);
+    assertEquals(ruleModel.target(), targetModel);
 
     Attribute attributeModel = new Attribute.Builder()
-      .label("testString")
-      .attributeType("email")
-      .description("testString")
-      .indexed(true)
       .classification("testString")
+      .indexed(true)
+      .attributeType("email")
+      .label("testString")
+      .description("testString")
       .cardinality("testString")
       .build();
-    assertEquals(attributeModel.label(), "testString");
-    assertEquals(attributeModel.attributeType(), "email");
-    assertEquals(attributeModel.description(), "testString");
-    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(attributeModel.classification(), "testString");
+    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
+    assertEquals(attributeModel.attributeType(), "email");
+    assertEquals(attributeModel.label(), "testString");
+    assertEquals(attributeModel.description(), "testString");
     assertEquals(attributeModel.cardinality(), "testString");
 
     RelationshipType relationshipTypeModel = new RelationshipType.Builder()

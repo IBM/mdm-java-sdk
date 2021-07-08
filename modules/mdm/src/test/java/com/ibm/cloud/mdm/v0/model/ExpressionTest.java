@@ -37,11 +37,13 @@ public class ExpressionTest {
       .property("testString")
       .condition("equal")
       .value("testString")
+      .recordType("testString")
       .operation("and")
       .build();
     assertEquals(expressionModel.property(), "testString");
     assertEquals(expressionModel.condition(), "equal");
     assertEquals(expressionModel.value(), "testString");
+    assertEquals(expressionModel.recordType(), "testString");
     assertEquals(expressionModel.operation(), "and");
 
     String json = TestUtilities.serialize(expressionModel);
@@ -51,6 +53,7 @@ public class ExpressionTest {
     assertEquals(expressionModelNew.property(), "testString");
     assertEquals(expressionModelNew.condition(), "equal");
     assertEquals(expressionModelNew.value(), "testString");
+    assertEquals(expressionModelNew.recordType(), "testString");
     assertEquals(expressionModelNew.operation(), "and");
   }
 }

@@ -32,9 +32,9 @@ public class PutIndexRecordTest {
   @Test
   public void testPutIndexRecord() throws Throwable {
     PutIndexRecord putIndexRecordModel = new PutIndexRecord();
-    assertNull(putIndexRecordModel.getRecordId());
-    assertNull(putIndexRecordModel.getRecordNumber());
     assertNull(putIndexRecordModel.getEntityId());
+    assertNull(putIndexRecordModel.getRecordNumber());
+    assertNull(putIndexRecordModel.getRecordId());
     assertNull(putIndexRecordModel.getRecordSource());
   }
 }

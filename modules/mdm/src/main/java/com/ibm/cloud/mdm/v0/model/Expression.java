@@ -15,6 +15,7 @@ package com.ibm.cloud.mdm.v0.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -67,6 +68,8 @@ public class Expression extends GenericModel {
   protected String property;
   protected String condition;
   protected String value;
+  @SerializedName("record_type")
+  protected String recordType;
   protected String operation;
   protected List<Expression> expressions;
 
@@ -77,6 +80,7 @@ public class Expression extends GenericModel {
     private String property;
     private String condition;
     private String value;
+    private String recordType;
     private String operation;
     private List<Expression> expressions;
 
@@ -84,6 +88,7 @@ public class Expression extends GenericModel {
       this.property = expression.property;
       this.condition = expression.condition;
       this.value = expression.value;
+      this.recordType = expression.recordType;
       this.operation = expression.operation;
       this.expressions = expression.expressions;
     }
@@ -153,6 +158,17 @@ public class Expression extends GenericModel {
     }
 
     /**
+     * Set the recordType.
+     *
+     * @param recordType the recordType
+     * @return the Expression builder
+     */
+    public Builder recordType(String recordType) {
+      this.recordType = recordType;
+      return this;
+    }
+
+    /**
      * Set the operation.
      *
      * @param operation the operation
@@ -180,6 +196,7 @@ public class Expression extends GenericModel {
     property = builder.property;
     condition = builder.condition;
     value = builder.value;
+    recordType = builder.recordType;
     operation = builder.operation;
     expressions = builder.expressions;
   }
@@ -224,6 +241,17 @@ public class Expression extends GenericModel {
    */
   public String value() {
     return value;
+  }
+
+  /**
+   * Gets the recordType.
+   *
+   * The record type to search on.
+   *
+   * @return the recordType
+   */
+  public String recordType() {
+    return recordType;
   }
 
   /**

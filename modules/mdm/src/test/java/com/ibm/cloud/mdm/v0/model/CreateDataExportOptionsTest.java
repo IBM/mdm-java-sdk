@@ -41,11 +41,13 @@ public class CreateDataExportOptionsTest {
       .property("testString")
       .condition("equal")
       .value("testString")
+      .recordType("testString")
       .operation("and")
       .build();
     assertEquals(expressionModel.property(), "testString");
     assertEquals(expressionModel.condition(), "equal");
     assertEquals(expressionModel.value(), "testString");
+    assertEquals(expressionModel.recordType(), "testString");
     assertEquals(expressionModel.operation(), "and");
 
     ExportRequestSearchCriteriaQuery exportRequestSearchCriteriaQueryModel = new ExportRequestSearchCriteriaQuery.Builder()

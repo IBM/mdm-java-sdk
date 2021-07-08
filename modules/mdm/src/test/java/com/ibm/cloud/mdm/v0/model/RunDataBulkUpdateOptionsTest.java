@@ -13,8 +13,8 @@
 
 package com.ibm.cloud.mdm.v0.model;
 
-import com.ibm.cloud.mdm.v0.model.Record;
-import com.ibm.cloud.mdm.v0.model.Relationship;
+import com.ibm.cloud.mdm.v0.model.DataRecord;
+import com.ibm.cloud.mdm.v0.model.DataRelationship;
 import com.ibm.cloud.mdm.v0.model.RunDataBulkUpdateOptions;
 import com.ibm.cloud.mdm.v0.model.SyncUpdateRequestDeletions;
 import com.ibm.cloud.mdm.v0.model.SyncUpdateRequestUpserts;
@@ -37,33 +37,33 @@ public class RunDataBulkUpdateOptionsTest {
 
   @Test
   public void testRunDataBulkUpdateOptions() throws Throwable {
-    Record recordModel = new Record.Builder()
+    DataRecord dataRecordModel = new DataRecord.Builder()
       .id("testString")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
-    assertEquals(recordModel.id(), "testString");
-    assertEquals(recordModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(dataRecordModel.id(), "testString");
+    assertEquals(dataRecordModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
 
-    Relationship relationshipModel = new Relationship.Builder()
+    DataRelationship dataRelationshipModel = new DataRelationship.Builder()
       .id("testString")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
-    assertEquals(relationshipModel.id(), "testString");
-    assertEquals(relationshipModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(dataRelationshipModel.id(), "testString");
+    assertEquals(dataRelationshipModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
 
     SyncUpdateRequestUpserts syncUpdateRequestUpsertsModel = new SyncUpdateRequestUpserts.Builder()
-      .records(new java.util.ArrayList<Record>(java.util.Arrays.asList(recordModel)))
-      .relationships(new java.util.ArrayList<Relationship>(java.util.Arrays.asList(relationshipModel)))
+      .records(new java.util.ArrayList<DataRecord>(java.util.Arrays.asList(dataRecordModel)))
+      .relationships(new java.util.ArrayList<DataRelationship>(java.util.Arrays.asList(dataRelationshipModel)))
       .build();
-    assertEquals(syncUpdateRequestUpsertsModel.records(), new java.util.ArrayList<Record>(java.util.Arrays.asList(recordModel)));
-    assertEquals(syncUpdateRequestUpsertsModel.relationships(), new java.util.ArrayList<Relationship>(java.util.Arrays.asList(relationshipModel)));
+    assertEquals(syncUpdateRequestUpsertsModel.records(), new java.util.ArrayList<DataRecord>(java.util.Arrays.asList(dataRecordModel)));
+    assertEquals(syncUpdateRequestUpsertsModel.relationships(), new java.util.ArrayList<DataRelationship>(java.util.Arrays.asList(dataRelationshipModel)));
 
     SyncUpdateRequestDeletions syncUpdateRequestDeletionsModel = new SyncUpdateRequestDeletions.Builder()
-      .records(new java.util.ArrayList<Record>(java.util.Arrays.asList(recordModel)))
-      .relationships(new java.util.ArrayList<Relationship>(java.util.Arrays.asList(relationshipModel)))
+      .records(new java.util.ArrayList<DataRecord>(java.util.Arrays.asList(dataRecordModel)))
+      .relationships(new java.util.ArrayList<DataRelationship>(java.util.Arrays.asList(dataRelationshipModel)))
       .build();
-    assertEquals(syncUpdateRequestDeletionsModel.records(), new java.util.ArrayList<Record>(java.util.Arrays.asList(recordModel)));
-    assertEquals(syncUpdateRequestDeletionsModel.relationships(), new java.util.ArrayList<Relationship>(java.util.Arrays.asList(relationshipModel)));
+    assertEquals(syncUpdateRequestDeletionsModel.records(), new java.util.ArrayList<DataRecord>(java.util.Arrays.asList(dataRecordModel)));
+    assertEquals(syncUpdateRequestDeletionsModel.relationships(), new java.util.ArrayList<DataRelationship>(java.util.Arrays.asList(dataRelationshipModel)));
 
     RunDataBulkUpdateOptions runDataBulkUpdateOptionsModel = new RunDataBulkUpdateOptions.Builder()
       .upserts(syncUpdateRequestUpsertsModel)

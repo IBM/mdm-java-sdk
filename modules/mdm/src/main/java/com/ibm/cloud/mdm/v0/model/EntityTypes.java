@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class EntityTypes extends GenericModel {
 
+  protected Boolean editable;
   @SerializedName("data_type")
   protected String dataType;
-  protected Boolean editable;
-  protected Boolean indexed;
   protected String label;
   protected String description;
+  protected Boolean indexed;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String dataType;
     private Boolean editable;
-    private Boolean indexed;
+    private String dataType;
     private String label;
     private String description;
+    private Boolean indexed;
 
     private Builder(EntityTypes entityTypes) {
-      this.dataType = entityTypes.dataType;
       this.editable = entityTypes.editable;
-      this.indexed = entityTypes.indexed;
+      this.dataType = entityTypes.dataType;
       this.label = entityTypes.label;
       this.description = entityTypes.description;
+      this.indexed = entityTypes.indexed;
     }
 
     /**
@@ -72,17 +72,6 @@ public class EntityTypes extends GenericModel {
     }
 
     /**
-     * Set the dataType.
-     *
-     * @param dataType the dataType
-     * @return the EntityTypes builder
-     */
-    public Builder dataType(String dataType) {
-      this.dataType = dataType;
-      return this;
-    }
-
-    /**
      * Set the editable.
      *
      * @param editable the editable
@@ -94,13 +83,13 @@ public class EntityTypes extends GenericModel {
     }
 
     /**
-     * Set the indexed.
+     * Set the dataType.
      *
-     * @param indexed the indexed
+     * @param dataType the dataType
      * @return the EntityTypes builder
      */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
+    public Builder dataType(String dataType) {
+      this.dataType = dataType;
       return this;
     }
 
@@ -125,6 +114,17 @@ public class EntityTypes extends GenericModel {
       this.description = description;
       return this;
     }
+
+    /**
+     * Set the indexed.
+     *
+     * @param indexed the indexed
+     * @return the EntityTypes builder
+     */
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
+      return this;
+    }
   }
 
   protected EntityTypes(Builder builder) {
@@ -132,11 +132,11 @@ public class EntityTypes extends GenericModel {
       "dataType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    dataType = builder.dataType;
     editable = builder.editable;
-    indexed = builder.indexed;
+    dataType = builder.dataType;
     label = builder.label;
     description = builder.description;
+    indexed = builder.indexed;
   }
 
   /**
@@ -146,17 +146,6 @@ public class EntityTypes extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the dataType.
-   *
-   * The data type of the system property.
-   *
-   * @return the dataType
-   */
-  public String dataType() {
-    return dataType;
   }
 
   /**
@@ -171,14 +160,14 @@ public class EntityTypes extends GenericModel {
   }
 
   /**
-   * Gets the indexed.
+   * Gets the dataType.
    *
-   * Specifies whether the system property is indexed for text searches.
+   * The data type of the system property.
    *
-   * @return the indexed
+   * @return the dataType
    */
-  public Boolean indexed() {
-    return indexed;
+  public String dataType() {
+    return dataType;
   }
 
   /**
@@ -201,6 +190,17 @@ public class EntityTypes extends GenericModel {
    */
   public String description() {
     return description;
+  }
+
+  /**
+   * Gets the indexed.
+   *
+   * Specifies whether the system property is indexed for text searches.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
   }
 }
 

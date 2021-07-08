@@ -23,26 +23,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SetResourceEntry extends GenericModel {
 
+  protected String category;
+  protected List<String> regex;
   @SerializedName("data_type")
   protected String dataType;
-  protected List<String> regex;
   protected List<String> values;
-  protected String category;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String dataType;
-    private List<String> regex;
-    private List<String> values;
     private String category;
+    private List<String> regex;
+    private String dataType;
+    private List<String> values;
 
     private Builder(SetResourceEntry setResourceEntry) {
-      this.dataType = setResourceEntry.dataType;
-      this.regex = setResourceEntry.regex;
-      this.values = setResourceEntry.values;
       this.category = setResourceEntry.category;
+      this.regex = setResourceEntry.regex;
+      this.dataType = setResourceEntry.dataType;
+      this.values = setResourceEntry.values;
     }
 
     /**
@@ -104,13 +104,13 @@ public class SetResourceEntry extends GenericModel {
     }
 
     /**
-     * Set the dataType.
+     * Set the category.
      *
-     * @param dataType the dataType
+     * @param category the category
      * @return the SetResourceEntry builder
      */
-    public Builder dataType(String dataType) {
-      this.dataType = dataType;
+    public Builder category(String category) {
+      this.category = category;
       return this;
     }
 
@@ -127,6 +127,17 @@ public class SetResourceEntry extends GenericModel {
     }
 
     /**
+     * Set the dataType.
+     *
+     * @param dataType the dataType
+     * @return the SetResourceEntry builder
+     */
+    public Builder dataType(String dataType) {
+      this.dataType = dataType;
+      return this;
+    }
+
+    /**
      * Set the values.
      * Existing values will be replaced.
      *
@@ -137,17 +148,6 @@ public class SetResourceEntry extends GenericModel {
       this.values = values;
       return this;
     }
-
-    /**
-     * Set the category.
-     *
-     * @param category the category
-     * @return the SetResourceEntry builder
-     */
-    public Builder category(String category) {
-      this.category = category;
-      return this;
-    }
   }
 
   protected SetResourceEntry(Builder builder) {
@@ -155,10 +155,10 @@ public class SetResourceEntry extends GenericModel {
       "regex cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.values,
       "values cannot be null");
-    dataType = builder.dataType;
-    regex = builder.regex;
-    values = builder.values;
     category = builder.category;
+    regex = builder.regex;
+    dataType = builder.dataType;
+    values = builder.values;
   }
 
   /**
@@ -168,6 +168,28 @@ public class SetResourceEntry extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the category.
+   *
+   * User defined context category, when applicable.
+   *
+   * @return the category
+   */
+  public String category() {
+    return category;
+  }
+
+  /**
+   * Gets the regex.
+   *
+   * Collection of applicable regular expressions.
+   *
+   * @return the regex
+   */
+  public List<String> regex() {
+    return regex;
   }
 
   /**
@@ -183,17 +205,6 @@ public class SetResourceEntry extends GenericModel {
   }
 
   /**
-   * Gets the regex.
-   *
-   * Collection of applicable regular expressions.
-   *
-   * @return the regex
-   */
-  public List<String> regex() {
-    return regex;
-  }
-
-  /**
    * Gets the values.
    *
    * Collection of user defined values.
@@ -202,17 +213,6 @@ public class SetResourceEntry extends GenericModel {
    */
   public List<String> values() {
     return values;
-  }
-
-  /**
-   * Gets the category.
-   *
-   * User defined context category, when applicable.
-   *
-   * @return the category
-   */
-  public String category() {
-    return category;
   }
 }
 

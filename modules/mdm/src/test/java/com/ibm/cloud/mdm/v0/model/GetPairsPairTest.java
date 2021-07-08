@@ -32,10 +32,10 @@ public class GetPairsPairTest {
   @Test
   public void testGetPairsPair() throws Throwable {
     GetPairsPair getPairsPairModel = new GetPairsPair();
-    assertNull(getPairsPairModel.getComparisonDetails());
     assertNull(getPairsPairModel.getRecordNumber1());
     assertNull(getPairsPairModel.getRecordNumber2());
     assertNull(getPairsPairModel.getScore());
+    assertNull(getPairsPairModel.getComparisonDetails());
     assertNull(getPairsPairModel.getCategory());
     assertNull(getPairsPairModel.getId());
   }

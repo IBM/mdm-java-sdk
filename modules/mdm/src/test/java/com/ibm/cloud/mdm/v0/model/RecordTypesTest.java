@@ -32,27 +32,27 @@ public class RecordTypesTest {
   @Test
   public void testRecordTypes() throws Throwable {
     RecordTypes recordTypesModel = new RecordTypes.Builder()
-      .dataType("testString")
       .editable(true)
-      .indexed(true)
+      .dataType("testString")
       .label("testString")
       .description("testString")
+      .indexed(true)
       .build();
-    assertEquals(recordTypesModel.dataType(), "testString");
     assertEquals(recordTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(recordTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(recordTypesModel.dataType(), "testString");
     assertEquals(recordTypesModel.label(), "testString");
     assertEquals(recordTypesModel.description(), "testString");
+    assertEquals(recordTypesModel.indexed(), Boolean.valueOf(true));
 
     String json = TestUtilities.serialize(recordTypesModel);
 
     RecordTypes recordTypesModelNew = TestUtilities.deserialize(json, RecordTypes.class);
     assertTrue(recordTypesModelNew instanceof RecordTypes);
-    assertEquals(recordTypesModelNew.dataType(), "testString");
     assertEquals(recordTypesModelNew.editable(), Boolean.valueOf(true));
-    assertEquals(recordTypesModelNew.indexed(), Boolean.valueOf(true));
+    assertEquals(recordTypesModelNew.dataType(), "testString");
     assertEquals(recordTypesModelNew.label(), "testString");
     assertEquals(recordTypesModelNew.description(), "testString");
+    assertEquals(recordTypesModelNew.indexed(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

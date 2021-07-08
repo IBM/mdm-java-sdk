@@ -23,13 +23,24 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetIndex extends GenericModel {
 
+  @SerializedName("standardized_values")
+  protected String standardizedValues;
   @SerializedName("record_number")
   protected String recordNumber;
   @SerializedName("self_scores")
   protected Map<String, Object> selfScores;
   protected List<Long> buckets;
-  @SerializedName("standardized_values")
-  protected String standardizedValues;
+
+  /**
+   * Gets the standardizedValues.
+   *
+   * A serialized representation of the standardized values.
+   *
+   * @return the standardizedValues
+   */
+  public String getStandardizedValues() {
+    return standardizedValues;
+  }
 
   /**
    * Gets the recordNumber.
@@ -62,17 +73,6 @@ public class GetIndex extends GenericModel {
    */
   public List<Long> getBuckets() {
     return buckets;
-  }
-
-  /**
-   * Gets the standardizedValues.
-   *
-   * Collection of a record's standardized values, primarily used for record comparison.
-   *
-   * @return the standardizedValues
-   */
-  public String getStandardizedValues() {
-    return standardizedValues;
   }
 }
 

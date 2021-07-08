@@ -22,8 +22,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Asset extends GenericModel {
 
-  @SerializedName("asset_mappings")
-  protected List<AssetMapping> assetMappings;
   @SerializedName("asset_id")
   protected String assetId;
   @SerializedName("asset_last_updated_date")
@@ -32,19 +30,10 @@ public class Asset extends GenericModel {
   protected String assetStatus;
   @SerializedName("asset_created_date")
   protected String assetCreatedDate;
+  @SerializedName("asset_mappings")
+  protected List<AssetMapping> assetMappings;
   @SerializedName("asset_name")
   protected String assetName;
-
-  /**
-   * Gets the assetMappings.
-   *
-   * The details of Data asset column mappings to the data model.
-   *
-   * @return the assetMappings
-   */
-  public List<AssetMapping> getAssetMappings() {
-    return assetMappings;
-  }
 
   /**
    * Gets the assetId.
@@ -88,6 +77,17 @@ public class Asset extends GenericModel {
    */
   public String getAssetCreatedDate() {
     return assetCreatedDate;
+  }
+
+  /**
+   * Gets the assetMappings.
+   *
+   * The details of Data asset column mappings to the data model.
+   *
+   * @return the assetMappings
+   */
+  public List<AssetMapping> getAssetMappings() {
+    return assetMappings;
   }
 
   /**

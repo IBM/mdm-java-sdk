@@ -23,32 +23,32 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class MapResourceEntry extends GenericModel {
 
+  protected String category;
+  protected List<String> regex;
   @SerializedName("data_type")
   protected String dataType;
-  protected List<String> regex;
   protected String cardinality;
   protected List<String> values;
   protected String key;
-  protected String category;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String dataType;
+    private String category;
     private List<String> regex;
+    private String dataType;
     private String cardinality;
     private List<String> values;
     private String key;
-    private String category;
 
     private Builder(MapResourceEntry mapResourceEntry) {
-      this.dataType = mapResourceEntry.dataType;
+      this.category = mapResourceEntry.category;
       this.regex = mapResourceEntry.regex;
+      this.dataType = mapResourceEntry.dataType;
       this.cardinality = mapResourceEntry.cardinality;
       this.values = mapResourceEntry.values;
       this.key = mapResourceEntry.key;
-      this.category = mapResourceEntry.category;
     }
 
     /**
@@ -110,13 +110,13 @@ public class MapResourceEntry extends GenericModel {
     }
 
     /**
-     * Set the dataType.
+     * Set the category.
      *
-     * @param dataType the dataType
+     * @param category the category
      * @return the MapResourceEntry builder
      */
-    public Builder dataType(String dataType) {
-      this.dataType = dataType;
+    public Builder category(String category) {
+      this.category = category;
       return this;
     }
 
@@ -129,6 +129,17 @@ public class MapResourceEntry extends GenericModel {
      */
     public Builder regex(List<String> regex) {
       this.regex = regex;
+      return this;
+    }
+
+    /**
+     * Set the dataType.
+     *
+     * @param dataType the dataType
+     * @return the MapResourceEntry builder
+     */
+    public Builder dataType(String dataType) {
+      this.dataType = dataType;
       return this;
     }
 
@@ -165,17 +176,6 @@ public class MapResourceEntry extends GenericModel {
       this.key = key;
       return this;
     }
-
-    /**
-     * Set the category.
-     *
-     * @param category the category
-     * @return the MapResourceEntry builder
-     */
-    public Builder category(String category) {
-      this.category = category;
-      return this;
-    }
   }
 
   protected MapResourceEntry(Builder builder) {
@@ -183,12 +183,12 @@ public class MapResourceEntry extends GenericModel {
       "regex cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.values,
       "values cannot be null");
-    dataType = builder.dataType;
+    category = builder.category;
     regex = builder.regex;
+    dataType = builder.dataType;
     cardinality = builder.cardinality;
     values = builder.values;
     key = builder.key;
-    category = builder.category;
   }
 
   /**
@@ -201,15 +201,14 @@ public class MapResourceEntry extends GenericModel {
   }
 
   /**
-   * Gets the dataType.
+   * Gets the category.
    *
-   * User defined data type for the values in the category. One of: String, byte, short, int, long, float, double, char
-   * or boolean.
+   * User defined context category, when applicable (i.e. UNITEDSTATES).
    *
-   * @return the dataType
+   * @return the category
    */
-  public String dataType() {
-    return dataType;
+  public String category() {
+    return category;
   }
 
   /**
@@ -221,6 +220,18 @@ public class MapResourceEntry extends GenericModel {
    */
   public List<String> regex() {
     return regex;
+  }
+
+  /**
+   * Gets the dataType.
+   *
+   * User defined data type for the values in the category. One of: String, byte, short, int, long, float, double, char
+   * or boolean.
+   *
+   * @return the dataType
+   */
+  public String dataType() {
+    return dataType;
   }
 
   /**
@@ -254,17 +265,6 @@ public class MapResourceEntry extends GenericModel {
    */
   public String key() {
     return key;
-  }
-
-  /**
-   * Gets the category.
-   *
-   * User defined context category, when applicable (i.e. UNITEDSTATES).
-   *
-   * @return the category
-   */
-  public String category() {
-    return category;
   }
 }
 

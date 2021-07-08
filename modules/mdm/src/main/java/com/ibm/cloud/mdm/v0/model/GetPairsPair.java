@@ -22,26 +22,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetPairsPair extends GenericModel {
 
-  @SerializedName("comparison_details")
-  protected Map<String, Object> comparisonDetails;
   @SerializedName("record_number_1")
   protected String recordNumber1;
   @SerializedName("record_number_2")
   protected String recordNumber2;
   protected Float score;
+  @SerializedName("comparison_details")
+  protected Map<String, Object> comparisonDetails;
   protected String category;
   protected String id;
-
-  /**
-   * Gets the comparisonDetails.
-   *
-   * Comparison scores for different compare methods.
-   *
-   * @return the comparisonDetails
-   */
-  public Map<String, Object> getComparisonDetails() {
-    return comparisonDetails;
-  }
 
   /**
    * Gets the recordNumber1.
@@ -74,6 +63,17 @@ public class GetPairsPair extends GenericModel {
    */
   public Float getScore() {
     return score;
+  }
+
+  /**
+   * Gets the comparisonDetails.
+   *
+   * Comparison scores for different compare methods.
+   *
+   * @return the comparisonDetails
+   */
+  public Map<String, Object> getComparisonDetails() {
+    return comparisonDetails;
   }
 
   /**

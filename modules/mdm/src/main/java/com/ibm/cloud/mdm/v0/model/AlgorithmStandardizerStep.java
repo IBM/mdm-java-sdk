@@ -26,20 +26,20 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmStandardizerStep extends DynamicModel<Object> {
 
-  @SerializedName("set_resource")
-  protected String setResource;
-  @SerializedName("label")
-  protected String label;
-  @SerializedName("map_resource")
-  protected String mapResource;
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
   @SerializedName("inputs")
   protected List<Long> inputs;
-  @SerializedName("method")
-  protected String method;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
+  @SerializedName("set_resource")
+  protected String setResource;
+  @SerializedName("map_resource")
+  protected String mapResource;
+  @SerializedName("label")
+  protected String label;
   @SerializedName("fields")
   protected List<String> fields;
+  @SerializedName("method")
+  protected String method;
 
   public AlgorithmStandardizerStep() {
     super(new TypeToken<Object>() { });
@@ -49,23 +49,23 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private String setResource;
-    private String label;
-    private String mapResource;
-    private String comparisonResource;
     private List<Long> inputs;
-    private String method;
+    private String comparisonResource;
+    private String setResource;
+    private String mapResource;
+    private String label;
     private List<String> fields;
+    private String method;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmStandardizerStep algorithmStandardizerStep) {
-      this.setResource = algorithmStandardizerStep.setResource;
-      this.label = algorithmStandardizerStep.label;
-      this.mapResource = algorithmStandardizerStep.mapResource;
-      this.comparisonResource = algorithmStandardizerStep.comparisonResource;
       this.inputs = algorithmStandardizerStep.inputs;
-      this.method = algorithmStandardizerStep.method;
+      this.comparisonResource = algorithmStandardizerStep.comparisonResource;
+      this.setResource = algorithmStandardizerStep.setResource;
+      this.mapResource = algorithmStandardizerStep.mapResource;
+      this.label = algorithmStandardizerStep.label;
       this.fields = algorithmStandardizerStep.fields;
+      this.method = algorithmStandardizerStep.method;
       this.dynamicProperties = algorithmStandardizerStep.getProperties();
     }
 
@@ -128,35 +128,14 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the setResource.
+     * Set the inputs.
+     * Existing inputs will be replaced.
      *
-     * @param setResource the setResource
+     * @param inputs the inputs
      * @return the AlgorithmStandardizerStep builder
      */
-    public Builder setResource(String setResource) {
-      this.setResource = setResource;
-      return this;
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the AlgorithmStandardizerStep builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
-     * Set the mapResource.
-     *
-     * @param mapResource the mapResource
-     * @return the AlgorithmStandardizerStep builder
-     */
-    public Builder mapResource(String mapResource) {
-      this.mapResource = mapResource;
+    public Builder inputs(List<Long> inputs) {
+      this.inputs = inputs;
       return this;
     }
 
@@ -172,25 +151,35 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
+     * Set the setResource.
      *
-     * @param inputs the inputs
+     * @param setResource the setResource
      * @return the AlgorithmStandardizerStep builder
      */
-    public Builder inputs(List<Long> inputs) {
-      this.inputs = inputs;
+    public Builder setResource(String setResource) {
+      this.setResource = setResource;
       return this;
     }
 
     /**
-     * Set the method.
+     * Set the mapResource.
      *
-     * @param method the method
+     * @param mapResource the mapResource
      * @return the AlgorithmStandardizerStep builder
      */
-    public Builder method(String method) {
-      this.method = method;
+    public Builder mapResource(String mapResource) {
+      this.mapResource = mapResource;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -203,6 +192,17 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
      */
     public Builder fields(List<String> fields) {
       this.fields = fields;
+      return this;
+    }
+
+    /**
+     * Set the method.
+     *
+     * @param method the method
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder method(String method) {
+      this.method = method;
       return this;
     }
 
@@ -229,13 +229,13 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
       "method cannot be null");
-    setResource = builder.setResource;
-    label = builder.label;
-    mapResource = builder.mapResource;
-    comparisonResource = builder.comparisonResource;
     inputs = builder.inputs;
-    method = builder.method;
+    comparisonResource = builder.comparisonResource;
+    setResource = builder.setResource;
+    mapResource = builder.mapResource;
+    label = builder.label;
     fields = builder.fields;
+    method = builder.method;
     this.setProperties(builder.dynamicProperties);
   }
 
@@ -246,86 +246,6 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the setResource.
-   *
-   * An existing set resource name, if applicable.
-   *
-   * @return the setResource
-   */
-  public String getSetResource() {
-    return this.setResource;
-  }
-
-  /**
-   * Sets the setResource.
-   *
-   * @param setResource the new setResource
-   */
-  public void setSetResource(final String setResource) {
-    this.setResource = setResource;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String getLabel() {
-    return this.label;
-  }
-
-  /**
-   * Sets the label.
-   *
-   * @param label the new label
-   */
-  public void setLabel(final String label) {
-    this.label = label;
-  }
-
-  /**
-   * Gets the mapResource.
-   *
-   * An existing map resource name, if applicable.
-   *
-   * @return the mapResource
-   */
-  public String getMapResource() {
-    return this.mapResource;
-  }
-
-  /**
-   * Sets the mapResource.
-   *
-   * @param mapResource the new mapResource
-   */
-  public void setMapResource(final String mapResource) {
-    this.mapResource = mapResource;
-  }
-
-  /**
-   * Gets the comparisonResource.
-   *
-   * An existing comparison resource name, if applicable.
-   *
-   * @return the comparisonResource
-   */
-  public String getComparisonResource() {
-    return this.comparisonResource;
-  }
-
-  /**
-   * Sets the comparisonResource.
-   *
-   * @param comparisonResource the new comparisonResource
-   */
-  public void setComparisonResource(final String comparisonResource) {
-    this.comparisonResource = comparisonResource;
   }
 
   /**
@@ -349,26 +269,83 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the method.
+   * Gets the comparisonResource.
    *
-   * A standardizer method. One of: Standardizer.UpperCase, Standardizer.Tokenizer, Standardizer.StopToken,
-   * Standardizer.StopCharacter, Standardizer.PickToken, Standardizer.Phone, Standardizer.ParseToken,
-   * Standardizer.MapToken, Standardizer.MapCharacter, Standardizer.LowerCase, Standardizer.Length,
-   * Standardizer.KeepToken, Standardizer.JoinToken, Standardizer.GNM, Standardizer.Date or Standardizer.Acronym.
+   * An existing comparison resource name, if applicable.
    *
-   * @return the method
+   * @return the comparisonResource
    */
-  public String getMethod() {
-    return this.method;
+  public String getComparisonResource() {
+    return this.comparisonResource;
   }
 
   /**
-   * Sets the method.
+   * Sets the comparisonResource.
    *
-   * @param method the new method
+   * @param comparisonResource the new comparisonResource
    */
-  public void setMethod(final String method) {
-    this.method = method;
+  public void setComparisonResource(final String comparisonResource) {
+    this.comparisonResource = comparisonResource;
+  }
+
+  /**
+   * Gets the setResource.
+   *
+   * An existing set resource name, if applicable.
+   *
+   * @return the setResource
+   */
+  public String getSetResource() {
+    return this.setResource;
+  }
+
+  /**
+   * Sets the setResource.
+   *
+   * @param setResource the new setResource
+   */
+  public void setSetResource(final String setResource) {
+    this.setResource = setResource;
+  }
+
+  /**
+   * Gets the mapResource.
+   *
+   * An existing map resource name, if applicable.
+   *
+   * @return the mapResource
+   */
+  public String getMapResource() {
+    return this.mapResource;
+  }
+
+  /**
+   * Sets the mapResource.
+   *
+   * @param mapResource the new mapResource
+   */
+  public void setMapResource(final String mapResource) {
+    this.mapResource = mapResource;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String getLabel() {
+    return this.label;
+  }
+
+  /**
+   * Sets the label.
+   *
+   * @param label the new label
+   */
+  public void setLabel(final String label) {
+    this.label = label;
   }
 
   /**
@@ -389,5 +366,29 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
    */
   public void setFields(final List<String> fields) {
     this.fields = fields;
+  }
+
+  /**
+   * Gets the method.
+   *
+   * A standardizer method. One of: Standardizer.UpperCase, Standardizer.Tokenizer, Standardizer.StopToken,
+   * Standardizer.StopCharacter, Standardizer.PickToken, Standardizer.Phone, Standardizer.ParseToken,
+   * Standardizer.MapToken, Standardizer.MapCharacter, Standardizer.LowerCase, Standardizer.Length,
+   * Standardizer.KeepToken, Standardizer.JoinToken, Standardizer.GNM, Standardizer.Date, Standardizer.Acronym,
+   * Standardizer.AlphaNumericTokenizer or Standardizer.NumToWord.
+   *
+   * @return the method
+   */
+  public String getMethod() {
+    return this.method;
+  }
+
+  /**
+   * Sets the method.
+   *
+   * @param method the new method
+   */
+  public void setMethod(final String method) {
+    this.method = method;
   }
 }
