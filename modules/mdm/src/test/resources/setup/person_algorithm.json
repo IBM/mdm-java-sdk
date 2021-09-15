@@ -1,0 +1,1642 @@
+{
+    "locale": "en_us",
+    "encryption": {
+                "enabled": false,
+                "type": "RSA",
+                "sub_type": "Deterministic",
+                "pub_key": [
+                ]
+            },
+    "standardizers": {
+                "name_standardizer": {
+                    "label": "Person Name Standardizer",
+                    "inputs": [
+                        {
+                            "fields": [
+                                "last_name",
+                                "given_name",
+                                "middle_name",
+                                "prefix_value",
+                                "suffix",
+                                "generation_value"
+                            ],
+                            "attributes": [
+                                "legal_name",
+                                "previous_name"
+                            ]
+                        }
+                    ],
+                    "standardizer_recipe": [
+                        {
+                            "method": "Standardizer.UpperCase",
+                            "label": "Uppercase",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.MapCharacter",
+                            "label": "Map equivalent Character",
+                            "map_resource": "person_map_character_general",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.Tokenizer",
+                            "delimiters": [
+                                " ",
+                                "-",
+                                "/",
+                                ",",
+                                "."
+                            ],
+                            "label": "Tokenization",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "given_name",
+                                "middle_name",
+                                "last_name",
+                                "prefix_value",
+                                "suffix",
+                                "generation"
+                            ],
+                            "drop_unparsed_values": false,
+                            "label": "Parse Token",
+                            "map_resource": "person_map_name_alignments",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.StopToken",
+                            "fields": [
+                                "given_name",
+                                "middle_name",
+                                "last_name"
+                            ],
+                            "label": "Remove tokens with digit",
+                            "set_resource": "person_set_name_digits",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.JoinToken",
+                            "fields": [
+                                "given_name",
+                                "middle_name",
+                                "last_name"
+                            ],
+                            "label": "Concatenate disjoined tokens in GivenName, MiddleName, LastName",
+                            "map_resource": "person_map_name_joins",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.Length",
+                            "min_length": 2,
+                            "max_length": 100,
+                            "fields": [
+                                "last_name"
+                            ],
+                            "label": "Remove single characters from last name",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.StopToken",
+                            "fields": [
+                                "last_name",
+                                "given_name",
+                                "middle_name",
+                                "prefix_value",
+                                "suffix",
+                                "generation"
+                            ],
+                            "label": "Stop anonymous token",
+                            "set_resource": "person_set_name_aname",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.PickToken",
+                            "fields": [
+                                "last_name",
+                                "given_name",
+                                "middle_name",
+                                "prefix_value",
+                                "suffix",
+                                "generation"
+                            ],
+                            "unique_tokens": true,
+                            "label": "Pick Token",
+                            "inputs": [
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "birthdate_standardizer": {
+                    "label": "BirthDate Standardizer",
+                    "inputs": [
+                        {
+                            "fields": [
+                                "value"
+                            ],
+                            "attributes":[
+                                "birth_date"
+                            ]
+                        }
+                    ],
+                    "standardizer_recipe": [
+                        {
+                            "method": "Standardizer.MapCharacter",
+                            "label": "Convert separators to dashes",
+                            "map_resource": "person_map_character_date_separators",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.Date",
+                            "input_formats": [
+                                "d-M-yyyy",
+                                "yyyy-M-d",
+                                "M-d-yyyy",
+                                "yy-M-d",
+                                "d-M",
+                                "M-yyyy",
+                                "MMM d, yyyy",
+                                "yyyy-M-d'T'HH:mm:ss",
+                                "yyyy-M-d HH:mm:ss",
+                                "MMM d",
+                                "M-yy",
+                                "yyyy",
+                                "yy"
+                            ],
+                            "label": "Date Stanardization",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.StopToken",
+                            "label": "Remove filler dates",
+                            "set_resource": "person_set_date_date",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "value"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse year, month, day",
+                            "map_resource": "person_map_date_tokens_year_month_day",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.PickToken",
+                            "fields": [
+                                "birth_year",
+                                "birth_month",
+                                "birth_day"
+                            ],
+                            "count": 3,
+                            "unique_tokens": true,
+                            "label": "Pick Token",
+                            "inputs": [
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "gender_standardizer": {
+                    "label": "Gender Standardizer",
+                    "inputs": [
+                        {
+                            "fields": [
+                                "value"
+                            ],
+                            "attributes": [
+                                "gender"
+                            ]
+                        }
+                    ],
+                    "standardizer_recipe": [
+                        {
+                            "method": "Standardizer.MapCharacter",
+                            "label": "Map equivalent Character",
+                            "map_resource": "person_map_character_general",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.UpperCase",
+                            "label": "Uppercase",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.StopToken",
+                            "label": "Stop anonymous Token",
+                            "set_resource": "person_set_gender_anon_gender",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.MapToken",
+                            "label": "Map equivalent Token",
+                            "map_resource": "person_map_gender_gender",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "value"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse token",
+                            "map_resource": "person_map_gender_tokens_gender",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.PickToken",
+                            "fields": [
+                                "gender"
+                            ],
+                            "count": 1,
+                            "unique_tokens": true,
+                            "label": "Pick Token",
+                            "inputs": [
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "address_standardizer": {
+                    "label": "Address Standardizer",
+                    "inputs": [
+                        {
+                            "fields": [
+                                "address_residence_number",
+                                "address_line_1",
+                                "address_line_2",
+                                "address_line_3",
+                                "address_city",
+                                "address_province_state_value",
+                                "address_zip_postal_code",
+                                "address_country_value",
+                                "address_latitude_degrees",
+                                "address_longitude_degrees"
+                            ],
+                            "attributes": [
+                                "primary_residence",
+                                "other_address",
+                                "business_address"
+                            ]
+                        }
+                    ],
+                    "standardizer_recipe": [
+                        {
+                            "method": "Standardizer.UpperCase",
+                            "label": "Uppercase",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.MapCharacter",
+                            "label": "Map equivalent Character",
+                            "map_resource": "person_map_character_general",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.MapToken",
+                            "fields": [
+                                "country"
+                            ],
+                            "label": "Map equivalent Token",
+                            "map_resource": "person_map_address_country",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.MapToken",
+                            "fields": [
+                                "province_state"
+                            ],
+                            "label": "Map equivalent Token",
+                            "map_resource": "person_map_address_province_state",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.MapToken",
+                            "label": "Map equivalent Token",
+                            "map_resource": "person_map_address_delimiter_removal",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.Tokenizer",
+                            "delimiters": [
+                                " "
+                            ],
+                            "label": "Tokenization",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.MapToken",
+                            "label": "Map equivalent Token",
+                            "map_resource": "person_map_address_addr_tok",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.StopToken",
+                            "fields": [
+                                "zip_postal_code"
+                            ],
+                            "label": "Stop anonymous Word in ZipPostalCode",
+                            "set_resource": "person_set_address_postal_code",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "residence_number"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse token",
+                            "map_resource": "person_map_address_tokens_unit_type_and_number",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "address_line1"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse token",
+                            "map_resource": "person_map_address_tokens_street_number_name_direction_type",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "address_line2"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse token",
+                            "map_resource": "person_map_address_tokens_sub_division",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "address_line3"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse token",
+                            "map_resource": "person_map_address_tokens_pobox_type_and_number",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "city"
+                            ],
+                            "drop_unparsed_values": false,
+                            "label": "Parse token",
+                            "map_resource": "person_map_address_tokens_city",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "province_state"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse token",
+                            "map_resource": "person_map_address_tokens_province",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "zip_postal_code"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse token",
+                            "map_resource": "person_map_address_tokens_postal_code",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "country"
+                            ],
+                            "drop_unparsed_values": false,
+                            "label": "Parse token",
+                            "map_resource": "person_map_address_tokens_country",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "latitude_degrees"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse token",
+                            "map_resource": "person_map_address_tokens_latitude",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "longitude_degrees"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse token",
+                            "map_resource": "person_map_address_tokens_longtitude",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.PickToken",
+                            "fields": [
+                                "unit_number",
+                                "street_number",
+                                "street_name",
+                                "direction",
+                                "street_type",
+                                "pobox",
+                                "postal_code",
+                                "city",
+                                "province",
+                                "sub_division",
+                                "country"
+                            ],
+                            "count": 16,
+                            "unique_tokens": true,
+                            "label": "Pick Token",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.PickToken",
+                            "fields": [
+                                "latitude",
+                                "longtitude"
+                            ],
+                            "count": 2,
+                            "unique_tokens": true,
+                            "label": "Pick Token",
+                            "inputs": [
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "phone_standardizer": {
+                    "label": "Phone Standardizer",
+                    "inputs": [
+                        {
+                            "fields": [
+                                "contact_method_reference_number"
+                            ],
+                            "attributes": [
+                                "home_telephone",
+                                "mobile_telephone",
+                                "business_telephone",
+                                "fax",
+                                "pager"
+                            ]
+                        }
+                    ],
+                    "standardizer_recipe": [
+                        {
+                            "method": "Standardizer.StopCharacter",
+                            "label": "Replace all characters except alphanumeric",
+                            "set_resource": "person_set_character_phone",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.StopToken",
+                            "label": "Ignore anonymous phones",
+                            "set_resource": "person_set_phone_anon_phone",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.Phone",
+                            "locales": [
+                                "US",
+                                "CN",
+                                "GB",
+                                "CA"
+                            ],
+                            "drop_country_code": true,
+                            "drop_area_code": true,
+                            "drop_local_number": false,
+                            "label": "Parse phone number",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "contact_method_reference_number"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse token",
+                            "map_resource": "person_map_phone_tokens_phone",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.PickToken",
+                            "fields": [
+                                "phone"
+                            ],
+                            "count": 1,
+                            "unique_tokens": true,
+                            "label": "Pick Token",
+                            "inputs": [
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "identification_standardizer": {
+                    "label": "Identification Standardizer",
+                    "inputs": [
+                        {
+                            "fields": [
+                                "identification_number"
+                            ],
+                            "attributes": [
+                                "social_security_number",
+                                "drivers_licence",
+                                "tax_identification",
+                                "passport",
+                                "social_insurance_number",
+                                "health_card"
+                            ]
+                        }
+                    ],
+                    "standardizer_recipe": [
+                        {
+                            "method": "Standardizer.MapCharacter",
+                            "label": "Map equivalent Character",
+                            "map_resource": "person_map_character_general",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.UpperCase",
+                            "label": "Uppercase",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.StopToken",
+                            "label": "Stop anonymous Token",
+                            "set_resource": "person_set_identifier_anonymous",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.MapToken",
+                            "label": "Map equivalent Token",
+                            "map_resource": "person_map_identifier_equi_identifier",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "identification_number"
+                            ],
+                            "drop_unparsed_values": false,
+                            "label": "Parse token",
+                            "map_resource": "person_map_identifier_tokens_identification_number",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.PickToken",
+                            "fields": [
+                                "identification_number"
+                            ],
+                            "count": 1,
+                            "unique_tokens": true,
+                            "label": "Pick Token",
+                            "inputs": [
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "non_phone_contact_method_standardizer": {
+                    "label": "Non-Phone Contact Method Standardizer",
+                    "inputs": [
+                        {
+                            "fields": [
+                                "contact_method_reference_number"
+                            ],
+                            "attributes": [
+                                "business_email",
+                                "personal_email",
+                                "twitter",
+                                "facebook",
+                                "linkedin"
+                            ]
+                        }
+                    ],
+                    "standardizer_recipe": [
+                        {
+                            "method": "Standardizer.MapCharacter",
+                            "label": "Map equivalent Character",
+                            "map_resource": "person_map_character_general",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.UpperCase",
+                            "label": "Uppercase",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.StopToken",
+                            "label": "Stop anonymous Token",
+                            "set_resource": "person_set_non_phone_anon_non_phone",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.MapToken",
+                            "label": "Map equivalent Token",
+                            "map_resource": "person_map_non_phone_equi_non_phone",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.ParseToken",
+                            "fields": [
+                                "contact_method_reference_number"
+                            ],
+                            "drop_unparsed_values": true,
+                            "label": "Parse token",
+                            "map_resource": "person_map_non_phone_tokens_non_phone",
+                            "inputs": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "Standardizer.PickToken",
+                            "fields": [
+                                "email_local_part",
+                                "email_domain",
+                                "social_media_id"
+                            ],
+                            "count": 2,
+                            "unique_tokens": true,
+                            "label": "Pick Token",
+                            "inputs": [
+                                1
+                            ]
+                        }
+                    ]
+                }
+            },
+    "entity_types": {
+                "person_entity": {
+                    "bucket_generators": {
+                        "name_phone_id_zip_dob_flat_buckets": {
+                            "label": "PersonName+Phone/Id/Zip/DOB Flat Buckets",
+                            "maximum_bucket_size": 1000,
+                            "inputs": [
+                                {
+                                    "fields": [
+                                        "last_name",
+                                        "given_name"
+                                    ],
+                                    "attributes": [
+                                        "legal_name",
+                                        "previous_name"
+                                    ]
+                                },
+                                {
+                                    "fields": [
+                                        "phone"
+                                    ],
+                                    "attributes": [
+                                        "home_telephone",
+                                        "business_telephone",
+                                        "mobile_telephone"
+                                    ]
+                                },
+                                {
+                                    "fields": [
+                                        "identification_number"
+                                    ],
+                                    "attributes": [
+                                        "social_security_number",
+                                        "drivers_licence",
+                                        "social_insurance_number",
+                                        "health_card"
+                                    ]
+                                },
+                                {
+                                    "fields": [
+                                        "postal_code"
+                                    ],
+                                    "attributes": [
+                                        "primary_residence",
+                                        "other_address",
+                                        "business_address"
+                                    ]
+                                },
+                                {
+                                    "fields": [
+                                        "birth_day",
+                                        "birth_month",
+                                        "birth_year"
+                                    ],
+                                    "attributes": [
+                                        "birth_date"
+                                    ]
+                                }
+                            ],
+                            "bucket_recipe": [
+                                {
+                                    "method": "BucketGenerator.StopToken",
+                                    "inputs": [
+                                        1
+                                    ],
+                                    "fields": [
+                                        "given_name"
+                                    ],
+                                    "label": "Exclude Anonymous Name",
+                                    "set_resource": "person_set_name_bkt_anon"
+                                },
+                                {
+                                    "method": "BucketGenerator.MapToken",
+                                    "inputs": [
+                                        1
+                                    ],
+                                    "fields": [
+                                        "given_name"
+                                    ],
+                                    "label": "Nickname convesion",
+                                    "map_resource": "person_map_name_nickname"
+                                },
+                                {
+                                    "method": "BucketGenerator.Normphone",
+                                    "inputs": [
+                                        1
+                                    ],
+                                    "fields": [
+                                        "last_name",
+                                        "given_name"
+                                    ],
+                                    "output_fields": [
+                                        "last_name.normphone",
+                                        "given_name.normphone"
+                                    ],
+                                    "label": "Name Phonetics"
+                                },
+                                {
+                                    "inputs": [
+                                        2
+                                    ],
+                                    "method": "BucketGenerator.NGram",
+                                    "count": 5,
+                                    "output_fields": [
+                                        "phone.5gram"
+                                    ],
+                                    "label": "Telephone 5 Grams"
+                                },
+                                {
+                                    "inputs": [
+                                        3
+                                    ],
+                                    "method": "BucketGenerator.NGram",
+                                    "count": 5,
+                                    "output_fields": [
+                                        "identification_number.5gram"
+                                    ],
+                                    "label": "Identifier 5 Grams"
+                                },
+                                {
+                                    "method": "BucketGenerator.StopToken",
+                                    "inputs": [
+                                        5
+                                    ],
+                                    "label": "Exclude Anonymous BirthDate",
+                                    "set_resource": "person_set_date_date"
+                                }
+                            ],
+                            "bucket_group_recipe" : [
+                            {
+            "method": "BucketGenerator.PickToken",
+            "inputs": [
+                1, 2
+            ],
+            "fields": [
+                [
+                    "given_name.normphone",
+                    "last_name.normphone"
+                ],
+                [
+                    "phone.5gram"
+                ]
+            ],
+            "min_tokens": [
+                1,
+                1
+            ],
+            "max_tokens": [
+                1,
+                1
+            ],
+            "count": 100,
+            "bucket_group": 1,
+            "order": true,
+            "label": "Bucket: Normphone Name + 5GramPhone "
+                            },
+                            {
+            "method": "BucketGenerator.PickToken",
+            "inputs": [
+                1, 3
+            ],
+            "fields": [
+                [
+                    "last_name.normphone",
+                    "given_name.normphone"
+                ],
+                [
+                    "identification_number.5gram"
+                ]
+            ],
+            "min_tokens": [
+                1,
+                1
+            ],
+            "max_tokens": [
+                1,
+                1
+            ],
+            "count": 100,
+            "bucket_group": 2,
+            "order": true,
+            "label": "Bucket: Normphone Name + 5GramIds"
+                            },
+                            {
+            "method": "BucketGenerator.PickToken",
+            "inputs": [
+                1, 4
+            ],
+            "fields": [
+                [
+                    "last_name.normphone",
+                    "given_name.normphone"
+                ],
+                [
+                    "postal_code"
+                ]
+            ],
+            "min_tokens": [
+                1,
+                1
+            ],
+            "max_tokens": [
+                2,
+                1
+            ],
+            "count": 100,
+            "bucket_group": 3,
+            "order": true,
+            "label": "Bucket: Normphone Name + PostCode AsIs"
+                            },
+                            {
+            "method": "BucketGenerator.PickToken",
+            "inputs": [
+                1, 5
+            ],
+            "fields": [
+                [
+                    "last_name.normphone",
+                    "given_name.normphone"
+                ],
+                [
+                    "birth_day",
+                    "birth_month",
+                    "birth_year"
+                ]
+            ],
+            "min_tokens": [
+                1,
+                1
+            ],
+            "max_tokens": [
+                2,
+                1
+            ],
+            "count": 100,
+            "bucket_group": 4,
+            "order": true,
+            "label": "Bucket: Normphone Name + BirthDate"
+                            }
+                            ]
+                        },
+                        "identifiers_flat_buckets": {
+        "label": "Identifiers Flat Buckets",
+        "maximum_bucket_size": 1000,
+        "inputs": [
+            {
+                "fields": [
+                    "identification_number"
+                ],
+                "attributes": [
+                  "tax_identification",
+                  "passport"
+                ]
+            }
+        ],
+        "bucket_recipe": [
+            {
+                "method": "BucketGenerator.PickToken",
+                "inputs": [
+                    1
+                ],
+                "fields": [
+                    "identification_number"
+                ],
+                "min_tokens": [
+                    1
+                ],
+                "max_tokens": [
+                    1
+                ],
+                "count": 100,
+                "bucket_group": 5,
+                "order": false,
+                "label": "Bucket: Id"
+            }
+        ]
+    },
+                        "email_socialmedia_flat_buckets": {
+                          "label": "Email + SocialMedia Flat Buckets",
+                          "maximum_bucket_size": 1000,
+                          "inputs": [
+            {
+                "fields": [
+                    "email_local_part",
+                    "email_domain",
+                    "social_media_id"
+                ],
+                "attributes": [
+                  "business_email",
+                  "personal_email",
+                  "twitter",
+                  "facebook",
+                  "linkedin"
+                ]
+            }
+        ],
+                          "bucket_recipe": [
+            {
+                "method": "BucketGenerator.PickToken",
+                "inputs": [
+                    1
+                ],
+                "fields": [
+                    "email_local_part"
+                ],
+                "min_tokens": [
+                    1
+                ],
+                "max_tokens": [
+                    1
+                ],
+                "count": 100,
+                "bucket_group": 6,
+                "order": false,
+                "label": "Bucket: Email"
+            },
+            {
+                "method": "BucketGenerator.PickToken",
+                "inputs": [
+                    1
+                ],
+                "fields": [
+                    "social_media_id"
+                ],
+                "min_tokens": [
+                    1
+                ],
+                "max_tokens": [
+                    1
+                ],
+                "count": 100,
+                "bucket_group": 7,
+                "order": false,
+                "label": "Bucket: SocialMedaiId"
+            }
+        ]
+      }
+                    },
+                    "clerical_review_threshold": 15.0,
+                    "auto_link_threshold": 16.0,
+                    "compare_methods": {
+                        "name_compare": {
+                            "label": "Person Name Compare",
+                            "methods": [
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "last_name",
+                                                "given_name",
+                                                "middle_name",
+                                                "prefix_value",
+                                                "suffix",
+                                                "generation"
+                                            ],
+                                            "attributes": [
+                                                "legal_name",
+                                                "previous_name"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "last_name",
+                                                "given_name",
+                                                "middle_name",
+                                                "prefix_value",
+                                                "suffix",
+                                                "generation"
+                                            ],
+                                            "method": "CompareMethod.NameCompare",
+                                            "label": "Name Match",
+                                            "comparison_resource": "person_compare_spec_name",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "weights": [
+                                6.5,
+                                6.0,
+                                5.5,
+                                5.0,
+                                3.5,
+                                2.0,
+                                1.0,
+                                0.0,
+                                -0.5,
+                                -1.5,
+                                -2.0
+                            ]
+                        },
+                        "birth_date_compare": {
+                            "label": "Birth Date Compare",
+                            "methods": [
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "birth_year",
+                                                "birth_month",
+                                                "birth_day"
+                                            ],
+                                            "attributes": [
+                                                "birth_date"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "birth_year",
+                                                "birth_month",
+                                                "birth_day"
+                                            ],
+                                            "method": "CompareMethod.DateCompare",
+                                            "label": "Year, Month and Day Match",
+                                            "comparison_resource": "person_compare_spec_date",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "weights": [
+                                1.2,
+                                1.1,
+                                1.0,
+                                0.9,
+                                0.5,
+                                0.45,
+                                0.2,
+                                0.1,
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        },
+                        "gender_compare": {
+                            "label": "Gender Compare",
+                            "methods": [
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "gender"
+                                            ],
+                                            "attributes": [
+                                                "gender"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "gender"
+                                            ],
+                                            "method": "CompareMethod.SingleTokenCompare",
+                                            "label": "Gender Match",
+                                            "comparison_resource": "person_compare_spec_gender",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "weights": [
+                                0.3,
+                                0.0,
+                                -0.5,
+                                -1.0,
+                                -1.5,
+                                -2.0,
+                                -2.5,
+                                -3.2,
+                                -4.0,
+                                -4.8,
+                                -5.4
+                            ]
+                        },
+                        "email_and_social_media_compare": {
+                            "label": "Email and Social Media Compare",
+                            "methods": [
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "email_local_part",
+                                                "email_domain"
+                                            ],
+                                            "attributes": [
+                                                "business_email",
+                                                "personal_email"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "email_local_part",
+                                                "email_domain"
+                                            ],
+                                            "method": "CompareMethod.EmailCompare",
+                                            "label": "Email Match",
+                                            "comparison_resource": "person_compare_spec_email",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "social_media_id"
+                                            ],
+                                            "attributes": [
+                                                "twitter",
+                                                "facebook",
+                                                "linkedin"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "social_media_id"
+                                            ],
+                                            "method": "CompareMethod.SingleTokenCompare",
+                                            "label": "Social Media Id Match",
+                                            "comparison_resource": "person_compare_spec_non_phone",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "weights": [
+                                5.2,
+                                4.5,
+                                4.0,
+                                3.5,
+                                3.0,
+                                2.5,
+                                1.5,
+                                0.5,
+                                0.0,
+                                -1.0,
+                                -2.0
+                            ]
+                        },
+                        "identifiers_compare": {
+                            "label": "Identifiers Compare",
+                            "methods": [
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "attributes": [
+                                                "social_security_number"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "method": "CompareMethod.SingleTokenCompare",
+                                            "label": "Social Security Number Match",
+                                            "comparison_resource": "person_compare_spec_identifier",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "attributes": [
+                                                "social_insurance_number"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "method": "CompareMethod.SingleTokenCompare",
+                                            "label": "Social Insurance Number Match",
+                                            "comparison_resource": "person_compare_spec_identifier",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "attributes": [
+                                                "tax_identification"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "method": "CompareMethod.SingleTokenCompare",
+                                            "label": "Tax Identification Match",
+                                            "comparison_resource": "person_compare_spec_identifier",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "attributes": [
+                                                "health_card"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "method": "CompareMethod.SingleTokenCompare",
+                                            "label": "Health Card Match",
+                                            "comparison_resource": "person_compare_spec_identifier",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "weights": [
+                                5.4,
+                                5.0,
+                                4.0,
+                                3.5,
+                                3.0,
+                                2.5,
+                                1.5,
+                                0.5,
+                                0.0,
+                                -1.0,
+                                -2.0
+                            ]
+                        },
+                        "other_identifiers_compare": {
+                            "label": "Other Identifiers Compare",
+                            "methods": [
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "attributes": [
+                                                "drivers_licence"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "method": "CompareMethod.SingleTokenCompare",
+                                            "label": "Drivers Licence Match",
+                                            "comparison_resource": "person_compare_spec_identifier",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "attributes": [
+                                                "passport"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "identification_number"
+                                            ],
+                                            "method": "CompareMethod.SingleTokenCompare",
+                                            "label": "Passport Match",
+                                            "comparison_resource": "person_compare_spec_identifier",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "weights": [
+                                5.4,
+                                5.0,
+                                4.0,
+                                3.5,
+                                3.0,
+                                2.5,
+                                1.5,
+                                0.5,
+                                0.0,
+                                -1.0,
+                                -2.0
+                            ]
+                        },
+                        "phone_compare": {
+                            "label": "Phone Compare",
+                            "methods": [
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "phone"
+                                            ],
+                                            "attributes": [
+                                                "home_telephone",
+                                                "mobile_telephone",
+                                                "business_telephone",
+                                                "fax",
+                                                "pager"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "phone"
+                                            ],
+                                            "method": "CompareMethod.SingleTokenCompare",
+                                            "label": "Phone Match",
+                                            "comparison_resource": "person_compare_spec_phone",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "weights": [
+                                5.2,
+                                5.0,
+                                4.7,
+                                4.4,
+                                4.0,
+                                3.5,
+                                3.0,
+                                2.6,
+                                2.3,
+                                2.3,
+                                2.2
+                            ]
+                        },
+                        "address_compare": {
+                            "label": "Address Compare",
+                            "methods": [
+                                {
+                                    "inputs": [
+                                        {
+                                            "fields": [
+                                                "unit_number",
+                                                "street_number",
+                                                "street_name",
+                                                "direction",
+                                                "street_type",
+                                                "pobox",
+                                                "postal_code",
+                                                "city",
+                                                "province",
+                                                "sub_division",
+                                                "country",
+                                                "latitude",
+                                                "longtitude"
+                                            ],
+                                            "attributes": [
+                                                "primary_residence",
+                                                "other_address",
+                                                "business_address"
+                                            ]
+                                        }
+                                    ],
+                                    "compare_recipe": [
+                                        {
+                                            "fields": [
+                                                "unit_number",
+                                                "street_number",
+                                                "street_name",
+                                                "direction",
+                                                "street_type",
+                                                "pobox",
+                                                "postal_code",
+                                                "city",
+                                                "province",
+                                                "sub_division",
+                                                "country",
+                                                "latitude",
+                                                "longtitude"
+                                            ],
+                                            "method": "CompareMethod.AddressCompare",
+                                            "label": "Address Match",
+                                            "comparison_resource": "person_compare_spec_address",
+                                            "inputs": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "weights": [
+                                5.2,
+                                4.7,
+                                4.2,
+                                3.7,
+                                3.0,
+                                2.5,
+                                2.0,
+                                1.5,
+                                1.0,
+                                0.5,
+                                0.1
+                            ]
+                        }
+                    }
+                }
+            }
+}
