@@ -18,6 +18,7 @@
 *.zip
 *.tar.gz
 *.rar
+*.key
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
@@ -37,7 +38,10 @@ hs_err_pid*
 # credentials files
 *.env
 
-package-lock.json
-
 # Examples depedency file
 /**/dependency-reduced-pom.xml
+
+# files produced by "npm install" commands during build
+package.json
+package-lock.json
+node_modules/
