@@ -1,3 +1,10 @@
+## [0.0.10](https://github.com/IBM/mdm-java-sdk/compare/0.0.9...0.0.10) (2021-11-10)
+
+
+### Bug Fixes
+
+* Merge pull request [#16](https://github.com/IBM/mdm-java-sdk/issues/16) from IBM/mdmx-java-sdk ([c7ca73f](https://github.com/IBM/mdm-java-sdk/commit/c7ca73f020031138d45365976c421b560fab2aa9))
+
 ## [0.0.8](https://github.com/IBM/mdm-java-sdk/compare/0.0.7...0.0.8) (2021-01-28)
 
 
