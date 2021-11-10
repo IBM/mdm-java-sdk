@@ -5,7 +5,7 @@
         <!-- >>> Update this to reflect your parent project's artifact id -->
         <artifactId>mdm-parent</artifactId>
         <groupId>com.ibm.cloud</groupId>
-        <version>0.0.5</version>
+        <version>0.0.9</version>
         <relativePath>../..</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -13,8 +13,11 @@
     <!-- >>> Replace this with the coverage-report module's artifactId (e.g. platform-services-coverage-reports) -->
     <artifactId>mdm-coverage-reports</artifactId>
 
-    <!-- >>> Replace this with the coverage-report module's description -->
-    <name>Master Data Management Coverage Reports</name>
+    <properties>
+	<!-- There is no need to publish this module's artifacts on maven central -->
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+    </properties>
 
     <dependencies>
         <!-- 
@@ -41,14 +44,6 @@
 
     <build>
         <plugins>
-            <!-- No need to deploy this artifact since it contains only coverage info -->
-            <plugin>
-                <groupId>com.carrotgarden.maven</groupId>
-                <artifactId>bintray-maven-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

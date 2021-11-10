@@ -15,7 +15,7 @@
     <url>https://github.com/IBM/mdm-java-sdk</url>
 
     <groupId>com.ibm.cloud</groupId>
-    <version>0.0.5</version>
+    <version>0.0.9</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -24,17 +24,20 @@
             of the SDK generator used to generate your SDK code.
             See this link for details: https://github.ibm.com/CloudEngineering/openapi-sdkgen/wiki/Compatibility-Chart
         -->
-        <sdk-core-version>9.5.4</sdk-core-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sdk-core-version>9.13.3</sdk-core-version>
 
         <!-- >>> Replace this with the name of your SDK's github repository -->
         <git-repository-name>mdm-java-sdk</git-repository-name>
 
-        <testng-version>7.1.0</testng-version>
-        <okhttp3-version>4.9.0</okhttp3-version>
+        <testng-version>7.4.0</testng-version>
+        <okhttp3-version>4.9.1</okhttp3-version>
         <surefire-version>3.0.0-M3</surefire-version>
         <jacoco-plugin-version>0.8.5</jacoco-plugin-version>
-        <bintray-plugin-version>1.5.20191113165555</bintray-plugin-version>
+        <!-- versions of transitive dependencies we need to override to avoid vulnerability alerts -->
+        <junit-version>4.13.2</junit-version>
         <maven-deploy-plugin-version>3.0.0-M1</maven-deploy-plugin-version>
+        <maven-gpg-plugin-version>3.0.1</maven-gpg-plugin-version>
         <maven-source-plugin-version>3.1.0</maven-source-plugin-version>
         <maven-shade-plugin-version>3.2.2</maven-shade-plugin-version>
         <maven-jar-plugin-version>3.2.0</maven-jar-plugin-version>
@@ -45,16 +48,10 @@
         <maven-reports-plugin-version>3.0.0</maven-reports-plugin-version>
         <maven-failsafe-plugin-version>3.0.0-M4</maven-failsafe-plugin-version>
         <maven-buildnumber-plugin-version>1.4</maven-buildnumber-plugin-version>
+        <nexus-staging-plugin-version>1.6.8</nexus-staging-plugin-version>
         <powermock-version>2.0.5</powermock-version>
         <mockito-version>3.2.4</mockito-version>
         <slf4j-version>1.7.28</slf4j-version>
-
-        <!-- Deployment-related properties -->
-        <bintray.org>ibm-cloud-sdks</bintray.org>
-        <!-- >>> Replace this with the name of your project's bintray repository -->
-        <bintray.repo>mdm-java-sdk</bintray.repo>
-        <!-- >>> Replace this with your github repository's URL -->
-        <bintray.package.url>https://github.com/IBM/mdm-java-sdk</bintray.package.url>
     </properties>
 
     <modules>
@@ -65,11 +62,10 @@
         <!-- >>> List each service's module here -->
         <!-- i.e. <module>modules/example-service</module> -->
 
-        <!-- >>> Uncomment the following line if you want to build the examples -->
-        <module>modules/examples</module>
+        <module>modules/coverage-reports</module>
 
         <!-- This module should always be listed last -->
-        <module>modules/coverage-reports</module>
+        <module>modules/examples</module>
     </modules>
 
     <licenses>
@@ -109,10 +105,6 @@
             <url>https://na.artifactory.swg-devops.com:443/artifactory/wcp-ibmcloud-sdks-team-maven-local/</url>
         </repository>
 
-        <repository>
-            <id>jcenter</id>
-            <url>https://jcenter.bintray.com/</url>
-        </repository>
     </repositories>
 
     <!-- This section is commented out because we use an alternate deploy plugin.
@@ -154,6 +146,12 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
                 <version>${okhttp3-version}</version>
@@ -189,14 +187,19 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>com.carrotgarden.maven</groupId>
-                    <artifactId>bintray-maven-plugin</artifactId>
-                    <version>${bintray-plugin-version}</version>
-                </plugin>
-                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>${maven-deploy-plugin-version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>${nexus-staging-plugin-version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${maven-gpg-plugin-version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -217,6 +220,8 @@
                     <version>${maven-javadoc-plugin-version}</version>
                     <configuration>
                         <quiet>true</quiet>
+                        <source>8</source>
+                        <detectJavaApiLink>false</detectJavaApiLink>
                     </configuration>
                     <executions>
                         <execution>
@@ -348,31 +353,6 @@
                     </configuration>
                 </plugin>
                 <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <!-- Disable use of bintray:deploy during "Maven -> Update Project" in eclipse -->
-                                    <pluginExecutionFilter>
-                                        <groupId>com.carrotgarden.maven</groupId>
-                                        <artifactId>bintray-maven-plugin</artifactId>
-                                        <versionRange>[1.0.0,)</versionRange>
-                                        <goals>
-                                            <goal>deploy</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore/>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
                     <version>${maven-shade-plugin-version}</version>
@@ -397,46 +377,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Enable alternate bintray-maven-plugin -->
-            <plugin>
-                <groupId>com.carrotgarden.maven</groupId>
-                <artifactId>bintray-maven-plugin</artifactId>
-                <configuration>
-                    <skip>false</skip>
-
-                    <!-- Bintray oranization name. -->
-                    <subject>${bintray.org}</subject>
-
-                    <!-- Bintray target repository. -->
-                    <repository>${bintray.repo}</repository>
-
-                    <!-- Bintray credentials in settings.xml. -->
-                    <serverId>bintray</serverId>
-
-                    <!-- We'll use the maven coordinates for the bintray package name -->
-                    <bintrayPackage>${project.groupId}:${project.artifactId}</bintrayPackage>
-
-                    <!-- Use the project's github url when creating each module's package in the bintray repo -->
-                    <packageVcsUrl>${bintray.package.url}</packageVcsUrl>
-
-                    <performDestroy>false</performDestroy>
-                    <performCleanup>false</performCleanup>
-                    <performDeploy>true</performDeploy>
-                    <performEnsure>true</performEnsure>
-                    <performPublish>true</performPublish>
-                    <retryFailedDeploymentCount>2</retryFailedDeploymentCount>
-                </configuration>
-                <executions>
-                    <!-- Activate "bintray:deploy" during "deploy" -->
-                    <execution>
-                        <id>bintray-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -516,5 +456,66 @@
             <url>https://www.ibm.com/</url>
         </developer>
     </developers>
+    <profiles>
 
+        <!-- "central" is used to deploy artifacts on maven central -->
+        <profile>
+            <id>central</id>
+
+            <!-- For this profile, we'll get dependencies from maven central -->
+            <repositories></repositories>
+
+            <distributionManagement>
+                <snapshotRepository>
+                    <!-- We don't deploy snapshot releases -->
+                </snapshotRepository>
+                <repository>
+                    <!-- This is where the nexus staging plugin will publish artifacts -->
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <gpgArguments>
+                                <gpgArgument>--batch</gpgArgument>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </gpgArguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <properties>
+                <!-- Configure the gpg plugin to use the env vars defined in the Travis build settings -->
+                <gpg.keyname>${env.GPG_KEYNAME}</gpg.keyname>
+                <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+            </properties>
+        </profile>
+    </profiles>
 </project>

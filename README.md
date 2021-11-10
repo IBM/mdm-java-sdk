@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.com/IBM/mdm-java-sdk.svg?token=eW5FVD71iyte6tTby8gr&branch=master)](https://travis-ci.com/IBM/mdm-java-sdk)
+[![Build Status](https://travis-ci.com/IBM/mdm-java-sdk.svg?token=eW5FVD71iyte6tTby8gr&branch=main)](https://travis-ci.com/IBM/mdm-java-sdk)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# IBM Cloud Master Data Management Java SDK Version 0.0.8
+# IBM Cloud Master Data Management Java SDK Version 0.0.9
 Java client library to interact with various [IBM Cloud Master Data Management](https://cloud.ibm.com/apidocs?category=mdm).
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
@@ -24,6 +24,8 @@ Changes might occur which impact applications that use this SDK.
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
+  * [Maven](#maven)
+  * [Gradle](#gradle)
 - [Using the SDK](#using-the-sdk)
 - [Questions](#questions)
 - [Issues](#issues)
@@ -39,7 +41,7 @@ The IBM Cloud Master Data Management Java SDK allows developers to programmatica
 
 Service Name | Artifact Coordinates
 --- | ---
-[Master Data Management](https://cloud.ibm.com/apidocs/mdm) | com.ibm.cloud:mdm:0.0.8 
+[Master Data Management](https://cloud.ibm.com/apidocs/mdm) | com.ibm.cloud:mdm:0.0.9 
 
 ## Prerequisites
 
@@ -50,39 +52,36 @@ Service Name | Artifact Coordinates
 * Java 8 or above.
 
 ## Installation
-The current version of this SDK is: 0.0.8
+The current version of this SDK is: 0.0.9
 
 Each service's artifact coordinates are listed in the table above.
 
-The project artifacts are published on the following public maven repositories:
-- [JCenter](https://bintray.com/bintray/jcenter) - For information on how to use the
-public JCenter maven repository, open [this link](https://bintray.com/bintray/jcenter)
-then click the `Set Me Up!` button.
-- [Maven Central](https://repo1.maven.org/maven2/) - This is the default public repository
-used by maven when searching for dependencies.  To use this repository within your
-gradle build, please see
+The project artifacts are published on the public [Maven Central](https://repo1.maven.org/maven2/)
+artifact repository.  This is the default public repository used by maven when searching for dependencies.
+To use this repository within a gradle build, please see
 [this link](https://docs.gradle.org/current/userguide/declaring_repositories.html).
 
 To use a particular service, define a dependency that contains the
-artifact coordinates (group id, artifact id and version) for the service, like this:
+artifact coordinates (group id, artifact id and version) for the service.
+Here are examples for maven and gradle:
 
-##### Maven
+### Maven
 
 ```xml
 <dependency>
     <groupId>com.ibm.cloud</groupId>
     <artifactId>mdm</artifactId>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
 </dependency>
 ```
 
-##### Gradle
+### Gradle
 ```gradle
-'com.ibm.cloud:mdm:0.0.8'
+compile 'com.ibm.cloud:mdm:0.0.9'
 ```
 
 ## Using the SDK
-For general SDK usage information, please see [this link](https://github.com/IBM/ibm-cloud-sdk-common/blob/master/README.md)
+For general SDK usage information, please see [this link](https://github.com/IBM/ibm-cloud-sdk-common/blob/main/README.md)
 
 ## Questions
 
