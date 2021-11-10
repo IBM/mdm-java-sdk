@@ -15,7 +15,7 @@
     <url>https://github.com/IBM/mdm-java-sdk</url>
 
     <groupId>com.ibm.cloud</groupId>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -62,11 +62,10 @@
         <!-- >>> List each service's module here -->
         <!-- i.e. <module>modules/example-service</module> -->
 
-        <!-- >>> Uncomment the following line if you want to build the examples -->
-        <module>modules/examples</module>
+        <module>modules/coverage-reports</module>
 
         <!-- This module should always be listed last -->
-        <module>modules/coverage-reports</module>
+        <module>modules/examples</module>
     </modules>
 
     <licenses>
