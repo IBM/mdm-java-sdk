@@ -1,3 +1,10 @@
+## [0.0.11](https://github.com/IBM/mdm-java-sdk/compare/0.0.10...0.0.11) (2021-11-11)
+
+
+### Bug Fixes
+
+* Enable build - remove javadoc for examples ([776e17c](https://github.com/IBM/mdm-java-sdk/commit/776e17cb780ce56571bd82117830f2acef992602))
+
 ## [0.0.10](https://github.com/IBM/mdm-java-sdk/compare/0.0.9...0.0.10) (2021-11-10)
 
 
