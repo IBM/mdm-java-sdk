@@ -38,30 +38,6 @@
             <artifactId>slf4j-jdk14</artifactId>
         </dependency>
     </dependencies>
-
-    <properties>
-        <maven.javadoc.skip>true</maven.javadoc.skip>
-    </properties>
-    <build>
-  <plugins>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-    </plugin>
-    <plugin>
-        <!-- Build an executable JAR -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-            <archive>
-                <manifest>
-                    <mainClass>com.ibm.cloud.mdm.v0.MdmExamples</mainClass>
-                </manifest>
-            </archive>
-        </configuration>
-    </plugin>
-  </plugins>
-</build>
     
     <developers>
         <developer>
