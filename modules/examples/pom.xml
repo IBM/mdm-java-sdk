@@ -16,12 +16,9 @@
 
     <dependencies>
         <!--
-	        There should be a dependency for each module whose request example class
-	        exists in this "examples" module.
-	        Add new "dependency" entries here as needed when you add a request examples class
-	        for a new service.
-	        Note: the "artifactId" values below should reflect the "artifactId" value specified
-	        in each module's pom.xml file (i.e. not the module's directory name).
+	        There should be a dependency for each module whose request example class exists in this "examples" module.
+	        Add new "dependency" entries here as needed when you add a request examples class for a new service.
+	        Note: the "artifactId" values below should reflect the "artifactId" value specified in each module's pom.xml file (i.e. not the module's directory name).
         -->
         <dependency>
             <groupId>com.ibm.cloud</groupId>
