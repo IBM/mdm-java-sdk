@@ -22,26 +22,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RecordType extends GenericModel {
 
-  protected String description;
   protected Map<String, Attribute> attributes;
-  protected String label;
   @SerializedName("entity_types")
   protected Map<String, EntityType> entityTypes;
+  protected String label;
+  protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String description;
     private Map<String, Attribute> attributes;
-    private String label;
     private Map<String, EntityType> entityTypes;
+    private String label;
+    private String description;
 
     private Builder(RecordType recordType) {
-      this.description = recordType.description;
       this.attributes = recordType.attributes;
-      this.label = recordType.label;
       this.entityTypes = recordType.entityTypes;
+      this.label = recordType.label;
+      this.description = recordType.description;
     }
 
     /**
@@ -69,17 +69,6 @@ public class RecordType extends GenericModel {
     }
 
     /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the RecordType builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
      * Set the attributes.
      *
      * @param attributes the attributes
@@ -87,6 +76,17 @@ public class RecordType extends GenericModel {
      */
     public Builder attributes(Map<String, Attribute> attributes) {
       this.attributes = attributes;
+      return this;
+    }
+
+    /**
+     * Set the entityTypes.
+     *
+     * @param entityTypes the entityTypes
+     * @return the RecordType builder
+     */
+    public Builder entityTypes(Map<String, EntityType> entityTypes) {
+      this.entityTypes = entityTypes;
       return this;
     }
 
@@ -102,13 +102,13 @@ public class RecordType extends GenericModel {
     }
 
     /**
-     * Set the entityTypes.
+     * Set the description.
      *
-     * @param entityTypes the entityTypes
+     * @param description the description
      * @return the RecordType builder
      */
-    public Builder entityTypes(Map<String, EntityType> entityTypes) {
-      this.entityTypes = entityTypes;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
   }
@@ -116,10 +116,10 @@ public class RecordType extends GenericModel {
   protected RecordType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    description = builder.description;
     attributes = builder.attributes;
-    label = builder.label;
     entityTypes = builder.entityTypes;
+    label = builder.label;
+    description = builder.description;
   }
 
   /**
@@ -129,17 +129,6 @@ public class RecordType extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the description.
-   *
-   * The description of the record type element.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
   }
 
   /**
@@ -154,6 +143,17 @@ public class RecordType extends GenericModel {
   }
 
   /**
+   * Gets the entityTypes.
+   *
+   * Collection of entity types belonging to this record type element.
+   *
+   * @return the entityTypes
+   */
+  public Map<String, EntityType> entityTypes() {
+    return entityTypes;
+  }
+
+  /**
    * Gets the label.
    *
    * The displayable text label for this record type element.
@@ -165,14 +165,14 @@ public class RecordType extends GenericModel {
   }
 
   /**
-   * Gets the entityTypes.
+   * Gets the description.
    *
-   * Collection of entity types belonging to this record type element.
+   * The description of the record type element.
    *
-   * @return the entityTypes
+   * @return the description
    */
-  public Map<String, EntityType> entityTypes() {
-    return entityTypes;
+  public String description() {
+    return description;
   }
 }
 

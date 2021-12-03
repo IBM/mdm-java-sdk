@@ -34,25 +34,25 @@ public class PublishDataRequestAssetSourceDetailsTest {
   @Test
   public void testPublishDataRequestAssetSourceDetails() throws Throwable {
     PublishDataRequestAssetSourceDetailsProject publishDataRequestAssetSourceDetailsProjectModel = new PublishDataRequestAssetSourceDetailsProject.Builder()
+      .cosEndpoint("testString")
       .cosBucketName("testString")
       .cosApiKey("testString")
-      .cosEndpoint("testString")
       .id("testString")
       .build();
+    assertEquals(publishDataRequestAssetSourceDetailsProjectModel.cosEndpoint(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsProjectModel.cosBucketName(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsProjectModel.cosApiKey(), "testString");
-    assertEquals(publishDataRequestAssetSourceDetailsProjectModel.cosEndpoint(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsProjectModel.id(), "testString");
 
     PublishDataRequestAssetSourceDetailsCatalog publishDataRequestAssetSourceDetailsCatalogModel = new PublishDataRequestAssetSourceDetailsCatalog.Builder()
+      .cosEndpoint("testString")
       .cosBucketName("testString")
       .cosApiKey("testString")
-      .cosEndpoint("testString")
       .id("testString")
       .build();
+    assertEquals(publishDataRequestAssetSourceDetailsCatalogModel.cosEndpoint(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsCatalogModel.cosBucketName(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsCatalogModel.cosApiKey(), "testString");
-    assertEquals(publishDataRequestAssetSourceDetailsCatalogModel.cosEndpoint(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsCatalogModel.id(), "testString");
 
     PublishDataRequestAssetSourceDetails publishDataRequestAssetSourceDetailsModel = new PublishDataRequestAssetSourceDetails.Builder()

@@ -22,13 +22,13 @@ public class DataModelAttribute extends GenericModel {
 
   protected String label;
   protected String classification;
+  protected Boolean indexed;
   @SerializedName("matching_type")
   protected String matchingType;
   @SerializedName("attribute_type")
   protected String attributeType;
-  protected Boolean indexed;
-  protected String description;
   protected String cardinality;
+  protected String description;
 
   /**
    * Builder.
@@ -36,20 +36,20 @@ public class DataModelAttribute extends GenericModel {
   public static class Builder {
     private String label;
     private String classification;
+    private Boolean indexed;
     private String matchingType;
     private String attributeType;
-    private Boolean indexed;
-    private String description;
     private String cardinality;
+    private String description;
 
     private Builder(DataModelAttribute dataModelAttribute) {
       this.label = dataModelAttribute.label;
       this.classification = dataModelAttribute.classification;
+      this.indexed = dataModelAttribute.indexed;
       this.matchingType = dataModelAttribute.matchingType;
       this.attributeType = dataModelAttribute.attributeType;
-      this.indexed = dataModelAttribute.indexed;
-      this.description = dataModelAttribute.description;
       this.cardinality = dataModelAttribute.cardinality;
+      this.description = dataModelAttribute.description;
     }
 
     /**
@@ -101,6 +101,17 @@ public class DataModelAttribute extends GenericModel {
     }
 
     /**
+     * Set the indexed.
+     *
+     * @param indexed the indexed
+     * @return the DataModelAttribute builder
+     */
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
+      return this;
+    }
+
+    /**
      * Set the matchingType.
      *
      * @param matchingType the matchingType
@@ -123,13 +134,13 @@ public class DataModelAttribute extends GenericModel {
     }
 
     /**
-     * Set the indexed.
+     * Set the cardinality.
      *
-     * @param indexed the indexed
+     * @param cardinality the cardinality
      * @return the DataModelAttribute builder
      */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
+    public Builder cardinality(String cardinality) {
+      this.cardinality = cardinality;
       return this;
     }
 
@@ -143,17 +154,6 @@ public class DataModelAttribute extends GenericModel {
       this.description = description;
       return this;
     }
-
-    /**
-     * Set the cardinality.
-     *
-     * @param cardinality the cardinality
-     * @return the DataModelAttribute builder
-     */
-    public Builder cardinality(String cardinality) {
-      this.cardinality = cardinality;
-      return this;
-    }
   }
 
   protected DataModelAttribute(Builder builder) {
@@ -163,11 +163,11 @@ public class DataModelAttribute extends GenericModel {
       "attributeType cannot be null");
     label = builder.label;
     classification = builder.classification;
+    indexed = builder.indexed;
     matchingType = builder.matchingType;
     attributeType = builder.attributeType;
-    indexed = builder.indexed;
-    description = builder.description;
     cardinality = builder.cardinality;
+    description = builder.description;
   }
 
   /**
@@ -202,6 +202,17 @@ public class DataModelAttribute extends GenericModel {
   }
 
   /**
+   * Gets the indexed.
+   *
+   * User defined indexed indicator. The default value is true.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
+  }
+
+  /**
    * Gets the matchingType.
    *
    * User defined matching type (only applicable to record type), one of PERSONNAME, ORGNAME, GENDER, DATE, EMAIL,
@@ -225,14 +236,14 @@ public class DataModelAttribute extends GenericModel {
   }
 
   /**
-   * Gets the indexed.
+   * Gets the cardinality.
    *
-   * User defined indexed indicator. The default value is true.
+   * User defined cardinality, one of SINGLE, LIST or SET. The default value is LIST.
    *
-   * @return the indexed
+   * @return the cardinality
    */
-  public Boolean indexed() {
-    return indexed;
+  public String cardinality() {
+    return cardinality;
   }
 
   /**
@@ -244,17 +255,6 @@ public class DataModelAttribute extends GenericModel {
    */
   public String description() {
     return description;
-  }
-
-  /**
-   * Gets the cardinality.
-   *
-   * User defined cardinality, one of SINGLE, LIST or SET. The default value is LIST.
-   *
-   * @return the cardinality
-   */
-  public String cardinality() {
-    return cardinality;
   }
 }
 

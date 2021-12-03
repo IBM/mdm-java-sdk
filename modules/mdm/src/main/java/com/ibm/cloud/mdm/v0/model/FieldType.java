@@ -19,25 +19,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class FieldType extends GenericModel {
 
-  protected String description;
-  protected Boolean indexed;
   protected String label;
+  protected String description;
   protected String classification;
+  protected Boolean indexed;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String description;
-    private Boolean indexed;
     private String label;
+    private String description;
     private String classification;
+    private Boolean indexed;
 
     private Builder(FieldType fieldType) {
-      this.description = fieldType.description;
-      this.indexed = fieldType.indexed;
       this.label = fieldType.label;
+      this.description = fieldType.description;
       this.classification = fieldType.classification;
+      this.indexed = fieldType.indexed;
     }
 
     /**
@@ -65,28 +65,6 @@ public class FieldType extends GenericModel {
     }
 
     /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the FieldType builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
-     * Set the indexed.
-     *
-     * @param indexed the indexed
-     * @return the FieldType builder
-     */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
-      return this;
-    }
-
-    /**
      * Set the label.
      *
      * @param label the label
@@ -94,6 +72,17 @@ public class FieldType extends GenericModel {
      */
     public Builder label(String label) {
       this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the FieldType builder
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -107,15 +96,26 @@ public class FieldType extends GenericModel {
       this.classification = classification;
       return this;
     }
+
+    /**
+     * Set the indexed.
+     *
+     * @param indexed the indexed
+     * @return the FieldType builder
+     */
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
+      return this;
+    }
   }
 
   protected FieldType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    description = builder.description;
-    indexed = builder.indexed;
     label = builder.label;
+    description = builder.description;
     classification = builder.classification;
+    indexed = builder.indexed;
   }
 
   /**
@@ -125,28 +125,6 @@ public class FieldType extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the description.
-   *
-   * The description of the field type.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
-   * Gets the indexed.
-   *
-   * Specifies whether the field type is indexed for text searches.
-   *
-   * @return the indexed
-   */
-  public Boolean indexed() {
-    return indexed;
   }
 
   /**
@@ -161,6 +139,17 @@ public class FieldType extends GenericModel {
   }
 
   /**
+   * Gets the description.
+   *
+   * The description of the field type.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
+  }
+
+  /**
    * Gets the classification.
    *
    * The classification of the field type.
@@ -169,6 +158,17 @@ public class FieldType extends GenericModel {
    */
   public String classification() {
     return classification;
+  }
+
+  /**
+   * Gets the indexed.
+   *
+   * Specifies whether the field type is indexed for text searches.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
   }
 }
 

@@ -35,7 +35,7 @@ public class PostDeriveIndexTest {
     assertNull(postDeriveIndexModel.getRecordId());
     assertNull(postDeriveIndexModel.getRecordSource());
     assertNull(postDeriveIndexModel.getRecordType());
-    assertNull(postDeriveIndexModel.getBuckets());
     assertNull(postDeriveIndexModel.getStandardizedValues());
+    assertNull(postDeriveIndexModel.getBuckets());
   }
 }

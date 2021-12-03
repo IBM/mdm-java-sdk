@@ -42,12 +42,14 @@ public class BulkLoadRequestDataStructureRecordPropertiesContentsTest {
     assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel.delimiter(), "testString");
 
     BulkLoadRequestDataStructureRecordPropertiesContents bulkLoadRequestDataStructureRecordPropertiesContentsModel = new BulkLoadRequestDataStructureRecordPropertiesContents.Builder()
+      .collectionId("testString")
       .recordType("testString")
       .relationshipType("testString")
       .defaultSource("testString")
       .fileType("csv")
       .csvOptions(bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel)
       .build();
+    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.collectionId(), "testString");
     assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.recordType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.relationshipType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.defaultSource(), "testString");
@@ -58,6 +60,7 @@ public class BulkLoadRequestDataStructureRecordPropertiesContentsTest {
 
     BulkLoadRequestDataStructureRecordPropertiesContents bulkLoadRequestDataStructureRecordPropertiesContentsModelNew = TestUtilities.deserialize(json, BulkLoadRequestDataStructureRecordPropertiesContents.class);
     assertTrue(bulkLoadRequestDataStructureRecordPropertiesContentsModelNew instanceof BulkLoadRequestDataStructureRecordPropertiesContents);
+    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModelNew.collectionId(), "testString");
     assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModelNew.recordType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModelNew.relationshipType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModelNew.defaultSource(), "testString");

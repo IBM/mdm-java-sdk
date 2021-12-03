@@ -30,6 +30,8 @@ public class BulkLoadRequestDataStructureRelationshipPropertiesContents extends 
     String JSON = "json";
   }
 
+  @SerializedName("collection_id")
+  protected String collectionId;
   @SerializedName("record_type")
   protected String recordType;
   @SerializedName("relationship_type")
@@ -45,6 +47,7 @@ public class BulkLoadRequestDataStructureRelationshipPropertiesContents extends 
    * Builder.
    */
   public static class Builder {
+    private String collectionId;
     private String recordType;
     private String relationshipType;
     private String defaultSource;
@@ -52,6 +55,7 @@ public class BulkLoadRequestDataStructureRelationshipPropertiesContents extends 
     private BulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptions csvOptions;
 
     private Builder(BulkLoadRequestDataStructureRelationshipPropertiesContents bulkLoadRequestDataStructureRelationshipPropertiesContents) {
+      this.collectionId = bulkLoadRequestDataStructureRelationshipPropertiesContents.collectionId;
       this.recordType = bulkLoadRequestDataStructureRelationshipPropertiesContents.recordType;
       this.relationshipType = bulkLoadRequestDataStructureRelationshipPropertiesContents.relationshipType;
       this.defaultSource = bulkLoadRequestDataStructureRelationshipPropertiesContents.defaultSource;
@@ -81,6 +85,17 @@ public class BulkLoadRequestDataStructureRelationshipPropertiesContents extends 
      */
     public BulkLoadRequestDataStructureRelationshipPropertiesContents build() {
       return new BulkLoadRequestDataStructureRelationshipPropertiesContents(this);
+    }
+
+    /**
+     * Set the collectionId.
+     *
+     * @param collectionId the collectionId
+     * @return the BulkLoadRequestDataStructureRelationshipPropertiesContents builder
+     */
+    public Builder collectionId(String collectionId) {
+      this.collectionId = collectionId;
+      return this;
     }
 
     /**
@@ -142,6 +157,7 @@ public class BulkLoadRequestDataStructureRelationshipPropertiesContents extends 
   protected BulkLoadRequestDataStructureRelationshipPropertiesContents(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fileType,
       "fileType cannot be null");
+    collectionId = builder.collectionId;
     recordType = builder.recordType;
     relationshipType = builder.relationshipType;
     defaultSource = builder.defaultSource;
@@ -156,6 +172,17 @@ public class BulkLoadRequestDataStructureRelationshipPropertiesContents extends 
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the collectionId.
+   *
+   * The collection id to use for the bulk load data.
+   *
+   * @return the collectionId
+   */
+  public String collectionId() {
+    return collectionId;
   }
 
   /**

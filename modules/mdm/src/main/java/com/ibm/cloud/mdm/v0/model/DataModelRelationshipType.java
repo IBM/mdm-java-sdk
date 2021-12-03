@@ -31,8 +31,8 @@ public class DataModelRelationshipType extends GenericModel {
   protected String labelFromSource;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
-  protected String description;
   protected String cardinality;
+  protected String description;
   protected Map<String, DataModelAttribute> attributes;
 
   /**
@@ -44,8 +44,8 @@ public class DataModelRelationshipType extends GenericModel {
     private List<DataModelRelationshipRule> rules;
     private String labelFromSource;
     private String labelFromTarget;
-    private String description;
     private String cardinality;
+    private String description;
     private Map<String, DataModelAttribute> attributes;
 
     private Builder(DataModelRelationshipType dataModelRelationshipType) {
@@ -54,8 +54,8 @@ public class DataModelRelationshipType extends GenericModel {
       this.rules = dataModelRelationshipType.rules;
       this.labelFromSource = dataModelRelationshipType.labelFromSource;
       this.labelFromTarget = dataModelRelationshipType.labelFromTarget;
-      this.description = dataModelRelationshipType.description;
       this.cardinality = dataModelRelationshipType.cardinality;
+      this.description = dataModelRelationshipType.description;
       this.attributes = dataModelRelationshipType.attributes;
     }
 
@@ -156,17 +156,6 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the DataModelRelationshipType builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
      * Set the cardinality.
      *
      * @param cardinality the cardinality
@@ -174,6 +163,17 @@ public class DataModelRelationshipType extends GenericModel {
      */
     public Builder cardinality(String cardinality) {
       this.cardinality = cardinality;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -197,8 +197,8 @@ public class DataModelRelationshipType extends GenericModel {
     rules = builder.rules;
     labelFromSource = builder.labelFromSource;
     labelFromTarget = builder.labelFromTarget;
-    description = builder.description;
     cardinality = builder.cardinality;
+    description = builder.description;
     attributes = builder.attributes;
   }
 
@@ -267,17 +267,6 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the description.
-   *
-   * User defined translatable description.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
    * Gets the cardinality.
    *
    * User defined cardinality, one of MULTI, SIMPLE, MANY2ONE, ONE2MANY or ONE2ONE. The default value is MULTI.
@@ -286,6 +275,17 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public String cardinality() {
     return cardinality;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * User defined translatable description.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
   }
 
   /**

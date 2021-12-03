@@ -20,27 +20,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PublishDataRequestAssetSourceDetailsProject extends GenericModel {
 
+  @SerializedName("cos_endpoint")
+  protected String cosEndpoint;
   @SerializedName("cos_bucket_name")
   protected String cosBucketName;
   @SerializedName("cos_api_key")
   protected String cosApiKey;
-  @SerializedName("cos_endpoint")
-  protected String cosEndpoint;
   protected String id;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String cosEndpoint;
     private String cosBucketName;
     private String cosApiKey;
-    private String cosEndpoint;
     private String id;
 
     private Builder(PublishDataRequestAssetSourceDetailsProject publishDataRequestAssetSourceDetailsProject) {
+      this.cosEndpoint = publishDataRequestAssetSourceDetailsProject.cosEndpoint;
       this.cosBucketName = publishDataRequestAssetSourceDetailsProject.cosBucketName;
       this.cosApiKey = publishDataRequestAssetSourceDetailsProject.cosApiKey;
-      this.cosEndpoint = publishDataRequestAssetSourceDetailsProject.cosEndpoint;
       this.id = publishDataRequestAssetSourceDetailsProject.id;
     }
 
@@ -57,6 +57,17 @@ public class PublishDataRequestAssetSourceDetailsProject extends GenericModel {
      */
     public PublishDataRequestAssetSourceDetailsProject build() {
       return new PublishDataRequestAssetSourceDetailsProject(this);
+    }
+
+    /**
+     * Set the cosEndpoint.
+     *
+     * @param cosEndpoint the cosEndpoint
+     * @return the PublishDataRequestAssetSourceDetailsProject builder
+     */
+    public Builder cosEndpoint(String cosEndpoint) {
+      this.cosEndpoint = cosEndpoint;
+      return this;
     }
 
     /**
@@ -82,17 +93,6 @@ public class PublishDataRequestAssetSourceDetailsProject extends GenericModel {
     }
 
     /**
-     * Set the cosEndpoint.
-     *
-     * @param cosEndpoint the cosEndpoint
-     * @return the PublishDataRequestAssetSourceDetailsProject builder
-     */
-    public Builder cosEndpoint(String cosEndpoint) {
-      this.cosEndpoint = cosEndpoint;
-      return this;
-    }
-
-    /**
      * Set the id.
      *
      * @param id the id
@@ -105,9 +105,9 @@ public class PublishDataRequestAssetSourceDetailsProject extends GenericModel {
   }
 
   protected PublishDataRequestAssetSourceDetailsProject(Builder builder) {
+    cosEndpoint = builder.cosEndpoint;
     cosBucketName = builder.cosBucketName;
     cosApiKey = builder.cosApiKey;
-    cosEndpoint = builder.cosEndpoint;
     id = builder.id;
   }
 
@@ -118,6 +118,17 @@ public class PublishDataRequestAssetSourceDetailsProject extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the cosEndpoint.
+   *
+   * Endpoint URL of the Cloud Object Storage.
+   *
+   * @return the cosEndpoint
+   */
+  public String cosEndpoint() {
+    return cosEndpoint;
   }
 
   /**
@@ -140,17 +151,6 @@ public class PublishDataRequestAssetSourceDetailsProject extends GenericModel {
    */
   public String cosApiKey() {
     return cosApiKey;
-  }
-
-  /**
-   * Gets the cosEndpoint.
-   *
-   * Endpoint URL of the Cloud Object Storage.
-   *
-   * @return the cosEndpoint
-   */
-  public String cosEndpoint() {
-    return cosEndpoint;
   }
 
   /**

@@ -22,12 +22,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetSummaryStatsAndEntities extends GenericModel {
 
+  @SerializedName("largest_entities_list")
+  protected List<GetSummaryEntities> largestEntitiesList;
   @SerializedName("entities_count_list")
   protected List<GetSummaryEntities> entitiesCountList;
   @SerializedName("entity_size_stats")
   protected GetSummaryEntitySizeStats entitySizeStats;
-  @SerializedName("largest_entities_list")
-  protected List<GetSummaryEntities> largestEntitiesList;
+
+  /**
+   * Gets the largestEntitiesList.
+   *
+   * Collection of top large entities as per the value of max_result.
+   *
+   * @return the largestEntitiesList
+   */
+  public List<GetSummaryEntities> getLargestEntitiesList() {
+    return largestEntitiesList;
+  }
 
   /**
    * Gets the entitiesCountList.
@@ -49,17 +60,6 @@ public class GetSummaryStatsAndEntities extends GenericModel {
    */
   public GetSummaryEntitySizeStats getEntitySizeStats() {
     return entitySizeStats;
-  }
-
-  /**
-   * Gets the largestEntitiesList.
-   *
-   * Collection of top large entities as per the value of max_result.
-   *
-   * @return the largestEntitiesList
-   */
-  public List<GetSummaryEntities> getLargestEntitiesList() {
-    return largestEntitiesList;
   }
 }
 

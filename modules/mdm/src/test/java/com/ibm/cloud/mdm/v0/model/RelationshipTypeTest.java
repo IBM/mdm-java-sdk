@@ -59,35 +59,35 @@ public class RelationshipTypeTest {
     assertEquals(ruleModel.source(), sourceModel);
 
     Attribute attributeModel = new Attribute.Builder()
+      .classification("testString")
       .label("testString")
+      .indexed(true)
       .attributeType("email")
       .description("testString")
-      .indexed(true)
-      .classification("testString")
       .cardinality("testString")
       .build();
+    assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.label(), "testString");
+    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(attributeModel.attributeType(), "email");
     assertEquals(attributeModel.description(), "testString");
-    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.cardinality(), "testString");
 
     RelationshipType relationshipTypeModel = new RelationshipType.Builder()
-      .label("testString")
       .rules(new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)))
       .labelFromSource("testString")
       .labelFromTarget("testString")
       .directional(true)
+      .label("testString")
       .description("testString")
       .cardinality("testString")
       .attributes(new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } })
       .build();
-    assertEquals(relationshipTypeModel.label(), "testString");
     assertEquals(relationshipTypeModel.rules(), new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)));
     assertEquals(relationshipTypeModel.labelFromSource(), "testString");
     assertEquals(relationshipTypeModel.labelFromTarget(), "testString");
     assertEquals(relationshipTypeModel.directional(), Boolean.valueOf(true));
+    assertEquals(relationshipTypeModel.label(), "testString");
     assertEquals(relationshipTypeModel.description(), "testString");
     assertEquals(relationshipTypeModel.cardinality(), "testString");
     assertEquals(relationshipTypeModel.attributes(), new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } });
@@ -96,10 +96,10 @@ public class RelationshipTypeTest {
 
     RelationshipType relationshipTypeModelNew = TestUtilities.deserialize(json, RelationshipType.class);
     assertTrue(relationshipTypeModelNew instanceof RelationshipType);
-    assertEquals(relationshipTypeModelNew.label(), "testString");
     assertEquals(relationshipTypeModelNew.labelFromSource(), "testString");
     assertEquals(relationshipTypeModelNew.labelFromTarget(), "testString");
     assertEquals(relationshipTypeModelNew.directional(), Boolean.valueOf(true));
+    assertEquals(relationshipTypeModelNew.label(), "testString");
     assertEquals(relationshipTypeModelNew.description(), "testString");
     assertEquals(relationshipTypeModelNew.cardinality(), "testString");
   }

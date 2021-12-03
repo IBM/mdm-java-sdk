@@ -32,32 +32,32 @@ public class AssetMappingTest {
   @Test
   public void testAssetMapping() throws Throwable {
     AssetMapping assetMappingModel = new AssetMapping.Builder()
-      .classifiedClass("GEN")
-      .dataMappingName("gender")
-      .excludeColumn(false)
-      .autoMapped(true)
       .completenessPercent("100.0")
       .dataMappingAttributeType("string")
+      .classifiedClass("GEN")
+      .dataMappingName("gender")
+      .autoMapped(true)
+      .excludeColumn(false)
       .key("COLUMN 1")
       .build();
-    assertEquals(assetMappingModel.classifiedClass(), "GEN");
-    assertEquals(assetMappingModel.dataMappingName(), "gender");
-    assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
-    assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
     assertEquals(assetMappingModel.completenessPercent(), "100.0");
     assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
+    assertEquals(assetMappingModel.classifiedClass(), "GEN");
+    assertEquals(assetMappingModel.dataMappingName(), "gender");
+    assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
+    assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModel.key(), "COLUMN 1");
 
     String json = TestUtilities.serialize(assetMappingModel);
 
     AssetMapping assetMappingModelNew = TestUtilities.deserialize(json, AssetMapping.class);
     assertTrue(assetMappingModelNew instanceof AssetMapping);
-    assertEquals(assetMappingModelNew.classifiedClass(), "GEN");
-    assertEquals(assetMappingModelNew.dataMappingName(), "gender");
-    assertEquals(assetMappingModelNew.excludeColumn(), Boolean.valueOf(false));
-    assertEquals(assetMappingModelNew.autoMapped(), Boolean.valueOf(true));
     assertEquals(assetMappingModelNew.completenessPercent(), "100.0");
     assertEquals(assetMappingModelNew.dataMappingAttributeType(), "string");
+    assertEquals(assetMappingModelNew.classifiedClass(), "GEN");
+    assertEquals(assetMappingModelNew.dataMappingName(), "gender");
+    assertEquals(assetMappingModelNew.autoMapped(), Boolean.valueOf(true));
+    assertEquals(assetMappingModelNew.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModelNew.key(), "COLUMN 1");
   }
 }

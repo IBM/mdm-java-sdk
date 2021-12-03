@@ -42,12 +42,14 @@ public class BulkLoadRequestDataStructureRelationshipPropertiesContentsTest {
     assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel.delimiter(), "testString");
 
     BulkLoadRequestDataStructureRelationshipPropertiesContents bulkLoadRequestDataStructureRelationshipPropertiesContentsModel = new BulkLoadRequestDataStructureRelationshipPropertiesContents.Builder()
+      .collectionId("testString")
       .recordType("testString")
       .relationshipType("testString")
       .defaultSource("testString")
       .fileType("csv")
       .csvOptions(bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel)
       .build();
+    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.collectionId(), "testString");
     assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.recordType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.relationshipType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.defaultSource(), "testString");
@@ -58,6 +60,7 @@ public class BulkLoadRequestDataStructureRelationshipPropertiesContentsTest {
 
     BulkLoadRequestDataStructureRelationshipPropertiesContents bulkLoadRequestDataStructureRelationshipPropertiesContentsModelNew = TestUtilities.deserialize(json, BulkLoadRequestDataStructureRelationshipPropertiesContents.class);
     assertTrue(bulkLoadRequestDataStructureRelationshipPropertiesContentsModelNew instanceof BulkLoadRequestDataStructureRelationshipPropertiesContents);
+    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModelNew.collectionId(), "testString");
     assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModelNew.recordType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModelNew.relationshipType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModelNew.defaultSource(), "testString");

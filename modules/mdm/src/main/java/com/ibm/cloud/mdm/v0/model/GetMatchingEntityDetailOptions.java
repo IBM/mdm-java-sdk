@@ -24,9 +24,9 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
 
   protected String entityType;
   protected String recordType;
+  protected List<String> recordNumbers;
   protected List<String> entityNumber;
   protected Float minScore;
-  protected List<String> recordNumbers;
 
   /**
    * Builder.
@@ -34,16 +34,16 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
   public static class Builder {
     private String entityType;
     private String recordType;
+    private List<String> recordNumbers;
     private List<String> entityNumber;
     private Float minScore;
-    private List<String> recordNumbers;
 
     private Builder(GetMatchingEntityDetailOptions getMatchingEntityDetailOptions) {
       this.entityType = getMatchingEntityDetailOptions.entityType;
       this.recordType = getMatchingEntityDetailOptions.recordType;
+      this.recordNumbers = getMatchingEntityDetailOptions.recordNumbers;
       this.entityNumber = getMatchingEntityDetailOptions.entityNumber;
       this.minScore = getMatchingEntityDetailOptions.minScore;
-      this.recordNumbers = getMatchingEntityDetailOptions.recordNumbers;
     }
 
     /**
@@ -73,22 +73,6 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
     }
 
     /**
-     * Adds an entityNumber to entityNumber.
-     *
-     * @param entityNumber the new entityNumber
-     * @return the GetMatchingEntityDetailOptions builder
-     */
-    public Builder addEntityNumber(String entityNumber) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(entityNumber,
-        "entityNumber cannot be null");
-      if (this.entityNumber == null) {
-        this.entityNumber = new ArrayList<String>();
-      }
-      this.entityNumber.add(entityNumber);
-      return this;
-    }
-
-    /**
      * Adds an recordNumbers to recordNumbers.
      *
      * @param recordNumbers the new recordNumbers
@@ -101,6 +85,22 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
         this.recordNumbers = new ArrayList<String>();
       }
       this.recordNumbers.add(recordNumbers);
+      return this;
+    }
+
+    /**
+     * Adds an entityNumber to entityNumber.
+     *
+     * @param entityNumber the new entityNumber
+     * @return the GetMatchingEntityDetailOptions builder
+     */
+    public Builder addEntityNumber(String entityNumber) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(entityNumber,
+        "entityNumber cannot be null");
+      if (this.entityNumber == null) {
+        this.entityNumber = new ArrayList<String>();
+      }
+      this.entityNumber.add(entityNumber);
       return this;
     }
 
@@ -127,6 +127,18 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
     }
 
     /**
+     * Set the recordNumbers.
+     * Existing recordNumbers will be replaced.
+     *
+     * @param recordNumbers the recordNumbers
+     * @return the GetMatchingEntityDetailOptions builder
+     */
+    public Builder recordNumbers(List<String> recordNumbers) {
+      this.recordNumbers = recordNumbers;
+      return this;
+    }
+
+    /**
      * Set the entityNumber.
      * Existing entityNumber will be replaced.
      *
@@ -148,18 +160,6 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
       this.minScore = minScore;
       return this;
     }
-
-    /**
-     * Set the recordNumbers.
-     * Existing recordNumbers will be replaced.
-     *
-     * @param recordNumbers the recordNumbers
-     * @return the GetMatchingEntityDetailOptions builder
-     */
-    public Builder recordNumbers(List<String> recordNumbers) {
-      this.recordNumbers = recordNumbers;
-      return this;
-    }
   }
 
   protected GetMatchingEntityDetailOptions(Builder builder) {
@@ -169,9 +169,9 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
       "recordType cannot be null");
     entityType = builder.entityType;
     recordType = builder.recordType;
+    recordNumbers = builder.recordNumbers;
     entityNumber = builder.entityNumber;
     minScore = builder.minScore;
-    recordNumbers = builder.recordNumbers;
   }
 
   /**
@@ -206,6 +206,17 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
   }
 
   /**
+   * Gets the recordNumbers.
+   *
+   * Collection of record numbers.
+   *
+   * @return the recordNumbers
+   */
+  public List<String> recordNumbers() {
+    return recordNumbers;
+  }
+
+  /**
    * Gets the entityNumber.
    *
    * Collection of entity numbers.
@@ -225,17 +236,6 @@ public class GetMatchingEntityDetailOptions extends GenericModel {
    */
   public Float minScore() {
     return minScore;
-  }
-
-  /**
-   * Gets the recordNumbers.
-   *
-   * Collection of record numbers.
-   *
-   * @return the recordNumbers
-   */
-  public List<String> recordNumbers() {
-    return recordNumbers;
   }
 }
 

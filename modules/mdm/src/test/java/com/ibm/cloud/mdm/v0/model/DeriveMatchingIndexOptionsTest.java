@@ -36,13 +36,13 @@ public class DeriveMatchingIndexOptionsTest {
   @Test
   public void testDeriveMatchingIndexOptions() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
-      .recordId("testString")
       .recordLastUpdated(Long.valueOf("26"))
+      .recordId("testString")
       .recordSource("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
+    assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
@@ -55,10 +55,10 @@ public class DeriveMatchingIndexOptionsTest {
 
     DeriveMatchingIndexOptions deriveMatchingIndexOptionsModel = new DeriveMatchingIndexOptions.Builder()
       .records(new java.util.ArrayList<SingleRecordRequest>(java.util.Arrays.asList(singleRecordRequestModel)))
-      .details("testString")
+      .details("low")
       .build();
     assertEquals(deriveMatchingIndexOptionsModel.records(), new java.util.ArrayList<SingleRecordRequest>(java.util.Arrays.asList(singleRecordRequestModel)));
-    assertEquals(deriveMatchingIndexOptionsModel.details(), "testString");
+    assertEquals(deriveMatchingIndexOptionsModel.details(), "low");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

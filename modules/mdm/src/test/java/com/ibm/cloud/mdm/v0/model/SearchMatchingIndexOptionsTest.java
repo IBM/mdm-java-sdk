@@ -33,33 +33,33 @@ public class SearchMatchingIndexOptionsTest {
   @Test
   public void testSearchMatchingIndexOptions() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
-      .recordId("testString")
       .recordLastUpdated(Long.valueOf("26"))
+      .recordId("testString")
       .recordSource("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
+    assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
     SearchMatchingIndexOptions searchMatchingIndexOptionsModel = new SearchMatchingIndexOptions.Builder()
       .recordType("testString")
       .attributes(singleRecordRequestAttributesModel)
-      .details("testString")
+      .details("low")
       .minScore(Long.valueOf("26"))
       .maxScore(Long.valueOf("26"))
       .offset(Long.valueOf("26"))
-      .entityType("testString")
+      .entityType("person_entity")
       .limit(Long.valueOf("26"))
       .build();
     assertEquals(searchMatchingIndexOptionsModel.recordType(), "testString");
     assertEquals(searchMatchingIndexOptionsModel.attributes(), singleRecordRequestAttributesModel);
-    assertEquals(searchMatchingIndexOptionsModel.details(), "testString");
+    assertEquals(searchMatchingIndexOptionsModel.details(), "low");
     assertEquals(searchMatchingIndexOptionsModel.minScore(), Long.valueOf("26"));
     assertEquals(searchMatchingIndexOptionsModel.maxScore(), Long.valueOf("26"));
     assertEquals(searchMatchingIndexOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(searchMatchingIndexOptionsModel.entityType(), "testString");
+    assertEquals(searchMatchingIndexOptionsModel.entityType(), "person_entity");
     assertEquals(searchMatchingIndexOptionsModel.limit(), Long.valueOf("26"));
   }
 }

@@ -35,7 +35,7 @@ public class SummaryTest {
     assertNull(summaryModel.getSingletonCount());
     assertNull(summaryModel.getDistinctSources());
     assertNull(summaryModel.getDataAssets());
-    assertNull(summaryModel.getTotalRecords());
     assertNull(summaryModel.getEntitiesCount());
+    assertNull(summaryModel.getTotalRecords());
   }
 }

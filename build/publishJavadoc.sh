@@ -7,7 +7,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" ]; then
 
     printf "\n>>>>> Cloning repository's gh-pages branch into directory 'gh-pages'"
     rm -fr ./gh-pages
-    git clone --branch=gh-pages https://${GH_TOKEN}@XXXGH_URL_NOSCHEMEXXX.git gh-pages
+    git clone --branch=gh-pages https://${GH_TOKEN}@github.com/IBM/mdm-java-sdk.git gh-pages
 
     printf "\n>>>>> Finished cloning...\n"
 

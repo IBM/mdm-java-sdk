@@ -22,9 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateModelAlgorithmOptions extends GenericModel {
 
   protected String recordType;
-  protected AlgorithmEncryption encryption;
-  protected Map<String, AlgorithmStandardizer> standardizers;
   protected Map<String, AlgorithmEntityType> entityTypes;
+  protected Map<String, AlgorithmStandardizer> standardizers;
+  protected AlgorithmEncryption encryption;
   protected String locale;
 
   /**
@@ -32,16 +32,16 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
    */
   public static class Builder {
     private String recordType;
-    private AlgorithmEncryption encryption;
-    private Map<String, AlgorithmStandardizer> standardizers;
     private Map<String, AlgorithmEntityType> entityTypes;
+    private Map<String, AlgorithmStandardizer> standardizers;
+    private AlgorithmEncryption encryption;
     private String locale;
 
     private Builder(UpdateModelAlgorithmOptions updateModelAlgorithmOptions) {
       this.recordType = updateModelAlgorithmOptions.recordType;
-      this.encryption = updateModelAlgorithmOptions.encryption;
-      this.standardizers = updateModelAlgorithmOptions.standardizers;
       this.entityTypes = updateModelAlgorithmOptions.entityTypes;
+      this.standardizers = updateModelAlgorithmOptions.standardizers;
+      this.encryption = updateModelAlgorithmOptions.encryption;
       this.locale = updateModelAlgorithmOptions.locale;
     }
 
@@ -55,16 +55,16 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param recordType the recordType
-     * @param encryption the encryption
-     * @param standardizers the standardizers
      * @param entityTypes the entityTypes
+     * @param standardizers the standardizers
+     * @param encryption the encryption
      * @param locale the locale
      */
-    public Builder(String recordType, AlgorithmEncryption encryption, Map<String, AlgorithmStandardizer> standardizers, Map<String, AlgorithmEntityType> entityTypes, String locale) {
+    public Builder(String recordType, Map<String, AlgorithmEntityType> entityTypes, Map<String, AlgorithmStandardizer> standardizers, AlgorithmEncryption encryption, String locale) {
       this.recordType = recordType;
-      this.encryption = encryption;
-      this.standardizers = standardizers;
       this.entityTypes = entityTypes;
+      this.standardizers = standardizers;
+      this.encryption = encryption;
       this.locale = locale;
     }
 
@@ -89,13 +89,13 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
     }
 
     /**
-     * Set the encryption.
+     * Set the entityTypes.
      *
-     * @param encryption the encryption
+     * @param entityTypes the entityTypes
      * @return the UpdateModelAlgorithmOptions builder
      */
-    public Builder encryption(AlgorithmEncryption encryption) {
-      this.encryption = encryption;
+    public Builder entityTypes(Map<String, AlgorithmEntityType> entityTypes) {
+      this.entityTypes = entityTypes;
       return this;
     }
 
@@ -111,13 +111,13 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
     }
 
     /**
-     * Set the entityTypes.
+     * Set the encryption.
      *
-     * @param entityTypes the entityTypes
+     * @param encryption the encryption
      * @return the UpdateModelAlgorithmOptions builder
      */
-    public Builder entityTypes(Map<String, AlgorithmEntityType> entityTypes) {
-      this.entityTypes = entityTypes;
+    public Builder encryption(AlgorithmEncryption encryption) {
+      this.encryption = encryption;
       return this;
     }
 
@@ -139,9 +139,9 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
      * @return the UpdateModelAlgorithmOptions builder
      */
     public Builder algorithm(Algorithm algorithm) {
-      this.encryption = algorithm.encryption();
-      this.standardizers = algorithm.standardizers();
       this.entityTypes = algorithm.entityTypes();
+      this.standardizers = algorithm.standardizers();
+      this.encryption = algorithm.encryption();
       this.locale = algorithm.locale();
       return this;
     }
@@ -150,18 +150,18 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
   protected UpdateModelAlgorithmOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.recordType,
       "recordType cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.encryption,
-      "encryption cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.standardizers,
-      "standardizers cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
       "entityTypes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.standardizers,
+      "standardizers cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.encryption,
+      "encryption cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
     recordType = builder.recordType;
-    encryption = builder.encryption;
-    standardizers = builder.standardizers;
     entityTypes = builder.entityTypes;
+    standardizers = builder.standardizers;
+    encryption = builder.encryption;
     locale = builder.locale;
   }
 
@@ -186,14 +186,14 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
   }
 
   /**
-   * Gets the encryption.
+   * Gets the entityTypes.
    *
-   * Asymmetric encryption configuration.
+   * Collection of entity type definitions.
    *
-   * @return the encryption
+   * @return the entityTypes
    */
-  public AlgorithmEncryption encryption() {
-    return encryption;
+  public Map<String, AlgorithmEntityType> entityTypes() {
+    return entityTypes;
   }
 
   /**
@@ -208,14 +208,14 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
   }
 
   /**
-   * Gets the entityTypes.
+   * Gets the encryption.
    *
-   * Collection of entity type definitions.
+   * Asymmetric encryption configuration.
    *
-   * @return the entityTypes
+   * @return the encryption
    */
-  public Map<String, AlgorithmEntityType> entityTypes() {
-    return entityTypes;
+  public AlgorithmEncryption encryption() {
+    return encryption;
   }
 
   /**
