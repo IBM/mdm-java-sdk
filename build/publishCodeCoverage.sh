@@ -10,4 +10,3 @@ else
     printf ">>>>> Bypassing code coverage publish step for feature branch/PR build.\n"
 fi
 
-
