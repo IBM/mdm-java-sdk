@@ -15,7 +15,7 @@ package com.ibm.cloud.mdm.v0.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Publish Model status details.
+ * Publish Model process status details.
  */
 public class PublishModelStatus extends GenericModel {
 

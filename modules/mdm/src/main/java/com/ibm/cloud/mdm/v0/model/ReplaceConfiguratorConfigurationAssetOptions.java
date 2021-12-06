@@ -25,8 +25,8 @@ public class ReplaceConfiguratorConfigurationAssetOptions extends GenericModel {
   protected String assetId;
   protected String assetName;
   protected String assetStatus;
-  protected List<AssetMapping> assetMappings;
   protected String assetCreatedDate;
+  protected List<AssetMapping> assetMappings;
 
   /**
    * Builder.
@@ -35,15 +35,15 @@ public class ReplaceConfiguratorConfigurationAssetOptions extends GenericModel {
     private String assetId;
     private String assetName;
     private String assetStatus;
-    private List<AssetMapping> assetMappings;
     private String assetCreatedDate;
+    private List<AssetMapping> assetMappings;
 
     private Builder(ReplaceConfiguratorConfigurationAssetOptions replaceConfiguratorConfigurationAssetOptions) {
       this.assetId = replaceConfiguratorConfigurationAssetOptions.assetId;
       this.assetName = replaceConfiguratorConfigurationAssetOptions.assetName;
       this.assetStatus = replaceConfiguratorConfigurationAssetOptions.assetStatus;
-      this.assetMappings = replaceConfiguratorConfigurationAssetOptions.assetMappings;
       this.assetCreatedDate = replaceConfiguratorConfigurationAssetOptions.assetCreatedDate;
+      this.assetMappings = replaceConfiguratorConfigurationAssetOptions.assetMappings;
     }
 
     /**
@@ -124,6 +124,17 @@ public class ReplaceConfiguratorConfigurationAssetOptions extends GenericModel {
     }
 
     /**
+     * Set the assetCreatedDate.
+     *
+     * @param assetCreatedDate the assetCreatedDate
+     * @return the ReplaceConfiguratorConfigurationAssetOptions builder
+     */
+    public Builder assetCreatedDate(String assetCreatedDate) {
+      this.assetCreatedDate = assetCreatedDate;
+      return this;
+    }
+
+    /**
      * Set the assetMappings.
      * Existing assetMappings will be replaced.
      *
@@ -132,17 +143,6 @@ public class ReplaceConfiguratorConfigurationAssetOptions extends GenericModel {
      */
     public Builder assetMappings(List<AssetMapping> assetMappings) {
       this.assetMappings = assetMappings;
-      return this;
-    }
-
-    /**
-     * Set the assetCreatedDate.
-     *
-     * @param assetCreatedDate the assetCreatedDate
-     * @return the ReplaceConfiguratorConfigurationAssetOptions builder
-     */
-    public Builder assetCreatedDate(String assetCreatedDate) {
-      this.assetCreatedDate = assetCreatedDate;
       return this;
     }
   }
@@ -157,8 +157,8 @@ public class ReplaceConfiguratorConfigurationAssetOptions extends GenericModel {
     assetId = builder.assetId;
     assetName = builder.assetName;
     assetStatus = builder.assetStatus;
-    assetMappings = builder.assetMappings;
     assetCreatedDate = builder.assetCreatedDate;
+    assetMappings = builder.assetMappings;
   }
 
   /**
@@ -204,17 +204,6 @@ public class ReplaceConfiguratorConfigurationAssetOptions extends GenericModel {
   }
 
   /**
-   * Gets the assetMappings.
-   *
-   * Details of Data Asset column mappings with the data model.
-   *
-   * @return the assetMappings
-   */
-  public List<AssetMapping> assetMappings() {
-    return assetMappings;
-  }
-
-  /**
    * Gets the assetCreatedDate.
    *
    * The date of data asset creation.
@@ -223,6 +212,17 @@ public class ReplaceConfiguratorConfigurationAssetOptions extends GenericModel {
    */
   public String assetCreatedDate() {
     return assetCreatedDate;
+  }
+
+  /**
+   * Gets the assetMappings.
+   *
+   * Details of Data Asset column mappings with the data model.
+   *
+   * @return the assetMappings
+   */
+  public List<AssetMapping> assetMappings() {
+    return assetMappings;
   }
 }
 

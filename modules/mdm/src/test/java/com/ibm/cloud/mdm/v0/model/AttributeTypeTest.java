@@ -33,34 +33,34 @@ public class AttributeTypeTest {
   @Test
   public void testAttributeType() throws Throwable {
     FieldType fieldTypeModel = new FieldType.Builder()
-      .description("testString")
-      .indexed(true)
       .label("testString")
+      .description("testString")
       .classification("testString")
+      .indexed(true)
       .build();
-    assertEquals(fieldTypeModel.description(), "testString");
-    assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
     assertEquals(fieldTypeModel.label(), "testString");
+    assertEquals(fieldTypeModel.description(), "testString");
     assertEquals(fieldTypeModel.classification(), "testString");
+    assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
 
     AttributeType attributeTypeModel = new AttributeType.Builder()
-      .classification("testString")
-      .fields(new java.util.HashMap<String, FieldType>() { { put("foo", fieldTypeModel); } })
       .label("testString")
       .description("testString")
+      .classification("testString")
+      .fields(new java.util.HashMap<String, FieldType>() { { put("foo", fieldTypeModel); } })
       .build();
-    assertEquals(attributeTypeModel.classification(), "testString");
-    assertEquals(attributeTypeModel.fields(), new java.util.HashMap<String, FieldType>() { { put("foo", fieldTypeModel); } });
     assertEquals(attributeTypeModel.label(), "testString");
     assertEquals(attributeTypeModel.description(), "testString");
+    assertEquals(attributeTypeModel.classification(), "testString");
+    assertEquals(attributeTypeModel.fields(), new java.util.HashMap<String, FieldType>() { { put("foo", fieldTypeModel); } });
 
     String json = TestUtilities.serialize(attributeTypeModel);
 
     AttributeType attributeTypeModelNew = TestUtilities.deserialize(json, AttributeType.class);
     assertTrue(attributeTypeModelNew instanceof AttributeType);
-    assertEquals(attributeTypeModelNew.classification(), "testString");
     assertEquals(attributeTypeModelNew.label(), "testString");
     assertEquals(attributeTypeModelNew.description(), "testString");
+    assertEquals(attributeTypeModelNew.classification(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -29,7 +29,7 @@ public class RelatedRecords extends GenericModel {
   protected PagedResponsePrevious previous;
   protected PagedResponseNext next;
   @SerializedName("related_records")
-  protected List<Record> relatedRecords;
+  protected List<DataRecord> relatedRecords;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -106,7 +106,7 @@ public class RelatedRecords extends GenericModel {
    *
    * @return the relatedRecords
    */
-  public List<Record> getRelatedRecords() {
+  public List<DataRecord> getRelatedRecords() {
     return relatedRecords;
   }
 

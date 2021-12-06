@@ -20,21 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class MatchAttribute extends GenericModel {
 
-  @SerializedName("matching_attribute_name")
-  protected String matchingAttributeName;
   @SerializedName("matching_attribute_default_display_name")
   protected String matchingAttributeDefaultDisplayName;
-
-  /**
-   * Gets the matchingAttributeName.
-   *
-   * The name of the attribute for running match process.
-   *
-   * @return the matchingAttributeName
-   */
-  public String getMatchingAttributeName() {
-    return matchingAttributeName;
-  }
+  @SerializedName("matching_attribute_name")
+  protected String matchingAttributeName;
 
   /**
    * Gets the matchingAttributeDefaultDisplayName.
@@ -45,6 +34,17 @@ public class MatchAttribute extends GenericModel {
    */
   public String getMatchingAttributeDefaultDisplayName() {
     return matchingAttributeDefaultDisplayName;
+  }
+
+  /**
+   * Gets the matchingAttributeName.
+   *
+   * The name of the attribute for running match process.
+   *
+   * @return the matchingAttributeName
+   */
+  public String getMatchingAttributeName() {
+    return matchingAttributeName;
   }
 }
 

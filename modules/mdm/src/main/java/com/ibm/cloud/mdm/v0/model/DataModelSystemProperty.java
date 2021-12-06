@@ -20,8 +20,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelSystemProperty extends GenericModel {
 
-  protected Boolean editable;
   protected String label;
+  protected Boolean editable;
   protected Boolean indexed;
   @SerializedName("data_type")
   protected String dataType;
@@ -31,15 +31,15 @@ public class DataModelSystemProperty extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private Boolean editable;
     private String label;
+    private Boolean editable;
     private Boolean indexed;
     private String dataType;
     private String description;
 
     private Builder(DataModelSystemProperty dataModelSystemProperty) {
-      this.editable = dataModelSystemProperty.editable;
       this.label = dataModelSystemProperty.label;
+      this.editable = dataModelSystemProperty.editable;
       this.indexed = dataModelSystemProperty.indexed;
       this.dataType = dataModelSystemProperty.dataType;
       this.description = dataModelSystemProperty.description;
@@ -72,17 +72,6 @@ public class DataModelSystemProperty extends GenericModel {
     }
 
     /**
-     * Set the editable.
-     *
-     * @param editable the editable
-     * @return the DataModelSystemProperty builder
-     */
-    public Builder editable(Boolean editable) {
-      this.editable = editable;
-      return this;
-    }
-
-    /**
      * Set the label.
      *
      * @param label the label
@@ -90,6 +79,17 @@ public class DataModelSystemProperty extends GenericModel {
      */
     public Builder label(String label) {
       this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the editable.
+     *
+     * @param editable the editable
+     * @return the DataModelSystemProperty builder
+     */
+    public Builder editable(Boolean editable) {
+      this.editable = editable;
       return this;
     }
 
@@ -132,8 +132,8 @@ public class DataModelSystemProperty extends GenericModel {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
       "dataType cannot be null");
-    editable = builder.editable;
     label = builder.label;
+    editable = builder.editable;
     indexed = builder.indexed;
     dataType = builder.dataType;
     description = builder.description;
@@ -149,17 +149,6 @@ public class DataModelSystemProperty extends GenericModel {
   }
 
   /**
-   * Gets the editable.
-   *
-   * System pre-defined editable indicator. The default value is false.
-   *
-   * @return the editable
-   */
-  public Boolean editable() {
-    return editable;
-  }
-
-  /**
    * Gets the label.
    *
    * System pre-defined label.
@@ -168,6 +157,17 @@ public class DataModelSystemProperty extends GenericModel {
    */
   public String label() {
     return label;
+  }
+
+  /**
+   * Gets the editable.
+   *
+   * System pre-defined editable indicator. The default value is false.
+   *
+   * @return the editable
+   */
+  public Boolean editable() {
+    return editable;
   }
 
   /**

@@ -13,8 +13,8 @@
 
 package com.ibm.cloud.mdm.v0.model;
 
+import com.ibm.cloud.mdm.v0.model.DataSearchCriteriaQuery;
 import com.ibm.cloud.mdm.v0.model.Expression;
-import com.ibm.cloud.mdm.v0.model.SearchCriteriaQuery;
 import com.ibm.cloud.mdm.v0.model.SearchDataOptions;
 import com.ibm.cloud.mdm.v0.model.SearchFilter;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
@@ -47,12 +47,12 @@ public class SearchDataOptionsTest {
     assertEquals(expressionModel.value(), "testString");
     assertEquals(expressionModel.operation(), "and");
 
-    SearchCriteriaQuery searchCriteriaQueryModel = new SearchCriteriaQuery.Builder()
+    DataSearchCriteriaQuery dataSearchCriteriaQueryModel = new DataSearchCriteriaQuery.Builder()
       .expressions(new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)))
       .operation("and")
       .build();
-    assertEquals(searchCriteriaQueryModel.expressions(), new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)));
-    assertEquals(searchCriteriaQueryModel.operation(), "and");
+    assertEquals(dataSearchCriteriaQueryModel.expressions(), new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)));
+    assertEquals(dataSearchCriteriaQueryModel.operation(), "and");
 
     SearchFilter searchFilterModel = new SearchFilter.Builder()
       .type("record")
@@ -63,7 +63,7 @@ public class SearchDataOptionsTest {
 
     SearchDataOptions searchDataOptionsModel = new SearchDataOptions.Builder()
       .searchType("record")
-      .query(searchCriteriaQueryModel)
+      .query(dataSearchCriteriaQueryModel)
       .filters(new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)))
       .returnType("results")
       .limit(Long.valueOf("50"))
@@ -72,7 +72,7 @@ public class SearchDataOptionsTest {
       .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
       .build();
     assertEquals(searchDataOptionsModel.searchType(), "record");
-    assertEquals(searchDataOptionsModel.query(), searchCriteriaQueryModel);
+    assertEquals(searchDataOptionsModel.query(), dataSearchCriteriaQueryModel);
     assertEquals(searchDataOptionsModel.filters(), new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)));
     assertEquals(searchDataOptionsModel.returnType(), "results");
     assertEquals(searchDataOptionsModel.limit(), Long.valueOf("50"));

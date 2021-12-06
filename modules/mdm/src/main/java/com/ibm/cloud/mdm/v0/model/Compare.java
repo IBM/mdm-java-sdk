@@ -22,20 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Compare extends GenericModel {
 
+  protected Float score;
   @SerializedName("compare_methods")
   protected List<SingleCompareMethod> compareMethods;
-  protected Float score;
-
-  /**
-   * Gets the compareMethods.
-   *
-   * Collection of comparators used for comparing the records.
-   *
-   * @return the compareMethods
-   */
-  public List<SingleCompareMethod> getCompareMethods() {
-    return compareMethods;
-  }
 
   /**
    * Gets the score.
@@ -46,6 +35,17 @@ public class Compare extends GenericModel {
    */
   public Float getScore() {
     return score;
+  }
+
+  /**
+   * Gets the compareMethods.
+   *
+   * Collection of comparators used for comparing the records.
+   *
+   * @return the compareMethods
+   */
+  public List<SingleCompareMethod> getCompareMethods() {
+    return compareMethods;
   }
 }
 

@@ -32,29 +32,29 @@ public class AttributeTest {
   @Test
   public void testAttribute() throws Throwable {
     Attribute attributeModel = new Attribute.Builder()
+      .classification("testString")
       .label("testString")
+      .indexed(true)
       .attributeType("email")
       .description("testString")
-      .indexed(true)
-      .classification("testString")
       .cardinality("testString")
       .build();
+    assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.label(), "testString");
+    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(attributeModel.attributeType(), "email");
     assertEquals(attributeModel.description(), "testString");
-    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.cardinality(), "testString");
 
     String json = TestUtilities.serialize(attributeModel);
 
     Attribute attributeModelNew = TestUtilities.deserialize(json, Attribute.class);
     assertTrue(attributeModelNew instanceof Attribute);
+    assertEquals(attributeModelNew.classification(), "testString");
     assertEquals(attributeModelNew.label(), "testString");
+    assertEquals(attributeModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(attributeModelNew.attributeType(), "email");
     assertEquals(attributeModelNew.description(), "testString");
-    assertEquals(attributeModelNew.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModelNew.classification(), "testString");
     assertEquals(attributeModelNew.cardinality(), "testString");
   }
 

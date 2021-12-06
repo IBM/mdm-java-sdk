@@ -32,14 +32,14 @@ public class DataModelSystemPropertyTest {
   @Test
   public void testDataModelSystemProperty() throws Throwable {
     DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
-      .editable(true)
       .label("testString")
+      .editable(true)
       .indexed(true)
       .dataType("testString")
       .description("testString")
       .build();
-    assertEquals(dataModelSystemPropertyModel.editable(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModel.label(), "testString");
+    assertEquals(dataModelSystemPropertyModel.editable(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
     assertEquals(dataModelSystemPropertyModel.description(), "testString");
@@ -48,8 +48,8 @@ public class DataModelSystemPropertyTest {
 
     DataModelSystemProperty dataModelSystemPropertyModelNew = TestUtilities.deserialize(json, DataModelSystemProperty.class);
     assertTrue(dataModelSystemPropertyModelNew instanceof DataModelSystemProperty);
-    assertEquals(dataModelSystemPropertyModelNew.editable(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModelNew.label(), "testString");
+    assertEquals(dataModelSystemPropertyModelNew.editable(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModelNew.dataType(), "testString");
     assertEquals(dataModelSystemPropertyModelNew.description(), "testString");

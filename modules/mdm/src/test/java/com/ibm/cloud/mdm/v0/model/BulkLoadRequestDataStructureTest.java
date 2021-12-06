@@ -45,12 +45,14 @@ public class BulkLoadRequestDataStructureTest {
     assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel.delimiter(), "testString");
 
     BulkLoadRequestDataStructureRecordPropertiesContents bulkLoadRequestDataStructureRecordPropertiesContentsModel = new BulkLoadRequestDataStructureRecordPropertiesContents.Builder()
+      .collectionId("testString")
       .recordType("testString")
       .relationshipType("testString")
       .defaultSource("testString")
       .fileType("csv")
       .csvOptions(bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel)
       .build();
+    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.collectionId(), "testString");
     assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.recordType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.relationshipType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.defaultSource(), "testString");
@@ -67,12 +69,14 @@ public class BulkLoadRequestDataStructureTest {
     assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel.delimiter(), "testString");
 
     BulkLoadRequestDataStructureRelationshipPropertiesContents bulkLoadRequestDataStructureRelationshipPropertiesContentsModel = new BulkLoadRequestDataStructureRelationshipPropertiesContents.Builder()
+      .collectionId("testString")
       .recordType("testString")
       .relationshipType("testString")
       .defaultSource("testString")
       .fileType("csv")
       .csvOptions(bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel)
       .build();
+    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.collectionId(), "testString");
     assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.recordType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.relationshipType(), "testString");
     assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.defaultSource(), "testString");

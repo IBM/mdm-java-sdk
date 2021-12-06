@@ -13,11 +13,11 @@
 
 package com.ibm.cloud.mdm.v0.model;
 
+import com.ibm.cloud.mdm.v0.model.DataRecord;
 import com.ibm.cloud.mdm.v0.model.PagedResponseFirst;
 import com.ibm.cloud.mdm.v0.model.PagedResponseLast;
 import com.ibm.cloud.mdm.v0.model.PagedResponseNext;
 import com.ibm.cloud.mdm.v0.model.PagedResponsePrevious;
-import com.ibm.cloud.mdm.v0.model.Record;
 import com.ibm.cloud.mdm.v0.model.RelatedRecords;
 import com.ibm.cloud.mdm.v0.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

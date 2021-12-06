@@ -22,28 +22,39 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Asset extends GenericModel {
 
-  @SerializedName("asset_mappings")
-  protected List<AssetMapping> assetMappings;
-  @SerializedName("asset_id")
-  protected String assetId;
-  @SerializedName("asset_last_updated_date")
-  protected String assetLastUpdatedDate;
   @SerializedName("asset_status")
   protected String assetStatus;
   @SerializedName("asset_created_date")
   protected String assetCreatedDate;
+  @SerializedName("asset_id")
+  protected String assetId;
+  @SerializedName("asset_last_updated_date")
+  protected String assetLastUpdatedDate;
+  @SerializedName("asset_mappings")
+  protected List<AssetMapping> assetMappings;
   @SerializedName("asset_name")
   protected String assetName;
 
   /**
-   * Gets the assetMappings.
+   * Gets the assetStatus.
    *
-   * The details of Data asset column mappings to the data model.
+   * The status of the Data asset.
    *
-   * @return the assetMappings
+   * @return the assetStatus
    */
-  public List<AssetMapping> getAssetMappings() {
-    return assetMappings;
+  public String getAssetStatus() {
+    return assetStatus;
+  }
+
+  /**
+   * Gets the assetCreatedDate.
+   *
+   * The date of the Data asset creation.
+   *
+   * @return the assetCreatedDate
+   */
+  public String getAssetCreatedDate() {
+    return assetCreatedDate;
   }
 
   /**
@@ -69,25 +80,14 @@ public class Asset extends GenericModel {
   }
 
   /**
-   * Gets the assetStatus.
+   * Gets the assetMappings.
    *
-   * The status of the Data asset.
+   * The details of Data asset column mappings to the data model.
    *
-   * @return the assetStatus
+   * @return the assetMappings
    */
-  public String getAssetStatus() {
-    return assetStatus;
-  }
-
-  /**
-   * Gets the assetCreatedDate.
-   *
-   * The date of the Data asset creation.
-   *
-   * @return the assetCreatedDate
-   */
-  public String getAssetCreatedDate() {
-    return assetCreatedDate;
+  public List<AssetMapping> getAssetMappings() {
+    return assetMappings;
   }
 
   /**

@@ -32,27 +32,27 @@ public class AttributeTypesTest {
   @Test
   public void testAttributeTypes() throws Throwable {
     AttributeTypes attributeTypesModel = new AttributeTypes.Builder()
-      .dataType("testString")
+      .description("testString")
+      .label("testString")
       .editable(true)
       .indexed(true)
-      .label("testString")
-      .description("testString")
+      .dataType("testString")
       .build();
-    assertEquals(attributeTypesModel.dataType(), "testString");
+    assertEquals(attributeTypesModel.description(), "testString");
+    assertEquals(attributeTypesModel.label(), "testString");
     assertEquals(attributeTypesModel.editable(), Boolean.valueOf(true));
     assertEquals(attributeTypesModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeTypesModel.label(), "testString");
-    assertEquals(attributeTypesModel.description(), "testString");
+    assertEquals(attributeTypesModel.dataType(), "testString");
 
     String json = TestUtilities.serialize(attributeTypesModel);
 
     AttributeTypes attributeTypesModelNew = TestUtilities.deserialize(json, AttributeTypes.class);
     assertTrue(attributeTypesModelNew instanceof AttributeTypes);
-    assertEquals(attributeTypesModelNew.dataType(), "testString");
+    assertEquals(attributeTypesModelNew.description(), "testString");
+    assertEquals(attributeTypesModelNew.label(), "testString");
     assertEquals(attributeTypesModelNew.editable(), Boolean.valueOf(true));
     assertEquals(attributeTypesModelNew.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeTypesModelNew.label(), "testString");
-    assertEquals(attributeTypesModelNew.description(), "testString");
+    assertEquals(attributeTypesModelNew.dataType(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

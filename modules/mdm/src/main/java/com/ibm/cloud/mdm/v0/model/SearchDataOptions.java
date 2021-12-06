@@ -41,7 +41,7 @@ public class SearchDataOptions extends GenericModel {
   }
 
   protected String searchType;
-  protected SearchCriteriaQuery query;
+  protected DataSearchCriteriaQuery query;
   protected List<SearchFilter> filters;
   protected String returnType;
   protected Long limit;
@@ -54,7 +54,7 @@ public class SearchDataOptions extends GenericModel {
    */
   public static class Builder {
     private String searchType;
-    private SearchCriteriaQuery query;
+    private DataSearchCriteriaQuery query;
     private List<SearchFilter> filters;
     private String returnType;
     private Long limit;
@@ -153,7 +153,7 @@ public class SearchDataOptions extends GenericModel {
      * @param query the query
      * @return the SearchDataOptions builder
      */
-    public Builder query(SearchCriteriaQuery query) {
+    public Builder query(DataSearchCriteriaQuery query) {
       this.query = query;
       return this;
     }
@@ -266,7 +266,7 @@ public class SearchDataOptions extends GenericModel {
    *
    * @return the query
    */
-  public SearchCriteriaQuery query() {
+  public DataSearchCriteriaQuery query() {
     return query;
   }
 

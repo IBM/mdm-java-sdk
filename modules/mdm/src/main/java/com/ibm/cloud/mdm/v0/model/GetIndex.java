@@ -25,11 +25,11 @@ public class GetIndex extends GenericModel {
 
   @SerializedName("record_number")
   protected String recordNumber;
-  @SerializedName("self_scores")
-  protected Map<String, Object> selfScores;
-  protected List<Long> buckets;
   @SerializedName("standardized_values")
   protected String standardizedValues;
+  protected List<Long> buckets;
+  @SerializedName("self_scores")
+  protected Map<String, Object> selfScores;
 
   /**
    * Gets the recordNumber.
@@ -43,14 +43,14 @@ public class GetIndex extends GenericModel {
   }
 
   /**
-   * Gets the selfScores.
+   * Gets the standardizedValues.
    *
-   * Collection of self comparison scores of the source record for each entity type.
+   * A serialized representation of the standardized values.
    *
-   * @return the selfScores
+   * @return the standardizedValues
    */
-  public Map<String, Object> getSelfScores() {
-    return selfScores;
+  public String getStandardizedValues() {
+    return standardizedValues;
   }
 
   /**
@@ -65,14 +65,14 @@ public class GetIndex extends GenericModel {
   }
 
   /**
-   * Gets the standardizedValues.
+   * Gets the selfScores.
    *
-   * Collection of a record's standardized values, primarily used for record comparison.
+   * Collection of self comparison scores of the source record for each entity type.
    *
-   * @return the standardizedValues
+   * @return the selfScores
    */
-  public String getStandardizedValues() {
-    return standardizedValues;
+  public Map<String, Object> getSelfScores() {
+    return selfScores;
   }
 }
 

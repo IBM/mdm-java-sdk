@@ -6,7 +6,7 @@
     <parent>
         <artifactId>mdm-parent</artifactId>
         <groupId>com.ibm.cloud</groupId>
-        <version>0.0.9</version>
+        <version>0.0.11</version>
         <relativePath>../..</relativePath>
     </parent>
 
@@ -35,7 +35,9 @@
             <artifactId>slf4j-jdk14</artifactId>
         </dependency>
     </dependencies>
-    
+    <properties>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+    </properties>
     <developers>
         <developer>
             <name>IBM Cloud DevX SDK Development</name>

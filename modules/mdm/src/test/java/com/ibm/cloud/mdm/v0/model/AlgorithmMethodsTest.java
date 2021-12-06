@@ -35,25 +35,6 @@ public class AlgorithmMethodsTest {
 
   @Test
   public void testAlgorithmMethods() throws Throwable {
-    AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-      .setResource("testString")
-      .label("testString")
-      .mapResource("testString")
-      .comparisonResource("testString")
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .method("testString")
-      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .add("foo", "testString")
-      .build();
-    assertEquals(algorithmCompareStepModel.getSetResource(), "testString");
-    assertEquals(algorithmCompareStepModel.getLabel(), "testString");
-    assertEquals(algorithmCompareStepModel.getMapResource(), "testString");
-    assertEquals(algorithmCompareStepModel.getComparisonResource(), "testString");
-    assertEquals(algorithmCompareStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmCompareStepModel.getMethod(), "testString");
-    assertEquals(algorithmCompareStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(algorithmCompareStepModel.get("foo"), "testString");
-
     AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
       .encryptedFields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
@@ -63,12 +44,31 @@ public class AlgorithmMethodsTest {
     assertEquals(algorithmInputModel.fields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmInputModel.attributes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
-    AlgorithmMethods algorithmMethodsModel = new AlgorithmMethods.Builder()
-      .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
-      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+    AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .mapResource("testString")
+      .label("testString")
+      .comparisonResource("testString")
+      .setResource("testString")
+      .method("testString")
+      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .add("foo", "testString")
       .build();
-    assertEquals(algorithmMethodsModel.compareRecipe(), new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)));
+    assertEquals(algorithmCompareStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
+    assertEquals(algorithmCompareStepModel.getMapResource(), "testString");
+    assertEquals(algorithmCompareStepModel.getLabel(), "testString");
+    assertEquals(algorithmCompareStepModel.getComparisonResource(), "testString");
+    assertEquals(algorithmCompareStepModel.getSetResource(), "testString");
+    assertEquals(algorithmCompareStepModel.getMethod(), "testString");
+    assertEquals(algorithmCompareStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmCompareStepModel.get("foo"), "testString");
+
+    AlgorithmMethods algorithmMethodsModel = new AlgorithmMethods.Builder()
+      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+      .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
+      .build();
     assertEquals(algorithmMethodsModel.inputs(), new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)));
+    assertEquals(algorithmMethodsModel.compareRecipe(), new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)));
 
     String json = TestUtilities.serialize(algorithmMethodsModel);
 

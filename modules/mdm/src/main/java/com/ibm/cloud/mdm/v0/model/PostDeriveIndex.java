@@ -30,10 +30,10 @@ public class PostDeriveIndex extends DynamicModel<Object> {
   protected String recordSource;
   @SerializedName("record_type")
   protected String recordType;
-  @SerializedName("buckets")
-  protected List<Long> buckets;
   @SerializedName("standardized_values")
   protected Map<String, Object> standardizedValues;
+  @SerializedName("buckets")
+  protected List<Long> buckets;
 
   public PostDeriveIndex() {
     super(new TypeToken<Object>() { });
@@ -73,17 +73,6 @@ public class PostDeriveIndex extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the buckets.
-   *
-   * Collection of a record's bucket hashes, primarily used for efficient entity resolution.
-   *
-   * @return the buckets
-   */
-  public List<Long> getBuckets() {
-    return this.buckets;
-  }
-
-  /**
    * Gets the standardizedValues.
    *
    * Collection of a record's standardized values, primarily used for record comparison.
@@ -92,5 +81,16 @@ public class PostDeriveIndex extends DynamicModel<Object> {
    */
   public Map<String, Object> getStandardizedValues() {
     return this.standardizedValues;
+  }
+
+  /**
+   * Gets the buckets.
+   *
+   * Collection of a record's bucket hashes, primarily used for efficient entity resolution.
+   *
+   * @return the buckets
+   */
+  public List<Long> getBuckets() {
+    return this.buckets;
   }
 }

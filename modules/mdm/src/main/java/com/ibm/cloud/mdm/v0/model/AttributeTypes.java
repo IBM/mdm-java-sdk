@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AttributeTypes extends GenericModel {
 
-  @SerializedName("data_type")
-  protected String dataType;
+  protected String description;
+  protected String label;
   protected Boolean editable;
   protected Boolean indexed;
-  protected String label;
-  protected String description;
+  @SerializedName("data_type")
+  protected String dataType;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String dataType;
+    private String description;
+    private String label;
     private Boolean editable;
     private Boolean indexed;
-    private String label;
-    private String description;
+    private String dataType;
 
     private Builder(AttributeTypes attributeTypes) {
-      this.dataType = attributeTypes.dataType;
+      this.description = attributeTypes.description;
+      this.label = attributeTypes.label;
       this.editable = attributeTypes.editable;
       this.indexed = attributeTypes.indexed;
-      this.label = attributeTypes.label;
-      this.description = attributeTypes.description;
+      this.dataType = attributeTypes.dataType;
     }
 
     /**
@@ -54,12 +54,12 @@ public class AttributeTypes extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param dataType the dataType
      * @param label the label
+     * @param dataType the dataType
      */
-    public Builder(String dataType, String label) {
-      this.dataType = dataType;
+    public Builder(String label, String dataType) {
       this.label = label;
+      this.dataType = dataType;
     }
 
     /**
@@ -72,13 +72,24 @@ public class AttributeTypes extends GenericModel {
     }
 
     /**
-     * Set the dataType.
+     * Set the description.
      *
-     * @param dataType the dataType
+     * @param description the description
      * @return the AttributeTypes builder
      */
-    public Builder dataType(String dataType) {
-      this.dataType = dataType;
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the AttributeTypes builder
+     */
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -105,38 +116,27 @@ public class AttributeTypes extends GenericModel {
     }
 
     /**
-     * Set the label.
+     * Set the dataType.
      *
-     * @param label the label
+     * @param dataType the dataType
      * @return the AttributeTypes builder
      */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the AttributeTypes builder
-     */
-    public Builder description(String description) {
-      this.description = description;
+    public Builder dataType(String dataType) {
+      this.dataType = dataType;
       return this;
     }
   }
 
   protected AttributeTypes(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
-      "dataType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    dataType = builder.dataType;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
+      "dataType cannot be null");
+    description = builder.description;
+    label = builder.label;
     editable = builder.editable;
     indexed = builder.indexed;
-    label = builder.label;
-    description = builder.description;
+    dataType = builder.dataType;
   }
 
   /**
@@ -149,14 +149,25 @@ public class AttributeTypes extends GenericModel {
   }
 
   /**
-   * Gets the dataType.
+   * Gets the description.
    *
-   * The data type of the system property.
+   * The description of the system property.
    *
-   * @return the dataType
+   * @return the description
    */
-  public String dataType() {
-    return dataType;
+  public String description() {
+    return description;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * The displayable text for this system property.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**
@@ -182,25 +193,14 @@ public class AttributeTypes extends GenericModel {
   }
 
   /**
-   * Gets the label.
+   * Gets the dataType.
    *
-   * The displayable text for this system property.
+   * The data type of the system property.
    *
-   * @return the label
+   * @return the dataType
    */
-  public String label() {
-    return label;
-  }
-
-  /**
-   * Gets the description.
-   *
-   * The description of the system property.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
+  public String dataType() {
+    return dataType;
   }
 }
 

@@ -20,33 +20,33 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRecordTypeSystemProperties extends GenericModel {
 
+  @SerializedName("record_last_updated")
+  protected DataModelSystemProperty recordLastUpdated;
+  @SerializedName("record_number")
+  protected DataModelSystemProperty recordNumber;
   @SerializedName("record_id")
   protected DataModelSystemProperty recordId;
   @SerializedName("collection_id")
   protected DataModelSystemProperty collectionId;
   @SerializedName("record_source")
   protected DataModelSystemProperty recordSource;
-  @SerializedName("record_last_updated")
-  protected DataModelSystemProperty recordLastUpdated;
-  @SerializedName("record_number")
-  protected DataModelSystemProperty recordNumber;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private DataModelSystemProperty recordLastUpdated;
+    private DataModelSystemProperty recordNumber;
     private DataModelSystemProperty recordId;
     private DataModelSystemProperty collectionId;
     private DataModelSystemProperty recordSource;
-    private DataModelSystemProperty recordLastUpdated;
-    private DataModelSystemProperty recordNumber;
 
     private Builder(DataModelRecordTypeSystemProperties dataModelRecordTypeSystemProperties) {
+      this.recordLastUpdated = dataModelRecordTypeSystemProperties.recordLastUpdated;
+      this.recordNumber = dataModelRecordTypeSystemProperties.recordNumber;
       this.recordId = dataModelRecordTypeSystemProperties.recordId;
       this.collectionId = dataModelRecordTypeSystemProperties.collectionId;
       this.recordSource = dataModelRecordTypeSystemProperties.recordSource;
-      this.recordLastUpdated = dataModelRecordTypeSystemProperties.recordLastUpdated;
-      this.recordNumber = dataModelRecordTypeSystemProperties.recordNumber;
     }
 
     /**
@@ -58,18 +58,18 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
+     * @param recordLastUpdated the recordLastUpdated
+     * @param recordNumber the recordNumber
      * @param recordId the recordId
      * @param collectionId the collectionId
      * @param recordSource the recordSource
-     * @param recordLastUpdated the recordLastUpdated
-     * @param recordNumber the recordNumber
      */
-    public Builder(DataModelSystemProperty recordId, DataModelSystemProperty collectionId, DataModelSystemProperty recordSource, DataModelSystemProperty recordLastUpdated, DataModelSystemProperty recordNumber) {
+    public Builder(DataModelSystemProperty recordLastUpdated, DataModelSystemProperty recordNumber, DataModelSystemProperty recordId, DataModelSystemProperty collectionId, DataModelSystemProperty recordSource) {
+      this.recordLastUpdated = recordLastUpdated;
+      this.recordNumber = recordNumber;
       this.recordId = recordId;
       this.collectionId = collectionId;
       this.recordSource = recordSource;
-      this.recordLastUpdated = recordLastUpdated;
-      this.recordNumber = recordNumber;
     }
 
     /**
@@ -79,6 +79,28 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
      */
     public DataModelRecordTypeSystemProperties build() {
       return new DataModelRecordTypeSystemProperties(this);
+    }
+
+    /**
+     * Set the recordLastUpdated.
+     *
+     * @param recordLastUpdated the recordLastUpdated
+     * @return the DataModelRecordTypeSystemProperties builder
+     */
+    public Builder recordLastUpdated(DataModelSystemProperty recordLastUpdated) {
+      this.recordLastUpdated = recordLastUpdated;
+      return this;
+    }
+
+    /**
+     * Set the recordNumber.
+     *
+     * @param recordNumber the recordNumber
+     * @return the DataModelRecordTypeSystemProperties builder
+     */
+    public Builder recordNumber(DataModelSystemProperty recordNumber) {
+      this.recordNumber = recordNumber;
+      return this;
     }
 
     /**
@@ -113,46 +135,24 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
       this.recordSource = recordSource;
       return this;
     }
-
-    /**
-     * Set the recordLastUpdated.
-     *
-     * @param recordLastUpdated the recordLastUpdated
-     * @return the DataModelRecordTypeSystemProperties builder
-     */
-    public Builder recordLastUpdated(DataModelSystemProperty recordLastUpdated) {
-      this.recordLastUpdated = recordLastUpdated;
-      return this;
-    }
-
-    /**
-     * Set the recordNumber.
-     *
-     * @param recordNumber the recordNumber
-     * @return the DataModelRecordTypeSystemProperties builder
-     */
-    public Builder recordNumber(DataModelSystemProperty recordNumber) {
-      this.recordNumber = recordNumber;
-      return this;
-    }
   }
 
   protected DataModelRecordTypeSystemProperties(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordLastUpdated,
+      "recordLastUpdated cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordNumber,
+      "recordNumber cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordId,
       "recordId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.collectionId,
       "collectionId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordSource,
       "recordSource cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordLastUpdated,
-      "recordLastUpdated cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordNumber,
-      "recordNumber cannot be null");
+    recordLastUpdated = builder.recordLastUpdated;
+    recordNumber = builder.recordNumber;
     recordId = builder.recordId;
     collectionId = builder.collectionId;
     recordSource = builder.recordSource;
-    recordLastUpdated = builder.recordLastUpdated;
-    recordNumber = builder.recordNumber;
   }
 
   /**
@@ -162,6 +162,28 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the recordLastUpdated.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the recordLastUpdated
+   */
+  public DataModelSystemProperty recordLastUpdated() {
+    return recordLastUpdated;
+  }
+
+  /**
+   * Gets the recordNumber.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the recordNumber
+   */
+  public DataModelSystemProperty recordNumber() {
+    return recordNumber;
   }
 
   /**
@@ -195,28 +217,6 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
    */
   public DataModelSystemProperty recordSource() {
     return recordSource;
-  }
-
-  /**
-   * Gets the recordLastUpdated.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the recordLastUpdated
-   */
-  public DataModelSystemProperty recordLastUpdated() {
-    return recordLastUpdated;
-  }
-
-  /**
-   * Gets the recordNumber.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the recordNumber
-   */
-  public DataModelSystemProperty recordNumber() {
-    return recordNumber;
   }
 }
 

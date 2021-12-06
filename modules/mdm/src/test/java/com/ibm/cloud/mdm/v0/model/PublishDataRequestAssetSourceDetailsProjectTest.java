@@ -32,23 +32,23 @@ public class PublishDataRequestAssetSourceDetailsProjectTest {
   @Test
   public void testPublishDataRequestAssetSourceDetailsProject() throws Throwable {
     PublishDataRequestAssetSourceDetailsProject publishDataRequestAssetSourceDetailsProjectModel = new PublishDataRequestAssetSourceDetailsProject.Builder()
+      .cosEndpoint("testString")
       .cosBucketName("testString")
       .cosApiKey("testString")
-      .cosEndpoint("testString")
       .id("testString")
       .build();
+    assertEquals(publishDataRequestAssetSourceDetailsProjectModel.cosEndpoint(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsProjectModel.cosBucketName(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsProjectModel.cosApiKey(), "testString");
-    assertEquals(publishDataRequestAssetSourceDetailsProjectModel.cosEndpoint(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsProjectModel.id(), "testString");
 
     String json = TestUtilities.serialize(publishDataRequestAssetSourceDetailsProjectModel);
 
     PublishDataRequestAssetSourceDetailsProject publishDataRequestAssetSourceDetailsProjectModelNew = TestUtilities.deserialize(json, PublishDataRequestAssetSourceDetailsProject.class);
     assertTrue(publishDataRequestAssetSourceDetailsProjectModelNew instanceof PublishDataRequestAssetSourceDetailsProject);
+    assertEquals(publishDataRequestAssetSourceDetailsProjectModelNew.cosEndpoint(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsProjectModelNew.cosBucketName(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsProjectModelNew.cosApiKey(), "testString");
-    assertEquals(publishDataRequestAssetSourceDetailsProjectModelNew.cosEndpoint(), "testString");
     assertEquals(publishDataRequestAssetSourceDetailsProjectModelNew.id(), "testString");
   }
 }

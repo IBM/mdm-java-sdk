@@ -11,6 +11,6 @@
  * specific language governing permissions and limitations under the License.
  */
 /**
- * Master Data Management v0.
+ * IBM Match 360 with Watson v0.
  */
 package com.ibm.cloud.mdm.v0;

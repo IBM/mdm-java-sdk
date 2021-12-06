@@ -28,9 +28,9 @@ public class ConfigDataModel extends GenericModel {
   protected Map<String, RelationshipType> relationshipTypes;
   @SerializedName("attribute_types")
   protected Map<String, AttributeType> attributeTypes;
-  protected String locale;
   @SerializedName("system_properties")
   protected Map<String, SystemProperties> systemProperties;
+  protected String locale;
 
   /**
    * Builder.
@@ -39,15 +39,15 @@ public class ConfigDataModel extends GenericModel {
     private Map<String, RecordType> recordTypes;
     private Map<String, RelationshipType> relationshipTypes;
     private Map<String, AttributeType> attributeTypes;
-    private String locale;
     private Map<String, SystemProperties> systemProperties;
+    private String locale;
 
     private Builder(ConfigDataModel configDataModel) {
       this.recordTypes = configDataModel.recordTypes;
       this.relationshipTypes = configDataModel.relationshipTypes;
       this.attributeTypes = configDataModel.attributeTypes;
-      this.locale = configDataModel.locale;
       this.systemProperties = configDataModel.systemProperties;
+      this.locale = configDataModel.locale;
     }
 
     /**
@@ -99,17 +99,6 @@ public class ConfigDataModel extends GenericModel {
     }
 
     /**
-     * Set the locale.
-     *
-     * @param locale the locale
-     * @return the ConfigDataModel builder
-     */
-    public Builder locale(String locale) {
-      this.locale = locale;
-      return this;
-    }
-
-    /**
      * Set the systemProperties.
      *
      * @param systemProperties the systemProperties
@@ -119,14 +108,25 @@ public class ConfigDataModel extends GenericModel {
       this.systemProperties = systemProperties;
       return this;
     }
+
+    /**
+     * Set the locale.
+     *
+     * @param locale the locale
+     * @return the ConfigDataModel builder
+     */
+    public Builder locale(String locale) {
+      this.locale = locale;
+      return this;
+    }
   }
 
   protected ConfigDataModel(Builder builder) {
     recordTypes = builder.recordTypes;
     relationshipTypes = builder.relationshipTypes;
     attributeTypes = builder.attributeTypes;
-    locale = builder.locale;
     systemProperties = builder.systemProperties;
+    locale = builder.locale;
   }
 
   /**
@@ -172,17 +172,6 @@ public class ConfigDataModel extends GenericModel {
   }
 
   /**
-   * Gets the locale.
-   *
-   * The locale of the data model.
-   *
-   * @return the locale
-   */
-  public String locale() {
-    return locale;
-  }
-
-  /**
    * Gets the systemProperties.
    *
    * Collection of system properties.
@@ -191,6 +180,17 @@ public class ConfigDataModel extends GenericModel {
    */
   public Map<String, SystemProperties> systemProperties() {
     return systemProperties;
+  }
+
+  /**
+   * Gets the locale.
+   *
+   * The locale of the data model.
+   *
+   * @return the locale
+   */
+  public String locale() {
+    return locale;
   }
 }
 

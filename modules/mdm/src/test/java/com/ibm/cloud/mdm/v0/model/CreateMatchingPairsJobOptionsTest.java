@@ -32,7 +32,7 @@ public class CreateMatchingPairsJobOptionsTest {
   @Test
   public void testCreateMatchingPairsJobOptions() throws Throwable {
     CreateMatchingPairsJobOptions createMatchingPairsJobOptionsModel = new CreateMatchingPairsJobOptions.Builder()
-      .doWait(true)
+      .doWait(false)
       .entityType("person_entity")
       .recordType("person")
       .minScore("1")
@@ -42,7 +42,7 @@ public class CreateMatchingPairsJobOptionsTest {
       .executorMemory("8g")
       .executorCoreCount(Long.valueOf("1"))
       .build();
-    assertEquals(createMatchingPairsJobOptionsModel.doWait(), Boolean.valueOf(true));
+    assertEquals(createMatchingPairsJobOptionsModel.doWait(), Boolean.valueOf(false));
     assertEquals(createMatchingPairsJobOptionsModel.entityType(), "person_entity");
     assertEquals(createMatchingPairsJobOptionsModel.recordType(), "person");
     assertEquals(createMatchingPairsJobOptionsModel.minScore(), "1");

@@ -37,13 +37,13 @@ public class CreateMatchingReportJobOptionsTest {
       .executorCount(Long.valueOf("1"))
       .executorMemory("8g")
       .executorCoreCount(Long.valueOf("1"))
-      .doAnalytics(true)
+      .doAnalytics(false)
       .build();
     assertEquals(createMatchingReportJobOptionsModel.recordType(), "person");
     assertEquals(createMatchingReportJobOptionsModel.entityType(), "person_entity");
     assertEquals(createMatchingReportJobOptionsModel.executorCount(), Long.valueOf("1"));
     assertEquals(createMatchingReportJobOptionsModel.executorMemory(), "8g");
     assertEquals(createMatchingReportJobOptionsModel.executorCoreCount(), Long.valueOf("1"));
-    assertEquals(createMatchingReportJobOptionsModel.doAnalytics(), Boolean.valueOf(true));
+    assertEquals(createMatchingReportJobOptionsModel.doAnalytics(), Boolean.valueOf(false));
   }
 }

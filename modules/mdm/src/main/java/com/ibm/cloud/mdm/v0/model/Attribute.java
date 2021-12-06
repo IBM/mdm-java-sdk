@@ -20,31 +20,31 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Attribute extends GenericModel {
 
+  protected String classification;
   protected String label;
+  protected Boolean indexed;
   @SerializedName("attribute_type")
   protected String attributeType;
   protected String description;
-  protected Boolean indexed;
-  protected String classification;
   protected String cardinality;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String classification;
     private String label;
+    private Boolean indexed;
     private String attributeType;
     private String description;
-    private Boolean indexed;
-    private String classification;
     private String cardinality;
 
     private Builder(Attribute attribute) {
+      this.classification = attribute.classification;
       this.label = attribute.label;
+      this.indexed = attribute.indexed;
       this.attributeType = attribute.attributeType;
       this.description = attribute.description;
-      this.indexed = attribute.indexed;
-      this.classification = attribute.classification;
       this.cardinality = attribute.cardinality;
     }
 
@@ -75,6 +75,17 @@ public class Attribute extends GenericModel {
     }
 
     /**
+     * Set the classification.
+     *
+     * @param classification the classification
+     * @return the Attribute builder
+     */
+    public Builder classification(String classification) {
+      this.classification = classification;
+      return this;
+    }
+
+    /**
      * Set the label.
      *
      * @param label the label
@@ -82,6 +93,17 @@ public class Attribute extends GenericModel {
      */
     public Builder label(String label) {
       this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the indexed.
+     *
+     * @param indexed the indexed
+     * @return the Attribute builder
+     */
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
       return this;
     }
 
@@ -108,28 +130,6 @@ public class Attribute extends GenericModel {
     }
 
     /**
-     * Set the indexed.
-     *
-     * @param indexed the indexed
-     * @return the Attribute builder
-     */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
-      return this;
-    }
-
-    /**
-     * Set the classification.
-     *
-     * @param classification the classification
-     * @return the Attribute builder
-     */
-    public Builder classification(String classification) {
-      this.classification = classification;
-      return this;
-    }
-
-    /**
      * Set the cardinality.
      *
      * @param cardinality the cardinality
@@ -146,11 +146,11 @@ public class Attribute extends GenericModel {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
       "attributeType cannot be null");
+    classification = builder.classification;
     label = builder.label;
+    indexed = builder.indexed;
     attributeType = builder.attributeType;
     description = builder.description;
-    indexed = builder.indexed;
-    classification = builder.classification;
     cardinality = builder.cardinality;
   }
 
@@ -164,6 +164,17 @@ public class Attribute extends GenericModel {
   }
 
   /**
+   * Gets the classification.
+   *
+   * The classification of this Data Model Attribute.
+   *
+   * @return the classification
+   */
+  public String classification() {
+    return classification;
+  }
+
+  /**
    * Gets the label.
    *
    * The displayable text for this Attribute element.
@@ -172,6 +183,17 @@ public class Attribute extends GenericModel {
    */
   public String label() {
     return label;
+  }
+
+  /**
+   * Gets the indexed.
+   *
+   * Specifies whether the field property is indexed for text searches.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
   }
 
   /**
@@ -194,28 +216,6 @@ public class Attribute extends GenericModel {
    */
   public String description() {
     return description;
-  }
-
-  /**
-   * Gets the indexed.
-   *
-   * Specifies whether the field property is indexed for text searches.
-   *
-   * @return the indexed
-   */
-  public Boolean indexed() {
-    return indexed;
-  }
-
-  /**
-   * Gets the classification.
-   *
-   * The classification of this Data Model Attribute.
-   *
-   * @return the classification
-   */
-  public String classification() {
-    return classification;
   }
 
   /**

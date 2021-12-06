@@ -33,11 +33,11 @@ public class ReplaceDataRecordOptionsTest {
   public void testReplaceDataRecordOptions() throws Throwable {
     ReplaceDataRecordOptions replaceDataRecordOptionsModel = new ReplaceDataRecordOptions.Builder()
       .id(Long.valueOf("26"))
-      .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .newId("testString")
       .build();
     assertEquals(replaceDataRecordOptionsModel.id(), Long.valueOf("26"));
-    assertEquals(replaceDataRecordOptionsModel.newAttributes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(replaceDataRecordOptionsModel.newAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
     assertEquals(replaceDataRecordOptionsModel.newId(), "testString");
   }
 

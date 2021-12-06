@@ -25,9 +25,9 @@ public class ElementWithAttributes extends GenericModel {
   protected static java.util.Map<String, Class<?>> discriminatorMapping;
   static {
     discriminatorMapping = new java.util.HashMap<>();
-    discriminatorMapping.put("record", Record.class);
-    discriminatorMapping.put("relationship", Relationship.class);
-    discriminatorMapping.put("entity", Entity.class);
+    discriminatorMapping.put("record", DataRecord.class);
+    discriminatorMapping.put("relationship", DataRelationship.class);
+    discriminatorMapping.put("entity", DataEntity.class);
   }
 
   protected String id;

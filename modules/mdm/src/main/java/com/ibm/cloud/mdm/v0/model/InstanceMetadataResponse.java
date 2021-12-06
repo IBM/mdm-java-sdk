@@ -24,16 +24,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceMetadataResponse extends GenericModel {
 
   protected String label;
-  @SerializedName("bulkload_bucket")
-  protected Map<String, Object> bulkloadBucket;
   protected List<InstanceMetadataResponseCatalog> catalogs;
   @SerializedName("job_project_id")
   protected String jobProjectId;
+  @SerializedName("cos_endpoint")
+  protected String cosEndpoint;
   protected List<InstanceMetadataResponseProject> projects;
   @SerializedName("cos_crn")
   protected String cosCrn;
-  @SerializedName("cos_endpoint")
-  protected String cosEndpoint;
+  @SerializedName("bulkload_bucket")
+  protected Map<String, Object> bulkloadBucket;
 
   /**
    * Gets the label.
@@ -44,17 +44,6 @@ public class InstanceMetadataResponse extends GenericModel {
    */
   public String getLabel() {
     return label;
-  }
-
-  /**
-   * Gets the bulkloadBucket.
-   *
-   * Bulkload Bucket credentials.
-   *
-   * @return the bulkloadBucket
-   */
-  public Map<String, Object> getBulkloadBucket() {
-    return bulkloadBucket;
   }
 
   /**
@@ -80,6 +69,17 @@ public class InstanceMetadataResponse extends GenericModel {
   }
 
   /**
+   * Gets the cosEndpoint.
+   *
+   * Endpoint of a cloud object storage.
+   *
+   * @return the cosEndpoint
+   */
+  public String getCosEndpoint() {
+    return cosEndpoint;
+  }
+
+  /**
    * Gets the projects.
    *
    * Collection of project objects as available in Watson Knowledge Catalog (WKC).
@@ -102,14 +102,14 @@ public class InstanceMetadataResponse extends GenericModel {
   }
 
   /**
-   * Gets the cosEndpoint.
+   * Gets the bulkloadBucket.
    *
-   * Endpoint of a cloud object storage.
+   * Bulkload Bucket credentials.
    *
-   * @return the cosEndpoint
+   * @return the bulkloadBucket
    */
-  public String getCosEndpoint() {
-    return cosEndpoint;
+  public Map<String, Object> getBulkloadBucket() {
+    return bulkloadBucket;
   }
 }
 
