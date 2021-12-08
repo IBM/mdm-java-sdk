@@ -1,3 +1,12 @@
+## [0.0.12](https://github.com/IBM/mdm-java-sdk/compare/0.0.11...0.0.12) (2021-12-08)
+
+
+### Bug Fixes
+
+* remove codecov from project ([c45f1db](https://github.com/IBM/mdm-java-sdk/commit/c45f1db4ccac04171002387997c38cb4fc070d31))
+* remove codecov from project ([0388234](https://github.com/IBM/mdm-java-sdk/commit/0388234628c7b6bc1b91f9820339897c1f091913))
+* remove codecov from project ([1d90021](https://github.com/IBM/mdm-java-sdk/commit/1d90021bebc4dec08a2538bb17014f936e67680a))
+
 ## [0.0.11](https://github.com/IBM/mdm-java-sdk/compare/0.0.10...0.0.11) (2021-11-11)
 
 
