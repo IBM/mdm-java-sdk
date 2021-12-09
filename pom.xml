@@ -15,7 +15,7 @@
     <url>https://github.com/IBM/mdm-java-sdk</url>
 
     <groupId>com.ibm.cloud</groupId>
-    <version>0.0.11</version>
+    <version>99-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
