@@ -1,3 +1,11 @@
+## [0.0.13](https://github.com/IBM/mdm-java-sdk/compare/0.0.12...0.0.13) (2021-12-09)
+
+
+### Bug Fixes
+
+* remove maven javadoc skip property and set fixed version in pom ([6167369](https://github.com/IBM/mdm-java-sdk/commit/6167369c829efd8da928695aa73d8882cbf47571))
+* remove maven javadoc skip property and set fixed version in pom ([6773dad](https://github.com/IBM/mdm-java-sdk/commit/6773dadfd8a008170fbc59f0d9a392c030e07332))
+
 ## [0.0.12](https://github.com/IBM/mdm-java-sdk/compare/0.0.11...0.0.12) (2021-12-08)
 
 
