@@ -39,7 +39,7 @@ public class PostSearchSearchResultTest {
     PostSearchSearchResult postSearchSearchResultModel = new PostSearchSearchResult();
     assertNull(postSearchSearchResultModel.getRecordSource());
     assertNull(postSearchSearchResultModel.getScore());
-    assertNull(postSearchSearchResultModel.getCompareMethods());
     assertNull(postSearchSearchResultModel.getRecordId());
+    assertNull(postSearchSearchResultModel.getCompareMethods());
   }
 }

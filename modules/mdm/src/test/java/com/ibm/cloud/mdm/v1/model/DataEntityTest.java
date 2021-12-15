@@ -33,10 +33,10 @@ public class DataEntityTest {
   public void testDataEntity() throws Throwable {
     DataEntity dataEntityModel = new DataEntity.Builder()
       .id("testString")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(dataEntityModel.id(), "testString");
-    assertEquals(dataEntityModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(dataEntityModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
 
     String json = TestUtilities.serialize(dataEntityModel);
 

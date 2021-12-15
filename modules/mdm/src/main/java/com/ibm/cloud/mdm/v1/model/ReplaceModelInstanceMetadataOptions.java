@@ -23,34 +23,34 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReplaceModelInstanceMetadataOptions extends GenericModel {
 
-  protected String jobProjectId;
-  protected String cosEndpoint;
   protected List<InstanceMetadataProject> projects;
+  protected String cosEndpoint;
   protected String label;
-  protected String cosCrn;
   protected Map<String, Object> bulkloadBucket;
+  protected String cosCrn;
   protected List<InstanceMetadataCatalog> catalogs;
+  protected String jobProjectId;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String jobProjectId;
-    private String cosEndpoint;
     private List<InstanceMetadataProject> projects;
+    private String cosEndpoint;
     private String label;
-    private String cosCrn;
     private Map<String, Object> bulkloadBucket;
+    private String cosCrn;
     private List<InstanceMetadataCatalog> catalogs;
+    private String jobProjectId;
 
     private Builder(ReplaceModelInstanceMetadataOptions replaceModelInstanceMetadataOptions) {
-      this.jobProjectId = replaceModelInstanceMetadataOptions.jobProjectId;
-      this.cosEndpoint = replaceModelInstanceMetadataOptions.cosEndpoint;
       this.projects = replaceModelInstanceMetadataOptions.projects;
+      this.cosEndpoint = replaceModelInstanceMetadataOptions.cosEndpoint;
       this.label = replaceModelInstanceMetadataOptions.label;
-      this.cosCrn = replaceModelInstanceMetadataOptions.cosCrn;
       this.bulkloadBucket = replaceModelInstanceMetadataOptions.bulkloadBucket;
+      this.cosCrn = replaceModelInstanceMetadataOptions.cosCrn;
       this.catalogs = replaceModelInstanceMetadataOptions.catalogs;
+      this.jobProjectId = replaceModelInstanceMetadataOptions.jobProjectId;
     }
 
     /**
@@ -101,13 +101,14 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Set the jobProjectId.
+     * Set the projects.
+     * Existing projects will be replaced.
      *
-     * @param jobProjectId the jobProjectId
+     * @param projects the projects
      * @return the ReplaceModelInstanceMetadataOptions builder
      */
-    public Builder jobProjectId(String jobProjectId) {
-      this.jobProjectId = jobProjectId;
+    public Builder projects(List<InstanceMetadataProject> projects) {
+      this.projects = projects;
       return this;
     }
 
@@ -123,18 +124,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Set the projects.
-     * Existing projects will be replaced.
-     *
-     * @param projects the projects
-     * @return the ReplaceModelInstanceMetadataOptions builder
-     */
-    public Builder projects(List<InstanceMetadataProject> projects) {
-      this.projects = projects;
-      return this;
-    }
-
-    /**
      * Set the label.
      *
      * @param label the label
@@ -142,17 +131,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
      */
     public Builder label(String label) {
       this.label = label;
-      return this;
-    }
-
-    /**
-     * Set the cosCrn.
-     *
-     * @param cosCrn the cosCrn
-     * @return the ReplaceModelInstanceMetadataOptions builder
-     */
-    public Builder cosCrn(String cosCrn) {
-      this.cosCrn = cosCrn;
       return this;
     }
 
@@ -168,6 +146,17 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
+     * Set the cosCrn.
+     *
+     * @param cosCrn the cosCrn
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder cosCrn(String cosCrn) {
+      this.cosCrn = cosCrn;
+      return this;
+    }
+
+    /**
      * Set the catalogs.
      * Existing catalogs will be replaced.
      *
@@ -178,16 +167,27 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
       this.catalogs = catalogs;
       return this;
     }
+
+    /**
+     * Set the jobProjectId.
+     *
+     * @param jobProjectId the jobProjectId
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder jobProjectId(String jobProjectId) {
+      this.jobProjectId = jobProjectId;
+      return this;
+    }
   }
 
   protected ReplaceModelInstanceMetadataOptions(Builder builder) {
-    jobProjectId = builder.jobProjectId;
-    cosEndpoint = builder.cosEndpoint;
     projects = builder.projects;
+    cosEndpoint = builder.cosEndpoint;
     label = builder.label;
-    cosCrn = builder.cosCrn;
     bulkloadBucket = builder.bulkloadBucket;
+    cosCrn = builder.cosCrn;
     catalogs = builder.catalogs;
+    jobProjectId = builder.jobProjectId;
   }
 
   /**
@@ -197,28 +197,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the jobProjectId.
-   *
-   * The unique identifier of a project for the jobs.
-   *
-   * @return the jobProjectId
-   */
-  public String jobProjectId() {
-    return jobProjectId;
-  }
-
-  /**
-   * Gets the cosEndpoint.
-   *
-   * Endpoint of a cloud object storage.
-   *
-   * @return the cosEndpoint
-   */
-  public String cosEndpoint() {
-    return cosEndpoint;
   }
 
   /**
@@ -233,6 +211,17 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
   }
 
   /**
+   * Gets the cosEndpoint.
+   *
+   * Endpoint of a cloud object storage.
+   *
+   * @return the cosEndpoint
+   */
+  public String cosEndpoint() {
+    return cosEndpoint;
+  }
+
+  /**
    * Gets the label.
    *
    * Label for instance metadata.
@@ -241,17 +230,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
    */
   public String label() {
     return label;
-  }
-
-  /**
-   * Gets the cosCrn.
-   *
-   * The cloud resource Name of cloud object storage.
-   *
-   * @return the cosCrn
-   */
-  public String cosCrn() {
-    return cosCrn;
   }
 
   /**
@@ -266,6 +244,17 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
   }
 
   /**
+   * Gets the cosCrn.
+   *
+   * The cloud resource Name of cloud object storage.
+   *
+   * @return the cosCrn
+   */
+  public String cosCrn() {
+    return cosCrn;
+  }
+
+  /**
    * Gets the catalogs.
    *
    * Collection of catalog objects as available in Watson Knowledge Catalog (WKC).
@@ -274,6 +263,17 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
    */
   public List<InstanceMetadataCatalog> catalogs() {
     return catalogs;
+  }
+
+  /**
+   * Gets the jobProjectId.
+   *
+   * The unique identifier of a project for the jobs.
+   *
+   * @return the jobProjectId
+   */
+  public String jobProjectId() {
+    return jobProjectId;
   }
 }
 

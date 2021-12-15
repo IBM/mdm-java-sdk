@@ -34,9 +34,9 @@ public class FlowTest {
     Flow flowModel = new Flow();
     assertNull(flowModel.getFlowState());
     assertNull(flowModel.getFlowId());
-    assertNull(flowModel.getFlowType());
     assertNull(flowModel.getRejections());
     assertNull(flowModel.getApprovals());
+    assertNull(flowModel.getFlowType());
     assertNull(flowModel.isActive());
   }
 }

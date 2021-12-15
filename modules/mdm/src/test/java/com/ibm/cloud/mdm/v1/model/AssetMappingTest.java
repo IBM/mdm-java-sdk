@@ -34,18 +34,18 @@ public class AssetMappingTest {
     AssetMapping assetMappingModel = new AssetMapping.Builder()
       .classifiedClass("GEN")
       .dataMappingName("gender")
-      .autoMapped(true)
-      .completenessPercent("100.0")
-      .dataMappingAttributeType("string")
       .excludeColumn(false)
+      .autoMapped(true)
+      .completenessPercent("100")
+      .dataMappingAttributeType("string")
       .key("COLUMN 1")
       .build();
     assertEquals(assetMappingModel.classifiedClass(), "GEN");
     assertEquals(assetMappingModel.dataMappingName(), "gender");
-    assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
-    assertEquals(assetMappingModel.completenessPercent(), "100.0");
-    assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
+    assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
+    assertEquals(assetMappingModel.completenessPercent(), "100");
+    assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.key(), "COLUMN 1");
 
     String json = TestUtilities.serialize(assetMappingModel);
@@ -54,10 +54,10 @@ public class AssetMappingTest {
     assertTrue(assetMappingModelNew instanceof AssetMapping);
     assertEquals(assetMappingModelNew.classifiedClass(), "GEN");
     assertEquals(assetMappingModelNew.dataMappingName(), "gender");
-    assertEquals(assetMappingModelNew.autoMapped(), Boolean.valueOf(true));
-    assertEquals(assetMappingModelNew.completenessPercent(), "100.0");
-    assertEquals(assetMappingModelNew.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModelNew.excludeColumn(), Boolean.valueOf(false));
+    assertEquals(assetMappingModelNew.autoMapped(), Boolean.valueOf(true));
+    assertEquals(assetMappingModelNew.completenessPercent(), "100");
+    assertEquals(assetMappingModelNew.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModelNew.key(), "COLUMN 1");
   }
 }

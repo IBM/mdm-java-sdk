@@ -65,17 +65,17 @@ public class CreateConfiguratorProcessOptionsTest {
 
     CreateConfiguratorProcessOptions createConfiguratorProcessOptionsModel = new CreateConfiguratorProcessOptions.Builder()
       .processName("match")
-      .recordType("person")
       .doDerive(true)
       .assetIds("testString")
       .assetSourceDetails(processRequestAssetSourceDetailsModel)
+      .recordType("person")
       .entityType("person_entity")
       .build();
     assertEquals(createConfiguratorProcessOptionsModel.processName(), "match");
-    assertEquals(createConfiguratorProcessOptionsModel.recordType(), "person");
     assertEquals(createConfiguratorProcessOptionsModel.doDerive(), Boolean.valueOf(true));
     assertEquals(createConfiguratorProcessOptionsModel.assetIds(), "testString");
     assertEquals(createConfiguratorProcessOptionsModel.assetSourceDetails(), processRequestAssetSourceDetailsModel);
+    assertEquals(createConfiguratorProcessOptionsModel.recordType(), "person");
     assertEquals(createConfiguratorProcessOptionsModel.entityType(), "person_entity");
   }
 

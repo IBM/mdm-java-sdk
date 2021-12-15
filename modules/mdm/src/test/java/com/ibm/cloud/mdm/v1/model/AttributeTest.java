@@ -32,30 +32,30 @@ public class AttributeTest {
   @Test
   public void testAttribute() throws Throwable {
     Attribute attributeModel = new Attribute.Builder()
-      .description("testString")
-      .classification("testString")
       .indexed(true)
-      .attributeType("email")
+      .classification("testString")
       .label("testString")
+      .description("testString")
       .cardinality("testString")
+      .attributeType("email")
       .build();
-    assertEquals(attributeModel.description(), "testString");
-    assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModel.attributeType(), "email");
+    assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.label(), "testString");
+    assertEquals(attributeModel.description(), "testString");
     assertEquals(attributeModel.cardinality(), "testString");
+    assertEquals(attributeModel.attributeType(), "email");
 
     String json = TestUtilities.serialize(attributeModel);
 
     Attribute attributeModelNew = TestUtilities.deserialize(json, Attribute.class);
     assertTrue(attributeModelNew instanceof Attribute);
-    assertEquals(attributeModelNew.description(), "testString");
-    assertEquals(attributeModelNew.classification(), "testString");
     assertEquals(attributeModelNew.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModelNew.attributeType(), "email");
+    assertEquals(attributeModelNew.classification(), "testString");
     assertEquals(attributeModelNew.label(), "testString");
+    assertEquals(attributeModelNew.description(), "testString");
     assertEquals(attributeModelNew.cardinality(), "testString");
+    assertEquals(attributeModelNew.attributeType(), "email");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

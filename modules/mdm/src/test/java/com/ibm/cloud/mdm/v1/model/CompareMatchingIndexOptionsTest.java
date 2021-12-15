@@ -36,13 +36,13 @@ public class CompareMatchingIndexOptionsTest {
   @Test
   public void testCompareMatchingIndexOptions() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
-      .recordLastUpdated(Long.valueOf("26"))
       .recordSource("testString")
+      .recordLastUpdated(Long.valueOf("26"))
       .recordId("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
     assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
+    assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
     assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
@@ -56,14 +56,14 @@ public class CompareMatchingIndexOptionsTest {
     CompareMatchingIndexOptions compareMatchingIndexOptionsModel = new CompareMatchingIndexOptions.Builder()
       .records(new java.util.ArrayList<SingleRecordRequest>(java.util.Arrays.asList(singleRecordRequestModel)))
       .entityType("person_entity")
-      .details("testString")
+      .details("low")
       .recordNumber1(Long.valueOf("123456789"))
       .recordNumber2(Long.valueOf("123456789"))
       .recordType("person")
       .build();
     assertEquals(compareMatchingIndexOptionsModel.records(), new java.util.ArrayList<SingleRecordRequest>(java.util.Arrays.asList(singleRecordRequestModel)));
     assertEquals(compareMatchingIndexOptionsModel.entityType(), "person_entity");
-    assertEquals(compareMatchingIndexOptionsModel.details(), "testString");
+    assertEquals(compareMatchingIndexOptionsModel.details(), "low");
     assertEquals(compareMatchingIndexOptionsModel.recordNumber1(), Long.valueOf("123456789"));
     assertEquals(compareMatchingIndexOptionsModel.recordNumber2(), Long.valueOf("123456789"));
     assertEquals(compareMatchingIndexOptionsModel.recordType(), "person");

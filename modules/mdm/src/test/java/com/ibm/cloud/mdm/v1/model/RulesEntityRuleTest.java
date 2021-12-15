@@ -36,7 +36,7 @@ public class RulesEntityRuleTest {
     assertNull(rulesEntityRuleModel.getRuleType());
     assertNull(rulesEntityRuleModel.getSrcRecno());
     assertNull(rulesEntityRuleModel.getTargetRecno());
-    assertNull(rulesEntityRuleModel.getUser());
     assertNull(rulesEntityRuleModel.getDescription());
+    assertNull(rulesEntityRuleModel.getUser());
   }
 }

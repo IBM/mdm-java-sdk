@@ -20,18 +20,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRelationshipTypeSystemProperties extends GenericModel {
 
-  @SerializedName("from_record_id")
-  protected DataModelSystemProperty fromRecordId;
-  @SerializedName("to_record_id")
-  protected DataModelSystemProperty toRecordId;
-  @SerializedName("relationship_number")
-  protected DataModelSystemProperty relationshipNumber;
-  @SerializedName("to_record_type")
-  protected DataModelSystemProperty toRecordType;
-  @SerializedName("relationship_last_updated")
-  protected DataModelSystemProperty relationshipLastUpdated;
-  @SerializedName("from_record_type")
-  protected DataModelSystemProperty fromRecordType;
   @SerializedName("to_record_number")
   protected DataModelSystemProperty toRecordNumber;
   @SerializedName("from_record_number")
@@ -44,6 +32,18 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
   protected DataModelSystemProperty toRecordSource;
   @SerializedName("relationship_id")
   protected DataModelSystemProperty relationshipId;
+  @SerializedName("from_record_id")
+  protected DataModelSystemProperty fromRecordId;
+  @SerializedName("to_record_id")
+  protected DataModelSystemProperty toRecordId;
+  @SerializedName("relationship_number")
+  protected DataModelSystemProperty relationshipNumber;
+  @SerializedName("to_record_type")
+  protected DataModelSystemProperty toRecordType;
+  @SerializedName("relationship_last_updated")
+  protected DataModelSystemProperty relationshipLastUpdated;
+  @SerializedName("from_record_type")
+  protected DataModelSystemProperty fromRecordType;
   @SerializedName("relationship_type")
   protected DataModelSystemProperty relationshipType;
 
@@ -51,33 +51,33 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private DataModelSystemProperty fromRecordId;
-    private DataModelSystemProperty toRecordId;
-    private DataModelSystemProperty relationshipNumber;
-    private DataModelSystemProperty toRecordType;
-    private DataModelSystemProperty relationshipLastUpdated;
-    private DataModelSystemProperty fromRecordType;
     private DataModelSystemProperty toRecordNumber;
     private DataModelSystemProperty fromRecordNumber;
     private DataModelSystemProperty relationshipSource;
     private DataModelSystemProperty fromRecordSource;
     private DataModelSystemProperty toRecordSource;
     private DataModelSystemProperty relationshipId;
+    private DataModelSystemProperty fromRecordId;
+    private DataModelSystemProperty toRecordId;
+    private DataModelSystemProperty relationshipNumber;
+    private DataModelSystemProperty toRecordType;
+    private DataModelSystemProperty relationshipLastUpdated;
+    private DataModelSystemProperty fromRecordType;
     private DataModelSystemProperty relationshipType;
 
     private Builder(DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemProperties) {
-      this.fromRecordId = dataModelRelationshipTypeSystemProperties.fromRecordId;
-      this.toRecordId = dataModelRelationshipTypeSystemProperties.toRecordId;
-      this.relationshipNumber = dataModelRelationshipTypeSystemProperties.relationshipNumber;
-      this.toRecordType = dataModelRelationshipTypeSystemProperties.toRecordType;
-      this.relationshipLastUpdated = dataModelRelationshipTypeSystemProperties.relationshipLastUpdated;
-      this.fromRecordType = dataModelRelationshipTypeSystemProperties.fromRecordType;
       this.toRecordNumber = dataModelRelationshipTypeSystemProperties.toRecordNumber;
       this.fromRecordNumber = dataModelRelationshipTypeSystemProperties.fromRecordNumber;
       this.relationshipSource = dataModelRelationshipTypeSystemProperties.relationshipSource;
       this.fromRecordSource = dataModelRelationshipTypeSystemProperties.fromRecordSource;
       this.toRecordSource = dataModelRelationshipTypeSystemProperties.toRecordSource;
       this.relationshipId = dataModelRelationshipTypeSystemProperties.relationshipId;
+      this.fromRecordId = dataModelRelationshipTypeSystemProperties.fromRecordId;
+      this.toRecordId = dataModelRelationshipTypeSystemProperties.toRecordId;
+      this.relationshipNumber = dataModelRelationshipTypeSystemProperties.relationshipNumber;
+      this.toRecordType = dataModelRelationshipTypeSystemProperties.toRecordType;
+      this.relationshipLastUpdated = dataModelRelationshipTypeSystemProperties.relationshipLastUpdated;
+      this.fromRecordType = dataModelRelationshipTypeSystemProperties.fromRecordType;
       this.relationshipType = dataModelRelationshipTypeSystemProperties.relationshipType;
     }
 
@@ -103,72 +103,6 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
      */
     public DataModelRelationshipTypeSystemProperties build() {
       return new DataModelRelationshipTypeSystemProperties(this);
-    }
-
-    /**
-     * Set the fromRecordId.
-     *
-     * @param fromRecordId the fromRecordId
-     * @return the DataModelRelationshipTypeSystemProperties builder
-     */
-    public Builder fromRecordId(DataModelSystemProperty fromRecordId) {
-      this.fromRecordId = fromRecordId;
-      return this;
-    }
-
-    /**
-     * Set the toRecordId.
-     *
-     * @param toRecordId the toRecordId
-     * @return the DataModelRelationshipTypeSystemProperties builder
-     */
-    public Builder toRecordId(DataModelSystemProperty toRecordId) {
-      this.toRecordId = toRecordId;
-      return this;
-    }
-
-    /**
-     * Set the relationshipNumber.
-     *
-     * @param relationshipNumber the relationshipNumber
-     * @return the DataModelRelationshipTypeSystemProperties builder
-     */
-    public Builder relationshipNumber(DataModelSystemProperty relationshipNumber) {
-      this.relationshipNumber = relationshipNumber;
-      return this;
-    }
-
-    /**
-     * Set the toRecordType.
-     *
-     * @param toRecordType the toRecordType
-     * @return the DataModelRelationshipTypeSystemProperties builder
-     */
-    public Builder toRecordType(DataModelSystemProperty toRecordType) {
-      this.toRecordType = toRecordType;
-      return this;
-    }
-
-    /**
-     * Set the relationshipLastUpdated.
-     *
-     * @param relationshipLastUpdated the relationshipLastUpdated
-     * @return the DataModelRelationshipTypeSystemProperties builder
-     */
-    public Builder relationshipLastUpdated(DataModelSystemProperty relationshipLastUpdated) {
-      this.relationshipLastUpdated = relationshipLastUpdated;
-      return this;
-    }
-
-    /**
-     * Set the fromRecordType.
-     *
-     * @param fromRecordType the fromRecordType
-     * @return the DataModelRelationshipTypeSystemProperties builder
-     */
-    public Builder fromRecordType(DataModelSystemProperty fromRecordType) {
-      this.fromRecordType = fromRecordType;
-      return this;
     }
 
     /**
@@ -238,6 +172,72 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
     }
 
     /**
+     * Set the fromRecordId.
+     *
+     * @param fromRecordId the fromRecordId
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder fromRecordId(DataModelSystemProperty fromRecordId) {
+      this.fromRecordId = fromRecordId;
+      return this;
+    }
+
+    /**
+     * Set the toRecordId.
+     *
+     * @param toRecordId the toRecordId
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder toRecordId(DataModelSystemProperty toRecordId) {
+      this.toRecordId = toRecordId;
+      return this;
+    }
+
+    /**
+     * Set the relationshipNumber.
+     *
+     * @param relationshipNumber the relationshipNumber
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder relationshipNumber(DataModelSystemProperty relationshipNumber) {
+      this.relationshipNumber = relationshipNumber;
+      return this;
+    }
+
+    /**
+     * Set the toRecordType.
+     *
+     * @param toRecordType the toRecordType
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder toRecordType(DataModelSystemProperty toRecordType) {
+      this.toRecordType = toRecordType;
+      return this;
+    }
+
+    /**
+     * Set the relationshipLastUpdated.
+     *
+     * @param relationshipLastUpdated the relationshipLastUpdated
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder relationshipLastUpdated(DataModelSystemProperty relationshipLastUpdated) {
+      this.relationshipLastUpdated = relationshipLastUpdated;
+      return this;
+    }
+
+    /**
+     * Set the fromRecordType.
+     *
+     * @param fromRecordType the fromRecordType
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder fromRecordType(DataModelSystemProperty fromRecordType) {
+      this.fromRecordType = fromRecordType;
+      return this;
+    }
+
+    /**
      * Set the relationshipType.
      *
      * @param relationshipType the relationshipType
@@ -252,18 +252,18 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
   protected DataModelRelationshipTypeSystemProperties(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipLastUpdated,
       "relationshipLastUpdated cannot be null");
-    fromRecordId = builder.fromRecordId;
-    toRecordId = builder.toRecordId;
-    relationshipNumber = builder.relationshipNumber;
-    toRecordType = builder.toRecordType;
-    relationshipLastUpdated = builder.relationshipLastUpdated;
-    fromRecordType = builder.fromRecordType;
     toRecordNumber = builder.toRecordNumber;
     fromRecordNumber = builder.fromRecordNumber;
     relationshipSource = builder.relationshipSource;
     fromRecordSource = builder.fromRecordSource;
     toRecordSource = builder.toRecordSource;
     relationshipId = builder.relationshipId;
+    fromRecordId = builder.fromRecordId;
+    toRecordId = builder.toRecordId;
+    relationshipNumber = builder.relationshipNumber;
+    toRecordType = builder.toRecordType;
+    relationshipLastUpdated = builder.relationshipLastUpdated;
+    fromRecordType = builder.fromRecordType;
     relationshipType = builder.relationshipType;
   }
 
@@ -274,72 +274,6 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the fromRecordId.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the fromRecordId
-   */
-  public DataModelSystemProperty fromRecordId() {
-    return fromRecordId;
-  }
-
-  /**
-   * Gets the toRecordId.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the toRecordId
-   */
-  public DataModelSystemProperty toRecordId() {
-    return toRecordId;
-  }
-
-  /**
-   * Gets the relationshipNumber.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the relationshipNumber
-   */
-  public DataModelSystemProperty relationshipNumber() {
-    return relationshipNumber;
-  }
-
-  /**
-   * Gets the toRecordType.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the toRecordType
-   */
-  public DataModelSystemProperty toRecordType() {
-    return toRecordType;
-  }
-
-  /**
-   * Gets the relationshipLastUpdated.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the relationshipLastUpdated
-   */
-  public DataModelSystemProperty relationshipLastUpdated() {
-    return relationshipLastUpdated;
-  }
-
-  /**
-   * Gets the fromRecordType.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the fromRecordType
-   */
-  public DataModelSystemProperty fromRecordType() {
-    return fromRecordType;
   }
 
   /**
@@ -406,6 +340,72 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
    */
   public DataModelSystemProperty relationshipId() {
     return relationshipId;
+  }
+
+  /**
+   * Gets the fromRecordId.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the fromRecordId
+   */
+  public DataModelSystemProperty fromRecordId() {
+    return fromRecordId;
+  }
+
+  /**
+   * Gets the toRecordId.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the toRecordId
+   */
+  public DataModelSystemProperty toRecordId() {
+    return toRecordId;
+  }
+
+  /**
+   * Gets the relationshipNumber.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the relationshipNumber
+   */
+  public DataModelSystemProperty relationshipNumber() {
+    return relationshipNumber;
+  }
+
+  /**
+   * Gets the toRecordType.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the toRecordType
+   */
+  public DataModelSystemProperty toRecordType() {
+    return toRecordType;
+  }
+
+  /**
+   * Gets the relationshipLastUpdated.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the relationshipLastUpdated
+   */
+  public DataModelSystemProperty relationshipLastUpdated() {
+    return relationshipLastUpdated;
+  }
+
+  /**
+   * Gets the fromRecordType.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the fromRecordType
+   */
+  public DataModelSystemProperty fromRecordType() {
+    return fromRecordType;
   }
 
   /**

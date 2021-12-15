@@ -36,38 +36,38 @@ public class ReplaceModelInstanceMetadataOptionsTest {
   @Test
   public void testReplaceModelInstanceMetadataOptions() throws Throwable {
     InstanceMetadataProject instanceMetadataProjectModel = new InstanceMetadataProject.Builder()
-      .dataAssetId("testString")
       .assetId("testString")
       .projectName("testString")
+      .dataAssetId("testString")
       .projectId("testString")
       .build();
-    assertEquals(instanceMetadataProjectModel.dataAssetId(), "testString");
     assertEquals(instanceMetadataProjectModel.assetId(), "testString");
     assertEquals(instanceMetadataProjectModel.projectName(), "testString");
+    assertEquals(instanceMetadataProjectModel.dataAssetId(), "testString");
     assertEquals(instanceMetadataProjectModel.projectId(), "testString");
 
     InstanceMetadataCatalog instanceMetadataCatalogModel = new InstanceMetadataCatalog.Builder()
-      .catalogId("testString")
       .catalogInstance("testString")
+      .catalogId("testString")
       .build();
-    assertEquals(instanceMetadataCatalogModel.catalogId(), "testString");
     assertEquals(instanceMetadataCatalogModel.catalogInstance(), "testString");
+    assertEquals(instanceMetadataCatalogModel.catalogId(), "testString");
 
     ReplaceModelInstanceMetadataOptions replaceModelInstanceMetadataOptionsModel = new ReplaceModelInstanceMetadataOptions.Builder()
-      .jobProjectId("testString")
-      .cosEndpoint("testString")
       .projects(new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)))
+      .cosEndpoint("testString")
       .label("testString")
-      .cosCrn("testString")
       .bulkloadBucket(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .cosCrn("testString")
       .catalogs(new java.util.ArrayList<InstanceMetadataCatalog>(java.util.Arrays.asList(instanceMetadataCatalogModel)))
+      .jobProjectId("testString")
       .build();
-    assertEquals(replaceModelInstanceMetadataOptionsModel.jobProjectId(), "testString");
-    assertEquals(replaceModelInstanceMetadataOptionsModel.cosEndpoint(), "testString");
     assertEquals(replaceModelInstanceMetadataOptionsModel.projects(), new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)));
+    assertEquals(replaceModelInstanceMetadataOptionsModel.cosEndpoint(), "testString");
     assertEquals(replaceModelInstanceMetadataOptionsModel.label(), "testString");
-    assertEquals(replaceModelInstanceMetadataOptionsModel.cosCrn(), "testString");
     assertEquals(replaceModelInstanceMetadataOptionsModel.bulkloadBucket(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(replaceModelInstanceMetadataOptionsModel.cosCrn(), "testString");
     assertEquals(replaceModelInstanceMetadataOptionsModel.catalogs(), new java.util.ArrayList<InstanceMetadataCatalog>(java.util.Arrays.asList(instanceMetadataCatalogModel)));
+    assertEquals(replaceModelInstanceMetadataOptionsModel.jobProjectId(), "testString");
   }
 }

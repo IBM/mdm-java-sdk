@@ -22,40 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Asset extends GenericModel {
 
-  @SerializedName("asset_id")
-  protected String assetId;
-  @SerializedName("asset_last_updated_date")
-  protected String assetLastUpdatedDate;
   @SerializedName("asset_status")
   protected String assetStatus;
   @SerializedName("asset_created_date")
   protected String assetCreatedDate;
   @SerializedName("asset_mappings")
   protected List<AssetMapping> assetMappings;
+  @SerializedName("asset_id")
+  protected String assetId;
+  @SerializedName("asset_last_updated_date")
+  protected String assetLastUpdatedDate;
   @SerializedName("asset_name")
   protected String assetName;
-
-  /**
-   * Gets the assetId.
-   *
-   * The identifier of the Data asset.
-   *
-   * @return the assetId
-   */
-  public String getAssetId() {
-    return assetId;
-  }
-
-  /**
-   * Gets the assetLastUpdatedDate.
-   *
-   * The last updated date of the Data asset metadata.
-   *
-   * @return the assetLastUpdatedDate
-   */
-  public String getAssetLastUpdatedDate() {
-    return assetLastUpdatedDate;
-  }
 
   /**
    * Gets the assetStatus.
@@ -88,6 +66,28 @@ public class Asset extends GenericModel {
    */
   public List<AssetMapping> getAssetMappings() {
     return assetMappings;
+  }
+
+  /**
+   * Gets the assetId.
+   *
+   * The identifier of the Data asset.
+   *
+   * @return the assetId
+   */
+  public String getAssetId() {
+    return assetId;
+  }
+
+  /**
+   * Gets the assetLastUpdatedDate.
+   *
+   * The last updated date of the Data asset metadata.
+   *
+   * @return the assetLastUpdatedDate
+   */
+  public String getAssetLastUpdatedDate() {
+    return assetLastUpdatedDate;
   }
 
   /**

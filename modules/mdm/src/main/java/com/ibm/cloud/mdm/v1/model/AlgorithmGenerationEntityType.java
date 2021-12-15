@@ -26,10 +26,10 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
 
-  @SerializedName("matching_attributes")
-  protected List<AlgorithmGenerationAttributeItem> matchingAttributes;
   @SerializedName("auto_link_threshold")
   protected Float autoLinkThreshold;
+  @SerializedName("matching_attributes")
+  protected List<AlgorithmGenerationAttributeItem> matchingAttributes;
 
   public AlgorithmGenerationEntityType() {
     super(new TypeToken<Object>() { });
@@ -39,13 +39,13 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private List<AlgorithmGenerationAttributeItem> matchingAttributes;
     private Float autoLinkThreshold;
+    private List<AlgorithmGenerationAttributeItem> matchingAttributes;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmGenerationEntityType algorithmGenerationEntityType) {
-      this.matchingAttributes = algorithmGenerationEntityType.matchingAttributes;
       this.autoLinkThreshold = algorithmGenerationEntityType.autoLinkThreshold;
+      this.matchingAttributes = algorithmGenerationEntityType.matchingAttributes;
       this.dynamicProperties = algorithmGenerationEntityType.getProperties();
     }
 
@@ -90,6 +90,17 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
     }
 
     /**
+     * Set the autoLinkThreshold.
+     *
+     * @param autoLinkThreshold the autoLinkThreshold
+     * @return the AlgorithmGenerationEntityType builder
+     */
+    public Builder autoLinkThreshold(Float autoLinkThreshold) {
+      this.autoLinkThreshold = autoLinkThreshold;
+      return this;
+    }
+
+    /**
      * Set the matchingAttributes.
      * Existing matchingAttributes will be replaced.
      *
@@ -98,17 +109,6 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
      */
     public Builder matchingAttributes(List<AlgorithmGenerationAttributeItem> matchingAttributes) {
       this.matchingAttributes = matchingAttributes;
-      return this;
-    }
-
-    /**
-     * Set the autoLinkThreshold.
-     *
-     * @param autoLinkThreshold the autoLinkThreshold
-     * @return the AlgorithmGenerationEntityType builder
-     */
-    public Builder autoLinkThreshold(Float autoLinkThreshold) {
-      this.autoLinkThreshold = autoLinkThreshold;
       return this;
     }
 
@@ -133,8 +133,8 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
     super(new TypeToken<Object>() { });
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.matchingAttributes,
       "matchingAttributes cannot be null");
-    matchingAttributes = builder.matchingAttributes;
     autoLinkThreshold = builder.autoLinkThreshold;
+    matchingAttributes = builder.matchingAttributes;
     this.setProperties(builder.dynamicProperties);
   }
 
@@ -145,26 +145,6 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the matchingAttributes.
-   *
-   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
-   *
-   * @return the matchingAttributes
-   */
-  public List<AlgorithmGenerationAttributeItem> getMatchingAttributes() {
-    return this.matchingAttributes;
-  }
-
-  /**
-   * Sets the matchingAttributes.
-   *
-   * @param matchingAttributes the new matchingAttributes
-   */
-  public void setMatchingAttributes(final List<AlgorithmGenerationAttributeItem> matchingAttributes) {
-    this.matchingAttributes = matchingAttributes;
   }
 
   /**
@@ -185,5 +165,25 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
    */
   public void setAutoLinkThreshold(final Float autoLinkThreshold) {
     this.autoLinkThreshold = autoLinkThreshold;
+  }
+
+  /**
+   * Gets the matchingAttributes.
+   *
+   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
+   *
+   * @return the matchingAttributes
+   */
+  public List<AlgorithmGenerationAttributeItem> getMatchingAttributes() {
+    return this.matchingAttributes;
+  }
+
+  /**
+   * Sets the matchingAttributes.
+   *
+   * @param matchingAttributes the new matchingAttributes
+   */
+  public void setMatchingAttributes(final List<AlgorithmGenerationAttributeItem> matchingAttributes) {
+    this.matchingAttributes = matchingAttributes;
   }
 }

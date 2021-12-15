@@ -20,25 +20,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataResponseProject extends GenericModel {
 
-  @SerializedName("data_asset_id")
-  protected String dataAssetId;
   @SerializedName("asset_id")
   protected String assetId;
   @SerializedName("project_name")
   protected String projectName;
+  @SerializedName("data_asset_id")
+  protected String dataAssetId;
   @SerializedName("project_id")
   protected String projectId;
-
-  /**
-   * Gets the dataAssetId.
-   *
-   * Identifier for the data asset created on the project.
-   *
-   * @return the dataAssetId
-   */
-  public String getDataAssetId() {
-    return dataAssetId;
-  }
 
   /**
    * Gets the assetId.
@@ -60,6 +49,17 @@ public class InstanceMetadataResponseProject extends GenericModel {
    */
   public String getProjectName() {
     return projectName;
+  }
+
+  /**
+   * Gets the dataAssetId.
+   *
+   * Identifier for the data asset created on the project.
+   *
+   * @return the dataAssetId
+   */
+  public String getDataAssetId() {
+    return dataAssetId;
   }
 
   /**

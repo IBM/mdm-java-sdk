@@ -20,10 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateConfiguratorProcessOptions extends GenericModel {
 
   protected String processName;
-  protected String recordType;
   protected Boolean doDerive;
   protected String assetIds;
   protected ProcessRequestAssetSourceDetails assetSourceDetails;
+  protected String recordType;
   protected String entityType;
 
   /**
@@ -31,18 +31,18 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
    */
   public static class Builder {
     private String processName;
-    private String recordType;
     private Boolean doDerive;
     private String assetIds;
     private ProcessRequestAssetSourceDetails assetSourceDetails;
+    private String recordType;
     private String entityType;
 
     private Builder(CreateConfiguratorProcessOptions createConfiguratorProcessOptions) {
       this.processName = createConfiguratorProcessOptions.processName;
-      this.recordType = createConfiguratorProcessOptions.recordType;
       this.doDerive = createConfiguratorProcessOptions.doDerive;
       this.assetIds = createConfiguratorProcessOptions.assetIds;
       this.assetSourceDetails = createConfiguratorProcessOptions.assetSourceDetails;
+      this.recordType = createConfiguratorProcessOptions.recordType;
       this.entityType = createConfiguratorProcessOptions.entityType;
     }
 
@@ -82,17 +82,6 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
-     * Set the recordType.
-     *
-     * @param recordType the recordType
-     * @return the CreateConfiguratorProcessOptions builder
-     */
-    public Builder recordType(String recordType) {
-      this.recordType = recordType;
-      return this;
-    }
-
-    /**
      * Set the doDerive.
      *
      * @param doDerive the doDerive
@@ -126,6 +115,17 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
+     * Set the recordType.
+     *
+     * @param recordType the recordType
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder recordType(String recordType) {
+      this.recordType = recordType;
+      return this;
+    }
+
+    /**
      * Set the entityType.
      *
      * @param entityType the entityType
@@ -141,10 +141,10 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.processName,
       "processName cannot be null");
     processName = builder.processName;
-    recordType = builder.recordType;
     doDerive = builder.doDerive;
     assetIds = builder.assetIds;
     assetSourceDetails = builder.assetSourceDetails;
+    recordType = builder.recordType;
     entityType = builder.entityType;
   }
 
@@ -166,17 +166,6 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
    */
   public String processName() {
     return processName;
-  }
-
-  /**
-   * Gets the recordType.
-   *
-   * The record type which needs to be processed for match and publish_data processes.
-   *
-   * @return the recordType
-   */
-  public String recordType() {
-    return recordType;
   }
 
   /**
@@ -210,6 +199,17 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
    */
   public ProcessRequestAssetSourceDetails assetSourceDetails() {
     return assetSourceDetails;
+  }
+
+  /**
+   * Gets the recordType.
+   *
+   * The record type which needs to be processed for match and publish_data processes.
+   *
+   * @return the recordType
+   */
+  public String recordType() {
+    return recordType;
   }
 
   /**

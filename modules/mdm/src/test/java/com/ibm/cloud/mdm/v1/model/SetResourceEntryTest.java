@@ -35,13 +35,13 @@ public class SetResourceEntryTest {
   public void testSetResourceEntry() throws Throwable {
     SetResourceEntry setResourceEntryModel = new SetResourceEntry.Builder()
       .category("testString")
-      .dataType("testString")
       .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .dataType("testString")
       .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
     assertEquals(setResourceEntryModel.category(), "testString");
-    assertEquals(setResourceEntryModel.dataType(), "testString");
     assertEquals(setResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(setResourceEntryModel.dataType(), "testString");
     assertEquals(setResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     String json = TestUtilities.serialize(setResourceEntryModel);

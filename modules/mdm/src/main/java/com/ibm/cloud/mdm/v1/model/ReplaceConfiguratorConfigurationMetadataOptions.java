@@ -19,8 +19,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericModel {
 
-  protected String projectId;
   protected String catalogId;
+  protected String projectId;
   protected String description;
   protected String name;
 
@@ -28,14 +28,14 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
    * Builder.
    */
   public static class Builder {
-    private String projectId;
     private String catalogId;
+    private String projectId;
     private String description;
     private String name;
 
     private Builder(ReplaceConfiguratorConfigurationMetadataOptions replaceConfiguratorConfigurationMetadataOptions) {
-      this.projectId = replaceConfiguratorConfigurationMetadataOptions.projectId;
       this.catalogId = replaceConfiguratorConfigurationMetadataOptions.catalogId;
+      this.projectId = replaceConfiguratorConfigurationMetadataOptions.projectId;
       this.description = replaceConfiguratorConfigurationMetadataOptions.description;
       this.name = replaceConfiguratorConfigurationMetadataOptions.name;
     }
@@ -56,17 +56,6 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
     }
 
     /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
-    }
-
-    /**
      * Set the catalogId.
      *
      * @param catalogId the catalogId
@@ -74,6 +63,17 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
      */
     public Builder catalogId(String catalogId) {
       this.catalogId = catalogId;
+      return this;
+    }
+
+    /**
+     * Set the projectId.
+     *
+     * @param projectId the projectId
+     * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
+     */
+    public Builder projectId(String projectId) {
+      this.projectId = projectId;
       return this;
     }
 
@@ -106,8 +106,8 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
      * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
      */
     public Builder configurationMetadata(ConfigurationMetadata configurationMetadata) {
-      this.projectId = configurationMetadata.projectId();
       this.catalogId = configurationMetadata.catalogId();
+      this.projectId = configurationMetadata.projectId();
       this.description = configurationMetadata.description();
       this.name = configurationMetadata.name();
       return this;
@@ -115,8 +115,8 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
   }
 
   protected ReplaceConfiguratorConfigurationMetadataOptions(Builder builder) {
-    projectId = builder.projectId;
     catalogId = builder.catalogId;
+    projectId = builder.projectId;
     description = builder.description;
     name = builder.name;
   }
@@ -131,17 +131,6 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
   }
 
   /**
-   * Gets the projectId.
-   *
-   * The project id of the linked WKC project.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
-  }
-
-  /**
    * Gets the catalogId.
    *
    * The catalog id from the linked WKC project.
@@ -150,6 +139,17 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
    */
   public String catalogId() {
     return catalogId;
+  }
+
+  /**
+   * Gets the projectId.
+   *
+   * The project id of the linked WKC project.
+   *
+   * @return the projectId
+   */
+  public String projectId() {
+    return projectId;
   }
 
   /**

@@ -21,12 +21,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DataModelAttribute extends GenericModel {
 
   protected Boolean indexed;
+  protected String classification;
+  protected String label;
   @SerializedName("matching_type")
   protected String matchingType;
   @SerializedName("attribute_type")
   protected String attributeType;
-  protected String classification;
-  protected String label;
   protected String description;
   protected String cardinality;
 
@@ -35,19 +35,19 @@ public class DataModelAttribute extends GenericModel {
    */
   public static class Builder {
     private Boolean indexed;
-    private String matchingType;
-    private String attributeType;
     private String classification;
     private String label;
+    private String matchingType;
+    private String attributeType;
     private String description;
     private String cardinality;
 
     private Builder(DataModelAttribute dataModelAttribute) {
       this.indexed = dataModelAttribute.indexed;
-      this.matchingType = dataModelAttribute.matchingType;
-      this.attributeType = dataModelAttribute.attributeType;
       this.classification = dataModelAttribute.classification;
       this.label = dataModelAttribute.label;
+      this.matchingType = dataModelAttribute.matchingType;
+      this.attributeType = dataModelAttribute.attributeType;
       this.description = dataModelAttribute.description;
       this.cardinality = dataModelAttribute.cardinality;
     }
@@ -61,12 +61,12 @@ public class DataModelAttribute extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param attributeType the attributeType
      * @param label the label
+     * @param attributeType the attributeType
      */
-    public Builder(String attributeType, String label) {
-      this.attributeType = attributeType;
+    public Builder(String label, String attributeType) {
       this.label = label;
+      this.attributeType = attributeType;
     }
 
     /**
@@ -90,28 +90,6 @@ public class DataModelAttribute extends GenericModel {
     }
 
     /**
-     * Set the matchingType.
-     *
-     * @param matchingType the matchingType
-     * @return the DataModelAttribute builder
-     */
-    public Builder matchingType(String matchingType) {
-      this.matchingType = matchingType;
-      return this;
-    }
-
-    /**
-     * Set the attributeType.
-     *
-     * @param attributeType the attributeType
-     * @return the DataModelAttribute builder
-     */
-    public Builder attributeType(String attributeType) {
-      this.attributeType = attributeType;
-      return this;
-    }
-
-    /**
      * Set the classification.
      *
      * @param classification the classification
@@ -130,6 +108,28 @@ public class DataModelAttribute extends GenericModel {
      */
     public Builder label(String label) {
       this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the matchingType.
+     *
+     * @param matchingType the matchingType
+     * @return the DataModelAttribute builder
+     */
+    public Builder matchingType(String matchingType) {
+      this.matchingType = matchingType;
+      return this;
+    }
+
+    /**
+     * Set the attributeType.
+     *
+     * @param attributeType the attributeType
+     * @return the DataModelAttribute builder
+     */
+    public Builder attributeType(String attributeType) {
+      this.attributeType = attributeType;
       return this;
     }
 
@@ -157,15 +157,15 @@ public class DataModelAttribute extends GenericModel {
   }
 
   protected DataModelAttribute(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
-      "attributeType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
+      "attributeType cannot be null");
     indexed = builder.indexed;
-    matchingType = builder.matchingType;
-    attributeType = builder.attributeType;
     classification = builder.classification;
     label = builder.label;
+    matchingType = builder.matchingType;
+    attributeType = builder.attributeType;
     description = builder.description;
     cardinality = builder.cardinality;
   }
@@ -191,6 +191,28 @@ public class DataModelAttribute extends GenericModel {
   }
 
   /**
+   * Gets the classification.
+   *
+   * User defined classification.
+   *
+   * @return the classification
+   */
+  public String classification() {
+    return classification;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
+  }
+
+  /**
    * Gets the matchingType.
    *
    * User defined matching type (only applicable to record type), one of PERSONNAME, ORGNAME, GENDER, DATE, EMAIL,
@@ -211,28 +233,6 @@ public class DataModelAttribute extends GenericModel {
    */
   public String attributeType() {
     return attributeType;
-  }
-
-  /**
-   * Gets the classification.
-   *
-   * User defined classification.
-   *
-   * @return the classification
-   */
-  public String classification() {
-    return classification;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 
   /**

@@ -35,15 +35,15 @@ public class MapResourceEntryTest {
   public void testMapResourceEntry() throws Throwable {
     MapResourceEntry mapResourceEntryModel = new MapResourceEntry.Builder()
       .category("testString")
-      .dataType("testString")
       .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .dataType("testString")
       .cardinality("testString")
       .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .key("testString")
       .build();
     assertEquals(mapResourceEntryModel.category(), "testString");
-    assertEquals(mapResourceEntryModel.dataType(), "testString");
     assertEquals(mapResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(mapResourceEntryModel.dataType(), "testString");
     assertEquals(mapResourceEntryModel.cardinality(), "testString");
     assertEquals(mapResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(mapResourceEntryModel.key(), "testString");

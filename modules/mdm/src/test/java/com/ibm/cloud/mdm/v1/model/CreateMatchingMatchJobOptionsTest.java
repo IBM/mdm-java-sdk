@@ -34,10 +34,9 @@ public class CreateMatchingMatchJobOptionsTest {
     CreateMatchingMatchJobOptions createMatchingMatchJobOptionsModel = new CreateMatchingMatchJobOptions.Builder()
       .recordType("person")
       .entityType("person_entity")
-      .doForce(true)
-      .doDeduplicate(true)
-      .doAnalytics(true)
-      .doReplicate(true)
+      .doForce(false)
+      .doAnalytics(false)
+      .doReplicate(false)
       .executorCount(Long.valueOf("1"))
       .executorMemory("8g")
       .executorCoreCount(Long.valueOf("1"))
@@ -48,10 +47,9 @@ public class CreateMatchingMatchJobOptionsTest {
       .build();
     assertEquals(createMatchingMatchJobOptionsModel.recordType(), "person");
     assertEquals(createMatchingMatchJobOptionsModel.entityType(), "person_entity");
-    assertEquals(createMatchingMatchJobOptionsModel.doForce(), Boolean.valueOf(true));
-    assertEquals(createMatchingMatchJobOptionsModel.doDeduplicate(), Boolean.valueOf(true));
-    assertEquals(createMatchingMatchJobOptionsModel.doAnalytics(), Boolean.valueOf(true));
-    assertEquals(createMatchingMatchJobOptionsModel.doReplicate(), Boolean.valueOf(true));
+    assertEquals(createMatchingMatchJobOptionsModel.doForce(), Boolean.valueOf(false));
+    assertEquals(createMatchingMatchJobOptionsModel.doAnalytics(), Boolean.valueOf(false));
+    assertEquals(createMatchingMatchJobOptionsModel.doReplicate(), Boolean.valueOf(false));
     assertEquals(createMatchingMatchJobOptionsModel.executorCount(), Long.valueOf("1"));
     assertEquals(createMatchingMatchJobOptionsModel.executorMemory(), "8g");
     assertEquals(createMatchingMatchJobOptionsModel.executorCoreCount(), Long.valueOf("1"));

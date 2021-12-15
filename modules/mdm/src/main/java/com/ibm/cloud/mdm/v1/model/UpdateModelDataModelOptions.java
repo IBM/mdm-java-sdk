@@ -21,8 +21,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateModelDataModelOptions extends GenericModel {
 
-  protected Map<String, DataModelRecordType> recordTypes;
   protected Map<String, DataModelRelationshipType> relationshipTypes;
+  protected Map<String, DataModelRecordType> recordTypes;
   protected Map<String, DataModelAttributeType> attributeTypes;
   protected DataModelSystemProperties systemProperties;
   protected String locale;
@@ -31,15 +31,15 @@ public class UpdateModelDataModelOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private Map<String, DataModelRecordType> recordTypes;
     private Map<String, DataModelRelationshipType> relationshipTypes;
+    private Map<String, DataModelRecordType> recordTypes;
     private Map<String, DataModelAttributeType> attributeTypes;
     private DataModelSystemProperties systemProperties;
     private String locale;
 
     private Builder(UpdateModelDataModelOptions updateModelDataModelOptions) {
-      this.recordTypes = updateModelDataModelOptions.recordTypes;
       this.relationshipTypes = updateModelDataModelOptions.relationshipTypes;
+      this.recordTypes = updateModelDataModelOptions.recordTypes;
       this.attributeTypes = updateModelDataModelOptions.attributeTypes;
       this.systemProperties = updateModelDataModelOptions.systemProperties;
       this.locale = updateModelDataModelOptions.locale;
@@ -54,15 +54,15 @@ public class UpdateModelDataModelOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param recordTypes the recordTypes
      * @param relationshipTypes the relationshipTypes
+     * @param recordTypes the recordTypes
      * @param attributeTypes the attributeTypes
      * @param systemProperties the systemProperties
      * @param locale the locale
      */
-    public Builder(Map<String, DataModelRecordType> recordTypes, Map<String, DataModelRelationshipType> relationshipTypes, Map<String, DataModelAttributeType> attributeTypes, DataModelSystemProperties systemProperties, String locale) {
-      this.recordTypes = recordTypes;
+    public Builder(Map<String, DataModelRelationshipType> relationshipTypes, Map<String, DataModelRecordType> recordTypes, Map<String, DataModelAttributeType> attributeTypes, DataModelSystemProperties systemProperties, String locale) {
       this.relationshipTypes = relationshipTypes;
+      this.recordTypes = recordTypes;
       this.attributeTypes = attributeTypes;
       this.systemProperties = systemProperties;
       this.locale = locale;
@@ -78,17 +78,6 @@ public class UpdateModelDataModelOptions extends GenericModel {
     }
 
     /**
-     * Set the recordTypes.
-     *
-     * @param recordTypes the recordTypes
-     * @return the UpdateModelDataModelOptions builder
-     */
-    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
-      this.recordTypes = recordTypes;
-      return this;
-    }
-
-    /**
      * Set the relationshipTypes.
      *
      * @param relationshipTypes the relationshipTypes
@@ -96,6 +85,17 @@ public class UpdateModelDataModelOptions extends GenericModel {
      */
     public Builder relationshipTypes(Map<String, DataModelRelationshipType> relationshipTypes) {
       this.relationshipTypes = relationshipTypes;
+      return this;
+    }
+
+    /**
+     * Set the recordTypes.
+     *
+     * @param recordTypes the recordTypes
+     * @return the UpdateModelDataModelOptions builder
+     */
+    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
+      this.recordTypes = recordTypes;
       return this;
     }
 
@@ -139,8 +139,8 @@ public class UpdateModelDataModelOptions extends GenericModel {
      * @return the UpdateModelDataModelOptions builder
      */
     public Builder dataModel(DataModel dataModel) {
-      this.recordTypes = dataModel.recordTypes();
       this.relationshipTypes = dataModel.relationshipTypes();
+      this.recordTypes = dataModel.recordTypes();
       this.attributeTypes = dataModel.attributeTypes();
       this.systemProperties = dataModel.systemProperties();
       this.locale = dataModel.locale();
@@ -149,18 +149,18 @@ public class UpdateModelDataModelOptions extends GenericModel {
   }
 
   protected UpdateModelDataModelOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
-      "recordTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
       "relationshipTypes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
+      "recordTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
       "attributeTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.systemProperties,
       "systemProperties cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
-    recordTypes = builder.recordTypes;
     relationshipTypes = builder.relationshipTypes;
+    recordTypes = builder.recordTypes;
     attributeTypes = builder.attributeTypes;
     systemProperties = builder.systemProperties;
     locale = builder.locale;
@@ -176,17 +176,6 @@ public class UpdateModelDataModelOptions extends GenericModel {
   }
 
   /**
-   * Gets the recordTypes.
-   *
-   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
-   *
-   * @return the recordTypes
-   */
-  public Map<String, DataModelRecordType> recordTypes() {
-    return recordTypes;
-  }
-
-  /**
    * Gets the relationshipTypes.
    *
    * Collection of relationship types. The relationship type key must be lower snake case (i.e. employment).
@@ -195,6 +184,17 @@ public class UpdateModelDataModelOptions extends GenericModel {
    */
   public Map<String, DataModelRelationshipType> relationshipTypes() {
     return relationshipTypes;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
+   *
+   * @return the recordTypes
+   */
+  public Map<String, DataModelRecordType> recordTypes() {
+    return recordTypes;
   }
 
   /**

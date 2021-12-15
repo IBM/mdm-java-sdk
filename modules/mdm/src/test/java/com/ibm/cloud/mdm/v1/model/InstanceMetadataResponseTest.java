@@ -34,12 +34,12 @@ public class InstanceMetadataResponseTest {
   @Test
   public void testInstanceMetadataResponse() throws Throwable {
     InstanceMetadataResponse instanceMetadataResponseModel = new InstanceMetadataResponse();
-    assertNull(instanceMetadataResponseModel.getJobProjectId());
-    assertNull(instanceMetadataResponseModel.getCosEndpoint());
     assertNull(instanceMetadataResponseModel.getProjects());
+    assertNull(instanceMetadataResponseModel.getCosEndpoint());
     assertNull(instanceMetadataResponseModel.getLabel());
-    assertNull(instanceMetadataResponseModel.getCosCrn());
     assertNull(instanceMetadataResponseModel.getBulkloadBucket());
+    assertNull(instanceMetadataResponseModel.getCosCrn());
     assertNull(instanceMetadataResponseModel.getCatalogs());
+    assertNull(instanceMetadataResponseModel.getJobProjectId());
   }
 }

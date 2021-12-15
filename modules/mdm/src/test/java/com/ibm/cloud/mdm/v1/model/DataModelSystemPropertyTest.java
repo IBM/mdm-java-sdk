@@ -34,14 +34,14 @@ public class DataModelSystemPropertyTest {
     DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
       .indexed(true)
       .editable(true)
-      .dataType("testString")
       .label("testString")
+      .dataType("testString")
       .description("testString")
       .build();
     assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModel.editable(), Boolean.valueOf(true));
-    assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
     assertEquals(dataModelSystemPropertyModel.label(), "testString");
+    assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
     assertEquals(dataModelSystemPropertyModel.description(), "testString");
 
     String json = TestUtilities.serialize(dataModelSystemPropertyModel);
@@ -50,8 +50,8 @@ public class DataModelSystemPropertyTest {
     assertTrue(dataModelSystemPropertyModelNew instanceof DataModelSystemProperty);
     assertEquals(dataModelSystemPropertyModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModelNew.editable(), Boolean.valueOf(true));
-    assertEquals(dataModelSystemPropertyModelNew.dataType(), "testString");
     assertEquals(dataModelSystemPropertyModelNew.label(), "testString");
+    assertEquals(dataModelSystemPropertyModelNew.dataType(), "testString");
     assertEquals(dataModelSystemPropertyModelNew.description(), "testString");
   }
 
