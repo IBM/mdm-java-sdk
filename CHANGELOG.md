@@ -1,3 +1,15 @@
+# [1.0.0](https://github.com/IBM/mdm-java-sdk/compare/0.0.13...1.0.0) (2022-01-06)
+
+
+### Features
+
+* Match360 Java SDK Major Release ([586282d](https://github.com/IBM/mdm-java-sdk/commit/586282df46b687a7d596c210eb797b66ca7f1b9e))
+
+
+### BREAKING CHANGES
+
+* Java SDK for Match 360 in CPD v4.0.1
+
 ## [0.0.13](https://github.com/IBM/mdm-java-sdk/compare/0.0.12...0.0.13) (2021-12-09)
 
 
