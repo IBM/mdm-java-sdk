@@ -33,7 +33,7 @@ public class CreateMatchingDeriveJobOptionsTest {
   public void testCreateMatchingDeriveJobOptions() throws Throwable {
     CreateMatchingDeriveJobOptions createMatchingDeriveJobOptionsModel = new CreateMatchingDeriveJobOptions.Builder()
       .recordType("person")
-      .doForce(true)
+      .doForce(false)
       .csvFile("/usr/mdm-matching/sample/person-100.tsv")
       .csvColumn("record_source,,record_id,legal_name.given_name,legal_name.last_name,primary_residence.address_line1,primary_residence.city,primary_residence.province_state,primary_residence.zip_postal_code,,home_telephone.phone_number,business_address.address_line1,business_address.city,business_address.province_state,business_address.zip_postal_code,,home_telephone.phone_number.1,social_security_number.identification_number,health_card.identification_number,birth_date.value,gender.value")
       .cosEndpoint("http://s3.us-south.cloud-object-storage.appdomain.cloud")
@@ -49,7 +49,7 @@ public class CreateMatchingDeriveJobOptionsTest {
       .logCosSecretKey("<hex string>")
       .build();
     assertEquals(createMatchingDeriveJobOptionsModel.recordType(), "person");
-    assertEquals(createMatchingDeriveJobOptionsModel.doForce(), Boolean.valueOf(true));
+    assertEquals(createMatchingDeriveJobOptionsModel.doForce(), Boolean.valueOf(false));
     assertEquals(createMatchingDeriveJobOptionsModel.csvFile(), "/usr/mdm-matching/sample/person-100.tsv");
     assertEquals(createMatchingDeriveJobOptionsModel.csvColumn(), "record_source,,record_id,legal_name.given_name,legal_name.last_name,primary_residence.address_line1,primary_residence.city,primary_residence.province_state,primary_residence.zip_postal_code,,home_telephone.phone_number,business_address.address_line1,business_address.city,business_address.province_state,business_address.zip_postal_code,,home_telephone.phone_number.1,social_security_number.identification_number,health_card.identification_number,birth_date.value,gender.value");
     assertEquals(createMatchingDeriveJobOptionsModel.cosEndpoint(), "http://s3.us-south.cloud-object-storage.appdomain.cloud");

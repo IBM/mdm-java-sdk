@@ -32,18 +32,18 @@ public class InstanceMetadataCatalogTest {
   @Test
   public void testInstanceMetadataCatalog() throws Throwable {
     InstanceMetadataCatalog instanceMetadataCatalogModel = new InstanceMetadataCatalog.Builder()
-      .catalogId("testString")
       .catalogInstance("testString")
+      .catalogId("testString")
       .build();
-    assertEquals(instanceMetadataCatalogModel.catalogId(), "testString");
     assertEquals(instanceMetadataCatalogModel.catalogInstance(), "testString");
+    assertEquals(instanceMetadataCatalogModel.catalogId(), "testString");
 
     String json = TestUtilities.serialize(instanceMetadataCatalogModel);
 
     InstanceMetadataCatalog instanceMetadataCatalogModelNew = TestUtilities.deserialize(json, InstanceMetadataCatalog.class);
     assertTrue(instanceMetadataCatalogModelNew instanceof InstanceMetadataCatalog);
-    assertEquals(instanceMetadataCatalogModelNew.catalogId(), "testString");
     assertEquals(instanceMetadataCatalogModelNew.catalogInstance(), "testString");
+    assertEquals(instanceMetadataCatalogModelNew.catalogId(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

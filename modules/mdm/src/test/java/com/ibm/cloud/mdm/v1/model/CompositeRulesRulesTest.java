@@ -36,11 +36,11 @@ public class CompositeRulesRulesTest {
   @Test
   public void testCompositeRulesRules() throws Throwable {
     CompositeRulesRule compositeRulesRuleModel = new CompositeRulesRule.Builder()
-      .choices(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .choices(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(compositeRulesRuleModel.choices(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(compositeRulesRuleModel.sources(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(compositeRulesRuleModel.choices(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
       .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
@@ -52,11 +52,11 @@ public class CompositeRulesRulesTest {
     assertEquals(compositeRulesRecordTypeModel.entityRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
 
     CompositeRulesRules compositeRulesRulesModel = new CompositeRulesRules.Builder()
-      .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })
       .global(compositeRulesRuleModel)
+      .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })
       .build();
-    assertEquals(compositeRulesRulesModel.recordTypes(), new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } });
     assertEquals(compositeRulesRulesModel.global(), compositeRulesRuleModel);
+    assertEquals(compositeRulesRulesModel.recordTypes(), new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } });
 
     String json = TestUtilities.serialize(compositeRulesRulesModel);
 

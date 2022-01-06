@@ -28,8 +28,8 @@ public class RulesEntityRule extends GenericModel {
   protected String srcRecno;
   @SerializedName("target_recno")
   protected String targetRecno;
-  protected String user;
   protected String description;
+  protected String user;
 
   /**
    * Gets the lastUpdated.
@@ -76,17 +76,6 @@ public class RulesEntityRule extends GenericModel {
   }
 
   /**
-   * Gets the user.
-   *
-   * Creator of the linkage rule.
-   *
-   * @return the user
-   */
-  public String getUser() {
-    return user;
-  }
-
-  /**
    * Gets the description.
    *
    * User defined description for the linkage rule.
@@ -95,6 +84,17 @@ public class RulesEntityRule extends GenericModel {
    */
   public String getDescription() {
     return description;
+  }
+
+  /**
+   * Gets the user.
+   *
+   * Creator of the linkage rule.
+   *
+   * @return the user
+   */
+  public String getUser() {
+    return user;
   }
 }
 

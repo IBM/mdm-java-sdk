@@ -24,9 +24,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class MapResourceEntry extends GenericModel {
 
   protected String category;
+  protected List<String> regex;
   @SerializedName("data_type")
   protected String dataType;
-  protected List<String> regex;
   protected String cardinality;
   protected List<String> values;
   protected String key;
@@ -36,16 +36,16 @@ public class MapResourceEntry extends GenericModel {
    */
   public static class Builder {
     private String category;
-    private String dataType;
     private List<String> regex;
+    private String dataType;
     private String cardinality;
     private List<String> values;
     private String key;
 
     private Builder(MapResourceEntry mapResourceEntry) {
       this.category = mapResourceEntry.category;
-      this.dataType = mapResourceEntry.dataType;
       this.regex = mapResourceEntry.regex;
+      this.dataType = mapResourceEntry.dataType;
       this.cardinality = mapResourceEntry.cardinality;
       this.values = mapResourceEntry.values;
       this.key = mapResourceEntry.key;
@@ -121,17 +121,6 @@ public class MapResourceEntry extends GenericModel {
     }
 
     /**
-     * Set the dataType.
-     *
-     * @param dataType the dataType
-     * @return the MapResourceEntry builder
-     */
-    public Builder dataType(String dataType) {
-      this.dataType = dataType;
-      return this;
-    }
-
-    /**
      * Set the regex.
      * Existing regex will be replaced.
      *
@@ -140,6 +129,17 @@ public class MapResourceEntry extends GenericModel {
      */
     public Builder regex(List<String> regex) {
       this.regex = regex;
+      return this;
+    }
+
+    /**
+     * Set the dataType.
+     *
+     * @param dataType the dataType
+     * @return the MapResourceEntry builder
+     */
+    public Builder dataType(String dataType) {
+      this.dataType = dataType;
       return this;
     }
 
@@ -184,8 +184,8 @@ public class MapResourceEntry extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.values,
       "values cannot be null");
     category = builder.category;
-    dataType = builder.dataType;
     regex = builder.regex;
+    dataType = builder.dataType;
     cardinality = builder.cardinality;
     values = builder.values;
     key = builder.key;
@@ -212,6 +212,17 @@ public class MapResourceEntry extends GenericModel {
   }
 
   /**
+   * Gets the regex.
+   *
+   * Collection of applicable regular expressions.
+   *
+   * @return the regex
+   */
+  public List<String> regex() {
+    return regex;
+  }
+
+  /**
    * Gets the dataType.
    *
    * User defined data type for the values in the category. One of: String, byte, short, int, long, float, double, char
@@ -221,17 +232,6 @@ public class MapResourceEntry extends GenericModel {
    */
   public String dataType() {
     return dataType;
-  }
-
-  /**
-   * Gets the regex.
-   *
-   * Collection of applicable regular expressions.
-   *
-   * @return the regex
-   */
-  public List<String> regex() {
-    return regex;
   }
 
   /**

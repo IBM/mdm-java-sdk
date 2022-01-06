@@ -22,9 +22,9 @@ public class DataModelSystemProperty extends GenericModel {
 
   protected Boolean indexed;
   protected Boolean editable;
+  protected String label;
   @SerializedName("data_type")
   protected String dataType;
-  protected String label;
   protected String description;
 
   /**
@@ -33,15 +33,15 @@ public class DataModelSystemProperty extends GenericModel {
   public static class Builder {
     private Boolean indexed;
     private Boolean editable;
-    private String dataType;
     private String label;
+    private String dataType;
     private String description;
 
     private Builder(DataModelSystemProperty dataModelSystemProperty) {
       this.indexed = dataModelSystemProperty.indexed;
       this.editable = dataModelSystemProperty.editable;
-      this.dataType = dataModelSystemProperty.dataType;
       this.label = dataModelSystemProperty.label;
+      this.dataType = dataModelSystemProperty.dataType;
       this.description = dataModelSystemProperty.description;
     }
 
@@ -54,12 +54,12 @@ public class DataModelSystemProperty extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param dataType the dataType
      * @param label the label
+     * @param dataType the dataType
      */
-    public Builder(String dataType, String label) {
-      this.dataType = dataType;
+    public Builder(String label, String dataType) {
       this.label = label;
+      this.dataType = dataType;
     }
 
     /**
@@ -94,17 +94,6 @@ public class DataModelSystemProperty extends GenericModel {
     }
 
     /**
-     * Set the dataType.
-     *
-     * @param dataType the dataType
-     * @return the DataModelSystemProperty builder
-     */
-    public Builder dataType(String dataType) {
-      this.dataType = dataType;
-      return this;
-    }
-
-    /**
      * Set the label.
      *
      * @param label the label
@@ -112,6 +101,17 @@ public class DataModelSystemProperty extends GenericModel {
      */
     public Builder label(String label) {
       this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the dataType.
+     *
+     * @param dataType the dataType
+     * @return the DataModelSystemProperty builder
+     */
+    public Builder dataType(String dataType) {
+      this.dataType = dataType;
       return this;
     }
 
@@ -128,14 +128,14 @@ public class DataModelSystemProperty extends GenericModel {
   }
 
   protected DataModelSystemProperty(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
-      "dataType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
+      "dataType cannot be null");
     indexed = builder.indexed;
     editable = builder.editable;
-    dataType = builder.dataType;
     label = builder.label;
+    dataType = builder.dataType;
     description = builder.description;
   }
 
@@ -171,17 +171,6 @@ public class DataModelSystemProperty extends GenericModel {
   }
 
   /**
-   * Gets the dataType.
-   *
-   * System pre-defined data type. One of: String or Long.
-   *
-   * @return the dataType
-   */
-  public String dataType() {
-    return dataType;
-  }
-
-  /**
    * Gets the label.
    *
    * System pre-defined label.
@@ -190,6 +179,17 @@ public class DataModelSystemProperty extends GenericModel {
    */
   public String label() {
     return label;
+  }
+
+  /**
+   * Gets the dataType.
+   *
+   * System pre-defined data type. One of: String or Long.
+   *
+   * @return the dataType
+   */
+  public String dataType() {
+    return dataType;
   }
 
   /**

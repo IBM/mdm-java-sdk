@@ -19,19 +19,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Rule extends GenericModel {
 
-  protected Source source;
   protected Target target;
+  protected Source source;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Source source;
     private Target target;
+    private Source source;
 
     private Builder(Rule rule) {
-      this.source = rule.source;
       this.target = rule.target;
+      this.source = rule.source;
     }
 
     /**
@@ -50,17 +50,6 @@ public class Rule extends GenericModel {
     }
 
     /**
-     * Set the source.
-     *
-     * @param source the source
-     * @return the Rule builder
-     */
-    public Builder source(Source source) {
-      this.source = source;
-      return this;
-    }
-
-    /**
      * Set the target.
      *
      * @param target the target
@@ -70,11 +59,22 @@ public class Rule extends GenericModel {
       this.target = target;
       return this;
     }
+
+    /**
+     * Set the source.
+     *
+     * @param source the source
+     * @return the Rule builder
+     */
+    public Builder source(Source source) {
+      this.source = source;
+      return this;
+    }
   }
 
   protected Rule(Builder builder) {
-    source = builder.source;
     target = builder.target;
+    source = builder.source;
   }
 
   /**
@@ -87,17 +87,6 @@ public class Rule extends GenericModel {
   }
 
   /**
-   * Gets the source.
-   *
-   * Source rules.
-   *
-   * @return the source
-   */
-  public Source source() {
-    return source;
-  }
-
-  /**
    * Gets the target.
    *
    * Target rules.
@@ -106,6 +95,17 @@ public class Rule extends GenericModel {
    */
   public Target target() {
     return target;
+  }
+
+  /**
+   * Gets the source.
+   *
+   * Source rules.
+   *
+   * @return the source
+   */
+  public Source source() {
+    return source;
   }
 }
 

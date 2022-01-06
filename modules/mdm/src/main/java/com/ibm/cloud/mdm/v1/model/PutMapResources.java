@@ -23,23 +23,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutMapResources extends GenericModel {
 
-  @SerializedName("map_resources")
-  protected Map<String, List<MapResourceEntry>> mapResources;
   @SerializedName("flow_state")
   protected String flowState;
   @SerializedName("flow_id")
   protected String flowId;
-
-  /**
-   * Gets the mapResources.
-   *
-   * Map resource detail.
-   *
-   * @return the mapResources
-   */
-  public Map<String, List<MapResourceEntry>> getMapResources() {
-    return mapResources;
-  }
+  @SerializedName("map_resources")
+  protected Map<String, List<MapResourceEntry>> mapResources;
 
   /**
    * Gets the flowState.
@@ -61,6 +50,17 @@ public class PutMapResources extends GenericModel {
    */
   public String getFlowId() {
     return flowId;
+  }
+
+  /**
+   * Gets the mapResources.
+   *
+   * Map resource detail.
+   *
+   * @return the mapResources
+   */
+  public Map<String, List<MapResourceEntry>> getMapResources() {
+    return mapResources;
   }
 }
 

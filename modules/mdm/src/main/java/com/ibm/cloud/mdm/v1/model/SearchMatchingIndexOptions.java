@@ -59,17 +59,6 @@ public class SearchMatchingIndexOptions extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param recordType the recordType
-     * @param attributes the attributes
-     */
-    public Builder(String recordType, SingleRecordRequestAttributes attributes) {
-      this.recordType = recordType;
-      this.attributes = attributes;
-    }
-
-    /**
      * Builds a SearchMatchingIndexOptions.
      *
      * @return the new SearchMatchingIndexOptions instance
@@ -168,10 +157,6 @@ public class SearchMatchingIndexOptions extends GenericModel {
   }
 
   protected SearchMatchingIndexOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
-      "recordType cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
-      "attributes cannot be null");
     recordType = builder.recordType;
     attributes = builder.attributes;
     details = builder.details;

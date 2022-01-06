@@ -41,37 +41,37 @@ public class RecordTypeTest {
     assertEquals(entityTypeModel.description(), "testString");
 
     Attribute attributeModel = new Attribute.Builder()
-      .description("testString")
-      .classification("testString")
       .indexed(true)
-      .attributeType("email")
+      .classification("testString")
       .label("testString")
+      .description("testString")
       .cardinality("testString")
+      .attributeType("email")
       .build();
-    assertEquals(attributeModel.description(), "testString");
-    assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModel.attributeType(), "email");
+    assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.label(), "testString");
+    assertEquals(attributeModel.description(), "testString");
     assertEquals(attributeModel.cardinality(), "testString");
+    assertEquals(attributeModel.attributeType(), "email");
 
     RecordType recordTypeModel = new RecordType.Builder()
       .entityTypes(new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } })
+      .label("testString")
       .description("testString")
       .attributes(new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } })
-      .label("testString")
       .build();
     assertEquals(recordTypeModel.entityTypes(), new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } });
+    assertEquals(recordTypeModel.label(), "testString");
     assertEquals(recordTypeModel.description(), "testString");
     assertEquals(recordTypeModel.attributes(), new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } });
-    assertEquals(recordTypeModel.label(), "testString");
 
     String json = TestUtilities.serialize(recordTypeModel);
 
     RecordType recordTypeModelNew = TestUtilities.deserialize(json, RecordType.class);
     assertTrue(recordTypeModelNew instanceof RecordType);
-    assertEquals(recordTypeModelNew.description(), "testString");
     assertEquals(recordTypeModelNew.label(), "testString");
+    assertEquals(recordTypeModelNew.description(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

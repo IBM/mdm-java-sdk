@@ -33,10 +33,10 @@ public class DataRelationshipTest {
   public void testDataRelationship() throws Throwable {
     DataRelationship dataRelationshipModel = new DataRelationship.Builder()
       .id("testString")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(dataRelationshipModel.id(), "testString");
-    assertEquals(dataRelationshipModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(dataRelationshipModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
 
     String json = TestUtilities.serialize(dataRelationshipModel);
 

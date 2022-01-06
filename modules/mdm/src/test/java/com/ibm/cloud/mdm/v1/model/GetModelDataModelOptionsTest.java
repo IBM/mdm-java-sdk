@@ -32,8 +32,8 @@ public class GetModelDataModelOptionsTest {
   @Test
   public void testGetModelDataModelOptions() throws Throwable {
     GetModelDataModelOptions getModelDataModelOptionsModel = new GetModelDataModelOptions.Builder()
-      .version("testString")
+      .version("current")
       .build();
-    assertEquals(getModelDataModelOptionsModel.version(), "testString");
+    assertEquals(getModelDataModelOptionsModel.version(), "current");
   }
 }

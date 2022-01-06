@@ -26,6 +26,10 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmBucketStep extends DynamicModel<Object> {
 
+  @SerializedName("inputs")
+  protected List<Long> inputs;
+  @SerializedName("label")
+  protected String label;
   @SerializedName("set_resource")
   protected String setResource;
   @SerializedName("map_resource")
@@ -34,10 +38,6 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
   protected String comparisonResource;
   @SerializedName("order")
   protected Boolean order;
-  @SerializedName("inputs")
-  protected List<Long> inputs;
-  @SerializedName("label")
-  protected String label;
   @SerializedName("fields")
   protected List<String> fields;
   @SerializedName("method")
@@ -51,23 +51,23 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
+    private List<Long> inputs;
+    private String label;
     private String setResource;
     private String mapResource;
     private String comparisonResource;
     private Boolean order;
-    private List<Long> inputs;
-    private String label;
     private List<String> fields;
     private String method;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmBucketStep algorithmBucketStep) {
+      this.inputs = algorithmBucketStep.inputs;
+      this.label = algorithmBucketStep.label;
       this.setResource = algorithmBucketStep.setResource;
       this.mapResource = algorithmBucketStep.mapResource;
       this.comparisonResource = algorithmBucketStep.comparisonResource;
       this.order = algorithmBucketStep.order;
-      this.inputs = algorithmBucketStep.inputs;
-      this.label = algorithmBucketStep.label;
       this.fields = algorithmBucketStep.fields;
       this.method = algorithmBucketStep.method;
       this.dynamicProperties = algorithmBucketStep.getProperties();
@@ -132,6 +132,29 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
     }
 
     /**
+     * Set the inputs.
+     * Existing inputs will be replaced.
+     *
+     * @param inputs the inputs
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder inputs(List<Long> inputs) {
+      this.inputs = inputs;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
      * Set the setResource.
      *
      * @param setResource the setResource
@@ -172,29 +195,6 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
      */
     public Builder order(Boolean order) {
       this.order = order;
-      return this;
-    }
-
-    /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
-     *
-     * @param inputs the inputs
-     * @return the AlgorithmBucketStep builder
-     */
-    public Builder inputs(List<Long> inputs) {
-      this.inputs = inputs;
-      return this;
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the AlgorithmBucketStep builder
-     */
-    public Builder label(String label) {
-      this.label = label;
       return this;
     }
 
@@ -244,12 +244,12 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
       "method cannot be null");
+    inputs = builder.inputs;
+    label = builder.label;
     setResource = builder.setResource;
     mapResource = builder.mapResource;
     comparisonResource = builder.comparisonResource;
     order = builder.order;
-    inputs = builder.inputs;
-    label = builder.label;
     fields = builder.fields;
     method = builder.method;
     this.setProperties(builder.dynamicProperties);
@@ -262,6 +262,46 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   *
+   * @return the inputs
+   */
+  public List<Long> getInputs() {
+    return this.inputs;
+  }
+
+  /**
+   * Sets the inputs.
+   *
+   * @param inputs the new inputs
+   */
+  public void setInputs(final List<Long> inputs) {
+    this.inputs = inputs;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String getLabel() {
+    return this.label;
+  }
+
+  /**
+   * Sets the label.
+   *
+   * @param label the new label
+   */
+  public void setLabel(final String label) {
+    this.label = label;
   }
 
   /**
@@ -342,46 +382,6 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    */
   public void setOrder(final Boolean order) {
     this.order = order;
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
-   *
-   * @return the inputs
-   */
-  public List<Long> getInputs() {
-    return this.inputs;
-  }
-
-  /**
-   * Sets the inputs.
-   *
-   * @param inputs the new inputs
-   */
-  public void setInputs(final List<Long> inputs) {
-    this.inputs = inputs;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String getLabel() {
-    return this.label;
-  }
-
-  /**
-   * Sets the label.
-   *
-   * @param label the new label
-   */
-  public void setLabel(final String label) {
-    this.label = label;
   }
 
   /**

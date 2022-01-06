@@ -24,7 +24,6 @@ public class CreateMatchingReportJobOptions extends GenericModel {
   protected Long executorCount;
   protected String executorMemory;
   protected Long executorCoreCount;
-  protected String jobList;
   protected Boolean doAnalytics;
 
   /**
@@ -36,7 +35,6 @@ public class CreateMatchingReportJobOptions extends GenericModel {
     private Long executorCount;
     private String executorMemory;
     private Long executorCoreCount;
-    private String jobList;
     private Boolean doAnalytics;
 
     private Builder(CreateMatchingReportJobOptions createMatchingReportJobOptions) {
@@ -45,7 +43,6 @@ public class CreateMatchingReportJobOptions extends GenericModel {
       this.executorCount = createMatchingReportJobOptions.executorCount;
       this.executorMemory = createMatchingReportJobOptions.executorMemory;
       this.executorCoreCount = createMatchingReportJobOptions.executorCoreCount;
-      this.jobList = createMatchingReportJobOptions.jobList;
       this.doAnalytics = createMatchingReportJobOptions.doAnalytics;
     }
 
@@ -120,17 +117,6 @@ public class CreateMatchingReportJobOptions extends GenericModel {
     }
 
     /**
-     * Set the jobList.
-     *
-     * @param jobList the jobList
-     * @return the CreateMatchingReportJobOptions builder
-     */
-    public Builder jobList(String jobList) {
-      this.jobList = jobList;
-      return this;
-    }
-
-    /**
      * Set the doAnalytics.
      *
      * @param doAnalytics the doAnalytics
@@ -148,7 +134,6 @@ public class CreateMatchingReportJobOptions extends GenericModel {
     executorCount = builder.executorCount;
     executorMemory = builder.executorMemory;
     executorCoreCount = builder.executorCoreCount;
-    jobList = builder.jobList;
     doAnalytics = builder.doAnalytics;
   }
 
@@ -214,17 +199,6 @@ public class CreateMatchingReportJobOptions extends GenericModel {
    */
   public Long executorCoreCount() {
     return executorCoreCount;
-  }
-
-  /**
-   * Gets the jobList.
-   *
-   * Comma separated analytics report identifier to be collected, ie. entity_summary, bucket_summary.
-   *
-   * @return the jobList
-   */
-  public String jobList() {
-    return jobList;
   }
 
   /**

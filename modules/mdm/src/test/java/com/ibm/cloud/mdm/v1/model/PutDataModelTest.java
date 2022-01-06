@@ -49,8 +49,8 @@ public class PutDataModelTest {
   @Test
   public void testPutDataModel() throws Throwable {
     PutDataModel putDataModelModel = new PutDataModel();
-    assertNull(putDataModelModel.getDataModel());
     assertNull(putDataModelModel.getFlowState());
     assertNull(putDataModelModel.getFlowId());
+    assertNull(putDataModelModel.getDataModel());
   }
 }

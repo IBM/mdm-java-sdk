@@ -36,7 +36,7 @@ public class EntityBreakdownTest {
     assertNull(entityBreakdownModel.getAverage());
     assertNull(entityBreakdownModel.getVariance());
     assertNull(entityBreakdownModel.getMax());
-    assertNull(entityBreakdownModel.getCount());
     assertNull(entityBreakdownModel.getMin());
+    assertNull(entityBreakdownModel.getCount());
   }
 }

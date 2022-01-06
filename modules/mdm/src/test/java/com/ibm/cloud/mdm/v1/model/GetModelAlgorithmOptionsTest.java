@@ -33,10 +33,10 @@ public class GetModelAlgorithmOptionsTest {
   public void testGetModelAlgorithmOptions() throws Throwable {
     GetModelAlgorithmOptions getModelAlgorithmOptionsModel = new GetModelAlgorithmOptions.Builder()
       .recordType("testString")
-      .template(true)
+      .template(false)
       .build();
     assertEquals(getModelAlgorithmOptionsModel.recordType(), "testString");
-    assertEquals(getModelAlgorithmOptionsModel.template(), Boolean.valueOf(true));
+    assertEquals(getModelAlgorithmOptionsModel.template(), Boolean.valueOf(false));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

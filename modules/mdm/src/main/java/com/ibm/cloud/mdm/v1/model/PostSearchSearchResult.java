@@ -25,10 +25,10 @@ public class PostSearchSearchResult extends GenericModel {
   @SerializedName("record_source")
   protected String recordSource;
   protected Float score;
-  @SerializedName("compare_methods")
-  protected List<SingleCompareMethod> compareMethods;
   @SerializedName("record_id")
   protected String recordId;
+  @SerializedName("compare_methods")
+  protected List<SingleCompareMethod> compareMethods;
 
   /**
    * Gets the recordSource.
@@ -53,17 +53,6 @@ public class PostSearchSearchResult extends GenericModel {
   }
 
   /**
-   * Gets the compareMethods.
-   *
-   * Collection of comparators for a potential match record.
-   *
-   * @return the compareMethods
-   */
-  public List<SingleCompareMethod> getCompareMethods() {
-    return compareMethods;
-  }
-
-  /**
    * Gets the recordId.
    *
    * The identifier of the record.
@@ -72,6 +61,17 @@ public class PostSearchSearchResult extends GenericModel {
    */
   public String getRecordId() {
     return recordId;
+  }
+
+  /**
+   * Gets the compareMethods.
+   *
+   * Collection of comparators for a potential match record.
+   *
+   * @return the compareMethods
+   */
+  public List<SingleCompareMethod> getCompareMethods() {
+    return compareMethods;
   }
 }
 

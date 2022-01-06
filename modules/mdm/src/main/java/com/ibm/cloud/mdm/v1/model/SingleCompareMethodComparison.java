@@ -24,10 +24,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class SingleCompareMethodComparison extends GenericModel {
 
   protected Long distance;
+  protected Map<String, Object> details;
   protected Float score;
   @SerializedName("feature_vector")
   protected Map<String, Object> featureVector;
-  protected Map<String, Object> details;
   protected List<String> values;
   protected List<String> types;
 
@@ -40,6 +40,17 @@ public class SingleCompareMethodComparison extends GenericModel {
    */
   public Long getDistance() {
     return distance;
+  }
+
+  /**
+   * Gets the details.
+   *
+   * Collection of details of compared tokens.
+   *
+   * @return the details
+   */
+  public Map<String, Object> getDetails() {
+    return details;
   }
 
   /**
@@ -62,17 +73,6 @@ public class SingleCompareMethodComparison extends GenericModel {
    */
   public Map<String, Object> getFeatureVector() {
     return featureVector;
-  }
-
-  /**
-   * Gets the details.
-   *
-   * Collection of details of compared tokens.
-   *
-   * @return the details
-   */
-  public Map<String, Object> getDetails() {
-    return details;
   }
 
   /**

@@ -26,10 +26,10 @@ public class Flow extends GenericModel {
   protected String flowState;
   @SerializedName("flow_id")
   protected String flowId;
-  @SerializedName("flow_type")
-  protected String flowType;
   protected List<String> rejections;
   protected List<String> approvals;
+  @SerializedName("flow_type")
+  protected String flowType;
   protected Boolean active;
 
   /**
@@ -55,18 +55,6 @@ public class Flow extends GenericModel {
   }
 
   /**
-   * Gets the flowType.
-   *
-   * Type of flow. One of: data_model, algorithm, compare_spec_resources, composite_rules, map_resources or
-   * set_resources.
-   *
-   * @return the flowType
-   */
-  public String getFlowType() {
-    return flowType;
-  }
-
-  /**
    * Gets the rejections.
    *
    * Collection of authorized approvers that rejected the flow.
@@ -86,6 +74,18 @@ public class Flow extends GenericModel {
    */
   public List<String> getApprovals() {
     return approvals;
+  }
+
+  /**
+   * Gets the flowType.
+   *
+   * Type of flow. One of: data_model, algorithm, compare_spec_resources, composite_rules, map_resources or
+   * set_resources.
+   *
+   * @return the flowType
+   */
+  public String getFlowType() {
+    return flowType;
   }
 
   /**

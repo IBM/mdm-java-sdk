@@ -23,27 +23,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataResponse extends GenericModel {
 
-  @SerializedName("job_project_id")
-  protected String jobProjectId;
+  protected List<InstanceMetadataResponseProject> projects;
   @SerializedName("cos_endpoint")
   protected String cosEndpoint;
-  protected List<InstanceMetadataResponseProject> projects;
   protected String label;
-  @SerializedName("cos_crn")
-  protected String cosCrn;
   @SerializedName("bulkload_bucket")
   protected Map<String, Object> bulkloadBucket;
+  @SerializedName("cos_crn")
+  protected String cosCrn;
   protected List<InstanceMetadataResponseCatalog> catalogs;
+  @SerializedName("job_project_id")
+  protected String jobProjectId;
 
   /**
-   * Gets the jobProjectId.
+   * Gets the projects.
    *
-   * The unique identifier of a project for the jobs.
+   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
    *
-   * @return the jobProjectId
+   * @return the projects
    */
-  public String getJobProjectId() {
-    return jobProjectId;
+  public List<InstanceMetadataResponseProject> getProjects() {
+    return projects;
   }
 
   /**
@@ -58,17 +58,6 @@ public class InstanceMetadataResponse extends GenericModel {
   }
 
   /**
-   * Gets the projects.
-   *
-   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
-   *
-   * @return the projects
-   */
-  public List<InstanceMetadataResponseProject> getProjects() {
-    return projects;
-  }
-
-  /**
    * Gets the label.
    *
    * Label for instance metadata.
@@ -77,17 +66,6 @@ public class InstanceMetadataResponse extends GenericModel {
    */
   public String getLabel() {
     return label;
-  }
-
-  /**
-   * Gets the cosCrn.
-   *
-   * The cloud resource Name of cloud object storage.
-   *
-   * @return the cosCrn
-   */
-  public String getCosCrn() {
-    return cosCrn;
   }
 
   /**
@@ -102,6 +80,17 @@ public class InstanceMetadataResponse extends GenericModel {
   }
 
   /**
+   * Gets the cosCrn.
+   *
+   * The cloud resource Name of cloud object storage.
+   *
+   * @return the cosCrn
+   */
+  public String getCosCrn() {
+    return cosCrn;
+  }
+
+  /**
    * Gets the catalogs.
    *
    * Collection of catalog objects as available in Watson Knowledge Catalog (WKC).
@@ -110,6 +99,17 @@ public class InstanceMetadataResponse extends GenericModel {
    */
   public List<InstanceMetadataResponseCatalog> getCatalogs() {
     return catalogs;
+  }
+
+  /**
+   * Gets the jobProjectId.
+   *
+   * The unique identifier of a project for the jobs.
+   *
+   * @return the jobProjectId
+   */
+  public String getJobProjectId() {
+    return jobProjectId;
   }
 }
 
