@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -37,11 +37,11 @@ public class DataModelRelationshipTypeTest {
   @Test
   public void testDataModelRelationshipType() throws Throwable {
     DataModelRelationshipEndpoint dataModelRelationshipEndpointModel = new DataModelRelationshipEndpoint.Builder()
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(dataModelRelationshipEndpointModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(dataModelRelationshipEndpointModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(dataModelRelationshipEndpointModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     DataModelRelationshipRule dataModelRelationshipRuleModel = new DataModelRelationshipRule.Builder()
       .source(dataModelRelationshipEndpointModel)
@@ -51,36 +51,36 @@ public class DataModelRelationshipTypeTest {
     assertEquals(dataModelRelationshipRuleModel.target(), dataModelRelationshipEndpointModel);
 
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
-      .indexed(true)
-      .classification("testString")
       .label("testString")
       .matchingType("testString")
       .attributeType("testString")
+      .indexed(true)
+      .classification("testString")
       .description("testString")
       .cardinality("testString")
       .build();
-    assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelAttributeModel.classification(), "testString");
     assertEquals(dataModelAttributeModel.label(), "testString");
     assertEquals(dataModelAttributeModel.matchingType(), "testString");
     assertEquals(dataModelAttributeModel.attributeType(), "testString");
+    assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
+    assertEquals(dataModelAttributeModel.classification(), "testString");
     assertEquals(dataModelAttributeModel.description(), "testString");
     assertEquals(dataModelAttributeModel.cardinality(), "testString");
 
     DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
       .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
-      .directional(true)
       .labelFromSource("testString")
       .labelFromTarget("testString")
+      .directional(true)
       .label("testString")
       .description("testString")
       .cardinality("testString")
       .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
       .build();
     assertEquals(dataModelRelationshipTypeModel.rules(), new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)));
-    assertEquals(dataModelRelationshipTypeModel.directional(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModel.labelFromSource(), "testString");
     assertEquals(dataModelRelationshipTypeModel.labelFromTarget(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.directional(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModel.label(), "testString");
     assertEquals(dataModelRelationshipTypeModel.description(), "testString");
     assertEquals(dataModelRelationshipTypeModel.cardinality(), "testString");
@@ -90,9 +90,9 @@ public class DataModelRelationshipTypeTest {
 
     DataModelRelationshipType dataModelRelationshipTypeModelNew = TestUtilities.deserialize(json, DataModelRelationshipType.class);
     assertTrue(dataModelRelationshipTypeModelNew instanceof DataModelRelationshipType);
-    assertEquals(dataModelRelationshipTypeModelNew.directional(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModelNew.labelFromSource(), "testString");
     assertEquals(dataModelRelationshipTypeModelNew.labelFromTarget(), "testString");
+    assertEquals(dataModelRelationshipTypeModelNew.directional(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModelNew.label(), "testString");
     assertEquals(dataModelRelationshipTypeModelNew.description(), "testString");
     assertEquals(dataModelRelationshipTypeModelNew.cardinality(), "testString");

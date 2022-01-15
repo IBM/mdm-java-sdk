@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -150,7 +150,7 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
   /**
    * Gets the autoLinkThreshold.
    *
-   * The minimum matching score between two records to automatically link them together.
+   * The minimum matching score between two records to automatically link them together. The range is from 0 to 1.
    *
    * @return the autoLinkThreshold
    */

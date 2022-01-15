@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -44,14 +44,14 @@ public class CompareSpecResourceTest {
     assertEquals(compareSpecResourceFeatureCategoryModel.fields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     CompareSpecResource compareSpecResourceModel = new CompareSpecResource.Builder()
-      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
       .typoDistance(Float.valueOf("36.0"))
+      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
       .similarCharactersMapResource("testString")
       .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
       .similarCharactersDistance(Float.valueOf("36.0"))
       .build();
-    assertEquals(compareSpecResourceModel.featureCategories(), new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } });
     assertEquals(compareSpecResourceModel.typoDistance(), Float.valueOf("36.0"));
+    assertEquals(compareSpecResourceModel.featureCategories(), new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } });
     assertEquals(compareSpecResourceModel.similarCharactersMapResource(), "testString");
     assertEquals(compareSpecResourceModel.featureCoefficients(), new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } });
     assertEquals(compareSpecResourceModel.similarCharactersDistance(), Float.valueOf("36.0"));

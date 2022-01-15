@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,9 +33,9 @@ public class SingleCompareMethodComparisonTest {
   public void testSingleCompareMethodComparison() throws Throwable {
     SingleCompareMethodComparison singleCompareMethodComparisonModel = new SingleCompareMethodComparison();
     assertNull(singleCompareMethodComparisonModel.getDistance());
-    assertNull(singleCompareMethodComparisonModel.getDetails());
     assertNull(singleCompareMethodComparisonModel.getScore());
     assertNull(singleCompareMethodComparisonModel.getFeatureVector());
+    assertNull(singleCompareMethodComparisonModel.getDetails());
     assertNull(singleCompareMethodComparisonModel.getValues());
     assertNull(singleCompareMethodComparisonModel.getTypes());
   }

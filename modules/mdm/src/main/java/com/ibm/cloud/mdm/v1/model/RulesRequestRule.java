@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,23 +23,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RulesRequestRule extends GenericModel {
 
-  @SerializedName("rule_type")
-  protected String ruleType;
   @SerializedName("record_numbers")
   protected List<String> recordNumbers;
+  @SerializedName("rule_type")
+  protected String ruleType;
   protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String ruleType;
     private List<String> recordNumbers;
+    private String ruleType;
     private String description;
 
     private Builder(RulesRequestRule rulesRequestRule) {
-      this.ruleType = rulesRequestRule.ruleType;
       this.recordNumbers = rulesRequestRule.recordNumbers;
+      this.ruleType = rulesRequestRule.ruleType;
       this.description = rulesRequestRule.description;
     }
 
@@ -52,13 +52,13 @@ public class RulesRequestRule extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param ruleType the ruleType
      * @param recordNumbers the recordNumbers
+     * @param ruleType the ruleType
      * @param description the description
      */
-    public Builder(String ruleType, List<String> recordNumbers, String description) {
-      this.ruleType = ruleType;
+    public Builder(List<String> recordNumbers, String ruleType, String description) {
       this.recordNumbers = recordNumbers;
+      this.ruleType = ruleType;
       this.description = description;
     }
 
@@ -88,17 +88,6 @@ public class RulesRequestRule extends GenericModel {
     }
 
     /**
-     * Set the ruleType.
-     *
-     * @param ruleType the ruleType
-     * @return the RulesRequestRule builder
-     */
-    public Builder ruleType(String ruleType) {
-      this.ruleType = ruleType;
-      return this;
-    }
-
-    /**
      * Set the recordNumbers.
      * Existing recordNumbers will be replaced.
      *
@@ -107,6 +96,17 @@ public class RulesRequestRule extends GenericModel {
      */
     public Builder recordNumbers(List<String> recordNumbers) {
       this.recordNumbers = recordNumbers;
+      return this;
+    }
+
+    /**
+     * Set the ruleType.
+     *
+     * @param ruleType the ruleType
+     * @return the RulesRequestRule builder
+     */
+    public Builder ruleType(String ruleType) {
+      this.ruleType = ruleType;
       return this;
     }
 
@@ -123,14 +123,14 @@ public class RulesRequestRule extends GenericModel {
   }
 
   protected RulesRequestRule(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.ruleType,
-      "ruleType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordNumbers,
       "recordNumbers cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.ruleType,
+      "ruleType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.description,
       "description cannot be null");
-    ruleType = builder.ruleType;
     recordNumbers = builder.recordNumbers;
+    ruleType = builder.ruleType;
     description = builder.description;
   }
 
@@ -144,17 +144,6 @@ public class RulesRequestRule extends GenericModel {
   }
 
   /**
-   * Gets the ruleType.
-   *
-   * User specified rule type. One Of: link, unlink.
-   *
-   * @return the ruleType
-   */
-  public String ruleType() {
-    return ruleType;
-  }
-
-  /**
    * Gets the recordNumbers.
    *
    * Collection of record numbers.
@@ -163,6 +152,17 @@ public class RulesRequestRule extends GenericModel {
    */
   public List<String> recordNumbers() {
     return recordNumbers;
+  }
+
+  /**
+   * Gets the ruleType.
+   *
+   * User specified rule type. One Of: link, unlink.
+   *
+   * @return the ruleType
+   */
+  public String ruleType() {
+    return ruleType;
   }
 
   /**

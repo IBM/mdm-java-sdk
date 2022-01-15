@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,24 +20,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class EntityBreakdown extends GenericModel {
 
+  protected Double average;
   @SerializedName("standard_deviation")
-  protected Float standardDeviation;
-  protected Float average;
-  protected Float variance;
-  protected Long max;
-  protected Long min;
-  protected Long count;
-
-  /**
-   * Gets the standardDeviation.
-   *
-   * The standard deviation of the entity sizes.
-   *
-   * @return the standardDeviation
-   */
-  public Float getStandardDeviation() {
-    return standardDeviation;
-  }
+  protected Double standardDeviation;
+  protected Double variance;
+  protected Double max;
+  protected Double min;
+  protected Double count;
 
   /**
    * Gets the average.
@@ -46,8 +35,19 @@ public class EntityBreakdown extends GenericModel {
    *
    * @return the average
    */
-  public Float getAverage() {
+  public Double getAverage() {
     return average;
+  }
+
+  /**
+   * Gets the standardDeviation.
+   *
+   * The standard deviation of the entity sizes.
+   *
+   * @return the standardDeviation
+   */
+  public Double getStandardDeviation() {
+    return standardDeviation;
   }
 
   /**
@@ -57,7 +57,7 @@ public class EntityBreakdown extends GenericModel {
    *
    * @return the variance
    */
-  public Float getVariance() {
+  public Double getVariance() {
     return variance;
   }
 
@@ -68,7 +68,7 @@ public class EntityBreakdown extends GenericModel {
    *
    * @return the max
    */
-  public Long getMax() {
+  public Double getMax() {
     return max;
   }
 
@@ -79,7 +79,7 @@ public class EntityBreakdown extends GenericModel {
    *
    * @return the min
    */
-  public Long getMin() {
+  public Double getMin() {
     return min;
   }
 
@@ -90,7 +90,7 @@ public class EntityBreakdown extends GenericModel {
    *
    * @return the count
    */
-  public Long getCount() {
+  public Double getCount() {
     return count;
   }
 }

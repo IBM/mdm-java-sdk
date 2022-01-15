@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,19 +35,19 @@ public class AddConfiguratorConfigurationAssetOptionsTest {
   @Test
   public void testAddConfiguratorConfigurationAssetOptions() throws Throwable {
     AssetMapping assetMappingModel = new AssetMapping.Builder()
-      .classifiedClass("GEN")
-      .dataMappingName("gender")
       .excludeColumn(false)
       .autoMapped(true)
-      .completenessPercent("100")
+      .classifiedClass("GEN")
+      .dataMappingName("gender")
+      .completenessPercent("100.0")
       .dataMappingAttributeType("string")
       .key("COLUMN 1")
       .build();
-    assertEquals(assetMappingModel.classifiedClass(), "GEN");
-    assertEquals(assetMappingModel.dataMappingName(), "gender");
     assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
-    assertEquals(assetMappingModel.completenessPercent(), "100");
+    assertEquals(assetMappingModel.classifiedClass(), "GEN");
+    assertEquals(assetMappingModel.dataMappingName(), "gender");
+    assertEquals(assetMappingModel.completenessPercent(), "100.0");
     assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.key(), "COLUMN 1");
 

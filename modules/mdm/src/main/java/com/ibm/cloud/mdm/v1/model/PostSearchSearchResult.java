@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,24 +22,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PostSearchSearchResult extends GenericModel {
 
-  @SerializedName("record_source")
-  protected String recordSource;
   protected Float score;
-  @SerializedName("record_id")
-  protected String recordId;
   @SerializedName("compare_methods")
   protected List<SingleCompareMethod> compareMethods;
-
-  /**
-   * Gets the recordSource.
-   *
-   * The source system name of a record.
-   *
-   * @return the recordSource
-   */
-  public String getRecordSource() {
-    return recordSource;
-  }
+  @SerializedName("record_id")
+  protected String recordId;
+  @SerializedName("record_source")
+  protected String recordSource;
 
   /**
    * Gets the score.
@@ -50,6 +39,17 @@ public class PostSearchSearchResult extends GenericModel {
    */
   public Float getScore() {
     return score;
+  }
+
+  /**
+   * Gets the compareMethods.
+   *
+   * Collection of comparators for a potential match record.
+   *
+   * @return the compareMethods
+   */
+  public List<SingleCompareMethod> getCompareMethods() {
+    return compareMethods;
   }
 
   /**
@@ -64,14 +64,14 @@ public class PostSearchSearchResult extends GenericModel {
   }
 
   /**
-   * Gets the compareMethods.
+   * Gets the recordSource.
    *
-   * Collection of comparators for a potential match record.
+   * The source system name of a record.
    *
-   * @return the compareMethods
+   * @return the recordSource
    */
-  public List<SingleCompareMethod> getCompareMethods() {
-    return compareMethods;
+  public String getRecordSource() {
+    return recordSource;
   }
 }
 

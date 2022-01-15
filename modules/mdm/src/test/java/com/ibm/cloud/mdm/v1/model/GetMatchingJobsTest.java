@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.ResetConfigServiceOptions;
+import com.ibm.cloud.mdm.v1.model.GetMatchingJobs;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,15 +23,22 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the ResetConfigServiceOptions model.
+ * Unit test class for the GetMatchingJobs model.
  */
-public class ResetConfigServiceOptionsTest {
+public class GetMatchingJobsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testResetConfigServiceOptions() throws Throwable {
-    ResetConfigServiceOptions resetConfigServiceOptionsModel = new ResetConfigServiceOptions();
-    assertNotNull(resetConfigServiceOptionsModel);
+  public void testGetMatchingJobs() throws Throwable {
+    GetMatchingJobs getMatchingJobsModel = new GetMatchingJobs();
+    assertNull(getMatchingJobsModel.getImage());
+    assertNull(getMatchingJobsModel.getStartedAt());
+    assertNull(getMatchingJobsModel.getJobName());
+    assertNull(getMatchingJobsModel.getLastUpdatedAt());
+    assertNull(getMatchingJobsModel.getCreatedAt());
+    assertNull(getMatchingJobsModel.getStatus());
+    assertNull(getMatchingJobsModel.getSummary());
+    assertNull(getMatchingJobsModel.getId());
   }
 }

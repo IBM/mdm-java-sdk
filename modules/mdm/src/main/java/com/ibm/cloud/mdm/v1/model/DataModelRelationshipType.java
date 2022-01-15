@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,11 +25,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DataModelRelationshipType extends GenericModel {
 
   protected List<DataModelRelationshipRule> rules;
-  protected Boolean directional;
   @SerializedName("label_from_source")
   protected String labelFromSource;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
+  protected Boolean directional;
   protected String label;
   protected String description;
   protected String cardinality;
@@ -40,9 +40,9 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public static class Builder {
     private List<DataModelRelationshipRule> rules;
-    private Boolean directional;
     private String labelFromSource;
     private String labelFromTarget;
+    private Boolean directional;
     private String label;
     private String description;
     private String cardinality;
@@ -50,9 +50,9 @@ public class DataModelRelationshipType extends GenericModel {
 
     private Builder(DataModelRelationshipType dataModelRelationshipType) {
       this.rules = dataModelRelationshipType.rules;
-      this.directional = dataModelRelationshipType.directional;
       this.labelFromSource = dataModelRelationshipType.labelFromSource;
       this.labelFromTarget = dataModelRelationshipType.labelFromTarget;
+      this.directional = dataModelRelationshipType.directional;
       this.label = dataModelRelationshipType.label;
       this.description = dataModelRelationshipType.description;
       this.cardinality = dataModelRelationshipType.cardinality;
@@ -112,17 +112,6 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the directional.
-     *
-     * @param directional the directional
-     * @return the DataModelRelationshipType builder
-     */
-    public Builder directional(Boolean directional) {
-      this.directional = directional;
-      return this;
-    }
-
-    /**
      * Set the labelFromSource.
      *
      * @param labelFromSource the labelFromSource
@@ -141,6 +130,17 @@ public class DataModelRelationshipType extends GenericModel {
      */
     public Builder labelFromTarget(String labelFromTarget) {
       this.labelFromTarget = labelFromTarget;
+      return this;
+    }
+
+    /**
+     * Set the directional.
+     *
+     * @param directional the directional
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder directional(Boolean directional) {
+      this.directional = directional;
       return this;
     }
 
@@ -193,9 +193,9 @@ public class DataModelRelationshipType extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
     rules = builder.rules;
-    directional = builder.directional;
     labelFromSource = builder.labelFromSource;
     labelFromTarget = builder.labelFromTarget;
+    directional = builder.directional;
     label = builder.label;
     description = builder.description;
     cardinality = builder.cardinality;
@@ -223,17 +223,6 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the directional.
-   *
-   * True if the relationship is directional, otherwise false. The default value is true.
-   *
-   * @return the directional
-   */
-  public Boolean directional() {
-    return directional;
-  }
-
-  /**
    * Gets the labelFromSource.
    *
    * User defined translatable label of 'from' endpoint in the relationship.
@@ -253,6 +242,17 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public String labelFromTarget() {
     return labelFromTarget;
+  }
+
+  /**
+   * Gets the directional.
+   *
+   * True if the relationship is directional, otherwise false. The default value is true.
+   *
+   * @return the directional
+   */
+  public Boolean directional() {
+    return directional;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,14 +36,14 @@ public class CompareMatchingIndexOptionsTest {
   @Test
   public void testCompareMatchingIndexOptions() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
-      .recordSource("testString")
       .recordLastUpdated(Long.valueOf("26"))
       .recordId("testString")
+      .recordSource("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
     assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
+    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
     SingleRecordRequest singleRecordRequestModel = new SingleRecordRequest.Builder()

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,15 +22,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Information about a job.
  */
 public class DataJob extends GenericModel {
-  @SuppressWarnings("unused")
-  protected static String discriminatorPropertyName = "job_type";
-  protected static java.util.Map<String, Class<?>> discriminatorMapping;
-  static {
-    discriminatorMapping = new java.util.HashMap<>();
-    discriminatorMapping.put("bulk_load", BulkLoadJob.class);
-    discriminatorMapping.put("delete", BulkDeleteJob.class);
-    discriminatorMapping.put("export", DataExport.class);
-  }
 
   /**
    * The type of job.
@@ -62,6 +53,8 @@ public class DataJob extends GenericModel {
     String FAILED = "failed";
     /** canceled. */
     String CANCELED = "canceled";
+    /** unknown. */
+    String UNKNOWN = "unknown";
   }
 
   @SerializedName("job_id")

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,19 +19,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class EntityType extends GenericModel {
 
-  protected String label;
   protected String description;
+  protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
     private String description;
+    private String label;
 
     private Builder(EntityType entityType) {
-      this.label = entityType.label;
       this.description = entityType.description;
+      this.label = entityType.label;
     }
 
     /**
@@ -59,17 +59,6 @@ public class EntityType extends GenericModel {
     }
 
     /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the EntityType builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
      * Set the description.
      *
      * @param description the description
@@ -79,13 +68,24 @@ public class EntityType extends GenericModel {
       this.description = description;
       return this;
     }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the EntityType builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
   }
 
   protected EntityType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    label = builder.label;
     description = builder.description;
+    label = builder.label;
   }
 
   /**
@@ -98,17 +98,6 @@ public class EntityType extends GenericModel {
   }
 
   /**
-   * Gets the label.
-   *
-   * The displayable text for this entity type element.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
    * Gets the description.
    *
    * The description of this entity type element.
@@ -117,6 +106,17 @@ public class EntityType extends GenericModel {
    */
   public String description() {
     return description;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * The displayable text for this entity type element.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 }
 

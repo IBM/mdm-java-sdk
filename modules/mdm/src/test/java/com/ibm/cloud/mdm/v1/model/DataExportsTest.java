@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,11 +14,15 @@
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.DataExport;
+import com.ibm.cloud.mdm.v1.model.DataExportSearchCriteria;
+import com.ibm.cloud.mdm.v1.model.DataExportSearchCriteriaQuery;
 import com.ibm.cloud.mdm.v1.model.DataExports;
+import com.ibm.cloud.mdm.v1.model.Expression;
 import com.ibm.cloud.mdm.v1.model.PagedResponseFirst;
 import com.ibm.cloud.mdm.v1.model.PagedResponseLast;
 import com.ibm.cloud.mdm.v1.model.PagedResponseNext;
 import com.ibm.cloud.mdm.v1.model.PagedResponsePrevious;
+import com.ibm.cloud.mdm.v1.model.SearchFilter;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -41,11 +45,11 @@ public class DataExportsTest {
     DataExports dataExportsModel = new DataExports();
     assertNull(dataExportsModel.getOffset());
     assertNull(dataExportsModel.getLimit());
+    assertNull(dataExportsModel.getTotalCount());
     assertNull(dataExportsModel.getFirst());
     assertNull(dataExportsModel.getLast());
     assertNull(dataExportsModel.getPrevious());
     assertNull(dataExportsModel.getNext());
     assertNull(dataExportsModel.getExports());
-    assertNull(dataExportsModel.getTotalCount());
   }
 }

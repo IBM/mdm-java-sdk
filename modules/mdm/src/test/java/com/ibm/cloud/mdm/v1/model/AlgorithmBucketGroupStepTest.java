@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,16 +34,16 @@ public class AlgorithmBucketGroupStepTest {
   @Test
   public void testAlgorithmBucketGroupStep() throws Throwable {
     AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .label("testString")
       .order(true)
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
       .method("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmBucketGroupStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
     assertEquals(algorithmBucketGroupStepModel.getLabel(), "testString");
     assertEquals(algorithmBucketGroupStepModel.isOrder(), Boolean.valueOf(true));
+    assertEquals(algorithmBucketGroupStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
     assertEquals(algorithmBucketGroupStepModel.getFields(), new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))));
     assertEquals(algorithmBucketGroupStepModel.getMethod(), "testString");
     assertEquals(algorithmBucketGroupStepModel.get("foo"), "testString");

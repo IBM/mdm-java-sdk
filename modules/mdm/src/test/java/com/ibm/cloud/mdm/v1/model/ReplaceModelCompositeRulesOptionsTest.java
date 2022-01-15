@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -37,11 +37,11 @@ public class ReplaceModelCompositeRulesOptionsTest {
   @Test
   public void testReplaceModelCompositeRulesOptions() throws Throwable {
     CompositeRulesRule compositeRulesRuleModel = new CompositeRulesRule.Builder()
-      .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .choices(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(compositeRulesRuleModel.sources(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(compositeRulesRuleModel.choices(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(compositeRulesRuleModel.sources(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
       .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })

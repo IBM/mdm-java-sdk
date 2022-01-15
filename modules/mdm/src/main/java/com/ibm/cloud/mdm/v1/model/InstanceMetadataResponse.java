@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,27 +23,38 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataResponse extends GenericModel {
 
-  protected List<InstanceMetadataResponseProject> projects;
-  @SerializedName("cos_endpoint")
-  protected String cosEndpoint;
-  protected String label;
-  @SerializedName("bulkload_bucket")
-  protected Map<String, Object> bulkloadBucket;
-  @SerializedName("cos_crn")
-  protected String cosCrn;
   protected List<InstanceMetadataResponseCatalog> catalogs;
   @SerializedName("job_project_id")
   protected String jobProjectId;
+  @SerializedName("cos_endpoint")
+  protected String cosEndpoint;
+  protected String label;
+  protected List<InstanceMetadataResponseProject> projects;
+  @SerializedName("cos_crn")
+  protected String cosCrn;
+  @SerializedName("bulkload_bucket")
+  protected Map<String, Object> bulkloadBucket;
 
   /**
-   * Gets the projects.
+   * Gets the catalogs.
    *
-   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
+   * Collection of catalog objects as available in Watson Knowledge Catalog (WKC).
    *
-   * @return the projects
+   * @return the catalogs
    */
-  public List<InstanceMetadataResponseProject> getProjects() {
-    return projects;
+  public List<InstanceMetadataResponseCatalog> getCatalogs() {
+    return catalogs;
+  }
+
+  /**
+   * Gets the jobProjectId.
+   *
+   * The unique identifier of a project for the jobs.
+   *
+   * @return the jobProjectId
+   */
+  public String getJobProjectId() {
+    return jobProjectId;
   }
 
   /**
@@ -69,14 +80,14 @@ public class InstanceMetadataResponse extends GenericModel {
   }
 
   /**
-   * Gets the bulkloadBucket.
+   * Gets the projects.
    *
-   * Bulkload Bucket credentials.
+   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
    *
-   * @return the bulkloadBucket
+   * @return the projects
    */
-  public Map<String, Object> getBulkloadBucket() {
-    return bulkloadBucket;
+  public List<InstanceMetadataResponseProject> getProjects() {
+    return projects;
   }
 
   /**
@@ -91,25 +102,14 @@ public class InstanceMetadataResponse extends GenericModel {
   }
 
   /**
-   * Gets the catalogs.
+   * Gets the bulkloadBucket.
    *
-   * Collection of catalog objects as available in Watson Knowledge Catalog (WKC).
+   * Bulkload Bucket credentials.
    *
-   * @return the catalogs
+   * @return the bulkloadBucket
    */
-  public List<InstanceMetadataResponseCatalog> getCatalogs() {
-    return catalogs;
-  }
-
-  /**
-   * Gets the jobProjectId.
-   *
-   * The unique identifier of a project for the jobs.
-   *
-   * @return the jobProjectId
-   */
-  public String getJobProjectId() {
-    return jobProjectId;
+  public Map<String, Object> getBulkloadBucket() {
+    return bulkloadBucket;
   }
 }
 

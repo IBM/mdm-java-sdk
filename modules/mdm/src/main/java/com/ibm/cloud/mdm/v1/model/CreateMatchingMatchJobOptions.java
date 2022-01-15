@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,6 +22,7 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
   protected String recordType;
   protected String entityType;
   protected Boolean doForce;
+  protected Boolean doDeduplicate;
   protected Boolean doAnalytics;
   protected Boolean doReplicate;
   protected Long executorCount;
@@ -39,6 +40,7 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
     private String recordType;
     private String entityType;
     private Boolean doForce;
+    private Boolean doDeduplicate;
     private Boolean doAnalytics;
     private Boolean doReplicate;
     private Long executorCount;
@@ -53,6 +55,7 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
       this.recordType = createMatchingMatchJobOptions.recordType;
       this.entityType = createMatchingMatchJobOptions.entityType;
       this.doForce = createMatchingMatchJobOptions.doForce;
+      this.doDeduplicate = createMatchingMatchJobOptions.doDeduplicate;
       this.doAnalytics = createMatchingMatchJobOptions.doAnalytics;
       this.doReplicate = createMatchingMatchJobOptions.doReplicate;
       this.executorCount = createMatchingMatchJobOptions.executorCount;
@@ -109,6 +112,17 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
      */
     public Builder doForce(Boolean doForce) {
       this.doForce = doForce;
+      return this;
+    }
+
+    /**
+     * Set the doDeduplicate.
+     *
+     * @param doDeduplicate the doDeduplicate
+     * @return the CreateMatchingMatchJobOptions builder
+     */
+    public Builder doDeduplicate(Boolean doDeduplicate) {
+      this.doDeduplicate = doDeduplicate;
       return this;
     }
 
@@ -216,6 +230,7 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
     recordType = builder.recordType;
     entityType = builder.entityType;
     doForce = builder.doForce;
+    doDeduplicate = builder.doDeduplicate;
     doAnalytics = builder.doAnalytics;
     doReplicate = builder.doReplicate;
     executorCount = builder.executorCount;
@@ -267,6 +282,17 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
    */
   public Boolean doForce() {
     return doForce;
+  }
+
+  /**
+   * Gets the doDeduplicate.
+   *
+   * Deduplicate pairs, default is false.
+   *
+   * @return the doDeduplicate
+   */
+  public Boolean doDeduplicate() {
+    return doDeduplicate;
   }
 
   /**

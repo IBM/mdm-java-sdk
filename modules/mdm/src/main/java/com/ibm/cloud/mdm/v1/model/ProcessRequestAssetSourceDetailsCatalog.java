@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,27 +20,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ProcessRequestAssetSourceDetailsCatalog extends GenericModel {
 
-  @SerializedName("cos_endpoint")
-  protected String cosEndpoint;
   @SerializedName("cos_bucket_name")
   protected String cosBucketName;
   @SerializedName("cos_api_key")
   protected String cosApiKey;
+  @SerializedName("cos_endpoint")
+  protected String cosEndpoint;
   protected String id;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String cosEndpoint;
     private String cosBucketName;
     private String cosApiKey;
+    private String cosEndpoint;
     private String id;
 
     private Builder(ProcessRequestAssetSourceDetailsCatalog processRequestAssetSourceDetailsCatalog) {
-      this.cosEndpoint = processRequestAssetSourceDetailsCatalog.cosEndpoint;
       this.cosBucketName = processRequestAssetSourceDetailsCatalog.cosBucketName;
       this.cosApiKey = processRequestAssetSourceDetailsCatalog.cosApiKey;
+      this.cosEndpoint = processRequestAssetSourceDetailsCatalog.cosEndpoint;
       this.id = processRequestAssetSourceDetailsCatalog.id;
     }
 
@@ -57,17 +57,6 @@ public class ProcessRequestAssetSourceDetailsCatalog extends GenericModel {
      */
     public ProcessRequestAssetSourceDetailsCatalog build() {
       return new ProcessRequestAssetSourceDetailsCatalog(this);
-    }
-
-    /**
-     * Set the cosEndpoint.
-     *
-     * @param cosEndpoint the cosEndpoint
-     * @return the ProcessRequestAssetSourceDetailsCatalog builder
-     */
-    public Builder cosEndpoint(String cosEndpoint) {
-      this.cosEndpoint = cosEndpoint;
-      return this;
     }
 
     /**
@@ -93,6 +82,17 @@ public class ProcessRequestAssetSourceDetailsCatalog extends GenericModel {
     }
 
     /**
+     * Set the cosEndpoint.
+     *
+     * @param cosEndpoint the cosEndpoint
+     * @return the ProcessRequestAssetSourceDetailsCatalog builder
+     */
+    public Builder cosEndpoint(String cosEndpoint) {
+      this.cosEndpoint = cosEndpoint;
+      return this;
+    }
+
+    /**
      * Set the id.
      *
      * @param id the id
@@ -105,9 +105,9 @@ public class ProcessRequestAssetSourceDetailsCatalog extends GenericModel {
   }
 
   protected ProcessRequestAssetSourceDetailsCatalog(Builder builder) {
-    cosEndpoint = builder.cosEndpoint;
     cosBucketName = builder.cosBucketName;
     cosApiKey = builder.cosApiKey;
+    cosEndpoint = builder.cosEndpoint;
     id = builder.id;
   }
 
@@ -118,17 +118,6 @@ public class ProcessRequestAssetSourceDetailsCatalog extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the cosEndpoint.
-   *
-   * Endpoint URL of the Cloud Object Storage.
-   *
-   * @return the cosEndpoint
-   */
-  public String cosEndpoint() {
-    return cosEndpoint;
   }
 
   /**
@@ -151,6 +140,17 @@ public class ProcessRequestAssetSourceDetailsCatalog extends GenericModel {
    */
   public String cosApiKey() {
     return cosApiKey;
+  }
+
+  /**
+   * Gets the cosEndpoint.
+   *
+   * Endpoint URL of the Cloud Object Storage.
+   *
+   * @return the cosEndpoint
+   */
+  public String cosEndpoint() {
+    return cosEndpoint;
   }
 
   /**

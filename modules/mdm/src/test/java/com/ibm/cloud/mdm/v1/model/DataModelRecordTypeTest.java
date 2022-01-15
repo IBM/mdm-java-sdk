@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,35 +36,37 @@ public class DataModelRecordTypeTest {
     DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
       .label("testString")
       .description("testString")
+      .type("testString")
       .build();
     assertEquals(dataModelEntityTypeModel.label(), "testString");
     assertEquals(dataModelEntityTypeModel.description(), "testString");
+    assertEquals(dataModelEntityTypeModel.type(), "testString");
 
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
-      .indexed(true)
-      .classification("testString")
       .label("testString")
       .matchingType("testString")
       .attributeType("testString")
+      .indexed(true)
+      .classification("testString")
       .description("testString")
       .cardinality("testString")
       .build();
-    assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelAttributeModel.classification(), "testString");
     assertEquals(dataModelAttributeModel.label(), "testString");
     assertEquals(dataModelAttributeModel.matchingType(), "testString");
     assertEquals(dataModelAttributeModel.attributeType(), "testString");
+    assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
+    assertEquals(dataModelAttributeModel.classification(), "testString");
     assertEquals(dataModelAttributeModel.description(), "testString");
     assertEquals(dataModelAttributeModel.cardinality(), "testString");
 
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
       .label("testString")
+      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
       .description("testString")
       .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
       .build();
-    assertEquals(dataModelRecordTypeModel.entityTypes(), new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } });
     assertEquals(dataModelRecordTypeModel.label(), "testString");
+    assertEquals(dataModelRecordTypeModel.entityTypes(), new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } });
     assertEquals(dataModelRecordTypeModel.description(), "testString");
     assertEquals(dataModelRecordTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
 

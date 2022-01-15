@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,22 +34,22 @@ public class AlgorithmBucketStepTest {
   @Test
   public void testAlgorithmBucketStep() throws Throwable {
     AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
       .setResource("testString")
       .mapResource("testString")
       .comparisonResource("testString")
+      .label("testString")
       .order(true)
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .method("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmBucketStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmBucketStepModel.getLabel(), "testString");
     assertEquals(algorithmBucketStepModel.getSetResource(), "testString");
     assertEquals(algorithmBucketStepModel.getMapResource(), "testString");
     assertEquals(algorithmBucketStepModel.getComparisonResource(), "testString");
+    assertEquals(algorithmBucketStepModel.getLabel(), "testString");
     assertEquals(algorithmBucketStepModel.isOrder(), Boolean.valueOf(true));
+    assertEquals(algorithmBucketStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
     assertEquals(algorithmBucketStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmBucketStepModel.getMethod(), "testString");
     assertEquals(algorithmBucketStepModel.get("foo"), "testString");
@@ -58,10 +58,10 @@ public class AlgorithmBucketStepTest {
 
     AlgorithmBucketStep algorithmBucketStepModelNew = TestUtilities.deserialize(json, AlgorithmBucketStep.class);
     assertTrue(algorithmBucketStepModelNew instanceof AlgorithmBucketStep);
-    assertEquals(algorithmBucketStepModelNew.getLabel(), "testString");
     assertEquals(algorithmBucketStepModelNew.getSetResource(), "testString");
     assertEquals(algorithmBucketStepModelNew.getMapResource(), "testString");
     assertEquals(algorithmBucketStepModelNew.getComparisonResource(), "testString");
+    assertEquals(algorithmBucketStepModelNew.getLabel(), "testString");
     assertEquals(algorithmBucketStepModelNew.isOrder(), Boolean.valueOf(true));
     assertEquals(algorithmBucketStepModelNew.getMethod(), "testString");
     assertEquals(algorithmBucketStepModelNew.get("foo"), "testString");

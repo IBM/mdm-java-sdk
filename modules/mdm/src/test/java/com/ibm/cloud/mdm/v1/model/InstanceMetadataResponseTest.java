@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,12 +34,12 @@ public class InstanceMetadataResponseTest {
   @Test
   public void testInstanceMetadataResponse() throws Throwable {
     InstanceMetadataResponse instanceMetadataResponseModel = new InstanceMetadataResponse();
-    assertNull(instanceMetadataResponseModel.getProjects());
-    assertNull(instanceMetadataResponseModel.getCosEndpoint());
-    assertNull(instanceMetadataResponseModel.getLabel());
-    assertNull(instanceMetadataResponseModel.getBulkloadBucket());
-    assertNull(instanceMetadataResponseModel.getCosCrn());
     assertNull(instanceMetadataResponseModel.getCatalogs());
     assertNull(instanceMetadataResponseModel.getJobProjectId());
+    assertNull(instanceMetadataResponseModel.getCosEndpoint());
+    assertNull(instanceMetadataResponseModel.getLabel());
+    assertNull(instanceMetadataResponseModel.getProjects());
+    assertNull(instanceMetadataResponseModel.getCosCrn());
+    assertNull(instanceMetadataResponseModel.getBulkloadBucket());
   }
 }

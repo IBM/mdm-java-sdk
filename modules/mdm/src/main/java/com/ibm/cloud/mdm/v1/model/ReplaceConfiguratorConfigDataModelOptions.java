@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,8 +24,8 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
   protected Map<String, RecordType> recordTypes;
   protected Map<String, RelationshipType> relationshipTypes;
   protected Map<String, AttributeType> attributeTypes;
-  protected String locale;
   protected Map<String, SystemProperties> systemProperties;
+  protected String locale;
 
   /**
    * Builder.
@@ -34,15 +34,15 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
     private Map<String, RecordType> recordTypes;
     private Map<String, RelationshipType> relationshipTypes;
     private Map<String, AttributeType> attributeTypes;
-    private String locale;
     private Map<String, SystemProperties> systemProperties;
+    private String locale;
 
     private Builder(ReplaceConfiguratorConfigDataModelOptions replaceConfiguratorConfigDataModelOptions) {
       this.recordTypes = replaceConfiguratorConfigDataModelOptions.recordTypes;
       this.relationshipTypes = replaceConfiguratorConfigDataModelOptions.relationshipTypes;
       this.attributeTypes = replaceConfiguratorConfigDataModelOptions.attributeTypes;
-      this.locale = replaceConfiguratorConfigDataModelOptions.locale;
       this.systemProperties = replaceConfiguratorConfigDataModelOptions.systemProperties;
+      this.locale = replaceConfiguratorConfigDataModelOptions.locale;
     }
 
     /**
@@ -94,17 +94,6 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
     }
 
     /**
-     * Set the locale.
-     *
-     * @param locale the locale
-     * @return the ReplaceConfiguratorConfigDataModelOptions builder
-     */
-    public Builder locale(String locale) {
-      this.locale = locale;
-      return this;
-    }
-
-    /**
      * Set the systemProperties.
      *
      * @param systemProperties the systemProperties
@@ -112,6 +101,17 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
      */
     public Builder systemProperties(Map<String, SystemProperties> systemProperties) {
       this.systemProperties = systemProperties;
+      return this;
+    }
+
+    /**
+     * Set the locale.
+     *
+     * @param locale the locale
+     * @return the ReplaceConfiguratorConfigDataModelOptions builder
+     */
+    public Builder locale(String locale) {
+      this.locale = locale;
       return this;
     }
 
@@ -125,8 +125,8 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
       this.recordTypes = configDataModel.recordTypes();
       this.relationshipTypes = configDataModel.relationshipTypes();
       this.attributeTypes = configDataModel.attributeTypes();
-      this.locale = configDataModel.locale();
       this.systemProperties = configDataModel.systemProperties();
+      this.locale = configDataModel.locale();
       return this;
     }
   }
@@ -135,8 +135,8 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
     recordTypes = builder.recordTypes;
     relationshipTypes = builder.relationshipTypes;
     attributeTypes = builder.attributeTypes;
-    locale = builder.locale;
     systemProperties = builder.systemProperties;
+    locale = builder.locale;
   }
 
   /**
@@ -182,17 +182,6 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
   }
 
   /**
-   * Gets the locale.
-   *
-   * The locale of the data model.
-   *
-   * @return the locale
-   */
-  public String locale() {
-    return locale;
-  }
-
-  /**
    * Gets the systemProperties.
    *
    * Collection of system properties.
@@ -201,6 +190,17 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
    */
   public Map<String, SystemProperties> systemProperties() {
     return systemProperties;
+  }
+
+  /**
+   * Gets the locale.
+   *
+   * The locale of the data model.
+   *
+   * @return the locale
+   */
+  public String locale() {
+    return locale;
   }
 }
 

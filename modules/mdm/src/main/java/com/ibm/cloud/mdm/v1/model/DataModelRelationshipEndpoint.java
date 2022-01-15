@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,21 +23,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRelationshipEndpoint extends GenericModel {
 
-  @SerializedName("entity_types")
-  protected List<String> entityTypes;
   @SerializedName("record_types")
   protected List<String> recordTypes;
+  @SerializedName("entity_types")
+  protected List<String> entityTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<String> entityTypes;
     private List<String> recordTypes;
+    private List<String> entityTypes;
 
     private Builder(DataModelRelationshipEndpoint dataModelRelationshipEndpoint) {
-      this.entityTypes = dataModelRelationshipEndpoint.entityTypes;
       this.recordTypes = dataModelRelationshipEndpoint.recordTypes;
+      this.entityTypes = dataModelRelationshipEndpoint.entityTypes;
     }
 
     /**
@@ -53,22 +53,6 @@ public class DataModelRelationshipEndpoint extends GenericModel {
      */
     public DataModelRelationshipEndpoint build() {
       return new DataModelRelationshipEndpoint(this);
-    }
-
-    /**
-     * Adds an entityTypes to entityTypes.
-     *
-     * @param entityTypes the new entityTypes
-     * @return the DataModelRelationshipEndpoint builder
-     */
-    public Builder addEntityTypes(String entityTypes) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(entityTypes,
-        "entityTypes cannot be null");
-      if (this.entityTypes == null) {
-        this.entityTypes = new ArrayList<String>();
-      }
-      this.entityTypes.add(entityTypes);
-      return this;
     }
 
     /**
@@ -88,14 +72,18 @@ public class DataModelRelationshipEndpoint extends GenericModel {
     }
 
     /**
-     * Set the entityTypes.
-     * Existing entityTypes will be replaced.
+     * Adds an entityTypes to entityTypes.
      *
-     * @param entityTypes the entityTypes
+     * @param entityTypes the new entityTypes
      * @return the DataModelRelationshipEndpoint builder
      */
-    public Builder entityTypes(List<String> entityTypes) {
-      this.entityTypes = entityTypes;
+    public Builder addEntityTypes(String entityTypes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(entityTypes,
+        "entityTypes cannot be null");
+      if (this.entityTypes == null) {
+        this.entityTypes = new ArrayList<String>();
+      }
+      this.entityTypes.add(entityTypes);
       return this;
     }
 
@@ -110,11 +98,23 @@ public class DataModelRelationshipEndpoint extends GenericModel {
       this.recordTypes = recordTypes;
       return this;
     }
+
+    /**
+     * Set the entityTypes.
+     * Existing entityTypes will be replaced.
+     *
+     * @param entityTypes the entityTypes
+     * @return the DataModelRelationshipEndpoint builder
+     */
+    public Builder entityTypes(List<String> entityTypes) {
+      this.entityTypes = entityTypes;
+      return this;
+    }
   }
 
   protected DataModelRelationshipEndpoint(Builder builder) {
-    entityTypes = builder.entityTypes;
     recordTypes = builder.recordTypes;
+    entityTypes = builder.entityTypes;
   }
 
   /**
@@ -127,17 +127,6 @@ public class DataModelRelationshipEndpoint extends GenericModel {
   }
 
   /**
-   * Gets the entityTypes.
-   *
-   * Collection of allowed entity types.
-   *
-   * @return the entityTypes
-   */
-  public List<String> entityTypes() {
-    return entityTypes;
-  }
-
-  /**
    * Gets the recordTypes.
    *
    * Collection of allowed record types.
@@ -146,6 +135,17 @@ public class DataModelRelationshipEndpoint extends GenericModel {
    */
   public List<String> recordTypes() {
     return recordTypes;
+  }
+
+  /**
+   * Gets the entityTypes.
+   *
+   * Collection of allowed entity types.
+   *
+   * @return the entityTypes
+   */
+  public List<String> entityTypes() {
+    return entityTypes;
   }
 }
 

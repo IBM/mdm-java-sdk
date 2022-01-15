@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,9 +34,11 @@ public class DataModelEntityTypeTest {
     DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
       .label("testString")
       .description("testString")
+      .type("testString")
       .build();
     assertEquals(dataModelEntityTypeModel.label(), "testString");
     assertEquals(dataModelEntityTypeModel.description(), "testString");
+    assertEquals(dataModelEntityTypeModel.type(), "testString");
 
     String json = TestUtilities.serialize(dataModelEntityTypeModel);
 
@@ -44,6 +46,7 @@ public class DataModelEntityTypeTest {
     assertTrue(dataModelEntityTypeModelNew instanceof DataModelEntityType);
     assertEquals(dataModelEntityTypeModelNew.label(), "testString");
     assertEquals(dataModelEntityTypeModelNew.description(), "testString");
+    assertEquals(dataModelEntityTypeModelNew.type(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

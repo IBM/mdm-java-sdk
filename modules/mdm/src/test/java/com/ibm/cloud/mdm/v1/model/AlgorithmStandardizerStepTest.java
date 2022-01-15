@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,20 +34,20 @@ public class AlgorithmStandardizerStepTest {
   @Test
   public void testAlgorithmStandardizerStep() throws Throwable {
     AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
       .setResource("testString")
       .mapResource("testString")
       .comparisonResource("testString")
+      .label("testString")
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .method("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmStandardizerStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmStandardizerStepModel.getLabel(), "testString");
     assertEquals(algorithmStandardizerStepModel.getSetResource(), "testString");
     assertEquals(algorithmStandardizerStepModel.getMapResource(), "testString");
     assertEquals(algorithmStandardizerStepModel.getComparisonResource(), "testString");
+    assertEquals(algorithmStandardizerStepModel.getLabel(), "testString");
+    assertEquals(algorithmStandardizerStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
     assertEquals(algorithmStandardizerStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmStandardizerStepModel.getMethod(), "testString");
     assertEquals(algorithmStandardizerStepModel.get("foo"), "testString");
@@ -56,10 +56,10 @@ public class AlgorithmStandardizerStepTest {
 
     AlgorithmStandardizerStep algorithmStandardizerStepModelNew = TestUtilities.deserialize(json, AlgorithmStandardizerStep.class);
     assertTrue(algorithmStandardizerStepModelNew instanceof AlgorithmStandardizerStep);
-    assertEquals(algorithmStandardizerStepModelNew.getLabel(), "testString");
     assertEquals(algorithmStandardizerStepModelNew.getSetResource(), "testString");
     assertEquals(algorithmStandardizerStepModelNew.getMapResource(), "testString");
     assertEquals(algorithmStandardizerStepModelNew.getComparisonResource(), "testString");
+    assertEquals(algorithmStandardizerStepModelNew.getLabel(), "testString");
     assertEquals(algorithmStandardizerStepModelNew.getMethod(), "testString");
     assertEquals(algorithmStandardizerStepModelNew.get("foo"), "testString");
   }

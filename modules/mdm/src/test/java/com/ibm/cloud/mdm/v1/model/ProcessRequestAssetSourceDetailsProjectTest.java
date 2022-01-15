@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,23 +32,23 @@ public class ProcessRequestAssetSourceDetailsProjectTest {
   @Test
   public void testProcessRequestAssetSourceDetailsProject() throws Throwable {
     ProcessRequestAssetSourceDetailsProject processRequestAssetSourceDetailsProjectModel = new ProcessRequestAssetSourceDetailsProject.Builder()
-      .cosEndpoint("testString")
       .cosBucketName("testString")
       .cosApiKey("testString")
+      .cosEndpoint("testString")
       .id("testString")
       .build();
-    assertEquals(processRequestAssetSourceDetailsProjectModel.cosEndpoint(), "testString");
     assertEquals(processRequestAssetSourceDetailsProjectModel.cosBucketName(), "testString");
     assertEquals(processRequestAssetSourceDetailsProjectModel.cosApiKey(), "testString");
+    assertEquals(processRequestAssetSourceDetailsProjectModel.cosEndpoint(), "testString");
     assertEquals(processRequestAssetSourceDetailsProjectModel.id(), "testString");
 
     String json = TestUtilities.serialize(processRequestAssetSourceDetailsProjectModel);
 
     ProcessRequestAssetSourceDetailsProject processRequestAssetSourceDetailsProjectModelNew = TestUtilities.deserialize(json, ProcessRequestAssetSourceDetailsProject.class);
     assertTrue(processRequestAssetSourceDetailsProjectModelNew instanceof ProcessRequestAssetSourceDetailsProject);
-    assertEquals(processRequestAssetSourceDetailsProjectModelNew.cosEndpoint(), "testString");
     assertEquals(processRequestAssetSourceDetailsProjectModelNew.cosBucketName(), "testString");
     assertEquals(processRequestAssetSourceDetailsProjectModelNew.cosApiKey(), "testString");
+    assertEquals(processRequestAssetSourceDetailsProjectModelNew.cosEndpoint(), "testString");
     assertEquals(processRequestAssetSourceDetailsProjectModelNew.id(), "testString");
   }
 }

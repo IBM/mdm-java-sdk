@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,16 +33,16 @@ public class AttributeTest {
   public void testAttribute() throws Throwable {
     Attribute attributeModel = new Attribute.Builder()
       .indexed(true)
-      .classification("testString")
-      .label("testString")
       .description("testString")
+      .label("testString")
+      .classification("testString")
       .cardinality("testString")
       .attributeType("email")
       .build();
     assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModel.classification(), "testString");
-    assertEquals(attributeModel.label(), "testString");
     assertEquals(attributeModel.description(), "testString");
+    assertEquals(attributeModel.label(), "testString");
+    assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.cardinality(), "testString");
     assertEquals(attributeModel.attributeType(), "email");
 
@@ -51,9 +51,9 @@ public class AttributeTest {
     Attribute attributeModelNew = TestUtilities.deserialize(json, Attribute.class);
     assertTrue(attributeModelNew instanceof Attribute);
     assertEquals(attributeModelNew.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModelNew.classification(), "testString");
-    assertEquals(attributeModelNew.label(), "testString");
     assertEquals(attributeModelNew.description(), "testString");
+    assertEquals(attributeModelNew.label(), "testString");
+    assertEquals(attributeModelNew.classification(), "testString");
     assertEquals(attributeModelNew.cardinality(), "testString");
     assertEquals(attributeModelNew.attributeType(), "email");
   }

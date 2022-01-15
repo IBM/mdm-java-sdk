@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -43,11 +43,11 @@ public class GenerateModelAlgorithmOptionsTest {
     assertEquals(algorithmGenerationAttributeItemModel.attributes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     AlgorithmGenerationEntityType algorithmGenerationEntityTypeModel = new AlgorithmGenerationEntityType.Builder()
-      .autoLinkThreshold(Float.valueOf("36.0"))
+      .autoLinkThreshold(Float.valueOf("0"))
       .matchingAttributes(new java.util.ArrayList<AlgorithmGenerationAttributeItem>(java.util.Arrays.asList(algorithmGenerationAttributeItemModel)))
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmGenerationEntityTypeModel.getAutoLinkThreshold(), Float.valueOf("36.0"));
+    assertEquals(algorithmGenerationEntityTypeModel.getAutoLinkThreshold(), Float.valueOf("0"));
     assertEquals(algorithmGenerationEntityTypeModel.getMatchingAttributes(), new java.util.ArrayList<AlgorithmGenerationAttributeItem>(java.util.Arrays.asList(algorithmGenerationAttributeItemModel)));
     assertEquals(algorithmGenerationEntityTypeModel.get("foo"), "testString");
 

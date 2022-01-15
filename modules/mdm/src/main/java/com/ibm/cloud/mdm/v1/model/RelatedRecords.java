@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,14 +24,14 @@ public class RelatedRecords extends GenericModel {
 
   protected Long offset;
   protected Long limit;
+  @SerializedName("total_count")
+  protected Long totalCount;
   protected PagedResponseFirst first;
   protected PagedResponseLast last;
   protected PagedResponsePrevious previous;
   protected PagedResponseNext next;
   @SerializedName("related_records")
   protected List<DataRecord> relatedRecords;
-  @SerializedName("total_count")
-  protected Long totalCount;
 
   /**
    * Gets the offset.
@@ -53,6 +53,17 @@ public class RelatedRecords extends GenericModel {
    */
   public Long getLimit() {
     return limit;
+  }
+
+  /**
+   * Gets the totalCount.
+   *
+   * The total number of elements.
+   *
+   * @return the totalCount
+   */
+  public Long getTotalCount() {
+    return totalCount;
   }
 
   /**
@@ -108,17 +119,6 @@ public class RelatedRecords extends GenericModel {
    */
   public List<DataRecord> getRelatedRecords() {
     return relatedRecords;
-  }
-
-  /**
-   * Gets the totalCount.
-   *
-   * The total number of related records.
-   *
-   * @return the totalCount
-   */
-  public Long getTotalCount() {
-    return totalCount;
   }
 }
 

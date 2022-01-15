@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,22 +20,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetRecordKeysRecord extends GenericModel {
 
-  @SerializedName("record_source")
-  protected String recordSource;
-  @SerializedName("record_id")
-  protected String recordId;
   @SerializedName("record_number")
   protected String recordNumber;
+  @SerializedName("record_id")
+  protected String recordId;
+  @SerializedName("record_source")
+  protected String recordSource;
 
   /**
-   * Gets the recordSource.
+   * Gets the recordNumber.
    *
-   * The source system name of a record.
+   * The unique identifier of a source record as assigned by the system.
    *
-   * @return the recordSource
+   * @return the recordNumber
    */
-  public String getRecordSource() {
-    return recordSource;
+  public String getRecordNumber() {
+    return recordNumber;
   }
 
   /**
@@ -50,14 +50,14 @@ public class GetRecordKeysRecord extends GenericModel {
   }
 
   /**
-   * Gets the recordNumber.
+   * Gets the recordSource.
    *
-   * The unique identifier of a source record as assigned by the system.
+   * The source system name of a record.
    *
-   * @return the recordNumber
+   * @return the recordSource
    */
-  public String getRecordNumber() {
-    return recordNumber;
+  public String getRecordSource() {
+    return recordSource;
   }
 }
 

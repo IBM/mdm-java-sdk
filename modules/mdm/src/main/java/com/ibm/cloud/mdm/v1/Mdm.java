@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.42.0-8746aaa4-20211102-213344
+ * IBM OpenAPI SDK Code Generator Version: 3.43.3-d49d4b21-20220104-223519
  */
 
 package com.ibm.cloud.mdm.v1;
@@ -20,7 +20,6 @@ package com.ibm.cloud.mdm.v1;
 import com.google.gson.JsonObject;
 import com.ibm.cloud.common.SdkCommon;
 import com.ibm.cloud.mdm.v1.model.AddConfiguratorConfigurationAssetOptions;
-import com.ibm.cloud.mdm.v1.model.AddConfiguratorPairDecisionOptions;
 import com.ibm.cloud.mdm.v1.model.Algorithm;
 import com.ibm.cloud.mdm.v1.model.AlgorithmNames;
 import com.ibm.cloud.mdm.v1.model.AssetMetadata;
@@ -33,11 +32,11 @@ import com.ibm.cloud.mdm.v1.model.CompareSpecResource;
 import com.ibm.cloud.mdm.v1.model.CompareSpecResourceNames;
 import com.ibm.cloud.mdm.v1.model.CompositeRules;
 import com.ibm.cloud.mdm.v1.model.ConfigDataModel;
-import com.ibm.cloud.mdm.v1.model.ConfigDataModelAttributes;
 import com.ibm.cloud.mdm.v1.model.ConfigurationMetadata;
 import com.ibm.cloud.mdm.v1.model.CreateConfiguratorProcessOptions;
 import com.ibm.cloud.mdm.v1.model.CreateDataExportOptions;
 import com.ibm.cloud.mdm.v1.model.CreateDataRecordOptions;
+import com.ibm.cloud.mdm.v1.model.CreateDataRelationshipOptions;
 import com.ibm.cloud.mdm.v1.model.CreateMatchingDeriveJobOptions;
 import com.ibm.cloud.mdm.v1.model.CreateMatchingEntityPreviewOptions;
 import com.ibm.cloud.mdm.v1.model.CreateMatchingMatchJobOptions;
@@ -56,10 +55,10 @@ import com.ibm.cloud.mdm.v1.model.DataRelationshipsResponse;
 import com.ibm.cloud.mdm.v1.model.DataSearchResults;
 import com.ibm.cloud.mdm.v1.model.DataStatistics;
 import com.ibm.cloud.mdm.v1.model.DeleteDataRecordOptions;
+import com.ibm.cloud.mdm.v1.model.DeleteDataRelationshipOptions;
 import com.ibm.cloud.mdm.v1.model.DeleteMatchingRuleOptions;
 import com.ibm.cloud.mdm.v1.model.Flow;
 import com.ibm.cloud.mdm.v1.model.GenerateModelAlgorithmOptions;
-import com.ibm.cloud.mdm.v1.model.GetConfiguratorConfigDataModelAttributesOptions;
 import com.ibm.cloud.mdm.v1.model.GetConfiguratorConfigDataModelOptions;
 import com.ibm.cloud.mdm.v1.model.GetConfiguratorConfigurationMetadataOptions;
 import com.ibm.cloud.mdm.v1.model.GetConfiguratorMatchingStatisticsOptions;
@@ -74,6 +73,8 @@ import com.ibm.cloud.mdm.v1.model.GetDataRecordOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataRelationshipForRecordOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataStorageMetadataOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataSubgraphOptions;
+import com.ibm.cloud.mdm.v1.model.GetMatchingJobInfoOptions;
+import com.ibm.cloud.mdm.v1.model.GetMatchingJobs;
 import com.ibm.cloud.mdm.v1.model.GetMatchingRecordRulesOptions;
 import com.ibm.cloud.mdm.v1.model.GetMatchingRecordsOptions;
 import com.ibm.cloud.mdm.v1.model.GetModelAlgorithmOptions;
@@ -86,7 +87,6 @@ import com.ibm.cloud.mdm.v1.model.GetModelMapResourceOptions;
 import com.ibm.cloud.mdm.v1.model.GetModelSetResourceOptions;
 import com.ibm.cloud.mdm.v1.model.GetRecordKeys;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponse;
-import com.ibm.cloud.mdm.v1.model.ListConfiguratorPairDecisionOptions;
 import com.ibm.cloud.mdm.v1.model.ListConfiguratorProcessesOptions;
 import com.ibm.cloud.mdm.v1.model.ListDataEntitiesForRecordOptions;
 import com.ibm.cloud.mdm.v1.model.ListDataExportsOptions;
@@ -128,7 +128,6 @@ import com.ibm.cloud.mdm.v1.model.ReplaceModelDataModelOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceModelInstanceMetadataOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceModelMapResourceOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceModelSetResourceOptions;
-import com.ibm.cloud.mdm.v1.model.ResetConfigServiceOptions;
 import com.ibm.cloud.mdm.v1.model.RulesEntityRule;
 import com.ibm.cloud.mdm.v1.model.RunDataBulkDeleteOptions;
 import com.ibm.cloud.mdm.v1.model.RunDataBulkLoadOptions;
@@ -296,11 +295,11 @@ public class Mdm extends BaseService {
     if (replaceConfiguratorConfigDataModelOptions.attributeTypes() != null) {
       contentJson.add("attribute_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceConfiguratorConfigDataModelOptions.attributeTypes()));
     }
-    if (replaceConfiguratorConfigDataModelOptions.locale() != null) {
-      contentJson.addProperty("locale", replaceConfiguratorConfigDataModelOptions.locale());
-    }
     if (replaceConfiguratorConfigDataModelOptions.systemProperties() != null) {
       contentJson.add("system_properties", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceConfiguratorConfigDataModelOptions.systemProperties()));
+    }
+    if (replaceConfiguratorConfigDataModelOptions.locale() != null) {
+      contentJson.addProperty("locale", replaceConfiguratorConfigDataModelOptions.locale());
     }
     builder.bodyJson(contentJson);
     ResponseConverter<ConfigDataModel> responseConverter =
@@ -317,30 +316,6 @@ public class Mdm extends BaseService {
    */
   public ServiceCall<ConfigDataModel> replaceConfiguratorConfigDataModel() {
     return replaceConfiguratorConfigDataModel(null);
-  }
-
-  /**
-   * Get Config Data Model Record Type Attributes.
-   *
-   * Gets all the attributes of a specific record type for the data model present in configuration space.
-   *
-   * @param getConfiguratorConfigDataModelAttributesOptions the {@link GetConfiguratorConfigDataModelAttributesOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link ConfigDataModelAttributes}
-   */
-  public ServiceCall<ConfigDataModelAttributes> getConfiguratorConfigDataModelAttributes(GetConfiguratorConfigDataModelAttributesOptions getConfiguratorConfigDataModelAttributesOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(getConfiguratorConfigDataModelAttributesOptions,
-      "getConfiguratorConfigDataModelAttributesOptions cannot be null");
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/config_data_model/attributes"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "getConfiguratorConfigDataModelAttributes");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    builder.query("record_type", String.valueOf(getConfiguratorConfigDataModelAttributesOptions.recordType()));
-    ResponseConverter<ConfigDataModelAttributes> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ConfigDataModelAttributes>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
@@ -365,66 +340,6 @@ public class Mdm extends BaseService {
     builder.query("record_type", String.valueOf(getConfiguratorMatchingStatisticsOptions.recordType()));
     ResponseConverter<MatchStatistics> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<MatchStatistics>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * List comparison record pair decision.
-   *
-   * Lists the filtered comparison record pair decision.
-   *
-   * @param listConfiguratorPairDecisionOptions the {@link ListConfiguratorPairDecisionOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link ConfigurationMetadata}
-   */
-  public ServiceCall<ConfigurationMetadata> listConfiguratorPairDecision(ListConfiguratorPairDecisionOptions listConfiguratorPairDecisionOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(listConfiguratorPairDecisionOptions,
-      "listConfiguratorPairDecisionOptions cannot be null");
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/pair_decisions"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listConfiguratorPairDecision");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    builder.query("record_type", String.valueOf(listConfiguratorPairDecisionOptions.recordType()));
-    if (listConfiguratorPairDecisionOptions.recordNumber1() != null) {
-      builder.query("record_number_1", String.valueOf(listConfiguratorPairDecisionOptions.recordNumber1()));
-    }
-    if (listConfiguratorPairDecisionOptions.recordNumber2() != null) {
-      builder.query("record_number_2", String.valueOf(listConfiguratorPairDecisionOptions.recordNumber2()));
-    }
-    ResponseConverter<ConfigurationMetadata> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ConfigurationMetadata>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Add comparison record pair decision.
-   *
-   * Adds a new comparison record pair decision in configuration space. This allows to store user decision taken on
-   * comparison of record pairs.
-   *
-   * @param addConfiguratorPairDecisionOptions the {@link AddConfiguratorPairDecisionOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link AssetMetadata}
-   */
-  public ServiceCall<AssetMetadata> addConfiguratorPairDecision(AddConfiguratorPairDecisionOptions addConfiguratorPairDecisionOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(addConfiguratorPairDecisionOptions,
-      "addConfiguratorPairDecisionOptions cannot be null");
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/pair_decisions"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "addConfiguratorPairDecision");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    final JsonObject contentJson = new JsonObject();
-    contentJson.addProperty("record_number_1", addConfiguratorPairDecisionOptions.recordNumber1());
-    contentJson.addProperty("record_number_2", addConfiguratorPairDecisionOptions.recordNumber2());
-    contentJson.addProperty("user_decision", addConfiguratorPairDecisionOptions.userDecision());
-    contentJson.addProperty("id", addConfiguratorPairDecisionOptions.id());
-    builder.bodyJson(contentJson);
-    ResponseConverter<AssetMetadata> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<AssetMetadata>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -486,17 +401,20 @@ public class Mdm extends BaseService {
     builder.query("crn", String.valueOf(this.crn));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("process_name", createConfiguratorProcessOptions.processName());
+    if (createConfiguratorProcessOptions.recordType() != null) {
+      contentJson.addProperty("record_type", createConfiguratorProcessOptions.recordType());
+    }
+    if (createConfiguratorProcessOptions.assetSourceDetails() != null) {
+      contentJson.add("asset_source_details", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createConfiguratorProcessOptions.assetSourceDetails()));
+    }
     if (createConfiguratorProcessOptions.doDerive() != null) {
       contentJson.addProperty("do_derive", createConfiguratorProcessOptions.doDerive());
     }
     if (createConfiguratorProcessOptions.assetIds() != null) {
       contentJson.addProperty("asset_ids", createConfiguratorProcessOptions.assetIds());
     }
-    if (createConfiguratorProcessOptions.assetSourceDetails() != null) {
-      contentJson.add("asset_source_details", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createConfiguratorProcessOptions.assetSourceDetails()));
-    }
-    if (createConfiguratorProcessOptions.recordType() != null) {
-      contentJson.addProperty("record_type", createConfiguratorProcessOptions.recordType());
+    if (createConfiguratorProcessOptions.initiator() != null) {
+      contentJson.addProperty("initiator", createConfiguratorProcessOptions.initiator());
     }
     if (createConfiguratorProcessOptions.entityType() != null) {
       contentJson.addProperty("entity_type", createConfiguratorProcessOptions.entityType());
@@ -736,36 +654,6 @@ public class Mdm extends BaseService {
   }
 
   /**
-   * Resets the system to its default.
-   *
-   * Resets configuration to original state.
-   *
-   * @param resetConfigServiceOptions the {@link ResetConfigServiceOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a void result
-   */
-  public ServiceCall<Void> resetConfigService(ResetConfigServiceOptions resetConfigServiceOptions) {
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/reset_configuration"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "resetConfigService");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.query("crn", String.valueOf(this.crn));
-    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Resets the system to its default.
-   *
-   * Resets configuration to original state.
-   *
-   * @return a {@link ServiceCall} with a void result
-   */
-  public ServiceCall<Void> resetConfigService() {
-    return resetConfigService(null);
-  }
-
-  /**
    * Suggest data mappings.
    *
    * Suggest data mappings from MDM data model based on the generic classes of Watson Knowledge Catalog with which the
@@ -910,6 +798,43 @@ public class Mdm extends BaseService {
   }
 
   /**
+   * List the records linked into an entity.
+   *
+   * View a list of member records that form the entity.
+   *
+   * @param listDataRecordsForEntityOptions the {@link ListDataRecordsForEntityOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DataRecordsResponse}
+   */
+  public ServiceCall<DataRecordsResponse> listDataRecordsForEntity(ListDataRecordsForEntityOptions listDataRecordsForEntityOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listDataRecordsForEntityOptions,
+      "listDataRecordsForEntityOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", listDataRecordsForEntityOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/entities/{id}/records", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listDataRecordsForEntity");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("crn", String.valueOf(this.crn));
+    if (listDataRecordsForEntityOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listDataRecordsForEntityOptions.limit()));
+    }
+    if (listDataRecordsForEntityOptions.offset() != null) {
+      builder.query("offset", String.valueOf(listDataRecordsForEntityOptions.offset()));
+    }
+    if (listDataRecordsForEntityOptions.include() != null) {
+      builder.query("include", RequestUtils.join(listDataRecordsForEntityOptions.include(), ","));
+    }
+    if (listDataRecordsForEntityOptions.exclude() != null) {
+      builder.query("exclude", RequestUtils.join(listDataRecordsForEntityOptions.exclude(), ","));
+    }
+    ResponseConverter<DataRecordsResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataRecordsResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * List the records associated with entity records.
    *
    * View a list of records that have a relationship to the member records of the specified entity based on the
@@ -951,43 +876,6 @@ public class Mdm extends BaseService {
   }
 
   /**
-   * List the records linked into an entity.
-   *
-   * View a list of member records that form the entity.
-   *
-   * @param listDataRecordsForEntityOptions the {@link ListDataRecordsForEntityOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link DataRecordsResponse}
-   */
-  public ServiceCall<DataRecordsResponse> listDataRecordsForEntity(ListDataRecordsForEntityOptions listDataRecordsForEntityOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(listDataRecordsForEntityOptions,
-      "listDataRecordsForEntityOptions cannot be null");
-    Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("id", listDataRecordsForEntityOptions.id());
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/entities/{id}/records", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listDataRecordsForEntity");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    if (listDataRecordsForEntityOptions.limit() != null) {
-      builder.query("limit", String.valueOf(listDataRecordsForEntityOptions.limit()));
-    }
-    if (listDataRecordsForEntityOptions.offset() != null) {
-      builder.query("offset", String.valueOf(listDataRecordsForEntityOptions.offset()));
-    }
-    if (listDataRecordsForEntityOptions.include() != null) {
-      builder.query("include", RequestUtils.join(listDataRecordsForEntityOptions.include(), ","));
-    }
-    if (listDataRecordsForEntityOptions.exclude() != null) {
-      builder.query("exclude", RequestUtils.join(listDataRecordsForEntityOptions.exclude(), ","));
-    }
-    ResponseConverter<DataRecordsResponse> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataRecordsResponse>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
    * Get the composite view of an entity.
    *
    * View attributes for an entity in a consolidated view based on defined composite view rules from the Model APIs.
@@ -1015,57 +903,6 @@ public class Mdm extends BaseService {
     }
     ResponseConverter<DataEntityResponse> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataEntityResponse>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Get information for an export.
-   *
-   * View detailed information about the specified export job. The process ids can be used to track the job status
-   * through the Job APIs.
-   *
-   * @param getDataExportOptions the {@link GetDataExportOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link DataExport}
-   */
-  public ServiceCall<DataExport> getDataExport(GetDataExportOptions getDataExportOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(getDataExportOptions,
-      "getDataExportOptions cannot be null");
-    Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("export_id", getDataExportOptions.exportId());
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/data_exports/{export_id}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "getDataExport");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    ResponseConverter<DataExport> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataExport>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Download an export file.
-   *
-   * Download the resulting file from a completed export job if the file exists. The export files may expire after some
-   * time.
-   *
-   * @param getDataExportDownloadOptions the {@link GetDataExportDownloadOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link InputStream}
-   */
-  public ServiceCall<InputStream> getDataExportDownload(GetDataExportDownloadOptions getDataExportDownloadOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(getDataExportDownloadOptions,
-      "getDataExportDownloadOptions cannot be null");
-    Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("export_id", getDataExportDownloadOptions.exportId());
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/data_exports/{export_id}/download", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "getDataExportDownload");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/octet-stream");
-    builder.query("crn", String.valueOf(this.crn));
-    ResponseConverter<InputStream> responseConverter = ResponseConverterUtils.getInputStream();
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -1143,6 +980,57 @@ public class Mdm extends BaseService {
     builder.bodyJson(contentJson);
     ResponseConverter<DataExport> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataExport>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get information for an export.
+   *
+   * View detailed information about the specified export job. The process ids can be used to track the job status
+   * through the Job APIs.
+   *
+   * @param getDataExportOptions the {@link GetDataExportOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DataExport}
+   */
+  public ServiceCall<DataExport> getDataExport(GetDataExportOptions getDataExportOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getDataExportOptions,
+      "getDataExportOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("export_id", getDataExportOptions.exportId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/data_exports/{export_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "getDataExport");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("crn", String.valueOf(this.crn));
+    ResponseConverter<DataExport> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataExport>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Download an export file.
+   *
+   * Download the resulting file from a completed export job if the file exists. The export files may expire after some
+   * time.
+   *
+   * @param getDataExportDownloadOptions the {@link GetDataExportDownloadOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InputStream}
+   */
+  public ServiceCall<InputStream> getDataExportDownload(GetDataExportDownloadOptions getDataExportDownloadOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getDataExportDownloadOptions,
+      "getDataExportDownloadOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("export_id", getDataExportDownloadOptions.exportId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/data_exports/{export_id}/download", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "getDataExportDownload");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/octet-stream");
+    builder.query("crn", String.valueOf(this.crn));
+    ResponseConverter<InputStream> responseConverter = ResponseConverterUtils.getInputStream();
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -1268,77 +1156,6 @@ public class Mdm extends BaseService {
   }
 
   /**
-   * List the records.
-   *
-   * View a list of records that have been added to the graph.
-   *
-   * @param listDataRecordsOptions the {@link ListDataRecordsOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link DataRecordsResponse}
-   */
-  public ServiceCall<DataRecordsResponse> listDataRecords(ListDataRecordsOptions listDataRecordsOptions) {
-    if (listDataRecordsOptions == null) {
-      listDataRecordsOptions = new ListDataRecordsOptions.Builder().build();
-    }
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/records"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listDataRecords");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    if (listDataRecordsOptions.offset() != null) {
-      builder.query("offset", String.valueOf(listDataRecordsOptions.offset()));
-    }
-    if (listDataRecordsOptions.limit() != null) {
-      builder.query("limit", String.valueOf(listDataRecordsOptions.limit()));
-    }
-    ResponseConverter<DataRecordsResponse> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataRecordsResponse>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * List the records.
-   *
-   * View a list of records that have been added to the graph.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link DataRecordsResponse}
-   */
-  public ServiceCall<DataRecordsResponse> listDataRecords() {
-    return listDataRecords(null);
-  }
-
-  /**
-   * Create a new record.
-   *
-   * Add a new record to the graph. An incremental matching operation is automatically triggered after the record is
-   * created, to enable the record to join or form an entity.
-   *
-   * @param createDataRecordOptions the {@link CreateDataRecordOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link DataRecordResponse}
-   */
-  public ServiceCall<DataRecordResponse> createDataRecord(CreateDataRecordOptions createDataRecordOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createDataRecordOptions,
-      "createDataRecordOptions cannot be null");
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/records"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "createDataRecord");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    final JsonObject contentJson = new JsonObject();
-    contentJson.add("attributes", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDataRecordOptions.attributes()));
-    if (createDataRecordOptions.id() != null) {
-      contentJson.addProperty("id", createDataRecordOptions.id());
-    }
-    builder.bodyJson(contentJson);
-    ResponseConverter<DataRecordResponse> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataRecordResponse>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
    * Get a record.
    *
    * View information about the specified record on the graph.
@@ -1422,6 +1239,111 @@ public class Mdm extends BaseService {
     }
     builder.query("crn", String.valueOf(this.crn));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List the records.
+   *
+   * View a list of records that have been added to the graph.
+   *
+   * @param listDataRecordsOptions the {@link ListDataRecordsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DataRecordsResponse}
+   */
+  public ServiceCall<DataRecordsResponse> listDataRecords(ListDataRecordsOptions listDataRecordsOptions) {
+    if (listDataRecordsOptions == null) {
+      listDataRecordsOptions = new ListDataRecordsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/records"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listDataRecords");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("crn", String.valueOf(this.crn));
+    if (listDataRecordsOptions.offset() != null) {
+      builder.query("offset", String.valueOf(listDataRecordsOptions.offset()));
+    }
+    if (listDataRecordsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listDataRecordsOptions.limit()));
+    }
+    ResponseConverter<DataRecordsResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataRecordsResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List the records.
+   *
+   * View a list of records that have been added to the graph.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link DataRecordsResponse}
+   */
+  public ServiceCall<DataRecordsResponse> listDataRecords() {
+    return listDataRecords(null);
+  }
+
+  /**
+   * Create a new record.
+   *
+   * Add a new record to the graph. An incremental matching operation is automatically triggered after the record is
+   * created, to enable the record to join or form an entity.
+   *
+   * @param createDataRecordOptions the {@link CreateDataRecordOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DataRecordResponse}
+   */
+  public ServiceCall<DataRecordResponse> createDataRecord(CreateDataRecordOptions createDataRecordOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createDataRecordOptions,
+      "createDataRecordOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/records"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "createDataRecord");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("crn", String.valueOf(this.crn));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("attributes", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDataRecordOptions.attributes()));
+    if (createDataRecordOptions.id() != null) {
+      contentJson.addProperty("id", createDataRecordOptions.id());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<DataRecordResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataRecordResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List the relationships for a record.
+   *
+   * View a list of relationships that exist between the given record and other records in the graph.
+   *
+   * @param listDataRelationshipsForRecordOptions the {@link ListDataRelationshipsForRecordOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DataRelationshipsResponse}
+   */
+  public ServiceCall<DataRelationshipsResponse> listDataRelationshipsForRecord(ListDataRelationshipsForRecordOptions listDataRelationshipsForRecordOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listDataRelationshipsForRecordOptions,
+      "listDataRelationshipsForRecordOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", String.valueOf(listDataRelationshipsForRecordOptions.id()));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/records/{id}/relationships", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listDataRelationshipsForRecord");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("crn", String.valueOf(this.crn));
+    if (listDataRelationshipsForRecordOptions.relationshipTypes() != null) {
+      builder.query("relationship_types", RequestUtils.join(listDataRelationshipsForRecordOptions.relationshipTypes(), ","));
+    }
+    if (listDataRelationshipsForRecordOptions.offset() != null) {
+      builder.query("offset", String.valueOf(listDataRelationshipsForRecordOptions.offset()));
+    }
+    if (listDataRelationshipsForRecordOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listDataRelationshipsForRecordOptions.limit()));
+    }
+    ResponseConverter<DataRelationshipsResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataRelationshipsResponse>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -1527,27 +1449,54 @@ public class Mdm extends BaseService {
   }
 
   /**
-   * List the relationships for a record.
+   * Create a new relationship.
    *
-   * View a list of relationships that exist between the given record and other records in the graph.
+   * Add a new relationship to the graph.
    *
-   * @param listDataRelationshipsForRecordOptions the {@link ListDataRelationshipsForRecordOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link DataRelationshipsResponse}
+   * @param createDataRelationshipOptions the {@link CreateDataRelationshipOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DataRelationshipResponse}
    */
-  public ServiceCall<DataRelationshipsResponse> listDataRelationshipsForRecord(ListDataRelationshipsForRecordOptions listDataRelationshipsForRecordOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(listDataRelationshipsForRecordOptions,
-      "listDataRelationshipsForRecordOptions cannot be null");
-    Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("id", String.valueOf(listDataRelationshipsForRecordOptions.id()));
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/records/{id}/relationships", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listDataRelationshipsForRecord");
+  public ServiceCall<DataRelationshipResponse> createDataRelationship(CreateDataRelationshipOptions createDataRelationshipOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createDataRelationshipOptions,
+      "createDataRelationshipOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/relationships"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "createDataRelationship");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
-    ResponseConverter<DataRelationshipsResponse> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataRelationshipsResponse>() { }.getType());
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("attributes", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDataRelationshipOptions.attributes()));
+    if (createDataRelationshipOptions.id() != null) {
+      contentJson.addProperty("id", createDataRelationshipOptions.id());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<DataRelationshipResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DataRelationshipResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a relationship.
+   *
+   * Delete an existing relationship from the graph.
+   *
+   * @param deleteDataRelationshipOptions the {@link DeleteDataRelationshipOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteDataRelationship(DeleteDataRelationshipOptions deleteDataRelationshipOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteDataRelationshipOptions,
+      "deleteDataRelationshipOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteDataRelationshipOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/relationships/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "deleteDataRelationship");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("crn", String.valueOf(this.crn));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -1947,6 +1896,9 @@ public class Mdm extends BaseService {
     if (createMatchingReportJobOptions.executorCoreCount() != null) {
       builder.query("executor_core_count", String.valueOf(createMatchingReportJobOptions.executorCoreCount()));
     }
+    if (createMatchingReportJobOptions.jobList() != null) {
+      builder.query("job_list", String.valueOf(createMatchingReportJobOptions.jobList()));
+    }
     if (createMatchingReportJobOptions.doAnalytics() != null) {
       builder.query("do_analytics", String.valueOf(createMatchingReportJobOptions.doAnalytics()));
     }
@@ -1997,6 +1949,9 @@ public class Mdm extends BaseService {
     if (createMatchingMatchJobOptions.doForce() != null) {
       builder.query("do_force", String.valueOf(createMatchingMatchJobOptions.doForce()));
     }
+    if (createMatchingMatchJobOptions.doDeduplicate() != null) {
+      builder.query("do_deduplicate", String.valueOf(createMatchingMatchJobOptions.doDeduplicate()));
+    }
     if (createMatchingMatchJobOptions.doAnalytics() != null) {
       builder.query("do_analytics", String.valueOf(createMatchingMatchJobOptions.doAnalytics()));
     }
@@ -2042,6 +1997,85 @@ public class Mdm extends BaseService {
   }
 
   /**
+   * Retrieve record ids.
+   *
+   * * This service retrieves all record_ids that are assigned with the same entity_id.
+   *
+   * @param getMatchingRecordsOptions the {@link GetMatchingRecordsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link GetRecordKeys}
+   */
+  public ServiceCall<GetRecordKeys> getMatchingRecords(GetMatchingRecordsOptions getMatchingRecordsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getMatchingRecordsOptions,
+      "getMatchingRecordsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("entity_id", getMatchingRecordsOptions.entityId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/entity_ids/{entity_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "getMatchingRecords");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("crn", String.valueOf(this.crn));
+    ResponseConverter<GetRecordKeys> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<GetRecordKeys>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Preview entity composition.
+   *
+   * * This service provides a preview of the impacted entities by hypothesizing one or more manual link/unlink rules.
+   *
+   * @param createMatchingEntityPreviewOptions the {@link CreateMatchingEntityPreviewOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Map}
+   */
+  public ServiceCall<Map<String, Map<String, List<String>>>> createMatchingEntityPreview(CreateMatchingEntityPreviewOptions createMatchingEntityPreviewOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createMatchingEntityPreviewOptions,
+      "createMatchingEntityPreviewOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/linkage_rules_preview"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "createMatchingEntityPreview");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("crn", String.valueOf(this.crn));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("entity_type", createMatchingEntityPreviewOptions.entityType());
+    contentJson.add("rules", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createMatchingEntityPreviewOptions.rules()));
+    builder.bodyJson(contentJson);
+    ResponseConverter<Map<String, Map<String, List<String>>>> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Map<String, Map<String, List<String>>>>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Add or update manual link/unlink.
+   *
+   * * This service adds or updates a collection of manual link/unlink rules.
+   *
+   * @param replaceMatchingRuleOptions the {@link ReplaceMatchingRuleOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Map}
+   */
+  public ServiceCall<Map<String, List<RulesEntityRule>>> replaceMatchingRule(ReplaceMatchingRuleOptions replaceMatchingRuleOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(replaceMatchingRuleOptions,
+      "replaceMatchingRuleOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/linkage_rules"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "replaceMatchingRule");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("crn", String.valueOf(this.crn));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("entity_type", replaceMatchingRuleOptions.entityType());
+    contentJson.add("rules", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceMatchingRuleOptions.rules()));
+    builder.bodyJson(contentJson);
+    ResponseConverter<Map<String, List<RulesEntityRule>>> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Map<String, List<RulesEntityRule>>>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * Remove manual link/unlink.
    *
    * * This service removes one or more manual link/unlink rules supplied by user.
@@ -2060,8 +2094,8 @@ public class Mdm extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
     final JsonObject contentJson = new JsonObject();
-    contentJson.add("rules", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(deleteMatchingRuleOptions.rules()));
     contentJson.addProperty("entity_type", deleteMatchingRuleOptions.entityType());
+    contentJson.add("rules", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(deleteMatchingRuleOptions.rules()));
     builder.bodyJson(contentJson);
     ResponseConverter<Map<String, List<RulesEntityRule>>> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Map<String, List<RulesEntityRule>>>() { }.getType());
@@ -2120,81 +2154,27 @@ public class Mdm extends BaseService {
   }
 
   /**
-   * Retrieve record ids.
+   * Retrieve information for a job.
    *
-   * * This service retrieves all record_ids that are assigned with the same entity_id.
+   * * This service retrieves the information about a job which is identified with the supplied job id.
    *
-   * @param getMatchingRecordsOptions the {@link GetMatchingRecordsOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link GetRecordKeys}
+   * @param getMatchingJobInfoOptions the {@link GetMatchingJobInfoOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link GetMatchingJobs}
    */
-  public ServiceCall<GetRecordKeys> getMatchingRecords(GetMatchingRecordsOptions getMatchingRecordsOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(getMatchingRecordsOptions,
-      "getMatchingRecordsOptions cannot be null");
+  public ServiceCall<GetMatchingJobs> getMatchingJobInfo(GetMatchingJobInfoOptions getMatchingJobInfoOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getMatchingJobInfoOptions,
+      "getMatchingJobInfoOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("entity_id", getMatchingRecordsOptions.entityId());
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/entity_ids/{entity_id}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "getMatchingRecords");
+    pathParamsMap.put("job_id", getMatchingJobInfoOptions.jobId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/matching_jobs/{job_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "getMatchingJobInfo");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
-    ResponseConverter<GetRecordKeys> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<GetRecordKeys>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Preview entity composition.
-   *
-   * * This service provides a preview of the impacted entities by hypothesizing one or more manual link/unlink rules.
-   *
-   * @param createMatchingEntityPreviewOptions the {@link CreateMatchingEntityPreviewOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link Map}
-   */
-  public ServiceCall<Map<String, Map<String, List<String>>>> createMatchingEntityPreview(CreateMatchingEntityPreviewOptions createMatchingEntityPreviewOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createMatchingEntityPreviewOptions,
-      "createMatchingEntityPreviewOptions cannot be null");
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/linkage_rules_preview"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "createMatchingEntityPreview");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    final JsonObject contentJson = new JsonObject();
-    contentJson.add("rules", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createMatchingEntityPreviewOptions.rules()));
-    contentJson.addProperty("entity_type", createMatchingEntityPreviewOptions.entityType());
-    builder.bodyJson(contentJson);
-    ResponseConverter<Map<String, Map<String, List<String>>>> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Map<String, Map<String, List<String>>>>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Add or update manual link/unlink.
-   *
-   * * This service adds or updates a collection of manual link/unlink rules.
-   *
-   * @param replaceMatchingRuleOptions the {@link ReplaceMatchingRuleOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link Map}
-   */
-  public ServiceCall<Map<String, List<RulesEntityRule>>> replaceMatchingRule(ReplaceMatchingRuleOptions replaceMatchingRuleOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(replaceMatchingRuleOptions,
-      "replaceMatchingRuleOptions cannot be null");
-    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/linkage_rules"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "replaceMatchingRule");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    final JsonObject contentJson = new JsonObject();
-    contentJson.add("rules", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceMatchingRuleOptions.rules()));
-    contentJson.addProperty("entity_type", replaceMatchingRuleOptions.entityType());
-    builder.bodyJson(contentJson);
-    ResponseConverter<Map<String, List<RulesEntityRule>>> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Map<String, List<RulesEntityRule>>>() { }.getType());
+    ResponseConverter<GetMatchingJobs> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<GetMatchingJobs>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -2294,64 +2274,12 @@ public class Mdm extends BaseService {
       builder.query("limit", String.valueOf(searchMatchingIndexOptions.limit()));
     }
     final JsonObject contentJson = new JsonObject();
-    if (searchMatchingIndexOptions.recordType() != null) {
-      contentJson.addProperty("record_type", searchMatchingIndexOptions.recordType());
-    }
-    if (searchMatchingIndexOptions.attributes() != null) {
-      contentJson.add("attributes", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(searchMatchingIndexOptions.attributes()));
-    }
+    contentJson.addProperty("record_type", searchMatchingIndexOptions.recordType());
+    contentJson.add("attributes", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(searchMatchingIndexOptions.attributes()));
     builder.bodyJson(contentJson);
     ResponseConverter<PostSearch> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PostSearch>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Search records by matching algorithm.
-   *
-   * * This service searches for the supplied payload and returns record_ids of potential matches.
-   * * The order of record_ids in the response is determined by matching algorithms.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link PostSearch}
-   */
-  public ServiceCall<PostSearch> searchMatchingIndex() {
-    return searchMatchingIndex(null);
-  }
-
-  /**
-   * Retrieve record types of all the matching algorithms.
-   *
-   * * This service retrieves the record types of all the matching algorithms present.
-   * * A matching algorithm contains the matching metadata for a given record type and is comprised of standardization,
-   * bucket generation and comparison sections.
-   *
-   * @param listModelAlgorithmsOptions the {@link ListModelAlgorithmsOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link AlgorithmNames}
-   */
-  public ServiceCall<AlgorithmNames> listModelAlgorithms(ListModelAlgorithmsOptions listModelAlgorithmsOptions) {
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/algorithms"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listModelAlgorithms");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    ResponseConverter<AlgorithmNames> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<AlgorithmNames>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Retrieve record types of all the matching algorithms.
-   *
-   * * This service retrieves the record types of all the matching algorithms present.
-   * * A matching algorithm contains the matching metadata for a given record type and is comprised of standardization,
-   * bucket generation and comparison sections.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link AlgorithmNames}
-   */
-  public ServiceCall<AlgorithmNames> listModelAlgorithms() {
-    return listModelAlgorithms(null);
   }
 
   /**
@@ -2408,9 +2336,9 @@ public class Mdm extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
     final JsonObject contentJson = new JsonObject();
-    contentJson.add("entity_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelAlgorithmOptions.entityTypes()));
     contentJson.add("standardizers", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelAlgorithmOptions.standardizers()));
     contentJson.add("encryption", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelAlgorithmOptions.encryption()));
+    contentJson.add("entity_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelAlgorithmOptions.entityTypes()));
     contentJson.addProperty("locale", replaceModelAlgorithmOptions.locale());
     builder.bodyJson(contentJson);
     ResponseConverter<PutAlgorithm> responseConverter =
@@ -2471,9 +2399,9 @@ public class Mdm extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
     final JsonObject contentJson = new JsonObject();
-    contentJson.add("entity_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateModelAlgorithmOptions.entityTypes()));
     contentJson.add("standardizers", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateModelAlgorithmOptions.standardizers()));
     contentJson.add("encryption", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateModelAlgorithmOptions.encryption()));
+    contentJson.add("entity_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateModelAlgorithmOptions.entityTypes()));
     contentJson.addProperty("locale", updateModelAlgorithmOptions.locale());
     builder.bodyJson(contentJson);
     ResponseConverter<PutAlgorithm> responseConverter =
@@ -2482,35 +2410,39 @@ public class Mdm extends BaseService {
   }
 
   /**
-   * Retrieve a summary of all comparison parameters.
+   * Retrieve record types of all the matching algorithms.
    *
-   * * This service retrieves the list of specification names for the existing comparison parameters.
+   * * This service retrieves the record types of all the matching algorithms present.
+   * * A matching algorithm contains the matching metadata for a given record type and is comprised of standardization,
+   * bucket generation and comparison sections.
    *
-   * @param listModelComparespecResouresOptions the {@link ListModelComparespecResouresOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link CompareSpecResourceNames}
+   * @param listModelAlgorithmsOptions the {@link ListModelAlgorithmsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link AlgorithmNames}
    */
-  public ServiceCall<CompareSpecResourceNames> listModelComparespecResoures(ListModelComparespecResouresOptions listModelComparespecResouresOptions) {
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/compare_spec_resources"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listModelComparespecResoures");
+  public ServiceCall<AlgorithmNames> listModelAlgorithms(ListModelAlgorithmsOptions listModelAlgorithmsOptions) {
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/algorithms"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listModelAlgorithms");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
-    ResponseConverter<CompareSpecResourceNames> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CompareSpecResourceNames>() { }.getType());
+    ResponseConverter<AlgorithmNames> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<AlgorithmNames>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * Retrieve a summary of all comparison parameters.
+   * Retrieve record types of all the matching algorithms.
    *
-   * * This service retrieves the list of specification names for the existing comparison parameters.
+   * * This service retrieves the record types of all the matching algorithms present.
+   * * A matching algorithm contains the matching metadata for a given record type and is comprised of standardization,
+   * bucket generation and comparison sections.
    *
-   * @return a {@link ServiceCall} with a result of type {@link CompareSpecResourceNames}
+   * @return a {@link ServiceCall} with a result of type {@link AlgorithmNames}
    */
-  public ServiceCall<CompareSpecResourceNames> listModelComparespecResoures() {
-    return listModelComparespecResoures(null);
+  public ServiceCall<AlgorithmNames> listModelAlgorithms() {
+    return listModelAlgorithms(null);
   }
 
   /**
@@ -2561,8 +2493,8 @@ public class Mdm extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
     final JsonObject contentJson = new JsonObject();
-    contentJson.add("feature_categories", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelComparespecResourceOptions.featureCategories()));
     contentJson.addProperty("typo_distance", replaceModelComparespecResourceOptions.typoDistance());
+    contentJson.add("feature_categories", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelComparespecResourceOptions.featureCategories()));
     contentJson.add("feature_coefficients", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelComparespecResourceOptions.featureCoefficients()));
     if (replaceModelComparespecResourceOptions.similarCharactersMapResource() != null) {
       contentJson.addProperty("similar_characters_map_resource", replaceModelComparespecResourceOptions.similarCharactersMapResource());
@@ -2574,6 +2506,38 @@ public class Mdm extends BaseService {
     ResponseConverter<PutCompareSpecResources> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PutCompareSpecResources>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a summary of all comparison parameters.
+   *
+   * * This service retrieves the list of specification names for the existing comparison parameters.
+   *
+   * @param listModelComparespecResouresOptions the {@link ListModelComparespecResouresOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link CompareSpecResourceNames}
+   */
+  public ServiceCall<CompareSpecResourceNames> listModelComparespecResoures(ListModelComparespecResouresOptions listModelComparespecResouresOptions) {
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/compare_spec_resources"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listModelComparespecResoures");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("crn", String.valueOf(this.crn));
+    ResponseConverter<CompareSpecResourceNames> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CompareSpecResourceNames>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a summary of all comparison parameters.
+   *
+   * * This service retrieves the list of specification names for the existing comparison parameters.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link CompareSpecResourceNames}
+   */
+  public ServiceCall<CompareSpecResourceNames> listModelComparespecResoures() {
+    return listModelComparespecResoures(null);
   }
 
   /**
@@ -2704,11 +2668,11 @@ public class Mdm extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
     final JsonObject contentJson = new JsonObject();
-    contentJson.add("relationship_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelDataModelOptions.relationshipTypes()));
     contentJson.add("record_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelDataModelOptions.recordTypes()));
+    contentJson.add("relationship_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelDataModelOptions.relationshipTypes()));
     contentJson.add("attribute_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelDataModelOptions.attributeTypes()));
-    contentJson.add("system_properties", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelDataModelOptions.systemProperties()));
     contentJson.addProperty("locale", replaceModelDataModelOptions.locale());
+    contentJson.add("system_properties", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelDataModelOptions.systemProperties()));
     builder.bodyJson(contentJson);
     ResponseConverter<PutDataModel> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PutDataModel>() { }.getType());
@@ -2736,11 +2700,11 @@ public class Mdm extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
     final JsonObject contentJson = new JsonObject();
-    contentJson.add("relationship_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateModelDataModelOptions.relationshipTypes()));
     contentJson.add("record_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateModelDataModelOptions.recordTypes()));
+    contentJson.add("relationship_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateModelDataModelOptions.relationshipTypes()));
     contentJson.add("attribute_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateModelDataModelOptions.attributeTypes()));
-    contentJson.add("system_properties", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateModelDataModelOptions.systemProperties()));
     contentJson.addProperty("locale", updateModelDataModelOptions.locale());
+    contentJson.add("system_properties", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateModelDataModelOptions.systemProperties()));
     builder.bodyJson(contentJson);
     ResponseConverter<PutDataModel> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PutDataModel>() { }.getType());
@@ -2799,8 +2763,8 @@ public class Mdm extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
     final JsonObject contentJson = new JsonObject();
-    contentJson.addProperty("approver_name", updateModelFlowOptions.approverName());
     contentJson.addProperty("action", updateModelFlowOptions.action());
+    contentJson.addProperty("approver_name", updateModelFlowOptions.approverName());
     if (updateModelFlowOptions.message() != null) {
       contentJson.addProperty("message", updateModelFlowOptions.message());
     }
@@ -2873,8 +2837,11 @@ public class Mdm extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
     final JsonObject contentJson = new JsonObject();
-    if (replaceModelInstanceMetadataOptions.projects() != null) {
-      contentJson.add("projects", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelInstanceMetadataOptions.projects()));
+    if (replaceModelInstanceMetadataOptions.catalogs() != null) {
+      contentJson.add("catalogs", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelInstanceMetadataOptions.catalogs()));
+    }
+    if (replaceModelInstanceMetadataOptions.jobProjectId() != null) {
+      contentJson.addProperty("job_project_id", replaceModelInstanceMetadataOptions.jobProjectId());
     }
     if (replaceModelInstanceMetadataOptions.cosEndpoint() != null) {
       contentJson.addProperty("cos_endpoint", replaceModelInstanceMetadataOptions.cosEndpoint());
@@ -2882,17 +2849,14 @@ public class Mdm extends BaseService {
     if (replaceModelInstanceMetadataOptions.label() != null) {
       contentJson.addProperty("label", replaceModelInstanceMetadataOptions.label());
     }
-    if (replaceModelInstanceMetadataOptions.bulkloadBucket() != null) {
-      contentJson.add("bulkload_bucket", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelInstanceMetadataOptions.bulkloadBucket()));
+    if (replaceModelInstanceMetadataOptions.projects() != null) {
+      contentJson.add("projects", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelInstanceMetadataOptions.projects()));
     }
     if (replaceModelInstanceMetadataOptions.cosCrn() != null) {
       contentJson.addProperty("cos_crn", replaceModelInstanceMetadataOptions.cosCrn());
     }
-    if (replaceModelInstanceMetadataOptions.catalogs() != null) {
-      contentJson.add("catalogs", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelInstanceMetadataOptions.catalogs()));
-    }
-    if (replaceModelInstanceMetadataOptions.jobProjectId() != null) {
-      contentJson.addProperty("job_project_id", replaceModelInstanceMetadataOptions.jobProjectId());
+    if (replaceModelInstanceMetadataOptions.bulkloadBucket() != null) {
+      contentJson.add("bulkload_bucket", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceModelInstanceMetadataOptions.bulkloadBucket()));
     }
     builder.bodyJson(contentJson);
     ResponseConverter<InstanceMetadataResponse> responseConverter =
@@ -2913,46 +2877,6 @@ public class Mdm extends BaseService {
    */
   public ServiceCall<InstanceMetadataResponse> replaceModelInstanceMetadata() {
     return replaceModelInstanceMetadata(null);
-  }
-
-  /**
-   * Retrieve a summary of all equivalency criteria.
-   *
-   * * This service retrieves the list of resource names of all existing equivalency criteria.
-   * * A Map Resource is a json document containing a collection of equivalency criteria (e.g. BOB, ROB) for given
-   * tokens (e.g. ROBERT).
-   * * A Map Resource may be used in standardization, bucket generation and comparison recipes within one more more
-   * algorithms.
-   *
-   * @param listModelMapResourcesOptions the {@link ListModelMapResourcesOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link MapResourceNames}
-   */
-  public ServiceCall<MapResourceNames> listModelMapResources(ListModelMapResourcesOptions listModelMapResourcesOptions) {
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/map_resources"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listModelMapResources");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    ResponseConverter<MapResourceNames> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<MapResourceNames>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Retrieve a summary of all equivalency criteria.
-   *
-   * * This service retrieves the list of resource names of all existing equivalency criteria.
-   * * A Map Resource is a json document containing a collection of equivalency criteria (e.g. BOB, ROB) for given
-   * tokens (e.g. ROBERT).
-   * * A Map Resource may be used in standardization, bucket generation and comparison recipes within one more more
-   * algorithms.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link MapResourceNames}
-   */
-  public ServiceCall<MapResourceNames> listModelMapResources() {
-    return listModelMapResources(null);
   }
 
   /**
@@ -3015,6 +2939,84 @@ public class Mdm extends BaseService {
   }
 
   /**
+   * Retrieve a summary of all equivalency criteria.
+   *
+   * * This service retrieves the list of resource names of all existing equivalency criteria.
+   * * A Map Resource is a json document containing a collection of equivalency criteria (e.g. BOB, ROB) for given
+   * tokens (e.g. ROBERT).
+   * * A Map Resource may be used in standardization, bucket generation and comparison recipes within one more more
+   * algorithms.
+   *
+   * @param listModelMapResourcesOptions the {@link ListModelMapResourcesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link MapResourceNames}
+   */
+  public ServiceCall<MapResourceNames> listModelMapResources(ListModelMapResourcesOptions listModelMapResourcesOptions) {
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/map_resources"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listModelMapResources");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("crn", String.valueOf(this.crn));
+    ResponseConverter<MapResourceNames> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<MapResourceNames>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a summary of all equivalency criteria.
+   *
+   * * This service retrieves the list of resource names of all existing equivalency criteria.
+   * * A Map Resource is a json document containing a collection of equivalency criteria (e.g. BOB, ROB) for given
+   * tokens (e.g. ROBERT).
+   * * A Map Resource may be used in standardization, bucket generation and comparison recipes within one more more
+   * algorithms.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link MapResourceNames}
+   */
+  public ServiceCall<MapResourceNames> listModelMapResources() {
+    return listModelMapResources(null);
+  }
+
+  /**
+   * Retrieve a summary of all anonymous words.
+   *
+   * * This service retrieves a summary of resource names for all anonymous words.
+   * * A Set Resource is a json document that generally contains grouped list of values of interest.
+   * * A Set Resource may be used in one or more matching algorithms to filter out the anonymous words in the input
+   * fields from further processing.
+   *
+   * @param listModelSetResourcesOptions the {@link ListModelSetResourcesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SetResourceNames}
+   */
+  public ServiceCall<SetResourceNames> listModelSetResources(ListModelSetResourcesOptions listModelSetResourcesOptions) {
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/set_resources"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listModelSetResources");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("crn", String.valueOf(this.crn));
+    ResponseConverter<SetResourceNames> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SetResourceNames>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a summary of all anonymous words.
+   *
+   * * This service retrieves a summary of resource names for all anonymous words.
+   * * A Set Resource is a json document that generally contains grouped list of values of interest.
+   * * A Set Resource may be used in one or more matching algorithms to filter out the anonymous words in the input
+   * fields from further processing.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SetResourceNames}
+   */
+  public ServiceCall<SetResourceNames> listModelSetResources() {
+    return listModelSetResources(null);
+  }
+
+  /**
    * Retrieve details of anonymous words.
    *
    * * This service retrieves the details of all anonymous words for a given resource name.
@@ -3069,44 +3071,6 @@ public class Mdm extends BaseService {
     ResponseConverter<PutSetResources> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PutSetResources>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Retrieve a summary of all anonymous words.
-   *
-   * * This service retrieves a summary of resource names for all anonymous words.
-   * * A Set Resource is a json document that generally contains grouped list of values of interest.
-   * * A Set Resource may be used in one or more matching algorithms to filter out the anonymous words in the input
-   * fields from further processing.
-   *
-   * @param listModelSetResourcesOptions the {@link ListModelSetResourcesOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link SetResourceNames}
-   */
-  public ServiceCall<SetResourceNames> listModelSetResources(ListModelSetResourcesOptions listModelSetResourcesOptions) {
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/set_resources"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "listModelSetResources");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("crn", String.valueOf(this.crn));
-    ResponseConverter<SetResourceNames> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SetResourceNames>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Retrieve a summary of all anonymous words.
-   *
-   * * This service retrieves a summary of resource names for all anonymous words.
-   * * A Set Resource is a json document that generally contains grouped list of values of interest.
-   * * A Set Resource may be used in one or more matching algorithms to filter out the anonymous words in the input
-   * fields from further processing.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link SetResourceNames}
-   */
-  public ServiceCall<SetResourceNames> listModelSetResources() {
-    return listModelSetResources(null);
   }
 
 }

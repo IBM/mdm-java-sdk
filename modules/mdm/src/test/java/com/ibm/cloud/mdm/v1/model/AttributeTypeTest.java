@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,14 +34,14 @@ public class AttributeTypeTest {
   public void testAttributeType() throws Throwable {
     FieldType fieldTypeModel = new FieldType.Builder()
       .label("testString")
-      .indexed(true)
       .description("testString")
       .classification("testString")
+      .indexed(true)
       .build();
     assertEquals(fieldTypeModel.label(), "testString");
-    assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
     assertEquals(fieldTypeModel.description(), "testString");
     assertEquals(fieldTypeModel.classification(), "testString");
+    assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
 
     AttributeType attributeTypeModel = new AttributeType.Builder()
       .label("testString")
