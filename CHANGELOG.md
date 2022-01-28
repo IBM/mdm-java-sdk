@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/IBM/mdm-java-sdk/compare/1.0.0...1.0.1) (2022-01-28)
+
+
+### Bug Fixes
+
+* Match 360 Java SDK for CPD 4.0.2 ([d1f4d7b](https://github.com/IBM/mdm-java-sdk/commit/d1f4d7bed2b2029d019c1f11593606a20a564320))
+
 # [1.0.0](https://github.com/IBM/mdm-java-sdk/compare/0.0.13...1.0.0) (2022-01-06)
 
 
