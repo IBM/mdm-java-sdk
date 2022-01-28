@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,6 +21,7 @@ public class DataModelEntityType extends GenericModel {
 
   protected String label;
   protected String description;
+  protected String type;
 
   /**
    * Builder.
@@ -28,10 +29,12 @@ public class DataModelEntityType extends GenericModel {
   public static class Builder {
     private String label;
     private String description;
+    private String type;
 
     private Builder(DataModelEntityType dataModelEntityType) {
       this.label = dataModelEntityType.label;
       this.description = dataModelEntityType.description;
+      this.type = dataModelEntityType.type;
     }
 
     /**
@@ -79,6 +82,17 @@ public class DataModelEntityType extends GenericModel {
       this.description = description;
       return this;
     }
+
+    /**
+     * Set the type.
+     *
+     * @param type the type
+     * @return the DataModelEntityType builder
+     */
+    public Builder type(String type) {
+      this.type = type;
+      return this;
+    }
   }
 
   protected DataModelEntityType(Builder builder) {
@@ -86,6 +100,7 @@ public class DataModelEntityType extends GenericModel {
       "label cannot be null");
     label = builder.label;
     description = builder.description;
+    type = builder.type;
   }
 
   /**
@@ -117,6 +132,17 @@ public class DataModelEntityType extends GenericModel {
    */
   public String description() {
     return description;
+  }
+
+  /**
+   * Gets the type.
+   *
+   * Read-only type of entity type, one of individual or household.
+   *
+   * @return the type
+   */
+  public String type() {
+    return type;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,7 +14,6 @@
 package com.ibm.cloud.mdm.v1;
 
 import com.ibm.cloud.mdm.v1.model.AddConfiguratorConfigurationAssetOptions;
-import com.ibm.cloud.mdm.v1.model.AddConfiguratorPairDecisionOptions;
 import com.ibm.cloud.mdm.v1.model.Algorithm;
 import com.ibm.cloud.mdm.v1.model.AlgorithmBucketGenerator;
 import com.ibm.cloud.mdm.v1.model.AlgorithmBucketGroupStep;
@@ -37,6 +36,8 @@ import com.ibm.cloud.mdm.v1.model.Attribute;
 import com.ibm.cloud.mdm.v1.model.AttributeType;
 import com.ibm.cloud.mdm.v1.model.AttributeTypes;
 import com.ibm.cloud.mdm.v1.model.BulkDeleteJob;
+import com.ibm.cloud.mdm.v1.model.BulkDeleteJobSearchCriteria;
+import com.ibm.cloud.mdm.v1.model.BulkDeleteJobSearchCriteriaQuery;
 import com.ibm.cloud.mdm.v1.model.BulkDeleteRequestSearchCriteria;
 import com.ibm.cloud.mdm.v1.model.BulkDeleteRequestSearchCriteriaQuery;
 import com.ibm.cloud.mdm.v1.model.BulkLoadJob;
@@ -57,11 +58,11 @@ import com.ibm.cloud.mdm.v1.model.CompositeRulesRecordType;
 import com.ibm.cloud.mdm.v1.model.CompositeRulesRule;
 import com.ibm.cloud.mdm.v1.model.CompositeRulesRules;
 import com.ibm.cloud.mdm.v1.model.ConfigDataModel;
-import com.ibm.cloud.mdm.v1.model.ConfigDataModelAttributes;
 import com.ibm.cloud.mdm.v1.model.ConfigurationMetadata;
 import com.ibm.cloud.mdm.v1.model.CreateConfiguratorProcessOptions;
 import com.ibm.cloud.mdm.v1.model.CreateDataExportOptions;
 import com.ibm.cloud.mdm.v1.model.CreateDataRecordOptions;
+import com.ibm.cloud.mdm.v1.model.CreateDataRelationshipOptions;
 import com.ibm.cloud.mdm.v1.model.CreateMatchingDeriveJobOptions;
 import com.ibm.cloud.mdm.v1.model.CreateMatchingEntityPreviewOptions;
 import com.ibm.cloud.mdm.v1.model.CreateMatchingMatchJobOptions;
@@ -76,6 +77,8 @@ import com.ibm.cloud.mdm.v1.model.DataEntityResponse;
 import com.ibm.cloud.mdm.v1.model.DataEntityResponseEntity;
 import com.ibm.cloud.mdm.v1.model.DataEntityResponseMetadata;
 import com.ibm.cloud.mdm.v1.model.DataExport;
+import com.ibm.cloud.mdm.v1.model.DataExportSearchCriteria;
+import com.ibm.cloud.mdm.v1.model.DataExportSearchCriteriaQuery;
 import com.ibm.cloud.mdm.v1.model.DataExports;
 import com.ibm.cloud.mdm.v1.model.DataJob;
 import com.ibm.cloud.mdm.v1.model.DataJobs;
@@ -112,6 +115,7 @@ import com.ibm.cloud.mdm.v1.model.DataSearchResultsStats;
 import com.ibm.cloud.mdm.v1.model.DataStatistics;
 import com.ibm.cloud.mdm.v1.model.DataStatisticsAggregateCounts;
 import com.ibm.cloud.mdm.v1.model.DeleteDataRecordOptions;
+import com.ibm.cloud.mdm.v1.model.DeleteDataRelationshipOptions;
 import com.ibm.cloud.mdm.v1.model.DeleteMatchingRuleOptions;
 import com.ibm.cloud.mdm.v1.model.ElementWithAttributes;
 import com.ibm.cloud.mdm.v1.model.EntityBreakdown;
@@ -123,7 +127,6 @@ import com.ibm.cloud.mdm.v1.model.Expression;
 import com.ibm.cloud.mdm.v1.model.FieldType;
 import com.ibm.cloud.mdm.v1.model.Flow;
 import com.ibm.cloud.mdm.v1.model.GenerateModelAlgorithmOptions;
-import com.ibm.cloud.mdm.v1.model.GetConfiguratorConfigDataModelAttributesOptions;
 import com.ibm.cloud.mdm.v1.model.GetConfiguratorConfigDataModelOptions;
 import com.ibm.cloud.mdm.v1.model.GetConfiguratorConfigurationMetadataOptions;
 import com.ibm.cloud.mdm.v1.model.GetConfiguratorMatchingStatisticsOptions;
@@ -138,6 +141,8 @@ import com.ibm.cloud.mdm.v1.model.GetDataRecordOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataRelationshipForRecordOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataStorageMetadataOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataSubgraphOptions;
+import com.ibm.cloud.mdm.v1.model.GetMatchingJobInfoOptions;
+import com.ibm.cloud.mdm.v1.model.GetMatchingJobs;
 import com.ibm.cloud.mdm.v1.model.GetMatchingRecordRulesOptions;
 import com.ibm.cloud.mdm.v1.model.GetMatchingRecordsOptions;
 import com.ibm.cloud.mdm.v1.model.GetModelAlgorithmOptions;
@@ -155,7 +160,6 @@ import com.ibm.cloud.mdm.v1.model.InstanceMetadataProject;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponse;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponseCatalog;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponseProject;
-import com.ibm.cloud.mdm.v1.model.ListConfiguratorPairDecisionOptions;
 import com.ibm.cloud.mdm.v1.model.ListConfiguratorProcessesOptions;
 import com.ibm.cloud.mdm.v1.model.ListDataEntitiesForRecordOptions;
 import com.ibm.cloud.mdm.v1.model.ListDataExportsOptions;
@@ -189,7 +193,6 @@ import com.ibm.cloud.mdm.v1.model.ProcessRequestAssetSourceDetails;
 import com.ibm.cloud.mdm.v1.model.ProcessRequestAssetSourceDetailsCatalog;
 import com.ibm.cloud.mdm.v1.model.ProcessRequestAssetSourceDetailsProject;
 import com.ibm.cloud.mdm.v1.model.ProcessStatus;
-import com.ibm.cloud.mdm.v1.model.Property;
 import com.ibm.cloud.mdm.v1.model.PutAlgorithm;
 import com.ibm.cloud.mdm.v1.model.PutCompareSpecResources;
 import com.ibm.cloud.mdm.v1.model.PutCompositeRules;
@@ -212,7 +215,6 @@ import com.ibm.cloud.mdm.v1.model.ReplaceModelDataModelOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceModelInstanceMetadataOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceModelMapResourceOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceModelSetResourceOptions;
-import com.ibm.cloud.mdm.v1.model.ResetConfigServiceOptions;
 import com.ibm.cloud.mdm.v1.model.Rule;
 import com.ibm.cloud.mdm.v1.model.RulesEntityRule;
 import com.ibm.cloud.mdm.v1.model.RulesRequestRule;
@@ -344,15 +346,15 @@ public class MdmIT extends SdkIntegrationTestBase {
   public void testReplaceConfiguratorConfigDataModel() throws Exception {
     try {
       EntityType entityTypeModel = new EntityType.Builder()
-      .label("testString")
       .description("testString")
+      .label("testString")
       .build();
 
       Attribute attributeModel = new Attribute.Builder()
       .indexed(true)
-      .classification("testString")
-      .label("testString")
       .description("testString")
+      .label("testString")
+      .classification("testString")
       .cardinality("testString")
       .attributeType("email")
       .build();
@@ -392,9 +394,9 @@ public class MdmIT extends SdkIntegrationTestBase {
 
       FieldType fieldTypeModel = new FieldType.Builder()
       .label("testString")
-      .indexed(true)
       .description("testString")
       .classification("testString")
+      .indexed(true)
       .build();
 
       AttributeType attributeTypeModel = new AttributeType.Builder()
@@ -447,8 +449,8 @@ public class MdmIT extends SdkIntegrationTestBase {
       .recordTypes(new java.util.HashMap<String, RecordType>() { { put("foo", recordTypeModel); } })
       .relationshipTypes(new java.util.HashMap<String, RelationshipType>() { { put("foo", relationshipTypeModel); } })
       .attributeTypes(new java.util.HashMap<String, AttributeType>() { { put("foo", attributeTypeModel); } })
-      .locale("testString")
       .systemProperties(new java.util.HashMap<String, SystemProperties>() { { put("foo", systemPropertiesModel); } })
+      .locale("testString")
       .build();
 
       // Invoke operation
@@ -460,39 +462,6 @@ public class MdmIT extends SdkIntegrationTestBase {
       ConfigDataModel configDataModelResult = response.getResult();
 
       assertNotNull(configDataModelResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 401
-      // 403
-      // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testGetConfiguratorConfigDataModelAttributes() throws Exception {
-    try {
-      GetConfiguratorConfigDataModelAttributesOptions getConfiguratorConfigDataModelAttributesOptions = new GetConfiguratorConfigDataModelAttributesOptions.Builder()
-      .recordType("testString")
-      .build();
-
-      // Invoke operation
-      Response<ConfigDataModelAttributes> response = service.getConfiguratorConfigDataModelAttributes(getConfiguratorConfigDataModelAttributesOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      ConfigDataModelAttributes configDataModelAttributesResult = response.getResult();
-
-      assertNotNull(configDataModelAttributesResult);
 
       //
       // The following status codes aren't covered by tests.
@@ -531,79 +500,7 @@ public class MdmIT extends SdkIntegrationTestBase {
       // The following status codes aren't covered by tests.
       // Please provide integration tests for these too.
       //
-      // 401
-      // 403
       // 404
-      // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testListConfiguratorPairDecision() throws Exception {
-    try {
-      ListConfiguratorPairDecisionOptions listConfiguratorPairDecisionOptions = new ListConfiguratorPairDecisionOptions.Builder()
-      .recordType("testString")
-      .recordNumber1("testString")
-      .recordNumber2("testString")
-      .build();
-
-      // Invoke operation
-      Response<ConfigurationMetadata> response = service.listConfiguratorPairDecision(listConfiguratorPairDecisionOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      ConfigurationMetadata configurationMetadataResult = response.getResult();
-
-      assertNotNull(configurationMetadataResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 401
-      // 403
-      // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testAddConfiguratorPairDecision() throws Exception {
-    try {
-      AddConfiguratorPairDecisionOptions addConfiguratorPairDecisionOptions = new AddConfiguratorPairDecisionOptions.Builder()
-      .recordNumber1("123")
-      .recordNumber2("123")
-      .userDecision("testString")
-      .id("1234")
-      .build();
-
-      // Invoke operation
-      Response<AssetMetadata> response = service.addConfiguratorPairDecision(addConfiguratorPairDecisionOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 201);
-
-      AssetMetadata assetMetadataResult = response.getResult();
-
-      assertNotNull(assetMetadataResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 400
       // 401
       // 403
       // 500
@@ -653,16 +550,16 @@ public class MdmIT extends SdkIntegrationTestBase {
   public void testCreateConfiguratorProcess() throws Exception {
     try {
       ProcessRequestAssetSourceDetailsProject processRequestAssetSourceDetailsProjectModel = new ProcessRequestAssetSourceDetailsProject.Builder()
-      .cosEndpoint("testString")
-      .cosBucketName("testString")
-      .cosApiKey("testString")
+      .cosBucketName("bucket-name")
+      .cosApiKey("project_api_key")
+      .cosEndpoint("https://s3.us-south.cloud-object-storage.appdomain.cloud")
       .id("testString")
       .build();
 
       ProcessRequestAssetSourceDetailsCatalog processRequestAssetSourceDetailsCatalogModel = new ProcessRequestAssetSourceDetailsCatalog.Builder()
-      .cosEndpoint("testString")
       .cosBucketName("testString")
       .cosApiKey("testString")
+      .cosEndpoint("testString")
       .id("testString")
       .build();
 
@@ -672,11 +569,12 @@ public class MdmIT extends SdkIntegrationTestBase {
       .build();
 
       CreateConfiguratorProcessOptions createConfiguratorProcessOptions = new CreateConfiguratorProcessOptions.Builder()
-      .processName("delete_asset")
-      .doDerive(true)
-      .assetIds("asset-id-1,asset-id-2")
-      .assetSourceDetails(processRequestAssetSourceDetailsModel)
+      .processName("publish_data")
       .recordType("testString")
+      .assetSourceDetails(processRequestAssetSourceDetailsModel)
+      .doDerive(true)
+      .assetIds("testString")
+      .initiator("IAM ID")
       .entityType("testString")
       .build();
 
@@ -684,7 +582,7 @@ public class MdmIT extends SdkIntegrationTestBase {
       Response<ProcessStatus> response = service.createConfiguratorProcess(createConfiguratorProcessOptions).execute();
       // Validate response
       assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
+      assertEquals(response.getStatusCode(), 201);
 
       ProcessStatus processStatusResult = response.getResult();
 
@@ -816,10 +714,10 @@ public class MdmIT extends SdkIntegrationTestBase {
   public void testReplaceConfiguratorConfigurationAsset() throws Exception {
     try {
       AssetMapping assetMappingModel = new AssetMapping.Builder()
-      .classifiedClass("X")
-      .dataMappingName("record_source")
       .excludeColumn(false)
       .autoMapped(false)
+      .classifiedClass("X")
+      .dataMappingName("record_source")
       .completenessPercent("100")
       .dataMappingAttributeType("string")
       .key("COLUMN1")
@@ -829,7 +727,7 @@ public class MdmIT extends SdkIntegrationTestBase {
       .assetId("testString")
       .assetName("Person10.csv")
       .assetStatus("Mapped")
-      .assetCreatedDate("2020-05-12T13:21:21.727Z")
+      .assetCreatedDate("2020-05-12 13:21:21.727000+00:00")
       .assetMappings(new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)))
       .build();
 
@@ -864,10 +762,10 @@ public class MdmIT extends SdkIntegrationTestBase {
   public void testAddConfiguratorConfigurationAsset() throws Exception {
     try {
       AssetMapping assetMappingModel = new AssetMapping.Builder()
-      .classifiedClass("X")
-      .dataMappingName("record_source")
       .excludeColumn(false)
       .autoMapped(false)
+      .classifiedClass("X")
+      .dataMappingName("record_source")
       .completenessPercent("100")
       .dataMappingAttributeType("string")
       .key("COLUMN1")
@@ -877,7 +775,7 @@ public class MdmIT extends SdkIntegrationTestBase {
       .assetId("asset_id")
       .assetName("Person10.csv")
       .assetStatus("Mapped")
-      .assetCreatedDate("2020-05-12T13:21:21.727Z")
+      .assetCreatedDate("2020-05-12 13:21:21.727000+00:00")
       .assetMappings(new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)))
       .build();
 
@@ -933,33 +831,6 @@ public class MdmIT extends SdkIntegrationTestBase {
       // 401
       // 403
       // 404
-      // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testResetConfigService() throws Exception {
-    try {
-      ResetConfigServiceOptions resetConfigServiceOptions = new ResetConfigServiceOptions();
-
-      // Invoke operation
-      Response<Void> response = service.resetConfigService(resetConfigServiceOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 201);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 401
-      // 403
       // 500
       //
       //
@@ -1198,6 +1069,44 @@ public class MdmIT extends SdkIntegrationTestBase {
   }
 
   @Test
+  public void testListDataRecordsForEntity() throws Exception {
+    try {
+      ListDataRecordsForEntityOptions listDataRecordsForEntityOptions = new ListDataRecordsForEntityOptions.Builder()
+      .id("testString")
+      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("26"))
+      .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
+      .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
+      .build();
+
+      // Invoke operation
+      Response<DataRecordsResponse> response = service.listDataRecordsForEntity(listDataRecordsForEntityOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      DataRecordsResponse dataRecordsResponseResult = response.getResult();
+
+      assertNotNull(dataRecordsResponseResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      // 401
+      // 403
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
   public void testListDataRelatedRecordsForEntity() throws Exception {
     try {
       ListDataRelatedRecordsForEntityOptions listDataRelatedRecordsForEntityOptions = new ListDataRelatedRecordsForEntityOptions.Builder()
@@ -1225,47 +1134,9 @@ public class MdmIT extends SdkIntegrationTestBase {
       // Please provide integration tests for these too.
       //
       // 400
+      // 404
       // 401
       // 403
-      // 404
-      // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testListDataRecordsForEntity() throws Exception {
-    try {
-      ListDataRecordsForEntityOptions listDataRecordsForEntityOptions = new ListDataRecordsForEntityOptions.Builder()
-      .id("testString")
-      .limit(Long.valueOf("50"))
-      .offset(Long.valueOf("26"))
-      .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
-      .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
-      .build();
-
-      // Invoke operation
-      Response<DataRecordsResponse> response = service.listDataRecordsForEntity(listDataRecordsForEntityOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      DataRecordsResponse dataRecordsResponseResult = response.getResult();
-
-      assertNotNull(dataRecordsResponseResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 401
-      // 403
-      // 404
       // 500
       //
       //
@@ -1299,80 +1170,10 @@ public class MdmIT extends SdkIntegrationTestBase {
       // The following status codes aren't covered by tests.
       // Please provide integration tests for these too.
       //
+      // 404
       // 401
       // 403
-      // 404
       // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testGetDataExport() throws Exception {
-    try {
-      GetDataExportOptions getDataExportOptions = new GetDataExportOptions.Builder()
-      .exportId("testString")
-      .build();
-
-      // Invoke operation
-      Response<DataExport> response = service.getDataExport(getDataExportOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      DataExport dataExportResult = response.getResult();
-
-      assertNotNull(dataExportResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 401
-      // 403
-      // 404
-      // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testGetDataExportDownload() throws Exception {
-    try {
-      GetDataExportDownloadOptions getDataExportDownloadOptions = new GetDataExportDownloadOptions.Builder()
-      .exportId("testString")
-      .build();
-
-      // Invoke operation
-      Response<InputStream> response = service.getDataExportDownload(getDataExportDownloadOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      InputStream inputStreamResult = response.getResult();
-
-      assertNotNull(inputStreamResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 401
-      // 403
-      // 404
-      // 410
-      // 500
-      // 503
       //
       //
 
@@ -1465,9 +1266,79 @@ public class MdmIT extends SdkIntegrationTestBase {
       // The following status codes aren't covered by tests.
       // Please provide integration tests for these too.
       //
-      // 400
       // 401
       // 403
+      // 400
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetDataExport() throws Exception {
+    try {
+      GetDataExportOptions getDataExportOptions = new GetDataExportOptions.Builder()
+      .exportId("testString")
+      .build();
+
+      // Invoke operation
+      Response<DataExport> response = service.getDataExport(getDataExportOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      DataExport dataExportResult = response.getResult();
+
+      assertNotNull(dataExportResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 401
+      // 403
+      // 404
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetDataExportDownload() throws Exception {
+    try {
+      GetDataExportDownloadOptions getDataExportDownloadOptions = new GetDataExportDownloadOptions.Builder()
+      .exportId("testString")
+      .build();
+
+      // Invoke operation
+      Response<InputStream> response = service.getDataExportDownload(getDataExportDownloadOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      InputStream inputStreamResult = response.getResult();
+
+      assertNotNull(inputStreamResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 401
+      // 403
+      // 503
+      // 410
+      // 404
       // 500
       //
       //
@@ -1500,8 +1371,8 @@ public class MdmIT extends SdkIntegrationTestBase {
       // 404
       // 405
       // 410
-      // 500
       // 503
+      // 500
       //
       //
 
@@ -1532,11 +1403,11 @@ public class MdmIT extends SdkIntegrationTestBase {
       // The following status codes aren't covered by tests.
       // Please provide integration tests for these too.
       //
-      // 400
       // 401
       // 403
       // 404
       // 405
+      // 400
       // 500
       //
       //
@@ -1618,6 +1489,80 @@ public class MdmIT extends SdkIntegrationTestBase {
   }
 
   @Test
+  public void testGetDataRecord() throws Exception {
+    try {
+      GetDataRecordOptions getDataRecordOptions = new GetDataRecordOptions.Builder()
+      .id(Long.valueOf("26"))
+      .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
+      .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
+      .build();
+
+      // Invoke operation
+      Response<DataRecordResponse> response = service.getDataRecord(getDataRecordOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      DataRecordResponse dataRecordResponseResult = response.getResult();
+
+      assertNotNull(dataRecordResponseResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 401
+      // 403
+      // 404
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testReplaceDataRecord() throws Exception {
+    try {
+      ReplaceDataRecordOptions replaceDataRecordOptions = new ReplaceDataRecordOptions.Builder()
+      .id(Long.valueOf("26"))
+      .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .newId("testString")
+      .build();
+
+      // Invoke operation
+      Response<DataRecordResponse> response = service.replaceDataRecord(replaceDataRecordOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      DataRecordResponse dataRecordResponseResult = response.getResult();
+
+      assertNotNull(dataRecordResponseResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 403
+      // 404
+      // 409
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
   public void testListDataRecords() throws Exception {
     try {
       ListDataRecordsOptions listDataRecordsOptions = new ListDataRecordsOptions.Builder()
@@ -1688,23 +1633,24 @@ public class MdmIT extends SdkIntegrationTestBase {
   }
 
   @Test
-  public void testGetDataRecord() throws Exception {
+  public void testListDataRelationshipsForRecord() throws Exception {
     try {
-      GetDataRecordOptions getDataRecordOptions = new GetDataRecordOptions.Builder()
+      ListDataRelationshipsForRecordOptions listDataRelationshipsForRecordOptions = new ListDataRelationshipsForRecordOptions.Builder()
       .id(Long.valueOf("26"))
-      .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
-      .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
+      .relationshipTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .offset(Long.valueOf("26"))
+      .limit(Long.valueOf("50"))
       .build();
 
       // Invoke operation
-      Response<DataRecordResponse> response = service.getDataRecord(getDataRecordOptions).execute();
+      Response<DataRelationshipsResponse> response = service.listDataRelationshipsForRecord(listDataRelationshipsForRecordOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 200);
 
-      DataRecordResponse dataRecordResponseResult = response.getResult();
+      DataRelationshipsResponse dataRelationshipsResponseResult = response.getResult();
 
-      assertNotNull(dataRecordResponseResult);
+      assertNotNull(dataRelationshipsResponseResult);
 
       //
       // The following status codes aren't covered by tests.
@@ -1713,44 +1659,6 @@ public class MdmIT extends SdkIntegrationTestBase {
       // 401
       // 403
       // 404
-      // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testReplaceDataRecord() throws Exception {
-    try {
-      ReplaceDataRecordOptions replaceDataRecordOptions = new ReplaceDataRecordOptions.Builder()
-      .id(Long.valueOf("26"))
-      .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .newId("testString")
-      .build();
-
-      // Invoke operation
-      Response<DataRecordResponse> response = service.replaceDataRecord(replaceDataRecordOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      DataRecordResponse dataRecordResponseResult = response.getResult();
-
-      assertNotNull(dataRecordResponseResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 400
-      // 401
-      // 403
-      // 404
-      // 409
       // 500
       //
       //
@@ -1874,29 +1782,30 @@ public class MdmIT extends SdkIntegrationTestBase {
   }
 
   @Test
-  public void testListDataRelationshipsForRecord() throws Exception {
+  public void testCreateDataRelationship() throws Exception {
     try {
-      ListDataRelationshipsForRecordOptions listDataRelationshipsForRecordOptions = new ListDataRelationshipsForRecordOptions.Builder()
-      .id(Long.valueOf("26"))
+      CreateDataRelationshipOptions createDataRelationshipOptions = new CreateDataRelationshipOptions.Builder()
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .id("testString")
       .build();
 
       // Invoke operation
-      Response<DataRelationshipsResponse> response = service.listDataRelationshipsForRecord(listDataRelationshipsForRecordOptions).execute();
+      Response<DataRelationshipResponse> response = service.createDataRelationship(createDataRelationshipOptions).execute();
       // Validate response
       assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
+      assertEquals(response.getStatusCode(), 201);
 
-      DataRelationshipsResponse dataRelationshipsResponseResult = response.getResult();
+      DataRelationshipResponse dataRelationshipResponseResult = response.getResult();
 
-      assertNotNull(dataRelationshipsResponseResult);
+      assertNotNull(dataRelationshipResponseResult);
 
       //
       // The following status codes aren't covered by tests.
       // Please provide integration tests for these too.
       //
+      // 400
       // 401
       // 403
-      // 404
       // 500
       //
       //
@@ -1984,8 +1893,8 @@ public class MdmIT extends SdkIntegrationTestBase {
       // 400
       // 401
       // 403
-      // 408
       // 500
+      // 408
       //
       //
 
@@ -2202,6 +2111,7 @@ public class MdmIT extends SdkIntegrationTestBase {
       .executorCount(Long.valueOf("1"))
       .executorMemory("8g")
       .executorCoreCount(Long.valueOf("1"))
+      .jobList("entity_summary,bucket_summary")
       .doAnalytics(false)
       .build();
 
@@ -2239,6 +2149,7 @@ public class MdmIT extends SdkIntegrationTestBase {
       .recordType("person")
       .entityType("person_entity")
       .doForce(false)
+      .doDeduplicate(false)
       .doAnalytics(false)
       .doReplicate(false)
       .executorCount(Long.valueOf("1"))
@@ -2278,17 +2189,133 @@ public class MdmIT extends SdkIntegrationTestBase {
   }
 
   @Test
+  public void testGetMatchingRecords() throws Exception {
+    try {
+      GetMatchingRecordsOptions getMatchingRecordsOptions = new GetMatchingRecordsOptions.Builder()
+      .entityId("entity_type-123456789")
+      .build();
+
+      // Invoke operation
+      Response<GetRecordKeys> response = service.getMatchingRecords(getMatchingRecordsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      GetRecordKeys getRecordKeysResult = response.getResult();
+
+      assertNotNull(getRecordKeysResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 401
+      // 403
+      // 404
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testCreateMatchingEntityPreview() throws Exception {
+    try {
+      RulesRequestRule rulesRequestRuleModel = new RulesRequestRule.Builder()
+      .recordNumbers(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .ruleType("testString")
+      .description("testString")
+      .build();
+
+      CreateMatchingEntityPreviewOptions createMatchingEntityPreviewOptions = new CreateMatchingEntityPreviewOptions.Builder()
+      .entityType("testString")
+      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
+      .build();
+
+      // Invoke operation
+      Response<Map<String, Map<String, List<String>>>> response = service.createMatchingEntityPreview(createMatchingEntityPreviewOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      Map<String, Map<String, List<String>>> mapStringMapStringListStringResult = response.getResult();
+
+      assertNotNull(mapStringMapStringListStringResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 403
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testReplaceMatchingRule() throws Exception {
+    try {
+      RulesRequestRule rulesRequestRuleModel = new RulesRequestRule.Builder()
+      .recordNumbers(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .ruleType("testString")
+      .description("testString")
+      .build();
+
+      ReplaceMatchingRuleOptions replaceMatchingRuleOptions = new ReplaceMatchingRuleOptions.Builder()
+      .entityType("testString")
+      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
+      .build();
+
+      // Invoke operation
+      Response<Map<String, List<RulesEntityRule>>> response = service.replaceMatchingRule(replaceMatchingRuleOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      Map<String, List<RulesEntityRule>> mapStringListRulesEntityRuleResult = response.getResult();
+
+      assertNotNull(mapStringListRulesEntityRuleResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 403
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
   public void testDeleteMatchingRule() throws Exception {
     try {
       RulesRequestRule rulesRequestRuleModel = new RulesRequestRule.Builder()
-      .ruleType("testString")
       .recordNumbers(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .ruleType("testString")
       .description("testString")
       .build();
 
       DeleteMatchingRuleOptions deleteMatchingRuleOptions = new DeleteMatchingRuleOptions.Builder()
-      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
       .entityType("testString")
+      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
       .build();
 
       // Invoke operation
@@ -2388,103 +2415,21 @@ public class MdmIT extends SdkIntegrationTestBase {
   }
 
   @Test
-  public void testGetMatchingRecords() throws Exception {
+  public void testGetMatchingJobInfo() throws Exception {
     try {
-      GetMatchingRecordsOptions getMatchingRecordsOptions = new GetMatchingRecordsOptions.Builder()
-      .entityId("entity_type-123456789")
+      GetMatchingJobInfoOptions getMatchingJobInfoOptions = new GetMatchingJobInfoOptions.Builder()
+      .jobId("95364")
       .build();
 
       // Invoke operation
-      Response<GetRecordKeys> response = service.getMatchingRecords(getMatchingRecordsOptions).execute();
+      Response<GetMatchingJobs> response = service.getMatchingJobInfo(getMatchingJobInfoOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 200);
 
-      GetRecordKeys getRecordKeysResult = response.getResult();
+      GetMatchingJobs getMatchingJobsResult = response.getResult();
 
-      assertNotNull(getRecordKeysResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 401
-      // 403
-      // 404
-      // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testCreateMatchingEntityPreview() throws Exception {
-    try {
-      RulesRequestRule rulesRequestRuleModel = new RulesRequestRule.Builder()
-      .ruleType("testString")
-      .recordNumbers(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .description("testString")
-      .build();
-
-      CreateMatchingEntityPreviewOptions createMatchingEntityPreviewOptions = new CreateMatchingEntityPreviewOptions.Builder()
-      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
-      .entityType("testString")
-      .build();
-
-      // Invoke operation
-      Response<Map<String, Map<String, List<String>>>> response = service.createMatchingEntityPreview(createMatchingEntityPreviewOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      Map<String, Map<String, List<String>>> mapStringMapStringListStringResult = response.getResult();
-
-      assertNotNull(mapStringMapStringListStringResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 400
-      // 401
-      // 403
-      // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testReplaceMatchingRule() throws Exception {
-    try {
-      RulesRequestRule rulesRequestRuleModel = new RulesRequestRule.Builder()
-      .ruleType("testString")
-      .recordNumbers(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .description("testString")
-      .build();
-
-      ReplaceMatchingRuleOptions replaceMatchingRuleOptions = new ReplaceMatchingRuleOptions.Builder()
-      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
-      .entityType("testString")
-      .build();
-
-      // Invoke operation
-      Response<Map<String, List<RulesEntityRule>>> response = service.replaceMatchingRule(replaceMatchingRuleOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      Map<String, List<RulesEntityRule>> mapStringListRulesEntityRuleResult = response.getResult();
-
-      assertNotNull(mapStringListRulesEntityRuleResult);
+      assertNotNull(getMatchingJobsResult);
 
       //
       // The following status codes aren't covered by tests.
@@ -2507,9 +2452,9 @@ public class MdmIT extends SdkIntegrationTestBase {
   public void testCompareMatchingIndex() throws Exception {
     try {
       SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
-      .recordSource("MDM")
       .recordLastUpdated(Long.valueOf("1506982103000"))
       .recordId("2")
+      .recordSource("MDM")
       .add("birth_date", "[{\"value\":\"11/05/1993\"}]")
       .add("gender", "[{\"value\":\"male\"}]")
       .add("primary_residence", "[{\"record_start\":\" \",\"address_line1\":\"7908 NE VAN TRUMP AVE\",\"city\":\"LEFOR\",\"province_state\":\"Texas\"}]")
@@ -2560,9 +2505,9 @@ public class MdmIT extends SdkIntegrationTestBase {
   public void testSearchMatchingIndex() throws Exception {
     try {
       SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
-      .recordSource("testString")
       .recordLastUpdated(Long.valueOf("26"))
       .recordId("testString")
+      .recordSource("testString")
       .add("foo", "testString")
       .build();
 
@@ -2594,38 +2539,6 @@ public class MdmIT extends SdkIntegrationTestBase {
       // 400
       // 401
       // 403
-      // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testListModelAlgorithms() throws Exception {
-    try {
-      ListModelAlgorithmsOptions listModelAlgorithmsOptions = new ListModelAlgorithmsOptions();
-
-      // Invoke operation
-      Response<AlgorithmNames> response = service.listModelAlgorithms(listModelAlgorithmsOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      AlgorithmNames algorithmNamesResult = response.getResult();
-
-      assertNotNull(algorithmNamesResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 401
-      // 403
-      // 404
       // 500
       //
       //
@@ -2674,26 +2587,50 @@ public class MdmIT extends SdkIntegrationTestBase {
   @Test
   public void testReplaceModelAlgorithm() throws Exception {
     try {
+      AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
+      .setResource("testString")
+      .mapResource("testString")
+      .comparisonResource("testString")
+      .label("testString")
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .method("testString")
+      .add("foo", "testString")
+      .build();
+
       AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
       .encryptedFields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
 
-      AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      AlgorithmStandardizer algorithmStandardizerModel = new AlgorithmStandardizer.Builder()
       .label("testString")
+      .standardizerRecipe(new java.util.ArrayList<AlgorithmStandardizerStep>(java.util.Arrays.asList(algorithmStandardizerStepModel)))
+      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+      .build();
+
+      AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
+      .subType("testString")
+      .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .enabled(true)
+      .type("testString")
+      .build();
+
+      AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
       .setResource("testString")
       .mapResource("testString")
       .comparisonResource("testString")
+      .label("testString")
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .method("testString")
       .add("foo", "testString")
       .build();
 
       AlgorithmMethods algorithmMethodsModel = new AlgorithmMethods.Builder()
-      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
       .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
+      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
       .build();
 
       AlgorithmCompareMethod algorithmCompareMethodModel = new AlgorithmCompareMethod.Builder()
@@ -2703,21 +2640,21 @@ public class MdmIT extends SdkIntegrationTestBase {
       .build();
 
       AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
       .setResource("testString")
       .mapResource("testString")
       .comparisonResource("testString")
+      .label("testString")
       .order(true)
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .method("testString")
       .add("foo", "testString")
       .build();
 
       AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .label("testString")
       .order(true)
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
       .method("testString")
       .add("foo", "testString")
@@ -2725,10 +2662,10 @@ public class MdmIT extends SdkIntegrationTestBase {
 
       AlgorithmBucketGenerator algorithmBucketGeneratorModel = new AlgorithmBucketGenerator.Builder()
       .bucketRecipe(new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)))
-      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-      .label("testString")
       .bucketGroupRecipe(new java.util.ArrayList<AlgorithmBucketGroupStep>(java.util.Arrays.asList(algorithmBucketGroupStepModel)))
       .maximumBucketSize(Long.valueOf("26"))
+      .label("testString")
+      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
       .add("foo", "testString")
       .build();
 
@@ -2739,35 +2676,11 @@ public class MdmIT extends SdkIntegrationTestBase {
       .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
       .build();
 
-      AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
-      .setResource("testString")
-      .mapResource("testString")
-      .comparisonResource("testString")
-      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .method("testString")
-      .add("foo", "testString")
-      .build();
-
-      AlgorithmStandardizer algorithmStandardizerModel = new AlgorithmStandardizer.Builder()
-      .standardizerRecipe(new java.util.ArrayList<AlgorithmStandardizerStep>(java.util.Arrays.asList(algorithmStandardizerStepModel)))
-      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-      .label("testString")
-      .build();
-
-      AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
-      .subType("testString")
-      .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .enabled(true)
-      .type("testString")
-      .build();
-
       ReplaceModelAlgorithmOptions replaceModelAlgorithmOptions = new ReplaceModelAlgorithmOptions.Builder()
       .recordType("testString")
-      .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
       .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
       .encryption(algorithmEncryptionModel)
+      .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
       .locale("testString")
       .build();
 
@@ -2807,7 +2720,7 @@ public class MdmIT extends SdkIntegrationTestBase {
       .build();
 
       AlgorithmGenerationEntityType algorithmGenerationEntityTypeModel = new AlgorithmGenerationEntityType.Builder()
-      .autoLinkThreshold(Float.valueOf("36.0"))
+      .autoLinkThreshold(Float.valueOf("0"))
       .matchingAttributes(new java.util.ArrayList<AlgorithmGenerationAttributeItem>(java.util.Arrays.asList(algorithmGenerationAttributeItemModel)))
       .add("foo", "testString")
       .build();
@@ -2847,26 +2760,50 @@ public class MdmIT extends SdkIntegrationTestBase {
   @Test
   public void testUpdateModelAlgorithm() throws Exception {
     try {
+      AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
+      .setResource("testString")
+      .mapResource("testString")
+      .comparisonResource("testString")
+      .label("testString")
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .method("testString")
+      .add("foo", "testString")
+      .build();
+
       AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
       .encryptedFields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
 
-      AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      AlgorithmStandardizer algorithmStandardizerModel = new AlgorithmStandardizer.Builder()
       .label("testString")
+      .standardizerRecipe(new java.util.ArrayList<AlgorithmStandardizerStep>(java.util.Arrays.asList(algorithmStandardizerStepModel)))
+      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+      .build();
+
+      AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
+      .subType("testString")
+      .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .enabled(true)
+      .type("testString")
+      .build();
+
+      AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
       .setResource("testString")
       .mapResource("testString")
       .comparisonResource("testString")
+      .label("testString")
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .method("testString")
       .add("foo", "testString")
       .build();
 
       AlgorithmMethods algorithmMethodsModel = new AlgorithmMethods.Builder()
-      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
       .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
+      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
       .build();
 
       AlgorithmCompareMethod algorithmCompareMethodModel = new AlgorithmCompareMethod.Builder()
@@ -2876,21 +2813,21 @@ public class MdmIT extends SdkIntegrationTestBase {
       .build();
 
       AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
       .setResource("testString")
       .mapResource("testString")
       .comparisonResource("testString")
+      .label("testString")
       .order(true)
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .method("testString")
       .add("foo", "testString")
       .build();
 
       AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .label("testString")
       .order(true)
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
       .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
       .method("testString")
       .add("foo", "testString")
@@ -2898,10 +2835,10 @@ public class MdmIT extends SdkIntegrationTestBase {
 
       AlgorithmBucketGenerator algorithmBucketGeneratorModel = new AlgorithmBucketGenerator.Builder()
       .bucketRecipe(new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)))
-      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-      .label("testString")
       .bucketGroupRecipe(new java.util.ArrayList<AlgorithmBucketGroupStep>(java.util.Arrays.asList(algorithmBucketGroupStepModel)))
       .maximumBucketSize(Long.valueOf("26"))
+      .label("testString")
+      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
       .add("foo", "testString")
       .build();
 
@@ -2912,35 +2849,11 @@ public class MdmIT extends SdkIntegrationTestBase {
       .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
       .build();
 
-      AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
-      .setResource("testString")
-      .mapResource("testString")
-      .comparisonResource("testString")
-      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .method("testString")
-      .add("foo", "testString")
-      .build();
-
-      AlgorithmStandardizer algorithmStandardizerModel = new AlgorithmStandardizer.Builder()
-      .standardizerRecipe(new java.util.ArrayList<AlgorithmStandardizerStep>(java.util.Arrays.asList(algorithmStandardizerStepModel)))
-      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-      .label("testString")
-      .build();
-
-      AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
-      .subType("testString")
-      .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .enabled(true)
-      .type("testString")
-      .build();
-
       UpdateModelAlgorithmOptions updateModelAlgorithmOptions = new UpdateModelAlgorithmOptions.Builder()
       .recordType("testString")
-      .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
       .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
       .encryption(algorithmEncryptionModel)
+      .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
       .locale("testString")
       .build();
 
@@ -2972,19 +2885,19 @@ public class MdmIT extends SdkIntegrationTestBase {
   }
 
   @Test
-  public void testListModelComparespecResoures() throws Exception {
+  public void testListModelAlgorithms() throws Exception {
     try {
-      ListModelComparespecResouresOptions listModelComparespecResouresOptions = new ListModelComparespecResouresOptions();
+      ListModelAlgorithmsOptions listModelAlgorithmsOptions = new ListModelAlgorithmsOptions();
 
       // Invoke operation
-      Response<CompareSpecResourceNames> response = service.listModelComparespecResoures(listModelComparespecResouresOptions).execute();
+      Response<AlgorithmNames> response = service.listModelAlgorithms(listModelAlgorithmsOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 200);
 
-      CompareSpecResourceNames compareSpecResourceNamesResult = response.getResult();
+      AlgorithmNames algorithmNamesResult = response.getResult();
 
-      assertNotNull(compareSpecResourceNamesResult);
+      assertNotNull(algorithmNamesResult);
 
       //
       // The following status codes aren't covered by tests.
@@ -3048,8 +2961,8 @@ public class MdmIT extends SdkIntegrationTestBase {
 
       ReplaceModelComparespecResourceOptions replaceModelComparespecResourceOptions = new ReplaceModelComparespecResourceOptions.Builder()
       .resourceName("testString")
-      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
       .typoDistance(Float.valueOf("36.0"))
+      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
       .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
       .similarCharactersMapResource("testString")
       .similarCharactersDistance(Float.valueOf("36.0"))
@@ -3072,6 +2985,38 @@ public class MdmIT extends SdkIntegrationTestBase {
       // 400
       // 401
       // 403
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testListModelComparespecResoures() throws Exception {
+    try {
+      ListModelComparespecResouresOptions listModelComparespecResouresOptions = new ListModelComparespecResouresOptions();
+
+      // Invoke operation
+      Response<CompareSpecResourceNames> response = service.listModelComparespecResoures(listModelComparespecResouresOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      CompareSpecResourceNames compareSpecResourceNamesResult = response.getResult();
+
+      assertNotNull(compareSpecResourceNamesResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 401
+      // 403
+      // 404
       // 500
       //
       //
@@ -3118,8 +3063,8 @@ public class MdmIT extends SdkIntegrationTestBase {
   public void testReplaceModelCompositeRules() throws Exception {
     try {
       CompositeRulesRule compositeRulesRuleModel = new CompositeRulesRule.Builder()
-      .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .choices(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
 
       CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
@@ -3202,9 +3147,32 @@ public class MdmIT extends SdkIntegrationTestBase {
   @Test
   public void testReplaceModelDataModel() throws Exception {
     try {
+      DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
+      .label("testString")
+      .description("testString")
+      .type("testString")
+      .build();
+
+      DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
+      .label("testString")
+      .matchingType("testString")
+      .attributeType("testString")
+      .indexed(true)
+      .classification("testString")
+      .description("testString")
+      .cardinality("testString")
+      .build();
+
+      DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
+      .label("testString")
+      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
+      .description("testString")
+      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .build();
+
       DataModelRelationshipEndpoint dataModelRelationshipEndpointModel = new DataModelRelationshipEndpoint.Builder()
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
 
       DataModelRelationshipRule dataModelRelationshipRuleModel = new DataModelRelationshipRule.Builder()
@@ -3212,60 +3180,46 @@ public class MdmIT extends SdkIntegrationTestBase {
       .target(dataModelRelationshipEndpointModel)
       .build();
 
-      DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
-      .indexed(true)
-      .classification("testString")
-      .label("testString")
-      .matchingType("testString")
-      .attributeType("testString")
-      .description("testString")
-      .cardinality("testString")
-      .build();
-
       DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
       .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
-      .directional(true)
       .labelFromSource("testString")
       .labelFromTarget("testString")
+      .directional(true)
       .label("testString")
       .description("testString")
       .cardinality("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
-      .build();
-
-      DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
-      .label("testString")
-      .description("testString")
-      .build();
-
-      DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
-      .label("testString")
-      .description("testString")
       .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
       .build();
 
       DataModelField dataModelFieldModel = new DataModelField.Builder()
+      .label("testString")
       .indexed(true)
       .classification("testString")
-      .label("testString")
       .description("testString")
       .build();
 
       DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
-      .classification("testString")
-      .label("testString")
       .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .label("testString")
+      .classification("testString")
       .description("testString")
       .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
       .build();
 
       DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
-      .indexed(true)
       .editable(true)
       .label("testString")
+      .indexed(true)
       .dataType("testString")
       .description("testString")
+      .build();
+
+      DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
+      .recordLastUpdated(dataModelSystemPropertyModel)
+      .recordNumber(dataModelSystemPropertyModel)
+      .recordSource(dataModelSystemPropertyModel)
+      .recordId(dataModelSystemPropertyModel)
+      .collectionId(dataModelSystemPropertyModel)
       .build();
 
       DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
@@ -3274,27 +3228,19 @@ public class MdmIT extends SdkIntegrationTestBase {
       .build();
 
       DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+      .fromRecordId(dataModelSystemPropertyModel)
+      .toRecordId(dataModelSystemPropertyModel)
+      .fromRecordType(dataModelSystemPropertyModel)
       .toRecordNumber(dataModelSystemPropertyModel)
       .fromRecordNumber(dataModelSystemPropertyModel)
       .relationshipSource(dataModelSystemPropertyModel)
       .fromRecordSource(dataModelSystemPropertyModel)
       .toRecordSource(dataModelSystemPropertyModel)
       .relationshipId(dataModelSystemPropertyModel)
-      .fromRecordId(dataModelSystemPropertyModel)
-      .toRecordId(dataModelSystemPropertyModel)
+      .relationshipType(dataModelSystemPropertyModel)
       .relationshipNumber(dataModelSystemPropertyModel)
       .toRecordType(dataModelSystemPropertyModel)
       .relationshipLastUpdated(dataModelSystemPropertyModel)
-      .fromRecordType(dataModelSystemPropertyModel)
-      .relationshipType(dataModelSystemPropertyModel)
-      .build();
-
-      DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-      .recordSource(dataModelSystemPropertyModel)
-      .collectionId(dataModelSystemPropertyModel)
-      .recordLastUpdated(dataModelSystemPropertyModel)
-      .recordNumber(dataModelSystemPropertyModel)
-      .recordId(dataModelSystemPropertyModel)
       .build();
 
       DataModelAttributeTypeSystemProperties dataModelAttributeTypeSystemPropertiesModel = new DataModelAttributeTypeSystemProperties.Builder()
@@ -3302,18 +3248,18 @@ public class MdmIT extends SdkIntegrationTestBase {
       .build();
 
       DataModelSystemProperties dataModelSystemPropertiesModel = new DataModelSystemProperties.Builder()
+      .recordTypes(dataModelRecordTypeSystemPropertiesModel)
       .entityTypes(dataModelEntityTypeSystemPropertiesModel)
       .relationshipTypes(dataModelRelationshipTypeSystemPropertiesModel)
-      .recordTypes(dataModelRecordTypeSystemPropertiesModel)
       .attributeTypes(dataModelAttributeTypeSystemPropertiesModel)
       .build();
 
       ReplaceModelDataModelOptions replaceModelDataModelOptions = new ReplaceModelDataModelOptions.Builder()
-      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
       .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
+      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
       .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
-      .systemProperties(dataModelSystemPropertiesModel)
       .locale("testString")
+      .systemProperties(dataModelSystemPropertiesModel)
       .build();
 
       // Invoke operation
@@ -3346,9 +3292,32 @@ public class MdmIT extends SdkIntegrationTestBase {
   @Test
   public void testUpdateModelDataModel() throws Exception {
     try {
+      DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
+      .label("testString")
+      .description("testString")
+      .type("testString")
+      .build();
+
+      DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
+      .label("testString")
+      .matchingType("testString")
+      .attributeType("testString")
+      .indexed(true)
+      .classification("testString")
+      .description("testString")
+      .cardinality("testString")
+      .build();
+
+      DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
+      .label("testString")
+      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
+      .description("testString")
+      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .build();
+
       DataModelRelationshipEndpoint dataModelRelationshipEndpointModel = new DataModelRelationshipEndpoint.Builder()
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
 
       DataModelRelationshipRule dataModelRelationshipRuleModel = new DataModelRelationshipRule.Builder()
@@ -3356,60 +3325,46 @@ public class MdmIT extends SdkIntegrationTestBase {
       .target(dataModelRelationshipEndpointModel)
       .build();
 
-      DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
-      .indexed(true)
-      .classification("testString")
-      .label("testString")
-      .matchingType("testString")
-      .attributeType("testString")
-      .description("testString")
-      .cardinality("testString")
-      .build();
-
       DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
       .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
-      .directional(true)
       .labelFromSource("testString")
       .labelFromTarget("testString")
+      .directional(true)
       .label("testString")
       .description("testString")
       .cardinality("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
-      .build();
-
-      DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
-      .label("testString")
-      .description("testString")
-      .build();
-
-      DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
-      .label("testString")
-      .description("testString")
       .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
       .build();
 
       DataModelField dataModelFieldModel = new DataModelField.Builder()
+      .label("testString")
       .indexed(true)
       .classification("testString")
-      .label("testString")
       .description("testString")
       .build();
 
       DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
-      .classification("testString")
-      .label("testString")
       .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .label("testString")
+      .classification("testString")
       .description("testString")
       .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
       .build();
 
       DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
-      .indexed(true)
       .editable(true)
       .label("testString")
+      .indexed(true)
       .dataType("testString")
       .description("testString")
+      .build();
+
+      DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
+      .recordLastUpdated(dataModelSystemPropertyModel)
+      .recordNumber(dataModelSystemPropertyModel)
+      .recordSource(dataModelSystemPropertyModel)
+      .recordId(dataModelSystemPropertyModel)
+      .collectionId(dataModelSystemPropertyModel)
       .build();
 
       DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
@@ -3418,27 +3373,19 @@ public class MdmIT extends SdkIntegrationTestBase {
       .build();
 
       DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+      .fromRecordId(dataModelSystemPropertyModel)
+      .toRecordId(dataModelSystemPropertyModel)
+      .fromRecordType(dataModelSystemPropertyModel)
       .toRecordNumber(dataModelSystemPropertyModel)
       .fromRecordNumber(dataModelSystemPropertyModel)
       .relationshipSource(dataModelSystemPropertyModel)
       .fromRecordSource(dataModelSystemPropertyModel)
       .toRecordSource(dataModelSystemPropertyModel)
       .relationshipId(dataModelSystemPropertyModel)
-      .fromRecordId(dataModelSystemPropertyModel)
-      .toRecordId(dataModelSystemPropertyModel)
+      .relationshipType(dataModelSystemPropertyModel)
       .relationshipNumber(dataModelSystemPropertyModel)
       .toRecordType(dataModelSystemPropertyModel)
       .relationshipLastUpdated(dataModelSystemPropertyModel)
-      .fromRecordType(dataModelSystemPropertyModel)
-      .relationshipType(dataModelSystemPropertyModel)
-      .build();
-
-      DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-      .recordSource(dataModelSystemPropertyModel)
-      .collectionId(dataModelSystemPropertyModel)
-      .recordLastUpdated(dataModelSystemPropertyModel)
-      .recordNumber(dataModelSystemPropertyModel)
-      .recordId(dataModelSystemPropertyModel)
       .build();
 
       DataModelAttributeTypeSystemProperties dataModelAttributeTypeSystemPropertiesModel = new DataModelAttributeTypeSystemProperties.Builder()
@@ -3446,18 +3393,18 @@ public class MdmIT extends SdkIntegrationTestBase {
       .build();
 
       DataModelSystemProperties dataModelSystemPropertiesModel = new DataModelSystemProperties.Builder()
+      .recordTypes(dataModelRecordTypeSystemPropertiesModel)
       .entityTypes(dataModelEntityTypeSystemPropertiesModel)
       .relationshipTypes(dataModelRelationshipTypeSystemPropertiesModel)
-      .recordTypes(dataModelRecordTypeSystemPropertiesModel)
       .attributeTypes(dataModelAttributeTypeSystemPropertiesModel)
       .build();
 
       UpdateModelDataModelOptions updateModelDataModelOptions = new UpdateModelDataModelOptions.Builder()
-      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
       .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
+      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
       .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
-      .systemProperties(dataModelSystemPropertiesModel)
       .locale("testString")
+      .systemProperties(dataModelSystemPropertiesModel)
       .build();
 
       // Invoke operation
@@ -3526,8 +3473,8 @@ public class MdmIT extends SdkIntegrationTestBase {
     try {
       UpdateModelFlowOptions updateModelFlowOptions = new UpdateModelFlowOptions.Builder()
       .flowId("testString")
-      .approverName("testString")
       .action("testString")
+      .approverName("testString")
       .message("testString")
       .build();
 
@@ -3593,26 +3540,26 @@ public class MdmIT extends SdkIntegrationTestBase {
   @Test
   public void testReplaceModelInstanceMetadata() throws Exception {
     try {
-      InstanceMetadataProject instanceMetadataProjectModel = new InstanceMetadataProject.Builder()
-      .assetId("testString")
-      .projectName("testString")
-      .dataAssetId("testString")
-      .projectId("testString")
-      .build();
-
       InstanceMetadataCatalog instanceMetadataCatalogModel = new InstanceMetadataCatalog.Builder()
       .catalogInstance("testString")
       .catalogId("testString")
       .build();
 
+      InstanceMetadataProject instanceMetadataProjectModel = new InstanceMetadataProject.Builder()
+      .projectId("testString")
+      .dataAssetId("testString")
+      .assetId("testString")
+      .projectName("testString")
+      .build();
+
       ReplaceModelInstanceMetadataOptions replaceModelInstanceMetadataOptions = new ReplaceModelInstanceMetadataOptions.Builder()
-      .projects(new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)))
-      .cosEndpoint("testString")
-      .label("testString")
-      .bulkloadBucket(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .cosCrn("testString")
       .catalogs(new java.util.ArrayList<InstanceMetadataCatalog>(java.util.Arrays.asList(instanceMetadataCatalogModel)))
       .jobProjectId("testString")
+      .cosEndpoint("testString")
+      .label("testString")
+      .projects(new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)))
+      .cosCrn("testString")
+      .bulkloadBucket(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
 
       // Invoke operation
@@ -3632,38 +3579,6 @@ public class MdmIT extends SdkIntegrationTestBase {
       // 400
       // 401
       // 403
-      // 500
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testListModelMapResources() throws Exception {
-    try {
-      ListModelMapResourcesOptions listModelMapResourcesOptions = new ListModelMapResourcesOptions();
-
-      // Invoke operation
-      Response<MapResourceNames> response = service.listModelMapResources(listModelMapResourcesOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      MapResourceNames mapResourceNamesResult = response.getResult();
-
-      assertNotNull(mapResourceNamesResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 401
-      // 403
-      // 404
       // 500
       //
       //
@@ -3753,6 +3668,70 @@ public class MdmIT extends SdkIntegrationTestBase {
   }
 
   @Test
+  public void testListModelMapResources() throws Exception {
+    try {
+      ListModelMapResourcesOptions listModelMapResourcesOptions = new ListModelMapResourcesOptions();
+
+      // Invoke operation
+      Response<MapResourceNames> response = service.listModelMapResources(listModelMapResourcesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      MapResourceNames mapResourceNamesResult = response.getResult();
+
+      assertNotNull(mapResourceNamesResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 401
+      // 403
+      // 404
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testListModelSetResources() throws Exception {
+    try {
+      ListModelSetResourcesOptions listModelSetResourcesOptions = new ListModelSetResourcesOptions();
+
+      // Invoke operation
+      Response<SetResourceNames> response = service.listModelSetResources(listModelSetResourcesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      SetResourceNames setResourceNamesResult = response.getResult();
+
+      assertNotNull(setResourceNamesResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 401
+      // 403
+      // 404
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
   public void testGetModelSetResource() throws Exception {
     try {
       GetModelSetResourceOptions getModelSetResourceOptions = new GetModelSetResourceOptions.Builder()
@@ -3829,24 +3808,23 @@ public class MdmIT extends SdkIntegrationTestBase {
   }
 
   @Test
-  public void testListModelSetResources() throws Exception {
+  public void testDeleteDataRelationship() throws Exception {
     try {
-      ListModelSetResourcesOptions listModelSetResourcesOptions = new ListModelSetResourcesOptions();
+      DeleteDataRelationshipOptions deleteDataRelationshipOptions = new DeleteDataRelationshipOptions.Builder()
+      .id("testString")
+      .build();
 
       // Invoke operation
-      Response<SetResourceNames> response = service.listModelSetResources(listModelSetResourcesOptions).execute();
+      Response<Void> response = service.deleteDataRelationship(deleteDataRelationshipOptions).execute();
       // Validate response
       assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      SetResourceNames setResourceNamesResult = response.getResult();
-
-      assertNotNull(setResourceNamesResult);
+      assertEquals(response.getStatusCode(), 204);
 
       //
       // The following status codes aren't covered by tests.
       // Please provide integration tests for these too.
       //
+      // 400
       // 401
       // 403
       // 404

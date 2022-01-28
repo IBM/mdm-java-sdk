@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,9 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class Attribute extends GenericModel {
 
   protected Boolean indexed;
-  protected String classification;
-  protected String label;
   protected String description;
+  protected String label;
+  protected String classification;
   protected String cardinality;
   @SerializedName("attribute_type")
   protected String attributeType;
@@ -33,17 +33,17 @@ public class Attribute extends GenericModel {
    */
   public static class Builder {
     private Boolean indexed;
-    private String classification;
-    private String label;
     private String description;
+    private String label;
+    private String classification;
     private String cardinality;
     private String attributeType;
 
     private Builder(Attribute attribute) {
       this.indexed = attribute.indexed;
-      this.classification = attribute.classification;
-      this.label = attribute.label;
       this.description = attribute.description;
+      this.label = attribute.label;
+      this.classification = attribute.classification;
       this.cardinality = attribute.cardinality;
       this.attributeType = attribute.attributeType;
     }
@@ -86,13 +86,13 @@ public class Attribute extends GenericModel {
     }
 
     /**
-     * Set the classification.
+     * Set the description.
      *
-     * @param classification the classification
+     * @param description the description
      * @return the Attribute builder
      */
-    public Builder classification(String classification) {
-      this.classification = classification;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -108,13 +108,13 @@ public class Attribute extends GenericModel {
     }
 
     /**
-     * Set the description.
+     * Set the classification.
      *
-     * @param description the description
+     * @param classification the classification
      * @return the Attribute builder
      */
-    public Builder description(String description) {
-      this.description = description;
+    public Builder classification(String classification) {
+      this.classification = classification;
       return this;
     }
 
@@ -147,9 +147,9 @@ public class Attribute extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
       "attributeType cannot be null");
     indexed = builder.indexed;
-    classification = builder.classification;
-    label = builder.label;
     description = builder.description;
+    label = builder.label;
+    classification = builder.classification;
     cardinality = builder.cardinality;
     attributeType = builder.attributeType;
   }
@@ -175,14 +175,14 @@ public class Attribute extends GenericModel {
   }
 
   /**
-   * Gets the classification.
+   * Gets the description.
    *
-   * The classification of this Data Model Attribute.
+   * The description of this Data Model Attribute.
    *
-   * @return the classification
+   * @return the description
    */
-  public String classification() {
-    return classification;
+  public String description() {
+    return description;
   }
 
   /**
@@ -197,14 +197,14 @@ public class Attribute extends GenericModel {
   }
 
   /**
-   * Gets the description.
+   * Gets the classification.
    *
-   * The description of this Data Model Attribute.
+   * The classification of this Data Model Attribute.
    *
-   * @return the description
+   * @return the classification
    */
-  public String description() {
-    return description;
+  public String classification() {
+    return classification;
   }
 
   /**

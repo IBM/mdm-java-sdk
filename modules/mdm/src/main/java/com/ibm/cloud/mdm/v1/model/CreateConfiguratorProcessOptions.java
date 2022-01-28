@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,10 +20,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateConfiguratorProcessOptions extends GenericModel {
 
   protected String processName;
+  protected String recordType;
+  protected ProcessRequestAssetSourceDetails assetSourceDetails;
   protected Boolean doDerive;
   protected String assetIds;
-  protected ProcessRequestAssetSourceDetails assetSourceDetails;
-  protected String recordType;
+  protected String initiator;
   protected String entityType;
 
   /**
@@ -31,18 +32,20 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
    */
   public static class Builder {
     private String processName;
+    private String recordType;
+    private ProcessRequestAssetSourceDetails assetSourceDetails;
     private Boolean doDerive;
     private String assetIds;
-    private ProcessRequestAssetSourceDetails assetSourceDetails;
-    private String recordType;
+    private String initiator;
     private String entityType;
 
     private Builder(CreateConfiguratorProcessOptions createConfiguratorProcessOptions) {
       this.processName = createConfiguratorProcessOptions.processName;
+      this.recordType = createConfiguratorProcessOptions.recordType;
+      this.assetSourceDetails = createConfiguratorProcessOptions.assetSourceDetails;
       this.doDerive = createConfiguratorProcessOptions.doDerive;
       this.assetIds = createConfiguratorProcessOptions.assetIds;
-      this.assetSourceDetails = createConfiguratorProcessOptions.assetSourceDetails;
-      this.recordType = createConfiguratorProcessOptions.recordType;
+      this.initiator = createConfiguratorProcessOptions.initiator;
       this.entityType = createConfiguratorProcessOptions.entityType;
     }
 
@@ -82,6 +85,28 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
+     * Set the recordType.
+     *
+     * @param recordType the recordType
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder recordType(String recordType) {
+      this.recordType = recordType;
+      return this;
+    }
+
+    /**
+     * Set the assetSourceDetails.
+     *
+     * @param assetSourceDetails the assetSourceDetails
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder assetSourceDetails(ProcessRequestAssetSourceDetails assetSourceDetails) {
+      this.assetSourceDetails = assetSourceDetails;
+      return this;
+    }
+
+    /**
      * Set the doDerive.
      *
      * @param doDerive the doDerive
@@ -104,24 +129,13 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
-     * Set the assetSourceDetails.
+     * Set the initiator.
      *
-     * @param assetSourceDetails the assetSourceDetails
+     * @param initiator the initiator
      * @return the CreateConfiguratorProcessOptions builder
      */
-    public Builder assetSourceDetails(ProcessRequestAssetSourceDetails assetSourceDetails) {
-      this.assetSourceDetails = assetSourceDetails;
-      return this;
-    }
-
-    /**
-     * Set the recordType.
-     *
-     * @param recordType the recordType
-     * @return the CreateConfiguratorProcessOptions builder
-     */
-    public Builder recordType(String recordType) {
-      this.recordType = recordType;
+    public Builder initiator(String initiator) {
+      this.initiator = initiator;
       return this;
     }
 
@@ -141,10 +155,11 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.processName,
       "processName cannot be null");
     processName = builder.processName;
+    recordType = builder.recordType;
+    assetSourceDetails = builder.assetSourceDetails;
     doDerive = builder.doDerive;
     assetIds = builder.assetIds;
-    assetSourceDetails = builder.assetSourceDetails;
-    recordType = builder.recordType;
+    initiator = builder.initiator;
     entityType = builder.entityType;
   }
 
@@ -169,25 +184,14 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
   }
 
   /**
-   * Gets the doDerive.
+   * Gets the recordType.
    *
-   * Flag to enable/disable derive operation for match process.
+   * The record type which needs to be processed for match and publish_data processes.
    *
-   * @return the doDerive
+   * @return the recordType
    */
-  public Boolean doDerive() {
-    return doDerive;
-  }
-
-  /**
-   * Gets the assetIds.
-   *
-   * Asset ids of assets to be deleted, separated by commas, for the delete_assets process.
-   *
-   * @return the assetIds
-   */
-  public String assetIds() {
-    return assetIds;
+  public String recordType() {
+    return recordType;
   }
 
   /**
@@ -202,14 +206,37 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
   }
 
   /**
-   * Gets the recordType.
+   * Gets the doDerive.
    *
-   * The record type which needs to be processed for match and publish_data processes.
+   * Flag to enable/disable derive operation for match process.
    *
-   * @return the recordType
+   * @return the doDerive
    */
-  public String recordType() {
-    return recordType;
+  public Boolean doDerive() {
+    return doDerive;
+  }
+
+  /**
+   * Gets the assetIds.
+   *
+   * Comma separated asset ids of assets to be processed by delete_assets and publish_data processes.
+   *
+   * @return the assetIds
+   */
+  public String assetIds() {
+    return assetIds;
+  }
+
+  /**
+   * Gets the initiator.
+   *
+   * User identifier of the initiator of processes. This identifier will be available in the headers of the messaging
+   * queue events generated by the initiated process.
+   *
+   * @return the initiator
+   */
+  public String initiator() {
+    return initiator;
   }
 
   /**

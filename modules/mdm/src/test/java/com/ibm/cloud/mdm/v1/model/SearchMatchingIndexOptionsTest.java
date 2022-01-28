@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,14 +33,14 @@ public class SearchMatchingIndexOptionsTest {
   @Test
   public void testSearchMatchingIndexOptions() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
-      .recordSource("testString")
       .recordLastUpdated(Long.valueOf("26"))
       .recordId("testString")
+      .recordSource("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
     assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
+    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
     SearchMatchingIndexOptions searchMatchingIndexOptionsModel = new SearchMatchingIndexOptions.Builder()
@@ -62,4 +62,10 @@ public class SearchMatchingIndexOptionsTest {
     assertEquals(searchMatchingIndexOptionsModel.entityType(), "person_entity");
     assertEquals(searchMatchingIndexOptionsModel.limit(), Long.valueOf("26"));
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testSearchMatchingIndexOptionsError() throws Throwable {
+    new SearchMatchingIndexOptions.Builder().build();
+  }
+
 }

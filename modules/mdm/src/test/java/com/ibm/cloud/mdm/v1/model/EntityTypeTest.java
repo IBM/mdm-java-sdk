@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,18 +32,18 @@ public class EntityTypeTest {
   @Test
   public void testEntityType() throws Throwable {
     EntityType entityTypeModel = new EntityType.Builder()
-      .label("testString")
       .description("testString")
+      .label("testString")
       .build();
-    assertEquals(entityTypeModel.label(), "testString");
     assertEquals(entityTypeModel.description(), "testString");
+    assertEquals(entityTypeModel.label(), "testString");
 
     String json = TestUtilities.serialize(entityTypeModel);
 
     EntityType entityTypeModelNew = TestUtilities.deserialize(json, EntityType.class);
     assertTrue(entityTypeModelNew instanceof EntityType);
-    assertEquals(entityTypeModelNew.label(), "testString");
     assertEquals(entityTypeModelNew.description(), "testString");
+    assertEquals(entityTypeModelNew.label(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

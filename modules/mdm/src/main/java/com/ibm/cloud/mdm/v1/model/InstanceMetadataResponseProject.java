@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,14 +20,36 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataResponseProject extends GenericModel {
 
+  @SerializedName("project_id")
+  protected String projectId;
+  @SerializedName("data_asset_id")
+  protected String dataAssetId;
   @SerializedName("asset_id")
   protected String assetId;
   @SerializedName("project_name")
   protected String projectName;
-  @SerializedName("data_asset_id")
-  protected String dataAssetId;
-  @SerializedName("project_id")
-  protected String projectId;
+
+  /**
+   * Gets the projectId.
+   *
+   * Unique Identifier of the project associated with instance.
+   *
+   * @return the projectId
+   */
+  public String getProjectId() {
+    return projectId;
+  }
+
+  /**
+   * Gets the dataAssetId.
+   *
+   * Identifier for the data asset created on the project.
+   *
+   * @return the dataAssetId
+   */
+  public String getDataAssetId() {
+    return dataAssetId;
+  }
 
   /**
    * Gets the assetId.
@@ -49,28 +71,6 @@ public class InstanceMetadataResponseProject extends GenericModel {
    */
   public String getProjectName() {
     return projectName;
-  }
-
-  /**
-   * Gets the dataAssetId.
-   *
-   * Identifier for the data asset created on the project.
-   *
-   * @return the dataAssetId
-   */
-  public String getDataAssetId() {
-    return dataAssetId;
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * Unique Identifier of the project associated with instance.
-   *
-   * @return the projectId
-   */
-  public String getProjectId() {
-    return projectId;
   }
 }
 

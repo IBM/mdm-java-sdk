@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,37 +13,29 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.ListConfiguratorPairDecisionOptions;
+import com.ibm.cloud.mdm.v1.model.DataExportSearchCriteriaQuery;
+import com.ibm.cloud.mdm.v1.model.Expression;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the ListConfiguratorPairDecisionOptions model.
+ * Unit test class for the DataExportSearchCriteriaQuery model.
  */
-public class ListConfiguratorPairDecisionOptionsTest {
+public class DataExportSearchCriteriaQueryTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testListConfiguratorPairDecisionOptions() throws Throwable {
-    ListConfiguratorPairDecisionOptions listConfiguratorPairDecisionOptionsModel = new ListConfiguratorPairDecisionOptions.Builder()
-      .recordType("testString")
-      .recordNumber1("testString")
-      .recordNumber2("testString")
-      .build();
-    assertEquals(listConfiguratorPairDecisionOptionsModel.recordType(), "testString");
-    assertEquals(listConfiguratorPairDecisionOptionsModel.recordNumber1(), "testString");
-    assertEquals(listConfiguratorPairDecisionOptionsModel.recordNumber2(), "testString");
+  public void testDataExportSearchCriteriaQuery() throws Throwable {
+    DataExportSearchCriteriaQuery dataExportSearchCriteriaQueryModel = new DataExportSearchCriteriaQuery();
+    assertNull(dataExportSearchCriteriaQueryModel.getExpressions());
+    assertNull(dataExportSearchCriteriaQueryModel.getOperation());
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testListConfiguratorPairDecisionOptionsError() throws Throwable {
-    new ListConfiguratorPairDecisionOptions.Builder().build();
-  }
-
 }

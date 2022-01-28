@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -28,8 +28,8 @@ public class ProcessModelStatus extends GenericModel {
   protected String processName;
   @SerializedName("process_count")
   protected String processCount;
-  protected String message;
   protected String status;
+  protected String message;
 
   /**
    * Gets the recordTypeLabel.
@@ -76,17 +76,6 @@ public class ProcessModelStatus extends GenericModel {
   }
 
   /**
-   * Gets the message.
-   *
-   * Additional details about the Process execution.
-   *
-   * @return the message
-   */
-  public String getMessage() {
-    return message;
-  }
-
-  /**
    * Gets the status.
    *
    * Status of the Process execution.
@@ -95,6 +84,17 @@ public class ProcessModelStatus extends GenericModel {
    */
   public String getStatus() {
     return status;
+  }
+
+  /**
+   * Gets the message.
+   *
+   * Additional details about the Process execution.
+   *
+   * @return the message
+   */
+  public String getMessage() {
+    return message;
   }
 }
 

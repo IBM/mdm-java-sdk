@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,25 +35,25 @@ public class CreateConfiguratorProcessOptionsTest {
   @Test
   public void testCreateConfiguratorProcessOptions() throws Throwable {
     ProcessRequestAssetSourceDetailsProject processRequestAssetSourceDetailsProjectModel = new ProcessRequestAssetSourceDetailsProject.Builder()
-      .cosEndpoint("testString")
       .cosBucketName("testString")
       .cosApiKey("testString")
+      .cosEndpoint("testString")
       .id("testString")
       .build();
-    assertEquals(processRequestAssetSourceDetailsProjectModel.cosEndpoint(), "testString");
     assertEquals(processRequestAssetSourceDetailsProjectModel.cosBucketName(), "testString");
     assertEquals(processRequestAssetSourceDetailsProjectModel.cosApiKey(), "testString");
+    assertEquals(processRequestAssetSourceDetailsProjectModel.cosEndpoint(), "testString");
     assertEquals(processRequestAssetSourceDetailsProjectModel.id(), "testString");
 
     ProcessRequestAssetSourceDetailsCatalog processRequestAssetSourceDetailsCatalogModel = new ProcessRequestAssetSourceDetailsCatalog.Builder()
-      .cosEndpoint("testString")
       .cosBucketName("testString")
       .cosApiKey("testString")
+      .cosEndpoint("testString")
       .id("testString")
       .build();
-    assertEquals(processRequestAssetSourceDetailsCatalogModel.cosEndpoint(), "testString");
     assertEquals(processRequestAssetSourceDetailsCatalogModel.cosBucketName(), "testString");
     assertEquals(processRequestAssetSourceDetailsCatalogModel.cosApiKey(), "testString");
+    assertEquals(processRequestAssetSourceDetailsCatalogModel.cosEndpoint(), "testString");
     assertEquals(processRequestAssetSourceDetailsCatalogModel.id(), "testString");
 
     ProcessRequestAssetSourceDetails processRequestAssetSourceDetailsModel = new ProcessRequestAssetSourceDetails.Builder()
@@ -65,17 +65,19 @@ public class CreateConfiguratorProcessOptionsTest {
 
     CreateConfiguratorProcessOptions createConfiguratorProcessOptionsModel = new CreateConfiguratorProcessOptions.Builder()
       .processName("match")
+      .recordType("person")
+      .assetSourceDetails(processRequestAssetSourceDetailsModel)
       .doDerive(true)
       .assetIds("testString")
-      .assetSourceDetails(processRequestAssetSourceDetailsModel)
-      .recordType("person")
+      .initiator("testString")
       .entityType("person_entity")
       .build();
     assertEquals(createConfiguratorProcessOptionsModel.processName(), "match");
+    assertEquals(createConfiguratorProcessOptionsModel.recordType(), "person");
+    assertEquals(createConfiguratorProcessOptionsModel.assetSourceDetails(), processRequestAssetSourceDetailsModel);
     assertEquals(createConfiguratorProcessOptionsModel.doDerive(), Boolean.valueOf(true));
     assertEquals(createConfiguratorProcessOptionsModel.assetIds(), "testString");
-    assertEquals(createConfiguratorProcessOptionsModel.assetSourceDetails(), processRequestAssetSourceDetailsModel);
-    assertEquals(createConfiguratorProcessOptionsModel.recordType(), "person");
+    assertEquals(createConfiguratorProcessOptionsModel.initiator(), "testString");
     assertEquals(createConfiguratorProcessOptionsModel.entityType(), "person_entity");
   }
 

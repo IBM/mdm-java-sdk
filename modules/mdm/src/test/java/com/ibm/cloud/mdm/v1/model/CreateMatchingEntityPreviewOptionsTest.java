@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,20 +35,20 @@ public class CreateMatchingEntityPreviewOptionsTest {
   @Test
   public void testCreateMatchingEntityPreviewOptions() throws Throwable {
     RulesRequestRule rulesRequestRuleModel = new RulesRequestRule.Builder()
-      .ruleType("testString")
       .recordNumbers(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .ruleType("testString")
       .description("testString")
       .build();
-    assertEquals(rulesRequestRuleModel.ruleType(), "testString");
     assertEquals(rulesRequestRuleModel.recordNumbers(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(rulesRequestRuleModel.ruleType(), "testString");
     assertEquals(rulesRequestRuleModel.description(), "testString");
 
     CreateMatchingEntityPreviewOptions createMatchingEntityPreviewOptionsModel = new CreateMatchingEntityPreviewOptions.Builder()
-      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
       .entityType("testString")
+      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
       .build();
-    assertEquals(createMatchingEntityPreviewOptionsModel.rules(), new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)));
     assertEquals(createMatchingEntityPreviewOptionsModel.entityType(), "testString");
+    assertEquals(createMatchingEntityPreviewOptionsModel.rules(), new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

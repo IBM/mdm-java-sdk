@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,14 +14,100 @@ package com.ibm.cloud.mdm.v1.model;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Information about a collection of relationships.
+ * Paged information about a collection of relationships.
  */
 public class DataRelationshipsResponse extends GenericModel {
 
+  protected Long offset;
+  protected Long limit;
+  @SerializedName("total_count")
+  protected Long totalCount;
+  protected PagedResponseFirst first;
+  protected PagedResponseLast last;
+  protected PagedResponsePrevious previous;
+  protected PagedResponseNext next;
   protected List<DataRelationship> relationships;
+
+  /**
+   * Gets the offset.
+   *
+   * The number of elements to skip before returning a page of results.
+   *
+   * @return the offset
+   */
+  public Long getOffset() {
+    return offset;
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The maximum number of elements to return in each page of results.
+   *
+   * @return the limit
+   */
+  public Long getLimit() {
+    return limit;
+  }
+
+  /**
+   * Gets the totalCount.
+   *
+   * The total number of elements.
+   *
+   * @return the totalCount
+   */
+  public Long getTotalCount() {
+    return totalCount;
+  }
+
+  /**
+   * Gets the first.
+   *
+   * A link to the first page of results.
+   *
+   * @return the first
+   */
+  public PagedResponseFirst getFirst() {
+    return first;
+  }
+
+  /**
+   * Gets the last.
+   *
+   * A link to the last page of results.
+   *
+   * @return the last
+   */
+  public PagedResponseLast getLast() {
+    return last;
+  }
+
+  /**
+   * Gets the previous.
+   *
+   * A link to the previous page of results.
+   *
+   * @return the previous
+   */
+  public PagedResponsePrevious getPrevious() {
+    return previous;
+  }
+
+  /**
+   * Gets the next.
+   *
+   * A link to the next page of results.
+   *
+   * @return the next
+   */
+  public PagedResponseNext getNext() {
+    return next;
+  }
 
   /**
    * Gets the relationships.

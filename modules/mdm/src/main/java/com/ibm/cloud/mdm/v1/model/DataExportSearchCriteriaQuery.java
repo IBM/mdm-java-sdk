@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,21 +17,43 @@ import java.util.List;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The Config Data Model attributes for a record type.
+ * The search query to run.
  */
-public class ConfigDataModelAttributes extends GenericModel {
-
-  protected List<Property> attributes;
+public class DataExportSearchCriteriaQuery extends GenericModel {
 
   /**
-   * Gets the attributes.
-   *
-   * Collection of Data Model Attribute property for a record type.
-   *
-   * @return the attributes
+   * The operation to apply to the expressions.
    */
-  public List<Property> getAttributes() {
-    return attributes;
+  public interface Operation {
+    /** and. */
+    String AND = "and";
+    /** or. */
+    String OR = "or";
+  }
+
+  protected List<Expression> expressions;
+  protected String operation;
+
+  /**
+   * Gets the expressions.
+   *
+   * The list of expressions.
+   *
+   * @return the expressions
+   */
+  public List<Expression> getExpressions() {
+    return expressions;
+  }
+
+  /**
+   * Gets the operation.
+   *
+   * The operation to apply to the expressions.
+   *
+   * @return the operation
+   */
+  public String getOperation() {
+    return operation;
   }
 }
 

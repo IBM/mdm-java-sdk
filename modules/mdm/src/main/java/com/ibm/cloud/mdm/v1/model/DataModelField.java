@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,24 +19,24 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelField extends GenericModel {
 
+  protected String label;
   protected Boolean indexed;
   protected String classification;
-  protected String label;
   protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String label;
     private Boolean indexed;
     private String classification;
-    private String label;
     private String description;
 
     private Builder(DataModelField dataModelField) {
+      this.label = dataModelField.label;
       this.indexed = dataModelField.indexed;
       this.classification = dataModelField.classification;
-      this.label = dataModelField.label;
       this.description = dataModelField.description;
     }
 
@@ -65,6 +65,17 @@ public class DataModelField extends GenericModel {
     }
 
     /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the DataModelField builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
      * Set the indexed.
      *
      * @param indexed the indexed
@@ -87,17 +98,6 @@ public class DataModelField extends GenericModel {
     }
 
     /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the DataModelField builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
      * Set the description.
      *
      * @param description the description
@@ -112,9 +112,9 @@ public class DataModelField extends GenericModel {
   protected DataModelField(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    label = builder.label;
     indexed = builder.indexed;
     classification = builder.classification;
-    label = builder.label;
     description = builder.description;
   }
 
@@ -125,6 +125,17 @@ public class DataModelField extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**
@@ -147,17 +158,6 @@ public class DataModelField extends GenericModel {
    */
   public String classification() {
     return classification;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 
   /**

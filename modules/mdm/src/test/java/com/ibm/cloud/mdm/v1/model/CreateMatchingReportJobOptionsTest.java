@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -37,6 +37,7 @@ public class CreateMatchingReportJobOptionsTest {
       .executorCount(Long.valueOf("1"))
       .executorMemory("8g")
       .executorCoreCount(Long.valueOf("1"))
+      .jobList("entity_summary,bucket_summary")
       .doAnalytics(false)
       .build();
     assertEquals(createMatchingReportJobOptionsModel.recordType(), "person");
@@ -44,6 +45,7 @@ public class CreateMatchingReportJobOptionsTest {
     assertEquals(createMatchingReportJobOptionsModel.executorCount(), Long.valueOf("1"));
     assertEquals(createMatchingReportJobOptionsModel.executorMemory(), "8g");
     assertEquals(createMatchingReportJobOptionsModel.executorCoreCount(), Long.valueOf("1"));
+    assertEquals(createMatchingReportJobOptionsModel.jobList(), "entity_summary,bucket_summary");
     assertEquals(createMatchingReportJobOptionsModel.doAnalytics(), Boolean.valueOf(false));
   }
 }

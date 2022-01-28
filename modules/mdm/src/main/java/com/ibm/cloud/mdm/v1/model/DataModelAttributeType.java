@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,10 +24,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelAttributeType extends GenericModel {
 
-  protected String classification;
-  protected String label;
   @SerializedName("matching_types")
   protected List<String> matchingTypes;
+  protected String label;
+  protected String classification;
   protected String description;
   protected Map<String, DataModelField> fields;
 
@@ -35,16 +35,16 @@ public class DataModelAttributeType extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String classification;
-    private String label;
     private List<String> matchingTypes;
+    private String label;
+    private String classification;
     private String description;
     private Map<String, DataModelField> fields;
 
     private Builder(DataModelAttributeType dataModelAttributeType) {
-      this.classification = dataModelAttributeType.classification;
-      this.label = dataModelAttributeType.label;
       this.matchingTypes = dataModelAttributeType.matchingTypes;
+      this.label = dataModelAttributeType.label;
+      this.classification = dataModelAttributeType.classification;
       this.description = dataModelAttributeType.description;
       this.fields = dataModelAttributeType.fields;
     }
@@ -92,13 +92,14 @@ public class DataModelAttributeType extends GenericModel {
     }
 
     /**
-     * Set the classification.
+     * Set the matchingTypes.
+     * Existing matchingTypes will be replaced.
      *
-     * @param classification the classification
+     * @param matchingTypes the matchingTypes
      * @return the DataModelAttributeType builder
      */
-    public Builder classification(String classification) {
-      this.classification = classification;
+    public Builder matchingTypes(List<String> matchingTypes) {
+      this.matchingTypes = matchingTypes;
       return this;
     }
 
@@ -114,14 +115,13 @@ public class DataModelAttributeType extends GenericModel {
     }
 
     /**
-     * Set the matchingTypes.
-     * Existing matchingTypes will be replaced.
+     * Set the classification.
      *
-     * @param matchingTypes the matchingTypes
+     * @param classification the classification
      * @return the DataModelAttributeType builder
      */
-    public Builder matchingTypes(List<String> matchingTypes) {
-      this.matchingTypes = matchingTypes;
+    public Builder classification(String classification) {
+      this.classification = classification;
       return this;
     }
 
@@ -153,9 +153,9 @@ public class DataModelAttributeType extends GenericModel {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fields,
       "fields cannot be null");
-    classification = builder.classification;
-    label = builder.label;
     matchingTypes = builder.matchingTypes;
+    label = builder.label;
+    classification = builder.classification;
     description = builder.description;
     fields = builder.fields;
   }
@@ -170,14 +170,15 @@ public class DataModelAttributeType extends GenericModel {
   }
 
   /**
-   * Gets the classification.
+   * Gets the matchingTypes.
    *
-   * User defined classification.
+   * Collection of matching types, a subset of: PERSONNAME, ORGNAME, GENDER, DATE, EMAIL, SOCIALMEDIA, ADDRESS, PHONE,
+   * NATIONALIDENTIFIER, OTHERIDENTIFIER and PAYMENTCARDNUMBER.
    *
-   * @return the classification
+   * @return the matchingTypes
    */
-  public String classification() {
-    return classification;
+  public List<String> matchingTypes() {
+    return matchingTypes;
   }
 
   /**
@@ -192,15 +193,14 @@ public class DataModelAttributeType extends GenericModel {
   }
 
   /**
-   * Gets the matchingTypes.
+   * Gets the classification.
    *
-   * Collection of matching types, a subset of: PERSONNAME, ORGNAME, GENDER, DATE, EMAIL, SOCIALMEDIA, ADDRESS, PHONE,
-   * NATIONALIDENTIFIER, OTHERIDENTIFIER and PAYMENTCARDNUMBER.
+   * User defined classification.
    *
-   * @return the matchingTypes
+   * @return the classification
    */
-  public List<String> matchingTypes() {
-    return matchingTypes;
+  public String classification() {
+    return classification;
   }
 
   /**

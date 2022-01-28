@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -39,11 +39,11 @@ public class DataRecordsResponseTest {
     DataRecordsResponse dataRecordsResponseModel = new DataRecordsResponse();
     assertNull(dataRecordsResponseModel.getOffset());
     assertNull(dataRecordsResponseModel.getLimit());
+    assertNull(dataRecordsResponseModel.getTotalCount());
     assertNull(dataRecordsResponseModel.getFirst());
     assertNull(dataRecordsResponseModel.getLast());
     assertNull(dataRecordsResponseModel.getPrevious());
     assertNull(dataRecordsResponseModel.getNext());
     assertNull(dataRecordsResponseModel.getRecords());
-    assertNull(dataRecordsResponseModel.getTotalCount());
   }
 }

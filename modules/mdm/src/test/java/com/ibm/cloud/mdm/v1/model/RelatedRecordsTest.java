@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -39,11 +39,11 @@ public class RelatedRecordsTest {
     RelatedRecords relatedRecordsModel = new RelatedRecords();
     assertNull(relatedRecordsModel.getOffset());
     assertNull(relatedRecordsModel.getLimit());
+    assertNull(relatedRecordsModel.getTotalCount());
     assertNull(relatedRecordsModel.getFirst());
     assertNull(relatedRecordsModel.getLast());
     assertNull(relatedRecordsModel.getPrevious());
     assertNull(relatedRecordsModel.getNext());
     assertNull(relatedRecordsModel.getRelatedRecords());
-    assertNull(relatedRecordsModel.getTotalCount());
   }
 }

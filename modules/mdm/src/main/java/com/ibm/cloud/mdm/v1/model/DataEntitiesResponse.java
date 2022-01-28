@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,7 @@ package com.ibm.cloud.mdm.v1.model;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -23,6 +24,8 @@ public class DataEntitiesResponse extends GenericModel {
 
   protected Long offset;
   protected Long limit;
+  @SerializedName("total_count")
+  protected Long totalCount;
   protected DataEntitiesResponseFirst first;
   protected DataEntitiesResponseLast last;
   protected DataEntitiesResponsePrevious previous;
@@ -49,6 +52,17 @@ public class DataEntitiesResponse extends GenericModel {
    */
   public Long getLimit() {
     return limit;
+  }
+
+  /**
+   * Gets the totalCount.
+   *
+   * The total number of elements.
+   *
+   * @return the totalCount
+   */
+  public Long getTotalCount() {
+    return totalCount;
   }
 
   /**

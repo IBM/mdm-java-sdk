@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.AddConfiguratorPairDecisionOptions;
+import com.ibm.cloud.mdm.v1.model.DeleteDataRelationshipOptions;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,29 +23,23 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the AddConfiguratorPairDecisionOptions model.
+ * Unit test class for the DeleteDataRelationshipOptions model.
  */
-public class AddConfiguratorPairDecisionOptionsTest {
+public class DeleteDataRelationshipOptionsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testAddConfiguratorPairDecisionOptions() throws Throwable {
-    AddConfiguratorPairDecisionOptions addConfiguratorPairDecisionOptionsModel = new AddConfiguratorPairDecisionOptions.Builder()
-      .recordNumber1("testString")
-      .recordNumber2("testString")
-      .userDecision("testString")
+  public void testDeleteDataRelationshipOptions() throws Throwable {
+    DeleteDataRelationshipOptions deleteDataRelationshipOptionsModel = new DeleteDataRelationshipOptions.Builder()
       .id("testString")
       .build();
-    assertEquals(addConfiguratorPairDecisionOptionsModel.recordNumber1(), "testString");
-    assertEquals(addConfiguratorPairDecisionOptionsModel.recordNumber2(), "testString");
-    assertEquals(addConfiguratorPairDecisionOptionsModel.userDecision(), "testString");
-    assertEquals(addConfiguratorPairDecisionOptionsModel.id(), "testString");
+    assertEquals(deleteDataRelationshipOptionsModel.id(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testAddConfiguratorPairDecisionOptionsError() throws Throwable {
-    new AddConfiguratorPairDecisionOptions.Builder().build();
+  public void testDeleteDataRelationshipOptionsError() throws Throwable {
+    new DeleteDataRelationshipOptions.Builder().build();
   }
 
 }

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,7 @@ public class CreateMatchingMatchJobOptionsTest {
       .recordType("person")
       .entityType("person_entity")
       .doForce(false)
+      .doDeduplicate(false)
       .doAnalytics(false)
       .doReplicate(false)
       .executorCount(Long.valueOf("1"))
@@ -48,6 +49,7 @@ public class CreateMatchingMatchJobOptionsTest {
     assertEquals(createMatchingMatchJobOptionsModel.recordType(), "person");
     assertEquals(createMatchingMatchJobOptionsModel.entityType(), "person_entity");
     assertEquals(createMatchingMatchJobOptionsModel.doForce(), Boolean.valueOf(false));
+    assertEquals(createMatchingMatchJobOptionsModel.doDeduplicate(), Boolean.valueOf(false));
     assertEquals(createMatchingMatchJobOptionsModel.doAnalytics(), Boolean.valueOf(false));
     assertEquals(createMatchingMatchJobOptionsModel.doReplicate(), Boolean.valueOf(false));
     assertEquals(createMatchingMatchJobOptionsModel.executorCount(), Long.valueOf("1"));

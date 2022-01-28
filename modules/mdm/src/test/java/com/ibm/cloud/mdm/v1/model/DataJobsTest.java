@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.BulkDeleteJob;
+import com.ibm.cloud.mdm.v1.model.DataJob;
 import com.ibm.cloud.mdm.v1.model.DataJobs;
 import com.ibm.cloud.mdm.v1.model.PagedResponseFirst;
 import com.ibm.cloud.mdm.v1.model.PagedResponseLast;
@@ -41,11 +41,11 @@ public class DataJobsTest {
     DataJobs dataJobsModel = new DataJobs();
     assertNull(dataJobsModel.getOffset());
     assertNull(dataJobsModel.getLimit());
+    assertNull(dataJobsModel.getTotalCount());
     assertNull(dataJobsModel.getFirst());
     assertNull(dataJobsModel.getLast());
     assertNull(dataJobsModel.getPrevious());
     assertNull(dataJobsModel.getNext());
     assertNull(dataJobsModel.getJobs());
-    assertNull(dataJobsModel.getTotalCount());
   }
 }

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,8 +22,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ReplaceModelComparespecResourceOptions extends GenericModel {
 
   protected String resourceName;
-  protected Map<String, CompareSpecResourceFeatureCategory> featureCategories;
   protected Float typoDistance;
+  protected Map<String, CompareSpecResourceFeatureCategory> featureCategories;
   protected Map<String, Float> featureCoefficients;
   protected String similarCharactersMapResource;
   protected Float similarCharactersDistance;
@@ -33,16 +33,16 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
    */
   public static class Builder {
     private String resourceName;
-    private Map<String, CompareSpecResourceFeatureCategory> featureCategories;
     private Float typoDistance;
+    private Map<String, CompareSpecResourceFeatureCategory> featureCategories;
     private Map<String, Float> featureCoefficients;
     private String similarCharactersMapResource;
     private Float similarCharactersDistance;
 
     private Builder(ReplaceModelComparespecResourceOptions replaceModelComparespecResourceOptions) {
       this.resourceName = replaceModelComparespecResourceOptions.resourceName;
-      this.featureCategories = replaceModelComparespecResourceOptions.featureCategories;
       this.typoDistance = replaceModelComparespecResourceOptions.typoDistance;
+      this.featureCategories = replaceModelComparespecResourceOptions.featureCategories;
       this.featureCoefficients = replaceModelComparespecResourceOptions.featureCoefficients;
       this.similarCharactersMapResource = replaceModelComparespecResourceOptions.similarCharactersMapResource;
       this.similarCharactersDistance = replaceModelComparespecResourceOptions.similarCharactersDistance;
@@ -58,14 +58,14 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param resourceName the resourceName
-     * @param featureCategories the featureCategories
      * @param typoDistance the typoDistance
+     * @param featureCategories the featureCategories
      * @param featureCoefficients the featureCoefficients
      */
-    public Builder(String resourceName, Map<String, CompareSpecResourceFeatureCategory> featureCategories, Float typoDistance, Map<String, Float> featureCoefficients) {
+    public Builder(String resourceName, Float typoDistance, Map<String, CompareSpecResourceFeatureCategory> featureCategories, Map<String, Float> featureCoefficients) {
       this.resourceName = resourceName;
-      this.featureCategories = featureCategories;
       this.typoDistance = typoDistance;
+      this.featureCategories = featureCategories;
       this.featureCoefficients = featureCoefficients;
     }
 
@@ -90,17 +90,6 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
     }
 
     /**
-     * Set the featureCategories.
-     *
-     * @param featureCategories the featureCategories
-     * @return the ReplaceModelComparespecResourceOptions builder
-     */
-    public Builder featureCategories(Map<String, CompareSpecResourceFeatureCategory> featureCategories) {
-      this.featureCategories = featureCategories;
-      return this;
-    }
-
-    /**
      * Set the typoDistance.
      *
      * @param typoDistance the typoDistance
@@ -108,6 +97,17 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
      */
     public Builder typoDistance(Float typoDistance) {
       this.typoDistance = typoDistance;
+      return this;
+    }
+
+    /**
+     * Set the featureCategories.
+     *
+     * @param featureCategories the featureCategories
+     * @return the ReplaceModelComparespecResourceOptions builder
+     */
+    public Builder featureCategories(Map<String, CompareSpecResourceFeatureCategory> featureCategories) {
+      this.featureCategories = featureCategories;
       return this;
     }
 
@@ -151,8 +151,8 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
      * @return the ReplaceModelComparespecResourceOptions builder
      */
     public Builder compareSpecResource(CompareSpecResource compareSpecResource) {
-      this.featureCategories = compareSpecResource.featureCategories();
       this.typoDistance = compareSpecResource.typoDistance();
+      this.featureCategories = compareSpecResource.featureCategories();
       this.featureCoefficients = compareSpecResource.featureCoefficients();
       this.similarCharactersMapResource = compareSpecResource.similarCharactersMapResource();
       this.similarCharactersDistance = compareSpecResource.similarCharactersDistance();
@@ -163,15 +163,15 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
   protected ReplaceModelComparespecResourceOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.resourceName,
       "resourceName cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCategories,
-      "featureCategories cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typoDistance,
       "typoDistance cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCategories,
+      "featureCategories cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCoefficients,
       "featureCoefficients cannot be null");
     resourceName = builder.resourceName;
-    featureCategories = builder.featureCategories;
     typoDistance = builder.typoDistance;
+    featureCategories = builder.featureCategories;
     featureCoefficients = builder.featureCoefficients;
     similarCharactersMapResource = builder.similarCharactersMapResource;
     similarCharactersDistance = builder.similarCharactersDistance;
@@ -198,17 +198,6 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
   }
 
   /**
-   * Gets the featureCategories.
-   *
-   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
-   *
-   * @return the featureCategories
-   */
-  public Map<String, CompareSpecResourceFeatureCategory> featureCategories() {
-    return featureCategories;
-  }
-
-  /**
    * Gets the typoDistance.
    *
    * The distance factor for each occurence of typographical error. The value must be between 0 to 1.
@@ -217,6 +206,17 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
    */
   public Float typoDistance() {
     return typoDistance;
+  }
+
+  /**
+   * Gets the featureCategories.
+   *
+   * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
+   *
+   * @return the featureCategories
+   */
+  public Map<String, CompareSpecResourceFeatureCategory> featureCategories() {
+    return featureCategories;
   }
 
   /**

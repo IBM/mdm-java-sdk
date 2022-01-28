@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -48,24 +48,24 @@ public class ConfigDataModelTest {
   @Test
   public void testConfigDataModel() throws Throwable {
     EntityType entityTypeModel = new EntityType.Builder()
-      .label("testString")
       .description("testString")
+      .label("testString")
       .build();
-    assertEquals(entityTypeModel.label(), "testString");
     assertEquals(entityTypeModel.description(), "testString");
+    assertEquals(entityTypeModel.label(), "testString");
 
     Attribute attributeModel = new Attribute.Builder()
       .indexed(true)
-      .classification("testString")
-      .label("testString")
       .description("testString")
+      .label("testString")
+      .classification("testString")
       .cardinality("testString")
       .attributeType("email")
       .build();
     assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModel.classification(), "testString");
-    assertEquals(attributeModel.label(), "testString");
     assertEquals(attributeModel.description(), "testString");
+    assertEquals(attributeModel.label(), "testString");
+    assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.cardinality(), "testString");
     assertEquals(attributeModel.attributeType(), "email");
 
@@ -122,14 +122,14 @@ public class ConfigDataModelTest {
 
     FieldType fieldTypeModel = new FieldType.Builder()
       .label("testString")
-      .indexed(true)
       .description("testString")
       .classification("testString")
+      .indexed(true)
       .build();
     assertEquals(fieldTypeModel.label(), "testString");
-    assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
     assertEquals(fieldTypeModel.description(), "testString");
     assertEquals(fieldTypeModel.classification(), "testString");
+    assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
 
     AttributeType attributeTypeModel = new AttributeType.Builder()
       .label("testString")
@@ -209,14 +209,14 @@ public class ConfigDataModelTest {
       .recordTypes(new java.util.HashMap<String, RecordType>() { { put("foo", recordTypeModel); } })
       .relationshipTypes(new java.util.HashMap<String, RelationshipType>() { { put("foo", relationshipTypeModel); } })
       .attributeTypes(new java.util.HashMap<String, AttributeType>() { { put("foo", attributeTypeModel); } })
-      .locale("testString")
       .systemProperties(new java.util.HashMap<String, SystemProperties>() { { put("foo", systemPropertiesModel); } })
+      .locale("testString")
       .build();
     assertEquals(configDataModelModel.recordTypes(), new java.util.HashMap<String, RecordType>() { { put("foo", recordTypeModel); } });
     assertEquals(configDataModelModel.relationshipTypes(), new java.util.HashMap<String, RelationshipType>() { { put("foo", relationshipTypeModel); } });
     assertEquals(configDataModelModel.attributeTypes(), new java.util.HashMap<String, AttributeType>() { { put("foo", attributeTypeModel); } });
-    assertEquals(configDataModelModel.locale(), "testString");
     assertEquals(configDataModelModel.systemProperties(), new java.util.HashMap<String, SystemProperties>() { { put("foo", systemPropertiesModel); } });
+    assertEquals(configDataModelModel.locale(), "testString");
 
     String json = TestUtilities.serialize(configDataModelModel);
 

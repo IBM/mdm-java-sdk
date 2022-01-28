@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,36 +22,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Flow extends GenericModel {
 
+  @SerializedName("flow_type")
+  protected String flowType;
+  protected List<String> rejections;
+  protected List<String> approvals;
   @SerializedName("flow_state")
   protected String flowState;
   @SerializedName("flow_id")
   protected String flowId;
-  protected List<String> rejections;
-  protected List<String> approvals;
-  @SerializedName("flow_type")
-  protected String flowType;
   protected Boolean active;
 
   /**
-   * Gets the flowState.
+   * Gets the flowType.
    *
-   * Current state of flow according to its state machine.
+   * Type of flow. One of: data_model, algorithm, compare_spec_resources, composite_rules, map_resources or
+   * set_resources.
    *
-   * @return the flowState
+   * @return the flowType
    */
-  public String getFlowState() {
-    return flowState;
-  }
-
-  /**
-   * Gets the flowId.
-   *
-   * System generated flow identifier.
-   *
-   * @return the flowId
-   */
-  public String getFlowId() {
-    return flowId;
+  public String getFlowType() {
+    return flowType;
   }
 
   /**
@@ -77,15 +67,25 @@ public class Flow extends GenericModel {
   }
 
   /**
-   * Gets the flowType.
+   * Gets the flowState.
    *
-   * Type of flow. One of: data_model, algorithm, compare_spec_resources, composite_rules, map_resources or
-   * set_resources.
+   * Current state of flow according to its state machine.
    *
-   * @return the flowType
+   * @return the flowState
    */
-  public String getFlowType() {
-    return flowType;
+  public String getFlowState() {
+    return flowState;
+  }
+
+  /**
+   * Gets the flowId.
+   *
+   * System generated flow identifier.
+   *
+   * @return the flowId
+   */
+  public String getFlowId() {
+    return flowId;
   }
 
   /**

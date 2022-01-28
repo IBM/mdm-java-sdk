@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,28 +21,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateModelDataModelOptions extends GenericModel {
 
-  protected Map<String, DataModelRelationshipType> relationshipTypes;
   protected Map<String, DataModelRecordType> recordTypes;
+  protected Map<String, DataModelRelationshipType> relationshipTypes;
   protected Map<String, DataModelAttributeType> attributeTypes;
-  protected DataModelSystemProperties systemProperties;
   protected String locale;
+  protected DataModelSystemProperties systemProperties;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Map<String, DataModelRelationshipType> relationshipTypes;
     private Map<String, DataModelRecordType> recordTypes;
+    private Map<String, DataModelRelationshipType> relationshipTypes;
     private Map<String, DataModelAttributeType> attributeTypes;
-    private DataModelSystemProperties systemProperties;
     private String locale;
+    private DataModelSystemProperties systemProperties;
 
     private Builder(UpdateModelDataModelOptions updateModelDataModelOptions) {
-      this.relationshipTypes = updateModelDataModelOptions.relationshipTypes;
       this.recordTypes = updateModelDataModelOptions.recordTypes;
+      this.relationshipTypes = updateModelDataModelOptions.relationshipTypes;
       this.attributeTypes = updateModelDataModelOptions.attributeTypes;
-      this.systemProperties = updateModelDataModelOptions.systemProperties;
       this.locale = updateModelDataModelOptions.locale;
+      this.systemProperties = updateModelDataModelOptions.systemProperties;
     }
 
     /**
@@ -54,18 +54,18 @@ public class UpdateModelDataModelOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param relationshipTypes the relationshipTypes
      * @param recordTypes the recordTypes
+     * @param relationshipTypes the relationshipTypes
      * @param attributeTypes the attributeTypes
-     * @param systemProperties the systemProperties
      * @param locale the locale
+     * @param systemProperties the systemProperties
      */
-    public Builder(Map<String, DataModelRelationshipType> relationshipTypes, Map<String, DataModelRecordType> recordTypes, Map<String, DataModelAttributeType> attributeTypes, DataModelSystemProperties systemProperties, String locale) {
-      this.relationshipTypes = relationshipTypes;
+    public Builder(Map<String, DataModelRecordType> recordTypes, Map<String, DataModelRelationshipType> relationshipTypes, Map<String, DataModelAttributeType> attributeTypes, String locale, DataModelSystemProperties systemProperties) {
       this.recordTypes = recordTypes;
+      this.relationshipTypes = relationshipTypes;
       this.attributeTypes = attributeTypes;
-      this.systemProperties = systemProperties;
       this.locale = locale;
+      this.systemProperties = systemProperties;
     }
 
     /**
@@ -78,17 +78,6 @@ public class UpdateModelDataModelOptions extends GenericModel {
     }
 
     /**
-     * Set the relationshipTypes.
-     *
-     * @param relationshipTypes the relationshipTypes
-     * @return the UpdateModelDataModelOptions builder
-     */
-    public Builder relationshipTypes(Map<String, DataModelRelationshipType> relationshipTypes) {
-      this.relationshipTypes = relationshipTypes;
-      return this;
-    }
-
-    /**
      * Set the recordTypes.
      *
      * @param recordTypes the recordTypes
@@ -96,6 +85,17 @@ public class UpdateModelDataModelOptions extends GenericModel {
      */
     public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
       this.recordTypes = recordTypes;
+      return this;
+    }
+
+    /**
+     * Set the relationshipTypes.
+     *
+     * @param relationshipTypes the relationshipTypes
+     * @return the UpdateModelDataModelOptions builder
+     */
+    public Builder relationshipTypes(Map<String, DataModelRelationshipType> relationshipTypes) {
+      this.relationshipTypes = relationshipTypes;
       return this;
     }
 
@@ -111,17 +111,6 @@ public class UpdateModelDataModelOptions extends GenericModel {
     }
 
     /**
-     * Set the systemProperties.
-     *
-     * @param systemProperties the systemProperties
-     * @return the UpdateModelDataModelOptions builder
-     */
-    public Builder systemProperties(DataModelSystemProperties systemProperties) {
-      this.systemProperties = systemProperties;
-      return this;
-    }
-
-    /**
      * Set the locale.
      *
      * @param locale the locale
@@ -133,37 +122,48 @@ public class UpdateModelDataModelOptions extends GenericModel {
     }
 
     /**
+     * Set the systemProperties.
+     *
+     * @param systemProperties the systemProperties
+     * @return the UpdateModelDataModelOptions builder
+     */
+    public Builder systemProperties(DataModelSystemProperties systemProperties) {
+      this.systemProperties = systemProperties;
+      return this;
+    }
+
+    /**
      * Set the dataModel.
      *
      * @param dataModel the dataModel
      * @return the UpdateModelDataModelOptions builder
      */
     public Builder dataModel(DataModel dataModel) {
-      this.relationshipTypes = dataModel.relationshipTypes();
       this.recordTypes = dataModel.recordTypes();
+      this.relationshipTypes = dataModel.relationshipTypes();
       this.attributeTypes = dataModel.attributeTypes();
-      this.systemProperties = dataModel.systemProperties();
       this.locale = dataModel.locale();
+      this.systemProperties = dataModel.systemProperties();
       return this;
     }
   }
 
   protected UpdateModelDataModelOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
-      "relationshipTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
       "recordTypes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
+      "relationshipTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
       "attributeTypes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.systemProperties,
-      "systemProperties cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
-    relationshipTypes = builder.relationshipTypes;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.systemProperties,
+      "systemProperties cannot be null");
     recordTypes = builder.recordTypes;
+    relationshipTypes = builder.relationshipTypes;
     attributeTypes = builder.attributeTypes;
-    systemProperties = builder.systemProperties;
     locale = builder.locale;
+    systemProperties = builder.systemProperties;
   }
 
   /**
@@ -173,17 +173,6 @@ public class UpdateModelDataModelOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the relationshipTypes.
-   *
-   * Collection of relationship types. The relationship type key must be lower snake case (i.e. employment).
-   *
-   * @return the relationshipTypes
-   */
-  public Map<String, DataModelRelationshipType> relationshipTypes() {
-    return relationshipTypes;
   }
 
   /**
@@ -198,6 +187,17 @@ public class UpdateModelDataModelOptions extends GenericModel {
   }
 
   /**
+   * Gets the relationshipTypes.
+   *
+   * Collection of relationship types. The relationship type key must be lower snake case (i.e. employment).
+   *
+   * @return the relationshipTypes
+   */
+  public Map<String, DataModelRelationshipType> relationshipTypes() {
+    return relationshipTypes;
+  }
+
+  /**
    * Gets the attributeTypes.
    *
    * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
@@ -209,17 +209,6 @@ public class UpdateModelDataModelOptions extends GenericModel {
   }
 
   /**
-   * Gets the systemProperties.
-   *
-   * Collection of common fields applicable to various types in data model.
-   *
-   * @return the systemProperties
-   */
-  public DataModelSystemProperties systemProperties() {
-    return systemProperties;
-  }
-
-  /**
    * Gets the locale.
    *
    * The request language and location (i.e. enUS).
@@ -228,6 +217,17 @@ public class UpdateModelDataModelOptions extends GenericModel {
    */
   public String locale() {
     return locale;
+  }
+
+  /**
+   * Gets the systemProperties.
+   *
+   * Collection of common fields applicable to various types in data model.
+   *
+   * @return the systemProperties
+   */
+  public DataModelSystemProperties systemProperties() {
+    return systemProperties;
   }
 }
 

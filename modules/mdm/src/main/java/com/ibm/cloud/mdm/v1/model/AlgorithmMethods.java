@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,20 +23,20 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmMethods extends GenericModel {
 
-  protected List<AlgorithmInput> inputs;
   @SerializedName("compare_recipe")
   protected List<AlgorithmCompareStep> compareRecipe;
+  protected List<AlgorithmInput> inputs;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<AlgorithmInput> inputs;
     private List<AlgorithmCompareStep> compareRecipe;
+    private List<AlgorithmInput> inputs;
 
     private Builder(AlgorithmMethods algorithmMethods) {
-      this.inputs = algorithmMethods.inputs;
       this.compareRecipe = algorithmMethods.compareRecipe;
+      this.inputs = algorithmMethods.inputs;
     }
 
     /**
@@ -52,22 +52,6 @@ public class AlgorithmMethods extends GenericModel {
      */
     public AlgorithmMethods build() {
       return new AlgorithmMethods(this);
-    }
-
-    /**
-     * Adds an inputs to inputs.
-     *
-     * @param inputs the new inputs
-     * @return the AlgorithmMethods builder
-     */
-    public Builder addInputs(AlgorithmInput inputs) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,
-        "inputs cannot be null");
-      if (this.inputs == null) {
-        this.inputs = new ArrayList<AlgorithmInput>();
-      }
-      this.inputs.add(inputs);
-      return this;
     }
 
     /**
@@ -87,14 +71,18 @@ public class AlgorithmMethods extends GenericModel {
     }
 
     /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
+     * Adds an inputs to inputs.
      *
-     * @param inputs the inputs
+     * @param inputs the new inputs
      * @return the AlgorithmMethods builder
      */
-    public Builder inputs(List<AlgorithmInput> inputs) {
-      this.inputs = inputs;
+    public Builder addInputs(AlgorithmInput inputs) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,
+        "inputs cannot be null");
+      if (this.inputs == null) {
+        this.inputs = new ArrayList<AlgorithmInput>();
+      }
+      this.inputs.add(inputs);
       return this;
     }
 
@@ -109,11 +97,23 @@ public class AlgorithmMethods extends GenericModel {
       this.compareRecipe = compareRecipe;
       return this;
     }
+
+    /**
+     * Set the inputs.
+     * Existing inputs will be replaced.
+     *
+     * @param inputs the inputs
+     * @return the AlgorithmMethods builder
+     */
+    public Builder inputs(List<AlgorithmInput> inputs) {
+      this.inputs = inputs;
+      return this;
+    }
   }
 
   protected AlgorithmMethods(Builder builder) {
-    inputs = builder.inputs;
     compareRecipe = builder.compareRecipe;
+    inputs = builder.inputs;
   }
 
   /**
@@ -126,17 +126,6 @@ public class AlgorithmMethods extends GenericModel {
   }
 
   /**
-   * Gets the inputs.
-   *
-   * Collection of input definitions used for this method.
-   *
-   * @return the inputs
-   */
-  public List<AlgorithmInput> inputs() {
-    return inputs;
-  }
-
-  /**
    * Gets the compareRecipe.
    *
    * Collection of compare method steps.
@@ -145,6 +134,17 @@ public class AlgorithmMethods extends GenericModel {
    */
   public List<AlgorithmCompareStep> compareRecipe() {
     return compareRecipe;
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of input definitions used for this method.
+   *
+   * @return the inputs
+   */
+  public List<AlgorithmInput> inputs() {
+    return inputs;
   }
 }
 

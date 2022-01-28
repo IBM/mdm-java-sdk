@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,19 +32,19 @@ public class AssetMappingTest {
   @Test
   public void testAssetMapping() throws Throwable {
     AssetMapping assetMappingModel = new AssetMapping.Builder()
-      .classifiedClass("GEN")
-      .dataMappingName("gender")
       .excludeColumn(false)
       .autoMapped(true)
-      .completenessPercent("100")
+      .classifiedClass("GEN")
+      .dataMappingName("gender")
+      .completenessPercent("100.0")
       .dataMappingAttributeType("string")
       .key("COLUMN 1")
       .build();
-    assertEquals(assetMappingModel.classifiedClass(), "GEN");
-    assertEquals(assetMappingModel.dataMappingName(), "gender");
     assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
-    assertEquals(assetMappingModel.completenessPercent(), "100");
+    assertEquals(assetMappingModel.classifiedClass(), "GEN");
+    assertEquals(assetMappingModel.dataMappingName(), "gender");
+    assertEquals(assetMappingModel.completenessPercent(), "100.0");
     assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.key(), "COLUMN 1");
 
@@ -52,11 +52,11 @@ public class AssetMappingTest {
 
     AssetMapping assetMappingModelNew = TestUtilities.deserialize(json, AssetMapping.class);
     assertTrue(assetMappingModelNew instanceof AssetMapping);
-    assertEquals(assetMappingModelNew.classifiedClass(), "GEN");
-    assertEquals(assetMappingModelNew.dataMappingName(), "gender");
     assertEquals(assetMappingModelNew.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModelNew.autoMapped(), Boolean.valueOf(true));
-    assertEquals(assetMappingModelNew.completenessPercent(), "100");
+    assertEquals(assetMappingModelNew.classifiedClass(), "GEN");
+    assertEquals(assetMappingModelNew.dataMappingName(), "gender");
+    assertEquals(assetMappingModelNew.completenessPercent(), "100.0");
     assertEquals(assetMappingModelNew.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModelNew.key(), "COLUMN 1");
   }

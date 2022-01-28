@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,9 +14,15 @@
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.DataExport;
+import com.ibm.cloud.mdm.v1.model.DataExportSearchCriteria;
+import com.ibm.cloud.mdm.v1.model.DataExportSearchCriteriaQuery;
+import com.ibm.cloud.mdm.v1.model.Expression;
+import com.ibm.cloud.mdm.v1.model.SearchFilter;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -32,5 +38,8 @@ public class DataExportTest {
   @Test
   public void testDataExport() throws Throwable {
     DataExport dataExportModel = new DataExport();
+    assertNull(dataExportModel.getExportType());
+    assertNull(dataExportModel.getFileName());
+    assertNull(dataExportModel.getSearchCriteria());
   }
 }
