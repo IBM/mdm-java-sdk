@@ -19,28 +19,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataRecordResponse extends GenericModel {
 
-  protected DataRecordResponseRecord record;
-  protected DataRecordResponseMetadata metadata;
+  protected DataRecord record;
+  protected Metadata metadata;
 
   /**
    * Gets the record.
    *
-   * Detailed information about the record and its attributes.
+   * Information about a record.
    *
    * @return the record
    */
-  public DataRecordResponseRecord getRecord() {
+  public DataRecord getRecord() {
     return record;
   }
 
   /**
    * Gets the metadata.
    *
-   * Supplemental information about the record.
+   * Supplemental information about a resource.
    *
    * @return the metadata
    */
-  public DataRecordResponseMetadata getMetadata() {
+  public Metadata getMetadata() {
     return metadata;
   }
 }

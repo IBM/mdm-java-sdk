@@ -85,7 +85,7 @@ public class DataExport extends GenericModel {
   @SerializedName("file_expired")
   protected Boolean fileExpired;
   @SerializedName("search_criteria")
-  protected DataExportSearchCriteria searchCriteria;
+  protected DataSearchCriteria searchCriteria;
 
   /**
    * Gets the jobId.
@@ -189,11 +189,11 @@ public class DataExport extends GenericModel {
   /**
    * Gets the searchCriteria.
    *
-   * The search criteria which identifies the exported data.
+   * A set of criteria for a search operation.
    *
    * @return the searchCriteria
    */
-  public DataExportSearchCriteria getSearchCriteria() {
+  public DataSearchCriteria getSearchCriteria() {
     return searchCriteria;
   }
 }

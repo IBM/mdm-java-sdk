@@ -26,10 +26,10 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
 
-  @SerializedName("auto_link_threshold")
-  protected Float autoLinkThreshold;
   @SerializedName("matching_attributes")
   protected List<AlgorithmGenerationAttributeItem> matchingAttributes;
+  @SerializedName("auto_link_threshold")
+  protected Float autoLinkThreshold;
 
   public AlgorithmGenerationEntityType() {
     super(new TypeToken<Object>() { });
@@ -39,13 +39,13 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private Float autoLinkThreshold;
     private List<AlgorithmGenerationAttributeItem> matchingAttributes;
+    private Float autoLinkThreshold;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmGenerationEntityType algorithmGenerationEntityType) {
-      this.autoLinkThreshold = algorithmGenerationEntityType.autoLinkThreshold;
       this.matchingAttributes = algorithmGenerationEntityType.matchingAttributes;
+      this.autoLinkThreshold = algorithmGenerationEntityType.autoLinkThreshold;
       this.dynamicProperties = algorithmGenerationEntityType.getProperties();
     }
 
@@ -90,17 +90,6 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
     }
 
     /**
-     * Set the autoLinkThreshold.
-     *
-     * @param autoLinkThreshold the autoLinkThreshold
-     * @return the AlgorithmGenerationEntityType builder
-     */
-    public Builder autoLinkThreshold(Float autoLinkThreshold) {
-      this.autoLinkThreshold = autoLinkThreshold;
-      return this;
-    }
-
-    /**
      * Set the matchingAttributes.
      * Existing matchingAttributes will be replaced.
      *
@@ -109,6 +98,17 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
      */
     public Builder matchingAttributes(List<AlgorithmGenerationAttributeItem> matchingAttributes) {
       this.matchingAttributes = matchingAttributes;
+      return this;
+    }
+
+    /**
+     * Set the autoLinkThreshold.
+     *
+     * @param autoLinkThreshold the autoLinkThreshold
+     * @return the AlgorithmGenerationEntityType builder
+     */
+    public Builder autoLinkThreshold(Float autoLinkThreshold) {
+      this.autoLinkThreshold = autoLinkThreshold;
       return this;
     }
 
@@ -133,8 +133,8 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
     super(new TypeToken<Object>() { });
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.matchingAttributes,
       "matchingAttributes cannot be null");
-    autoLinkThreshold = builder.autoLinkThreshold;
     matchingAttributes = builder.matchingAttributes;
+    autoLinkThreshold = builder.autoLinkThreshold;
     this.setProperties(builder.dynamicProperties);
   }
 
@@ -145,26 +145,6 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the autoLinkThreshold.
-   *
-   * The minimum matching score between two records to automatically link them together. The range is from 0 to 1.
-   *
-   * @return the autoLinkThreshold
-   */
-  public Float getAutoLinkThreshold() {
-    return this.autoLinkThreshold;
-  }
-
-  /**
-   * Sets the autoLinkThreshold.
-   *
-   * @param autoLinkThreshold the new autoLinkThreshold
-   */
-  public void setAutoLinkThreshold(final Float autoLinkThreshold) {
-    this.autoLinkThreshold = autoLinkThreshold;
   }
 
   /**
@@ -185,5 +165,25 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
    */
   public void setMatchingAttributes(final List<AlgorithmGenerationAttributeItem> matchingAttributes) {
     this.matchingAttributes = matchingAttributes;
+  }
+
+  /**
+   * Gets the autoLinkThreshold.
+   *
+   * The minimum matching score between two records to automatically link them together. The range is from 0 to 1.
+   *
+   * @return the autoLinkThreshold
+   */
+  public Float getAutoLinkThreshold() {
+    return this.autoLinkThreshold;
+  }
+
+  /**
+   * Sets the autoLinkThreshold.
+   *
+   * @param autoLinkThreshold the new autoLinkThreshold
+   */
+  public void setAutoLinkThreshold(final Float autoLinkThreshold) {
+    this.autoLinkThreshold = autoLinkThreshold;
   }
 }

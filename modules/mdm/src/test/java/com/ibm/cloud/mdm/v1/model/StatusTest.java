@@ -32,9 +32,9 @@ public class StatusTest {
   @Test
   public void testStatus() throws Throwable {
     Status statusModel = new Status();
-    assertNull(statusModel.getComparisonCount());
     assertNull(statusModel.getDateCompleted());
     assertNull(statusModel.getBucketCount());
+    assertNull(statusModel.getComparisonCount());
     assertNull(statusModel.getRunTime());
   }
 }

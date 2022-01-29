@@ -24,13 +24,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RelationshipType extends GenericModel {
 
-  protected String label;
-  protected List<Rule> rules;
-  @SerializedName("label_from_source")
-  protected String labelFromSource;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
   protected Boolean directional;
+  protected List<Rule> rules;
+  @SerializedName("label_from_source")
+  protected String labelFromSource;
+  protected String label;
   protected String description;
   protected String cardinality;
   protected Map<String, Attribute> attributes;
@@ -39,21 +39,21 @@ public class RelationshipType extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String label;
-    private List<Rule> rules;
-    private String labelFromSource;
     private String labelFromTarget;
     private Boolean directional;
+    private List<Rule> rules;
+    private String labelFromSource;
+    private String label;
     private String description;
     private String cardinality;
     private Map<String, Attribute> attributes;
 
     private Builder(RelationshipType relationshipType) {
-      this.label = relationshipType.label;
-      this.rules = relationshipType.rules;
-      this.labelFromSource = relationshipType.labelFromSource;
       this.labelFromTarget = relationshipType.labelFromTarget;
       this.directional = relationshipType.directional;
+      this.rules = relationshipType.rules;
+      this.labelFromSource = relationshipType.labelFromSource;
+      this.label = relationshipType.label;
       this.description = relationshipType.description;
       this.cardinality = relationshipType.cardinality;
       this.attributes = relationshipType.attributes;
@@ -100,13 +100,24 @@ public class RelationshipType extends GenericModel {
     }
 
     /**
-     * Set the label.
+     * Set the labelFromTarget.
      *
-     * @param label the label
+     * @param labelFromTarget the labelFromTarget
      * @return the RelationshipType builder
      */
-    public Builder label(String label) {
-      this.label = label;
+    public Builder labelFromTarget(String labelFromTarget) {
+      this.labelFromTarget = labelFromTarget;
+      return this;
+    }
+
+    /**
+     * Set the directional.
+     *
+     * @param directional the directional
+     * @return the RelationshipType builder
+     */
+    public Builder directional(Boolean directional) {
+      this.directional = directional;
       return this;
     }
 
@@ -134,24 +145,13 @@ public class RelationshipType extends GenericModel {
     }
 
     /**
-     * Set the labelFromTarget.
+     * Set the label.
      *
-     * @param labelFromTarget the labelFromTarget
+     * @param label the label
      * @return the RelationshipType builder
      */
-    public Builder labelFromTarget(String labelFromTarget) {
-      this.labelFromTarget = labelFromTarget;
-      return this;
-    }
-
-    /**
-     * Set the directional.
-     *
-     * @param directional the directional
-     * @return the RelationshipType builder
-     */
-    public Builder directional(Boolean directional) {
-      this.directional = directional;
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -192,11 +192,11 @@ public class RelationshipType extends GenericModel {
   protected RelationshipType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    label = builder.label;
-    rules = builder.rules;
-    labelFromSource = builder.labelFromSource;
     labelFromTarget = builder.labelFromTarget;
     directional = builder.directional;
+    rules = builder.rules;
+    labelFromSource = builder.labelFromSource;
+    label = builder.label;
     description = builder.description;
     cardinality = builder.cardinality;
     attributes = builder.attributes;
@@ -212,14 +212,25 @@ public class RelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the label.
+   * Gets the labelFromTarget.
    *
-   * The displayable text for this relationship element.
+   * The default label display text of a target record's relationship.
    *
-   * @return the label
+   * @return the labelFromTarget
    */
-  public String label() {
-    return label;
+  public String labelFromTarget() {
+    return labelFromTarget;
+  }
+
+  /**
+   * Gets the directional.
+   *
+   * Specifies whether the relationship is directional.
+   *
+   * @return the directional
+   */
+  public Boolean directional() {
+    return directional;
   }
 
   /**
@@ -245,25 +256,14 @@ public class RelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the labelFromTarget.
+   * Gets the label.
    *
-   * The default label display text of a target record's relationship.
+   * The displayable text for this relationship element.
    *
-   * @return the labelFromTarget
+   * @return the label
    */
-  public String labelFromTarget() {
-    return labelFromTarget;
-  }
-
-  /**
-   * Gets the directional.
-   *
-   * Specifies whether the relationship is directional.
-   *
-   * @return the directional
-   */
-  public Boolean directional() {
-    return directional;
+  public String label() {
+    return label;
   }
 
   /**

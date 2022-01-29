@@ -19,28 +19,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataRelationshipResponse extends GenericModel {
 
-  protected DataRelationshipResponseRelationship relationship;
-  protected DataRelationshipResponseMetadata metadata;
+  protected DataRelationship relationship;
+  protected Metadata metadata;
 
   /**
    * Gets the relationship.
    *
-   * Detailed information about the relationship and its attributes.
+   * Information about a relationship.
    *
    * @return the relationship
    */
-  public DataRelationshipResponseRelationship getRelationship() {
+  public DataRelationship getRelationship() {
     return relationship;
   }
 
   /**
    * Gets the metadata.
    *
-   * Supplemental information about the relationship.
+   * Supplemental information about a resource.
    *
    * @return the metadata
    */
-  public DataRelationshipResponseMetadata getMetadata() {
+  public Metadata getMetadata() {
     return metadata;
   }
 }

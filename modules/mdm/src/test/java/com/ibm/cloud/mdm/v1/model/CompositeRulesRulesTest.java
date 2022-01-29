@@ -36,11 +36,11 @@ public class CompositeRulesRulesTest {
   @Test
   public void testCompositeRulesRules() throws Throwable {
     CompositeRulesRule compositeRulesRuleModel = new CompositeRulesRule.Builder()
-      .choices(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .choices(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
-    assertEquals(compositeRulesRuleModel.choices(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(compositeRulesRuleModel.sources(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(compositeRulesRuleModel.choices(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
       .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })

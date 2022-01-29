@@ -22,40 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetMatchingJobs extends GenericModel {
 
-  protected String image;
-  @SerializedName("started_at")
-  protected String startedAt;
   @SerializedName("job_name")
   protected String jobName;
   @SerializedName("last_updated_at")
   protected String lastUpdatedAt;
   @SerializedName("created_at")
   protected String createdAt;
+  protected String image;
+  @SerializedName("started_at")
+  protected String startedAt;
   protected String status;
   protected Map<String, Object> summary;
   protected String id;
-
-  /**
-   * Gets the image.
-   *
-   * System defined image for a given job e.g. mdm-spark-job.
-   *
-   * @return the image
-   */
-  public String getImage() {
-    return image;
-  }
-
-  /**
-   * Gets the startedAt.
-   *
-   * System generated timestamp when a job was started.
-   *
-   * @return the startedAt
-   */
-  public String getStartedAt() {
-    return startedAt;
-  }
 
   /**
    * Gets the jobName.
@@ -88,6 +66,28 @@ public class GetMatchingJobs extends GenericModel {
    */
   public String getCreatedAt() {
     return createdAt;
+  }
+
+  /**
+   * Gets the image.
+   *
+   * System defined image for a given job e.g. mdm-spark-job.
+   *
+   * @return the image
+   */
+  public String getImage() {
+    return image;
+  }
+
+  /**
+   * Gets the startedAt.
+   *
+   * System generated timestamp when a job was started.
+   *
+   * @return the startedAt
+   */
+  public String getStartedAt() {
+    return startedAt;
   }
 
   /**

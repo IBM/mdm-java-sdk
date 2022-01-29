@@ -13,9 +13,9 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
+import com.ibm.cloud.mdm.v1.model.DataRecord;
 import com.ibm.cloud.mdm.v1.model.DataRecordResponse;
-import com.ibm.cloud.mdm.v1.model.DataRecordResponseMetadata;
-import com.ibm.cloud.mdm.v1.model.DataRecordResponseRecord;
+import com.ibm.cloud.mdm.v1.model.Metadata;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

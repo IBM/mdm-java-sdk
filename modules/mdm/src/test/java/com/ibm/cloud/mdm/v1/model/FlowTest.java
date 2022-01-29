@@ -33,10 +33,10 @@ public class FlowTest {
   public void testFlow() throws Throwable {
     Flow flowModel = new Flow();
     assertNull(flowModel.getFlowType());
-    assertNull(flowModel.getRejections());
-    assertNull(flowModel.getApprovals());
     assertNull(flowModel.getFlowState());
     assertNull(flowModel.getFlowId());
+    assertNull(flowModel.getRejections());
+    assertNull(flowModel.getApprovals());
     assertNull(flowModel.isActive());
   }
 }

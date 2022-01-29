@@ -13,7 +13,6 @@
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.List;
-import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -23,50 +22,17 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataResponse extends GenericModel {
 
-  protected List<InstanceMetadataResponseCatalog> catalogs;
-  @SerializedName("job_project_id")
-  protected String jobProjectId;
-  @SerializedName("cos_endpoint")
-  protected String cosEndpoint;
   protected String label;
   protected List<InstanceMetadataResponseProject> projects;
   @SerializedName("cos_crn")
   protected String cosCrn;
   @SerializedName("bulkload_bucket")
-  protected Map<String, Object> bulkloadBucket;
-
-  /**
-   * Gets the catalogs.
-   *
-   * Collection of catalog objects as available in Watson Knowledge Catalog (WKC).
-   *
-   * @return the catalogs
-   */
-  public List<InstanceMetadataResponseCatalog> getCatalogs() {
-    return catalogs;
-  }
-
-  /**
-   * Gets the jobProjectId.
-   *
-   * The unique identifier of a project for the jobs.
-   *
-   * @return the jobProjectId
-   */
-  public String getJobProjectId() {
-    return jobProjectId;
-  }
-
-  /**
-   * Gets the cosEndpoint.
-   *
-   * Endpoint of a cloud object storage.
-   *
-   * @return the cosEndpoint
-   */
-  public String getCosEndpoint() {
-    return cosEndpoint;
-  }
+  protected InstanceMetadataResponseBulkloadBucket bulkloadBucket;
+  protected List<InstanceMetadataResponseCatalog> catalogs;
+  @SerializedName("job_project_id")
+  protected String jobProjectId;
+  @SerializedName("cos_endpoint")
+  protected String cosEndpoint;
 
   /**
    * Gets the label.
@@ -108,8 +74,41 @@ public class InstanceMetadataResponse extends GenericModel {
    *
    * @return the bulkloadBucket
    */
-  public Map<String, Object> getBulkloadBucket() {
+  public InstanceMetadataResponseBulkloadBucket getBulkloadBucket() {
     return bulkloadBucket;
+  }
+
+  /**
+   * Gets the catalogs.
+   *
+   * Collection of catalog objects as available in Watson Knowledge Catalog (WKC).
+   *
+   * @return the catalogs
+   */
+  public List<InstanceMetadataResponseCatalog> getCatalogs() {
+    return catalogs;
+  }
+
+  /**
+   * Gets the jobProjectId.
+   *
+   * The unique identifier of a project for the jobs.
+   *
+   * @return the jobProjectId
+   */
+  public String getJobProjectId() {
+    return jobProjectId;
+  }
+
+  /**
+   * Gets the cosEndpoint.
+   *
+   * Endpoint of a cloud object storage.
+   *
+   * @return the cosEndpoint
+   */
+  public String getCosEndpoint() {
+    return cosEndpoint;
   }
 }
 

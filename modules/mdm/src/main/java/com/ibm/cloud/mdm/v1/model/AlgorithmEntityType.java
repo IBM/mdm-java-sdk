@@ -22,29 +22,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmEntityType extends GenericModel {
 
-  @SerializedName("clerical_review_threshold")
-  protected Float clericalReviewThreshold;
-  @SerializedName("auto_link_threshold")
-  protected Float autoLinkThreshold;
   @SerializedName("compare_methods")
   protected Map<String, AlgorithmCompareMethod> compareMethods;
   @SerializedName("bucket_generators")
   protected Map<String, AlgorithmBucketGenerator> bucketGenerators;
+  @SerializedName("clerical_review_threshold")
+  protected Float clericalReviewThreshold;
+  @SerializedName("auto_link_threshold")
+  protected Float autoLinkThreshold;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Float clericalReviewThreshold;
-    private Float autoLinkThreshold;
     private Map<String, AlgorithmCompareMethod> compareMethods;
     private Map<String, AlgorithmBucketGenerator> bucketGenerators;
+    private Float clericalReviewThreshold;
+    private Float autoLinkThreshold;
 
     private Builder(AlgorithmEntityType algorithmEntityType) {
-      this.clericalReviewThreshold = algorithmEntityType.clericalReviewThreshold;
-      this.autoLinkThreshold = algorithmEntityType.autoLinkThreshold;
       this.compareMethods = algorithmEntityType.compareMethods;
       this.bucketGenerators = algorithmEntityType.bucketGenerators;
+      this.clericalReviewThreshold = algorithmEntityType.clericalReviewThreshold;
+      this.autoLinkThreshold = algorithmEntityType.autoLinkThreshold;
     }
 
     /**
@@ -72,28 +72,6 @@ public class AlgorithmEntityType extends GenericModel {
     }
 
     /**
-     * Set the clericalReviewThreshold.
-     *
-     * @param clericalReviewThreshold the clericalReviewThreshold
-     * @return the AlgorithmEntityType builder
-     */
-    public Builder clericalReviewThreshold(Float clericalReviewThreshold) {
-      this.clericalReviewThreshold = clericalReviewThreshold;
-      return this;
-    }
-
-    /**
-     * Set the autoLinkThreshold.
-     *
-     * @param autoLinkThreshold the autoLinkThreshold
-     * @return the AlgorithmEntityType builder
-     */
-    public Builder autoLinkThreshold(Float autoLinkThreshold) {
-      this.autoLinkThreshold = autoLinkThreshold;
-      return this;
-    }
-
-    /**
      * Set the compareMethods.
      *
      * @param compareMethods the compareMethods
@@ -114,15 +92,37 @@ public class AlgorithmEntityType extends GenericModel {
       this.bucketGenerators = bucketGenerators;
       return this;
     }
+
+    /**
+     * Set the clericalReviewThreshold.
+     *
+     * @param clericalReviewThreshold the clericalReviewThreshold
+     * @return the AlgorithmEntityType builder
+     */
+    public Builder clericalReviewThreshold(Float clericalReviewThreshold) {
+      this.clericalReviewThreshold = clericalReviewThreshold;
+      return this;
+    }
+
+    /**
+     * Set the autoLinkThreshold.
+     *
+     * @param autoLinkThreshold the autoLinkThreshold
+     * @return the AlgorithmEntityType builder
+     */
+    public Builder autoLinkThreshold(Float autoLinkThreshold) {
+      this.autoLinkThreshold = autoLinkThreshold;
+      return this;
+    }
   }
 
   protected AlgorithmEntityType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.autoLinkThreshold,
       "autoLinkThreshold cannot be null");
-    clericalReviewThreshold = builder.clericalReviewThreshold;
-    autoLinkThreshold = builder.autoLinkThreshold;
     compareMethods = builder.compareMethods;
     bucketGenerators = builder.bucketGenerators;
+    clericalReviewThreshold = builder.clericalReviewThreshold;
+    autoLinkThreshold = builder.autoLinkThreshold;
   }
 
   /**
@@ -132,28 +132,6 @@ public class AlgorithmEntityType extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the clericalReviewThreshold.
-   *
-   * The minimum matching score between two records for clerical review.
-   *
-   * @return the clericalReviewThreshold
-   */
-  public Float clericalReviewThreshold() {
-    return clericalReviewThreshold;
-  }
-
-  /**
-   * Gets the autoLinkThreshold.
-   *
-   * The minimum matching score between two records to automatically link them together.
-   *
-   * @return the autoLinkThreshold
-   */
-  public Float autoLinkThreshold() {
-    return autoLinkThreshold;
   }
 
   /**
@@ -176,6 +154,28 @@ public class AlgorithmEntityType extends GenericModel {
    */
   public Map<String, AlgorithmBucketGenerator> bucketGenerators() {
     return bucketGenerators;
+  }
+
+  /**
+   * Gets the clericalReviewThreshold.
+   *
+   * The minimum matching score between two records for clerical review.
+   *
+   * @return the clericalReviewThreshold
+   */
+  public Float clericalReviewThreshold() {
+    return clericalReviewThreshold;
+  }
+
+  /**
+   * Gets the autoLinkThreshold.
+   *
+   * The minimum matching score between two records to automatically link them together.
+   *
+   * @return the autoLinkThreshold
+   */
+  public Float autoLinkThreshold() {
+    return autoLinkThreshold;
   }
 }
 

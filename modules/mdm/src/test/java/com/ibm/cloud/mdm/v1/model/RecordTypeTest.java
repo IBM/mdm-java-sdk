@@ -33,6 +33,21 @@ public class RecordTypeTest {
 
   @Test
   public void testRecordType() throws Throwable {
+    Attribute attributeModel = new Attribute.Builder()
+      .indexed(true)
+      .classification("testString")
+      .label("testString")
+      .description("testString")
+      .attributeType("email")
+      .cardinality("testString")
+      .build();
+    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
+    assertEquals(attributeModel.classification(), "testString");
+    assertEquals(attributeModel.label(), "testString");
+    assertEquals(attributeModel.description(), "testString");
+    assertEquals(attributeModel.attributeType(), "email");
+    assertEquals(attributeModel.cardinality(), "testString");
+
     EntityType entityTypeModel = new EntityType.Builder()
       .description("testString")
       .label("testString")
@@ -40,31 +55,16 @@ public class RecordTypeTest {
     assertEquals(entityTypeModel.description(), "testString");
     assertEquals(entityTypeModel.label(), "testString");
 
-    Attribute attributeModel = new Attribute.Builder()
-      .indexed(true)
-      .description("testString")
-      .label("testString")
-      .classification("testString")
-      .cardinality("testString")
-      .attributeType("email")
-      .build();
-    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModel.description(), "testString");
-    assertEquals(attributeModel.label(), "testString");
-    assertEquals(attributeModel.classification(), "testString");
-    assertEquals(attributeModel.cardinality(), "testString");
-    assertEquals(attributeModel.attributeType(), "email");
-
     RecordType recordTypeModel = new RecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } })
       .label("testString")
       .description("testString")
       .attributes(new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } })
+      .entityTypes(new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } })
       .build();
-    assertEquals(recordTypeModel.entityTypes(), new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } });
     assertEquals(recordTypeModel.label(), "testString");
     assertEquals(recordTypeModel.description(), "testString");
     assertEquals(recordTypeModel.attributes(), new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } });
+    assertEquals(recordTypeModel.entityTypes(), new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } });
 
     String json = TestUtilities.serialize(recordTypeModel);
 

@@ -29,16 +29,16 @@ public class RunDataBulkLoadOptions extends GenericModel {
     String REPLACE = "replace";
   }
 
-  protected BulkLoadRequestDataSource dataSource;
-  protected BulkLoadRequestDataStructure dataStructure;
+  protected DataLoadSource dataSource;
+  protected DataLoadStructure dataStructure;
   protected String updateStrategy;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private BulkLoadRequestDataSource dataSource;
-    private BulkLoadRequestDataStructure dataStructure;
+    private DataLoadSource dataSource;
+    private DataLoadStructure dataStructure;
     private String updateStrategy;
 
     private Builder(RunDataBulkLoadOptions runDataBulkLoadOptions) {
@@ -58,7 +58,7 @@ public class RunDataBulkLoadOptions extends GenericModel {
      *
      * @param dataSource the dataSource
      */
-    public Builder(BulkLoadRequestDataSource dataSource) {
+    public Builder(DataLoadSource dataSource) {
       this.dataSource = dataSource;
     }
 
@@ -77,7 +77,7 @@ public class RunDataBulkLoadOptions extends GenericModel {
      * @param dataSource the dataSource
      * @return the RunDataBulkLoadOptions builder
      */
-    public Builder dataSource(BulkLoadRequestDataSource dataSource) {
+    public Builder dataSource(DataLoadSource dataSource) {
       this.dataSource = dataSource;
       return this;
     }
@@ -88,7 +88,7 @@ public class RunDataBulkLoadOptions extends GenericModel {
      * @param dataStructure the dataStructure
      * @return the RunDataBulkLoadOptions builder
      */
-    public Builder dataStructure(BulkLoadRequestDataStructure dataStructure) {
+    public Builder dataStructure(DataLoadStructure dataStructure) {
       this.dataStructure = dataStructure;
       return this;
     }
@@ -125,22 +125,22 @@ public class RunDataBulkLoadOptions extends GenericModel {
   /**
    * Gets the dataSource.
    *
-   * Information about the source of the data.
+   * Information about the source of the data to be loaded.
    *
    * @return the dataSource
    */
-  public BulkLoadRequestDataSource dataSource() {
+  public DataLoadSource dataSource() {
     return dataSource;
   }
 
   /**
    * Gets the dataStructure.
    *
-   * The structure of the data within the source directory.
+   * Information about how the source data is structured on the storage system.
    *
    * @return the dataStructure
    */
-  public BulkLoadRequestDataStructure dataStructure() {
+  public DataLoadStructure dataStructure() {
     return dataStructure;
   }
 

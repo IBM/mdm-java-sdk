@@ -47,6 +47,21 @@ public class ConfigDataModelTest {
 
   @Test
   public void testConfigDataModel() throws Throwable {
+    Attribute attributeModel = new Attribute.Builder()
+      .indexed(true)
+      .classification("testString")
+      .label("testString")
+      .description("testString")
+      .attributeType("email")
+      .cardinality("testString")
+      .build();
+    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
+    assertEquals(attributeModel.classification(), "testString");
+    assertEquals(attributeModel.label(), "testString");
+    assertEquals(attributeModel.description(), "testString");
+    assertEquals(attributeModel.attributeType(), "email");
+    assertEquals(attributeModel.cardinality(), "testString");
+
     EntityType entityTypeModel = new EntityType.Builder()
       .description("testString")
       .label("testString")
@@ -54,31 +69,16 @@ public class ConfigDataModelTest {
     assertEquals(entityTypeModel.description(), "testString");
     assertEquals(entityTypeModel.label(), "testString");
 
-    Attribute attributeModel = new Attribute.Builder()
-      .indexed(true)
-      .description("testString")
-      .label("testString")
-      .classification("testString")
-      .cardinality("testString")
-      .attributeType("email")
-      .build();
-    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModel.description(), "testString");
-    assertEquals(attributeModel.label(), "testString");
-    assertEquals(attributeModel.classification(), "testString");
-    assertEquals(attributeModel.cardinality(), "testString");
-    assertEquals(attributeModel.attributeType(), "email");
-
     RecordType recordTypeModel = new RecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } })
       .label("testString")
       .description("testString")
       .attributes(new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } })
+      .entityTypes(new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } })
       .build();
-    assertEquals(recordTypeModel.entityTypes(), new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } });
     assertEquals(recordTypeModel.label(), "testString");
     assertEquals(recordTypeModel.description(), "testString");
     assertEquals(recordTypeModel.attributes(), new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } });
+    assertEquals(recordTypeModel.entityTypes(), new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } });
 
     Target targetModel = new Target.Builder()
       .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
@@ -102,34 +102,34 @@ public class ConfigDataModelTest {
     assertEquals(ruleModel.source(), sourceModel);
 
     RelationshipType relationshipTypeModel = new RelationshipType.Builder()
-      .label("testString")
-      .rules(new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)))
-      .labelFromSource("testString")
       .labelFromTarget("testString")
       .directional(true)
+      .rules(new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)))
+      .labelFromSource("testString")
+      .label("testString")
       .description("testString")
       .cardinality("testString")
       .attributes(new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } })
       .build();
-    assertEquals(relationshipTypeModel.label(), "testString");
-    assertEquals(relationshipTypeModel.rules(), new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)));
-    assertEquals(relationshipTypeModel.labelFromSource(), "testString");
     assertEquals(relationshipTypeModel.labelFromTarget(), "testString");
     assertEquals(relationshipTypeModel.directional(), Boolean.valueOf(true));
+    assertEquals(relationshipTypeModel.rules(), new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)));
+    assertEquals(relationshipTypeModel.labelFromSource(), "testString");
+    assertEquals(relationshipTypeModel.label(), "testString");
     assertEquals(relationshipTypeModel.description(), "testString");
     assertEquals(relationshipTypeModel.cardinality(), "testString");
     assertEquals(relationshipTypeModel.attributes(), new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } });
 
     FieldType fieldTypeModel = new FieldType.Builder()
       .label("testString")
-      .description("testString")
-      .classification("testString")
       .indexed(true)
+      .classification("testString")
+      .description("testString")
       .build();
     assertEquals(fieldTypeModel.label(), "testString");
-    assertEquals(fieldTypeModel.description(), "testString");
-    assertEquals(fieldTypeModel.classification(), "testString");
     assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
+    assertEquals(fieldTypeModel.classification(), "testString");
+    assertEquals(fieldTypeModel.description(), "testString");
 
     AttributeType attributeTypeModel = new AttributeType.Builder()
       .label("testString")
@@ -143,54 +143,54 @@ public class ConfigDataModelTest {
     assertEquals(attributeTypeModel.fields(), new java.util.HashMap<String, FieldType>() { { put("foo", fieldTypeModel); } });
 
     RecordTypes recordTypesModel = new RecordTypes.Builder()
-      .dataType("testString")
-      .indexed(true)
       .editable(true)
+      .indexed(true)
+      .dataType("testString")
       .label("testString")
       .description("testString")
       .build();
-    assertEquals(recordTypesModel.dataType(), "testString");
-    assertEquals(recordTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(recordTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(recordTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(recordTypesModel.dataType(), "testString");
     assertEquals(recordTypesModel.label(), "testString");
     assertEquals(recordTypesModel.description(), "testString");
 
     EntityTypes entityTypesModel = new EntityTypes.Builder()
-      .dataType("testString")
-      .indexed(true)
       .editable(true)
+      .indexed(true)
+      .dataType("testString")
       .label("testString")
       .description("testString")
       .build();
-    assertEquals(entityTypesModel.dataType(), "testString");
-    assertEquals(entityTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(entityTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(entityTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(entityTypesModel.dataType(), "testString");
     assertEquals(entityTypesModel.label(), "testString");
     assertEquals(entityTypesModel.description(), "testString");
 
     SystemPropertiesRelationshipTypes systemPropertiesRelationshipTypesModel = new SystemPropertiesRelationshipTypes.Builder()
-      .dataType("testString")
-      .indexed(true)
       .editable(true)
+      .indexed(true)
+      .dataType("testString")
       .label("testString")
       .description("testString")
       .build();
-    assertEquals(systemPropertiesRelationshipTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesRelationshipTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(systemPropertiesRelationshipTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesRelationshipTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesRelationshipTypesModel.dataType(), "testString");
     assertEquals(systemPropertiesRelationshipTypesModel.label(), "testString");
     assertEquals(systemPropertiesRelationshipTypesModel.description(), "testString");
 
     AttributeTypes attributeTypesModel = new AttributeTypes.Builder()
-      .dataType("testString")
-      .indexed(true)
       .editable(true)
+      .indexed(true)
+      .dataType("testString")
       .label("testString")
       .description("testString")
       .build();
-    assertEquals(attributeTypesModel.dataType(), "testString");
-    assertEquals(attributeTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(attributeTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(attributeTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(attributeTypesModel.dataType(), "testString");
     assertEquals(attributeTypesModel.label(), "testString");
     assertEquals(attributeTypesModel.description(), "testString");
 

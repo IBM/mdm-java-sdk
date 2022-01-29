@@ -46,8 +46,8 @@ public class PutAlgorithmTest {
   @Test
   public void testPutAlgorithm() throws Throwable {
     PutAlgorithm putAlgorithmModel = new PutAlgorithm();
+    assertNull(putAlgorithmModel.getAlgorithm());
     assertNull(putAlgorithmModel.getFlowState());
     assertNull(putAlgorithmModel.getFlowId());
-    assertNull(putAlgorithmModel.getAlgorithm());
   }
 }

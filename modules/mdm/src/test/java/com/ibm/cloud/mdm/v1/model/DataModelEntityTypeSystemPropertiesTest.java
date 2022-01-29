@@ -46,18 +46,18 @@ public class DataModelEntityTypeSystemPropertiesTest {
     assertEquals(dataModelSystemPropertyModel.description(), "testString");
 
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-      .entityId(dataModelSystemPropertyModel)
       .entityLastUpdated(dataModelSystemPropertyModel)
+      .entityId(dataModelSystemPropertyModel)
       .build();
-    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityId(), dataModelSystemPropertyModel);
     assertEquals(dataModelEntityTypeSystemPropertiesModel.entityLastUpdated(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityId(), dataModelSystemPropertyModel);
 
     String json = TestUtilities.serialize(dataModelEntityTypeSystemPropertiesModel);
 
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModelNew = TestUtilities.deserialize(json, DataModelEntityTypeSystemProperties.class);
     assertTrue(dataModelEntityTypeSystemPropertiesModelNew instanceof DataModelEntityTypeSystemProperties);
-    assertEquals(dataModelEntityTypeSystemPropertiesModelNew.entityId().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelEntityTypeSystemPropertiesModelNew.entityLastUpdated().toString(), dataModelSystemPropertyModel.toString());
+    assertEquals(dataModelEntityTypeSystemPropertiesModelNew.entityId().toString(), dataModelSystemPropertyModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

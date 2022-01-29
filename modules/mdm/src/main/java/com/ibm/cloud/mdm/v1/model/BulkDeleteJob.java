@@ -89,7 +89,7 @@ public class BulkDeleteJob extends GenericModel {
   @SerializedName("record_source")
   protected String recordSource;
   @SerializedName("search_criteria")
-  protected BulkDeleteJobSearchCriteria searchCriteria;
+  protected DataSearchCriteria searchCriteria;
 
   /**
    * Gets the jobId.
@@ -193,11 +193,11 @@ public class BulkDeleteJob extends GenericModel {
   /**
    * Gets the searchCriteria.
    *
-   * Search criteria for delete by search.
+   * A set of criteria for a search operation.
    *
    * @return the searchCriteria
    */
-  public BulkDeleteJobSearchCriteria getSearchCriteria() {
+  public DataSearchCriteria getSearchCriteria() {
     return searchCriteria;
   }
 }

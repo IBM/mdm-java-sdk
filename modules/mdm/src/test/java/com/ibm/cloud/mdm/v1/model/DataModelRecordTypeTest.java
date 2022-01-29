@@ -35,29 +35,29 @@ public class DataModelRecordTypeTest {
   public void testDataModelRecordType() throws Throwable {
     DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
       .label("testString")
-      .description("testString")
       .type("testString")
+      .description("testString")
       .build();
     assertEquals(dataModelEntityTypeModel.label(), "testString");
-    assertEquals(dataModelEntityTypeModel.description(), "testString");
     assertEquals(dataModelEntityTypeModel.type(), "testString");
+    assertEquals(dataModelEntityTypeModel.description(), "testString");
 
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
       .label("testString")
-      .matchingType("testString")
-      .attributeType("testString")
       .indexed(true)
       .classification("testString")
-      .description("testString")
+      .matchingType("testString")
       .cardinality("testString")
+      .description("testString")
+      .attributeType("testString")
       .build();
     assertEquals(dataModelAttributeModel.label(), "testString");
-    assertEquals(dataModelAttributeModel.matchingType(), "testString");
-    assertEquals(dataModelAttributeModel.attributeType(), "testString");
     assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelAttributeModel.classification(), "testString");
-    assertEquals(dataModelAttributeModel.description(), "testString");
+    assertEquals(dataModelAttributeModel.matchingType(), "testString");
     assertEquals(dataModelAttributeModel.cardinality(), "testString");
+    assertEquals(dataModelAttributeModel.description(), "testString");
+    assertEquals(dataModelAttributeModel.attributeType(), "testString");
 
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
       .label("testString")

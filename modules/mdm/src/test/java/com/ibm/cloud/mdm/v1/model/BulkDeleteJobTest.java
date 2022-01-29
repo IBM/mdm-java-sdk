@@ -14,10 +14,10 @@
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.BulkDeleteJob;
-import com.ibm.cloud.mdm.v1.model.BulkDeleteJobSearchCriteria;
-import com.ibm.cloud.mdm.v1.model.BulkDeleteJobSearchCriteriaQuery;
+import com.ibm.cloud.mdm.v1.model.DataSearchCriteria;
 import com.ibm.cloud.mdm.v1.model.Expression;
 import com.ibm.cloud.mdm.v1.model.SearchFilter;
+import com.ibm.cloud.mdm.v1.model.SearchQuery;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

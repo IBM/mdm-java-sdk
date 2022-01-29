@@ -39,7 +39,7 @@ public class RunDataBulkDeleteOptions extends GenericModel {
   protected String deleteType;
   protected List<String> collectionIds;
   protected String recordSource;
-  protected BulkDeleteRequestSearchCriteria searchCriteria;
+  protected DataSearchCriteria searchCriteria;
 
   /**
    * Builder.
@@ -48,7 +48,7 @@ public class RunDataBulkDeleteOptions extends GenericModel {
     private String deleteType;
     private List<String> collectionIds;
     private String recordSource;
-    private BulkDeleteRequestSearchCriteria searchCriteria;
+    private DataSearchCriteria searchCriteria;
 
     private Builder(RunDataBulkDeleteOptions runDataBulkDeleteOptions) {
       this.deleteType = runDataBulkDeleteOptions.deleteType;
@@ -137,7 +137,7 @@ public class RunDataBulkDeleteOptions extends GenericModel {
      * @param searchCriteria the searchCriteria
      * @return the RunDataBulkDeleteOptions builder
      */
-    public Builder searchCriteria(BulkDeleteRequestSearchCriteria searchCriteria) {
+    public Builder searchCriteria(DataSearchCriteria searchCriteria) {
       this.searchCriteria = searchCriteria;
       return this;
     }
@@ -197,11 +197,11 @@ public class RunDataBulkDeleteOptions extends GenericModel {
   /**
    * Gets the searchCriteria.
    *
-   * Search criteria for data to be deleted. Required on delete by search.
+   * A set of criteria for a search operation.
    *
    * @return the searchCriteria
    */
-  public BulkDeleteRequestSearchCriteria searchCriteria() {
+  public DataSearchCriteria searchCriteria() {
     return searchCriteria;
   }
 }

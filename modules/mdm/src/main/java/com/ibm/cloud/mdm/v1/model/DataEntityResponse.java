@@ -19,28 +19,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataEntityResponse extends GenericModel {
 
-  protected DataEntityResponseEntity entity;
-  protected DataEntityResponseMetadata metadata;
+  protected DataEntity entity;
+  protected Metadata metadata;
 
   /**
    * Gets the entity.
    *
-   * The composite view of the entity.
+   * Information about an entity.
    *
    * @return the entity
    */
-  public DataEntityResponseEntity getEntity() {
+  public DataEntity getEntity() {
     return entity;
   }
 
   /**
    * Gets the metadata.
    *
-   * Supplemental information about the entity.
+   * Supplemental information about a resource.
    *
    * @return the metadata
    */
-  public DataEntityResponseMetadata getMetadata() {
+  public Metadata getMetadata() {
     return metadata;
   }
 }

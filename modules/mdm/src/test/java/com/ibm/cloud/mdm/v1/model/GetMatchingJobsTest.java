@@ -32,11 +32,11 @@ public class GetMatchingJobsTest {
   @Test
   public void testGetMatchingJobs() throws Throwable {
     GetMatchingJobs getMatchingJobsModel = new GetMatchingJobs();
-    assertNull(getMatchingJobsModel.getImage());
-    assertNull(getMatchingJobsModel.getStartedAt());
     assertNull(getMatchingJobsModel.getJobName());
     assertNull(getMatchingJobsModel.getLastUpdatedAt());
     assertNull(getMatchingJobsModel.getCreatedAt());
+    assertNull(getMatchingJobsModel.getImage());
+    assertNull(getMatchingJobsModel.getStartedAt());
     assertNull(getMatchingJobsModel.getStatus());
     assertNull(getMatchingJobsModel.getSummary());
     assertNull(getMatchingJobsModel.getId());
