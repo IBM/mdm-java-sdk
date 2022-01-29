@@ -23,23 +23,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmStandardizer extends GenericModel {
 
+  protected List<AlgorithmInput> inputs;
   protected String label;
   @SerializedName("standardizer_recipe")
   protected List<AlgorithmStandardizerStep> standardizerRecipe;
-  protected List<AlgorithmInput> inputs;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private List<AlgorithmInput> inputs;
     private String label;
     private List<AlgorithmStandardizerStep> standardizerRecipe;
-    private List<AlgorithmInput> inputs;
 
     private Builder(AlgorithmStandardizer algorithmStandardizer) {
+      this.inputs = algorithmStandardizer.inputs;
       this.label = algorithmStandardizer.label;
       this.standardizerRecipe = algorithmStandardizer.standardizerRecipe;
-      this.inputs = algorithmStandardizer.inputs;
     }
 
     /**
@@ -51,14 +51,14 @@ public class AlgorithmStandardizer extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
+     * @param inputs the inputs
      * @param label the label
      * @param standardizerRecipe the standardizerRecipe
-     * @param inputs the inputs
      */
-    public Builder(String label, List<AlgorithmStandardizerStep> standardizerRecipe, List<AlgorithmInput> inputs) {
+    public Builder(List<AlgorithmInput> inputs, String label, List<AlgorithmStandardizerStep> standardizerRecipe) {
+      this.inputs = inputs;
       this.label = label;
       this.standardizerRecipe = standardizerRecipe;
-      this.inputs = inputs;
     }
 
     /**
@@ -68,6 +68,22 @@ public class AlgorithmStandardizer extends GenericModel {
      */
     public AlgorithmStandardizer build() {
       return new AlgorithmStandardizer(this);
+    }
+
+    /**
+     * Adds an inputs to inputs.
+     *
+     * @param inputs the new inputs
+     * @return the AlgorithmStandardizer builder
+     */
+    public Builder addInputs(AlgorithmInput inputs) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,
+        "inputs cannot be null");
+      if (this.inputs == null) {
+        this.inputs = new ArrayList<AlgorithmInput>();
+      }
+      this.inputs.add(inputs);
+      return this;
     }
 
     /**
@@ -87,18 +103,14 @@ public class AlgorithmStandardizer extends GenericModel {
     }
 
     /**
-     * Adds an inputs to inputs.
+     * Set the inputs.
+     * Existing inputs will be replaced.
      *
-     * @param inputs the new inputs
+     * @param inputs the inputs
      * @return the AlgorithmStandardizer builder
      */
-    public Builder addInputs(AlgorithmInput inputs) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,
-        "inputs cannot be null");
-      if (this.inputs == null) {
-        this.inputs = new ArrayList<AlgorithmInput>();
-      }
-      this.inputs.add(inputs);
+    public Builder inputs(List<AlgorithmInput> inputs) {
+      this.inputs = inputs;
       return this;
     }
 
@@ -124,30 +136,18 @@ public class AlgorithmStandardizer extends GenericModel {
       this.standardizerRecipe = standardizerRecipe;
       return this;
     }
-
-    /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
-     *
-     * @param inputs the inputs
-     * @return the AlgorithmStandardizer builder
-     */
-    public Builder inputs(List<AlgorithmInput> inputs) {
-      this.inputs = inputs;
-      return this;
-    }
   }
 
   protected AlgorithmStandardizer(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.inputs,
+      "inputs cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.standardizerRecipe,
       "standardizerRecipe cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.inputs,
-      "inputs cannot be null");
+    inputs = builder.inputs;
     label = builder.label;
     standardizerRecipe = builder.standardizerRecipe;
-    inputs = builder.inputs;
   }
 
   /**
@@ -157,6 +157,17 @@ public class AlgorithmStandardizer extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the inputs.
+   *
+   * Collection of input definitions used for standardization.
+   *
+   * @return the inputs
+   */
+  public List<AlgorithmInput> inputs() {
+    return inputs;
   }
 
   /**
@@ -179,17 +190,6 @@ public class AlgorithmStandardizer extends GenericModel {
    */
   public List<AlgorithmStandardizerStep> standardizerRecipe() {
     return standardizerRecipe;
-  }
-
-  /**
-   * Gets the inputs.
-   *
-   * Collection of input definitions used for standardization.
-   *
-   * @return the inputs
-   */
-  public List<AlgorithmInput> inputs() {
-    return inputs;
   }
 }
 

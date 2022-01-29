@@ -36,17 +36,8 @@ import com.ibm.cloud.mdm.v1.model.Attribute;
 import com.ibm.cloud.mdm.v1.model.AttributeType;
 import com.ibm.cloud.mdm.v1.model.AttributeTypes;
 import com.ibm.cloud.mdm.v1.model.BulkDeleteJob;
-import com.ibm.cloud.mdm.v1.model.BulkDeleteJobSearchCriteria;
-import com.ibm.cloud.mdm.v1.model.BulkDeleteJobSearchCriteriaQuery;
-import com.ibm.cloud.mdm.v1.model.BulkDeleteRequestSearchCriteria;
-import com.ibm.cloud.mdm.v1.model.BulkDeleteRequestSearchCriteriaQuery;
 import com.ibm.cloud.mdm.v1.model.BulkLoadJob;
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataSource;
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataStructure;
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataStructureRecordPropertiesContents;
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataStructureRecordPropertiesContentsCsvOptions;
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataStructureRelationshipPropertiesContents;
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptions;
+import com.ibm.cloud.mdm.v1.model.CSVOptions;
 import com.ibm.cloud.mdm.v1.model.CleanUpDataJobOptions;
 import com.ibm.cloud.mdm.v1.model.Compare;
 import com.ibm.cloud.mdm.v1.model.CompareMatchingIndexOptions;
@@ -74,15 +65,14 @@ import com.ibm.cloud.mdm.v1.model.DataEntitiesResponseNext;
 import com.ibm.cloud.mdm.v1.model.DataEntitiesResponsePrevious;
 import com.ibm.cloud.mdm.v1.model.DataEntity;
 import com.ibm.cloud.mdm.v1.model.DataEntityResponse;
-import com.ibm.cloud.mdm.v1.model.DataEntityResponseEntity;
-import com.ibm.cloud.mdm.v1.model.DataEntityResponseMetadata;
 import com.ibm.cloud.mdm.v1.model.DataExport;
-import com.ibm.cloud.mdm.v1.model.DataExportSearchCriteria;
-import com.ibm.cloud.mdm.v1.model.DataExportSearchCriteriaQuery;
 import com.ibm.cloud.mdm.v1.model.DataExports;
 import com.ibm.cloud.mdm.v1.model.DataJob;
 import com.ibm.cloud.mdm.v1.model.DataJobs;
+import com.ibm.cloud.mdm.v1.model.DataLoadProperties;
+import com.ibm.cloud.mdm.v1.model.DataLoadSource;
 import com.ibm.cloud.mdm.v1.model.DataLoadSourceCredentials;
+import com.ibm.cloud.mdm.v1.model.DataLoadStructure;
 import com.ibm.cloud.mdm.v1.model.DataMapping;
 import com.ibm.cloud.mdm.v1.model.DataModel;
 import com.ibm.cloud.mdm.v1.model.DataModelAttribute;
@@ -101,15 +91,11 @@ import com.ibm.cloud.mdm.v1.model.DataModelSystemProperties;
 import com.ibm.cloud.mdm.v1.model.DataModelSystemProperty;
 import com.ibm.cloud.mdm.v1.model.DataRecord;
 import com.ibm.cloud.mdm.v1.model.DataRecordResponse;
-import com.ibm.cloud.mdm.v1.model.DataRecordResponseMetadata;
-import com.ibm.cloud.mdm.v1.model.DataRecordResponseRecord;
 import com.ibm.cloud.mdm.v1.model.DataRecordsResponse;
 import com.ibm.cloud.mdm.v1.model.DataRelationship;
 import com.ibm.cloud.mdm.v1.model.DataRelationshipResponse;
-import com.ibm.cloud.mdm.v1.model.DataRelationshipResponseMetadata;
-import com.ibm.cloud.mdm.v1.model.DataRelationshipResponseRelationship;
 import com.ibm.cloud.mdm.v1.model.DataRelationshipsResponse;
-import com.ibm.cloud.mdm.v1.model.DataSearchCriteriaQuery;
+import com.ibm.cloud.mdm.v1.model.DataSearchCriteria;
 import com.ibm.cloud.mdm.v1.model.DataSearchResults;
 import com.ibm.cloud.mdm.v1.model.DataSearchResultsStats;
 import com.ibm.cloud.mdm.v1.model.DataStatistics;
@@ -121,8 +107,6 @@ import com.ibm.cloud.mdm.v1.model.ElementWithAttributes;
 import com.ibm.cloud.mdm.v1.model.EntityBreakdown;
 import com.ibm.cloud.mdm.v1.model.EntityType;
 import com.ibm.cloud.mdm.v1.model.EntityTypes;
-import com.ibm.cloud.mdm.v1.model.ExportRequestSearchCriteria;
-import com.ibm.cloud.mdm.v1.model.ExportRequestSearchCriteriaQuery;
 import com.ibm.cloud.mdm.v1.model.Expression;
 import com.ibm.cloud.mdm.v1.model.FieldType;
 import com.ibm.cloud.mdm.v1.model.Flow;
@@ -139,6 +123,7 @@ import com.ibm.cloud.mdm.v1.model.GetDataGraphStatisticsOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataJobOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataRecordOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataRelationshipForRecordOptions;
+import com.ibm.cloud.mdm.v1.model.GetDataRelationshipOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataStorageMetadataOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataSubgraphOptions;
 import com.ibm.cloud.mdm.v1.model.GetMatchingJobInfoOptions;
@@ -155,9 +140,11 @@ import com.ibm.cloud.mdm.v1.model.GetModelMapResourceOptions;
 import com.ibm.cloud.mdm.v1.model.GetModelSetResourceOptions;
 import com.ibm.cloud.mdm.v1.model.GetRecordKeys;
 import com.ibm.cloud.mdm.v1.model.GetRecordKeysRecord;
+import com.ibm.cloud.mdm.v1.model.InstanceMetadataBulkloadBucket;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataCatalog;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataProject;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponse;
+import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponseBulkloadBucket;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponseCatalog;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponseProject;
 import com.ibm.cloud.mdm.v1.model.ListConfiguratorProcessesOptions;
@@ -168,6 +155,7 @@ import com.ibm.cloud.mdm.v1.model.ListDataRecordsForEntityOptions;
 import com.ibm.cloud.mdm.v1.model.ListDataRecordsOptions;
 import com.ibm.cloud.mdm.v1.model.ListDataRelatedRecordsForEntityOptions;
 import com.ibm.cloud.mdm.v1.model.ListDataRelatedRecordsForRecordOptions;
+import com.ibm.cloud.mdm.v1.model.ListDataRelationshipsForEntityOptions;
 import com.ibm.cloud.mdm.v1.model.ListDataRelationshipsForRecordOptions;
 import com.ibm.cloud.mdm.v1.model.ListMatchingRulesOptions;
 import com.ibm.cloud.mdm.v1.model.ListModelAlgorithmsOptions;
@@ -180,6 +168,7 @@ import com.ibm.cloud.mdm.v1.model.MatchAttribute;
 import com.ibm.cloud.mdm.v1.model.MatchEntityCountStats;
 import com.ibm.cloud.mdm.v1.model.MatchEntitySizeStats;
 import com.ibm.cloud.mdm.v1.model.MatchStatistics;
+import com.ibm.cloud.mdm.v1.model.Metadata;
 import com.ibm.cloud.mdm.v1.model.PagedResponseFirst;
 import com.ibm.cloud.mdm.v1.model.PagedResponseLast;
 import com.ibm.cloud.mdm.v1.model.PagedResponseNext;
@@ -207,6 +196,7 @@ import com.ibm.cloud.mdm.v1.model.ReplaceConfiguratorConfigDataModelOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceConfiguratorConfigurationAssetOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceConfiguratorConfigurationMetadataOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceDataRecordOptions;
+import com.ibm.cloud.mdm.v1.model.ReplaceDataRelationshipOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceMatchingRuleOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceModelAlgorithmOptions;
 import com.ibm.cloud.mdm.v1.model.ReplaceModelComparespecResourceOptions;
@@ -225,6 +215,7 @@ import com.ibm.cloud.mdm.v1.model.RunDataSchemaUpdateOptions;
 import com.ibm.cloud.mdm.v1.model.SearchDataOptions;
 import com.ibm.cloud.mdm.v1.model.SearchFilter;
 import com.ibm.cloud.mdm.v1.model.SearchMatchingIndexOptions;
+import com.ibm.cloud.mdm.v1.model.SearchQuery;
 import com.ibm.cloud.mdm.v1.model.SetResourceEntry;
 import com.ibm.cloud.mdm.v1.model.SetResourceNames;
 import com.ibm.cloud.mdm.v1.model.SingleCompareMethod;
@@ -334,7 +325,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetConfiguratorConfigDataModelWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"description\": \"description\", \"label\": \"label\"}}, \"label\": \"label\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": true, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"attribute_type\": \"email\"}}}}, \"relationship_types\": {\"mapKey\": {\"label\": \"label\", \"rules\": [{\"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"indexed\": true, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"attribute_type\": \"email\"}}}}, \"attribute_types\": {\"mapKey\": {\"label\": \"label\", \"description\": \"description\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"label\": \"label\", \"description\": \"description\", \"classification\": \"classification\", \"indexed\": false}}}}, \"system_properties\": {\"mapKey\": {\"record_types\": {\"data_type\": \"dataType\", \"indexed\": false, \"editable\": true, \"label\": \"label\", \"description\": \"description\"}, \"entity_types\": {\"data_type\": \"dataType\", \"indexed\": false, \"editable\": true, \"label\": \"label\", \"description\": \"description\"}, \"relationship_types\": {\"data_type\": \"dataType\", \"indexed\": false, \"editable\": true, \"label\": \"label\", \"description\": \"description\"}, \"attribute_types\": {\"data_type\": \"dataType\", \"indexed\": false, \"editable\": true, \"label\": \"label\", \"description\": \"description\"}}}, \"locale\": \"locale\"}";
+    String mockResponseBody = "{\"record_types\": {\"mapKey\": {\"label\": \"label\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": true, \"classification\": \"classification\", \"label\": \"label\", \"description\": \"description\", \"attribute_type\": \"email\", \"cardinality\": \"cardinality\"}}, \"entity_types\": {\"mapKey\": {\"description\": \"description\", \"label\": \"label\"}}}}, \"relationship_types\": {\"mapKey\": {\"label_from_target\": \"labelFromTarget\", \"directional\": false, \"rules\": [{\"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"label_from_source\": \"labelFromSource\", \"label\": \"label\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"indexed\": true, \"classification\": \"classification\", \"label\": \"label\", \"description\": \"description\", \"attribute_type\": \"email\", \"cardinality\": \"cardinality\"}}}}, \"attribute_types\": {\"mapKey\": {\"label\": \"label\", \"description\": \"description\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\"}}}}, \"system_properties\": {\"mapKey\": {\"record_types\": {\"editable\": true, \"indexed\": false, \"data_type\": \"dataType\", \"label\": \"label\", \"description\": \"description\"}, \"entity_types\": {\"editable\": true, \"indexed\": false, \"data_type\": \"dataType\", \"label\": \"label\", \"description\": \"description\"}, \"relationship_types\": {\"editable\": true, \"indexed\": false, \"data_type\": \"dataType\", \"label\": \"label\", \"description\": \"description\"}, \"attribute_types\": {\"editable\": true, \"indexed\": false, \"data_type\": \"dataType\", \"label\": \"label\", \"description\": \"description\"}}}, \"locale\": \"locale\"}";
     String getConfiguratorConfigDataModelPath = "/mdm/v1/config_data_model";
 
     server.enqueue(new MockResponse()
@@ -381,7 +372,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceConfiguratorConfigDataModelWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"description\": \"description\", \"label\": \"label\"}}, \"label\": \"label\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": true, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"attribute_type\": \"email\"}}}}, \"relationship_types\": {\"mapKey\": {\"label\": \"label\", \"rules\": [{\"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"indexed\": true, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"attribute_type\": \"email\"}}}}, \"attribute_types\": {\"mapKey\": {\"label\": \"label\", \"description\": \"description\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"label\": \"label\", \"description\": \"description\", \"classification\": \"classification\", \"indexed\": false}}}}, \"system_properties\": {\"mapKey\": {\"record_types\": {\"data_type\": \"dataType\", \"indexed\": false, \"editable\": true, \"label\": \"label\", \"description\": \"description\"}, \"entity_types\": {\"data_type\": \"dataType\", \"indexed\": false, \"editable\": true, \"label\": \"label\", \"description\": \"description\"}, \"relationship_types\": {\"data_type\": \"dataType\", \"indexed\": false, \"editable\": true, \"label\": \"label\", \"description\": \"description\"}, \"attribute_types\": {\"data_type\": \"dataType\", \"indexed\": false, \"editable\": true, \"label\": \"label\", \"description\": \"description\"}}}, \"locale\": \"locale\"}";
+    String mockResponseBody = "{\"record_types\": {\"mapKey\": {\"label\": \"label\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": true, \"classification\": \"classification\", \"label\": \"label\", \"description\": \"description\", \"attribute_type\": \"email\", \"cardinality\": \"cardinality\"}}, \"entity_types\": {\"mapKey\": {\"description\": \"description\", \"label\": \"label\"}}}}, \"relationship_types\": {\"mapKey\": {\"label_from_target\": \"labelFromTarget\", \"directional\": false, \"rules\": [{\"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"label_from_source\": \"labelFromSource\", \"label\": \"label\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"indexed\": true, \"classification\": \"classification\", \"label\": \"label\", \"description\": \"description\", \"attribute_type\": \"email\", \"cardinality\": \"cardinality\"}}}}, \"attribute_types\": {\"mapKey\": {\"label\": \"label\", \"description\": \"description\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\"}}}}, \"system_properties\": {\"mapKey\": {\"record_types\": {\"editable\": true, \"indexed\": false, \"data_type\": \"dataType\", \"label\": \"label\", \"description\": \"description\"}, \"entity_types\": {\"editable\": true, \"indexed\": false, \"data_type\": \"dataType\", \"label\": \"label\", \"description\": \"description\"}, \"relationship_types\": {\"editable\": true, \"indexed\": false, \"data_type\": \"dataType\", \"label\": \"label\", \"description\": \"description\"}, \"attribute_types\": {\"editable\": true, \"indexed\": false, \"data_type\": \"dataType\", \"label\": \"label\", \"description\": \"description\"}}}, \"locale\": \"locale\"}";
     String replaceConfiguratorConfigDataModelPath = "/mdm/v1/config_data_model";
 
     server.enqueue(new MockResponse()
@@ -391,28 +382,28 @@ public class MdmTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the Attribute model
+    Attribute attributeModel = new Attribute.Builder()
+    .indexed(true)
+    .classification("testString")
+    .label("testString")
+    .description("testString")
+    .attributeType("email")
+    .cardinality("testString")
+    .build();
+
     // Construct an instance of the EntityType model
     EntityType entityTypeModel = new EntityType.Builder()
     .description("testString")
     .label("testString")
     .build();
 
-    // Construct an instance of the Attribute model
-    Attribute attributeModel = new Attribute.Builder()
-    .indexed(true)
-    .description("testString")
-    .label("testString")
-    .classification("testString")
-    .cardinality("testString")
-    .attributeType("email")
-    .build();
-
     // Construct an instance of the RecordType model
     RecordType recordTypeModel = new RecordType.Builder()
-    .entityTypes(new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } })
     .label("testString")
     .description("testString")
     .attributes(new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } })
+    .entityTypes(new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } })
     .build();
 
     // Construct an instance of the Target model
@@ -435,11 +426,11 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the RelationshipType model
     RelationshipType relationshipTypeModel = new RelationshipType.Builder()
-    .label("testString")
-    .rules(new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)))
-    .labelFromSource("testString")
     .labelFromTarget("testString")
     .directional(true)
+    .rules(new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)))
+    .labelFromSource("testString")
+    .label("testString")
     .description("testString")
     .cardinality("testString")
     .attributes(new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } })
@@ -448,9 +439,9 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the FieldType model
     FieldType fieldTypeModel = new FieldType.Builder()
     .label("testString")
-    .description("testString")
-    .classification("testString")
     .indexed(true)
+    .classification("testString")
+    .description("testString")
     .build();
 
     // Construct an instance of the AttributeType model
@@ -463,36 +454,36 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the RecordTypes model
     RecordTypes recordTypesModel = new RecordTypes.Builder()
-    .dataType("testString")
-    .indexed(true)
     .editable(true)
+    .indexed(true)
+    .dataType("testString")
     .label("testString")
     .description("testString")
     .build();
 
     // Construct an instance of the EntityTypes model
     EntityTypes entityTypesModel = new EntityTypes.Builder()
-    .dataType("testString")
-    .indexed(true)
     .editable(true)
+    .indexed(true)
+    .dataType("testString")
     .label("testString")
     .description("testString")
     .build();
 
     // Construct an instance of the SystemPropertiesRelationshipTypes model
     SystemPropertiesRelationshipTypes systemPropertiesRelationshipTypesModel = new SystemPropertiesRelationshipTypes.Builder()
-    .dataType("testString")
-    .indexed(true)
     .editable(true)
+    .indexed(true)
+    .dataType("testString")
     .label("testString")
     .description("testString")
     .build();
 
     // Construct an instance of the AttributeTypes model
     AttributeTypes attributeTypesModel = new AttributeTypes.Builder()
-    .dataType("testString")
-    .indexed(true)
     .editable(true)
+    .indexed(true)
+    .dataType("testString")
     .label("testString")
     .description("testString")
     .build();
@@ -548,7 +539,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetConfiguratorMatchingStatisticsWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"entity_breakdown\": {\"average\": 2.0, \"standard_deviation\": 0.0, \"variance\": 0.0, \"max\": 4.0, \"min\": 1.0, \"count\": 500.0}, \"largest_entities\": [{\"entity_id\": \"40976536\", \"entity_size\": 4.0}], \"entity_size_distribution\": [{\"entity_count\": 5.0, \"entity_size\": 120}], \"summary\": {\"total_records\": 2500, \"singleton_count\": 300.0, \"distinct_sources\": 4, \"data_assets\": 9, \"entities_count\": 950.0}, \"status\": {\"comparison_count\": 15, \"date_completed\": \"2021-03-16 13:04:34+00:00\", \"bucket_count\": 9, \"run_time\": 159000}}";
+    String mockResponseBody = "{\"entity_breakdown\": {\"standard_deviation\": 0.0, \"average\": 2.0, \"variance\": 0.0, \"max\": 4.0, \"count\": 500.0, \"min\": 1.0}, \"largest_entities\": [{\"entity_id\": \"40976536\", \"entity_size\": 4.0}], \"entity_size_distribution\": [{\"entity_count\": 5.0, \"entity_size\": 120}], \"summary\": {\"singleton_count\": 300.0, \"distinct_sources\": 4, \"data_assets\": 9, \"total_records\": 2500, \"entities_count\": 950.0}, \"status\": {\"date_completed\": \"2021-03-16 13:04:34+00:00\", \"bucket_count\": 9, \"comparison_count\": 15, \"run_time\": 159000}}";
     String getConfiguratorMatchingStatisticsPath = "/mdm/v1/match_statistics";
 
     server.enqueue(new MockResponse()
@@ -560,7 +551,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the GetConfiguratorMatchingStatisticsOptions model
     GetConfiguratorMatchingStatisticsOptions getConfiguratorMatchingStatisticsOptionsModel = new GetConfiguratorMatchingStatisticsOptions.Builder()
-    .recordType("testString")
+    .recordType("person")
+    .entityType("person_entity")
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -579,7 +571,8 @@ public class MdmTest extends PowerMockTestCase {
     assertNotNull(query);
     // Get query params
     assertEquals(query.get("crn"), "testString");
-    assertEquals(query.get("record_type"), "testString");
+    assertEquals(query.get("record_type"), "person");
+    assertEquals(query.get("entity_type"), "person_entity");
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getConfiguratorMatchingStatisticsPath);
@@ -608,148 +601,9 @@ public class MdmTest extends PowerMockTestCase {
   }
 
   @Test
-  public void testListConfiguratorProcessesWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"processes\": [{\"record_type_label\": \"recordTypeLabel\", \"record_type\": \"recordType\", \"process_name\": \"processName\", \"process_count\": \"processCount\", \"status\": \"status\", \"message\": \"message\"}]}";
-    String listConfiguratorProcessesPath = "/mdm/v1/configuration_metadata/processes";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(200)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the ListConfiguratorProcessesOptions model
-    ListConfiguratorProcessesOptions listConfiguratorProcessesOptionsModel = new ListConfiguratorProcessesOptions.Builder()
-    .status("In-progress")
-    .build();
-
-    // Invoke operation with valid options model (positive test)
-    Response<ProcessList> response = mdmService.listConfiguratorProcesses(listConfiguratorProcessesOptionsModel).execute();
-    assertNotNull(response);
-    ProcessList responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "GET");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    assertEquals(query.get("status"), "In-progress");
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, listConfiguratorProcessesPath);
-  }
-  
-  public void testListConfiguratorProcessesWOptionsWRetries() throws Throwable {
-    // Enable retries and run testListConfiguratorProcessesWOptions.
-    mdmService.enableRetries(4, 30);
-    testListConfiguratorProcessesWOptions();
-
-    // Disable retries and run testListConfiguratorProcessesWOptions.
-    mdmService.disableRetries();
-    testListConfiguratorProcessesWOptions();
-  }  
-
-  @Test
-  public void testCreateConfiguratorProcessWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"summary\": {\"mapKey\": \"inner\"}, \"status\": \"status\", \"message\": \"message\"}";
-    String createConfiguratorProcessPath = "/mdm/v1/configuration_metadata/processes";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(201)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the ProcessRequestAssetSourceDetailsProject model
-    ProcessRequestAssetSourceDetailsProject processRequestAssetSourceDetailsProjectModel = new ProcessRequestAssetSourceDetailsProject.Builder()
-    .cosBucketName("bucket-name")
-    .cosApiKey("project_api_key")
-    .cosEndpoint("https://s3.us-south.cloud-object-storage.appdomain.cloud")
-    .id("testString")
-    .build();
-
-    // Construct an instance of the ProcessRequestAssetSourceDetailsCatalog model
-    ProcessRequestAssetSourceDetailsCatalog processRequestAssetSourceDetailsCatalogModel = new ProcessRequestAssetSourceDetailsCatalog.Builder()
-    .cosBucketName("testString")
-    .cosApiKey("testString")
-    .cosEndpoint("testString")
-    .id("testString")
-    .build();
-
-    // Construct an instance of the ProcessRequestAssetSourceDetails model
-    ProcessRequestAssetSourceDetails processRequestAssetSourceDetailsModel = new ProcessRequestAssetSourceDetails.Builder()
-    .project(processRequestAssetSourceDetailsProjectModel)
-    .catalog(processRequestAssetSourceDetailsCatalogModel)
-    .build();
-
-    // Construct an instance of the CreateConfiguratorProcessOptions model
-    CreateConfiguratorProcessOptions createConfiguratorProcessOptionsModel = new CreateConfiguratorProcessOptions.Builder()
-    .processName("publish_data")
-    .recordType("testString")
-    .assetSourceDetails(processRequestAssetSourceDetailsModel)
-    .doDerive(true)
-    .assetIds("testString")
-    .initiator("IAM ID")
-    .entityType("testString")
-    .build();
-
-    // Invoke operation with valid options model (positive test)
-    Response<ProcessStatus> response = mdmService.createConfiguratorProcess(createConfiguratorProcessOptionsModel).execute();
-    assertNotNull(response);
-    ProcessStatus responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "POST");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, createConfiguratorProcessPath);
-  }
-  
-  public void testCreateConfiguratorProcessWOptionsWRetries() throws Throwable {
-    // Enable retries and run testCreateConfiguratorProcessWOptions.
-    mdmService.enableRetries(4, 30);
-    testCreateConfiguratorProcessWOptions();
-
-    // Disable retries and run testCreateConfiguratorProcessWOptions.
-    mdmService.disableRetries();
-    testCreateConfiguratorProcessWOptions();
-  }  
-
-  // Test the createConfiguratorProcess operation with null options model parameter
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testCreateConfiguratorProcessNoOptions() throws Throwable {
-    // construct the service
-    constructClientService();
-
-    server.enqueue(new MockResponse());
-
-    // Invoke operation with null options model (negative test)
-    mdmService.createConfiguratorProcess(null).execute();
-  }
-
-  @Test
   public void testGetConfiguratorConfigurationMetadataWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"description\": \"description\", \"name\": \"name\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\"}";
+    String mockResponseBody = "{\"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"description\": \"description\", \"name\": \"name\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\"}";
     String getConfiguratorConfigurationMetadataPath = "/mdm/v1/configuration_metadata";
 
     server.enqueue(new MockResponse()
@@ -796,7 +650,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceConfiguratorConfigurationMetadataWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"description\": \"description\", \"name\": \"name\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\"}";
+    String mockResponseBody = "{\"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"description\": \"description\", \"name\": \"name\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\"}";
     String replaceConfiguratorConfigurationMetadataPath = "/mdm/v1/configuration_metadata";
 
     server.enqueue(new MockResponse()
@@ -808,8 +662,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the ReplaceConfiguratorConfigurationMetadataOptions model
     ReplaceConfiguratorConfigurationMetadataOptions replaceConfiguratorConfigurationMetadataOptionsModel = new ReplaceConfiguratorConfigurationMetadataOptions.Builder()
-    .catalogId("8a3cc967-81c4-49a3-86a2-208059819b24")
     .projectId("52a72453-597c-4fb3-a518-c815225e3ea9")
+    .catalogId("8a3cc967-81c4-49a3-86a2-208059819b24")
     .description("sample configuration metadata")
     .name("configuration_metadata")
     .build();
@@ -848,7 +702,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testUpdateConfiguratorConfigurationMetadataWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"description\": \"description\", \"name\": \"name\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\"}";
+    String mockResponseBody = "{\"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"description\": \"description\", \"name\": \"name\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\"}";
     String updateConfiguratorConfigurationMetadataPath = "/mdm/v1/configuration_metadata";
 
     server.enqueue(new MockResponse()
@@ -860,8 +714,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the UpdateConfiguratorConfigurationMetadataOptions model
     UpdateConfiguratorConfigurationMetadataOptions updateConfiguratorConfigurationMetadataOptionsModel = new UpdateConfiguratorConfigurationMetadataOptions.Builder()
-    .catalogId("8a3cc967-81c4-49a3-86a2-208059819b24")
     .projectId("52a72453-597c-4fb3-a518-c815225e3ea9")
+    .catalogId("8a3cc967-81c4-49a3-86a2-208059819b24")
     .description("sample configuration metadata")
     .name("configuration_metadata")
     .build();
@@ -1066,6 +920,7 @@ public class MdmTest extends PowerMockTestCase {
     GetConfiguratorProcessOptions getConfiguratorProcessOptionsModel = new GetConfiguratorProcessOptions.Builder()
     .processName("testString")
     .recordType("person")
+    .entityType("person_entity")
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -1085,6 +940,7 @@ public class MdmTest extends PowerMockTestCase {
     // Get query params
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("record_type"), "person");
+    assertEquals(query.get("entity_type"), "person_entity");
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getConfiguratorProcessPath);
@@ -1113,9 +969,149 @@ public class MdmTest extends PowerMockTestCase {
   }
 
   @Test
+  public void testListConfiguratorProcessesWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"processes\": [{\"record_type_label\": \"recordTypeLabel\", \"record_type\": \"recordType\", \"process_name\": \"processName\", \"process_count\": \"processCount\", \"status\": \"status\", \"message\": \"message\"}]}";
+    String listConfiguratorProcessesPath = "/mdm/v1/configuration_metadata/processes";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListConfiguratorProcessesOptions model
+    ListConfiguratorProcessesOptions listConfiguratorProcessesOptionsModel = new ListConfiguratorProcessesOptions.Builder()
+    .status("In-progress")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<ProcessList> response = mdmService.listConfiguratorProcesses(listConfiguratorProcessesOptionsModel).execute();
+    assertNotNull(response);
+    ProcessList responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    assertEquals(query.get("status"), "In-progress");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listConfiguratorProcessesPath);
+  }
+  
+  public void testListConfiguratorProcessesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListConfiguratorProcessesWOptions.
+    mdmService.enableRetries(4, 30);
+    testListConfiguratorProcessesWOptions();
+
+    // Disable retries and run testListConfiguratorProcessesWOptions.
+    mdmService.disableRetries();
+    testListConfiguratorProcessesWOptions();
+  }  
+
+  @Test
+  public void testCreateConfiguratorProcessWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"summary\": {\"mapKey\": \"inner\"}, \"status\": \"status\", \"message\": \"message\"}";
+    String createConfiguratorProcessPath = "/mdm/v1/configuration_metadata/processes";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(201)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ProcessRequestAssetSourceDetailsProject model
+    ProcessRequestAssetSourceDetailsProject processRequestAssetSourceDetailsProjectModel = new ProcessRequestAssetSourceDetailsProject.Builder()
+    .cosEndpoint("https://s3.us-south.cloud-object-storage.appdomain.cloud")
+    .cosBucketName("bucket-name")
+    .cosApiKey("project_api_key")
+    .id("testString")
+    .build();
+
+    // Construct an instance of the ProcessRequestAssetSourceDetailsCatalog model
+    ProcessRequestAssetSourceDetailsCatalog processRequestAssetSourceDetailsCatalogModel = new ProcessRequestAssetSourceDetailsCatalog.Builder()
+    .cosEndpoint("testString")
+    .cosBucketName("testString")
+    .cosApiKey("testString")
+    .id("testString")
+    .build();
+
+    // Construct an instance of the ProcessRequestAssetSourceDetails model
+    ProcessRequestAssetSourceDetails processRequestAssetSourceDetailsModel = new ProcessRequestAssetSourceDetails.Builder()
+    .project(processRequestAssetSourceDetailsProjectModel)
+    .catalog(processRequestAssetSourceDetailsCatalogModel)
+    .build();
+
+    // Construct an instance of the CreateConfiguratorProcessOptions model
+    CreateConfiguratorProcessOptions createConfiguratorProcessOptionsModel = new CreateConfiguratorProcessOptions.Builder()
+    .processName("publish_data")
+    .assetSourceDetails(processRequestAssetSourceDetailsModel)
+    .assetIds("testString")
+    .initiator("IAM ID")
+    .doDerive(true)
+    .doForceMatching(true)
+    .recordType("testString")
+    .entityType("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<ProcessStatus> response = mdmService.createConfiguratorProcess(createConfiguratorProcessOptionsModel).execute();
+    assertNotNull(response);
+    ProcessStatus responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, createConfiguratorProcessPath);
+  }
+  
+  public void testCreateConfiguratorProcessWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateConfiguratorProcessWOptions.
+    mdmService.enableRetries(4, 30);
+    testCreateConfiguratorProcessWOptions();
+
+    // Disable retries and run testCreateConfiguratorProcessWOptions.
+    mdmService.disableRetries();
+    testCreateConfiguratorProcessWOptions();
+  }  
+
+  // Test the createConfiguratorProcess operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreateConfiguratorProcessNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.createConfiguratorProcess(null).execute();
+  }
+
+  @Test
   public void testSuggestConfiguratorDataMappingsWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"suggested_data_mappings\": [{\"data_mapping_default_display_name\": \"Gender\", \"classified_class\": \"GEN\", \"data_mapping_name\": \"gender\", \"key\": \"COLUMN 1\"}]}";
+    String mockResponseBody = "{\"suggested_data_mappings\": [{\"classified_class\": \"GEN\", \"data_mapping_name\": \"gender\", \"data_mapping_default_display_name\": \"Gender\", \"key\": \"COLUMN 1\"}]}";
     String suggestConfiguratorDataMappingsPath = "/mdm/v1/suggest_data_mappings";
 
     server.enqueue(new MockResponse()
@@ -1265,8 +1261,8 @@ public class MdmTest extends PowerMockTestCase {
     .operation("and")
     .build();
 
-    // Construct an instance of the BulkDeleteRequestSearchCriteriaQuery model
-    BulkDeleteRequestSearchCriteriaQuery bulkDeleteRequestSearchCriteriaQueryModel = new BulkDeleteRequestSearchCriteriaQuery.Builder()
+    // Construct an instance of the SearchQuery model
+    SearchQuery searchQueryModel = new SearchQuery.Builder()
     .expressions(new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)))
     .operation("and")
     .build();
@@ -1277,10 +1273,10 @@ public class MdmTest extends PowerMockTestCase {
     .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .build();
 
-    // Construct an instance of the BulkDeleteRequestSearchCriteria model
-    BulkDeleteRequestSearchCriteria bulkDeleteRequestSearchCriteriaModel = new BulkDeleteRequestSearchCriteria.Builder()
+    // Construct an instance of the DataSearchCriteria model
+    DataSearchCriteria dataSearchCriteriaModel = new DataSearchCriteria.Builder()
     .searchType("record")
-    .query(bulkDeleteRequestSearchCriteriaQueryModel)
+    .query(searchQueryModel)
     .filters(new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)))
     .build();
 
@@ -1289,7 +1285,7 @@ public class MdmTest extends PowerMockTestCase {
     .deleteType("asset")
     .collectionIds(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .recordSource("testString")
-    .searchCriteria(bulkDeleteRequestSearchCriteriaModel)
+    .searchCriteria(dataSearchCriteriaModel)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -1355,8 +1351,8 @@ public class MdmTest extends PowerMockTestCase {
     .apiKey("testString")
     .build();
 
-    // Construct an instance of the BulkLoadRequestDataSource model
-    BulkLoadRequestDataSource bulkLoadRequestDataSourceModel = new BulkLoadRequestDataSource.Builder()
+    // Construct an instance of the DataLoadSource model
+    DataLoadSource dataLoadSourceModel = new DataLoadSource.Builder()
     .type("dfs")
     .directoryPath("testString")
     .directoryRef("sample_contract_small")
@@ -1365,56 +1361,39 @@ public class MdmTest extends PowerMockTestCase {
     .projectId("testString")
     .build();
 
-    // Construct an instance of the BulkLoadRequestDataStructureRecordPropertiesContentsCsvOptions model
-    BulkLoadRequestDataStructureRecordPropertiesContentsCsvOptions bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel = new BulkLoadRequestDataStructureRecordPropertiesContentsCsvOptions.Builder()
+    // Construct an instance of the CSVOptions model
+    CSVOptions csvOptionsModel = new CSVOptions.Builder()
     .columns("testString")
     .includesHeaderRow(true)
     .delimiter("testString")
     .build();
 
-    // Construct an instance of the BulkLoadRequestDataStructureRecordPropertiesContents model
-    BulkLoadRequestDataStructureRecordPropertiesContents bulkLoadRequestDataStructureRecordPropertiesContentsModel = new BulkLoadRequestDataStructureRecordPropertiesContents.Builder()
+    // Construct an instance of the DataLoadProperties model
+    DataLoadProperties dataLoadPropertiesModel = new DataLoadProperties.Builder()
     .collectionId("testString")
     .recordType("testString")
     .relationshipType("testString")
     .defaultSource("testString")
     .fileType("csv")
-    .csvOptions(bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel)
+    .csvOptions(csvOptionsModel)
     .build();
 
-    // Construct an instance of the BulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptions model
-    BulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptions bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel = new BulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptions.Builder()
-    .columns("testString")
-    .includesHeaderRow(true)
-    .delimiter("testString")
-    .build();
-
-    // Construct an instance of the BulkLoadRequestDataStructureRelationshipPropertiesContents model
-    BulkLoadRequestDataStructureRelationshipPropertiesContents bulkLoadRequestDataStructureRelationshipPropertiesContentsModel = new BulkLoadRequestDataStructureRelationshipPropertiesContents.Builder()
-    .collectionId("testString")
-    .recordType("testString")
-    .relationshipType("testString")
-    .defaultSource("testString")
-    .fileType("csv")
-    .csvOptions(bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel)
-    .build();
-
-    // Construct an instance of the BulkLoadRequestDataStructure model
-    BulkLoadRequestDataStructure bulkLoadRequestDataStructureModel = new BulkLoadRequestDataStructure.Builder()
+    // Construct an instance of the DataLoadStructure model
+    DataLoadStructure dataLoadStructureModel = new DataLoadStructure.Builder()
     .recordPath("testString")
     .recordProperties("testString")
     .relationshipPath("testString")
     .relationshipProperties("testString")
     .recordAssetId("testString")
     .relationshipAssetId("testString")
-    .recordPropertiesContents(bulkLoadRequestDataStructureRecordPropertiesContentsModel)
-    .relationshipPropertiesContents(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel)
+    .recordPropertiesContents(dataLoadPropertiesModel)
+    .relationshipPropertiesContents(dataLoadPropertiesModel)
     .build();
 
     // Construct an instance of the RunDataBulkLoadOptions model
     RunDataBulkLoadOptions runDataBulkLoadOptionsModel = new RunDataBulkLoadOptions.Builder()
-    .dataSource(bulkLoadRequestDataSourceModel)
-    .dataStructure(bulkLoadRequestDataStructureModel)
+    .dataSource(dataLoadSourceModel)
+    .dataStructure(dataLoadStructureModel)
     .updateStrategy("append")
     .build();
 
@@ -1604,9 +1583,78 @@ public class MdmTest extends PowerMockTestCase {
   }
 
   @Test
+  public void testListDataRelationshipsForEntityWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}]}";
+    String listDataRelationshipsForEntityPath = "/mdm/v1/entities/testString/relationships";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListDataRelationshipsForEntityOptions model
+    ListDataRelationshipsForEntityOptions listDataRelationshipsForEntityOptionsModel = new ListDataRelationshipsForEntityOptions.Builder()
+    .id("testString")
+    .relationshipTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .includeRecordRelationships("false")
+    .offset(Long.valueOf("26"))
+    .limit(Long.valueOf("50"))
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DataRelationshipsResponse> response = mdmService.listDataRelationshipsForEntity(listDataRelationshipsForEntityOptionsModel).execute();
+    assertNotNull(response);
+    DataRelationshipsResponse responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    assertEquals(query.get("relationship_types"), RequestUtils.join(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")), ","));
+    assertEquals(query.get("include_record_relationships"), "false");
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("50"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listDataRelationshipsForEntityPath);
+  }
+  
+  public void testListDataRelationshipsForEntityWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListDataRelationshipsForEntityWOptions.
+    mdmService.enableRetries(4, 30);
+    testListDataRelationshipsForEntityWOptions();
+
+    // Disable retries and run testListDataRelationshipsForEntityWOptions.
+    mdmService.disableRetries();
+    testListDataRelationshipsForEntityWOptions();
+  }  
+
+  // Test the listDataRelationshipsForEntity operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testListDataRelationshipsForEntityNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.listDataRelationshipsForEntity(null).execute();
+  }
+
+  @Test
   public void testGetDataEntityWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"entity\": {\"id\": \"id\", \"type\": \"type\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"entity\": {\"id\": \"id\", \"type\": \"entity\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String getDataEntityPath = "/mdm/v1/entities/testString";
 
     server.enqueue(new MockResponse()
@@ -1744,8 +1792,8 @@ public class MdmTest extends PowerMockTestCase {
     .operation("and")
     .build();
 
-    // Construct an instance of the ExportRequestSearchCriteriaQuery model
-    ExportRequestSearchCriteriaQuery exportRequestSearchCriteriaQueryModel = new ExportRequestSearchCriteriaQuery.Builder()
+    // Construct an instance of the SearchQuery model
+    SearchQuery searchQueryModel = new SearchQuery.Builder()
     .expressions(new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)))
     .operation("and")
     .build();
@@ -1756,10 +1804,10 @@ public class MdmTest extends PowerMockTestCase {
     .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .build();
 
-    // Construct an instance of the ExportRequestSearchCriteria model
-    ExportRequestSearchCriteria exportRequestSearchCriteriaModel = new ExportRequestSearchCriteria.Builder()
+    // Construct an instance of the DataSearchCriteria model
+    DataSearchCriteria dataSearchCriteriaModel = new DataSearchCriteria.Builder()
     .searchType("record")
-    .query(exportRequestSearchCriteriaQueryModel)
+    .query(searchQueryModel)
     .filters(new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)))
     .build();
 
@@ -1767,7 +1815,7 @@ public class MdmTest extends PowerMockTestCase {
     CreateDataExportOptions createDataExportOptionsModel = new CreateDataExportOptions.Builder()
     .exportType("record")
     .format("csv")
-    .searchCriteria(exportRequestSearchCriteriaModel)
+    .searchCriteria(dataSearchCriteriaModel)
     .fileName("testString")
     .build();
 
@@ -2059,62 +2107,6 @@ public class MdmTest extends PowerMockTestCase {
   }
 
   @Test
-  public void testListDataJobsWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"jobs\": [{\"job_id\": \"jobId\", \"job_type\": \"delete\", \"status\": \"not_started\", \"start_time\": \"2019-01-01T12:00:00.000Z\", \"end_time\": \"2019-01-01T12:00:00.000Z\", \"process_ids\": [\"processIds\"]}]}";
-    String listDataJobsPath = "/mdm/v1/data_jobs";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(200)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the ListDataJobsOptions model
-    ListDataJobsOptions listDataJobsOptionsModel = new ListDataJobsOptions.Builder()
-    .offset(Long.valueOf("26"))
-    .limit(Long.valueOf("50"))
-    .status("not_started")
-    .type("bulk_load")
-    .build();
-
-    // Invoke operation with valid options model (positive test)
-    Response<DataJobs> response = mdmService.listDataJobs(listDataJobsOptionsModel).execute();
-    assertNotNull(response);
-    DataJobs responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "GET");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("50"));
-    assertEquals(query.get("status"), "not_started");
-    assertEquals(query.get("type"), "bulk_load");
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, listDataJobsPath);
-  }
-  
-  public void testListDataJobsWOptionsWRetries() throws Throwable {
-    // Enable retries and run testListDataJobsWOptions.
-    mdmService.enableRetries(4, 30);
-    testListDataJobsWOptions();
-
-    // Disable retries and run testListDataJobsWOptions.
-    mdmService.disableRetries();
-    testListDataJobsWOptions();
-  }  
-
-  @Test
   public void testGetDataJobWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"job_id\": \"jobId\", \"job_type\": \"delete\", \"status\": \"not_started\", \"start_time\": \"2019-01-01T12:00:00.000Z\", \"end_time\": \"2019-01-01T12:00:00.000Z\", \"process_ids\": [\"processIds\"]}";
@@ -2176,10 +2168,10 @@ public class MdmTest extends PowerMockTestCase {
   }
 
   @Test
-  public void testGetDataRecordWOptions() throws Throwable {
+  public void testListDataJobsWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"type\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
-    String getDataRecordPath = "/mdm/v1/records/26";
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"jobs\": [{\"job_id\": \"jobId\", \"job_type\": \"delete\", \"status\": \"not_started\", \"start_time\": \"2019-01-01T12:00:00.000Z\", \"end_time\": \"2019-01-01T12:00:00.000Z\", \"process_ids\": [\"processIds\"]}]}";
+    String listDataJobsPath = "/mdm/v1/data_jobs";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2188,205 +2180,18 @@ public class MdmTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the GetDataRecordOptions model
-    GetDataRecordOptions getDataRecordOptionsModel = new GetDataRecordOptions.Builder()
-    .id(Long.valueOf("26"))
-    .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
-    .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
-    .build();
-
-    // Invoke operation with valid options model (positive test)
-    Response<DataRecordResponse> response = mdmService.getDataRecord(getDataRecordOptionsModel).execute();
-    assertNotNull(response);
-    DataRecordResponse responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "GET");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    assertEquals(query.get("include"), RequestUtils.join(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")), ","));
-    assertEquals(query.get("exclude"), RequestUtils.join(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")), ","));
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, getDataRecordPath);
-  }
-  
-  public void testGetDataRecordWOptionsWRetries() throws Throwable {
-    // Enable retries and run testGetDataRecordWOptions.
-    mdmService.enableRetries(4, 30);
-    testGetDataRecordWOptions();
-
-    // Disable retries and run testGetDataRecordWOptions.
-    mdmService.disableRetries();
-    testGetDataRecordWOptions();
-  }  
-
-  // Test the getDataRecord operation with null options model parameter
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGetDataRecordNoOptions() throws Throwable {
-    // construct the service
-    constructClientService();
-
-    server.enqueue(new MockResponse());
-
-    // Invoke operation with null options model (negative test)
-    mdmService.getDataRecord(null).execute();
-  }
-
-  @Test
-  public void testReplaceDataRecordWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"type\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
-    String replaceDataRecordPath = "/mdm/v1/records/26";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(200)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the ReplaceDataRecordOptions model
-    ReplaceDataRecordOptions replaceDataRecordOptionsModel = new ReplaceDataRecordOptions.Builder()
-    .id(Long.valueOf("26"))
-    .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-    .newId("testString")
-    .build();
-
-    // Invoke operation with valid options model (positive test)
-    Response<DataRecordResponse> response = mdmService.replaceDataRecord(replaceDataRecordOptionsModel).execute();
-    assertNotNull(response);
-    DataRecordResponse responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "PUT");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, replaceDataRecordPath);
-  }
-  
-  public void testReplaceDataRecordWOptionsWRetries() throws Throwable {
-    // Enable retries and run testReplaceDataRecordWOptions.
-    mdmService.enableRetries(4, 30);
-    testReplaceDataRecordWOptions();
-
-    // Disable retries and run testReplaceDataRecordWOptions.
-    mdmService.disableRetries();
-    testReplaceDataRecordWOptions();
-  }  
-
-  // Test the replaceDataRecord operation with null options model parameter
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testReplaceDataRecordNoOptions() throws Throwable {
-    // construct the service
-    constructClientService();
-
-    server.enqueue(new MockResponse());
-
-    // Invoke operation with null options model (negative test)
-    mdmService.replaceDataRecord(null).execute();
-  }
-
-  @Test
-  public void testDeleteDataRecordWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "";
-    String deleteDataRecordPath = "/mdm/v1/records/26";
-
-    server.enqueue(new MockResponse()
-    .setResponseCode(204)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the DeleteDataRecordOptions model
-    DeleteDataRecordOptions deleteDataRecordOptionsModel = new DeleteDataRecordOptions.Builder()
-    .id(Long.valueOf("26"))
-    .build();
-
-    // Invoke operation with valid options model (positive test)
-    Response<Void> response = mdmService.deleteDataRecord(deleteDataRecordOptionsModel).execute();
-    assertNotNull(response);
-    Void responseObj = response.getResult();
-    // Response does not have a return type. Check that the result is null.
-    assertNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "DELETE");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, deleteDataRecordPath);
-  }
-  
-  public void testDeleteDataRecordWOptionsWRetries() throws Throwable {
-    // Enable retries and run testDeleteDataRecordWOptions.
-    mdmService.enableRetries(4, 30);
-    testDeleteDataRecordWOptions();
-
-    // Disable retries and run testDeleteDataRecordWOptions.
-    mdmService.disableRetries();
-    testDeleteDataRecordWOptions();
-  }  
-
-  // Test the deleteDataRecord operation with null options model parameter
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testDeleteDataRecordNoOptions() throws Throwable {
-    // construct the service
-    constructClientService();
-
-    server.enqueue(new MockResponse());
-
-    // Invoke operation with null options model (negative test)
-    mdmService.deleteDataRecord(null).execute();
-  }
-
-  @Test
-  public void testListDataRecordsWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"records\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}]}";
-    String listDataRecordsPath = "/mdm/v1/records";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(200)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the ListDataRecordsOptions model
-    ListDataRecordsOptions listDataRecordsOptionsModel = new ListDataRecordsOptions.Builder()
+    // Construct an instance of the ListDataJobsOptions model
+    ListDataJobsOptions listDataJobsOptionsModel = new ListDataJobsOptions.Builder()
     .offset(Long.valueOf("26"))
     .limit(Long.valueOf("50"))
+    .status("not_started")
+    .type("bulk_load")
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<DataRecordsResponse> response = mdmService.listDataRecords(listDataRecordsOptionsModel).execute();
+    Response<DataJobs> response = mdmService.listDataJobs(listDataJobsOptionsModel).execute();
     assertNotNull(response);
-    DataRecordsResponse responseObj = response.getResult();
+    DataJobs responseObj = response.getResult();
     assertNotNull(responseObj);
 
     // Verify the contents of the request
@@ -2401,154 +2206,27 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("crn"), "testString");
     assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("50"));
+    assertEquals(query.get("status"), "not_started");
+    assertEquals(query.get("type"), "bulk_load");
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, listDataRecordsPath);
+    assertEquals(parsedPath, listDataJobsPath);
   }
   
-  public void testListDataRecordsWOptionsWRetries() throws Throwable {
-    // Enable retries and run testListDataRecordsWOptions.
+  public void testListDataJobsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListDataJobsWOptions.
     mdmService.enableRetries(4, 30);
-    testListDataRecordsWOptions();
+    testListDataJobsWOptions();
 
-    // Disable retries and run testListDataRecordsWOptions.
+    // Disable retries and run testListDataJobsWOptions.
     mdmService.disableRetries();
-    testListDataRecordsWOptions();
+    testListDataJobsWOptions();
   }  
-
-  @Test
-  public void testCreateDataRecordWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"type\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
-    String createDataRecordPath = "/mdm/v1/records";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(201)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the CreateDataRecordOptions model
-    CreateDataRecordOptions createDataRecordOptionsModel = new CreateDataRecordOptions.Builder()
-    .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-    .id("testString")
-    .build();
-
-    // Invoke operation with valid options model (positive test)
-    Response<DataRecordResponse> response = mdmService.createDataRecord(createDataRecordOptionsModel).execute();
-    assertNotNull(response);
-    DataRecordResponse responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "POST");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, createDataRecordPath);
-  }
-  
-  public void testCreateDataRecordWOptionsWRetries() throws Throwable {
-    // Enable retries and run testCreateDataRecordWOptions.
-    mdmService.enableRetries(4, 30);
-    testCreateDataRecordWOptions();
-
-    // Disable retries and run testCreateDataRecordWOptions.
-    mdmService.disableRetries();
-    testCreateDataRecordWOptions();
-  }  
-
-  // Test the createDataRecord operation with null options model parameter
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testCreateDataRecordNoOptions() throws Throwable {
-    // construct the service
-    constructClientService();
-
-    server.enqueue(new MockResponse());
-
-    // Invoke operation with null options model (negative test)
-    mdmService.createDataRecord(null).execute();
-  }
-
-  @Test
-  public void testListDataRelationshipsForRecordWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}]}";
-    String listDataRelationshipsForRecordPath = "/mdm/v1/records/26/relationships";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(200)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the ListDataRelationshipsForRecordOptions model
-    ListDataRelationshipsForRecordOptions listDataRelationshipsForRecordOptionsModel = new ListDataRelationshipsForRecordOptions.Builder()
-    .id(Long.valueOf("26"))
-    .relationshipTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .offset(Long.valueOf("26"))
-    .limit(Long.valueOf("50"))
-    .build();
-
-    // Invoke operation with valid options model (positive test)
-    Response<DataRelationshipsResponse> response = mdmService.listDataRelationshipsForRecord(listDataRelationshipsForRecordOptionsModel).execute();
-    assertNotNull(response);
-    DataRelationshipsResponse responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "GET");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    assertEquals(query.get("relationship_types"), RequestUtils.join(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")), ","));
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("50"));
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, listDataRelationshipsForRecordPath);
-  }
-  
-  public void testListDataRelationshipsForRecordWOptionsWRetries() throws Throwable {
-    // Enable retries and run testListDataRelationshipsForRecordWOptions.
-    mdmService.enableRetries(4, 30);
-    testListDataRelationshipsForRecordWOptions();
-
-    // Disable retries and run testListDataRelationshipsForRecordWOptions.
-    mdmService.disableRetries();
-    testListDataRelationshipsForRecordWOptions();
-  }  
-
-  // Test the listDataRelationshipsForRecord operation with null options model parameter
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testListDataRelationshipsForRecordNoOptions() throws Throwable {
-    // construct the service
-    constructClientService();
-
-    server.enqueue(new MockResponse());
-
-    // Invoke operation with null options model (negative test)
-    mdmService.listDataRelationshipsForRecord(null).execute();
-  }
 
   @Test
   public void testGetDataRelationshipForRecordWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"type\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String getDataRelationshipForRecordPath = "/mdm/v1/records/26/relationships/testString";
 
     server.enqueue(new MockResponse()
@@ -2746,10 +2424,251 @@ public class MdmTest extends PowerMockTestCase {
   }
 
   @Test
-  public void testCreateDataRelationshipWOptions() throws Throwable {
+  public void testGetDataRecordWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"type\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
-    String createDataRelationshipPath = "/mdm/v1/relationships";
+    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String getDataRecordPath = "/mdm/v1/records/26";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetDataRecordOptions model
+    GetDataRecordOptions getDataRecordOptionsModel = new GetDataRecordOptions.Builder()
+    .id(Long.valueOf("26"))
+    .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
+    .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DataRecordResponse> response = mdmService.getDataRecord(getDataRecordOptionsModel).execute();
+    assertNotNull(response);
+    DataRecordResponse responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    assertEquals(query.get("include"), RequestUtils.join(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")), ","));
+    assertEquals(query.get("exclude"), RequestUtils.join(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")), ","));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getDataRecordPath);
+  }
+  
+  public void testGetDataRecordWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetDataRecordWOptions.
+    mdmService.enableRetries(4, 30);
+    testGetDataRecordWOptions();
+
+    // Disable retries and run testGetDataRecordWOptions.
+    mdmService.disableRetries();
+    testGetDataRecordWOptions();
+  }  
+
+  // Test the getDataRecord operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetDataRecordNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.getDataRecord(null).execute();
+  }
+
+  @Test
+  public void testReplaceDataRecordWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String replaceDataRecordPath = "/mdm/v1/records/26";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ReplaceDataRecordOptions model
+    ReplaceDataRecordOptions replaceDataRecordOptionsModel = new ReplaceDataRecordOptions.Builder()
+    .id(Long.valueOf("26"))
+    .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+    .newId("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DataRecordResponse> response = mdmService.replaceDataRecord(replaceDataRecordOptionsModel).execute();
+    assertNotNull(response);
+    DataRecordResponse responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "PUT");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, replaceDataRecordPath);
+  }
+  
+  public void testReplaceDataRecordWOptionsWRetries() throws Throwable {
+    // Enable retries and run testReplaceDataRecordWOptions.
+    mdmService.enableRetries(4, 30);
+    testReplaceDataRecordWOptions();
+
+    // Disable retries and run testReplaceDataRecordWOptions.
+    mdmService.disableRetries();
+    testReplaceDataRecordWOptions();
+  }  
+
+  // Test the replaceDataRecord operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testReplaceDataRecordNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.replaceDataRecord(null).execute();
+  }
+
+  @Test
+  public void testDeleteDataRecordWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String deleteDataRecordPath = "/mdm/v1/records/26";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(204)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the DeleteDataRecordOptions model
+    DeleteDataRecordOptions deleteDataRecordOptionsModel = new DeleteDataRecordOptions.Builder()
+    .id(Long.valueOf("26"))
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = mdmService.deleteDataRecord(deleteDataRecordOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "DELETE");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, deleteDataRecordPath);
+  }
+  
+  public void testDeleteDataRecordWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteDataRecordWOptions.
+    mdmService.enableRetries(4, 30);
+    testDeleteDataRecordWOptions();
+
+    // Disable retries and run testDeleteDataRecordWOptions.
+    mdmService.disableRetries();
+    testDeleteDataRecordWOptions();
+  }  
+
+  // Test the deleteDataRecord operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testDeleteDataRecordNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.deleteDataRecord(null).execute();
+  }
+
+  @Test
+  public void testListDataRecordsWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"records\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}]}";
+    String listDataRecordsPath = "/mdm/v1/records";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListDataRecordsOptions model
+    ListDataRecordsOptions listDataRecordsOptionsModel = new ListDataRecordsOptions.Builder()
+    .offset(Long.valueOf("26"))
+    .limit(Long.valueOf("50"))
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DataRecordsResponse> response = mdmService.listDataRecords(listDataRecordsOptionsModel).execute();
+    assertNotNull(response);
+    DataRecordsResponse responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("50"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listDataRecordsPath);
+  }
+  
+  public void testListDataRecordsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListDataRecordsWOptions.
+    mdmService.enableRetries(4, 30);
+    testListDataRecordsWOptions();
+
+    // Disable retries and run testListDataRecordsWOptions.
+    mdmService.disableRetries();
+    testListDataRecordsWOptions();
+  }  
+
+  @Test
+  public void testCreateDataRecordWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String createDataRecordPath = "/mdm/v1/records";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2758,16 +2677,16 @@ public class MdmTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the CreateDataRelationshipOptions model
-    CreateDataRelationshipOptions createDataRelationshipOptionsModel = new CreateDataRelationshipOptions.Builder()
+    // Construct an instance of the CreateDataRecordOptions model
+    CreateDataRecordOptions createDataRecordOptionsModel = new CreateDataRecordOptions.Builder()
     .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
     .id("testString")
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<DataRelationshipResponse> response = mdmService.createDataRelationship(createDataRelationshipOptionsModel).execute();
+    Response<DataRecordResponse> response = mdmService.createDataRecord(createDataRecordOptionsModel).execute();
     assertNotNull(response);
-    DataRelationshipResponse responseObj = response.getResult();
+    DataRecordResponse responseObj = response.getResult();
     assertNotNull(responseObj);
 
     // Verify the contents of the request
@@ -2782,29 +2701,220 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("crn"), "testString");
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, createDataRelationshipPath);
+    assertEquals(parsedPath, createDataRecordPath);
   }
   
-  public void testCreateDataRelationshipWOptionsWRetries() throws Throwable {
-    // Enable retries and run testCreateDataRelationshipWOptions.
+  public void testCreateDataRecordWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateDataRecordWOptions.
     mdmService.enableRetries(4, 30);
-    testCreateDataRelationshipWOptions();
+    testCreateDataRecordWOptions();
 
-    // Disable retries and run testCreateDataRelationshipWOptions.
+    // Disable retries and run testCreateDataRecordWOptions.
     mdmService.disableRetries();
-    testCreateDataRelationshipWOptions();
+    testCreateDataRecordWOptions();
   }  
 
-  // Test the createDataRelationship operation with null options model parameter
+  // Test the createDataRecord operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testCreateDataRelationshipNoOptions() throws Throwable {
+  public void testCreateDataRecordNoOptions() throws Throwable {
     // construct the service
     constructClientService();
 
     server.enqueue(new MockResponse());
 
     // Invoke operation with null options model (negative test)
-    mdmService.createDataRelationship(null).execute();
+    mdmService.createDataRecord(null).execute();
+  }
+
+  @Test
+  public void testListDataRelationshipsForRecordWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}]}";
+    String listDataRelationshipsForRecordPath = "/mdm/v1/records/26/relationships";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListDataRelationshipsForRecordOptions model
+    ListDataRelationshipsForRecordOptions listDataRelationshipsForRecordOptionsModel = new ListDataRelationshipsForRecordOptions.Builder()
+    .id(Long.valueOf("26"))
+    .relationshipTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .offset(Long.valueOf("26"))
+    .limit(Long.valueOf("50"))
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DataRelationshipsResponse> response = mdmService.listDataRelationshipsForRecord(listDataRelationshipsForRecordOptionsModel).execute();
+    assertNotNull(response);
+    DataRelationshipsResponse responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    assertEquals(query.get("relationship_types"), RequestUtils.join(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")), ","));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("50"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listDataRelationshipsForRecordPath);
+  }
+  
+  public void testListDataRelationshipsForRecordWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListDataRelationshipsForRecordWOptions.
+    mdmService.enableRetries(4, 30);
+    testListDataRelationshipsForRecordWOptions();
+
+    // Disable retries and run testListDataRelationshipsForRecordWOptions.
+    mdmService.disableRetries();
+    testListDataRelationshipsForRecordWOptions();
+  }  
+
+  // Test the listDataRelationshipsForRecord operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testListDataRelationshipsForRecordNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.listDataRelationshipsForRecord(null).execute();
+  }
+
+  @Test
+  public void testGetDataRelationshipWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String getDataRelationshipPath = "/mdm/v1/relationships/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetDataRelationshipOptions model
+    GetDataRelationshipOptions getDataRelationshipOptionsModel = new GetDataRelationshipOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DataRelationshipResponse> response = mdmService.getDataRelationship(getDataRelationshipOptionsModel).execute();
+    assertNotNull(response);
+    DataRelationshipResponse responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getDataRelationshipPath);
+  }
+  
+  public void testGetDataRelationshipWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetDataRelationshipWOptions.
+    mdmService.enableRetries(4, 30);
+    testGetDataRelationshipWOptions();
+
+    // Disable retries and run testGetDataRelationshipWOptions.
+    mdmService.disableRetries();
+    testGetDataRelationshipWOptions();
+  }  
+
+  // Test the getDataRelationship operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetDataRelationshipNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.getDataRelationship(null).execute();
+  }
+
+  @Test
+  public void testReplaceDataRelationshipWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String replaceDataRelationshipPath = "/mdm/v1/relationships/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ReplaceDataRelationshipOptions model
+    ReplaceDataRelationshipOptions replaceDataRelationshipOptionsModel = new ReplaceDataRelationshipOptions.Builder()
+    .id("testString")
+    .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+    .newId("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DataRelationshipResponse> response = mdmService.replaceDataRelationship(replaceDataRelationshipOptionsModel).execute();
+    assertNotNull(response);
+    DataRelationshipResponse responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "PUT");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, replaceDataRelationshipPath);
+  }
+  
+  public void testReplaceDataRelationshipWOptionsWRetries() throws Throwable {
+    // Enable retries and run testReplaceDataRelationshipWOptions.
+    mdmService.enableRetries(4, 30);
+    testReplaceDataRelationshipWOptions();
+
+    // Disable retries and run testReplaceDataRelationshipWOptions.
+    mdmService.disableRetries();
+    testReplaceDataRelationshipWOptions();
+  }  
+
+  // Test the replaceDataRelationship operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testReplaceDataRelationshipNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.replaceDataRelationship(null).execute();
   }
 
   @Test
@@ -2866,6 +2976,68 @@ public class MdmTest extends PowerMockTestCase {
 
     // Invoke operation with null options model (negative test)
     mdmService.deleteDataRelationship(null).execute();
+  }
+
+  @Test
+  public void testCreateDataRelationshipWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String createDataRelationshipPath = "/mdm/v1/relationships";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(201)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the CreateDataRelationshipOptions model
+    CreateDataRelationshipOptions createDataRelationshipOptionsModel = new CreateDataRelationshipOptions.Builder()
+    .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DataRelationshipResponse> response = mdmService.createDataRelationship(createDataRelationshipOptionsModel).execute();
+    assertNotNull(response);
+    DataRelationshipResponse responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, createDataRelationshipPath);
+  }
+  
+  public void testCreateDataRelationshipWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateDataRelationshipWOptions.
+    mdmService.enableRetries(4, 30);
+    testCreateDataRelationshipWOptions();
+
+    // Disable retries and run testCreateDataRelationshipWOptions.
+    mdmService.disableRetries();
+    testCreateDataRelationshipWOptions();
+  }  
+
+  // Test the createDataRelationship operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreateDataRelationshipNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.createDataRelationship(null).execute();
   }
 
   @Test
@@ -2937,8 +3109,8 @@ public class MdmTest extends PowerMockTestCase {
     .operation("and")
     .build();
 
-    // Construct an instance of the DataSearchCriteriaQuery model
-    DataSearchCriteriaQuery dataSearchCriteriaQueryModel = new DataSearchCriteriaQuery.Builder()
+    // Construct an instance of the SearchQuery model
+    SearchQuery searchQueryModel = new SearchQuery.Builder()
     .expressions(new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)))
     .operation("and")
     .build();
@@ -2952,7 +3124,7 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the SearchDataOptions model
     SearchDataOptions searchDataOptionsModel = new SearchDataOptions.Builder()
     .searchType("record")
-    .query(dataSearchCriteriaQueryModel)
+    .query(searchQueryModel)
     .filters(new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)))
     .returnType("results")
     .limit(Long.valueOf("50"))
@@ -3445,6 +3617,191 @@ public class MdmTest extends PowerMockTestCase {
   }  
 
   @Test
+  public void testListMatchingRulesWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"mapKey\": [{\"last_updated\": 11, \"src_recno\": \"srcRecno\", \"target_recno\": \"targetRecno\", \"rule_type\": \"ruleType\", \"description\": \"description\", \"user\": \"user\"}]}";
+    String listMatchingRulesPath = "/mdm/v1/entities/person_entity-1234/linkage_rules";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListMatchingRulesOptions model
+    ListMatchingRulesOptions listMatchingRulesOptionsModel = new ListMatchingRulesOptions.Builder()
+    .entityId("person_entity-1234")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Map<String, List<RulesEntityRule>>> response = mdmService.listMatchingRules(listMatchingRulesOptionsModel).execute();
+    assertNotNull(response);
+    Map<String, List<RulesEntityRule>> responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listMatchingRulesPath);
+  }
+  
+  public void testListMatchingRulesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListMatchingRulesWOptions.
+    mdmService.enableRetries(4, 30);
+    testListMatchingRulesWOptions();
+
+    // Disable retries and run testListMatchingRulesWOptions.
+    mdmService.disableRetries();
+    testListMatchingRulesWOptions();
+  }  
+
+  // Test the listMatchingRules operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testListMatchingRulesNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.listMatchingRules(null).execute();
+  }
+
+  @Test
+  public void testGetMatchingRecordRulesWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"mapKey\": [{\"last_updated\": 11, \"src_recno\": \"srcRecno\", \"target_recno\": \"targetRecno\", \"rule_type\": \"ruleType\", \"description\": \"description\", \"user\": \"user\"}]}";
+    String getMatchingRecordRulesPath = "/mdm/v1/records/123456789/linkage_rules";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetMatchingRecordRulesOptions model
+    GetMatchingRecordRulesOptions getMatchingRecordRulesOptionsModel = new GetMatchingRecordRulesOptions.Builder()
+    .recordNumber(Long.valueOf("123456789"))
+    .entityType("entity-type")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Map<String, List<RulesEntityRule>>> response = mdmService.getMatchingRecordRules(getMatchingRecordRulesOptionsModel).execute();
+    assertNotNull(response);
+    Map<String, List<RulesEntityRule>> responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    assertEquals(query.get("entity_type"), "entity-type");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getMatchingRecordRulesPath);
+  }
+  
+  public void testGetMatchingRecordRulesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetMatchingRecordRulesWOptions.
+    mdmService.enableRetries(4, 30);
+    testGetMatchingRecordRulesWOptions();
+
+    // Disable retries and run testGetMatchingRecordRulesWOptions.
+    mdmService.disableRetries();
+    testGetMatchingRecordRulesWOptions();
+  }  
+
+  // Test the getMatchingRecordRules operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetMatchingRecordRulesNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.getMatchingRecordRules(null).execute();
+  }
+
+  @Test
+  public void testGetMatchingJobInfoWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"job_name\": \"jobName\", \"last_updated_at\": \"lastUpdatedAt\", \"created_at\": \"createdAt\", \"image\": \"image\", \"started_at\": \"startedAt\", \"status\": \"status\", \"summary\": {\"mapKey\": \"anyValue\"}, \"id\": \"id\"}";
+    String getMatchingJobInfoPath = "/mdm/v1/matching_jobs/95364";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetMatchingJobInfoOptions model
+    GetMatchingJobInfoOptions getMatchingJobInfoOptionsModel = new GetMatchingJobInfoOptions.Builder()
+    .jobId("95364")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<GetMatchingJobs> response = mdmService.getMatchingJobInfo(getMatchingJobInfoOptionsModel).execute();
+    assertNotNull(response);
+    GetMatchingJobs responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getMatchingJobInfoPath);
+  }
+  
+  public void testGetMatchingJobInfoWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetMatchingJobInfoWOptions.
+    mdmService.enableRetries(4, 30);
+    testGetMatchingJobInfoWOptions();
+
+    // Disable retries and run testGetMatchingJobInfoWOptions.
+    mdmService.disableRetries();
+    testGetMatchingJobInfoWOptions();
+  }  
+
+  // Test the getMatchingJobInfo operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetMatchingJobInfoNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    mdmService.getMatchingJobInfo(null).execute();
+  }
+
+  @Test
   public void testGetMatchingRecordsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"records\": [{\"record_number\": \"recordNumber\", \"record_id\": \"recordId\", \"record_source\": \"recordSource\"}]}";
@@ -3577,7 +3934,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceMatchingRuleWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"mapKey\": [{\"last_updated\": 11, \"rule_type\": \"ruleType\", \"src_recno\": \"srcRecno\", \"target_recno\": \"targetRecno\", \"description\": \"description\", \"user\": \"user\"}]}";
+    String mockResponseBody = "{\"mapKey\": [{\"last_updated\": 11, \"src_recno\": \"srcRecno\", \"target_recno\": \"targetRecno\", \"rule_type\": \"ruleType\", \"description\": \"description\", \"user\": \"user\"}]}";
     String replaceMatchingRulePath = "/mdm/v1/linkage_rules";
 
     server.enqueue(new MockResponse()
@@ -3646,7 +4003,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testDeleteMatchingRuleWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"mapKey\": [{\"last_updated\": 11, \"rule_type\": \"ruleType\", \"src_recno\": \"srcRecno\", \"target_recno\": \"targetRecno\", \"description\": \"description\", \"user\": \"user\"}]}";
+    String mockResponseBody = "{\"mapKey\": [{\"last_updated\": 11, \"src_recno\": \"srcRecno\", \"target_recno\": \"targetRecno\", \"rule_type\": \"ruleType\", \"description\": \"description\", \"user\": \"user\"}]}";
     String deleteMatchingRulePath = "/mdm/v1/delete_linkage_rules";
 
     server.enqueue(new MockResponse()
@@ -3713,194 +4070,9 @@ public class MdmTest extends PowerMockTestCase {
   }
 
   @Test
-  public void testListMatchingRulesWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"mapKey\": [{\"last_updated\": 11, \"rule_type\": \"ruleType\", \"src_recno\": \"srcRecno\", \"target_recno\": \"targetRecno\", \"description\": \"description\", \"user\": \"user\"}]}";
-    String listMatchingRulesPath = "/mdm/v1/entities/person_entity-1234/linkage_rules";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(200)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the ListMatchingRulesOptions model
-    ListMatchingRulesOptions listMatchingRulesOptionsModel = new ListMatchingRulesOptions.Builder()
-    .entityId("person_entity-1234")
-    .build();
-
-    // Invoke operation with valid options model (positive test)
-    Response<Map<String, List<RulesEntityRule>>> response = mdmService.listMatchingRules(listMatchingRulesOptionsModel).execute();
-    assertNotNull(response);
-    Map<String, List<RulesEntityRule>> responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "GET");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, listMatchingRulesPath);
-  }
-  
-  public void testListMatchingRulesWOptionsWRetries() throws Throwable {
-    // Enable retries and run testListMatchingRulesWOptions.
-    mdmService.enableRetries(4, 30);
-    testListMatchingRulesWOptions();
-
-    // Disable retries and run testListMatchingRulesWOptions.
-    mdmService.disableRetries();
-    testListMatchingRulesWOptions();
-  }  
-
-  // Test the listMatchingRules operation with null options model parameter
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testListMatchingRulesNoOptions() throws Throwable {
-    // construct the service
-    constructClientService();
-
-    server.enqueue(new MockResponse());
-
-    // Invoke operation with null options model (negative test)
-    mdmService.listMatchingRules(null).execute();
-  }
-
-  @Test
-  public void testGetMatchingRecordRulesWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"mapKey\": [{\"last_updated\": 11, \"rule_type\": \"ruleType\", \"src_recno\": \"srcRecno\", \"target_recno\": \"targetRecno\", \"description\": \"description\", \"user\": \"user\"}]}";
-    String getMatchingRecordRulesPath = "/mdm/v1/records/123456789/linkage_rules";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(200)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the GetMatchingRecordRulesOptions model
-    GetMatchingRecordRulesOptions getMatchingRecordRulesOptionsModel = new GetMatchingRecordRulesOptions.Builder()
-    .recordNumber(Long.valueOf("123456789"))
-    .entityType("entity-type")
-    .build();
-
-    // Invoke operation with valid options model (positive test)
-    Response<Map<String, List<RulesEntityRule>>> response = mdmService.getMatchingRecordRules(getMatchingRecordRulesOptionsModel).execute();
-    assertNotNull(response);
-    Map<String, List<RulesEntityRule>> responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "GET");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    assertEquals(query.get("entity_type"), "entity-type");
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, getMatchingRecordRulesPath);
-  }
-  
-  public void testGetMatchingRecordRulesWOptionsWRetries() throws Throwable {
-    // Enable retries and run testGetMatchingRecordRulesWOptions.
-    mdmService.enableRetries(4, 30);
-    testGetMatchingRecordRulesWOptions();
-
-    // Disable retries and run testGetMatchingRecordRulesWOptions.
-    mdmService.disableRetries();
-    testGetMatchingRecordRulesWOptions();
-  }  
-
-  // Test the getMatchingRecordRules operation with null options model parameter
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGetMatchingRecordRulesNoOptions() throws Throwable {
-    // construct the service
-    constructClientService();
-
-    server.enqueue(new MockResponse());
-
-    // Invoke operation with null options model (negative test)
-    mdmService.getMatchingRecordRules(null).execute();
-  }
-
-  @Test
-  public void testGetMatchingJobInfoWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"image\": \"image\", \"started_at\": \"startedAt\", \"job_name\": \"jobName\", \"last_updated_at\": \"lastUpdatedAt\", \"created_at\": \"createdAt\", \"status\": \"status\", \"summary\": {\"mapKey\": \"anyValue\"}, \"id\": \"id\"}";
-    String getMatchingJobInfoPath = "/mdm/v1/matching_jobs/95364";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(200)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the GetMatchingJobInfoOptions model
-    GetMatchingJobInfoOptions getMatchingJobInfoOptionsModel = new GetMatchingJobInfoOptions.Builder()
-    .jobId("95364")
-    .build();
-
-    // Invoke operation with valid options model (positive test)
-    Response<GetMatchingJobs> response = mdmService.getMatchingJobInfo(getMatchingJobInfoOptionsModel).execute();
-    assertNotNull(response);
-    GetMatchingJobs responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "GET");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, getMatchingJobInfoPath);
-  }
-  
-  public void testGetMatchingJobInfoWOptionsWRetries() throws Throwable {
-    // Enable retries and run testGetMatchingJobInfoWOptions.
-    mdmService.enableRetries(4, 30);
-    testGetMatchingJobInfoWOptions();
-
-    // Disable retries and run testGetMatchingJobInfoWOptions.
-    mdmService.disableRetries();
-    testGetMatchingJobInfoWOptions();
-  }  
-
-  // Test the getMatchingJobInfo operation with null options model parameter
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGetMatchingJobInfoNoOptions() throws Throwable {
-    // construct the service
-    constructClientService();
-
-    server.enqueue(new MockResponse());
-
-    // Invoke operation with null options model (negative test)
-    mdmService.getMatchingJobInfo(null).execute();
-  }
-
-  @Test
   public void testCompareMatchingIndexWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"score\": 5, \"compare_methods\": [{\"score\": 5, \"methods\": [{\"comparisons\": [{\"distance\": 8, \"score\": 5, \"feature_vector\": {\"mapKey\": \"anyValue\"}, \"details\": {\"mapKey\": \"anyValue\"}, \"values\": [\"values\"], \"types\": [\"types\"]}], \"score\": 5, \"method\": 6}], \"name\": \"name\"}]}";
+    String mockResponseBody = "{\"score\": 5, \"compare_methods\": [{\"score\": 5, \"methods\": [{\"comparisons\": [{\"distance\": 8, \"details\": {\"mapKey\": \"anyValue\"}, \"feature_vector\": {\"mapKey\": \"anyValue\"}, \"score\": 5, \"values\": [\"values\"], \"types\": [\"types\"]}], \"score\": 5, \"method\": 6}], \"name\": \"name\"}]}";
     String compareMatchingIndexPath = "/mdm/v1/compare";
 
     server.enqueue(new MockResponse()
@@ -3975,7 +4147,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testSearchMatchingIndexWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"records\": [{\"score\": 5, \"compare_methods\": [{\"score\": 5, \"methods\": [{\"comparisons\": [{\"distance\": 8, \"score\": 5, \"feature_vector\": {\"mapKey\": \"anyValue\"}, \"details\": {\"mapKey\": \"anyValue\"}, \"values\": [\"values\"], \"types\": [\"types\"]}], \"score\": 5, \"method\": 6}], \"name\": \"name\"}], \"record_id\": \"recordId\", \"record_source\": \"recordSource\"}]}";
+    String mockResponseBody = "{\"records\": [{\"record_id\": \"recordId\", \"record_source\": \"recordSource\", \"score\": 5, \"compare_methods\": [{\"score\": 5, \"methods\": [{\"comparisons\": [{\"distance\": 8, \"details\": {\"mapKey\": \"anyValue\"}, \"feature_vector\": {\"mapKey\": \"anyValue\"}, \"score\": 5, \"values\": [\"values\"], \"types\": [\"types\"]}], \"score\": 5, \"method\": 6}], \"name\": \"name\"}]}]}";
     String searchMatchingIndexPath = "/mdm/v1/probabilistic_search";
 
     server.enqueue(new MockResponse()
@@ -4055,9 +4227,56 @@ public class MdmTest extends PowerMockTestCase {
   }
 
   @Test
+  public void testListModelAlgorithmsWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"algorithm_names\": [\"algorithmNames\"]}";
+    String listModelAlgorithmsPath = "/mdm/v1/algorithms";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListModelAlgorithmsOptions model
+    ListModelAlgorithmsOptions listModelAlgorithmsOptionsModel = new ListModelAlgorithmsOptions();
+
+    // Invoke operation with valid options model (positive test)
+    Response<AlgorithmNames> response = mdmService.listModelAlgorithms(listModelAlgorithmsOptionsModel).execute();
+    assertNotNull(response);
+    AlgorithmNames responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listModelAlgorithmsPath);
+  }
+  
+  public void testListModelAlgorithmsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListModelAlgorithmsWOptions.
+    mdmService.enableRetries(4, 30);
+    testListModelAlgorithmsWOptions();
+
+    // Disable retries and run testListModelAlgorithmsWOptions.
+    mdmService.disableRetries();
+    testListModelAlgorithmsWOptions();
+  }  
+
+  @Test
   public void testGetModelAlgorithmWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"standardizers\": {\"mapKey\": {\"label\": \"label\", \"standardizer_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}}, \"encryption\": {\"sub_type\": \"subType\", \"pub_key\": [\"pubKey\"], \"enabled\": false, \"type\": \"type\"}, \"entity_types\": {\"mapKey\": {\"clerical_review_threshold\": 23, \"auto_link_threshold\": 17, \"compare_methods\": {\"mapKey\": {\"weights\": [7], \"label\": \"label\", \"methods\": [{\"compare_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}]}}, \"bucket_generators\": {\"mapKey\": {\"bucket_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"order\": false, \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"bucket_group_recipe\": [{\"label\": \"label\", \"order\": false, \"inputs\": [6], \"fields\": [[\"fields\"]], \"method\": \"method\"}], \"maximum_bucket_size\": 17, \"label\": \"label\", \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}}}}, \"locale\": \"locale\"}";
+    String mockResponseBody = "{\"entity_types\": {\"mapKey\": {\"compare_methods\": {\"mapKey\": {\"weights\": [7], \"label\": \"label\", \"methods\": [{\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"compare_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}]}]}}, \"bucket_generators\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"label\": \"label\", \"bucket_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"order\": false, \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}], \"bucket_group_recipe\": [{\"inputs\": [6], \"label\": \"label\", \"order\": false, \"fields\": [[\"fields\"]], \"method\": \"method\"}], \"maximum_bucket_size\": 17}}, \"clerical_review_threshold\": 23, \"auto_link_threshold\": 17}}, \"standardizers\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"label\": \"label\", \"standardizer_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}]}}, \"encryption\": {\"sub_type\": \"subType\", \"pub_key\": [\"pubKey\"], \"enabled\": false, \"type\": \"type\"}, \"locale\": \"locale\"}";
     String getModelAlgorithmPath = "/mdm/v1/algorithms/testString";
 
     server.enqueue(new MockResponse()
@@ -4120,7 +4339,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceModelAlgorithmWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"algorithm\": {\"standardizers\": {\"mapKey\": {\"label\": \"label\", \"standardizer_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}}, \"encryption\": {\"sub_type\": \"subType\", \"pub_key\": [\"pubKey\"], \"enabled\": false, \"type\": \"type\"}, \"entity_types\": {\"mapKey\": {\"clerical_review_threshold\": 23, \"auto_link_threshold\": 17, \"compare_methods\": {\"mapKey\": {\"weights\": [7], \"label\": \"label\", \"methods\": [{\"compare_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}]}}, \"bucket_generators\": {\"mapKey\": {\"bucket_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"order\": false, \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"bucket_group_recipe\": [{\"label\": \"label\", \"order\": false, \"inputs\": [6], \"fields\": [[\"fields\"]], \"method\": \"method\"}], \"maximum_bucket_size\": 17, \"label\": \"label\", \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}}}}, \"locale\": \"locale\"}}";
+    String mockResponseBody = "{\"algorithm\": {\"entity_types\": {\"mapKey\": {\"compare_methods\": {\"mapKey\": {\"weights\": [7], \"label\": \"label\", \"methods\": [{\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"compare_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}]}]}}, \"bucket_generators\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"label\": \"label\", \"bucket_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"order\": false, \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}], \"bucket_group_recipe\": [{\"inputs\": [6], \"label\": \"label\", \"order\": false, \"fields\": [[\"fields\"]], \"method\": \"method\"}], \"maximum_bucket_size\": 17}}, \"clerical_review_threshold\": 23, \"auto_link_threshold\": 17}}, \"standardizers\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"label\": \"label\", \"standardizer_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}]}}, \"encryption\": {\"sub_type\": \"subType\", \"pub_key\": [\"pubKey\"], \"enabled\": false, \"type\": \"type\"}, \"locale\": \"locale\"}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
     String replaceModelAlgorithmPath = "/mdm/v1/algorithms/testString";
 
     server.enqueue(new MockResponse()
@@ -4130,47 +4349,20 @@ public class MdmTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the AlgorithmStandardizerStep model
-    AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
-    .setResource("testString")
-    .mapResource("testString")
-    .comparisonResource("testString")
-    .label("testString")
-    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .method("testString")
-    .add("foo", "testString")
-    .build();
-
     // Construct an instance of the AlgorithmInput model
     AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
     .encryptedFields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .build();
-
-    // Construct an instance of the AlgorithmStandardizer model
-    AlgorithmStandardizer algorithmStandardizerModel = new AlgorithmStandardizer.Builder()
-    .label("testString")
-    .standardizerRecipe(new java.util.ArrayList<AlgorithmStandardizerStep>(java.util.Arrays.asList(algorithmStandardizerStepModel)))
-    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-    .build();
-
-    // Construct an instance of the AlgorithmEncryption model
-    AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
-    .subType("testString")
-    .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .enabled(true)
-    .type("testString")
+    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .build();
 
     // Construct an instance of the AlgorithmCompareStep model
     AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-    .setResource("testString")
     .mapResource("testString")
-    .comparisonResource("testString")
-    .label("testString")
     .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .label("testString")
+    .setResource("testString")
+    .comparisonResource("testString")
     .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .method("testString")
     .add("foo", "testString")
@@ -4178,8 +4370,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmMethods model
     AlgorithmMethods algorithmMethodsModel = new AlgorithmMethods.Builder()
-    .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
     .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+    .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
     .build();
 
     // Construct an instance of the AlgorithmCompareMethod model
@@ -4191,12 +4383,12 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmBucketStep model
     AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
-    .setResource("testString")
     .mapResource("testString")
-    .comparisonResource("testString")
-    .label("testString")
-    .order(true)
     .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .label("testString")
+    .setResource("testString")
+    .order(true)
+    .comparisonResource("testString")
     .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .method("testString")
     .add("foo", "testString")
@@ -4204,9 +4396,9 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmBucketGroupStep model
     AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
+    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
     .label("testString")
     .order(true)
-    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
     .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
     .method("testString")
     .add("foo", "testString")
@@ -4214,28 +4406,55 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmBucketGenerator model
     AlgorithmBucketGenerator algorithmBucketGeneratorModel = new AlgorithmBucketGenerator.Builder()
+    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+    .label("testString")
     .bucketRecipe(new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)))
     .bucketGroupRecipe(new java.util.ArrayList<AlgorithmBucketGroupStep>(java.util.Arrays.asList(algorithmBucketGroupStepModel)))
     .maximumBucketSize(Long.valueOf("26"))
-    .label("testString")
-    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
     .add("foo", "testString")
     .build();
 
     // Construct an instance of the AlgorithmEntityType model
     AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
-    .clericalReviewThreshold(Float.valueOf("36.0"))
-    .autoLinkThreshold(Float.valueOf("36.0"))
     .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
     .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
+    .clericalReviewThreshold(Float.valueOf("36.0"))
+    .autoLinkThreshold(Float.valueOf("36.0"))
+    .build();
+
+    // Construct an instance of the AlgorithmStandardizerStep model
+    AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
+    .mapResource("testString")
+    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .label("testString")
+    .setResource("testString")
+    .comparisonResource("testString")
+    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .method("testString")
+    .add("foo", "testString")
+    .build();
+
+    // Construct an instance of the AlgorithmStandardizer model
+    AlgorithmStandardizer algorithmStandardizerModel = new AlgorithmStandardizer.Builder()
+    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+    .label("testString")
+    .standardizerRecipe(new java.util.ArrayList<AlgorithmStandardizerStep>(java.util.Arrays.asList(algorithmStandardizerStepModel)))
+    .build();
+
+    // Construct an instance of the AlgorithmEncryption model
+    AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
+    .subType("testString")
+    .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .enabled(true)
+    .type("testString")
     .build();
 
     // Construct an instance of the ReplaceModelAlgorithmOptions model
     ReplaceModelAlgorithmOptions replaceModelAlgorithmOptionsModel = new ReplaceModelAlgorithmOptions.Builder()
     .recordType("testString")
+    .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
     .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
     .encryption(algorithmEncryptionModel)
-    .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
     .locale("testString")
     .build();
 
@@ -4285,7 +4504,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGenerateModelAlgorithmWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"algorithm\": {\"standardizers\": {\"mapKey\": {\"label\": \"label\", \"standardizer_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}}, \"encryption\": {\"sub_type\": \"subType\", \"pub_key\": [\"pubKey\"], \"enabled\": false, \"type\": \"type\"}, \"entity_types\": {\"mapKey\": {\"clerical_review_threshold\": 23, \"auto_link_threshold\": 17, \"compare_methods\": {\"mapKey\": {\"weights\": [7], \"label\": \"label\", \"methods\": [{\"compare_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}]}}, \"bucket_generators\": {\"mapKey\": {\"bucket_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"order\": false, \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"bucket_group_recipe\": [{\"label\": \"label\", \"order\": false, \"inputs\": [6], \"fields\": [[\"fields\"]], \"method\": \"method\"}], \"maximum_bucket_size\": 17, \"label\": \"label\", \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}}}}, \"locale\": \"locale\"}}";
+    String mockResponseBody = "{\"algorithm\": {\"entity_types\": {\"mapKey\": {\"compare_methods\": {\"mapKey\": {\"weights\": [7], \"label\": \"label\", \"methods\": [{\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"compare_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}]}]}}, \"bucket_generators\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"label\": \"label\", \"bucket_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"order\": false, \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}], \"bucket_group_recipe\": [{\"inputs\": [6], \"label\": \"label\", \"order\": false, \"fields\": [[\"fields\"]], \"method\": \"method\"}], \"maximum_bucket_size\": 17}}, \"clerical_review_threshold\": 23, \"auto_link_threshold\": 17}}, \"standardizers\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"label\": \"label\", \"standardizer_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}]}}, \"encryption\": {\"sub_type\": \"subType\", \"pub_key\": [\"pubKey\"], \"enabled\": false, \"type\": \"type\"}, \"locale\": \"locale\"}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
     String generateModelAlgorithmPath = "/mdm/v1/algorithms/testString";
 
     server.enqueue(new MockResponse()
@@ -4303,8 +4522,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmGenerationEntityType model
     AlgorithmGenerationEntityType algorithmGenerationEntityTypeModel = new AlgorithmGenerationEntityType.Builder()
-    .autoLinkThreshold(Float.valueOf("0"))
     .matchingAttributes(new java.util.ArrayList<AlgorithmGenerationAttributeItem>(java.util.Arrays.asList(algorithmGenerationAttributeItemModel)))
+    .autoLinkThreshold(Float.valueOf("0"))
     .add("foo", "testString")
     .build();
 
@@ -4360,7 +4579,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testUpdateModelAlgorithmWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"algorithm\": {\"standardizers\": {\"mapKey\": {\"label\": \"label\", \"standardizer_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}}, \"encryption\": {\"sub_type\": \"subType\", \"pub_key\": [\"pubKey\"], \"enabled\": false, \"type\": \"type\"}, \"entity_types\": {\"mapKey\": {\"clerical_review_threshold\": 23, \"auto_link_threshold\": 17, \"compare_methods\": {\"mapKey\": {\"weights\": [7], \"label\": \"label\", \"methods\": [{\"compare_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}]}}, \"bucket_generators\": {\"mapKey\": {\"bucket_recipe\": [{\"set_resource\": \"setResource\", \"map_resource\": \"mapResource\", \"comparison_resource\": \"comparisonResource\", \"label\": \"label\", \"order\": false, \"inputs\": [6], \"fields\": [\"fields\"], \"method\": \"method\"}], \"bucket_group_recipe\": [{\"label\": \"label\", \"order\": false, \"inputs\": [6], \"fields\": [[\"fields\"]], \"method\": \"method\"}], \"maximum_bucket_size\": 17, \"label\": \"label\", \"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"fields\": [\"fields\"], \"attributes\": [\"attributes\"]}]}}}}, \"locale\": \"locale\"}}";
+    String mockResponseBody = "{\"algorithm\": {\"entity_types\": {\"mapKey\": {\"compare_methods\": {\"mapKey\": {\"weights\": [7], \"label\": \"label\", \"methods\": [{\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"compare_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}]}]}}, \"bucket_generators\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"label\": \"label\", \"bucket_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"order\": false, \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}], \"bucket_group_recipe\": [{\"inputs\": [6], \"label\": \"label\", \"order\": false, \"fields\": [[\"fields\"]], \"method\": \"method\"}], \"maximum_bucket_size\": 17}}, \"clerical_review_threshold\": 23, \"auto_link_threshold\": 17}}, \"standardizers\": {\"mapKey\": {\"inputs\": [{\"encrypted_fields\": [\"encryptedFields\"], \"attributes\": [\"attributes\"], \"fields\": [\"fields\"]}], \"label\": \"label\", \"standardizer_recipe\": [{\"map_resource\": \"mapResource\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"comparison_resource\": \"comparisonResource\", \"fields\": [\"fields\"], \"method\": \"method\"}]}}, \"encryption\": {\"sub_type\": \"subType\", \"pub_key\": [\"pubKey\"], \"enabled\": false, \"type\": \"type\"}, \"locale\": \"locale\"}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
     String updateModelAlgorithmPath = "/mdm/v1/algorithms/testString";
 
     server.enqueue(new MockResponse()
@@ -4370,47 +4589,20 @@ public class MdmTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the AlgorithmStandardizerStep model
-    AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
-    .setResource("testString")
-    .mapResource("testString")
-    .comparisonResource("testString")
-    .label("testString")
-    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .method("testString")
-    .add("foo", "testString")
-    .build();
-
     // Construct an instance of the AlgorithmInput model
     AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
     .encryptedFields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .build();
-
-    // Construct an instance of the AlgorithmStandardizer model
-    AlgorithmStandardizer algorithmStandardizerModel = new AlgorithmStandardizer.Builder()
-    .label("testString")
-    .standardizerRecipe(new java.util.ArrayList<AlgorithmStandardizerStep>(java.util.Arrays.asList(algorithmStandardizerStepModel)))
-    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-    .build();
-
-    // Construct an instance of the AlgorithmEncryption model
-    AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
-    .subType("testString")
-    .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-    .enabled(true)
-    .type("testString")
+    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .build();
 
     // Construct an instance of the AlgorithmCompareStep model
     AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-    .setResource("testString")
     .mapResource("testString")
-    .comparisonResource("testString")
-    .label("testString")
     .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .label("testString")
+    .setResource("testString")
+    .comparisonResource("testString")
     .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .method("testString")
     .add("foo", "testString")
@@ -4418,8 +4610,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmMethods model
     AlgorithmMethods algorithmMethodsModel = new AlgorithmMethods.Builder()
-    .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
     .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+    .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
     .build();
 
     // Construct an instance of the AlgorithmCompareMethod model
@@ -4431,12 +4623,12 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmBucketStep model
     AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
-    .setResource("testString")
     .mapResource("testString")
-    .comparisonResource("testString")
-    .label("testString")
-    .order(true)
     .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .label("testString")
+    .setResource("testString")
+    .order(true)
+    .comparisonResource("testString")
     .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .method("testString")
     .add("foo", "testString")
@@ -4444,9 +4636,9 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmBucketGroupStep model
     AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
+    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
     .label("testString")
     .order(true)
-    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
     .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
     .method("testString")
     .add("foo", "testString")
@@ -4454,28 +4646,55 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmBucketGenerator model
     AlgorithmBucketGenerator algorithmBucketGeneratorModel = new AlgorithmBucketGenerator.Builder()
+    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+    .label("testString")
     .bucketRecipe(new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)))
     .bucketGroupRecipe(new java.util.ArrayList<AlgorithmBucketGroupStep>(java.util.Arrays.asList(algorithmBucketGroupStepModel)))
     .maximumBucketSize(Long.valueOf("26"))
-    .label("testString")
-    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
     .add("foo", "testString")
     .build();
 
     // Construct an instance of the AlgorithmEntityType model
     AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
-    .clericalReviewThreshold(Float.valueOf("36.0"))
-    .autoLinkThreshold(Float.valueOf("36.0"))
     .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
     .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
+    .clericalReviewThreshold(Float.valueOf("36.0"))
+    .autoLinkThreshold(Float.valueOf("36.0"))
+    .build();
+
+    // Construct an instance of the AlgorithmStandardizerStep model
+    AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
+    .mapResource("testString")
+    .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+    .label("testString")
+    .setResource("testString")
+    .comparisonResource("testString")
+    .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .method("testString")
+    .add("foo", "testString")
+    .build();
+
+    // Construct an instance of the AlgorithmStandardizer model
+    AlgorithmStandardizer algorithmStandardizerModel = new AlgorithmStandardizer.Builder()
+    .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+    .label("testString")
+    .standardizerRecipe(new java.util.ArrayList<AlgorithmStandardizerStep>(java.util.Arrays.asList(algorithmStandardizerStepModel)))
+    .build();
+
+    // Construct an instance of the AlgorithmEncryption model
+    AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
+    .subType("testString")
+    .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .enabled(true)
+    .type("testString")
     .build();
 
     // Construct an instance of the UpdateModelAlgorithmOptions model
     UpdateModelAlgorithmOptions updateModelAlgorithmOptionsModel = new UpdateModelAlgorithmOptions.Builder()
     .recordType("testString")
+    .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
     .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
     .encryption(algorithmEncryptionModel)
-    .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
     .locale("testString")
     .build();
 
@@ -4523,56 +4742,9 @@ public class MdmTest extends PowerMockTestCase {
   }
 
   @Test
-  public void testListModelAlgorithmsWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"algorithm_names\": [\"algorithmNames\"]}";
-    String listModelAlgorithmsPath = "/mdm/v1/algorithms";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(200)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the ListModelAlgorithmsOptions model
-    ListModelAlgorithmsOptions listModelAlgorithmsOptionsModel = new ListModelAlgorithmsOptions();
-
-    // Invoke operation with valid options model (positive test)
-    Response<AlgorithmNames> response = mdmService.listModelAlgorithms(listModelAlgorithmsOptionsModel).execute();
-    assertNotNull(response);
-    AlgorithmNames responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "GET");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, listModelAlgorithmsPath);
-  }
-  
-  public void testListModelAlgorithmsWOptionsWRetries() throws Throwable {
-    // Enable retries and run testListModelAlgorithmsWOptions.
-    mdmService.enableRetries(4, 30);
-    testListModelAlgorithmsWOptions();
-
-    // Disable retries and run testListModelAlgorithmsWOptions.
-    mdmService.disableRetries();
-    testListModelAlgorithmsWOptions();
-  }  
-
-  @Test
   public void testGetModelComparespecResourceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"typo_distance\": 12, \"feature_categories\": {\"mapKey\": {\"equivalency_map_resource\": \"equivalencyMapResource\", \"features\": [\"features\"], \"fields\": [\"fields\"]}}, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25}";
+    String mockResponseBody = "{\"feature_categories\": {\"mapKey\": {\"equivalency_map_resource\": \"equivalencyMapResource\", \"features\": [\"features\"], \"fields\": [\"fields\"]}}, \"typo_distance\": 12, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25}";
     String getModelComparespecResourcePath = "/mdm/v1/compare_spec_resources/testString";
 
     server.enqueue(new MockResponse()
@@ -4633,7 +4805,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceModelComparespecResourceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"compare_spec_resources\": {\"typo_distance\": 12, \"feature_categories\": {\"mapKey\": {\"equivalency_map_resource\": \"equivalencyMapResource\", \"features\": [\"features\"], \"fields\": [\"fields\"]}}, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
+    String mockResponseBody = "{\"compare_spec_resources\": {\"feature_categories\": {\"mapKey\": {\"equivalency_map_resource\": \"equivalencyMapResource\", \"features\": [\"features\"], \"fields\": [\"fields\"]}}, \"typo_distance\": 12, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
     String replaceModelComparespecResourcePath = "/mdm/v1/compare_spec_resources/testString";
 
     server.enqueue(new MockResponse()
@@ -4653,8 +4825,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the ReplaceModelComparespecResourceOptions model
     ReplaceModelComparespecResourceOptions replaceModelComparespecResourceOptionsModel = new ReplaceModelComparespecResourceOptions.Builder()
     .resourceName("testString")
-    .typoDistance(Float.valueOf("36.0"))
     .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
+    .typoDistance(Float.valueOf("36.0"))
     .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
     .similarCharactersMapResource("testString")
     .similarCharactersDistance(Float.valueOf("36.0"))
@@ -4753,7 +4925,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetModelCompositeRulesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"rules\": {\"global\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}, \"record_type_rule\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}, \"entity_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}}}}, \"locale\": \"locale\"}";
+    String mockResponseBody = "{\"rules\": {\"global\": {\"sources\": [\"sources\"], \"choices\": [\"choices\"]}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"choices\": [\"choices\"]}}, \"record_type_rule\": {\"sources\": [\"sources\"], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"choices\": [\"choices\"]}}}}}, \"locale\": \"locale\"}";
     String getModelCompositeRulesPath = "/mdm/v1/composite_rules";
 
     server.enqueue(new MockResponse()
@@ -4800,7 +4972,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceModelCompositeRulesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"composite_rules\": {\"rules\": {\"global\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}, \"record_type_rule\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}, \"entity_rules\": {\"mapKey\": {\"choices\": [\"choices\"], \"sources\": [\"sources\"]}}}}}, \"locale\": \"locale\"}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
+    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"composite_rules\": {\"rules\": {\"global\": {\"sources\": [\"sources\"], \"choices\": [\"choices\"]}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"choices\": [\"choices\"]}}, \"record_type_rule\": {\"sources\": [\"sources\"], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"choices\": [\"choices\"]}}}}}, \"locale\": \"locale\"}}";
     String replaceModelCompositeRulesPath = "/mdm/v1/composite_rules";
 
     server.enqueue(new MockResponse()
@@ -4812,8 +4984,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CompositeRulesRule model
     CompositeRulesRule compositeRulesRuleModel = new CompositeRulesRule.Builder()
-    .choices(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .choices(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .build();
 
     // Construct an instance of the CompositeRulesRecordType model
@@ -4881,7 +5053,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetModelDataModelWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"record_types\": {\"mapKey\": {\"label\": \"label\", \"entity_types\": {\"mapKey\": {\"label\": \"label\", \"description\": \"description\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\", \"cardinality\": \"cardinality\"}}}}, \"relationship_types\": {\"mapKey\": {\"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"label\": \"label\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\", \"cardinality\": \"cardinality\"}}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"label\": \"label\", \"classification\": \"classification\", \"description\": \"description\", \"fields\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\"}}}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"record_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"collection_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"entity_types\": {\"entity_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"entity_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"relationship_types\": {\"from_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}}}";
+    String mockResponseBody = "{\"record_types\": {\"mapKey\": {\"label\": \"label\", \"entity_types\": {\"mapKey\": {\"label\": \"label\", \"type\": \"type\", \"description\": \"description\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"matching_type\": \"matchingType\", \"cardinality\": \"cardinality\", \"description\": \"description\", \"attribute_type\": \"attributeType\"}}}}, \"relationship_types\": {\"mapKey\": {\"directional\": false, \"label\": \"label\", \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"cardinality\": \"cardinality\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"matching_type\": \"matchingType\", \"cardinality\": \"cardinality\", \"description\": \"description\", \"attribute_type\": \"attributeType\"}}}}, \"attribute_types\": {\"mapKey\": {\"label\": \"label\", \"matching_types\": [\"matchingTypes\"], \"classification\": \"classification\", \"description\": \"description\", \"fields\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\"}}}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"collection_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"entity_types\": {\"entity_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"entity_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"relationship_types\": {\"relationship_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}}}";
     String getModelDataModelPath = "/mdm/v1/data_model";
 
     server.enqueue(new MockResponse()
@@ -4931,7 +5103,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceModelDataModelWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"data_model\": {\"record_types\": {\"mapKey\": {\"label\": \"label\", \"entity_types\": {\"mapKey\": {\"label\": \"label\", \"description\": \"description\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\", \"cardinality\": \"cardinality\"}}}}, \"relationship_types\": {\"mapKey\": {\"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"label\": \"label\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\", \"cardinality\": \"cardinality\"}}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"label\": \"label\", \"classification\": \"classification\", \"description\": \"description\", \"fields\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\"}}}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"record_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"collection_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"entity_types\": {\"entity_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"entity_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"relationship_types\": {\"from_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}}}}";
+    String mockResponseBody = "{\"data_model\": {\"record_types\": {\"mapKey\": {\"label\": \"label\", \"entity_types\": {\"mapKey\": {\"label\": \"label\", \"type\": \"type\", \"description\": \"description\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"matching_type\": \"matchingType\", \"cardinality\": \"cardinality\", \"description\": \"description\", \"attribute_type\": \"attributeType\"}}}}, \"relationship_types\": {\"mapKey\": {\"directional\": false, \"label\": \"label\", \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"cardinality\": \"cardinality\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"matching_type\": \"matchingType\", \"cardinality\": \"cardinality\", \"description\": \"description\", \"attribute_type\": \"attributeType\"}}}}, \"attribute_types\": {\"mapKey\": {\"label\": \"label\", \"matching_types\": [\"matchingTypes\"], \"classification\": \"classification\", \"description\": \"description\", \"fields\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\"}}}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"collection_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"entity_types\": {\"entity_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"entity_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"relationship_types\": {\"relationship_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}}}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
     String replaceModelDataModelPath = "/mdm/v1/data_model";
 
     server.enqueue(new MockResponse()
@@ -4944,19 +5116,19 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataModelEntityType model
     DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
     .label("testString")
-    .description("testString")
     .type("testString")
+    .description("testString")
     .build();
 
     // Construct an instance of the DataModelAttribute model
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
     .label("testString")
-    .matchingType("testString")
-    .attributeType("testString")
     .indexed(true)
     .classification("testString")
-    .description("testString")
+    .matchingType("testString")
     .cardinality("testString")
+    .description("testString")
+    .attributeType("testString")
     .build();
 
     // Construct an instance of the DataModelRecordType model
@@ -4981,13 +5153,13 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelRelationshipType model
     DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
-    .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
-    .labelFromSource("testString")
-    .labelFromTarget("testString")
     .directional(true)
     .label("testString")
-    .description("testString")
+    .labelFromSource("testString")
+    .labelFromTarget("testString")
+    .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
     .cardinality("testString")
+    .description("testString")
     .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
     .build();
 
@@ -5001,8 +5173,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelAttributeType model
     DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
-    .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .label("testString")
+    .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .classification("testString")
     .description("testString")
     .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
@@ -5019,23 +5191,27 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelRecordTypeSystemProperties model
     DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-    .recordLastUpdated(dataModelSystemPropertyModel)
-    .recordNumber(dataModelSystemPropertyModel)
-    .recordSource(dataModelSystemPropertyModel)
     .recordId(dataModelSystemPropertyModel)
     .collectionId(dataModelSystemPropertyModel)
+    .recordNumber(dataModelSystemPropertyModel)
+    .recordLastUpdated(dataModelSystemPropertyModel)
+    .recordSource(dataModelSystemPropertyModel)
     .build();
 
     // Construct an instance of the DataModelEntityTypeSystemProperties model
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-    .entityId(dataModelSystemPropertyModel)
     .entityLastUpdated(dataModelSystemPropertyModel)
+    .entityId(dataModelSystemPropertyModel)
     .build();
 
     // Construct an instance of the DataModelRelationshipTypeSystemProperties model
     DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+    .relationshipType(dataModelSystemPropertyModel)
     .fromRecordId(dataModelSystemPropertyModel)
     .toRecordId(dataModelSystemPropertyModel)
+    .relationshipNumber(dataModelSystemPropertyModel)
+    .toRecordType(dataModelSystemPropertyModel)
+    .relationshipLastUpdated(dataModelSystemPropertyModel)
     .fromRecordType(dataModelSystemPropertyModel)
     .toRecordNumber(dataModelSystemPropertyModel)
     .fromRecordNumber(dataModelSystemPropertyModel)
@@ -5043,10 +5219,6 @@ public class MdmTest extends PowerMockTestCase {
     .fromRecordSource(dataModelSystemPropertyModel)
     .toRecordSource(dataModelSystemPropertyModel)
     .relationshipId(dataModelSystemPropertyModel)
-    .relationshipType(dataModelSystemPropertyModel)
-    .relationshipNumber(dataModelSystemPropertyModel)
-    .toRecordType(dataModelSystemPropertyModel)
-    .relationshipLastUpdated(dataModelSystemPropertyModel)
     .build();
 
     // Construct an instance of the DataModelAttributeTypeSystemProperties model
@@ -5117,7 +5289,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testUpdateModelDataModelWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"data_model\": {\"record_types\": {\"mapKey\": {\"label\": \"label\", \"entity_types\": {\"mapKey\": {\"label\": \"label\", \"description\": \"description\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\", \"cardinality\": \"cardinality\"}}}}, \"relationship_types\": {\"mapKey\": {\"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"label\": \"label\", \"description\": \"description\", \"cardinality\": \"cardinality\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"matching_type\": \"matchingType\", \"attribute_type\": \"attributeType\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\", \"cardinality\": \"cardinality\"}}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"label\": \"label\", \"classification\": \"classification\", \"description\": \"description\", \"fields\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\"}}}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"record_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"collection_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"entity_types\": {\"entity_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"entity_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"relationship_types\": {\"from_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}}}}";
+    String mockResponseBody = "{\"data_model\": {\"record_types\": {\"mapKey\": {\"label\": \"label\", \"entity_types\": {\"mapKey\": {\"label\": \"label\", \"type\": \"type\", \"description\": \"description\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"matching_type\": \"matchingType\", \"cardinality\": \"cardinality\", \"description\": \"description\", \"attribute_type\": \"attributeType\"}}}}, \"relationship_types\": {\"mapKey\": {\"directional\": false, \"label\": \"label\", \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"rules\": [{\"source\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}, \"target\": {\"record_types\": [\"recordTypes\"], \"entity_types\": [\"entityTypes\"]}}], \"cardinality\": \"cardinality\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"matching_type\": \"matchingType\", \"cardinality\": \"cardinality\", \"description\": \"description\", \"attribute_type\": \"attributeType\"}}}}, \"attribute_types\": {\"mapKey\": {\"label\": \"label\", \"matching_types\": [\"matchingTypes\"], \"classification\": \"classification\", \"description\": \"description\", \"fields\": {\"mapKey\": {\"label\": \"label\", \"indexed\": false, \"classification\": \"classification\", \"description\": \"description\"}}}}, \"locale\": \"locale\", \"system_properties\": {\"record_types\": {\"record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"collection_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"entity_types\": {\"entity_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"entity_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"relationship_types\": {\"relationship_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_type\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_number\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"from_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"to_record_source\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}, \"relationship_id\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"editable\": true, \"label\": \"label\", \"indexed\": false, \"data_type\": \"dataType\", \"description\": \"description\"}}}}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
     String updateModelDataModelPath = "/mdm/v1/data_model";
 
     server.enqueue(new MockResponse()
@@ -5130,19 +5302,19 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataModelEntityType model
     DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
     .label("testString")
-    .description("testString")
     .type("testString")
+    .description("testString")
     .build();
 
     // Construct an instance of the DataModelAttribute model
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
     .label("testString")
-    .matchingType("testString")
-    .attributeType("testString")
     .indexed(true)
     .classification("testString")
-    .description("testString")
+    .matchingType("testString")
     .cardinality("testString")
+    .description("testString")
+    .attributeType("testString")
     .build();
 
     // Construct an instance of the DataModelRecordType model
@@ -5167,13 +5339,13 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelRelationshipType model
     DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
-    .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
-    .labelFromSource("testString")
-    .labelFromTarget("testString")
     .directional(true)
     .label("testString")
-    .description("testString")
+    .labelFromSource("testString")
+    .labelFromTarget("testString")
+    .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
     .cardinality("testString")
+    .description("testString")
     .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
     .build();
 
@@ -5187,8 +5359,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelAttributeType model
     DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
-    .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .label("testString")
+    .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .classification("testString")
     .description("testString")
     .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
@@ -5205,23 +5377,27 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelRecordTypeSystemProperties model
     DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-    .recordLastUpdated(dataModelSystemPropertyModel)
-    .recordNumber(dataModelSystemPropertyModel)
-    .recordSource(dataModelSystemPropertyModel)
     .recordId(dataModelSystemPropertyModel)
     .collectionId(dataModelSystemPropertyModel)
+    .recordNumber(dataModelSystemPropertyModel)
+    .recordLastUpdated(dataModelSystemPropertyModel)
+    .recordSource(dataModelSystemPropertyModel)
     .build();
 
     // Construct an instance of the DataModelEntityTypeSystemProperties model
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-    .entityId(dataModelSystemPropertyModel)
     .entityLastUpdated(dataModelSystemPropertyModel)
+    .entityId(dataModelSystemPropertyModel)
     .build();
 
     // Construct an instance of the DataModelRelationshipTypeSystemProperties model
     DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+    .relationshipType(dataModelSystemPropertyModel)
     .fromRecordId(dataModelSystemPropertyModel)
     .toRecordId(dataModelSystemPropertyModel)
+    .relationshipNumber(dataModelSystemPropertyModel)
+    .toRecordType(dataModelSystemPropertyModel)
+    .relationshipLastUpdated(dataModelSystemPropertyModel)
     .fromRecordType(dataModelSystemPropertyModel)
     .toRecordNumber(dataModelSystemPropertyModel)
     .fromRecordNumber(dataModelSystemPropertyModel)
@@ -5229,10 +5405,6 @@ public class MdmTest extends PowerMockTestCase {
     .fromRecordSource(dataModelSystemPropertyModel)
     .toRecordSource(dataModelSystemPropertyModel)
     .relationshipId(dataModelSystemPropertyModel)
-    .relationshipType(dataModelSystemPropertyModel)
-    .relationshipNumber(dataModelSystemPropertyModel)
-    .toRecordType(dataModelSystemPropertyModel)
-    .relationshipLastUpdated(dataModelSystemPropertyModel)
     .build();
 
     // Construct an instance of the DataModelAttributeTypeSystemProperties model
@@ -5303,7 +5475,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetModelFlowWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"flow_type\": \"flowType\", \"rejections\": [\"rejections\"], \"approvals\": [\"approvals\"], \"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"active\": true}";
+    String mockResponseBody = "{\"flow_type\": \"flowType\", \"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"rejections\": [\"rejections\"], \"approvals\": [\"approvals\"], \"active\": true}";
     String getModelFlowPath = "/mdm/v1/flows/testString";
 
     server.enqueue(new MockResponse()
@@ -5364,7 +5536,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testUpdateModelFlowWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"flow_type\": \"flowType\", \"rejections\": [\"rejections\"], \"approvals\": [\"approvals\"], \"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"active\": true}";
+    String mockResponseBody = "{\"flow_type\": \"flowType\", \"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"rejections\": [\"rejections\"], \"approvals\": [\"approvals\"], \"active\": true}";
     String updateModelFlowPath = "/mdm/v1/flows/testString";
 
     server.enqueue(new MockResponse()
@@ -5377,8 +5549,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the UpdateModelFlowOptions model
     UpdateModelFlowOptions updateModelFlowOptionsModel = new UpdateModelFlowOptions.Builder()
     .flowId("testString")
-    .action("testString")
     .approverName("testString")
+    .action("testString")
     .message("testString")
     .build();
 
@@ -5428,7 +5600,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetModelInstanceMetadataWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"catalogs\": [{\"catalog_instance\": \"catalogInstance\", \"catalog_id\": \"catalogId\"}], \"job_project_id\": \"jobProjectId\", \"cos_endpoint\": \"cosEndpoint\", \"label\": \"label\", \"projects\": [{\"project_id\": \"projectId\", \"data_asset_id\": \"dataAssetId\", \"asset_id\": \"assetId\", \"project_name\": \"projectName\"}], \"cos_crn\": \"cosCrn\", \"bulkload_bucket\": {\"mapKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"label\": \"label\", \"projects\": [{\"data_asset_id\": \"dataAssetId\", \"asset_id\": \"assetId\", \"project_name\": \"projectName\", \"project_id\": \"projectId\"}], \"cos_crn\": \"cosCrn\", \"bulkload_bucket\": {\"cos_bucket_location\": \"cosBucketLocation\", \"cos_bucket_api_key\": \"cosBucketApiKey\", \"cos_bucket_name\": \"cosBucketName\"}, \"catalogs\": [{\"catalog_instance\": \"catalogInstance\", \"catalog_id\": \"catalogId\"}], \"job_project_id\": \"jobProjectId\", \"cos_endpoint\": \"cosEndpoint\"}";
     String getModelInstanceMetadataPath = "/mdm/v1/instance_metadata";
 
     server.enqueue(new MockResponse()
@@ -5475,7 +5647,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceModelInstanceMetadataWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"catalogs\": [{\"catalog_instance\": \"catalogInstance\", \"catalog_id\": \"catalogId\"}], \"job_project_id\": \"jobProjectId\", \"cos_endpoint\": \"cosEndpoint\", \"label\": \"label\", \"projects\": [{\"project_id\": \"projectId\", \"data_asset_id\": \"dataAssetId\", \"asset_id\": \"assetId\", \"project_name\": \"projectName\"}], \"cos_crn\": \"cosCrn\", \"bulkload_bucket\": {\"mapKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"label\": \"label\", \"projects\": [{\"data_asset_id\": \"dataAssetId\", \"asset_id\": \"assetId\", \"project_name\": \"projectName\", \"project_id\": \"projectId\"}], \"cos_crn\": \"cosCrn\", \"bulkload_bucket\": {\"cos_bucket_location\": \"cosBucketLocation\", \"cos_bucket_api_key\": \"cosBucketApiKey\", \"cos_bucket_name\": \"cosBucketName\"}, \"catalogs\": [{\"catalog_instance\": \"catalogInstance\", \"catalog_id\": \"catalogId\"}], \"job_project_id\": \"jobProjectId\", \"cos_endpoint\": \"cosEndpoint\"}";
     String replaceModelInstanceMetadataPath = "/mdm/v1/instance_metadata";
 
     server.enqueue(new MockResponse()
@@ -5485,29 +5657,36 @@ public class MdmTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the InstanceMetadataProject model
+    InstanceMetadataProject instanceMetadataProjectModel = new InstanceMetadataProject.Builder()
+    .dataAssetId("testString")
+    .assetId("testString")
+    .projectName("testString")
+    .projectId("testString")
+    .build();
+
+    // Construct an instance of the InstanceMetadataBulkloadBucket model
+    InstanceMetadataBulkloadBucket instanceMetadataBulkloadBucketModel = new InstanceMetadataBulkloadBucket.Builder()
+    .cosBucketLocation("testString")
+    .cosBucketApiKey("testString")
+    .cosBucketName("testString")
+    .build();
+
     // Construct an instance of the InstanceMetadataCatalog model
     InstanceMetadataCatalog instanceMetadataCatalogModel = new InstanceMetadataCatalog.Builder()
     .catalogInstance("testString")
     .catalogId("testString")
     .build();
 
-    // Construct an instance of the InstanceMetadataProject model
-    InstanceMetadataProject instanceMetadataProjectModel = new InstanceMetadataProject.Builder()
-    .projectId("testString")
-    .dataAssetId("testString")
-    .assetId("testString")
-    .projectName("testString")
-    .build();
-
     // Construct an instance of the ReplaceModelInstanceMetadataOptions model
     ReplaceModelInstanceMetadataOptions replaceModelInstanceMetadataOptionsModel = new ReplaceModelInstanceMetadataOptions.Builder()
-    .catalogs(new java.util.ArrayList<InstanceMetadataCatalog>(java.util.Arrays.asList(instanceMetadataCatalogModel)))
-    .jobProjectId("testString")
-    .cosEndpoint("testString")
     .label("testString")
     .projects(new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)))
     .cosCrn("testString")
-    .bulkloadBucket(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+    .bulkloadBucket(instanceMetadataBulkloadBucketModel)
+    .catalogs(new java.util.ArrayList<InstanceMetadataCatalog>(java.util.Arrays.asList(instanceMetadataCatalogModel)))
+    .jobProjectId("testString")
+    .cosEndpoint("testString")
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -5544,7 +5723,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetModelMapResourceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"mapKey\": [{\"category\": \"category\", \"regex\": [\"regex\"], \"data_type\": \"dataType\", \"cardinality\": \"cardinality\", \"values\": [\"values\"], \"key\": \"key\"}]}";
+    String mockResponseBody = "{\"mapKey\": [{\"regex\": [\"regex\"], \"category\": \"category\", \"data_type\": \"dataType\", \"cardinality\": \"cardinality\", \"values\": [\"values\"], \"key\": \"key\"}]}";
     String getModelMapResourcePath = "/mdm/v1/map_resources/testString";
 
     server.enqueue(new MockResponse()
@@ -5605,7 +5784,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceModelMapResourceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"map_resources\": {\"mapKey\": [{\"category\": \"category\", \"regex\": [\"regex\"], \"data_type\": \"dataType\", \"cardinality\": \"cardinality\", \"values\": [\"values\"], \"key\": \"key\"}]}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
+    String mockResponseBody = "{\"map_resources\": {\"mapKey\": [{\"regex\": [\"regex\"], \"category\": \"category\", \"data_type\": \"dataType\", \"cardinality\": \"cardinality\", \"values\": [\"values\"], \"key\": \"key\"}]}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
     String replaceModelMapResourcePath = "/mdm/v1/map_resources/testString";
 
     server.enqueue(new MockResponse()
@@ -5617,8 +5796,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the MapResourceEntry model
     MapResourceEntry mapResourceEntryModel = new MapResourceEntry.Builder()
-    .category("testString")
     .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .category("testString")
     .dataType("testString")
     .cardinality("testString")
     .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
@@ -5722,56 +5901,9 @@ public class MdmTest extends PowerMockTestCase {
   }  
 
   @Test
-  public void testListModelSetResourcesWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"set_resource_names\": [\"setResourceNames\"]}";
-    String listModelSetResourcesPath = "/mdm/v1/set_resources";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(200)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the ListModelSetResourcesOptions model
-    ListModelSetResourcesOptions listModelSetResourcesOptionsModel = new ListModelSetResourcesOptions();
-
-    // Invoke operation with valid options model (positive test)
-    Response<SetResourceNames> response = mdmService.listModelSetResources(listModelSetResourcesOptionsModel).execute();
-    assertNotNull(response);
-    SetResourceNames responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "GET");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("crn"), "testString");
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, listModelSetResourcesPath);
-  }
-  
-  public void testListModelSetResourcesWOptionsWRetries() throws Throwable {
-    // Enable retries and run testListModelSetResourcesWOptions.
-    mdmService.enableRetries(4, 30);
-    testListModelSetResourcesWOptions();
-
-    // Disable retries and run testListModelSetResourcesWOptions.
-    mdmService.disableRetries();
-    testListModelSetResourcesWOptions();
-  }  
-
-  @Test
   public void testGetModelSetResourceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"mapKey\": {\"category\": \"category\", \"regex\": [\"regex\"], \"data_type\": \"dataType\", \"values\": [\"values\"]}}";
+    String mockResponseBody = "{\"mapKey\": {\"regex\": [\"regex\"], \"category\": \"category\", \"data_type\": \"dataType\", \"values\": [\"values\"]}}";
     String getModelSetResourcePath = "/mdm/v1/set_resources/testString";
 
     server.enqueue(new MockResponse()
@@ -5832,7 +5964,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceModelSetResourceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"set_resources\": {\"mapKey\": {\"category\": \"category\", \"regex\": [\"regex\"], \"data_type\": \"dataType\", \"values\": [\"values\"]}}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
+    String mockResponseBody = "{\"set_resources\": {\"mapKey\": {\"regex\": [\"regex\"], \"category\": \"category\", \"data_type\": \"dataType\", \"values\": [\"values\"]}}, \"flow_state\": \"flowState\", \"flow_id\": \"flowId\"}";
     String replaceModelSetResourcePath = "/mdm/v1/set_resources/testString";
 
     server.enqueue(new MockResponse()
@@ -5844,8 +5976,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the SetResourceEntry model
     SetResourceEntry setResourceEntryModel = new SetResourceEntry.Builder()
-    .category("testString")
     .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    .category("testString")
     .dataType("testString")
     .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
     .build();
@@ -5898,6 +6030,53 @@ public class MdmTest extends PowerMockTestCase {
     // Invoke operation with null options model (negative test)
     mdmService.replaceModelSetResource(null).execute();
   }
+
+  @Test
+  public void testListModelSetResourcesWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"set_resource_names\": [\"setResourceNames\"]}";
+    String listModelSetResourcesPath = "/mdm/v1/set_resources";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListModelSetResourcesOptions model
+    ListModelSetResourcesOptions listModelSetResourcesOptionsModel = new ListModelSetResourcesOptions();
+
+    // Invoke operation with valid options model (positive test)
+    Response<SetResourceNames> response = mdmService.listModelSetResources(listModelSetResourcesOptionsModel).execute();
+    assertNotNull(response);
+    SetResourceNames responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("crn"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listModelSetResourcesPath);
+  }
+  
+  public void testListModelSetResourcesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListModelSetResourcesWOptions.
+    mdmService.enableRetries(4, 30);
+    testListModelSetResourcesWOptions();
+
+    // Disable retries and run testListModelSetResourcesWOptions.
+    mdmService.disableRetries();
+    testListModelSetResourcesWOptions();
+  }  
 
   /** Initialize the server */
   @BeforeMethod

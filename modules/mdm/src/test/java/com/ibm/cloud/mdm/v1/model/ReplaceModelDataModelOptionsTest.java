@@ -49,29 +49,29 @@ public class ReplaceModelDataModelOptionsTest {
   public void testReplaceModelDataModelOptions() throws Throwable {
     DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
       .label("testString")
-      .description("testString")
       .type("testString")
+      .description("testString")
       .build();
     assertEquals(dataModelEntityTypeModel.label(), "testString");
-    assertEquals(dataModelEntityTypeModel.description(), "testString");
     assertEquals(dataModelEntityTypeModel.type(), "testString");
+    assertEquals(dataModelEntityTypeModel.description(), "testString");
 
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
       .label("testString")
-      .matchingType("testString")
-      .attributeType("testString")
       .indexed(true)
       .classification("testString")
-      .description("testString")
+      .matchingType("testString")
       .cardinality("testString")
+      .description("testString")
+      .attributeType("testString")
       .build();
     assertEquals(dataModelAttributeModel.label(), "testString");
-    assertEquals(dataModelAttributeModel.matchingType(), "testString");
-    assertEquals(dataModelAttributeModel.attributeType(), "testString");
     assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelAttributeModel.classification(), "testString");
-    assertEquals(dataModelAttributeModel.description(), "testString");
+    assertEquals(dataModelAttributeModel.matchingType(), "testString");
     assertEquals(dataModelAttributeModel.cardinality(), "testString");
+    assertEquals(dataModelAttributeModel.description(), "testString");
+    assertEquals(dataModelAttributeModel.attributeType(), "testString");
 
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
       .label("testString")
@@ -99,22 +99,22 @@ public class ReplaceModelDataModelOptionsTest {
     assertEquals(dataModelRelationshipRuleModel.target(), dataModelRelationshipEndpointModel);
 
     DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
-      .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
-      .labelFromSource("testString")
-      .labelFromTarget("testString")
       .directional(true)
       .label("testString")
-      .description("testString")
+      .labelFromSource("testString")
+      .labelFromTarget("testString")
+      .rules(new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)))
       .cardinality("testString")
+      .description("testString")
       .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
       .build();
-    assertEquals(dataModelRelationshipTypeModel.rules(), new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)));
-    assertEquals(dataModelRelationshipTypeModel.labelFromSource(), "testString");
-    assertEquals(dataModelRelationshipTypeModel.labelFromTarget(), "testString");
     assertEquals(dataModelRelationshipTypeModel.directional(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModel.label(), "testString");
-    assertEquals(dataModelRelationshipTypeModel.description(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.labelFromSource(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.labelFromTarget(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.rules(), new java.util.ArrayList<DataModelRelationshipRule>(java.util.Arrays.asList(dataModelRelationshipRuleModel)));
     assertEquals(dataModelRelationshipTypeModel.cardinality(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.description(), "testString");
     assertEquals(dataModelRelationshipTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
 
     DataModelField dataModelFieldModel = new DataModelField.Builder()
@@ -129,14 +129,14 @@ public class ReplaceModelDataModelOptionsTest {
     assertEquals(dataModelFieldModel.description(), "testString");
 
     DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
-      .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .label("testString")
+      .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .classification("testString")
       .description("testString")
       .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
       .build();
-    assertEquals(dataModelAttributeTypeModel.matchingTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(dataModelAttributeTypeModel.label(), "testString");
+    assertEquals(dataModelAttributeTypeModel.matchingTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(dataModelAttributeTypeModel.classification(), "testString");
     assertEquals(dataModelAttributeTypeModel.description(), "testString");
     assertEquals(dataModelAttributeTypeModel.fields(), new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } });
@@ -155,28 +155,32 @@ public class ReplaceModelDataModelOptionsTest {
     assertEquals(dataModelSystemPropertyModel.description(), "testString");
 
     DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-      .recordLastUpdated(dataModelSystemPropertyModel)
-      .recordNumber(dataModelSystemPropertyModel)
-      .recordSource(dataModelSystemPropertyModel)
       .recordId(dataModelSystemPropertyModel)
       .collectionId(dataModelSystemPropertyModel)
+      .recordNumber(dataModelSystemPropertyModel)
+      .recordLastUpdated(dataModelSystemPropertyModel)
+      .recordSource(dataModelSystemPropertyModel)
       .build();
-    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordLastUpdated(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordNumber(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelRecordTypeSystemPropertiesModel.recordId(), dataModelSystemPropertyModel);
     assertEquals(dataModelRecordTypeSystemPropertiesModel.collectionId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordNumber(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordLastUpdated(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordSource(), dataModelSystemPropertyModel);
 
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-      .entityId(dataModelSystemPropertyModel)
       .entityLastUpdated(dataModelSystemPropertyModel)
+      .entityId(dataModelSystemPropertyModel)
       .build();
-    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityId(), dataModelSystemPropertyModel);
     assertEquals(dataModelEntityTypeSystemPropertiesModel.entityLastUpdated(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityId(), dataModelSystemPropertyModel);
 
     DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+      .relationshipType(dataModelSystemPropertyModel)
       .fromRecordId(dataModelSystemPropertyModel)
       .toRecordId(dataModelSystemPropertyModel)
+      .relationshipNumber(dataModelSystemPropertyModel)
+      .toRecordType(dataModelSystemPropertyModel)
+      .relationshipLastUpdated(dataModelSystemPropertyModel)
       .fromRecordType(dataModelSystemPropertyModel)
       .toRecordNumber(dataModelSystemPropertyModel)
       .fromRecordNumber(dataModelSystemPropertyModel)
@@ -184,13 +188,13 @@ public class ReplaceModelDataModelOptionsTest {
       .fromRecordSource(dataModelSystemPropertyModel)
       .toRecordSource(dataModelSystemPropertyModel)
       .relationshipId(dataModelSystemPropertyModel)
-      .relationshipType(dataModelSystemPropertyModel)
-      .relationshipNumber(dataModelSystemPropertyModel)
-      .toRecordType(dataModelSystemPropertyModel)
-      .relationshipLastUpdated(dataModelSystemPropertyModel)
       .build();
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipType(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordId(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipNumber(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordType(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipLastUpdated(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordType(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordNumber(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordNumber(), dataModelSystemPropertyModel);
@@ -198,10 +202,6 @@ public class ReplaceModelDataModelOptionsTest {
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipId(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipType(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipNumber(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordType(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipLastUpdated(), dataModelSystemPropertyModel);
 
     DataModelAttributeTypeSystemProperties dataModelAttributeTypeSystemPropertiesModel = new DataModelAttributeTypeSystemProperties.Builder()
       .attributeLastUpdated(dataModelSystemPropertyModel)

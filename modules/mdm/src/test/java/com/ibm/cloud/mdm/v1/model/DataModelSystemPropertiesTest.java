@@ -50,28 +50,32 @@ public class DataModelSystemPropertiesTest {
     assertEquals(dataModelSystemPropertyModel.description(), "testString");
 
     DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-      .recordLastUpdated(dataModelSystemPropertyModel)
-      .recordNumber(dataModelSystemPropertyModel)
-      .recordSource(dataModelSystemPropertyModel)
       .recordId(dataModelSystemPropertyModel)
       .collectionId(dataModelSystemPropertyModel)
+      .recordNumber(dataModelSystemPropertyModel)
+      .recordLastUpdated(dataModelSystemPropertyModel)
+      .recordSource(dataModelSystemPropertyModel)
       .build();
-    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordLastUpdated(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordNumber(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelRecordTypeSystemPropertiesModel.recordId(), dataModelSystemPropertyModel);
     assertEquals(dataModelRecordTypeSystemPropertiesModel.collectionId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordNumber(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordLastUpdated(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordSource(), dataModelSystemPropertyModel);
 
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-      .entityId(dataModelSystemPropertyModel)
       .entityLastUpdated(dataModelSystemPropertyModel)
+      .entityId(dataModelSystemPropertyModel)
       .build();
-    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityId(), dataModelSystemPropertyModel);
     assertEquals(dataModelEntityTypeSystemPropertiesModel.entityLastUpdated(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityId(), dataModelSystemPropertyModel);
 
     DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+      .relationshipType(dataModelSystemPropertyModel)
       .fromRecordId(dataModelSystemPropertyModel)
       .toRecordId(dataModelSystemPropertyModel)
+      .relationshipNumber(dataModelSystemPropertyModel)
+      .toRecordType(dataModelSystemPropertyModel)
+      .relationshipLastUpdated(dataModelSystemPropertyModel)
       .fromRecordType(dataModelSystemPropertyModel)
       .toRecordNumber(dataModelSystemPropertyModel)
       .fromRecordNumber(dataModelSystemPropertyModel)
@@ -79,13 +83,13 @@ public class DataModelSystemPropertiesTest {
       .fromRecordSource(dataModelSystemPropertyModel)
       .toRecordSource(dataModelSystemPropertyModel)
       .relationshipId(dataModelSystemPropertyModel)
-      .relationshipType(dataModelSystemPropertyModel)
-      .relationshipNumber(dataModelSystemPropertyModel)
-      .toRecordType(dataModelSystemPropertyModel)
-      .relationshipLastUpdated(dataModelSystemPropertyModel)
       .build();
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipType(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordId(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipNumber(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordType(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipLastUpdated(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordType(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordNumber(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordNumber(), dataModelSystemPropertyModel);
@@ -93,10 +97,6 @@ public class DataModelSystemPropertiesTest {
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipId(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipType(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipNumber(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordType(), dataModelSystemPropertyModel);
-    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipLastUpdated(), dataModelSystemPropertyModel);
 
     DataModelAttributeTypeSystemProperties dataModelAttributeTypeSystemPropertiesModel = new DataModelAttributeTypeSystemProperties.Builder()
       .attributeLastUpdated(dataModelSystemPropertyModel)

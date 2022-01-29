@@ -32,9 +32,11 @@ public class GetConfiguratorMatchingStatisticsOptionsTest {
   @Test
   public void testGetConfiguratorMatchingStatisticsOptions() throws Throwable {
     GetConfiguratorMatchingStatisticsOptions getConfiguratorMatchingStatisticsOptionsModel = new GetConfiguratorMatchingStatisticsOptions.Builder()
-      .recordType("testString")
+      .recordType("person")
+      .entityType("person_entity")
       .build();
-    assertEquals(getConfiguratorMatchingStatisticsOptionsModel.recordType(), "testString");
+    assertEquals(getConfiguratorMatchingStatisticsOptionsModel.recordType(), "person");
+    assertEquals(getConfiguratorMatchingStatisticsOptionsModel.entityType(), "person_entity");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

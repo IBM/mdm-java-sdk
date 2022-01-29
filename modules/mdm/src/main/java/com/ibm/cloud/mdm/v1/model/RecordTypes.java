@@ -20,10 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RecordTypes extends GenericModel {
 
+  protected Boolean editable;
+  protected Boolean indexed;
   @SerializedName("data_type")
   protected String dataType;
-  protected Boolean indexed;
-  protected Boolean editable;
   protected String label;
   protected String description;
 
@@ -31,16 +31,16 @@ public class RecordTypes extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String dataType;
-    private Boolean indexed;
     private Boolean editable;
+    private Boolean indexed;
+    private String dataType;
     private String label;
     private String description;
 
     private Builder(RecordTypes recordTypes) {
-      this.dataType = recordTypes.dataType;
-      this.indexed = recordTypes.indexed;
       this.editable = recordTypes.editable;
+      this.indexed = recordTypes.indexed;
+      this.dataType = recordTypes.dataType;
       this.label = recordTypes.label;
       this.description = recordTypes.description;
     }
@@ -72,13 +72,13 @@ public class RecordTypes extends GenericModel {
     }
 
     /**
-     * Set the dataType.
+     * Set the editable.
      *
-     * @param dataType the dataType
+     * @param editable the editable
      * @return the RecordTypes builder
      */
-    public Builder dataType(String dataType) {
-      this.dataType = dataType;
+    public Builder editable(Boolean editable) {
+      this.editable = editable;
       return this;
     }
 
@@ -94,13 +94,13 @@ public class RecordTypes extends GenericModel {
     }
 
     /**
-     * Set the editable.
+     * Set the dataType.
      *
-     * @param editable the editable
+     * @param dataType the dataType
      * @return the RecordTypes builder
      */
-    public Builder editable(Boolean editable) {
-      this.editable = editable;
+    public Builder dataType(String dataType) {
+      this.dataType = dataType;
       return this;
     }
 
@@ -132,9 +132,9 @@ public class RecordTypes extends GenericModel {
       "dataType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    dataType = builder.dataType;
-    indexed = builder.indexed;
     editable = builder.editable;
+    indexed = builder.indexed;
+    dataType = builder.dataType;
     label = builder.label;
     description = builder.description;
   }
@@ -149,14 +149,14 @@ public class RecordTypes extends GenericModel {
   }
 
   /**
-   * Gets the dataType.
+   * Gets the editable.
    *
-   * The data type of the system property.
+   * Specifies whether the user can set values for the system property.
    *
-   * @return the dataType
+   * @return the editable
    */
-  public String dataType() {
-    return dataType;
+  public Boolean editable() {
+    return editable;
   }
 
   /**
@@ -171,14 +171,14 @@ public class RecordTypes extends GenericModel {
   }
 
   /**
-   * Gets the editable.
+   * Gets the dataType.
    *
-   * Specifies whether the user can set values for the system property.
+   * The data type of the system property.
    *
-   * @return the editable
+   * @return the dataType
    */
-  public Boolean editable() {
-    return editable;
+  public String dataType() {
+    return dataType;
   }
 
   /**

@@ -43,7 +43,7 @@ public class CreateDataExportOptions extends GenericModel {
 
   protected String exportType;
   protected String format;
-  protected ExportRequestSearchCriteria searchCriteria;
+  protected DataSearchCriteria searchCriteria;
   protected String fileName;
 
   /**
@@ -52,7 +52,7 @@ public class CreateDataExportOptions extends GenericModel {
   public static class Builder {
     private String exportType;
     private String format;
-    private ExportRequestSearchCriteria searchCriteria;
+    private DataSearchCriteria searchCriteria;
     private String fileName;
 
     private Builder(CreateDataExportOptions createDataExportOptions) {
@@ -75,7 +75,7 @@ public class CreateDataExportOptions extends GenericModel {
      * @param format the format
      * @param searchCriteria the searchCriteria
      */
-    public Builder(String exportType, String format, ExportRequestSearchCriteria searchCriteria) {
+    public Builder(String exportType, String format, DataSearchCriteria searchCriteria) {
       this.exportType = exportType;
       this.format = format;
       this.searchCriteria = searchCriteria;
@@ -118,7 +118,7 @@ public class CreateDataExportOptions extends GenericModel {
      * @param searchCriteria the searchCriteria
      * @return the CreateDataExportOptions builder
      */
-    public Builder searchCriteria(ExportRequestSearchCriteria searchCriteria) {
+    public Builder searchCriteria(DataSearchCriteria searchCriteria) {
       this.searchCriteria = searchCriteria;
       return this;
     }
@@ -182,11 +182,11 @@ public class CreateDataExportOptions extends GenericModel {
   /**
    * Gets the searchCriteria.
    *
-   * The search criteria used to identify the data for the export.
+   * A set of criteria for a search operation.
    *
    * @return the searchCriteria
    */
-  public ExportRequestSearchCriteria searchCriteria() {
+  public DataSearchCriteria searchCriteria() {
     return searchCriteria;
   }
 

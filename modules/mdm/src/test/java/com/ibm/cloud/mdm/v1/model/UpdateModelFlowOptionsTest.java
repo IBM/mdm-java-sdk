@@ -33,13 +33,13 @@ public class UpdateModelFlowOptionsTest {
   public void testUpdateModelFlowOptions() throws Throwable {
     UpdateModelFlowOptions updateModelFlowOptionsModel = new UpdateModelFlowOptions.Builder()
       .flowId("testString")
-      .action("testString")
       .approverName("testString")
+      .action("testString")
       .message("testString")
       .build();
     assertEquals(updateModelFlowOptionsModel.flowId(), "testString");
-    assertEquals(updateModelFlowOptionsModel.action(), "testString");
     assertEquals(updateModelFlowOptionsModel.approverName(), "testString");
+    assertEquals(updateModelFlowOptionsModel.action(), "testString");
     assertEquals(updateModelFlowOptionsModel.message(), "testString");
   }
 

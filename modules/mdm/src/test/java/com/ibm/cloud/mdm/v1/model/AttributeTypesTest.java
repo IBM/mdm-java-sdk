@@ -32,15 +32,15 @@ public class AttributeTypesTest {
   @Test
   public void testAttributeTypes() throws Throwable {
     AttributeTypes attributeTypesModel = new AttributeTypes.Builder()
-      .dataType("testString")
-      .indexed(true)
       .editable(true)
+      .indexed(true)
+      .dataType("testString")
       .label("testString")
       .description("testString")
       .build();
-    assertEquals(attributeTypesModel.dataType(), "testString");
-    assertEquals(attributeTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(attributeTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(attributeTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(attributeTypesModel.dataType(), "testString");
     assertEquals(attributeTypesModel.label(), "testString");
     assertEquals(attributeTypesModel.description(), "testString");
 
@@ -48,9 +48,9 @@ public class AttributeTypesTest {
 
     AttributeTypes attributeTypesModelNew = TestUtilities.deserialize(json, AttributeTypes.class);
     assertTrue(attributeTypesModelNew instanceof AttributeTypes);
-    assertEquals(attributeTypesModelNew.dataType(), "testString");
-    assertEquals(attributeTypesModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(attributeTypesModelNew.editable(), Boolean.valueOf(true));
+    assertEquals(attributeTypesModelNew.indexed(), Boolean.valueOf(true));
+    assertEquals(attributeTypesModelNew.dataType(), "testString");
     assertEquals(attributeTypesModelNew.label(), "testString");
     assertEquals(attributeTypesModelNew.description(), "testString");
   }

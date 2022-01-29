@@ -14,10 +14,10 @@
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.CreateDataExportOptions;
-import com.ibm.cloud.mdm.v1.model.ExportRequestSearchCriteria;
-import com.ibm.cloud.mdm.v1.model.ExportRequestSearchCriteriaQuery;
+import com.ibm.cloud.mdm.v1.model.DataSearchCriteria;
 import com.ibm.cloud.mdm.v1.model.Expression;
 import com.ibm.cloud.mdm.v1.model.SearchFilter;
+import com.ibm.cloud.mdm.v1.model.SearchQuery;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -50,12 +50,12 @@ public class CreateDataExportOptionsTest {
     assertEquals(expressionModel.recordType(), "testString");
     assertEquals(expressionModel.operation(), "and");
 
-    ExportRequestSearchCriteriaQuery exportRequestSearchCriteriaQueryModel = new ExportRequestSearchCriteriaQuery.Builder()
+    SearchQuery searchQueryModel = new SearchQuery.Builder()
       .expressions(new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)))
       .operation("and")
       .build();
-    assertEquals(exportRequestSearchCriteriaQueryModel.expressions(), new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)));
-    assertEquals(exportRequestSearchCriteriaQueryModel.operation(), "and");
+    assertEquals(searchQueryModel.expressions(), new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)));
+    assertEquals(searchQueryModel.operation(), "and");
 
     SearchFilter searchFilterModel = new SearchFilter.Builder()
       .type("record")
@@ -64,24 +64,24 @@ public class CreateDataExportOptionsTest {
     assertEquals(searchFilterModel.type(), "record");
     assertEquals(searchFilterModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
-    ExportRequestSearchCriteria exportRequestSearchCriteriaModel = new ExportRequestSearchCriteria.Builder()
+    DataSearchCriteria dataSearchCriteriaModel = new DataSearchCriteria.Builder()
       .searchType("record")
-      .query(exportRequestSearchCriteriaQueryModel)
+      .query(searchQueryModel)
       .filters(new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)))
       .build();
-    assertEquals(exportRequestSearchCriteriaModel.searchType(), "record");
-    assertEquals(exportRequestSearchCriteriaModel.query(), exportRequestSearchCriteriaQueryModel);
-    assertEquals(exportRequestSearchCriteriaModel.filters(), new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)));
+    assertEquals(dataSearchCriteriaModel.searchType(), "record");
+    assertEquals(dataSearchCriteriaModel.query(), searchQueryModel);
+    assertEquals(dataSearchCriteriaModel.filters(), new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)));
 
     CreateDataExportOptions createDataExportOptionsModel = new CreateDataExportOptions.Builder()
       .exportType("record")
       .format("csv")
-      .searchCriteria(exportRequestSearchCriteriaModel)
+      .searchCriteria(dataSearchCriteriaModel)
       .fileName("testString")
       .build();
     assertEquals(createDataExportOptionsModel.exportType(), "record");
     assertEquals(createDataExportOptionsModel.format(), "csv");
-    assertEquals(createDataExportOptionsModel.searchCriteria(), exportRequestSearchCriteriaModel);
+    assertEquals(createDataExportOptionsModel.searchCriteria(), dataSearchCriteriaModel);
     assertEquals(createDataExportOptionsModel.fileName(), "testString");
   }
 

@@ -13,13 +13,11 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataSource;
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataStructure;
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataStructureRecordPropertiesContents;
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataStructureRecordPropertiesContentsCsvOptions;
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataStructureRelationshipPropertiesContents;
-import com.ibm.cloud.mdm.v1.model.BulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptions;
+import com.ibm.cloud.mdm.v1.model.CSVOptions;
+import com.ibm.cloud.mdm.v1.model.DataLoadProperties;
+import com.ibm.cloud.mdm.v1.model.DataLoadSource;
 import com.ibm.cloud.mdm.v1.model.DataLoadSourceCredentials;
+import com.ibm.cloud.mdm.v1.model.DataLoadStructure;
 import com.ibm.cloud.mdm.v1.model.RunDataBulkLoadOptions;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -47,7 +45,7 @@ public class RunDataBulkLoadOptionsTest {
     assertEquals(dataLoadSourceCredentialsModel.endpoint(), "testString");
     assertEquals(dataLoadSourceCredentialsModel.apiKey(), "testString");
 
-    BulkLoadRequestDataSource bulkLoadRequestDataSourceModel = new BulkLoadRequestDataSource.Builder()
+    DataLoadSource dataLoadSourceModel = new DataLoadSource.Builder()
       .type("dfs")
       .directoryPath("testString")
       .directoryRef("sample_contract_small")
@@ -55,87 +53,63 @@ public class RunDataBulkLoadOptionsTest {
       .catalogId("testString")
       .projectId("testString")
       .build();
-    assertEquals(bulkLoadRequestDataSourceModel.type(), "dfs");
-    assertEquals(bulkLoadRequestDataSourceModel.directoryPath(), "testString");
-    assertEquals(bulkLoadRequestDataSourceModel.directoryRef(), "sample_contract_small");
-    assertEquals(bulkLoadRequestDataSourceModel.details(), dataLoadSourceCredentialsModel);
-    assertEquals(bulkLoadRequestDataSourceModel.catalogId(), "testString");
-    assertEquals(bulkLoadRequestDataSourceModel.projectId(), "testString");
+    assertEquals(dataLoadSourceModel.type(), "dfs");
+    assertEquals(dataLoadSourceModel.directoryPath(), "testString");
+    assertEquals(dataLoadSourceModel.directoryRef(), "sample_contract_small");
+    assertEquals(dataLoadSourceModel.details(), dataLoadSourceCredentialsModel);
+    assertEquals(dataLoadSourceModel.catalogId(), "testString");
+    assertEquals(dataLoadSourceModel.projectId(), "testString");
 
-    BulkLoadRequestDataStructureRecordPropertiesContentsCsvOptions bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel = new BulkLoadRequestDataStructureRecordPropertiesContentsCsvOptions.Builder()
+    CSVOptions csvOptionsModel = new CSVOptions.Builder()
       .columns("testString")
       .includesHeaderRow(true)
       .delimiter("testString")
       .build();
-    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel.columns(), "testString");
-    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel.includesHeaderRow(), Boolean.valueOf(true));
-    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel.delimiter(), "testString");
+    assertEquals(csvOptionsModel.columns(), "testString");
+    assertEquals(csvOptionsModel.includesHeaderRow(), Boolean.valueOf(true));
+    assertEquals(csvOptionsModel.delimiter(), "testString");
 
-    BulkLoadRequestDataStructureRecordPropertiesContents bulkLoadRequestDataStructureRecordPropertiesContentsModel = new BulkLoadRequestDataStructureRecordPropertiesContents.Builder()
+    DataLoadProperties dataLoadPropertiesModel = new DataLoadProperties.Builder()
       .collectionId("testString")
       .recordType("testString")
       .relationshipType("testString")
       .defaultSource("testString")
       .fileType("csv")
-      .csvOptions(bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel)
+      .csvOptions(csvOptionsModel)
       .build();
-    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.collectionId(), "testString");
-    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.recordType(), "testString");
-    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.relationshipType(), "testString");
-    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.defaultSource(), "testString");
-    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.fileType(), "csv");
-    assertEquals(bulkLoadRequestDataStructureRecordPropertiesContentsModel.csvOptions(), bulkLoadRequestDataStructureRecordPropertiesContentsCsvOptionsModel);
+    assertEquals(dataLoadPropertiesModel.collectionId(), "testString");
+    assertEquals(dataLoadPropertiesModel.recordType(), "testString");
+    assertEquals(dataLoadPropertiesModel.relationshipType(), "testString");
+    assertEquals(dataLoadPropertiesModel.defaultSource(), "testString");
+    assertEquals(dataLoadPropertiesModel.fileType(), "csv");
+    assertEquals(dataLoadPropertiesModel.csvOptions(), csvOptionsModel);
 
-    BulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptions bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel = new BulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptions.Builder()
-      .columns("testString")
-      .includesHeaderRow(true)
-      .delimiter("testString")
-      .build();
-    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel.columns(), "testString");
-    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel.includesHeaderRow(), Boolean.valueOf(true));
-    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel.delimiter(), "testString");
-
-    BulkLoadRequestDataStructureRelationshipPropertiesContents bulkLoadRequestDataStructureRelationshipPropertiesContentsModel = new BulkLoadRequestDataStructureRelationshipPropertiesContents.Builder()
-      .collectionId("testString")
-      .recordType("testString")
-      .relationshipType("testString")
-      .defaultSource("testString")
-      .fileType("csv")
-      .csvOptions(bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel)
-      .build();
-    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.collectionId(), "testString");
-    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.recordType(), "testString");
-    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.relationshipType(), "testString");
-    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.defaultSource(), "testString");
-    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.fileType(), "csv");
-    assertEquals(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel.csvOptions(), bulkLoadRequestDataStructureRelationshipPropertiesContentsCsvOptionsModel);
-
-    BulkLoadRequestDataStructure bulkLoadRequestDataStructureModel = new BulkLoadRequestDataStructure.Builder()
+    DataLoadStructure dataLoadStructureModel = new DataLoadStructure.Builder()
       .recordPath("testString")
       .recordProperties("testString")
       .relationshipPath("testString")
       .relationshipProperties("testString")
       .recordAssetId("testString")
       .relationshipAssetId("testString")
-      .recordPropertiesContents(bulkLoadRequestDataStructureRecordPropertiesContentsModel)
-      .relationshipPropertiesContents(bulkLoadRequestDataStructureRelationshipPropertiesContentsModel)
+      .recordPropertiesContents(dataLoadPropertiesModel)
+      .relationshipPropertiesContents(dataLoadPropertiesModel)
       .build();
-    assertEquals(bulkLoadRequestDataStructureModel.recordPath(), "testString");
-    assertEquals(bulkLoadRequestDataStructureModel.recordProperties(), "testString");
-    assertEquals(bulkLoadRequestDataStructureModel.relationshipPath(), "testString");
-    assertEquals(bulkLoadRequestDataStructureModel.relationshipProperties(), "testString");
-    assertEquals(bulkLoadRequestDataStructureModel.recordAssetId(), "testString");
-    assertEquals(bulkLoadRequestDataStructureModel.relationshipAssetId(), "testString");
-    assertEquals(bulkLoadRequestDataStructureModel.recordPropertiesContents(), bulkLoadRequestDataStructureRecordPropertiesContentsModel);
-    assertEquals(bulkLoadRequestDataStructureModel.relationshipPropertiesContents(), bulkLoadRequestDataStructureRelationshipPropertiesContentsModel);
+    assertEquals(dataLoadStructureModel.recordPath(), "testString");
+    assertEquals(dataLoadStructureModel.recordProperties(), "testString");
+    assertEquals(dataLoadStructureModel.relationshipPath(), "testString");
+    assertEquals(dataLoadStructureModel.relationshipProperties(), "testString");
+    assertEquals(dataLoadStructureModel.recordAssetId(), "testString");
+    assertEquals(dataLoadStructureModel.relationshipAssetId(), "testString");
+    assertEquals(dataLoadStructureModel.recordPropertiesContents(), dataLoadPropertiesModel);
+    assertEquals(dataLoadStructureModel.relationshipPropertiesContents(), dataLoadPropertiesModel);
 
     RunDataBulkLoadOptions runDataBulkLoadOptionsModel = new RunDataBulkLoadOptions.Builder()
-      .dataSource(bulkLoadRequestDataSourceModel)
-      .dataStructure(bulkLoadRequestDataStructureModel)
+      .dataSource(dataLoadSourceModel)
+      .dataStructure(dataLoadStructureModel)
       .updateStrategy("append")
       .build();
-    assertEquals(runDataBulkLoadOptionsModel.dataSource(), bulkLoadRequestDataSourceModel);
-    assertEquals(runDataBulkLoadOptionsModel.dataStructure(), bulkLoadRequestDataStructureModel);
+    assertEquals(runDataBulkLoadOptionsModel.dataSource(), dataLoadSourceModel);
+    assertEquals(runDataBulkLoadOptionsModel.dataStructure(), dataLoadStructureModel);
     assertEquals(runDataBulkLoadOptionsModel.updateStrategy(), "append");
   }
 

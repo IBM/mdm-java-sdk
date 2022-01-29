@@ -22,12 +22,12 @@ public class RulesEntityRule extends GenericModel {
 
   @SerializedName("last_updated")
   protected Long lastUpdated;
-  @SerializedName("rule_type")
-  protected String ruleType;
   @SerializedName("src_recno")
   protected String srcRecno;
   @SerializedName("target_recno")
   protected String targetRecno;
+  @SerializedName("rule_type")
+  protected String ruleType;
   protected String description;
   protected String user;
 
@@ -40,17 +40,6 @@ public class RulesEntityRule extends GenericModel {
    */
   public Long getLastUpdated() {
     return lastUpdated;
-  }
-
-  /**
-   * Gets the ruleType.
-   *
-   * User specified rule type. One Of: link, unlink.
-   *
-   * @return the ruleType
-   */
-  public String getRuleType() {
-    return ruleType;
   }
 
   /**
@@ -73,6 +62,17 @@ public class RulesEntityRule extends GenericModel {
    */
   public String getTargetRecno() {
     return targetRecno;
+  }
+
+  /**
+   * Gets the ruleType.
+   *
+   * User specified rule type. One Of: link, unlink.
+   *
+   * @return the ruleType
+   */
+  public String getRuleType() {
+    return ruleType;
   }
 
   /**

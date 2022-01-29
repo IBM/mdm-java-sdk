@@ -13,9 +13,9 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
+import com.ibm.cloud.mdm.v1.model.DataEntity;
 import com.ibm.cloud.mdm.v1.model.DataEntityResponse;
-import com.ibm.cloud.mdm.v1.model.DataEntityResponseEntity;
-import com.ibm.cloud.mdm.v1.model.DataEntityResponseMetadata;
+import com.ibm.cloud.mdm.v1.model.Metadata;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

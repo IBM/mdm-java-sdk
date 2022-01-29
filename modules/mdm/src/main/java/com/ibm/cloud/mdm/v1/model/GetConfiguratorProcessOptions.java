@@ -21,6 +21,7 @@ public class GetConfiguratorProcessOptions extends GenericModel {
 
   protected String processName;
   protected String recordType;
+  protected String entityType;
 
   /**
    * Builder.
@@ -28,10 +29,12 @@ public class GetConfiguratorProcessOptions extends GenericModel {
   public static class Builder {
     private String processName;
     private String recordType;
+    private String entityType;
 
     private Builder(GetConfiguratorProcessOptions getConfiguratorProcessOptions) {
       this.processName = getConfiguratorProcessOptions.processName;
       this.recordType = getConfiguratorProcessOptions.recordType;
+      this.entityType = getConfiguratorProcessOptions.entityType;
     }
 
     /**
@@ -79,6 +82,17 @@ public class GetConfiguratorProcessOptions extends GenericModel {
       this.recordType = recordType;
       return this;
     }
+
+    /**
+     * Set the entityType.
+     *
+     * @param entityType the entityType
+     * @return the GetConfiguratorProcessOptions builder
+     */
+    public Builder entityType(String entityType) {
+      this.entityType = entityType;
+      return this;
+    }
   }
 
   protected GetConfiguratorProcessOptions(Builder builder) {
@@ -86,6 +100,7 @@ public class GetConfiguratorProcessOptions extends GenericModel {
       "processName cannot be empty");
     processName = builder.processName;
     recordType = builder.recordType;
+    entityType = builder.entityType;
   }
 
   /**
@@ -111,12 +126,23 @@ public class GetConfiguratorProcessOptions extends GenericModel {
   /**
    * Gets the recordType.
    *
-   * Unique record type to identify data model attributes.
+   * Unique record type associated with the process.
    *
    * @return the recordType
    */
   public String recordType() {
     return recordType;
+  }
+
+  /**
+   * Gets the entityType.
+   *
+   * Unique entity type associated with the process.
+   *
+   * @return the entityType
+   */
+  public String entityType() {
+    return entityType;
   }
 }
 

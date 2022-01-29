@@ -20,15 +20,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class GetConfiguratorMatchingStatisticsOptions extends GenericModel {
 
   protected String recordType;
+  protected String entityType;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String recordType;
+    private String entityType;
 
     private Builder(GetConfiguratorMatchingStatisticsOptions getConfiguratorMatchingStatisticsOptions) {
       this.recordType = getConfiguratorMatchingStatisticsOptions.recordType;
+      this.entityType = getConfiguratorMatchingStatisticsOptions.entityType;
     }
 
     /**
@@ -41,9 +44,11 @@ public class GetConfiguratorMatchingStatisticsOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param recordType the recordType
+     * @param entityType the entityType
      */
-    public Builder(String recordType) {
+    public Builder(String recordType, String entityType) {
       this.recordType = recordType;
+      this.entityType = entityType;
     }
 
     /**
@@ -65,12 +70,26 @@ public class GetConfiguratorMatchingStatisticsOptions extends GenericModel {
       this.recordType = recordType;
       return this;
     }
+
+    /**
+     * Set the entityType.
+     *
+     * @param entityType the entityType
+     * @return the GetConfiguratorMatchingStatisticsOptions builder
+     */
+    public Builder entityType(String entityType) {
+      this.entityType = entityType;
+      return this;
+    }
   }
 
   protected GetConfiguratorMatchingStatisticsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
       "recordType cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityType,
+      "entityType cannot be null");
     recordType = builder.recordType;
+    entityType = builder.entityType;
   }
 
   /**
@@ -91,6 +110,17 @@ public class GetConfiguratorMatchingStatisticsOptions extends GenericModel {
    */
   public String recordType() {
     return recordType;
+  }
+
+  /**
+   * Gets the entityType.
+   *
+   * Entity type of match statistics.
+   *
+   * @return the entityType
+   */
+  public String entityType() {
+    return entityType;
   }
 }
 

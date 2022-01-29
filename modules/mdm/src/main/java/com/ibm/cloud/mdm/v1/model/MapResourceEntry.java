@@ -23,8 +23,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class MapResourceEntry extends GenericModel {
 
-  protected String category;
   protected List<String> regex;
+  protected String category;
   @SerializedName("data_type")
   protected String dataType;
   protected String cardinality;
@@ -35,16 +35,16 @@ public class MapResourceEntry extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String category;
     private List<String> regex;
+    private String category;
     private String dataType;
     private String cardinality;
     private List<String> values;
     private String key;
 
     private Builder(MapResourceEntry mapResourceEntry) {
-      this.category = mapResourceEntry.category;
       this.regex = mapResourceEntry.regex;
+      this.category = mapResourceEntry.category;
       this.dataType = mapResourceEntry.dataType;
       this.cardinality = mapResourceEntry.cardinality;
       this.values = mapResourceEntry.values;
@@ -110,17 +110,6 @@ public class MapResourceEntry extends GenericModel {
     }
 
     /**
-     * Set the category.
-     *
-     * @param category the category
-     * @return the MapResourceEntry builder
-     */
-    public Builder category(String category) {
-      this.category = category;
-      return this;
-    }
-
-    /**
      * Set the regex.
      * Existing regex will be replaced.
      *
@@ -129,6 +118,17 @@ public class MapResourceEntry extends GenericModel {
      */
     public Builder regex(List<String> regex) {
       this.regex = regex;
+      return this;
+    }
+
+    /**
+     * Set the category.
+     *
+     * @param category the category
+     * @return the MapResourceEntry builder
+     */
+    public Builder category(String category) {
+      this.category = category;
       return this;
     }
 
@@ -183,8 +183,8 @@ public class MapResourceEntry extends GenericModel {
       "regex cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.values,
       "values cannot be null");
-    category = builder.category;
     regex = builder.regex;
+    category = builder.category;
     dataType = builder.dataType;
     cardinality = builder.cardinality;
     values = builder.values;
@@ -201,17 +201,6 @@ public class MapResourceEntry extends GenericModel {
   }
 
   /**
-   * Gets the category.
-   *
-   * User defined context category, when applicable (i.e. UNITEDSTATES).
-   *
-   * @return the category
-   */
-  public String category() {
-    return category;
-  }
-
-  /**
    * Gets the regex.
    *
    * Collection of applicable regular expressions.
@@ -220,6 +209,17 @@ public class MapResourceEntry extends GenericModel {
    */
   public List<String> regex() {
     return regex;
+  }
+
+  /**
+   * Gets the category.
+   *
+   * User defined context category, when applicable (i.e. UNITEDSTATES).
+   *
+   * @return the category
+   */
+  public String category() {
+    return category;
   }
 
   /**

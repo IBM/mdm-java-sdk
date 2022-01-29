@@ -26,16 +26,16 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmStandardizerStep extends DynamicModel<Object> {
 
-  @SerializedName("set_resource")
-  protected String setResource;
   @SerializedName("map_resource")
   protected String mapResource;
-  @SerializedName("comparison_resource")
-  protected String comparisonResource;
-  @SerializedName("label")
-  protected String label;
   @SerializedName("inputs")
   protected List<Long> inputs;
+  @SerializedName("label")
+  protected String label;
+  @SerializedName("set_resource")
+  protected String setResource;
+  @SerializedName("comparison_resource")
+  protected String comparisonResource;
   @SerializedName("fields")
   protected List<String> fields;
   @SerializedName("method")
@@ -49,21 +49,21 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private String setResource;
     private String mapResource;
-    private String comparisonResource;
-    private String label;
     private List<Long> inputs;
+    private String label;
+    private String setResource;
+    private String comparisonResource;
     private List<String> fields;
     private String method;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmStandardizerStep algorithmStandardizerStep) {
-      this.setResource = algorithmStandardizerStep.setResource;
       this.mapResource = algorithmStandardizerStep.mapResource;
-      this.comparisonResource = algorithmStandardizerStep.comparisonResource;
-      this.label = algorithmStandardizerStep.label;
       this.inputs = algorithmStandardizerStep.inputs;
+      this.label = algorithmStandardizerStep.label;
+      this.setResource = algorithmStandardizerStep.setResource;
+      this.comparisonResource = algorithmStandardizerStep.comparisonResource;
       this.fields = algorithmStandardizerStep.fields;
       this.method = algorithmStandardizerStep.method;
       this.dynamicProperties = algorithmStandardizerStep.getProperties();
@@ -128,17 +128,6 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the setResource.
-     *
-     * @param setResource the setResource
-     * @return the AlgorithmStandardizerStep builder
-     */
-    public Builder setResource(String setResource) {
-      this.setResource = setResource;
-      return this;
-    }
-
-    /**
      * Set the mapResource.
      *
      * @param mapResource the mapResource
@@ -150,13 +139,14 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the comparisonResource.
+     * Set the inputs.
+     * Existing inputs will be replaced.
      *
-     * @param comparisonResource the comparisonResource
+     * @param inputs the inputs
      * @return the AlgorithmStandardizerStep builder
      */
-    public Builder comparisonResource(String comparisonResource) {
-      this.comparisonResource = comparisonResource;
+    public Builder inputs(List<Long> inputs) {
+      this.inputs = inputs;
       return this;
     }
 
@@ -172,14 +162,24 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
+     * Set the setResource.
      *
-     * @param inputs the inputs
+     * @param setResource the setResource
      * @return the AlgorithmStandardizerStep builder
      */
-    public Builder inputs(List<Long> inputs) {
-      this.inputs = inputs;
+    public Builder setResource(String setResource) {
+      this.setResource = setResource;
+      return this;
+    }
+
+    /**
+     * Set the comparisonResource.
+     *
+     * @param comparisonResource the comparisonResource
+     * @return the AlgorithmStandardizerStep builder
+     */
+    public Builder comparisonResource(String comparisonResource) {
+      this.comparisonResource = comparisonResource;
       return this;
     }
 
@@ -229,11 +229,11 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
       "method cannot be null");
-    setResource = builder.setResource;
     mapResource = builder.mapResource;
-    comparisonResource = builder.comparisonResource;
-    label = builder.label;
     inputs = builder.inputs;
+    label = builder.label;
+    setResource = builder.setResource;
+    comparisonResource = builder.comparisonResource;
     fields = builder.fields;
     method = builder.method;
     this.setProperties(builder.dynamicProperties);
@@ -246,26 +246,6 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the setResource.
-   *
-   * An existing set resource name, if applicable.
-   *
-   * @return the setResource
-   */
-  public String getSetResource() {
-    return this.setResource;
-  }
-
-  /**
-   * Sets the setResource.
-   *
-   * @param setResource the new setResource
-   */
-  public void setSetResource(final String setResource) {
-    this.setResource = setResource;
   }
 
   /**
@@ -289,23 +269,23 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the comparisonResource.
+   * Gets the inputs.
    *
-   * An existing comparison resource name, if applicable.
+   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
    *
-   * @return the comparisonResource
+   * @return the inputs
    */
-  public String getComparisonResource() {
-    return this.comparisonResource;
+  public List<Long> getInputs() {
+    return this.inputs;
   }
 
   /**
-   * Sets the comparisonResource.
+   * Sets the inputs.
    *
-   * @param comparisonResource the new comparisonResource
+   * @param inputs the new inputs
    */
-  public void setComparisonResource(final String comparisonResource) {
-    this.comparisonResource = comparisonResource;
+  public void setInputs(final List<Long> inputs) {
+    this.inputs = inputs;
   }
 
   /**
@@ -329,23 +309,43 @@ public class AlgorithmStandardizerStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the inputs.
+   * Gets the setResource.
    *
-   * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
+   * An existing set resource name, if applicable.
    *
-   * @return the inputs
+   * @return the setResource
    */
-  public List<Long> getInputs() {
-    return this.inputs;
+  public String getSetResource() {
+    return this.setResource;
   }
 
   /**
-   * Sets the inputs.
+   * Sets the setResource.
    *
-   * @param inputs the new inputs
+   * @param setResource the new setResource
    */
-  public void setInputs(final List<Long> inputs) {
-    this.inputs = inputs;
+  public void setSetResource(final String setResource) {
+    this.setResource = setResource;
+  }
+
+  /**
+   * Gets the comparisonResource.
+   *
+   * An existing comparison resource name, if applicable.
+   *
+   * @return the comparisonResource
+   */
+  public String getComparisonResource() {
+    return this.comparisonResource;
+  }
+
+  /**
+   * Sets the comparisonResource.
+   *
+   * @param comparisonResource the new comparisonResource
+   */
+  public void setComparisonResource(final String comparisonResource) {
+    this.comparisonResource = comparisonResource;
   }
 
   /**

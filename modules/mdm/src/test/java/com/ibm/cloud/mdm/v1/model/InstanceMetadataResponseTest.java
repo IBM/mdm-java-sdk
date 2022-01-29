@@ -14,6 +14,7 @@
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponse;
+import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponseBulkloadBucket;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponseCatalog;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataResponseProject;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
@@ -34,12 +35,12 @@ public class InstanceMetadataResponseTest {
   @Test
   public void testInstanceMetadataResponse() throws Throwable {
     InstanceMetadataResponse instanceMetadataResponseModel = new InstanceMetadataResponse();
-    assertNull(instanceMetadataResponseModel.getCatalogs());
-    assertNull(instanceMetadataResponseModel.getJobProjectId());
-    assertNull(instanceMetadataResponseModel.getCosEndpoint());
     assertNull(instanceMetadataResponseModel.getLabel());
     assertNull(instanceMetadataResponseModel.getProjects());
     assertNull(instanceMetadataResponseModel.getCosCrn());
     assertNull(instanceMetadataResponseModel.getBulkloadBucket());
+    assertNull(instanceMetadataResponseModel.getCatalogs());
+    assertNull(instanceMetadataResponseModel.getJobProjectId());
+    assertNull(instanceMetadataResponseModel.getCosEndpoint());
   }
 }

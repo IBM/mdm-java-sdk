@@ -20,24 +20,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class EntityBreakdown extends GenericModel {
 
-  protected Double average;
   @SerializedName("standard_deviation")
   protected Double standardDeviation;
+  protected Double average;
   protected Double variance;
   protected Double max;
-  protected Double min;
   protected Double count;
-
-  /**
-   * Gets the average.
-   *
-   * The average of the entity sizes.
-   *
-   * @return the average
-   */
-  public Double getAverage() {
-    return average;
-  }
+  protected Double min;
 
   /**
    * Gets the standardDeviation.
@@ -48,6 +37,17 @@ public class EntityBreakdown extends GenericModel {
    */
   public Double getStandardDeviation() {
     return standardDeviation;
+  }
+
+  /**
+   * Gets the average.
+   *
+   * The average of the entity sizes.
+   *
+   * @return the average
+   */
+  public Double getAverage() {
+    return average;
   }
 
   /**
@@ -73,17 +73,6 @@ public class EntityBreakdown extends GenericModel {
   }
 
   /**
-   * Gets the min.
-   *
-   * The minimum size of the entity.
-   *
-   * @return the min
-   */
-  public Double getMin() {
-    return min;
-  }
-
-  /**
    * Gets the count.
    *
    * The count of the entities.
@@ -92,6 +81,17 @@ public class EntityBreakdown extends GenericModel {
    */
   public Double getCount() {
     return count;
+  }
+
+  /**
+   * Gets the min.
+   *
+   * The minimum size of the entity.
+   *
+   * @return the min
+   */
+  public Double getMin() {
+    return min;
   }
 }
 

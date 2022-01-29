@@ -34,9 +34,11 @@ public class GetConfiguratorProcessOptionsTest {
     GetConfiguratorProcessOptions getConfiguratorProcessOptionsModel = new GetConfiguratorProcessOptions.Builder()
       .processName("testString")
       .recordType("person")
+      .entityType("person_entity")
       .build();
     assertEquals(getConfiguratorProcessOptionsModel.processName(), "testString");
     assertEquals(getConfiguratorProcessOptionsModel.recordType(), "person");
+    assertEquals(getConfiguratorProcessOptionsModel.entityType(), "person_entity");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

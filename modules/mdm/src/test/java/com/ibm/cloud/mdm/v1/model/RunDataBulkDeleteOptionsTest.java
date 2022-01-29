@@ -13,11 +13,11 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.BulkDeleteRequestSearchCriteria;
-import com.ibm.cloud.mdm.v1.model.BulkDeleteRequestSearchCriteriaQuery;
+import com.ibm.cloud.mdm.v1.model.DataSearchCriteria;
 import com.ibm.cloud.mdm.v1.model.Expression;
 import com.ibm.cloud.mdm.v1.model.RunDataBulkDeleteOptions;
 import com.ibm.cloud.mdm.v1.model.SearchFilter;
+import com.ibm.cloud.mdm.v1.model.SearchQuery;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -50,12 +50,12 @@ public class RunDataBulkDeleteOptionsTest {
     assertEquals(expressionModel.recordType(), "testString");
     assertEquals(expressionModel.operation(), "and");
 
-    BulkDeleteRequestSearchCriteriaQuery bulkDeleteRequestSearchCriteriaQueryModel = new BulkDeleteRequestSearchCriteriaQuery.Builder()
+    SearchQuery searchQueryModel = new SearchQuery.Builder()
       .expressions(new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)))
       .operation("and")
       .build();
-    assertEquals(bulkDeleteRequestSearchCriteriaQueryModel.expressions(), new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)));
-    assertEquals(bulkDeleteRequestSearchCriteriaQueryModel.operation(), "and");
+    assertEquals(searchQueryModel.expressions(), new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)));
+    assertEquals(searchQueryModel.operation(), "and");
 
     SearchFilter searchFilterModel = new SearchFilter.Builder()
       .type("record")
@@ -64,25 +64,25 @@ public class RunDataBulkDeleteOptionsTest {
     assertEquals(searchFilterModel.type(), "record");
     assertEquals(searchFilterModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
-    BulkDeleteRequestSearchCriteria bulkDeleteRequestSearchCriteriaModel = new BulkDeleteRequestSearchCriteria.Builder()
+    DataSearchCriteria dataSearchCriteriaModel = new DataSearchCriteria.Builder()
       .searchType("record")
-      .query(bulkDeleteRequestSearchCriteriaQueryModel)
+      .query(searchQueryModel)
       .filters(new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)))
       .build();
-    assertEquals(bulkDeleteRequestSearchCriteriaModel.searchType(), "record");
-    assertEquals(bulkDeleteRequestSearchCriteriaModel.query(), bulkDeleteRequestSearchCriteriaQueryModel);
-    assertEquals(bulkDeleteRequestSearchCriteriaModel.filters(), new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)));
+    assertEquals(dataSearchCriteriaModel.searchType(), "record");
+    assertEquals(dataSearchCriteriaModel.query(), searchQueryModel);
+    assertEquals(dataSearchCriteriaModel.filters(), new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)));
 
     RunDataBulkDeleteOptions runDataBulkDeleteOptionsModel = new RunDataBulkDeleteOptions.Builder()
       .deleteType("asset")
       .collectionIds(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .recordSource("testString")
-      .searchCriteria(bulkDeleteRequestSearchCriteriaModel)
+      .searchCriteria(dataSearchCriteriaModel)
       .build();
     assertEquals(runDataBulkDeleteOptionsModel.deleteType(), "asset");
     assertEquals(runDataBulkDeleteOptionsModel.collectionIds(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(runDataBulkDeleteOptionsModel.recordSource(), "testString");
-    assertEquals(runDataBulkDeleteOptionsModel.searchCriteria(), bulkDeleteRequestSearchCriteriaModel);
+    assertEquals(runDataBulkDeleteOptionsModel.searchCriteria(), dataSearchCriteriaModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
