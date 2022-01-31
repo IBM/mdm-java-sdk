@@ -76,6 +76,7 @@ import com.ibm.cloud.mdm.v1.model.DataStatistics;
 import com.ibm.cloud.mdm.v1.model.DeleteDataRecordOptions;
 import com.ibm.cloud.mdm.v1.model.DeleteDataRelationshipOptions;
 import com.ibm.cloud.mdm.v1.model.DeleteMatchingRuleOptions;
+import com.ibm.cloud.mdm.v1.model.Expression;
 import com.ibm.cloud.mdm.v1.model.Flow;
 import com.ibm.cloud.mdm.v1.model.GenerateModelAlgorithmOptions;
 import com.ibm.cloud.mdm.v1.model.GetConfiguratorConfigDataModelOptions;
@@ -161,6 +162,7 @@ import com.ibm.cloud.mdm.v1.model.RunDataOngoingSyncOptions;
 import com.ibm.cloud.mdm.v1.model.RunDataSchemaUpdateOptions;
 import com.ibm.cloud.mdm.v1.model.SearchDataOptions;
 import com.ibm.cloud.mdm.v1.model.SearchMatchingIndexOptions;
+import com.ibm.cloud.mdm.v1.model.SearchQuery;
 import com.ibm.cloud.mdm.v1.model.SetResourceEntry;
 import com.ibm.cloud.mdm.v1.model.SetResourceNames;
 import com.ibm.cloud.mdm.v1.model.SingleRecordRequest;
@@ -180,7 +182,6 @@ import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
 import com.ibm.cloud.sdk.core.util.CredentialUtils;
 import java.io.InputStream;
 import java.util.List;
-import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -264,6 +265,50 @@ public class MdmExamples {
     }
 
     try {
+      System.out.println("listConfiguratorProcesses() result:");
+      // begin-list_configurator_processes
+      ListConfiguratorProcessesOptions listConfiguratorProcessesOptions = new ListConfiguratorProcessesOptions.Builder()
+        .status("In-progress")
+        .build();
+
+      Response<ProcessList> response = mdmService.listConfiguratorProcesses(listConfiguratorProcessesOptions).execute();
+      ProcessList processList = response.getResult();
+
+      System.out.println(processList);
+      // end-list_configurator_processes
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createConfiguratorProcess() result:");
+      // begin-create_configurator_process
+      ProcessRequestAssetSourceDetailsProject processRequestAssetSourceDetailsProjectModel = new ProcessRequestAssetSourceDetailsProject.Builder()
+        .cosEndpoint("https://s3.us-south.cloud-object-storage.appdomain.cloud")
+        .cosBucketName("bucket-name")
+        .cosApiKey("project_api_key")
+        .build();
+      ProcessRequestAssetSourceDetails processRequestAssetSourceDetailsModel = new ProcessRequestAssetSourceDetails.Builder()
+        .project(processRequestAssetSourceDetailsProjectModel)
+        .build();
+      CreateConfiguratorProcessOptions createConfiguratorProcessOptions = new CreateConfiguratorProcessOptions.Builder()
+        .processName("publish_data")
+        .assetSourceDetails(processRequestAssetSourceDetailsModel)
+        .initiator("IAM ID")
+        .build();
+
+      Response<ProcessStatus> response = mdmService.createConfiguratorProcess(createConfiguratorProcessOptions).execute();
+      ProcessStatus processStatus = response.getResult();
+
+      System.out.println(processStatus);
+      // end-create_configurator_process
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
       System.out.println("getConfiguratorConfigurationMetadata() result:");
       // begin-get_configurator_configuration_metadata
       GetConfiguratorConfigurationMetadataOptions getConfiguratorConfigurationMetadataOptions = new GetConfiguratorConfigurationMetadataOptions();
@@ -282,8 +327,8 @@ public class MdmExamples {
       System.out.println("replaceConfiguratorConfigurationMetadata() result:");
       // begin-replace_configurator_configuration_metadata
       ReplaceConfiguratorConfigurationMetadataOptions replaceConfiguratorConfigurationMetadataOptions = new ReplaceConfiguratorConfigurationMetadataOptions.Builder()
-        .projectId("52a72453-597c-4fb3-a518-c815225e3ea9")
         .catalogId("8a3cc967-81c4-49a3-86a2-208059819b24")
+        .projectId("52a72453-597c-4fb3-a518-c815225e3ea9")
         .description("sample configuration metadata")
         .name("configuration_metadata")
         .build();
@@ -302,8 +347,8 @@ public class MdmExamples {
       System.out.println("updateConfiguratorConfigurationMetadata() result:");
       // begin-update_configurator_configuration_metadata
       UpdateConfiguratorConfigurationMetadataOptions updateConfiguratorConfigurationMetadataOptions = new UpdateConfiguratorConfigurationMetadataOptions.Builder()
-        .projectId("52a72453-597c-4fb3-a518-c815225e3ea9")
         .catalogId("8a3cc967-81c4-49a3-86a2-208059819b24")
+        .projectId("52a72453-597c-4fb3-a518-c815225e3ea9")
         .description("sample configuration metadata")
         .name("configuration_metadata")
         .build();
@@ -359,9 +404,9 @@ public class MdmExamples {
         .key("COLUMN1")
         .build();
       AddConfiguratorConfigurationAssetOptions addConfiguratorConfigurationAssetOptions = new AddConfiguratorConfigurationAssetOptions.Builder()
-        .assetId("asset_id")
         .assetName("Person10.csv")
         .assetStatus("Mapped")
+        .assetId("asset_id")
         .assetCreatedDate("2020-05-12 13:21:21.727000+00:00")
         .assetMappings(new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)))
         .build();
@@ -390,50 +435,6 @@ public class MdmExamples {
 
       System.out.println(processModelStatus);
       // end-get_configurator_process
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("listConfiguratorProcesses() result:");
-      // begin-list_configurator_processes
-      ListConfiguratorProcessesOptions listConfiguratorProcessesOptions = new ListConfiguratorProcessesOptions.Builder()
-        .status("In-progress")
-        .build();
-
-      Response<ProcessList> response = mdmService.listConfiguratorProcesses(listConfiguratorProcessesOptions).execute();
-      ProcessList processList = response.getResult();
-
-      System.out.println(processList);
-      // end-list_configurator_processes
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("createConfiguratorProcess() result:");
-      // begin-create_configurator_process
-      ProcessRequestAssetSourceDetailsProject processRequestAssetSourceDetailsProjectModel = new ProcessRequestAssetSourceDetailsProject.Builder()
-        .cosEndpoint("https://s3.us-south.cloud-object-storage.appdomain.cloud")
-        .cosBucketName("bucket-name")
-        .cosApiKey("project_api_key")
-        .build();
-      ProcessRequestAssetSourceDetails processRequestAssetSourceDetailsModel = new ProcessRequestAssetSourceDetails.Builder()
-        .project(processRequestAssetSourceDetailsProjectModel)
-        .build();
-      CreateConfiguratorProcessOptions createConfiguratorProcessOptions = new CreateConfiguratorProcessOptions.Builder()
-        .processName("publish_data")
-        .assetSourceDetails(processRequestAssetSourceDetailsModel)
-        .initiator("IAM ID")
-        .build();
-
-      Response<ProcessStatus> response = mdmService.createConfiguratorProcess(createConfiguratorProcessOptions).execute();
-      ProcessStatus processStatus = response.getResult();
-
-      System.out.println(processStatus);
-      // end-create_configurator_process
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -516,19 +517,17 @@ public class MdmExamples {
     }
 
     try {
-      System.out.println("listDataRecordsForEntity() result:");
-      // begin-list_data_records_for_entity
-      ListDataRecordsForEntityOptions listDataRecordsForEntityOptions = new ListDataRecordsForEntityOptions.Builder()
+      System.out.println("listDataRelationshipsForEntity() result:");
+      // begin-list_data_relationships_for_entity
+      ListDataRelationshipsForEntityOptions listDataRelationshipsForEntityOptions = new ListDataRelationshipsForEntityOptions.Builder()
         .id("testString")
-        .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
-        .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
         .build();
 
-      Response<DataRecordsResponse> response = mdmService.listDataRecordsForEntity(listDataRecordsForEntityOptions).execute();
-      DataRecordsResponse dataRecordsResponse = response.getResult();
+      Response<DataRelationshipsResponse> response = mdmService.listDataRelationshipsForEntity(listDataRelationshipsForEntityOptions).execute();
+      DataRelationshipsResponse dataRelationshipsResponse = response.getResult();
 
-      System.out.println(dataRecordsResponse);
-      // end-list_data_records_for_entity
+      System.out.println(dataRelationshipsResponse);
+      // end-list_data_relationships_for_entity
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -556,17 +555,19 @@ public class MdmExamples {
     }
 
     try {
-      System.out.println("listDataRelationshipsForEntity() result:");
-      // begin-list_data_relationships_for_entity
-      ListDataRelationshipsForEntityOptions listDataRelationshipsForEntityOptions = new ListDataRelationshipsForEntityOptions.Builder()
+      System.out.println("listDataRecordsForEntity() result:");
+      // begin-list_data_records_for_entity
+      ListDataRecordsForEntityOptions listDataRecordsForEntityOptions = new ListDataRecordsForEntityOptions.Builder()
         .id("testString")
+        .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
+        .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
         .build();
 
-      Response<DataRelationshipsResponse> response = mdmService.listDataRelationshipsForEntity(listDataRelationshipsForEntityOptions).execute();
-      DataRelationshipsResponse dataRelationshipsResponse = response.getResult();
+      Response<DataRecordsResponse> response = mdmService.listDataRecordsForEntity(listDataRecordsForEntityOptions).execute();
+      DataRecordsResponse dataRecordsResponse = response.getResult();
 
-      System.out.println(dataRelationshipsResponse);
-      // end-list_data_relationships_for_entity
+      System.out.println(dataRecordsResponse);
+      // end-list_data_records_for_entity
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -694,6 +695,22 @@ public class MdmExamples {
     }
 
     try {
+      System.out.println("listDataJobs() result:");
+      // begin-list_data_jobs
+      ListDataJobsOptions listDataJobsOptions = new ListDataJobsOptions.Builder()
+        .build();
+
+      Response<DataJobs> response = mdmService.listDataJobs(listDataJobsOptions).execute();
+      DataJobs dataJobs = response.getResult();
+
+      System.out.println(dataJobs);
+      // end-list_data_jobs
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
       System.out.println("getDataJob() result:");
       // begin-get_data_job
       GetDataJobOptions getDataJobOptions = new GetDataJobOptions.Builder()
@@ -711,16 +728,39 @@ public class MdmExamples {
     }
 
     try {
-      System.out.println("listDataJobs() result:");
-      // begin-list_data_jobs
-      ListDataJobsOptions listDataJobsOptions = new ListDataJobsOptions.Builder()
+      System.out.println("getDataRecord() result:");
+      // begin-get_data_record
+      GetDataRecordOptions getDataRecordOptions = new GetDataRecordOptions.Builder()
+        .id(Long.valueOf("26"))
+        .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
+        .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
         .build();
 
-      Response<DataJobs> response = mdmService.listDataJobs(listDataJobsOptions).execute();
-      DataJobs dataJobs = response.getResult();
+      Response<DataRecordResponse> response = mdmService.getDataRecord(getDataRecordOptions).execute();
+      DataRecordResponse dataRecordResponse = response.getResult();
 
-      System.out.println(dataJobs);
-      // end-list_data_jobs
+      System.out.println(dataRecordResponse);
+      // end-get_data_record
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("replaceDataRecord() result:");
+      // begin-replace_data_record
+      Map<String, Object> mockMap = new java.util.HashMap<>();
+      mockMap.put("foo", "bar");
+      ReplaceDataRecordOptions replaceDataRecordOptions = new ReplaceDataRecordOptions.Builder()
+        .id(Long.valueOf("26"))
+        .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", mockMap); } })
+        .build();
+
+      Response<DataRecordResponse> response = mdmService.replaceDataRecord(replaceDataRecordOptions).execute();
+      DataRecordResponse dataRecordResponse = response.getResult();
+
+      System.out.println(dataRecordResponse);
+      // end-replace_data_record
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -781,45 +821,6 @@ public class MdmExamples {
     }
 
     try {
-      System.out.println("getDataRecord() result:");
-      // begin-get_data_record
-      GetDataRecordOptions getDataRecordOptions = new GetDataRecordOptions.Builder()
-        .id(Long.valueOf("26"))
-        .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
-        .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
-        .build();
-
-      Response<DataRecordResponse> response = mdmService.getDataRecord(getDataRecordOptions).execute();
-      DataRecordResponse dataRecordResponse = response.getResult();
-
-      System.out.println(dataRecordResponse);
-      // end-get_data_record
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("replaceDataRecord() result:");
-      // begin-replace_data_record
-      Map<String, Object> mockMap = new HashMap<>();
-      mockMap.put("foo", "bar");
-      ReplaceDataRecordOptions replaceDataRecordOptions = new ReplaceDataRecordOptions.Builder()
-        .id(Long.valueOf("26"))
-        .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", mockMap); } })
-        .build();
-
-      Response<DataRecordResponse> response = mdmService.replaceDataRecord(replaceDataRecordOptions).execute();
-      DataRecordResponse dataRecordResponse = response.getResult();
-
-      System.out.println(dataRecordResponse);
-      // end-replace_data_record
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
       System.out.println("listDataRecords() result:");
       // begin-list_data_records
       ListDataRecordsOptions listDataRecordsOptions = new ListDataRecordsOptions.Builder()
@@ -838,7 +839,7 @@ public class MdmExamples {
     try {
       System.out.println("createDataRecord() result:");
       // begin-create_data_record
-      Map<String, Object> mockMap = new HashMap<>();
+      Map<String, Object> mockMap = new java.util.HashMap<>();
       mockMap.put("foo", "bar");
       CreateDataRecordOptions createDataRecordOptions = new CreateDataRecordOptions.Builder()
         .attributes(new java.util.HashMap<String, Object>() { { put("foo", mockMap); } })
@@ -891,7 +892,7 @@ public class MdmExamples {
     try {
       System.out.println("replaceDataRelationship() result:");
       // begin-replace_data_relationship
-      Map<String, Object> mockMap = new HashMap<>();
+      Map<String, Object> mockMap = new java.util.HashMap<>();
       mockMap.put("foo", "bar");
       ReplaceDataRelationshipOptions replaceDataRelationshipOptions = new ReplaceDataRelationshipOptions.Builder()
         .id("testString")
@@ -911,7 +912,7 @@ public class MdmExamples {
     try {
       System.out.println("createDataRelationship() result:");
       // begin-create_data_relationship
-      Map<String, Object> mockMap = new HashMap<>();
+      Map<String, Object> mockMap = new java.util.HashMap<>();
       mockMap.put("foo", "bar");
       CreateDataRelationshipOptions createDataRelationshipOptions = new CreateDataRelationshipOptions.Builder()
         .attributes(new java.util.HashMap<String, Object>() { { put("foo", mockMap); } })
@@ -942,7 +943,17 @@ public class MdmExamples {
     try {
       System.out.println("searchData() result:");
       // begin-search_data
+      Expression expressionModel = new Expression.Builder()
+        .property("legal_name.last_name")
+        .condition("equal")
+        .value("smith")
+        .build();
+      SearchQuery searchQueryModel = new SearchQuery.Builder()
+        .expressions(new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)))
+        .build();
       SearchDataOptions searchDataOptions = new SearchDataOptions.Builder()
+        .searchType("record")
+        .query(searchQueryModel)
         .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
         .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
         .build();
@@ -1095,6 +1106,23 @@ public class MdmExamples {
     }
 
     try {
+      System.out.println("getMatchingRecords() result:");
+      // begin-get_matching_records
+      GetMatchingRecordsOptions getMatchingRecordsOptions = new GetMatchingRecordsOptions.Builder()
+        .entityId("entity_type-123456789")
+        .build();
+
+      Response<GetRecordKeys> response = mdmService.getMatchingRecords(getMatchingRecordsOptions).execute();
+      GetRecordKeys getRecordKeys = response.getResult();
+
+      System.out.println(getRecordKeys);
+      // end-get_matching_records
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
       System.out.println("listMatchingRules() result:");
       // begin-list_matching_rules
       ListMatchingRulesOptions listMatchingRulesOptions = new ListMatchingRulesOptions.Builder()
@@ -1141,23 +1169,6 @@ public class MdmExamples {
 
       System.out.println(getMatchingJobs);
       // end-get_matching_job_info
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("getMatchingRecords() result:");
-      // begin-get_matching_records
-      GetMatchingRecordsOptions getMatchingRecordsOptions = new GetMatchingRecordsOptions.Builder()
-        .entityId("entity_type-123456789")
-        .build();
-
-      Response<GetRecordKeys> response = mdmService.getMatchingRecords(getMatchingRecordsOptions).execute();
-      GetRecordKeys getRecordKeys = response.getResult();
-
-      System.out.println(getRecordKeys);
-      // end-get_matching_records
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -1236,9 +1247,9 @@ public class MdmExamples {
       System.out.println("compareMatchingIndex() result:");
       // begin-compare_matching_index
       SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
+        .recordSource("MDM")
         .recordLastUpdated(Long.valueOf("1506982103000"))
         .recordId("2")
-        .recordSource("MDM")
         .build();
       SingleRecordRequest singleRecordRequestModel = new SingleRecordRequest.Builder()
         .recordType("person")
@@ -1317,12 +1328,9 @@ public class MdmExamples {
     try {
       System.out.println("replaceModelAlgorithm() result:");
       // begin-replace_model_algorithm
-      AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
-        .autoLinkThreshold(Float.valueOf("36.0"))
-        .build();
       AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
-        .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+        .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .build();
       AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
         .label("testString")
@@ -1339,11 +1347,14 @@ public class MdmExamples {
         .enabled(true)
         .type("testString")
         .build();
+      AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
+        .autoLinkThreshold(Float.valueOf("36.0"))
+        .build();
       ReplaceModelAlgorithmOptions replaceModelAlgorithmOptions = new ReplaceModelAlgorithmOptions.Builder()
         .recordType("testString")
-        .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
         .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
         .encryption(algorithmEncryptionModel)
+        .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
         .locale("testString")
         .build();
 
@@ -1384,12 +1395,9 @@ public class MdmExamples {
     try {
       System.out.println("updateModelAlgorithm() result:");
       // begin-update_model_algorithm
-      AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
-        .autoLinkThreshold(Float.valueOf("36.0"))
-        .build();
       AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
-        .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+        .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .build();
       AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
         .label("testString")
@@ -1406,11 +1414,14 @@ public class MdmExamples {
         .enabled(true)
         .type("testString")
         .build();
+      AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
+        .autoLinkThreshold(Float.valueOf("36.0"))
+        .build();
       UpdateModelAlgorithmOptions updateModelAlgorithmOptions = new UpdateModelAlgorithmOptions.Builder()
         .recordType("testString")
-        .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
         .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
         .encryption(algorithmEncryptionModel)
+        .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
         .locale("testString")
         .build();
 
@@ -1497,8 +1508,8 @@ public class MdmExamples {
       System.out.println("replaceModelCompositeRules() result:");
       // begin-replace_model_composite_rules
       CompositeRulesRule compositeRulesRuleModel = new CompositeRulesRule.Builder()
-        .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .choices(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+        .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
         .build();
       CompositeRulesRules compositeRulesRulesModel = new CompositeRulesRules.Builder()
         .global(compositeRulesRuleModel)
@@ -1538,8 +1549,8 @@ public class MdmExamples {
       System.out.println("replaceModelDataModel() result:");
       // begin-replace_model_data_model
       DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
-        .label("testString")
         .attributeType("testString")
+        .label("testString")
         .build();
       DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
         .label("testString")
@@ -1560,15 +1571,15 @@ public class MdmExamples {
         .dataType("testString")
         .build();
       DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-        .recordId(dataModelSystemPropertyModel)
-        .collectionId(dataModelSystemPropertyModel)
-        .recordNumber(dataModelSystemPropertyModel)
         .recordLastUpdated(dataModelSystemPropertyModel)
+        .recordNumber(dataModelSystemPropertyModel)
         .recordSource(dataModelSystemPropertyModel)
+        .collectionId(dataModelSystemPropertyModel)
+        .recordId(dataModelSystemPropertyModel)
         .build();
       DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-        .entityLastUpdated(dataModelSystemPropertyModel)
         .entityId(dataModelSystemPropertyModel)
+        .entityLastUpdated(dataModelSystemPropertyModel)
         .build();
       DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
         .relationshipLastUpdated(dataModelSystemPropertyModel)
@@ -1604,8 +1615,8 @@ public class MdmExamples {
       System.out.println("updateModelDataModel() result:");
       // begin-update_model_data_model
       DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
-        .label("testString")
         .attributeType("testString")
+        .label("testString")
         .build();
       DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
         .label("testString")
@@ -1626,15 +1637,15 @@ public class MdmExamples {
         .dataType("testString")
         .build();
       DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
-        .recordId(dataModelSystemPropertyModel)
-        .collectionId(dataModelSystemPropertyModel)
-        .recordNumber(dataModelSystemPropertyModel)
         .recordLastUpdated(dataModelSystemPropertyModel)
+        .recordNumber(dataModelSystemPropertyModel)
         .recordSource(dataModelSystemPropertyModel)
+        .collectionId(dataModelSystemPropertyModel)
+        .recordId(dataModelSystemPropertyModel)
         .build();
       DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-        .entityLastUpdated(dataModelSystemPropertyModel)
         .entityId(dataModelSystemPropertyModel)
+        .entityLastUpdated(dataModelSystemPropertyModel)
         .build();
       DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
         .relationshipLastUpdated(dataModelSystemPropertyModel)
@@ -1788,6 +1799,21 @@ public class MdmExamples {
     }
 
     try {
+      System.out.println("listModelSetResources() result:");
+      // begin-list_model_set_resources
+      ListModelSetResourcesOptions listModelSetResourcesOptions = new ListModelSetResourcesOptions();
+
+      Response<SetResourceNames> response = mdmService.listModelSetResources(listModelSetResourcesOptions).execute();
+      SetResourceNames setResourceNames = response.getResult();
+
+      System.out.println(setResourceNames);
+      // end-list_model_set_resources
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
       System.out.println("getModelSetResource() result:");
       // begin-get_model_set_resource
       GetModelSetResourceOptions getModelSetResourceOptions = new GetModelSetResourceOptions.Builder()
@@ -1821,21 +1847,6 @@ public class MdmExamples {
 
       System.out.println(putSetResources);
       // end-replace_model_set_resource
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("listModelSetResources() result:");
-      // begin-list_model_set_resources
-      ListModelSetResourcesOptions listModelSetResourcesOptions = new ListModelSetResourcesOptions();
-
-      Response<SetResourceNames> response = mdmService.listModelSetResources(listModelSetResourcesOptions).execute();
-      SetResourceNames setResourceNames = response.getResult();
-
-      System.out.println(setResourceNames);
-      // end-list_model_set_resources
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);

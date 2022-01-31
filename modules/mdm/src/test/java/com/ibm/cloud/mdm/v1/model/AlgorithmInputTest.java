@@ -35,12 +35,12 @@ public class AlgorithmInputTest {
   public void testAlgorithmInput() throws Throwable {
     AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
       .encryptedFields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
     assertEquals(algorithmInputModel.encryptedFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(algorithmInputModel.attributes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmInputModel.fields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmInputModel.attributes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     String json = TestUtilities.serialize(algorithmInputModel);
 

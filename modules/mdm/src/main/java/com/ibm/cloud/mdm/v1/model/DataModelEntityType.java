@@ -12,6 +12,7 @@
  */
 package com.ibm.cloud.mdm.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,21 +21,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DataModelEntityType extends GenericModel {
 
   protected String label;
-  protected String type;
   protected String description;
+  protected String type;
+  @SerializedName("default")
+  protected Boolean xDefault;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String label;
-    private String type;
     private String description;
+    private String type;
+    private Boolean xDefault;
 
     private Builder(DataModelEntityType dataModelEntityType) {
       this.label = dataModelEntityType.label;
-      this.type = dataModelEntityType.type;
       this.description = dataModelEntityType.description;
+      this.type = dataModelEntityType.type;
+      this.xDefault = dataModelEntityType.xDefault;
     }
 
     /**
@@ -73,6 +78,17 @@ public class DataModelEntityType extends GenericModel {
     }
 
     /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the DataModelEntityType builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+
+    /**
      * Set the type.
      *
      * @param type the type
@@ -84,13 +100,13 @@ public class DataModelEntityType extends GenericModel {
     }
 
     /**
-     * Set the description.
+     * Set the xDefault.
      *
-     * @param description the description
+     * @param xDefault the xDefault
      * @return the DataModelEntityType builder
      */
-    public Builder description(String description) {
-      this.description = description;
+    public Builder xDefault(Boolean xDefault) {
+      this.xDefault = xDefault;
       return this;
     }
   }
@@ -99,8 +115,9 @@ public class DataModelEntityType extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
     label = builder.label;
-    type = builder.type;
     description = builder.description;
+    type = builder.type;
+    xDefault = builder.xDefault;
   }
 
   /**
@@ -124,6 +141,17 @@ public class DataModelEntityType extends GenericModel {
   }
 
   /**
+   * Gets the description.
+   *
+   * Read-only description of entity type.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
+  }
+
+  /**
    * Gets the type.
    *
    * Read-only type of entity type, one of individual or household.
@@ -135,14 +163,14 @@ public class DataModelEntityType extends GenericModel {
   }
 
   /**
-   * Gets the description.
+   * Gets the xDefault.
    *
-   * Read-only description of entity type.
+   * Tag to define the entity type as default.
    *
-   * @return the description
+   * @return the xDefault
    */
-  public String description() {
-    return description;
+  public Boolean xDefault() {
+    return xDefault;
   }
 }
 

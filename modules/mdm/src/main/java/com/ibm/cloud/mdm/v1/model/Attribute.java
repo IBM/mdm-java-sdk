@@ -24,9 +24,9 @@ public class Attribute extends GenericModel {
   protected String classification;
   protected String label;
   protected String description;
+  protected String cardinality;
   @SerializedName("attribute_type")
   protected String attributeType;
-  protected String cardinality;
 
   /**
    * Builder.
@@ -36,16 +36,16 @@ public class Attribute extends GenericModel {
     private String classification;
     private String label;
     private String description;
-    private String attributeType;
     private String cardinality;
+    private String attributeType;
 
     private Builder(Attribute attribute) {
       this.indexed = attribute.indexed;
       this.classification = attribute.classification;
       this.label = attribute.label;
       this.description = attribute.description;
-      this.attributeType = attribute.attributeType;
       this.cardinality = attribute.cardinality;
+      this.attributeType = attribute.attributeType;
     }
 
     /**
@@ -119,17 +119,6 @@ public class Attribute extends GenericModel {
     }
 
     /**
-     * Set the attributeType.
-     *
-     * @param attributeType the attributeType
-     * @return the Attribute builder
-     */
-    public Builder attributeType(String attributeType) {
-      this.attributeType = attributeType;
-      return this;
-    }
-
-    /**
      * Set the cardinality.
      *
      * @param cardinality the cardinality
@@ -137,6 +126,17 @@ public class Attribute extends GenericModel {
      */
     public Builder cardinality(String cardinality) {
       this.cardinality = cardinality;
+      return this;
+    }
+
+    /**
+     * Set the attributeType.
+     *
+     * @param attributeType the attributeType
+     * @return the Attribute builder
+     */
+    public Builder attributeType(String attributeType) {
+      this.attributeType = attributeType;
       return this;
     }
   }
@@ -150,8 +150,8 @@ public class Attribute extends GenericModel {
     classification = builder.classification;
     label = builder.label;
     description = builder.description;
-    attributeType = builder.attributeType;
     cardinality = builder.cardinality;
+    attributeType = builder.attributeType;
   }
 
   /**
@@ -208,17 +208,6 @@ public class Attribute extends GenericModel {
   }
 
   /**
-   * Gets the attributeType.
-   *
-   * The data type of this Attribute element.
-   *
-   * @return the attributeType
-   */
-  public String attributeType() {
-    return attributeType;
-  }
-
-  /**
    * Gets the cardinality.
    *
    * The number of data points the specific attribute can represen.
@@ -227,6 +216,17 @@ public class Attribute extends GenericModel {
    */
   public String cardinality() {
     return cardinality;
+  }
+
+  /**
+   * Gets the attributeType.
+   *
+   * The data type of this Attribute element.
+   *
+   * @return the attributeType
+   */
+  public String attributeType() {
+    return attributeType;
   }
 }
 

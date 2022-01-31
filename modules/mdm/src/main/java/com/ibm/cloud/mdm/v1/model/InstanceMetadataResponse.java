@@ -22,8 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataResponse extends GenericModel {
 
+  @SerializedName("cos_endpoint")
+  protected String cosEndpoint;
   protected String label;
-  protected List<InstanceMetadataResponseProject> projects;
   @SerializedName("cos_crn")
   protected String cosCrn;
   @SerializedName("bulkload_bucket")
@@ -31,8 +32,18 @@ public class InstanceMetadataResponse extends GenericModel {
   protected List<InstanceMetadataResponseCatalog> catalogs;
   @SerializedName("job_project_id")
   protected String jobProjectId;
-  @SerializedName("cos_endpoint")
-  protected String cosEndpoint;
+  protected List<InstanceMetadataResponseProject> projects;
+
+  /**
+   * Gets the cosEndpoint.
+   *
+   * Endpoint of a cloud object storage.
+   *
+   * @return the cosEndpoint
+   */
+  public String getCosEndpoint() {
+    return cosEndpoint;
+  }
 
   /**
    * Gets the label.
@@ -43,17 +54,6 @@ public class InstanceMetadataResponse extends GenericModel {
    */
   public String getLabel() {
     return label;
-  }
-
-  /**
-   * Gets the projects.
-   *
-   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
-   *
-   * @return the projects
-   */
-  public List<InstanceMetadataResponseProject> getProjects() {
-    return projects;
   }
 
   /**
@@ -101,14 +101,14 @@ public class InstanceMetadataResponse extends GenericModel {
   }
 
   /**
-   * Gets the cosEndpoint.
+   * Gets the projects.
    *
-   * Endpoint of a cloud object storage.
+   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
    *
-   * @return the cosEndpoint
+   * @return the projects
    */
-  public String getCosEndpoint() {
-    return cosEndpoint;
+  public List<InstanceMetadataResponseProject> getProjects() {
+    return projects;
   }
 }
 

@@ -20,12 +20,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataMapping extends GenericModel {
 
+  @SerializedName("data_mapping_default_display_name")
+  protected String dataMappingDefaultDisplayName;
   @SerializedName("classified_class")
   protected String classifiedClass;
   @SerializedName("data_mapping_name")
   protected String dataMappingName;
-  @SerializedName("data_mapping_default_display_name")
-  protected String dataMappingDefaultDisplayName;
   protected String key;
 
   /**
@@ -108,6 +108,17 @@ public class DataMapping extends GenericModel {
   }
 
   /**
+   * Gets the dataMappingDefaultDisplayName.
+   *
+   * The displayable name for the data mapping attribute.
+   *
+   * @return the dataMappingDefaultDisplayName
+   */
+  public String dataMappingDefaultDisplayName() {
+    return dataMappingDefaultDisplayName;
+  }
+
+  /**
    * Gets the classifiedClass.
    *
    * The classified class of the Data asset column.
@@ -127,17 +138,6 @@ public class DataMapping extends GenericModel {
    */
   public String dataMappingName() {
     return dataMappingName;
-  }
-
-  /**
-   * Gets the dataMappingDefaultDisplayName.
-   *
-   * The displayable name for the data mapping attribute.
-   *
-   * @return the dataMappingDefaultDisplayName
-   */
-  public String dataMappingDefaultDisplayName() {
-    return dataMappingDefaultDisplayName;
   }
 
   /**

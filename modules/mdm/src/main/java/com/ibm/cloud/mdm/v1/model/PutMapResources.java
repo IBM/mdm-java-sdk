@@ -25,10 +25,10 @@ public class PutMapResources extends GenericModel {
 
   @SerializedName("map_resources")
   protected Map<String, List<MapResourceEntry>> mapResources;
-  @SerializedName("flow_state")
-  protected String flowState;
   @SerializedName("flow_id")
   protected String flowId;
+  @SerializedName("flow_state")
+  protected String flowState;
 
   /**
    * Gets the mapResources.
@@ -42,17 +42,6 @@ public class PutMapResources extends GenericModel {
   }
 
   /**
-   * Gets the flowState.
-   *
-   * Current state of flow according to its state machine.
-   *
-   * @return the flowState
-   */
-  public String getFlowState() {
-    return flowState;
-  }
-
-  /**
    * Gets the flowId.
    *
    * System generated flow identifier.
@@ -61,6 +50,17 @@ public class PutMapResources extends GenericModel {
    */
   public String getFlowId() {
     return flowId;
+  }
+
+  /**
+   * Gets the flowState.
+   *
+   * Current state of flow according to its state machine.
+   *
+   * @return the flowState
+   */
+  public String getFlowState() {
+    return flowState;
   }
 }
 

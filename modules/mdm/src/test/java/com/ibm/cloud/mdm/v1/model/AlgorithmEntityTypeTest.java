@@ -42,28 +42,28 @@ public class AlgorithmEntityTypeTest {
   public void testAlgorithmEntityType() throws Throwable {
     AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
       .encryptedFields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
     assertEquals(algorithmInputModel.encryptedFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(algorithmInputModel.attributes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmInputModel.fields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmInputModel.attributes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
       .mapResource("testString")
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
-      .setResource("testString")
       .comparisonResource("testString")
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .setResource("testString")
+      .label("testString")
       .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .method("testString")
       .add("foo", "testString")
       .build();
     assertEquals(algorithmCompareStepModel.getMapResource(), "testString");
-    assertEquals(algorithmCompareStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmCompareStepModel.getLabel(), "testString");
-    assertEquals(algorithmCompareStepModel.getSetResource(), "testString");
     assertEquals(algorithmCompareStepModel.getComparisonResource(), "testString");
+    assertEquals(algorithmCompareStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
+    assertEquals(algorithmCompareStepModel.getSetResource(), "testString");
+    assertEquals(algorithmCompareStepModel.getLabel(), "testString");
     assertEquals(algorithmCompareStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(algorithmCompareStepModel.getMethod(), "testString");
     assertEquals(algorithmCompareStepModel.get("foo"), "testString");
@@ -84,55 +84,55 @@ public class AlgorithmEntityTypeTest {
     assertEquals(algorithmCompareMethodModel.label(), "testString");
     assertEquals(algorithmCompareMethodModel.methods(), new java.util.ArrayList<AlgorithmMethods>(java.util.Arrays.asList(algorithmMethodsModel)));
 
-    AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
-      .mapResource("testString")
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
-      .setResource("testString")
-      .order(true)
-      .comparisonResource("testString")
-      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .method("testString")
-      .add("foo", "testString")
-      .build();
-    assertEquals(algorithmBucketStepModel.getMapResource(), "testString");
-    assertEquals(algorithmBucketStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmBucketStepModel.getLabel(), "testString");
-    assertEquals(algorithmBucketStepModel.getSetResource(), "testString");
-    assertEquals(algorithmBucketStepModel.isOrder(), Boolean.valueOf(true));
-    assertEquals(algorithmBucketStepModel.getComparisonResource(), "testString");
-    assertEquals(algorithmBucketStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(algorithmBucketStepModel.getMethod(), "testString");
-    assertEquals(algorithmBucketStepModel.get("foo"), "testString");
-
     AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
       .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
       .order(true)
+      .label("testString")
       .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
       .method("testString")
       .add("foo", "testString")
       .build();
     assertEquals(algorithmBucketGroupStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmBucketGroupStepModel.getLabel(), "testString");
     assertEquals(algorithmBucketGroupStepModel.isOrder(), Boolean.valueOf(true));
+    assertEquals(algorithmBucketGroupStepModel.getLabel(), "testString");
     assertEquals(algorithmBucketGroupStepModel.getFields(), new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))));
     assertEquals(algorithmBucketGroupStepModel.getMethod(), "testString");
     assertEquals(algorithmBucketGroupStepModel.get("foo"), "testString");
 
+    AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
+      .mapResource("testString")
+      .comparisonResource("testString")
+      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .setResource("testString")
+      .order(true)
+      .label("testString")
+      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .method("testString")
+      .add("foo", "testString")
+      .build();
+    assertEquals(algorithmBucketStepModel.getMapResource(), "testString");
+    assertEquals(algorithmBucketStepModel.getComparisonResource(), "testString");
+    assertEquals(algorithmBucketStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
+    assertEquals(algorithmBucketStepModel.getSetResource(), "testString");
+    assertEquals(algorithmBucketStepModel.isOrder(), Boolean.valueOf(true));
+    assertEquals(algorithmBucketStepModel.getLabel(), "testString");
+    assertEquals(algorithmBucketStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmBucketStepModel.getMethod(), "testString");
+    assertEquals(algorithmBucketStepModel.get("foo"), "testString");
+
     AlgorithmBucketGenerator algorithmBucketGeneratorModel = new AlgorithmBucketGenerator.Builder()
       .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-      .label("testString")
-      .bucketRecipe(new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)))
       .bucketGroupRecipe(new java.util.ArrayList<AlgorithmBucketGroupStep>(java.util.Arrays.asList(algorithmBucketGroupStepModel)))
       .maximumBucketSize(Long.valueOf("26"))
+      .label("testString")
+      .bucketRecipe(new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)))
       .add("foo", "testString")
       .build();
     assertEquals(algorithmBucketGeneratorModel.getInputs(), new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)));
-    assertEquals(algorithmBucketGeneratorModel.getLabel(), "testString");
-    assertEquals(algorithmBucketGeneratorModel.getBucketRecipe(), new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)));
     assertEquals(algorithmBucketGeneratorModel.getBucketGroupRecipe(), new java.util.ArrayList<AlgorithmBucketGroupStep>(java.util.Arrays.asList(algorithmBucketGroupStepModel)));
     assertEquals(algorithmBucketGeneratorModel.getMaximumBucketSize(), Long.valueOf("26"));
+    assertEquals(algorithmBucketGeneratorModel.getLabel(), "testString");
+    assertEquals(algorithmBucketGeneratorModel.getBucketRecipe(), new java.util.ArrayList<AlgorithmBucketStep>(java.util.Arrays.asList(algorithmBucketStepModel)));
     assertEquals(algorithmBucketGeneratorModel.get("foo"), "testString");
 
     AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()

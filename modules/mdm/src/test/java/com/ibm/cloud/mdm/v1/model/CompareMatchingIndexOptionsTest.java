@@ -36,14 +36,14 @@ public class CompareMatchingIndexOptionsTest {
   @Test
   public void testCompareMatchingIndexOptions() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
+      .recordSource("testString")
       .recordLastUpdated(Long.valueOf("26"))
       .recordId("testString")
-      .recordSource("testString")
       .add("foo", "testString")
       .build();
+    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
     assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
-    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
     SingleRecordRequest singleRecordRequestModel = new SingleRecordRequest.Builder()

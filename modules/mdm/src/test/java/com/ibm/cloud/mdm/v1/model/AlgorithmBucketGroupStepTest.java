@@ -35,15 +35,15 @@ public class AlgorithmBucketGroupStepTest {
   public void testAlgorithmBucketGroupStep() throws Throwable {
     AlgorithmBucketGroupStep algorithmBucketGroupStepModel = new AlgorithmBucketGroupStep.Builder()
       .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
       .order(true)
+      .label("testString")
       .fields(new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))))
       .method("testString")
       .add("foo", "testString")
       .build();
     assertEquals(algorithmBucketGroupStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmBucketGroupStepModel.getLabel(), "testString");
     assertEquals(algorithmBucketGroupStepModel.isOrder(), Boolean.valueOf(true));
+    assertEquals(algorithmBucketGroupStepModel.getLabel(), "testString");
     assertEquals(algorithmBucketGroupStepModel.getFields(), new java.util.ArrayList<List<String>>(java.util.Arrays.asList(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))));
     assertEquals(algorithmBucketGroupStepModel.getMethod(), "testString");
     assertEquals(algorithmBucketGroupStepModel.get("foo"), "testString");
@@ -52,8 +52,8 @@ public class AlgorithmBucketGroupStepTest {
 
     AlgorithmBucketGroupStep algorithmBucketGroupStepModelNew = TestUtilities.deserialize(json, AlgorithmBucketGroupStep.class);
     assertTrue(algorithmBucketGroupStepModelNew instanceof AlgorithmBucketGroupStep);
-    assertEquals(algorithmBucketGroupStepModelNew.getLabel(), "testString");
     assertEquals(algorithmBucketGroupStepModelNew.isOrder(), Boolean.valueOf(true));
+    assertEquals(algorithmBucketGroupStepModelNew.getLabel(), "testString");
     assertEquals(algorithmBucketGroupStepModelNew.getMethod(), "testString");
     assertEquals(algorithmBucketGroupStepModelNew.get("foo"), "testString");
   }

@@ -22,9 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateModelAlgorithmOptions extends GenericModel {
 
   protected String recordType;
-  protected Map<String, AlgorithmEntityType> entityTypes;
   protected Map<String, AlgorithmStandardizer> standardizers;
   protected AlgorithmEncryption encryption;
+  protected Map<String, AlgorithmEntityType> entityTypes;
   protected String locale;
 
   /**
@@ -32,16 +32,16 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
    */
   public static class Builder {
     private String recordType;
-    private Map<String, AlgorithmEntityType> entityTypes;
     private Map<String, AlgorithmStandardizer> standardizers;
     private AlgorithmEncryption encryption;
+    private Map<String, AlgorithmEntityType> entityTypes;
     private String locale;
 
     private Builder(UpdateModelAlgorithmOptions updateModelAlgorithmOptions) {
       this.recordType = updateModelAlgorithmOptions.recordType;
-      this.entityTypes = updateModelAlgorithmOptions.entityTypes;
       this.standardizers = updateModelAlgorithmOptions.standardizers;
       this.encryption = updateModelAlgorithmOptions.encryption;
+      this.entityTypes = updateModelAlgorithmOptions.entityTypes;
       this.locale = updateModelAlgorithmOptions.locale;
     }
 
@@ -55,16 +55,16 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param recordType the recordType
-     * @param entityTypes the entityTypes
      * @param standardizers the standardizers
      * @param encryption the encryption
+     * @param entityTypes the entityTypes
      * @param locale the locale
      */
-    public Builder(String recordType, Map<String, AlgorithmEntityType> entityTypes, Map<String, AlgorithmStandardizer> standardizers, AlgorithmEncryption encryption, String locale) {
+    public Builder(String recordType, Map<String, AlgorithmStandardizer> standardizers, AlgorithmEncryption encryption, Map<String, AlgorithmEntityType> entityTypes, String locale) {
       this.recordType = recordType;
-      this.entityTypes = entityTypes;
       this.standardizers = standardizers;
       this.encryption = encryption;
+      this.entityTypes = entityTypes;
       this.locale = locale;
     }
 
@@ -85,17 +85,6 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
      */
     public Builder recordType(String recordType) {
       this.recordType = recordType;
-      return this;
-    }
-
-    /**
-     * Set the entityTypes.
-     *
-     * @param entityTypes the entityTypes
-     * @return the UpdateModelAlgorithmOptions builder
-     */
-    public Builder entityTypes(Map<String, AlgorithmEntityType> entityTypes) {
-      this.entityTypes = entityTypes;
       return this;
     }
 
@@ -122,6 +111,17 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
     }
 
     /**
+     * Set the entityTypes.
+     *
+     * @param entityTypes the entityTypes
+     * @return the UpdateModelAlgorithmOptions builder
+     */
+    public Builder entityTypes(Map<String, AlgorithmEntityType> entityTypes) {
+      this.entityTypes = entityTypes;
+      return this;
+    }
+
+    /**
      * Set the locale.
      *
      * @param locale the locale
@@ -139,9 +139,9 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
      * @return the UpdateModelAlgorithmOptions builder
      */
     public Builder algorithm(Algorithm algorithm) {
-      this.entityTypes = algorithm.entityTypes();
       this.standardizers = algorithm.standardizers();
       this.encryption = algorithm.encryption();
+      this.entityTypes = algorithm.entityTypes();
       this.locale = algorithm.locale();
       return this;
     }
@@ -150,18 +150,18 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
   protected UpdateModelAlgorithmOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.recordType,
       "recordType cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
-      "entityTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.standardizers,
       "standardizers cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.encryption,
       "encryption cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
+      "entityTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
     recordType = builder.recordType;
-    entityTypes = builder.entityTypes;
     standardizers = builder.standardizers;
     encryption = builder.encryption;
+    entityTypes = builder.entityTypes;
     locale = builder.locale;
   }
 
@@ -186,17 +186,6 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
   }
 
   /**
-   * Gets the entityTypes.
-   *
-   * Collection of entity type definitions.
-   *
-   * @return the entityTypes
-   */
-  public Map<String, AlgorithmEntityType> entityTypes() {
-    return entityTypes;
-  }
-
-  /**
    * Gets the standardizers.
    *
    * Collection of standardizer definitions.
@@ -216,6 +205,17 @@ public class UpdateModelAlgorithmOptions extends GenericModel {
    */
   public AlgorithmEncryption encryption() {
     return encryption;
+  }
+
+  /**
+   * Gets the entityTypes.
+   *
+   * Collection of entity type definitions.
+   *
+   * @return the entityTypes
+   */
+  public Map<String, AlgorithmEntityType> entityTypes() {
+    return entityTypes;
   }
 
   /**

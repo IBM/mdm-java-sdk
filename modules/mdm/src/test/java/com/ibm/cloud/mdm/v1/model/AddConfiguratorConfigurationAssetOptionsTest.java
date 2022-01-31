@@ -52,15 +52,15 @@ public class AddConfiguratorConfigurationAssetOptionsTest {
     assertEquals(assetMappingModel.key(), "COLUMN 1");
 
     AddConfiguratorConfigurationAssetOptions addConfiguratorConfigurationAssetOptionsModel = new AddConfiguratorConfigurationAssetOptions.Builder()
-      .assetId("d8868c51-a96e-48ab-a4cd-0000000")
       .assetName("Person10k.csv")
       .assetStatus("Mapped")
+      .assetId("d8868c51-a96e-48ab-a4cd-0000000")
       .assetCreatedDate("testString")
       .assetMappings(new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)))
       .build();
-    assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetId(), "d8868c51-a96e-48ab-a4cd-0000000");
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetName(), "Person10k.csv");
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetStatus(), "Mapped");
+    assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetId(), "d8868c51-a96e-48ab-a4cd-0000000");
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetCreatedDate(), "testString");
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetMappings(), new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)));
   }
