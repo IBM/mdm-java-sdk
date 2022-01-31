@@ -20,36 +20,36 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelAttribute extends GenericModel {
 
-  protected String label;
   protected Boolean indexed;
   protected String classification;
   @SerializedName("matching_type")
   protected String matchingType;
-  protected String cardinality;
-  protected String description;
   @SerializedName("attribute_type")
   protected String attributeType;
+  protected String label;
+  protected String description;
+  protected String cardinality;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
     private Boolean indexed;
     private String classification;
     private String matchingType;
-    private String cardinality;
-    private String description;
     private String attributeType;
+    private String label;
+    private String description;
+    private String cardinality;
 
     private Builder(DataModelAttribute dataModelAttribute) {
-      this.label = dataModelAttribute.label;
       this.indexed = dataModelAttribute.indexed;
       this.classification = dataModelAttribute.classification;
       this.matchingType = dataModelAttribute.matchingType;
-      this.cardinality = dataModelAttribute.cardinality;
-      this.description = dataModelAttribute.description;
       this.attributeType = dataModelAttribute.attributeType;
+      this.label = dataModelAttribute.label;
+      this.description = dataModelAttribute.description;
+      this.cardinality = dataModelAttribute.cardinality;
     }
 
     /**
@@ -61,12 +61,12 @@ public class DataModelAttribute extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param label the label
      * @param attributeType the attributeType
+     * @param label the label
      */
-    public Builder(String label, String attributeType) {
-      this.label = label;
+    public Builder(String attributeType, String label) {
       this.attributeType = attributeType;
+      this.label = label;
     }
 
     /**
@@ -76,17 +76,6 @@ public class DataModelAttribute extends GenericModel {
      */
     public DataModelAttribute build() {
       return new DataModelAttribute(this);
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the DataModelAttribute builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
     }
 
     /**
@@ -123,13 +112,24 @@ public class DataModelAttribute extends GenericModel {
     }
 
     /**
-     * Set the cardinality.
+     * Set the attributeType.
      *
-     * @param cardinality the cardinality
+     * @param attributeType the attributeType
      * @return the DataModelAttribute builder
      */
-    public Builder cardinality(String cardinality) {
-      this.cardinality = cardinality;
+    public Builder attributeType(String attributeType) {
+      this.attributeType = attributeType;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the DataModelAttribute builder
+     */
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -145,29 +145,29 @@ public class DataModelAttribute extends GenericModel {
     }
 
     /**
-     * Set the attributeType.
+     * Set the cardinality.
      *
-     * @param attributeType the attributeType
+     * @param cardinality the cardinality
      * @return the DataModelAttribute builder
      */
-    public Builder attributeType(String attributeType) {
-      this.attributeType = attributeType;
+    public Builder cardinality(String cardinality) {
+      this.cardinality = cardinality;
       return this;
     }
   }
 
   protected DataModelAttribute(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
-      "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
       "attributeType cannot be null");
-    label = builder.label;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
+      "label cannot be null");
     indexed = builder.indexed;
     classification = builder.classification;
     matchingType = builder.matchingType;
-    cardinality = builder.cardinality;
-    description = builder.description;
     attributeType = builder.attributeType;
+    label = builder.label;
+    description = builder.description;
+    cardinality = builder.cardinality;
   }
 
   /**
@@ -177,17 +177,6 @@ public class DataModelAttribute extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 
   /**
@@ -225,14 +214,25 @@ public class DataModelAttribute extends GenericModel {
   }
 
   /**
-   * Gets the cardinality.
+   * Gets the attributeType.
    *
-   * User defined cardinality, one of SINGLE, LIST or SET. The default value is LIST.
+   * The type of attribute (i.e. address).
    *
-   * @return the cardinality
+   * @return the attributeType
    */
-  public String cardinality() {
-    return cardinality;
+  public String attributeType() {
+    return attributeType;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**
@@ -247,14 +247,14 @@ public class DataModelAttribute extends GenericModel {
   }
 
   /**
-   * Gets the attributeType.
+   * Gets the cardinality.
    *
-   * The type of attribute (i.e. address).
+   * User defined cardinality, one of SINGLE, LIST or SET. The default value is LIST.
    *
-   * @return the attributeType
+   * @return the cardinality
    */
-  public String attributeType() {
-    return attributeType;
+  public String cardinality() {
+    return cardinality;
   }
 }
 

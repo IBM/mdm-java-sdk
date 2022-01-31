@@ -32,8 +32,8 @@ public class GetRecordKeysRecordTest {
   @Test
   public void testGetRecordKeysRecord() throws Throwable {
     GetRecordKeysRecord getRecordKeysRecordModel = new GetRecordKeysRecord();
+    assertNull(getRecordKeysRecordModel.getRecordSource());
     assertNull(getRecordKeysRecordModel.getRecordNumber());
     assertNull(getRecordKeysRecordModel.getRecordId());
-    assertNull(getRecordKeysRecordModel.getRecordSource());
   }
 }

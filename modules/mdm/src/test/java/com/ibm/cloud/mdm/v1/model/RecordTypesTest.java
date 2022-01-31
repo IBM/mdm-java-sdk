@@ -32,15 +32,15 @@ public class RecordTypesTest {
   @Test
   public void testRecordTypes() throws Throwable {
     RecordTypes recordTypesModel = new RecordTypes.Builder()
-      .editable(true)
-      .indexed(true)
       .dataType("testString")
+      .indexed(true)
+      .editable(true)
       .label("testString")
       .description("testString")
       .build();
-    assertEquals(recordTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(recordTypesModel.indexed(), Boolean.valueOf(true));
     assertEquals(recordTypesModel.dataType(), "testString");
+    assertEquals(recordTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(recordTypesModel.editable(), Boolean.valueOf(true));
     assertEquals(recordTypesModel.label(), "testString");
     assertEquals(recordTypesModel.description(), "testString");
 
@@ -48,9 +48,9 @@ public class RecordTypesTest {
 
     RecordTypes recordTypesModelNew = TestUtilities.deserialize(json, RecordTypes.class);
     assertTrue(recordTypesModelNew instanceof RecordTypes);
-    assertEquals(recordTypesModelNew.editable(), Boolean.valueOf(true));
-    assertEquals(recordTypesModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(recordTypesModelNew.dataType(), "testString");
+    assertEquals(recordTypesModelNew.indexed(), Boolean.valueOf(true));
+    assertEquals(recordTypesModelNew.editable(), Boolean.valueOf(true));
     assertEquals(recordTypesModelNew.label(), "testString");
     assertEquals(recordTypesModelNew.description(), "testString");
   }

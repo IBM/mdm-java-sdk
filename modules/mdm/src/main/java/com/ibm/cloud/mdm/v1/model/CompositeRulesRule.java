@@ -22,19 +22,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CompositeRulesRule extends GenericModel {
 
-  protected List<String> sources;
   protected List<String> choices;
+  protected List<String> sources;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<String> sources;
     private List<String> choices;
+    private List<String> sources;
 
     private Builder(CompositeRulesRule compositeRulesRule) {
-      this.sources = compositeRulesRule.sources;
       this.choices = compositeRulesRule.choices;
+      this.sources = compositeRulesRule.sources;
     }
 
     /**
@@ -46,12 +46,12 @@ public class CompositeRulesRule extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param sources the sources
      * @param choices the choices
+     * @param sources the sources
      */
-    public Builder(List<String> sources, List<String> choices) {
-      this.sources = sources;
+    public Builder(List<String> choices, List<String> sources) {
       this.choices = choices;
+      this.sources = sources;
     }
 
     /**
@@ -61,22 +61,6 @@ public class CompositeRulesRule extends GenericModel {
      */
     public CompositeRulesRule build() {
       return new CompositeRulesRule(this);
-    }
-
-    /**
-     * Adds an sources to sources.
-     *
-     * @param sources the new sources
-     * @return the CompositeRulesRule builder
-     */
-    public Builder addSources(String sources) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(sources,
-        "sources cannot be null");
-      if (this.sources == null) {
-        this.sources = new ArrayList<String>();
-      }
-      this.sources.add(sources);
-      return this;
     }
 
     /**
@@ -96,14 +80,18 @@ public class CompositeRulesRule extends GenericModel {
     }
 
     /**
-     * Set the sources.
-     * Existing sources will be replaced.
+     * Adds an sources to sources.
      *
-     * @param sources the sources
+     * @param sources the new sources
      * @return the CompositeRulesRule builder
      */
-    public Builder sources(List<String> sources) {
-      this.sources = sources;
+    public Builder addSources(String sources) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(sources,
+        "sources cannot be null");
+      if (this.sources == null) {
+        this.sources = new ArrayList<String>();
+      }
+      this.sources.add(sources);
       return this;
     }
 
@@ -118,15 +106,27 @@ public class CompositeRulesRule extends GenericModel {
       this.choices = choices;
       return this;
     }
+
+    /**
+     * Set the sources.
+     * Existing sources will be replaced.
+     *
+     * @param sources the sources
+     * @return the CompositeRulesRule builder
+     */
+    public Builder sources(List<String> sources) {
+      this.sources = sources;
+      return this;
+    }
   }
 
   protected CompositeRulesRule(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sources,
-      "sources cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.choices,
       "choices cannot be null");
-    sources = builder.sources;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sources,
+      "sources cannot be null");
     choices = builder.choices;
+    sources = builder.sources;
   }
 
   /**
@@ -139,17 +139,6 @@ public class CompositeRulesRule extends GenericModel {
   }
 
   /**
-   * Gets the sources.
-   *
-   * Collection of sources ordered by prefered priorties.
-   *
-   * @return the sources
-   */
-  public List<String> sources() {
-    return sources;
-  }
-
-  /**
    * Gets the choices.
    *
    * Collection of composite rules in prefered order. A subset of : mca, mfa, source and uniques. The default value is
@@ -159,6 +148,17 @@ public class CompositeRulesRule extends GenericModel {
    */
   public List<String> choices() {
     return choices;
+  }
+
+  /**
+   * Gets the sources.
+   *
+   * Collection of sources ordered by prefered priorties.
+   *
+   * @return the sources
+   */
+  public List<String> sources() {
+    return sources;
   }
 }
 

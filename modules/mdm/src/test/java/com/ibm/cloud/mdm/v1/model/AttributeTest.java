@@ -36,15 +36,15 @@ public class AttributeTest {
       .classification("testString")
       .label("testString")
       .description("testString")
-      .attributeType("email")
       .cardinality("testString")
+      .attributeType("email")
       .build();
     assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.label(), "testString");
     assertEquals(attributeModel.description(), "testString");
-    assertEquals(attributeModel.attributeType(), "email");
     assertEquals(attributeModel.cardinality(), "testString");
+    assertEquals(attributeModel.attributeType(), "email");
 
     String json = TestUtilities.serialize(attributeModel);
 
@@ -54,8 +54,8 @@ public class AttributeTest {
     assertEquals(attributeModelNew.classification(), "testString");
     assertEquals(attributeModelNew.label(), "testString");
     assertEquals(attributeModelNew.description(), "testString");
-    assertEquals(attributeModelNew.attributeType(), "email");
     assertEquals(attributeModelNew.cardinality(), "testString");
+    assertEquals(attributeModelNew.attributeType(), "email");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

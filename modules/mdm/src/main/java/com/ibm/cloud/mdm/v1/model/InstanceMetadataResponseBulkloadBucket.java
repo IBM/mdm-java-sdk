@@ -20,12 +20,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataResponseBulkloadBucket extends GenericModel {
 
+  @SerializedName("cos_bucket_name")
+  protected String cosBucketName;
   @SerializedName("cos_bucket_location")
   protected String cosBucketLocation;
   @SerializedName("cos_bucket_api_key")
   protected String cosBucketApiKey;
-  @SerializedName("cos_bucket_name")
-  protected String cosBucketName;
+
+  /**
+   * Gets the cosBucketName.
+   *
+   * Name of a bucket on cloud object storage.
+   *
+   * @return the cosBucketName
+   */
+  public String getCosBucketName() {
+    return cosBucketName;
+  }
 
   /**
    * Gets the cosBucketLocation.
@@ -47,17 +58,6 @@ public class InstanceMetadataResponseBulkloadBucket extends GenericModel {
    */
   public String getCosBucketApiKey() {
     return cosBucketApiKey;
-  }
-
-  /**
-   * Gets the cosBucketName.
-   *
-   * Name of a bucket on cloud object storage.
-   *
-   * @return the cosBucketName
-   */
-  public String getCosBucketName() {
-    return cosBucketName;
   }
 }
 

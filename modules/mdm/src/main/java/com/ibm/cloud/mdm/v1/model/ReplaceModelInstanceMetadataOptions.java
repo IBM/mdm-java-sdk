@@ -22,34 +22,34 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReplaceModelInstanceMetadataOptions extends GenericModel {
 
+  protected String cosEndpoint;
   protected String label;
-  protected List<InstanceMetadataProject> projects;
   protected String cosCrn;
   protected InstanceMetadataBulkloadBucket bulkloadBucket;
   protected List<InstanceMetadataCatalog> catalogs;
   protected String jobProjectId;
-  protected String cosEndpoint;
+  protected List<InstanceMetadataProject> projects;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String cosEndpoint;
     private String label;
-    private List<InstanceMetadataProject> projects;
     private String cosCrn;
     private InstanceMetadataBulkloadBucket bulkloadBucket;
     private List<InstanceMetadataCatalog> catalogs;
     private String jobProjectId;
-    private String cosEndpoint;
+    private List<InstanceMetadataProject> projects;
 
     private Builder(ReplaceModelInstanceMetadataOptions replaceModelInstanceMetadataOptions) {
+      this.cosEndpoint = replaceModelInstanceMetadataOptions.cosEndpoint;
       this.label = replaceModelInstanceMetadataOptions.label;
-      this.projects = replaceModelInstanceMetadataOptions.projects;
       this.cosCrn = replaceModelInstanceMetadataOptions.cosCrn;
       this.bulkloadBucket = replaceModelInstanceMetadataOptions.bulkloadBucket;
       this.catalogs = replaceModelInstanceMetadataOptions.catalogs;
       this.jobProjectId = replaceModelInstanceMetadataOptions.jobProjectId;
-      this.cosEndpoint = replaceModelInstanceMetadataOptions.cosEndpoint;
+      this.projects = replaceModelInstanceMetadataOptions.projects;
     }
 
     /**
@@ -65,22 +65,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
      */
     public ReplaceModelInstanceMetadataOptions build() {
       return new ReplaceModelInstanceMetadataOptions(this);
-    }
-
-    /**
-     * Adds an projects to projects.
-     *
-     * @param projects the new projects
-     * @return the ReplaceModelInstanceMetadataOptions builder
-     */
-    public Builder addProjects(InstanceMetadataProject projects) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(projects,
-        "projects cannot be null");
-      if (this.projects == null) {
-        this.projects = new ArrayList<InstanceMetadataProject>();
-      }
-      this.projects.add(projects);
-      return this;
     }
 
     /**
@@ -100,6 +84,33 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
+     * Adds an projects to projects.
+     *
+     * @param projects the new projects
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder addProjects(InstanceMetadataProject projects) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(projects,
+        "projects cannot be null");
+      if (this.projects == null) {
+        this.projects = new ArrayList<InstanceMetadataProject>();
+      }
+      this.projects.add(projects);
+      return this;
+    }
+
+    /**
+     * Set the cosEndpoint.
+     *
+     * @param cosEndpoint the cosEndpoint
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder cosEndpoint(String cosEndpoint) {
+      this.cosEndpoint = cosEndpoint;
+      return this;
+    }
+
+    /**
      * Set the label.
      *
      * @param label the label
@@ -107,18 +118,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
      */
     public Builder label(String label) {
       this.label = label;
-      return this;
-    }
-
-    /**
-     * Set the projects.
-     * Existing projects will be replaced.
-     *
-     * @param projects the projects
-     * @return the ReplaceModelInstanceMetadataOptions builder
-     */
-    public Builder projects(List<InstanceMetadataProject> projects) {
-      this.projects = projects;
       return this;
     }
 
@@ -168,25 +167,26 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Set the cosEndpoint.
+     * Set the projects.
+     * Existing projects will be replaced.
      *
-     * @param cosEndpoint the cosEndpoint
+     * @param projects the projects
      * @return the ReplaceModelInstanceMetadataOptions builder
      */
-    public Builder cosEndpoint(String cosEndpoint) {
-      this.cosEndpoint = cosEndpoint;
+    public Builder projects(List<InstanceMetadataProject> projects) {
+      this.projects = projects;
       return this;
     }
   }
 
   protected ReplaceModelInstanceMetadataOptions(Builder builder) {
+    cosEndpoint = builder.cosEndpoint;
     label = builder.label;
-    projects = builder.projects;
     cosCrn = builder.cosCrn;
     bulkloadBucket = builder.bulkloadBucket;
     catalogs = builder.catalogs;
     jobProjectId = builder.jobProjectId;
-    cosEndpoint = builder.cosEndpoint;
+    projects = builder.projects;
   }
 
   /**
@@ -199,6 +199,17 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
   }
 
   /**
+   * Gets the cosEndpoint.
+   *
+   * Endpoint of a cloud object storage.
+   *
+   * @return the cosEndpoint
+   */
+  public String cosEndpoint() {
+    return cosEndpoint;
+  }
+
+  /**
    * Gets the label.
    *
    * Label for instance metadata.
@@ -207,17 +218,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
    */
   public String label() {
     return label;
-  }
-
-  /**
-   * Gets the projects.
-   *
-   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
-   *
-   * @return the projects
-   */
-  public List<InstanceMetadataProject> projects() {
-    return projects;
   }
 
   /**
@@ -265,14 +265,14 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
   }
 
   /**
-   * Gets the cosEndpoint.
+   * Gets the projects.
    *
-   * Endpoint of a cloud object storage.
+   * Collection of project objects as available in Watson Knowledge Catalog (WKC).
    *
-   * @return the cosEndpoint
+   * @return the projects
    */
-  public String cosEndpoint() {
-    return cosEndpoint;
+  public List<InstanceMetadataProject> projects() {
+    return projects;
   }
 }
 

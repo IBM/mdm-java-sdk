@@ -24,38 +24,38 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRelationshipType extends GenericModel {
 
-  protected Boolean directional;
   protected String label;
+  protected Boolean directional;
+  protected List<DataModelRelationshipRule> rules;
   @SerializedName("label_from_source")
   protected String labelFromSource;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
-  protected List<DataModelRelationshipRule> rules;
-  protected String cardinality;
   protected String description;
+  protected String cardinality;
   protected Map<String, DataModelAttribute> attributes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Boolean directional;
     private String label;
+    private Boolean directional;
+    private List<DataModelRelationshipRule> rules;
     private String labelFromSource;
     private String labelFromTarget;
-    private List<DataModelRelationshipRule> rules;
-    private String cardinality;
     private String description;
+    private String cardinality;
     private Map<String, DataModelAttribute> attributes;
 
     private Builder(DataModelRelationshipType dataModelRelationshipType) {
-      this.directional = dataModelRelationshipType.directional;
       this.label = dataModelRelationshipType.label;
+      this.directional = dataModelRelationshipType.directional;
+      this.rules = dataModelRelationshipType.rules;
       this.labelFromSource = dataModelRelationshipType.labelFromSource;
       this.labelFromTarget = dataModelRelationshipType.labelFromTarget;
-      this.rules = dataModelRelationshipType.rules;
-      this.cardinality = dataModelRelationshipType.cardinality;
       this.description = dataModelRelationshipType.description;
+      this.cardinality = dataModelRelationshipType.cardinality;
       this.attributes = dataModelRelationshipType.attributes;
     }
 
@@ -100,6 +100,17 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
      * Set the directional.
      *
      * @param directional the directional
@@ -111,13 +122,14 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the label.
+     * Set the rules.
+     * Existing rules will be replaced.
      *
-     * @param label the label
+     * @param rules the rules
      * @return the DataModelRelationshipType builder
      */
-    public Builder label(String label) {
-      this.label = label;
+    public Builder rules(List<DataModelRelationshipRule> rules) {
+      this.rules = rules;
       return this;
     }
 
@@ -144,14 +156,13 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the rules.
-     * Existing rules will be replaced.
+     * Set the description.
      *
-     * @param rules the rules
+     * @param description the description
      * @return the DataModelRelationshipType builder
      */
-    public Builder rules(List<DataModelRelationshipRule> rules) {
-      this.rules = rules;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -163,17 +174,6 @@ public class DataModelRelationshipType extends GenericModel {
      */
     public Builder cardinality(String cardinality) {
       this.cardinality = cardinality;
-      return this;
-    }
-
-    /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the DataModelRelationshipType builder
-     */
-    public Builder description(String description) {
-      this.description = description;
       return this;
     }
 
@@ -192,13 +192,13 @@ public class DataModelRelationshipType extends GenericModel {
   protected DataModelRelationshipType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    directional = builder.directional;
     label = builder.label;
+    directional = builder.directional;
+    rules = builder.rules;
     labelFromSource = builder.labelFromSource;
     labelFromTarget = builder.labelFromTarget;
-    rules = builder.rules;
-    cardinality = builder.cardinality;
     description = builder.description;
+    cardinality = builder.cardinality;
     attributes = builder.attributes;
   }
 
@@ -209,6 +209,17 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**
@@ -223,14 +234,14 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the label.
+   * Gets the rules.
    *
-   * User defined translatable label.
+   * Collection of defined relationship rules.
    *
-   * @return the label
+   * @return the rules
    */
-  public String label() {
-    return label;
+  public List<DataModelRelationshipRule> rules() {
+    return rules;
   }
 
   /**
@@ -256,14 +267,14 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the rules.
+   * Gets the description.
    *
-   * Collection of defined relationship rules.
+   * User defined translatable description.
    *
-   * @return the rules
+   * @return the description
    */
-  public List<DataModelRelationshipRule> rules() {
-    return rules;
+  public String description() {
+    return description;
   }
 
   /**
@@ -275,17 +286,6 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public String cardinality() {
     return cardinality;
-  }
-
-  /**
-   * Gets the description.
-   *
-   * User defined translatable description.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
   }
 
   /**

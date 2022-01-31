@@ -24,12 +24,12 @@ public class Flow extends GenericModel {
 
   @SerializedName("flow_type")
   protected String flowType;
-  @SerializedName("flow_state")
-  protected String flowState;
-  @SerializedName("flow_id")
-  protected String flowId;
   protected List<String> rejections;
   protected List<String> approvals;
+  @SerializedName("flow_id")
+  protected String flowId;
+  @SerializedName("flow_state")
+  protected String flowState;
   protected Boolean active;
 
   /**
@@ -42,28 +42,6 @@ public class Flow extends GenericModel {
    */
   public String getFlowType() {
     return flowType;
-  }
-
-  /**
-   * Gets the flowState.
-   *
-   * Current state of flow according to its state machine.
-   *
-   * @return the flowState
-   */
-  public String getFlowState() {
-    return flowState;
-  }
-
-  /**
-   * Gets the flowId.
-   *
-   * System generated flow identifier.
-   *
-   * @return the flowId
-   */
-  public String getFlowId() {
-    return flowId;
   }
 
   /**
@@ -86,6 +64,28 @@ public class Flow extends GenericModel {
    */
   public List<String> getApprovals() {
     return approvals;
+  }
+
+  /**
+   * Gets the flowId.
+   *
+   * System generated flow identifier.
+   *
+   * @return the flowId
+   */
+  public String getFlowId() {
+    return flowId;
+  }
+
+  /**
+   * Gets the flowState.
+   *
+   * Current state of flow according to its state machine.
+   *
+   * @return the flowState
+   */
+  public String getFlowState() {
+    return flowState;
   }
 
   /**

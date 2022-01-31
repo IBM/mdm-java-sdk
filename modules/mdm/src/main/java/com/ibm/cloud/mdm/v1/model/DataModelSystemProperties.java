@@ -28,6 +28,7 @@ public class DataModelSystemProperties extends GenericModel {
   protected DataModelRelationshipTypeSystemProperties relationshipTypes;
   @SerializedName("attribute_types")
   protected DataModelAttributeTypeSystemProperties attributeTypes;
+  protected String version;
 
   /**
    * Builder.
@@ -37,12 +38,14 @@ public class DataModelSystemProperties extends GenericModel {
     private DataModelEntityTypeSystemProperties entityTypes;
     private DataModelRelationshipTypeSystemProperties relationshipTypes;
     private DataModelAttributeTypeSystemProperties attributeTypes;
+    private String version;
 
     private Builder(DataModelSystemProperties dataModelSystemProperties) {
       this.recordTypes = dataModelSystemProperties.recordTypes;
       this.entityTypes = dataModelSystemProperties.entityTypes;
       this.relationshipTypes = dataModelSystemProperties.relationshipTypes;
       this.attributeTypes = dataModelSystemProperties.attributeTypes;
+      this.version = dataModelSystemProperties.version;
     }
 
     /**
@@ -118,6 +121,17 @@ public class DataModelSystemProperties extends GenericModel {
       this.attributeTypes = attributeTypes;
       return this;
     }
+
+    /**
+     * Set the version.
+     *
+     * @param version the version
+     * @return the DataModelSystemProperties builder
+     */
+    public Builder version(String version) {
+      this.version = version;
+      return this;
+    }
   }
 
   protected DataModelSystemProperties(Builder builder) {
@@ -133,6 +147,7 @@ public class DataModelSystemProperties extends GenericModel {
     entityTypes = builder.entityTypes;
     relationshipTypes = builder.relationshipTypes;
     attributeTypes = builder.attributeTypes;
+    version = builder.version;
   }
 
   /**
@@ -186,6 +201,17 @@ public class DataModelSystemProperties extends GenericModel {
    */
   public DataModelAttributeTypeSystemProperties attributeTypes() {
     return attributeTypes;
+  }
+
+  /**
+   * Gets the version.
+   *
+   * Internal version of system properties.
+   *
+   * @return the version
+   */
+  public String version() {
+    return version;
   }
 }
 

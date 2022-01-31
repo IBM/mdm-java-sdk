@@ -24,10 +24,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelAttributeType extends GenericModel {
 
-  protected String label;
+  protected String classification;
   @SerializedName("matching_types")
   protected List<String> matchingTypes;
-  protected String classification;
+  protected String label;
   protected String description;
   protected Map<String, DataModelField> fields;
 
@@ -35,16 +35,16 @@ public class DataModelAttributeType extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String label;
-    private List<String> matchingTypes;
     private String classification;
+    private List<String> matchingTypes;
+    private String label;
     private String description;
     private Map<String, DataModelField> fields;
 
     private Builder(DataModelAttributeType dataModelAttributeType) {
-      this.label = dataModelAttributeType.label;
-      this.matchingTypes = dataModelAttributeType.matchingTypes;
       this.classification = dataModelAttributeType.classification;
+      this.matchingTypes = dataModelAttributeType.matchingTypes;
+      this.label = dataModelAttributeType.label;
       this.description = dataModelAttributeType.description;
       this.fields = dataModelAttributeType.fields;
     }
@@ -92,13 +92,13 @@ public class DataModelAttributeType extends GenericModel {
     }
 
     /**
-     * Set the label.
+     * Set the classification.
      *
-     * @param label the label
+     * @param classification the classification
      * @return the DataModelAttributeType builder
      */
-    public Builder label(String label) {
-      this.label = label;
+    public Builder classification(String classification) {
+      this.classification = classification;
       return this;
     }
 
@@ -115,13 +115,13 @@ public class DataModelAttributeType extends GenericModel {
     }
 
     /**
-     * Set the classification.
+     * Set the label.
      *
-     * @param classification the classification
+     * @param label the label
      * @return the DataModelAttributeType builder
      */
-    public Builder classification(String classification) {
-      this.classification = classification;
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -153,9 +153,9 @@ public class DataModelAttributeType extends GenericModel {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fields,
       "fields cannot be null");
-    label = builder.label;
-    matchingTypes = builder.matchingTypes;
     classification = builder.classification;
+    matchingTypes = builder.matchingTypes;
+    label = builder.label;
     description = builder.description;
     fields = builder.fields;
   }
@@ -170,14 +170,14 @@ public class DataModelAttributeType extends GenericModel {
   }
 
   /**
-   * Gets the label.
+   * Gets the classification.
    *
-   * User defined translatable label.
+   * User defined classification.
    *
-   * @return the label
+   * @return the classification
    */
-  public String label() {
-    return label;
+  public String classification() {
+    return classification;
   }
 
   /**
@@ -193,14 +193,14 @@ public class DataModelAttributeType extends GenericModel {
   }
 
   /**
-   * Gets the classification.
+   * Gets the label.
    *
-   * User defined classification.
+   * User defined translatable label.
    *
-   * @return the classification
+   * @return the label
    */
-  public String classification() {
-    return classification;
+  public String label() {
+    return label;
   }
 
   /**

@@ -36,7 +36,7 @@ public class PutMapResourcesTest {
   public void testPutMapResources() throws Throwable {
     PutMapResources putMapResourcesModel = new PutMapResources();
     assertNull(putMapResourcesModel.getMapResources());
-    assertNull(putMapResourcesModel.getFlowState());
     assertNull(putMapResourcesModel.getFlowId());
+    assertNull(putMapResourcesModel.getFlowState());
   }
 }
