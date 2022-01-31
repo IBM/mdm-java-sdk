@@ -26,16 +26,16 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmCompareStep extends DynamicModel<Object> {
 
+  @SerializedName("set_resource")
+  protected String setResource;
+  @SerializedName("label")
+  protected String label;
   @SerializedName("map_resource")
   protected String mapResource;
   @SerializedName("comparison_resource")
   protected String comparisonResource;
   @SerializedName("inputs")
   protected List<Long> inputs;
-  @SerializedName("set_resource")
-  protected String setResource;
-  @SerializedName("label")
-  protected String label;
   @SerializedName("fields")
   protected List<String> fields;
   @SerializedName("method")
@@ -49,21 +49,21 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
+    private String setResource;
+    private String label;
     private String mapResource;
     private String comparisonResource;
     private List<Long> inputs;
-    private String setResource;
-    private String label;
     private List<String> fields;
     private String method;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmCompareStep algorithmCompareStep) {
+      this.setResource = algorithmCompareStep.setResource;
+      this.label = algorithmCompareStep.label;
       this.mapResource = algorithmCompareStep.mapResource;
       this.comparisonResource = algorithmCompareStep.comparisonResource;
       this.inputs = algorithmCompareStep.inputs;
-      this.setResource = algorithmCompareStep.setResource;
-      this.label = algorithmCompareStep.label;
       this.fields = algorithmCompareStep.fields;
       this.method = algorithmCompareStep.method;
       this.dynamicProperties = algorithmCompareStep.getProperties();
@@ -128,6 +128,28 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
     }
 
     /**
+     * Set the setResource.
+     *
+     * @param setResource the setResource
+     * @return the AlgorithmCompareStep builder
+     */
+    public Builder setResource(String setResource) {
+      this.setResource = setResource;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the AlgorithmCompareStep builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
      * Set the mapResource.
      *
      * @param mapResource the mapResource
@@ -158,28 +180,6 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
      */
     public Builder inputs(List<Long> inputs) {
       this.inputs = inputs;
-      return this;
-    }
-
-    /**
-     * Set the setResource.
-     *
-     * @param setResource the setResource
-     * @return the AlgorithmCompareStep builder
-     */
-    public Builder setResource(String setResource) {
-      this.setResource = setResource;
-      return this;
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the AlgorithmCompareStep builder
-     */
-    public Builder label(String label) {
-      this.label = label;
       return this;
     }
 
@@ -229,11 +229,11 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
       "method cannot be null");
+    setResource = builder.setResource;
+    label = builder.label;
     mapResource = builder.mapResource;
     comparisonResource = builder.comparisonResource;
     inputs = builder.inputs;
-    setResource = builder.setResource;
-    label = builder.label;
     fields = builder.fields;
     method = builder.method;
     this.setProperties(builder.dynamicProperties);
@@ -246,6 +246,46 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the setResource.
+   *
+   * An existing set resource name, if applicable.
+   *
+   * @return the setResource
+   */
+  public String getSetResource() {
+    return this.setResource;
+  }
+
+  /**
+   * Sets the setResource.
+   *
+   * @param setResource the new setResource
+   */
+  public void setSetResource(final String setResource) {
+    this.setResource = setResource;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String getLabel() {
+    return this.label;
+  }
+
+  /**
+   * Sets the label.
+   *
+   * @param label the new label
+   */
+  public void setLabel(final String label) {
+    this.label = label;
   }
 
   /**
@@ -306,46 +346,6 @@ public class AlgorithmCompareStep extends DynamicModel<Object> {
    */
   public void setInputs(final List<Long> inputs) {
     this.inputs = inputs;
-  }
-
-  /**
-   * Gets the setResource.
-   *
-   * An existing set resource name, if applicable.
-   *
-   * @return the setResource
-   */
-  public String getSetResource() {
-    return this.setResource;
-  }
-
-  /**
-   * Sets the setResource.
-   *
-   * @param setResource the new setResource
-   */
-  public void setSetResource(final String setResource) {
-    this.setResource = setResource;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String getLabel() {
-    return this.label;
-  }
-
-  /**
-   * Sets the label.
-   *
-   * @param label the new label
-   */
-  public void setLabel(final String label) {
-    this.label = label;
   }
 
   /**

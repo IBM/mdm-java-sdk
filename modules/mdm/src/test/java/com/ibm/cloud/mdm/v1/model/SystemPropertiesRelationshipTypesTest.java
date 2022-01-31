@@ -32,27 +32,27 @@ public class SystemPropertiesRelationshipTypesTest {
   @Test
   public void testSystemPropertiesRelationshipTypes() throws Throwable {
     SystemPropertiesRelationshipTypes systemPropertiesRelationshipTypesModel = new SystemPropertiesRelationshipTypes.Builder()
-      .dataType("testString")
-      .indexed(true)
-      .editable(true)
       .label("testString")
       .description("testString")
+      .dataType("testString")
+      .editable(true)
+      .indexed(true)
       .build();
-    assertEquals(systemPropertiesRelationshipTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesRelationshipTypesModel.indexed(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesRelationshipTypesModel.editable(), Boolean.valueOf(true));
     assertEquals(systemPropertiesRelationshipTypesModel.label(), "testString");
     assertEquals(systemPropertiesRelationshipTypesModel.description(), "testString");
+    assertEquals(systemPropertiesRelationshipTypesModel.dataType(), "testString");
+    assertEquals(systemPropertiesRelationshipTypesModel.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesRelationshipTypesModel.indexed(), Boolean.valueOf(true));
 
     String json = TestUtilities.serialize(systemPropertiesRelationshipTypesModel);
 
     SystemPropertiesRelationshipTypes systemPropertiesRelationshipTypesModelNew = TestUtilities.deserialize(json, SystemPropertiesRelationshipTypes.class);
     assertTrue(systemPropertiesRelationshipTypesModelNew instanceof SystemPropertiesRelationshipTypes);
-    assertEquals(systemPropertiesRelationshipTypesModelNew.dataType(), "testString");
-    assertEquals(systemPropertiesRelationshipTypesModelNew.indexed(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesRelationshipTypesModelNew.editable(), Boolean.valueOf(true));
     assertEquals(systemPropertiesRelationshipTypesModelNew.label(), "testString");
     assertEquals(systemPropertiesRelationshipTypesModelNew.description(), "testString");
+    assertEquals(systemPropertiesRelationshipTypesModelNew.dataType(), "testString");
+    assertEquals(systemPropertiesRelationshipTypesModelNew.editable(), Boolean.valueOf(true));
+    assertEquals(systemPropertiesRelationshipTypesModelNew.indexed(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -32,15 +32,15 @@ public class AttributeTest {
   @Test
   public void testAttribute() throws Throwable {
     Attribute attributeModel = new Attribute.Builder()
-      .indexed(true)
       .classification("testString")
+      .indexed(true)
       .label("testString")
       .description("testString")
       .cardinality("testString")
       .attributeType("email")
       .build();
-    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(attributeModel.classification(), "testString");
+    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(attributeModel.label(), "testString");
     assertEquals(attributeModel.description(), "testString");
     assertEquals(attributeModel.cardinality(), "testString");
@@ -50,8 +50,8 @@ public class AttributeTest {
 
     Attribute attributeModelNew = TestUtilities.deserialize(json, Attribute.class);
     assertTrue(attributeModelNew instanceof Attribute);
-    assertEquals(attributeModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(attributeModelNew.classification(), "testString");
+    assertEquals(attributeModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(attributeModelNew.label(), "testString");
     assertEquals(attributeModelNew.description(), "testString");
     assertEquals(attributeModelNew.cardinality(), "testString");

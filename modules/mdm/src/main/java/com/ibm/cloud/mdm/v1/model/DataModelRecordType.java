@@ -22,9 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRecordType extends GenericModel {
 
+  protected String label;
   @SerializedName("entity_types")
   protected Map<String, DataModelEntityType> entityTypes;
-  protected String label;
   protected String description;
   protected Map<String, DataModelAttribute> attributes;
 
@@ -32,14 +32,14 @@ public class DataModelRecordType extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private Map<String, DataModelEntityType> entityTypes;
     private String label;
+    private Map<String, DataModelEntityType> entityTypes;
     private String description;
     private Map<String, DataModelAttribute> attributes;
 
     private Builder(DataModelRecordType dataModelRecordType) {
-      this.entityTypes = dataModelRecordType.entityTypes;
       this.label = dataModelRecordType.label;
+      this.entityTypes = dataModelRecordType.entityTypes;
       this.description = dataModelRecordType.description;
       this.attributes = dataModelRecordType.attributes;
     }
@@ -71,17 +71,6 @@ public class DataModelRecordType extends GenericModel {
     }
 
     /**
-     * Set the entityTypes.
-     *
-     * @param entityTypes the entityTypes
-     * @return the DataModelRecordType builder
-     */
-    public Builder entityTypes(Map<String, DataModelEntityType> entityTypes) {
-      this.entityTypes = entityTypes;
-      return this;
-    }
-
-    /**
      * Set the label.
      *
      * @param label the label
@@ -89,6 +78,17 @@ public class DataModelRecordType extends GenericModel {
      */
     public Builder label(String label) {
       this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the entityTypes.
+     *
+     * @param entityTypes the entityTypes
+     * @return the DataModelRecordType builder
+     */
+    public Builder entityTypes(Map<String, DataModelEntityType> entityTypes) {
+      this.entityTypes = entityTypes;
       return this;
     }
 
@@ -120,8 +120,8 @@ public class DataModelRecordType extends GenericModel {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
       "attributes cannot be null");
-    entityTypes = builder.entityTypes;
     label = builder.label;
+    entityTypes = builder.entityTypes;
     description = builder.description;
     attributes = builder.attributes;
   }
@@ -136,17 +136,6 @@ public class DataModelRecordType extends GenericModel {
   }
 
   /**
-   * Gets the entityTypes.
-   *
-   * Read-only collection of applicable entity types.
-   *
-   * @return the entityTypes
-   */
-  public Map<String, DataModelEntityType> entityTypes() {
-    return entityTypes;
-  }
-
-  /**
    * Gets the label.
    *
    * User defined translatable label.
@@ -155,6 +144,17 @@ public class DataModelRecordType extends GenericModel {
    */
   public String label() {
     return label;
+  }
+
+  /**
+   * Gets the entityTypes.
+   *
+   * Read-only collection of applicable entity types.
+   *
+   * @return the entityTypes
+   */
+  public Map<String, DataModelEntityType> entityTypes() {
+    return entityTypes;
   }
 
   /**

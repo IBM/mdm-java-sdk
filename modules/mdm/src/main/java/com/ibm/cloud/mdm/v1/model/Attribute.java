@@ -20,8 +20,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Attribute extends GenericModel {
 
-  protected Boolean indexed;
   protected String classification;
+  protected Boolean indexed;
   protected String label;
   protected String description;
   protected String cardinality;
@@ -32,16 +32,16 @@ public class Attribute extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private Boolean indexed;
     private String classification;
+    private Boolean indexed;
     private String label;
     private String description;
     private String cardinality;
     private String attributeType;
 
     private Builder(Attribute attribute) {
-      this.indexed = attribute.indexed;
       this.classification = attribute.classification;
+      this.indexed = attribute.indexed;
       this.label = attribute.label;
       this.description = attribute.description;
       this.cardinality = attribute.cardinality;
@@ -75,17 +75,6 @@ public class Attribute extends GenericModel {
     }
 
     /**
-     * Set the indexed.
-     *
-     * @param indexed the indexed
-     * @return the Attribute builder
-     */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
-      return this;
-    }
-
-    /**
      * Set the classification.
      *
      * @param classification the classification
@@ -93,6 +82,17 @@ public class Attribute extends GenericModel {
      */
     public Builder classification(String classification) {
       this.classification = classification;
+      return this;
+    }
+
+    /**
+     * Set the indexed.
+     *
+     * @param indexed the indexed
+     * @return the Attribute builder
+     */
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
       return this;
     }
 
@@ -146,8 +146,8 @@ public class Attribute extends GenericModel {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
       "attributeType cannot be null");
-    indexed = builder.indexed;
     classification = builder.classification;
+    indexed = builder.indexed;
     label = builder.label;
     description = builder.description;
     cardinality = builder.cardinality;
@@ -164,17 +164,6 @@ public class Attribute extends GenericModel {
   }
 
   /**
-   * Gets the indexed.
-   *
-   * Specifies whether the field property is indexed for text searches.
-   *
-   * @return the indexed
-   */
-  public Boolean indexed() {
-    return indexed;
-  }
-
-  /**
    * Gets the classification.
    *
    * The classification of this Data Model Attribute.
@@ -183,6 +172,17 @@ public class Attribute extends GenericModel {
    */
   public String classification() {
     return classification;
+  }
+
+  /**
+   * Gets the indexed.
+   *
+   * Specifies whether the field property is indexed for text searches.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
   }
 
   /**

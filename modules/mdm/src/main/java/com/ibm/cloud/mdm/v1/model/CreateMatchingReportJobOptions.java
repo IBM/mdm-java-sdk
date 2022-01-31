@@ -24,6 +24,7 @@ public class CreateMatchingReportJobOptions extends GenericModel {
   protected Long executorCount;
   protected String executorMemory;
   protected Long executorCoreCount;
+  protected Long sparkParallelism;
   protected String jobList;
   protected Boolean doAnalytics;
 
@@ -36,6 +37,7 @@ public class CreateMatchingReportJobOptions extends GenericModel {
     private Long executorCount;
     private String executorMemory;
     private Long executorCoreCount;
+    private Long sparkParallelism;
     private String jobList;
     private Boolean doAnalytics;
 
@@ -45,6 +47,7 @@ public class CreateMatchingReportJobOptions extends GenericModel {
       this.executorCount = createMatchingReportJobOptions.executorCount;
       this.executorMemory = createMatchingReportJobOptions.executorMemory;
       this.executorCoreCount = createMatchingReportJobOptions.executorCoreCount;
+      this.sparkParallelism = createMatchingReportJobOptions.sparkParallelism;
       this.jobList = createMatchingReportJobOptions.jobList;
       this.doAnalytics = createMatchingReportJobOptions.doAnalytics;
     }
@@ -120,6 +123,17 @@ public class CreateMatchingReportJobOptions extends GenericModel {
     }
 
     /**
+     * Set the sparkParallelism.
+     *
+     * @param sparkParallelism the sparkParallelism
+     * @return the CreateMatchingReportJobOptions builder
+     */
+    public Builder sparkParallelism(long sparkParallelism) {
+      this.sparkParallelism = sparkParallelism;
+      return this;
+    }
+
+    /**
      * Set the jobList.
      *
      * @param jobList the jobList
@@ -148,6 +162,7 @@ public class CreateMatchingReportJobOptions extends GenericModel {
     executorCount = builder.executorCount;
     executorMemory = builder.executorMemory;
     executorCoreCount = builder.executorCoreCount;
+    sparkParallelism = builder.sparkParallelism;
     jobList = builder.jobList;
     doAnalytics = builder.doAnalytics;
   }
@@ -214,6 +229,17 @@ public class CreateMatchingReportJobOptions extends GenericModel {
    */
   public Long executorCoreCount() {
     return executorCoreCount;
+  }
+
+  /**
+   * Gets the sparkParallelism.
+   *
+   * The number of partitions to be used by spark.
+   *
+   * @return the sparkParallelism
+   */
+  public Long sparkParallelism() {
+    return sparkParallelism;
   }
 
   /**

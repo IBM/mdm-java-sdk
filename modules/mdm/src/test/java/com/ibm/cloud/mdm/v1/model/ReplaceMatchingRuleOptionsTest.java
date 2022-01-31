@@ -35,12 +35,12 @@ public class ReplaceMatchingRuleOptionsTest {
   @Test
   public void testReplaceMatchingRuleOptions() throws Throwable {
     RulesRequestRule rulesRequestRuleModel = new RulesRequestRule.Builder()
-      .recordNumbers(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .ruleType("testString")
+      .recordNumbers(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .description("testString")
       .build();
-    assertEquals(rulesRequestRuleModel.recordNumbers(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(rulesRequestRuleModel.ruleType(), "testString");
+    assertEquals(rulesRequestRuleModel.recordNumbers(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(rulesRequestRuleModel.description(), "testString");
 
     ReplaceMatchingRuleOptions replaceMatchingRuleOptionsModel = new ReplaceMatchingRuleOptions.Builder()

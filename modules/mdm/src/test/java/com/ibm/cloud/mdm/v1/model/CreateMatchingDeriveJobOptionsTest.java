@@ -43,6 +43,7 @@ public class CreateMatchingDeriveJobOptionsTest {
       .executorCount(Long.valueOf("1"))
       .executorMemory("8g")
       .executorCoreCount(Long.valueOf("1"))
+      .sparkParallelism(Long.valueOf("2"))
       .logCosEndpoint("http://s3.us-south.cloud-object-storage.appdomain.cloud")
       .logCosBucket("mdmdata")
       .logCosAccessKey("b33037e4e8954207a434cc032c1139d1")
@@ -59,6 +60,7 @@ public class CreateMatchingDeriveJobOptionsTest {
     assertEquals(createMatchingDeriveJobOptionsModel.executorCount(), Long.valueOf("1"));
     assertEquals(createMatchingDeriveJobOptionsModel.executorMemory(), "8g");
     assertEquals(createMatchingDeriveJobOptionsModel.executorCoreCount(), Long.valueOf("1"));
+    assertEquals(createMatchingDeriveJobOptionsModel.sparkParallelism(), Long.valueOf("2"));
     assertEquals(createMatchingDeriveJobOptionsModel.logCosEndpoint(), "http://s3.us-south.cloud-object-storage.appdomain.cloud");
     assertEquals(createMatchingDeriveJobOptionsModel.logCosBucket(), "mdmdata");
     assertEquals(createMatchingDeriveJobOptionsModel.logCosAccessKey(), "b33037e4e8954207a434cc032c1139d1");

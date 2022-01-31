@@ -32,23 +32,23 @@ public class InstanceMetadataProjectTest {
   @Test
   public void testInstanceMetadataProject() throws Throwable {
     InstanceMetadataProject instanceMetadataProjectModel = new InstanceMetadataProject.Builder()
+      .assetId("testString")
       .projectName("testString")
       .dataAssetId("testString")
-      .assetId("testString")
       .projectId("testString")
       .build();
+    assertEquals(instanceMetadataProjectModel.assetId(), "testString");
     assertEquals(instanceMetadataProjectModel.projectName(), "testString");
     assertEquals(instanceMetadataProjectModel.dataAssetId(), "testString");
-    assertEquals(instanceMetadataProjectModel.assetId(), "testString");
     assertEquals(instanceMetadataProjectModel.projectId(), "testString");
 
     String json = TestUtilities.serialize(instanceMetadataProjectModel);
 
     InstanceMetadataProject instanceMetadataProjectModelNew = TestUtilities.deserialize(json, InstanceMetadataProject.class);
     assertTrue(instanceMetadataProjectModelNew instanceof InstanceMetadataProject);
+    assertEquals(instanceMetadataProjectModelNew.assetId(), "testString");
     assertEquals(instanceMetadataProjectModelNew.projectName(), "testString");
     assertEquals(instanceMetadataProjectModelNew.dataAssetId(), "testString");
-    assertEquals(instanceMetadataProjectModelNew.assetId(), "testString");
     assertEquals(instanceMetadataProjectModelNew.projectId(), "testString");
   }
 

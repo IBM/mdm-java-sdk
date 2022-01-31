@@ -21,20 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SingleCompareMethod extends GenericModel {
 
-  protected Float score;
   protected List<SingleCompareMethodMethod> methods;
+  protected Float score;
   protected String name;
-
-  /**
-   * Gets the score.
-   *
-   * The maximum comparison score computed for the current comparator.
-   *
-   * @return the score
-   */
-  public Float getScore() {
-    return score;
-  }
 
   /**
    * Gets the methods.
@@ -45,6 +34,17 @@ public class SingleCompareMethod extends GenericModel {
    */
   public List<SingleCompareMethodMethod> getMethods() {
     return methods;
+  }
+
+  /**
+   * Gets the score.
+   *
+   * The maximum comparison score computed for the current comparator.
+   *
+   * @return the score
+   */
+  public Float getScore() {
+    return score;
   }
 
   /**

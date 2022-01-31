@@ -32,33 +32,33 @@ public class DataModelAttributeTest {
   @Test
   public void testDataModelAttribute() throws Throwable {
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
-      .indexed(true)
-      .classification("testString")
       .matchingType("testString")
       .attributeType("testString")
+      .classification("testString")
       .label("testString")
-      .description("testString")
+      .indexed(true)
       .cardinality("testString")
+      .description("testString")
       .build();
-    assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelAttributeModel.classification(), "testString");
     assertEquals(dataModelAttributeModel.matchingType(), "testString");
     assertEquals(dataModelAttributeModel.attributeType(), "testString");
+    assertEquals(dataModelAttributeModel.classification(), "testString");
     assertEquals(dataModelAttributeModel.label(), "testString");
-    assertEquals(dataModelAttributeModel.description(), "testString");
+    assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelAttributeModel.cardinality(), "testString");
+    assertEquals(dataModelAttributeModel.description(), "testString");
 
     String json = TestUtilities.serialize(dataModelAttributeModel);
 
     DataModelAttribute dataModelAttributeModelNew = TestUtilities.deserialize(json, DataModelAttribute.class);
     assertTrue(dataModelAttributeModelNew instanceof DataModelAttribute);
-    assertEquals(dataModelAttributeModelNew.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelAttributeModelNew.classification(), "testString");
     assertEquals(dataModelAttributeModelNew.matchingType(), "testString");
     assertEquals(dataModelAttributeModelNew.attributeType(), "testString");
+    assertEquals(dataModelAttributeModelNew.classification(), "testString");
     assertEquals(dataModelAttributeModelNew.label(), "testString");
-    assertEquals(dataModelAttributeModelNew.description(), "testString");
+    assertEquals(dataModelAttributeModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelAttributeModelNew.cardinality(), "testString");
+    assertEquals(dataModelAttributeModelNew.description(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

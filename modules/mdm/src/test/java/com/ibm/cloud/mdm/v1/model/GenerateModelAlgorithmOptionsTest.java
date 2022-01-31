@@ -43,12 +43,12 @@ public class GenerateModelAlgorithmOptionsTest {
     assertEquals(algorithmGenerationAttributeItemModel.attributes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     AlgorithmGenerationEntityType algorithmGenerationEntityTypeModel = new AlgorithmGenerationEntityType.Builder()
-      .autoLinkThreshold(Float.valueOf("0"))
       .matchingAttributes(new java.util.ArrayList<AlgorithmGenerationAttributeItem>(java.util.Arrays.asList(algorithmGenerationAttributeItemModel)))
+      .autoLinkThreshold(Float.valueOf("0"))
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmGenerationEntityTypeModel.getAutoLinkThreshold(), Float.valueOf("0"));
     assertEquals(algorithmGenerationEntityTypeModel.getMatchingAttributes(), new java.util.ArrayList<AlgorithmGenerationAttributeItem>(java.util.Arrays.asList(algorithmGenerationAttributeItemModel)));
+    assertEquals(algorithmGenerationEntityTypeModel.getAutoLinkThreshold(), Float.valueOf("0"));
     assertEquals(algorithmGenerationEntityTypeModel.get("foo"), "testString");
 
     GenerateModelAlgorithmOptions generateModelAlgorithmOptionsModel = new GenerateModelAlgorithmOptions.Builder()

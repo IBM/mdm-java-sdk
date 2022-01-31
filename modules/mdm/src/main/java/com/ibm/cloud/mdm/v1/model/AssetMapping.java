@@ -20,8 +20,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AssetMapping extends GenericModel {
 
-  @SerializedName("exclude_column")
-  protected Boolean excludeColumn;
   @SerializedName("auto_mapped")
   protected Boolean autoMapped;
   @SerializedName("classified_class")
@@ -32,27 +30,29 @@ public class AssetMapping extends GenericModel {
   protected String completenessPercent;
   @SerializedName("data_mapping_attribute_type")
   protected String dataMappingAttributeType;
+  @SerializedName("exclude_column")
+  protected Boolean excludeColumn;
   protected String key;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Boolean excludeColumn;
     private Boolean autoMapped;
     private String classifiedClass;
     private String dataMappingName;
     private String completenessPercent;
     private String dataMappingAttributeType;
+    private Boolean excludeColumn;
     private String key;
 
     private Builder(AssetMapping assetMapping) {
-      this.excludeColumn = assetMapping.excludeColumn;
       this.autoMapped = assetMapping.autoMapped;
       this.classifiedClass = assetMapping.classifiedClass;
       this.dataMappingName = assetMapping.dataMappingName;
       this.completenessPercent = assetMapping.completenessPercent;
       this.dataMappingAttributeType = assetMapping.dataMappingAttributeType;
+      this.excludeColumn = assetMapping.excludeColumn;
       this.key = assetMapping.key;
     }
 
@@ -69,17 +69,6 @@ public class AssetMapping extends GenericModel {
      */
     public AssetMapping build() {
       return new AssetMapping(this);
-    }
-
-    /**
-     * Set the excludeColumn.
-     *
-     * @param excludeColumn the excludeColumn
-     * @return the AssetMapping builder
-     */
-    public Builder excludeColumn(Boolean excludeColumn) {
-      this.excludeColumn = excludeColumn;
-      return this;
     }
 
     /**
@@ -138,6 +127,17 @@ public class AssetMapping extends GenericModel {
     }
 
     /**
+     * Set the excludeColumn.
+     *
+     * @param excludeColumn the excludeColumn
+     * @return the AssetMapping builder
+     */
+    public Builder excludeColumn(Boolean excludeColumn) {
+      this.excludeColumn = excludeColumn;
+      return this;
+    }
+
+    /**
      * Set the key.
      *
      * @param key the key
@@ -150,12 +150,12 @@ public class AssetMapping extends GenericModel {
   }
 
   protected AssetMapping(Builder builder) {
-    excludeColumn = builder.excludeColumn;
     autoMapped = builder.autoMapped;
     classifiedClass = builder.classifiedClass;
     dataMappingName = builder.dataMappingName;
     completenessPercent = builder.completenessPercent;
     dataMappingAttributeType = builder.dataMappingAttributeType;
+    excludeColumn = builder.excludeColumn;
     key = builder.key;
   }
 
@@ -166,17 +166,6 @@ public class AssetMapping extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the excludeColumn.
-   *
-   * Specifies whether this Data Asset column is excluded from mapping.
-   *
-   * @return the excludeColumn
-   */
-  public Boolean excludeColumn() {
-    return excludeColumn;
   }
 
   /**
@@ -232,6 +221,17 @@ public class AssetMapping extends GenericModel {
    */
   public String dataMappingAttributeType() {
     return dataMappingAttributeType;
+  }
+
+  /**
+   * Gets the excludeColumn.
+   *
+   * Specifies whether this Data Asset column is excluded from mapping.
+   *
+   * @return the excludeColumn
+   */
+  public Boolean excludeColumn() {
+    return excludeColumn;
   }
 
   /**

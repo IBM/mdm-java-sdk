@@ -30,6 +30,7 @@ public class CreateMatchingDeriveJobOptions extends GenericModel {
   protected Long executorCount;
   protected String executorMemory;
   protected Long executorCoreCount;
+  protected Long sparkParallelism;
   protected String logCosEndpoint;
   protected String logCosBucket;
   protected String logCosAccessKey;
@@ -50,6 +51,7 @@ public class CreateMatchingDeriveJobOptions extends GenericModel {
     private Long executorCount;
     private String executorMemory;
     private Long executorCoreCount;
+    private Long sparkParallelism;
     private String logCosEndpoint;
     private String logCosBucket;
     private String logCosAccessKey;
@@ -67,6 +69,7 @@ public class CreateMatchingDeriveJobOptions extends GenericModel {
       this.executorCount = createMatchingDeriveJobOptions.executorCount;
       this.executorMemory = createMatchingDeriveJobOptions.executorMemory;
       this.executorCoreCount = createMatchingDeriveJobOptions.executorCoreCount;
+      this.sparkParallelism = createMatchingDeriveJobOptions.sparkParallelism;
       this.logCosEndpoint = createMatchingDeriveJobOptions.logCosEndpoint;
       this.logCosBucket = createMatchingDeriveJobOptions.logCosBucket;
       this.logCosAccessKey = createMatchingDeriveJobOptions.logCosAccessKey;
@@ -210,6 +213,17 @@ public class CreateMatchingDeriveJobOptions extends GenericModel {
     }
 
     /**
+     * Set the sparkParallelism.
+     *
+     * @param sparkParallelism the sparkParallelism
+     * @return the CreateMatchingDeriveJobOptions builder
+     */
+    public Builder sparkParallelism(long sparkParallelism) {
+      this.sparkParallelism = sparkParallelism;
+      return this;
+    }
+
+    /**
      * Set the logCosEndpoint.
      *
      * @param logCosEndpoint the logCosEndpoint
@@ -266,6 +280,7 @@ public class CreateMatchingDeriveJobOptions extends GenericModel {
     executorCount = builder.executorCount;
     executorMemory = builder.executorMemory;
     executorCoreCount = builder.executorCoreCount;
+    sparkParallelism = builder.sparkParallelism;
     logCosEndpoint = builder.logCosEndpoint;
     logCosBucket = builder.logCosBucket;
     logCosAccessKey = builder.logCosAccessKey;
@@ -400,6 +415,17 @@ public class CreateMatchingDeriveJobOptions extends GenericModel {
    */
   public Long executorCoreCount() {
     return executorCoreCount;
+  }
+
+  /**
+   * Gets the sparkParallelism.
+   *
+   * The number of partitions to be used by spark.
+   *
+   * @return the sparkParallelism
+   */
+  public Long sparkParallelism() {
+    return sparkParallelism;
   }
 
   /**

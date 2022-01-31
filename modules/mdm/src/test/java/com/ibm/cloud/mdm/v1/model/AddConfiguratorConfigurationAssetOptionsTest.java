@@ -35,32 +35,32 @@ public class AddConfiguratorConfigurationAssetOptionsTest {
   @Test
   public void testAddConfiguratorConfigurationAssetOptions() throws Throwable {
     AssetMapping assetMappingModel = new AssetMapping.Builder()
-      .excludeColumn(false)
       .autoMapped(true)
       .classifiedClass("GEN")
       .dataMappingName("gender")
       .completenessPercent("100.0")
       .dataMappingAttributeType("string")
+      .excludeColumn(false)
       .key("COLUMN 1")
       .build();
-    assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
     assertEquals(assetMappingModel.classifiedClass(), "GEN");
     assertEquals(assetMappingModel.dataMappingName(), "gender");
     assertEquals(assetMappingModel.completenessPercent(), "100.0");
     assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
+    assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModel.key(), "COLUMN 1");
 
     AddConfiguratorConfigurationAssetOptions addConfiguratorConfigurationAssetOptionsModel = new AddConfiguratorConfigurationAssetOptions.Builder()
+      .assetId("d8868c51-a96e-48ab-a4cd-0000000")
       .assetName("Person10k.csv")
       .assetStatus("Mapped")
-      .assetId("d8868c51-a96e-48ab-a4cd-0000000")
       .assetCreatedDate("testString")
       .assetMappings(new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)))
       .build();
+    assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetId(), "d8868c51-a96e-48ab-a4cd-0000000");
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetName(), "Person10k.csv");
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetStatus(), "Mapped");
-    assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetId(), "d8868c51-a96e-48ab-a4cd-0000000");
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetCreatedDate(), "testString");
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetMappings(), new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)));
   }
