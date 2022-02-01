@@ -21,11 +21,11 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
 
   protected String processName;
   protected ProcessRequestAssetSourceDetails assetSourceDetails;
-  protected String recordType;
   protected String assetIds;
   protected String initiator;
   protected Boolean doDerive;
   protected Boolean doForceMatching;
+  protected String recordType;
   protected String entityType;
 
   /**
@@ -34,21 +34,21 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
   public static class Builder {
     private String processName;
     private ProcessRequestAssetSourceDetails assetSourceDetails;
-    private String recordType;
     private String assetIds;
     private String initiator;
     private Boolean doDerive;
     private Boolean doForceMatching;
+    private String recordType;
     private String entityType;
 
     private Builder(CreateConfiguratorProcessOptions createConfiguratorProcessOptions) {
       this.processName = createConfiguratorProcessOptions.processName;
       this.assetSourceDetails = createConfiguratorProcessOptions.assetSourceDetails;
-      this.recordType = createConfiguratorProcessOptions.recordType;
       this.assetIds = createConfiguratorProcessOptions.assetIds;
       this.initiator = createConfiguratorProcessOptions.initiator;
       this.doDerive = createConfiguratorProcessOptions.doDerive;
       this.doForceMatching = createConfiguratorProcessOptions.doForceMatching;
+      this.recordType = createConfiguratorProcessOptions.recordType;
       this.entityType = createConfiguratorProcessOptions.entityType;
     }
 
@@ -99,17 +99,6 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
-     * Set the recordType.
-     *
-     * @param recordType the recordType
-     * @return the CreateConfiguratorProcessOptions builder
-     */
-    public Builder recordType(String recordType) {
-      this.recordType = recordType;
-      return this;
-    }
-
-    /**
      * Set the assetIds.
      *
      * @param assetIds the assetIds
@@ -154,6 +143,17 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
+     * Set the recordType.
+     *
+     * @param recordType the recordType
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder recordType(String recordType) {
+      this.recordType = recordType;
+      return this;
+    }
+
+    /**
      * Set the entityType.
      *
      * @param entityType the entityType
@@ -170,11 +170,11 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
       "processName cannot be null");
     processName = builder.processName;
     assetSourceDetails = builder.assetSourceDetails;
-    recordType = builder.recordType;
     assetIds = builder.assetIds;
     initiator = builder.initiator;
     doDerive = builder.doDerive;
     doForceMatching = builder.doForceMatching;
+    recordType = builder.recordType;
     entityType = builder.entityType;
   }
 
@@ -207,17 +207,6 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
    */
   public ProcessRequestAssetSourceDetails assetSourceDetails() {
     return assetSourceDetails;
-  }
-
-  /**
-   * Gets the recordType.
-   *
-   * The record type which needs to be processed for match and publish_data processes.
-   *
-   * @return the recordType
-   */
-  public String recordType() {
-    return recordType;
   }
 
   /**
@@ -263,6 +252,17 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
    */
   public Boolean doForceMatching() {
     return doForceMatching;
+  }
+
+  /**
+   * Gets the recordType.
+   *
+   * The record type which needs to be processed for match and publish_data processes.
+   *
+   * @return the recordType
+   */
+  public String recordType() {
+    return recordType;
   }
 
   /**

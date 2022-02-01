@@ -45,12 +45,12 @@ public class CompositeRulesTest {
 
     CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
       .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
-      .entityRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
       .recordTypeRule(compositeRulesRuleModel)
+      .entityRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
       .build();
     assertEquals(compositeRulesRecordTypeModel.attributeRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
-    assertEquals(compositeRulesRecordTypeModel.entityRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
     assertEquals(compositeRulesRecordTypeModel.recordTypeRule(), compositeRulesRuleModel);
+    assertEquals(compositeRulesRecordTypeModel.entityRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
 
     CompositeRulesRules compositeRulesRulesModel = new CompositeRulesRules.Builder()
       .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })

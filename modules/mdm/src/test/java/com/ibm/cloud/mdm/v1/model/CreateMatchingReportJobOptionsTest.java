@@ -37,6 +37,7 @@ public class CreateMatchingReportJobOptionsTest {
       .executorCount(Long.valueOf("1"))
       .executorMemory("8g")
       .executorCoreCount(Long.valueOf("1"))
+      .sparkParallelism(Long.valueOf("2"))
       .jobList("entity_summary,bucket_summary")
       .doAnalytics(false)
       .build();
@@ -45,6 +46,7 @@ public class CreateMatchingReportJobOptionsTest {
     assertEquals(createMatchingReportJobOptionsModel.executorCount(), Long.valueOf("1"));
     assertEquals(createMatchingReportJobOptionsModel.executorMemory(), "8g");
     assertEquals(createMatchingReportJobOptionsModel.executorCoreCount(), Long.valueOf("1"));
+    assertEquals(createMatchingReportJobOptionsModel.sparkParallelism(), Long.valueOf("2"));
     assertEquals(createMatchingReportJobOptionsModel.jobList(), "entity_summary,bucket_summary");
     assertEquals(createMatchingReportJobOptionsModel.doAnalytics(), Boolean.valueOf(false));
   }

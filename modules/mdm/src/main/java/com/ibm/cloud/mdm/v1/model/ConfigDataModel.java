@@ -28,9 +28,9 @@ public class ConfigDataModel extends GenericModel {
   protected Map<String, RelationshipType> relationshipTypes;
   @SerializedName("attribute_types")
   protected Map<String, AttributeType> attributeTypes;
+  protected String locale;
   @SerializedName("system_properties")
   protected Map<String, SystemProperties> systemProperties;
-  protected String locale;
 
   /**
    * Builder.
@@ -39,15 +39,15 @@ public class ConfigDataModel extends GenericModel {
     private Map<String, RecordType> recordTypes;
     private Map<String, RelationshipType> relationshipTypes;
     private Map<String, AttributeType> attributeTypes;
-    private Map<String, SystemProperties> systemProperties;
     private String locale;
+    private Map<String, SystemProperties> systemProperties;
 
     private Builder(ConfigDataModel configDataModel) {
       this.recordTypes = configDataModel.recordTypes;
       this.relationshipTypes = configDataModel.relationshipTypes;
       this.attributeTypes = configDataModel.attributeTypes;
-      this.systemProperties = configDataModel.systemProperties;
       this.locale = configDataModel.locale;
+      this.systemProperties = configDataModel.systemProperties;
     }
 
     /**
@@ -99,17 +99,6 @@ public class ConfigDataModel extends GenericModel {
     }
 
     /**
-     * Set the systemProperties.
-     *
-     * @param systemProperties the systemProperties
-     * @return the ConfigDataModel builder
-     */
-    public Builder systemProperties(Map<String, SystemProperties> systemProperties) {
-      this.systemProperties = systemProperties;
-      return this;
-    }
-
-    /**
      * Set the locale.
      *
      * @param locale the locale
@@ -119,14 +108,25 @@ public class ConfigDataModel extends GenericModel {
       this.locale = locale;
       return this;
     }
+
+    /**
+     * Set the systemProperties.
+     *
+     * @param systemProperties the systemProperties
+     * @return the ConfigDataModel builder
+     */
+    public Builder systemProperties(Map<String, SystemProperties> systemProperties) {
+      this.systemProperties = systemProperties;
+      return this;
+    }
   }
 
   protected ConfigDataModel(Builder builder) {
     recordTypes = builder.recordTypes;
     relationshipTypes = builder.relationshipTypes;
     attributeTypes = builder.attributeTypes;
-    systemProperties = builder.systemProperties;
     locale = builder.locale;
+    systemProperties = builder.systemProperties;
   }
 
   /**
@@ -172,17 +172,6 @@ public class ConfigDataModel extends GenericModel {
   }
 
   /**
-   * Gets the systemProperties.
-   *
-   * Collection of system properties.
-   *
-   * @return the systemProperties
-   */
-  public Map<String, SystemProperties> systemProperties() {
-    return systemProperties;
-  }
-
-  /**
    * Gets the locale.
    *
    * The locale of the data model.
@@ -191,6 +180,17 @@ public class ConfigDataModel extends GenericModel {
    */
   public String locale() {
     return locale;
+  }
+
+  /**
+   * Gets the systemProperties.
+   *
+   * Collection of system properties.
+   *
+   * @return the systemProperties
+   */
+  public Map<String, SystemProperties> systemProperties() {
+    return systemProperties;
   }
 }
 

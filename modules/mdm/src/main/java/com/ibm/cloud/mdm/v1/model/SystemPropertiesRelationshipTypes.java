@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SystemPropertiesRelationshipTypes extends GenericModel {
 
-  @SerializedName("data_type")
-  protected String dataType;
-  protected Boolean indexed;
-  protected Boolean editable;
   protected String label;
   protected String description;
+  @SerializedName("data_type")
+  protected String dataType;
+  protected Boolean editable;
+  protected Boolean indexed;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String dataType;
-    private Boolean indexed;
-    private Boolean editable;
     private String label;
     private String description;
+    private String dataType;
+    private Boolean editable;
+    private Boolean indexed;
 
     private Builder(SystemPropertiesRelationshipTypes systemPropertiesRelationshipTypes) {
-      this.dataType = systemPropertiesRelationshipTypes.dataType;
-      this.indexed = systemPropertiesRelationshipTypes.indexed;
-      this.editable = systemPropertiesRelationshipTypes.editable;
       this.label = systemPropertiesRelationshipTypes.label;
       this.description = systemPropertiesRelationshipTypes.description;
+      this.dataType = systemPropertiesRelationshipTypes.dataType;
+      this.editable = systemPropertiesRelationshipTypes.editable;
+      this.indexed = systemPropertiesRelationshipTypes.indexed;
     }
 
     /**
@@ -54,12 +54,12 @@ public class SystemPropertiesRelationshipTypes extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param dataType the dataType
      * @param label the label
+     * @param dataType the dataType
      */
-    public Builder(String dataType, String label) {
-      this.dataType = dataType;
+    public Builder(String label, String dataType) {
       this.label = label;
+      this.dataType = dataType;
     }
 
     /**
@@ -69,39 +69,6 @@ public class SystemPropertiesRelationshipTypes extends GenericModel {
      */
     public SystemPropertiesRelationshipTypes build() {
       return new SystemPropertiesRelationshipTypes(this);
-    }
-
-    /**
-     * Set the dataType.
-     *
-     * @param dataType the dataType
-     * @return the SystemPropertiesRelationshipTypes builder
-     */
-    public Builder dataType(String dataType) {
-      this.dataType = dataType;
-      return this;
-    }
-
-    /**
-     * Set the indexed.
-     *
-     * @param indexed the indexed
-     * @return the SystemPropertiesRelationshipTypes builder
-     */
-    public Builder indexed(Boolean indexed) {
-      this.indexed = indexed;
-      return this;
-    }
-
-    /**
-     * Set the editable.
-     *
-     * @param editable the editable
-     * @return the SystemPropertiesRelationshipTypes builder
-     */
-    public Builder editable(Boolean editable) {
-      this.editable = editable;
-      return this;
     }
 
     /**
@@ -125,18 +92,51 @@ public class SystemPropertiesRelationshipTypes extends GenericModel {
       this.description = description;
       return this;
     }
+
+    /**
+     * Set the dataType.
+     *
+     * @param dataType the dataType
+     * @return the SystemPropertiesRelationshipTypes builder
+     */
+    public Builder dataType(String dataType) {
+      this.dataType = dataType;
+      return this;
+    }
+
+    /**
+     * Set the editable.
+     *
+     * @param editable the editable
+     * @return the SystemPropertiesRelationshipTypes builder
+     */
+    public Builder editable(Boolean editable) {
+      this.editable = editable;
+      return this;
+    }
+
+    /**
+     * Set the indexed.
+     *
+     * @param indexed the indexed
+     * @return the SystemPropertiesRelationshipTypes builder
+     */
+    public Builder indexed(Boolean indexed) {
+      this.indexed = indexed;
+      return this;
+    }
   }
 
   protected SystemPropertiesRelationshipTypes(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
-      "dataType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    dataType = builder.dataType;
-    indexed = builder.indexed;
-    editable = builder.editable;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
+      "dataType cannot be null");
     label = builder.label;
     description = builder.description;
+    dataType = builder.dataType;
+    editable = builder.editable;
+    indexed = builder.indexed;
   }
 
   /**
@@ -146,39 +146,6 @@ public class SystemPropertiesRelationshipTypes extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the dataType.
-   *
-   * The data type of the system property.
-   *
-   * @return the dataType
-   */
-  public String dataType() {
-    return dataType;
-  }
-
-  /**
-   * Gets the indexed.
-   *
-   * Specifies whether the system property is indexed for text searches.
-   *
-   * @return the indexed
-   */
-  public Boolean indexed() {
-    return indexed;
-  }
-
-  /**
-   * Gets the editable.
-   *
-   * Specifies whether the user can set values for the system property.
-   *
-   * @return the editable
-   */
-  public Boolean editable() {
-    return editable;
   }
 
   /**
@@ -201,6 +168,39 @@ public class SystemPropertiesRelationshipTypes extends GenericModel {
    */
   public String description() {
     return description;
+  }
+
+  /**
+   * Gets the dataType.
+   *
+   * The data type of the system property.
+   *
+   * @return the dataType
+   */
+  public String dataType() {
+    return dataType;
+  }
+
+  /**
+   * Gets the editable.
+   *
+   * Specifies whether the user can set values for the system property.
+   *
+   * @return the editable
+   */
+  public Boolean editable() {
+    return editable;
+  }
+
+  /**
+   * Gets the indexed.
+   *
+   * Specifies whether the system property is indexed for text searches.
+   *
+   * @return the indexed
+   */
+  public Boolean indexed() {
+    return indexed;
   }
 }
 

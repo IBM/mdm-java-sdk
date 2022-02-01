@@ -20,8 +20,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateModelFlowOptions extends GenericModel {
 
   protected String flowId;
-  protected String approverName;
   protected String action;
+  protected String approverName;
   protected String message;
 
   /**
@@ -29,14 +29,14 @@ public class UpdateModelFlowOptions extends GenericModel {
    */
   public static class Builder {
     private String flowId;
-    private String approverName;
     private String action;
+    private String approverName;
     private String message;
 
     private Builder(UpdateModelFlowOptions updateModelFlowOptions) {
       this.flowId = updateModelFlowOptions.flowId;
-      this.approverName = updateModelFlowOptions.approverName;
       this.action = updateModelFlowOptions.action;
+      this.approverName = updateModelFlowOptions.approverName;
       this.message = updateModelFlowOptions.message;
     }
 
@@ -50,13 +50,13 @@ public class UpdateModelFlowOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param flowId the flowId
-     * @param approverName the approverName
      * @param action the action
+     * @param approverName the approverName
      */
-    public Builder(String flowId, String approverName, String action) {
+    public Builder(String flowId, String action, String approverName) {
       this.flowId = flowId;
-      this.approverName = approverName;
       this.action = action;
+      this.approverName = approverName;
     }
 
     /**
@@ -80,17 +80,6 @@ public class UpdateModelFlowOptions extends GenericModel {
     }
 
     /**
-     * Set the approverName.
-     *
-     * @param approverName the approverName
-     * @return the UpdateModelFlowOptions builder
-     */
-    public Builder approverName(String approverName) {
-      this.approverName = approverName;
-      return this;
-    }
-
-    /**
      * Set the action.
      *
      * @param action the action
@@ -98,6 +87,17 @@ public class UpdateModelFlowOptions extends GenericModel {
      */
     public Builder action(String action) {
       this.action = action;
+      return this;
+    }
+
+    /**
+     * Set the approverName.
+     *
+     * @param approverName the approverName
+     * @return the UpdateModelFlowOptions builder
+     */
+    public Builder approverName(String approverName) {
+      this.approverName = approverName;
       return this;
     }
 
@@ -116,13 +116,13 @@ public class UpdateModelFlowOptions extends GenericModel {
   protected UpdateModelFlowOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.flowId,
       "flowId cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.approverName,
-      "approverName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.action,
       "action cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.approverName,
+      "approverName cannot be null");
     flowId = builder.flowId;
-    approverName = builder.approverName;
     action = builder.action;
+    approverName = builder.approverName;
     message = builder.message;
   }
 
@@ -147,17 +147,6 @@ public class UpdateModelFlowOptions extends GenericModel {
   }
 
   /**
-   * Gets the approverName.
-   *
-   * Authorized approver name who invokes the action.
-   *
-   * @return the approverName
-   */
-  public String approverName() {
-    return approverName;
-  }
-
-  /**
    * Gets the action.
    *
    * One of: approve or reject.
@@ -166,6 +155,17 @@ public class UpdateModelFlowOptions extends GenericModel {
    */
   public String action() {
     return action;
+  }
+
+  /**
+   * Gets the approverName.
+   *
+   * Authorized approver name who invokes the action.
+   *
+   * @return the approverName
+   */
+  public String approverName() {
+    return approverName;
   }
 
   /**

@@ -32,10 +32,10 @@ public class SummaryTest {
   @Test
   public void testSummary() throws Throwable {
     Summary summaryModel = new Summary();
+    assertNull(summaryModel.getDataAssets());
+    assertNull(summaryModel.getEntitiesCount());
     assertNull(summaryModel.getSingletonCount());
     assertNull(summaryModel.getDistinctSources());
-    assertNull(summaryModel.getDataAssets());
     assertNull(summaryModel.getTotalRecords());
-    assertNull(summaryModel.getEntitiesCount());
   }
 }

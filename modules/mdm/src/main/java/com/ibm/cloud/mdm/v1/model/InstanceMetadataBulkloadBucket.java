@@ -20,25 +20,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataBulkloadBucket extends GenericModel {
 
-  @SerializedName("cos_bucket_name")
-  protected String cosBucketName;
   @SerializedName("cos_bucket_location")
   protected String cosBucketLocation;
   @SerializedName("cos_bucket_api_key")
   protected String cosBucketApiKey;
+  @SerializedName("cos_bucket_name")
+  protected String cosBucketName;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String cosBucketName;
     private String cosBucketLocation;
     private String cosBucketApiKey;
+    private String cosBucketName;
 
     private Builder(InstanceMetadataBulkloadBucket instanceMetadataBulkloadBucket) {
-      this.cosBucketName = instanceMetadataBulkloadBucket.cosBucketName;
       this.cosBucketLocation = instanceMetadataBulkloadBucket.cosBucketLocation;
       this.cosBucketApiKey = instanceMetadataBulkloadBucket.cosBucketApiKey;
+      this.cosBucketName = instanceMetadataBulkloadBucket.cosBucketName;
     }
 
     /**
@@ -50,12 +50,12 @@ public class InstanceMetadataBulkloadBucket extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param cosBucketName the cosBucketName
      * @param cosBucketApiKey the cosBucketApiKey
+     * @param cosBucketName the cosBucketName
      */
-    public Builder(String cosBucketName, String cosBucketApiKey) {
-      this.cosBucketName = cosBucketName;
+    public Builder(String cosBucketApiKey, String cosBucketName) {
       this.cosBucketApiKey = cosBucketApiKey;
+      this.cosBucketName = cosBucketName;
     }
 
     /**
@@ -65,17 +65,6 @@ public class InstanceMetadataBulkloadBucket extends GenericModel {
      */
     public InstanceMetadataBulkloadBucket build() {
       return new InstanceMetadataBulkloadBucket(this);
-    }
-
-    /**
-     * Set the cosBucketName.
-     *
-     * @param cosBucketName the cosBucketName
-     * @return the InstanceMetadataBulkloadBucket builder
-     */
-    public Builder cosBucketName(String cosBucketName) {
-      this.cosBucketName = cosBucketName;
-      return this;
     }
 
     /**
@@ -99,16 +88,27 @@ public class InstanceMetadataBulkloadBucket extends GenericModel {
       this.cosBucketApiKey = cosBucketApiKey;
       return this;
     }
+
+    /**
+     * Set the cosBucketName.
+     *
+     * @param cosBucketName the cosBucketName
+     * @return the InstanceMetadataBulkloadBucket builder
+     */
+    public Builder cosBucketName(String cosBucketName) {
+      this.cosBucketName = cosBucketName;
+      return this;
+    }
   }
 
   protected InstanceMetadataBulkloadBucket(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cosBucketName,
-      "cosBucketName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cosBucketApiKey,
       "cosBucketApiKey cannot be null");
-    cosBucketName = builder.cosBucketName;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cosBucketName,
+      "cosBucketName cannot be null");
     cosBucketLocation = builder.cosBucketLocation;
     cosBucketApiKey = builder.cosBucketApiKey;
+    cosBucketName = builder.cosBucketName;
   }
 
   /**
@@ -118,17 +118,6 @@ public class InstanceMetadataBulkloadBucket extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the cosBucketName.
-   *
-   * Name of a bucket on cloud object storage.
-   *
-   * @return the cosBucketName
-   */
-  public String cosBucketName() {
-    return cosBucketName;
   }
 
   /**
@@ -151,6 +140,17 @@ public class InstanceMetadataBulkloadBucket extends GenericModel {
    */
   public String cosBucketApiKey() {
     return cosBucketApiKey;
+  }
+
+  /**
+   * Gets the cosBucketName.
+   *
+   * Name of a bucket on cloud object storage.
+   *
+   * @return the cosBucketName
+   */
+  public String cosBucketName() {
+    return cosBucketName;
   }
 }
 

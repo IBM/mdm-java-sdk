@@ -39,7 +39,7 @@ public class PutCompositeRulesTest {
   public void testPutCompositeRules() throws Throwable {
     PutCompositeRules putCompositeRulesModel = new PutCompositeRules();
     assertNull(putCompositeRulesModel.getCompositeRules());
-    assertNull(putCompositeRulesModel.getFlowId());
     assertNull(putCompositeRulesModel.getFlowState());
+    assertNull(putCompositeRulesModel.getFlowId());
   }
 }

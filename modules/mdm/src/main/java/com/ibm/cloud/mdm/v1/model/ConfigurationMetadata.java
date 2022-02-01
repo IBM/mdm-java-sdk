@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.mdm.v1.model;
 
+import java.util.Map;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -26,6 +28,8 @@ public class ConfigurationMetadata extends GenericModel {
   protected String lastUpdateDate;
   @SerializedName("created_date")
   protected String createdDate;
+  @SerializedName("pair_analysis")
+  protected Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
   @SerializedName("project_id")
   protected String projectId;
   protected String description;
@@ -37,12 +41,14 @@ public class ConfigurationMetadata extends GenericModel {
    */
   public static class Builder {
     private String catalogId;
+    private Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
     private String projectId;
     private String description;
     private String name;
 
     private Builder(ConfigurationMetadata configurationMetadata) {
       this.catalogId = configurationMetadata.catalogId;
+      this.pairAnalysis = configurationMetadata.pairAnalysis;
       this.projectId = configurationMetadata.projectId;
       this.description = configurationMetadata.description;
       this.name = configurationMetadata.name;
@@ -71,6 +77,17 @@ public class ConfigurationMetadata extends GenericModel {
      */
     public Builder catalogId(String catalogId) {
       this.catalogId = catalogId;
+      return this;
+    }
+
+    /**
+     * Set the pairAnalysis.
+     *
+     * @param pairAnalysis the pairAnalysis
+     * @return the ConfigurationMetadata builder
+     */
+    public Builder pairAnalysis(Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis) {
+      this.pairAnalysis = pairAnalysis;
       return this;
     }
 
@@ -110,6 +127,7 @@ public class ConfigurationMetadata extends GenericModel {
 
   protected ConfigurationMetadata(Builder builder) {
     catalogId = builder.catalogId;
+    pairAnalysis = builder.pairAnalysis;
     projectId = builder.projectId;
     description = builder.description;
     name = builder.name;
@@ -155,6 +173,17 @@ public class ConfigurationMetadata extends GenericModel {
    */
   public String createdDate() {
     return createdDate;
+  }
+
+  /**
+   * Gets the pairAnalysis.
+   *
+   * Pair analysis in configuration Metadata.
+   *
+   * @return the pairAnalysis
+   */
+  public Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis() {
+    return pairAnalysis;
   }
 
   /**

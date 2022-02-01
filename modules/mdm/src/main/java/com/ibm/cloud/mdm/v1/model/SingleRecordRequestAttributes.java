@@ -24,12 +24,12 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class SingleRecordRequestAttributes extends DynamicModel<Object> {
 
-  @SerializedName("record_source")
-  protected String recordSource;
-  @SerializedName("record_last_updated")
-  protected Long recordLastUpdated;
   @SerializedName("record_id")
   protected String recordId;
+  @SerializedName("record_last_updated")
+  protected Long recordLastUpdated;
+  @SerializedName("record_source")
+  protected String recordSource;
 
   public SingleRecordRequestAttributes() {
     super(new TypeToken<Object>() { });
@@ -39,15 +39,15 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private String recordSource;
-    private Long recordLastUpdated;
     private String recordId;
+    private Long recordLastUpdated;
+    private String recordSource;
     private Map<String, Object> dynamicProperties;
 
     private Builder(SingleRecordRequestAttributes singleRecordRequestAttributes) {
-      this.recordSource = singleRecordRequestAttributes.recordSource;
-      this.recordLastUpdated = singleRecordRequestAttributes.recordLastUpdated;
       this.recordId = singleRecordRequestAttributes.recordId;
+      this.recordLastUpdated = singleRecordRequestAttributes.recordLastUpdated;
+      this.recordSource = singleRecordRequestAttributes.recordSource;
       this.dynamicProperties = singleRecordRequestAttributes.getProperties();
     }
 
@@ -67,13 +67,13 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
     }
 
     /**
-     * Set the recordSource.
+     * Set the recordId.
      *
-     * @param recordSource the recordSource
+     * @param recordId the recordId
      * @return the SingleRecordRequestAttributes builder
      */
-    public Builder recordSource(String recordSource) {
-      this.recordSource = recordSource;
+    public Builder recordId(String recordId) {
+      this.recordId = recordId;
       return this;
     }
 
@@ -89,13 +89,13 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
     }
 
     /**
-     * Set the recordId.
+     * Set the recordSource.
      *
-     * @param recordId the recordId
+     * @param recordSource the recordSource
      * @return the SingleRecordRequestAttributes builder
      */
-    public Builder recordId(String recordId) {
-      this.recordId = recordId;
+    public Builder recordSource(String recordSource) {
+      this.recordSource = recordSource;
       return this;
     }
 
@@ -118,9 +118,9 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
 
   protected SingleRecordRequestAttributes(Builder builder) {
     super(new TypeToken<Object>() { });
-    recordSource = builder.recordSource;
-    recordLastUpdated = builder.recordLastUpdated;
     recordId = builder.recordId;
+    recordLastUpdated = builder.recordLastUpdated;
+    recordSource = builder.recordSource;
     this.setProperties(builder.dynamicProperties);
   }
 
@@ -134,23 +134,23 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the recordSource.
+   * Gets the recordId.
    *
-   * The source system name of a record.
+   * The identifier of the record.
    *
-   * @return the recordSource
+   * @return the recordId
    */
-  public String getRecordSource() {
-    return this.recordSource;
+  public String getRecordId() {
+    return this.recordId;
   }
 
   /**
-   * Sets the recordSource.
+   * Sets the recordId.
    *
-   * @param recordSource the new recordSource
+   * @param recordId the new recordId
    */
-  public void setRecordSource(final String recordSource) {
-    this.recordSource = recordSource;
+  public void setRecordId(final String recordId) {
+    this.recordId = recordId;
   }
 
   /**
@@ -174,22 +174,22 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the recordId.
+   * Gets the recordSource.
    *
-   * The identifier of the record.
+   * The source system name of a record.
    *
-   * @return the recordId
+   * @return the recordSource
    */
-  public String getRecordId() {
-    return this.recordId;
+  public String getRecordSource() {
+    return this.recordSource;
   }
 
   /**
-   * Sets the recordId.
+   * Sets the recordSource.
    *
-   * @param recordId the new recordId
+   * @param recordSource the new recordSource
    */
-  public void setRecordId(final String recordId) {
-    this.recordId = recordId;
+  public void setRecordSource(final String recordSource) {
+    this.recordSource = recordSource;
   }
 }

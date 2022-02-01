@@ -25,21 +25,21 @@ public class AlgorithmInput extends GenericModel {
 
   @SerializedName("encrypted_fields")
   protected List<String> encryptedFields;
-  protected List<String> fields;
   protected List<String> attributes;
+  protected List<String> fields;
 
   /**
    * Builder.
    */
   public static class Builder {
     private List<String> encryptedFields;
-    private List<String> fields;
     private List<String> attributes;
+    private List<String> fields;
 
     private Builder(AlgorithmInput algorithmInput) {
       this.encryptedFields = algorithmInput.encryptedFields;
-      this.fields = algorithmInput.fields;
       this.attributes = algorithmInput.attributes;
+      this.fields = algorithmInput.fields;
     }
 
     /**
@@ -51,12 +51,12 @@ public class AlgorithmInput extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param fields the fields
      * @param attributes the attributes
+     * @param fields the fields
      */
-    public Builder(List<String> fields, List<String> attributes) {
-      this.fields = fields;
+    public Builder(List<String> attributes, List<String> fields) {
       this.attributes = attributes;
+      this.fields = fields;
     }
 
     /**
@@ -85,22 +85,6 @@ public class AlgorithmInput extends GenericModel {
     }
 
     /**
-     * Adds an fields to fields.
-     *
-     * @param fields the new fields
-     * @return the AlgorithmInput builder
-     */
-    public Builder addFields(String fields) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(fields,
-        "fields cannot be null");
-      if (this.fields == null) {
-        this.fields = new ArrayList<String>();
-      }
-      this.fields.add(fields);
-      return this;
-    }
-
-    /**
      * Adds an attributes to attributes.
      *
      * @param attributes the new attributes
@@ -117,6 +101,22 @@ public class AlgorithmInput extends GenericModel {
     }
 
     /**
+     * Adds an fields to fields.
+     *
+     * @param fields the new fields
+     * @return the AlgorithmInput builder
+     */
+    public Builder addFields(String fields) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(fields,
+        "fields cannot be null");
+      if (this.fields == null) {
+        this.fields = new ArrayList<String>();
+      }
+      this.fields.add(fields);
+      return this;
+    }
+
+    /**
      * Set the encryptedFields.
      * Existing encryptedFields will be replaced.
      *
@@ -125,18 +125,6 @@ public class AlgorithmInput extends GenericModel {
      */
     public Builder encryptedFields(List<String> encryptedFields) {
       this.encryptedFields = encryptedFields;
-      return this;
-    }
-
-    /**
-     * Set the fields.
-     * Existing fields will be replaced.
-     *
-     * @param fields the fields
-     * @return the AlgorithmInput builder
-     */
-    public Builder fields(List<String> fields) {
-      this.fields = fields;
       return this;
     }
 
@@ -151,16 +139,28 @@ public class AlgorithmInput extends GenericModel {
       this.attributes = attributes;
       return this;
     }
+
+    /**
+     * Set the fields.
+     * Existing fields will be replaced.
+     *
+     * @param fields the fields
+     * @return the AlgorithmInput builder
+     */
+    public Builder fields(List<String> fields) {
+      this.fields = fields;
+      return this;
+    }
   }
 
   protected AlgorithmInput(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fields,
-      "fields cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
       "attributes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fields,
+      "fields cannot be null");
     encryptedFields = builder.encryptedFields;
-    fields = builder.fields;
     attributes = builder.attributes;
+    fields = builder.fields;
   }
 
   /**
@@ -184,17 +184,6 @@ public class AlgorithmInput extends GenericModel {
   }
 
   /**
-   * Gets the fields.
-   *
-   * Collection of field names.
-   *
-   * @return the fields
-   */
-  public List<String> fields() {
-    return fields;
-  }
-
-  /**
    * Gets the attributes.
    *
    * Collection of attributes.
@@ -203,6 +192,17 @@ public class AlgorithmInput extends GenericModel {
    */
   public List<String> attributes() {
     return attributes;
+  }
+
+  /**
+   * Gets the fields.
+   *
+   * Collection of field names.
+   *
+   * @return the fields
+   */
+  public List<String> fields() {
+    return fields;
   }
 }
 

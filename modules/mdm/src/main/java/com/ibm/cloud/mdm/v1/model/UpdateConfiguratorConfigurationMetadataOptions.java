@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.mdm.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,6 +22,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateConfiguratorConfigurationMetadataOptions extends GenericModel {
 
   protected String catalogId;
+  protected Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
   protected String projectId;
   protected String description;
   protected String name;
@@ -29,12 +32,14 @@ public class UpdateConfiguratorConfigurationMetadataOptions extends GenericModel
    */
   public static class Builder {
     private String catalogId;
+    private Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
     private String projectId;
     private String description;
     private String name;
 
     private Builder(UpdateConfiguratorConfigurationMetadataOptions updateConfiguratorConfigurationMetadataOptions) {
       this.catalogId = updateConfiguratorConfigurationMetadataOptions.catalogId;
+      this.pairAnalysis = updateConfiguratorConfigurationMetadataOptions.pairAnalysis;
       this.projectId = updateConfiguratorConfigurationMetadataOptions.projectId;
       this.description = updateConfiguratorConfigurationMetadataOptions.description;
       this.name = updateConfiguratorConfigurationMetadataOptions.name;
@@ -63,6 +68,17 @@ public class UpdateConfiguratorConfigurationMetadataOptions extends GenericModel
      */
     public Builder catalogId(String catalogId) {
       this.catalogId = catalogId;
+      return this;
+    }
+
+    /**
+     * Set the pairAnalysis.
+     *
+     * @param pairAnalysis the pairAnalysis
+     * @return the UpdateConfiguratorConfigurationMetadataOptions builder
+     */
+    public Builder pairAnalysis(Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis) {
+      this.pairAnalysis = pairAnalysis;
       return this;
     }
 
@@ -107,6 +123,7 @@ public class UpdateConfiguratorConfigurationMetadataOptions extends GenericModel
      */
     public Builder configurationMetadata(ConfigurationMetadata configurationMetadata) {
       this.catalogId = configurationMetadata.catalogId();
+      this.pairAnalysis = configurationMetadata.pairAnalysis();
       this.projectId = configurationMetadata.projectId();
       this.description = configurationMetadata.description();
       this.name = configurationMetadata.name();
@@ -116,6 +133,7 @@ public class UpdateConfiguratorConfigurationMetadataOptions extends GenericModel
 
   protected UpdateConfiguratorConfigurationMetadataOptions(Builder builder) {
     catalogId = builder.catalogId;
+    pairAnalysis = builder.pairAnalysis;
     projectId = builder.projectId;
     description = builder.description;
     name = builder.name;
@@ -139,6 +157,17 @@ public class UpdateConfiguratorConfigurationMetadataOptions extends GenericModel
    */
   public String catalogId() {
     return catalogId;
+  }
+
+  /**
+   * Gets the pairAnalysis.
+   *
+   * Pair analysis in configuration Metadata.
+   *
+   * @return the pairAnalysis
+   */
+  public Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis() {
+    return pairAnalysis;
   }
 
   /**
