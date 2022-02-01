@@ -34,15 +34,18 @@ public class DataRecordTest {
     DataRecord dataRecordModel = new DataRecord.Builder()
       .id("testString")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .typeName("testString")
       .build();
     assertEquals(dataRecordModel.id(), "testString");
     assertEquals(dataRecordModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataRecordModel.typeName(), "testString");
 
     String json = TestUtilities.serialize(dataRecordModel);
 
     DataRecord dataRecordModelNew = TestUtilities.deserialize(json, DataRecord.class);
     assertTrue(dataRecordModelNew instanceof DataRecord);
     assertEquals(dataRecordModelNew.id(), "testString");
+    assertEquals(dataRecordModelNew.typeName(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

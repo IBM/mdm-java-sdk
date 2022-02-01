@@ -33,9 +33,11 @@ public class CreateDataRecordOptionsTest {
   public void testCreateDataRecordOptions() throws Throwable {
     CreateDataRecordOptions createDataRecordOptionsModel = new CreateDataRecordOptions.Builder()
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .typeName("testString")
       .id("testString")
       .build();
     assertEquals(createDataRecordOptionsModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(createDataRecordOptionsModel.typeName(), "testString");
     assertEquals(createDataRecordOptionsModel.id(), "testString");
   }
 

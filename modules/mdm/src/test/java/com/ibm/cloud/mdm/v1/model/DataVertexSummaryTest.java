@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.StorageMetadata;
+import com.ibm.cloud.mdm.v1.model.DataVertexSummary;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,14 +23,29 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the StorageMetadata model.
+ * Unit test class for the DataVertexSummary model.
  */
-public class StorageMetadataTest {
+public class DataVertexSummaryTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testStorageMetadata() throws Throwable {
-    StorageMetadata storageMetadataModel = new StorageMetadata();
+  public void testDataVertexSummary() throws Throwable {
+    DataVertexSummary dataVertexSummaryModel = new DataVertexSummary.Builder()
+      .id("testString")
+      .build();
+    assertEquals(dataVertexSummaryModel.id(), "testString");
+
+    String json = TestUtilities.serialize(dataVertexSummaryModel);
+
+    DataVertexSummary dataVertexSummaryModelNew = TestUtilities.deserialize(json, DataVertexSummary.class);
+    assertTrue(dataVertexSummaryModelNew instanceof DataVertexSummary);
+    assertEquals(dataVertexSummaryModelNew.id(), "testString");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testDataVertexSummaryError() throws Throwable {
+    new DataVertexSummary.Builder().build();
+  }
+
 }

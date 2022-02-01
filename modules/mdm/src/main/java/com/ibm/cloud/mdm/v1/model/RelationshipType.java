@@ -29,10 +29,10 @@ public class RelationshipType extends GenericModel {
   protected String labelFromSource;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
-  protected Boolean directional;
   protected String label;
-  protected String cardinality;
+  protected Boolean directional;
   protected String description;
+  protected String cardinality;
   protected Map<String, Attribute> attributes;
 
   /**
@@ -42,20 +42,20 @@ public class RelationshipType extends GenericModel {
     private List<Rule> rules;
     private String labelFromSource;
     private String labelFromTarget;
-    private Boolean directional;
     private String label;
-    private String cardinality;
+    private Boolean directional;
     private String description;
+    private String cardinality;
     private Map<String, Attribute> attributes;
 
     private Builder(RelationshipType relationshipType) {
       this.rules = relationshipType.rules;
       this.labelFromSource = relationshipType.labelFromSource;
       this.labelFromTarget = relationshipType.labelFromTarget;
-      this.directional = relationshipType.directional;
       this.label = relationshipType.label;
-      this.cardinality = relationshipType.cardinality;
+      this.directional = relationshipType.directional;
       this.description = relationshipType.description;
+      this.cardinality = relationshipType.cardinality;
       this.attributes = relationshipType.attributes;
     }
 
@@ -134,17 +134,6 @@ public class RelationshipType extends GenericModel {
     }
 
     /**
-     * Set the directional.
-     *
-     * @param directional the directional
-     * @return the RelationshipType builder
-     */
-    public Builder directional(Boolean directional) {
-      this.directional = directional;
-      return this;
-    }
-
-    /**
      * Set the label.
      *
      * @param label the label
@@ -156,13 +145,13 @@ public class RelationshipType extends GenericModel {
     }
 
     /**
-     * Set the cardinality.
+     * Set the directional.
      *
-     * @param cardinality the cardinality
+     * @param directional the directional
      * @return the RelationshipType builder
      */
-    public Builder cardinality(String cardinality) {
-      this.cardinality = cardinality;
+    public Builder directional(Boolean directional) {
+      this.directional = directional;
       return this;
     }
 
@@ -174,6 +163,17 @@ public class RelationshipType extends GenericModel {
      */
     public Builder description(String description) {
       this.description = description;
+      return this;
+    }
+
+    /**
+     * Set the cardinality.
+     *
+     * @param cardinality the cardinality
+     * @return the RelationshipType builder
+     */
+    public Builder cardinality(String cardinality) {
+      this.cardinality = cardinality;
       return this;
     }
 
@@ -195,10 +195,10 @@ public class RelationshipType extends GenericModel {
     rules = builder.rules;
     labelFromSource = builder.labelFromSource;
     labelFromTarget = builder.labelFromTarget;
-    directional = builder.directional;
     label = builder.label;
-    cardinality = builder.cardinality;
+    directional = builder.directional;
     description = builder.description;
+    cardinality = builder.cardinality;
     attributes = builder.attributes;
   }
 
@@ -245,17 +245,6 @@ public class RelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the directional.
-   *
-   * Specifies whether the relationship is directional.
-   *
-   * @return the directional
-   */
-  public Boolean directional() {
-    return directional;
-  }
-
-  /**
    * Gets the label.
    *
    * The displayable text for this relationship element.
@@ -267,14 +256,14 @@ public class RelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the cardinality.
+   * Gets the directional.
    *
-   * The number of data points the specific property can represent.
+   * Specifies whether the relationship is directional.
    *
-   * @return the cardinality
+   * @return the directional
    */
-  public String cardinality() {
-    return cardinality;
+  public Boolean directional() {
+    return directional;
   }
 
   /**
@@ -286,6 +275,17 @@ public class RelationshipType extends GenericModel {
    */
   public String description() {
     return description;
+  }
+
+  /**
+   * Gets the cardinality.
+   *
+   * The number of data points the specific property can represent.
+   *
+   * @return the cardinality
+   */
+  public String cardinality() {
+    return cardinality;
   }
 
   /**

@@ -45,21 +45,21 @@ public class DataModelRecordTypeTest {
     assertEquals(dataModelEntityTypeModel.xDefault(), Boolean.valueOf(true));
 
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
+      .label("testString")
       .matchingType("testString")
       .attributeType("testString")
-      .classification("testString")
-      .label("testString")
       .indexed(true)
-      .cardinality("testString")
+      .classification("testString")
       .description("testString")
+      .cardinality("testString")
       .build();
+    assertEquals(dataModelAttributeModel.label(), "testString");
     assertEquals(dataModelAttributeModel.matchingType(), "testString");
     assertEquals(dataModelAttributeModel.attributeType(), "testString");
-    assertEquals(dataModelAttributeModel.classification(), "testString");
-    assertEquals(dataModelAttributeModel.label(), "testString");
     assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelAttributeModel.cardinality(), "testString");
+    assertEquals(dataModelAttributeModel.classification(), "testString");
     assertEquals(dataModelAttributeModel.description(), "testString");
+    assertEquals(dataModelAttributeModel.cardinality(), "testString");
 
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
       .label("testString")

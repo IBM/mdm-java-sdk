@@ -23,7 +23,10 @@ public class ReplaceDataRelationshipOptions extends GenericModel {
 
   protected String id;
   protected Map<String, Object> newAttributes;
+  protected String newTypeName;
   protected String newId;
+  protected DataVertexSummary newSource;
+  protected DataVertexSummary newTarget;
 
   /**
    * Builder.
@@ -31,12 +34,18 @@ public class ReplaceDataRelationshipOptions extends GenericModel {
   public static class Builder {
     private String id;
     private Map<String, Object> newAttributes;
+    private String newTypeName;
     private String newId;
+    private DataVertexSummary newSource;
+    private DataVertexSummary newTarget;
 
     private Builder(ReplaceDataRelationshipOptions replaceDataRelationshipOptions) {
       this.id = replaceDataRelationshipOptions.id;
       this.newAttributes = replaceDataRelationshipOptions.newAttributes;
+      this.newTypeName = replaceDataRelationshipOptions.newTypeName;
       this.newId = replaceDataRelationshipOptions.newId;
+      this.newSource = replaceDataRelationshipOptions.newSource;
+      this.newTarget = replaceDataRelationshipOptions.newTarget;
     }
 
     /**
@@ -50,10 +59,12 @@ public class ReplaceDataRelationshipOptions extends GenericModel {
      *
      * @param id the id
      * @param newAttributes the newAttributes
+     * @param newTypeName the newTypeName
      */
-    public Builder(String id, Map<String, Object> newAttributes) {
+    public Builder(String id, Map<String, Object> newAttributes, String newTypeName) {
       this.id = id;
       this.newAttributes = newAttributes;
+      this.newTypeName = newTypeName;
     }
 
     /**
@@ -88,6 +99,17 @@ public class ReplaceDataRelationshipOptions extends GenericModel {
     }
 
     /**
+     * Set the newTypeName.
+     *
+     * @param newTypeName the newTypeName
+     * @return the ReplaceDataRelationshipOptions builder
+     */
+    public Builder newTypeName(String newTypeName) {
+      this.newTypeName = newTypeName;
+      return this;
+    }
+
+    /**
      * Set the newId.
      *
      * @param newId the newId
@@ -97,6 +119,28 @@ public class ReplaceDataRelationshipOptions extends GenericModel {
       this.newId = newId;
       return this;
     }
+
+    /**
+     * Set the newSource.
+     *
+     * @param newSource the newSource
+     * @return the ReplaceDataRelationshipOptions builder
+     */
+    public Builder newSource(DataVertexSummary newSource) {
+      this.newSource = newSource;
+      return this;
+    }
+
+    /**
+     * Set the newTarget.
+     *
+     * @param newTarget the newTarget
+     * @return the ReplaceDataRelationshipOptions builder
+     */
+    public Builder newTarget(DataVertexSummary newTarget) {
+      this.newTarget = newTarget;
+      return this;
+    }
   }
 
   protected ReplaceDataRelationshipOptions(Builder builder) {
@@ -104,9 +148,14 @@ public class ReplaceDataRelationshipOptions extends GenericModel {
       "id cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.newAttributes,
       "newAttributes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.newTypeName,
+      "newTypeName cannot be null");
     id = builder.id;
     newAttributes = builder.newAttributes;
+    newTypeName = builder.newTypeName;
     newId = builder.newId;
+    newSource = builder.newSource;
+    newTarget = builder.newTarget;
   }
 
   /**
@@ -141,6 +190,17 @@ public class ReplaceDataRelationshipOptions extends GenericModel {
   }
 
   /**
+   * Gets the newTypeName.
+   *
+   * The name of the relationship type as defined in the data model.
+   *
+   * @return the newTypeName
+   */
+  public String newTypeName() {
+    return newTypeName;
+  }
+
+  /**
    * Gets the newId.
    *
    * The id of the element.
@@ -149,6 +209,28 @@ public class ReplaceDataRelationshipOptions extends GenericModel {
    */
   public String newId() {
     return newId;
+  }
+
+  /**
+   * Gets the newSource.
+   *
+   * Core information about a vertex on the graph.
+   *
+   * @return the newSource
+   */
+  public DataVertexSummary newSource() {
+    return newSource;
+  }
+
+  /**
+   * Gets the newTarget.
+   *
+   * Core information about a vertex on the graph.
+   *
+   * @return the newTarget
+   */
+  public DataVertexSummary newTarget() {
+    return newTarget;
   }
 }
 

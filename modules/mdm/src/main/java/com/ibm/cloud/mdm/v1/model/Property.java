@@ -12,45 +12,58 @@
  */
 package com.ibm.cloud.mdm.v1.model;
 
-import java.util.List;
-
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * A single comparator.
+ * Property details.
  */
-public class SingleCompareMethod extends GenericModel {
+public class Property extends GenericModel {
 
-  protected Float score;
-  protected List<SingleCompareMethodMethod> methods;
+  @SerializedName("data_type")
+  protected String dataType;
+  @SerializedName("default_display_name")
+  protected String defaultDisplayName;
+  protected String designation;
   protected String name;
 
   /**
-   * Gets the score.
+   * Gets the dataType.
    *
-   * The maximum comparison score computed for the current comparator.
+   * The data type of this property.
    *
-   * @return the score
+   * @return the dataType
    */
-  public Float getScore() {
-    return score;
+  public String getDataType() {
+    return dataType;
   }
 
   /**
-   * Gets the methods.
+   * Gets the defaultDisplayName.
    *
-   * Collection of compare methods in the same comparison group.
+   * The displayable text for this property.
    *
-   * @return the methods
+   * @return the defaultDisplayName
    */
-  public List<SingleCompareMethodMethod> getMethods() {
-    return methods;
+  public String getDefaultDisplayName() {
+    return defaultDisplayName;
+  }
+
+  /**
+   * Gets the designation.
+   *
+   * The designation of this property.
+   *
+   * @return the designation
+   */
+  public String getDesignation() {
+    return designation;
   }
 
   /**
    * Gets the name.
    *
-   * The name of a comparator e.g. name_compare.
+   * The name of this property.
    *
    * @return the name
    */

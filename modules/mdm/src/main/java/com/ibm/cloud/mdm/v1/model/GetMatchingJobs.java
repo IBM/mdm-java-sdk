@@ -31,8 +31,8 @@ public class GetMatchingJobs extends GenericModel {
   protected String image;
   @SerializedName("started_at")
   protected String startedAt;
-  protected Map<String, Object> summary;
   protected String status;
+  protected Map<String, Object> summary;
   protected String id;
 
   /**
@@ -91,17 +91,6 @@ public class GetMatchingJobs extends GenericModel {
   }
 
   /**
-   * Gets the summary.
-   *
-   * Summary of a job.
-   *
-   * @return the summary
-   */
-  public Map<String, Object> getSummary() {
-    return summary;
-  }
-
-  /**
    * Gets the status.
    *
    * Status of a job. One Of: Queued, Running, Completed, Failed, Canceled.
@@ -110,6 +99,17 @@ public class GetMatchingJobs extends GenericModel {
    */
   public String getStatus() {
     return status;
+  }
+
+  /**
+   * Gets the summary.
+   *
+   * Summary of a job.
+   *
+   * @return the summary
+   */
+  public Map<String, Object> getSummary() {
+    return summary;
   }
 
   /**

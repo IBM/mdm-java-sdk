@@ -22,34 +22,34 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReplaceModelInstanceMetadataOptions extends GenericModel {
 
-  protected String label;
   protected List<InstanceMetadataProject> projects;
-  protected String cosCrn;
   protected InstanceMetadataBulkloadBucket bulkloadBucket;
   protected List<InstanceMetadataCatalog> catalogs;
   protected String jobProjectId;
   protected String cosEndpoint;
+  protected String cosCrn;
+  protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
     private List<InstanceMetadataProject> projects;
-    private String cosCrn;
     private InstanceMetadataBulkloadBucket bulkloadBucket;
     private List<InstanceMetadataCatalog> catalogs;
     private String jobProjectId;
     private String cosEndpoint;
+    private String cosCrn;
+    private String label;
 
     private Builder(ReplaceModelInstanceMetadataOptions replaceModelInstanceMetadataOptions) {
-      this.label = replaceModelInstanceMetadataOptions.label;
       this.projects = replaceModelInstanceMetadataOptions.projects;
-      this.cosCrn = replaceModelInstanceMetadataOptions.cosCrn;
       this.bulkloadBucket = replaceModelInstanceMetadataOptions.bulkloadBucket;
       this.catalogs = replaceModelInstanceMetadataOptions.catalogs;
       this.jobProjectId = replaceModelInstanceMetadataOptions.jobProjectId;
       this.cosEndpoint = replaceModelInstanceMetadataOptions.cosEndpoint;
+      this.cosCrn = replaceModelInstanceMetadataOptions.cosCrn;
+      this.label = replaceModelInstanceMetadataOptions.label;
     }
 
     /**
@@ -100,17 +100,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the ReplaceModelInstanceMetadataOptions builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
      * Set the projects.
      * Existing projects will be replaced.
      *
@@ -119,17 +108,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
      */
     public Builder projects(List<InstanceMetadataProject> projects) {
       this.projects = projects;
-      return this;
-    }
-
-    /**
-     * Set the cosCrn.
-     *
-     * @param cosCrn the cosCrn
-     * @return the ReplaceModelInstanceMetadataOptions builder
-     */
-    public Builder cosCrn(String cosCrn) {
-      this.cosCrn = cosCrn;
       return this;
     }
 
@@ -177,16 +155,38 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
       this.cosEndpoint = cosEndpoint;
       return this;
     }
+
+    /**
+     * Set the cosCrn.
+     *
+     * @param cosCrn the cosCrn
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder cosCrn(String cosCrn) {
+      this.cosCrn = cosCrn;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
   }
 
   protected ReplaceModelInstanceMetadataOptions(Builder builder) {
-    label = builder.label;
     projects = builder.projects;
-    cosCrn = builder.cosCrn;
     bulkloadBucket = builder.bulkloadBucket;
     catalogs = builder.catalogs;
     jobProjectId = builder.jobProjectId;
     cosEndpoint = builder.cosEndpoint;
+    cosCrn = builder.cosCrn;
+    label = builder.label;
   }
 
   /**
@@ -199,17 +199,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
   }
 
   /**
-   * Gets the label.
-   *
-   * Label for instance metadata.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
    * Gets the projects.
    *
    * Collection of project objects as available in Watson Knowledge Catalog (WKC).
@@ -218,17 +207,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
    */
   public List<InstanceMetadataProject> projects() {
     return projects;
-  }
-
-  /**
-   * Gets the cosCrn.
-   *
-   * The cloud resource Name of cloud object storage.
-   *
-   * @return the cosCrn
-   */
-  public String cosCrn() {
-    return cosCrn;
   }
 
   /**
@@ -273,6 +251,28 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
    */
   public String cosEndpoint() {
     return cosEndpoint;
+  }
+
+  /**
+   * Gets the cosCrn.
+   *
+   * The cloud resource Name of cloud object storage.
+   *
+   * @return the cosCrn
+   */
+  public String cosCrn() {
+    return cosCrn;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * Label for instance metadata.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 }
 

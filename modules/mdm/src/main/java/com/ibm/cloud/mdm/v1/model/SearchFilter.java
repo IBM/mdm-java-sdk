@@ -28,8 +28,6 @@ public class SearchFilter extends GenericModel {
   public interface Type {
     /** record. */
     String RECORD = "record";
-    /** collection. */
-    String COLLECTION = "collection";
     /** source. */
     String SOURCE = "source";
   }

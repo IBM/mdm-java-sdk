@@ -23,6 +23,7 @@ public class ReplaceDataRecordOptions extends GenericModel {
 
   protected Long id;
   protected Map<String, Object> newAttributes;
+  protected String newTypeName;
   protected String newId;
 
   /**
@@ -31,11 +32,13 @@ public class ReplaceDataRecordOptions extends GenericModel {
   public static class Builder {
     private Long id;
     private Map<String, Object> newAttributes;
+    private String newTypeName;
     private String newId;
 
     private Builder(ReplaceDataRecordOptions replaceDataRecordOptions) {
       this.id = replaceDataRecordOptions.id;
       this.newAttributes = replaceDataRecordOptions.newAttributes;
+      this.newTypeName = replaceDataRecordOptions.newTypeName;
       this.newId = replaceDataRecordOptions.newId;
     }
 
@@ -50,10 +53,12 @@ public class ReplaceDataRecordOptions extends GenericModel {
      *
      * @param id the id
      * @param newAttributes the newAttributes
+     * @param newTypeName the newTypeName
      */
-    public Builder(Long id, Map<String, Object> newAttributes) {
+    public Builder(Long id, Map<String, Object> newAttributes, String newTypeName) {
       this.id = id;
       this.newAttributes = newAttributes;
+      this.newTypeName = newTypeName;
     }
 
     /**
@@ -88,6 +93,17 @@ public class ReplaceDataRecordOptions extends GenericModel {
     }
 
     /**
+     * Set the newTypeName.
+     *
+     * @param newTypeName the newTypeName
+     * @return the ReplaceDataRecordOptions builder
+     */
+    public Builder newTypeName(String newTypeName) {
+      this.newTypeName = newTypeName;
+      return this;
+    }
+
+    /**
      * Set the newId.
      *
      * @param newId the newId
@@ -104,8 +120,11 @@ public class ReplaceDataRecordOptions extends GenericModel {
       "id cannot be num");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.newAttributes,
       "newAttributes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.newTypeName,
+      "newTypeName cannot be null");
     id = builder.id;
     newAttributes = builder.newAttributes;
+    newTypeName = builder.newTypeName;
     newId = builder.newId;
   }
 
@@ -138,6 +157,17 @@ public class ReplaceDataRecordOptions extends GenericModel {
    */
   public Map<String, Object> newAttributes() {
     return newAttributes;
+  }
+
+  /**
+   * Gets the newTypeName.
+   *
+   * The name of the record type as defined in the data model.
+   *
+   * @return the newTypeName
+   */
+  public String newTypeName() {
+    return newTypeName;
   }
 
   /**

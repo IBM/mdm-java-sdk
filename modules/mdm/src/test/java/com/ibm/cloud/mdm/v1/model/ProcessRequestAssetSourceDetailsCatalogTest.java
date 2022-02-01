@@ -32,13 +32,13 @@ public class ProcessRequestAssetSourceDetailsCatalogTest {
   @Test
   public void testProcessRequestAssetSourceDetailsCatalog() throws Throwable {
     ProcessRequestAssetSourceDetailsCatalog processRequestAssetSourceDetailsCatalogModel = new ProcessRequestAssetSourceDetailsCatalog.Builder()
-      .cosBucketName("testString")
       .cosApiKey("testString")
+      .cosBucketName("testString")
       .cosEndpoint("testString")
       .id("testString")
       .build();
-    assertEquals(processRequestAssetSourceDetailsCatalogModel.cosBucketName(), "testString");
     assertEquals(processRequestAssetSourceDetailsCatalogModel.cosApiKey(), "testString");
+    assertEquals(processRequestAssetSourceDetailsCatalogModel.cosBucketName(), "testString");
     assertEquals(processRequestAssetSourceDetailsCatalogModel.cosEndpoint(), "testString");
     assertEquals(processRequestAssetSourceDetailsCatalogModel.id(), "testString");
 
@@ -46,8 +46,8 @@ public class ProcessRequestAssetSourceDetailsCatalogTest {
 
     ProcessRequestAssetSourceDetailsCatalog processRequestAssetSourceDetailsCatalogModelNew = TestUtilities.deserialize(json, ProcessRequestAssetSourceDetailsCatalog.class);
     assertTrue(processRequestAssetSourceDetailsCatalogModelNew instanceof ProcessRequestAssetSourceDetailsCatalog);
-    assertEquals(processRequestAssetSourceDetailsCatalogModelNew.cosBucketName(), "testString");
     assertEquals(processRequestAssetSourceDetailsCatalogModelNew.cosApiKey(), "testString");
+    assertEquals(processRequestAssetSourceDetailsCatalogModelNew.cosBucketName(), "testString");
     assertEquals(processRequestAssetSourceDetailsCatalogModelNew.cosEndpoint(), "testString");
     assertEquals(processRequestAssetSourceDetailsCatalogModelNew.id(), "testString");
   }

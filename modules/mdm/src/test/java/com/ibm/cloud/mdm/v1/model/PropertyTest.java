@@ -13,12 +13,7 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.EntityBreakdown;
-import com.ibm.cloud.mdm.v1.model.MatchEntityCountStats;
-import com.ibm.cloud.mdm.v1.model.MatchEntitySizeStats;
-import com.ibm.cloud.mdm.v1.model.MatchStatistics;
-import com.ibm.cloud.mdm.v1.model.Status;
-import com.ibm.cloud.mdm.v1.model.Summary;
+import com.ibm.cloud.mdm.v1.model.Property;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -28,19 +23,18 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the MatchStatistics model.
+ * Unit test class for the Property model.
  */
-public class MatchStatisticsTest {
+public class PropertyTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testMatchStatistics() throws Throwable {
-    MatchStatistics matchStatisticsModel = new MatchStatistics();
-    assertNull(matchStatisticsModel.getEntityBreakdown());
-    assertNull(matchStatisticsModel.getEntitySizeDistribution());
-    assertNull(matchStatisticsModel.getLargestEntities());
-    assertNull(matchStatisticsModel.getSummary());
-    assertNull(matchStatisticsModel.getStatus());
+  public void testProperty() throws Throwable {
+    Property propertyModel = new Property();
+    assertNull(propertyModel.getDataType());
+    assertNull(propertyModel.getDefaultDisplayName());
+    assertNull(propertyModel.getDesignation());
+    assertNull(propertyModel.getName());
   }
 }

@@ -21,9 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericModel {
 
+  protected String projectId;
   protected String catalogId;
   protected Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
-  protected String projectId;
   protected String description;
   protected String name;
 
@@ -31,16 +31,16 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
    * Builder.
    */
   public static class Builder {
+    private String projectId;
     private String catalogId;
     private Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
-    private String projectId;
     private String description;
     private String name;
 
     private Builder(ReplaceConfiguratorConfigurationMetadataOptions replaceConfiguratorConfigurationMetadataOptions) {
+      this.projectId = replaceConfiguratorConfigurationMetadataOptions.projectId;
       this.catalogId = replaceConfiguratorConfigurationMetadataOptions.catalogId;
       this.pairAnalysis = replaceConfiguratorConfigurationMetadataOptions.pairAnalysis;
-      this.projectId = replaceConfiguratorConfigurationMetadataOptions.projectId;
       this.description = replaceConfiguratorConfigurationMetadataOptions.description;
       this.name = replaceConfiguratorConfigurationMetadataOptions.name;
     }
@@ -58,6 +58,17 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
      */
     public ReplaceConfiguratorConfigurationMetadataOptions build() {
       return new ReplaceConfiguratorConfigurationMetadataOptions(this);
+    }
+
+    /**
+     * Set the projectId.
+     *
+     * @param projectId the projectId
+     * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
+     */
+    public Builder projectId(String projectId) {
+      this.projectId = projectId;
+      return this;
     }
 
     /**
@@ -79,17 +90,6 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
      */
     public Builder pairAnalysis(Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis) {
       this.pairAnalysis = pairAnalysis;
-      return this;
-    }
-
-    /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
       return this;
     }
 
@@ -122,9 +122,9 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
      * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
      */
     public Builder configurationMetadata(ConfigurationMetadata configurationMetadata) {
+      this.projectId = configurationMetadata.projectId();
       this.catalogId = configurationMetadata.catalogId();
       this.pairAnalysis = configurationMetadata.pairAnalysis();
-      this.projectId = configurationMetadata.projectId();
       this.description = configurationMetadata.description();
       this.name = configurationMetadata.name();
       return this;
@@ -132,9 +132,9 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
   }
 
   protected ReplaceConfiguratorConfigurationMetadataOptions(Builder builder) {
+    projectId = builder.projectId;
     catalogId = builder.catalogId;
     pairAnalysis = builder.pairAnalysis;
-    projectId = builder.projectId;
     description = builder.description;
     name = builder.name;
   }
@@ -146,6 +146,17 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the projectId.
+   *
+   * The project id of the linked WKC project.
+   *
+   * @return the projectId
+   */
+  public String projectId() {
+    return projectId;
   }
 
   /**
@@ -168,17 +179,6 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
    */
   public Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis() {
     return pairAnalysis;
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * The project id of the linked WKC project.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
   }
 
   /**

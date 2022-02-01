@@ -35,20 +35,20 @@ public class DeleteMatchingRuleOptionsTest {
   @Test
   public void testDeleteMatchingRuleOptions() throws Throwable {
     RulesRequestRule rulesRequestRuleModel = new RulesRequestRule.Builder()
-      .ruleType("testString")
       .recordNumbers(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .ruleType("testString")
       .description("testString")
       .build();
-    assertEquals(rulesRequestRuleModel.ruleType(), "testString");
     assertEquals(rulesRequestRuleModel.recordNumbers(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(rulesRequestRuleModel.ruleType(), "testString");
     assertEquals(rulesRequestRuleModel.description(), "testString");
 
     DeleteMatchingRuleOptions deleteMatchingRuleOptionsModel = new DeleteMatchingRuleOptions.Builder()
-      .entityType("testString")
       .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
+      .entityType("testString")
       .build();
-    assertEquals(deleteMatchingRuleOptionsModel.entityType(), "testString");
     assertEquals(deleteMatchingRuleOptionsModel.rules(), new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)));
+    assertEquals(deleteMatchingRuleOptionsModel.entityType(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

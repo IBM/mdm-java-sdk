@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataProject extends GenericModel {
 
+  @SerializedName("project_id")
+  protected String projectId;
+  @SerializedName("data_asset_id")
+  protected String dataAssetId;
   @SerializedName("asset_id")
   protected String assetId;
   @SerializedName("project_name")
   protected String projectName;
-  @SerializedName("data_asset_id")
-  protected String dataAssetId;
-  @SerializedName("project_id")
-  protected String projectId;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String projectId;
+    private String dataAssetId;
     private String assetId;
     private String projectName;
-    private String dataAssetId;
-    private String projectId;
 
     private Builder(InstanceMetadataProject instanceMetadataProject) {
+      this.projectId = instanceMetadataProject.projectId;
+      this.dataAssetId = instanceMetadataProject.dataAssetId;
       this.assetId = instanceMetadataProject.assetId;
       this.projectName = instanceMetadataProject.projectName;
-      this.dataAssetId = instanceMetadataProject.dataAssetId;
-      this.projectId = instanceMetadataProject.projectId;
     }
 
     /**
@@ -70,6 +70,28 @@ public class InstanceMetadataProject extends GenericModel {
     }
 
     /**
+     * Set the projectId.
+     *
+     * @param projectId the projectId
+     * @return the InstanceMetadataProject builder
+     */
+    public Builder projectId(String projectId) {
+      this.projectId = projectId;
+      return this;
+    }
+
+    /**
+     * Set the dataAssetId.
+     *
+     * @param dataAssetId the dataAssetId
+     * @return the InstanceMetadataProject builder
+     */
+    public Builder dataAssetId(String dataAssetId) {
+      this.dataAssetId = dataAssetId;
+      return this;
+    }
+
+    /**
      * Set the assetId.
      *
      * @param assetId the assetId
@@ -90,37 +112,15 @@ public class InstanceMetadataProject extends GenericModel {
       this.projectName = projectName;
       return this;
     }
-
-    /**
-     * Set the dataAssetId.
-     *
-     * @param dataAssetId the dataAssetId
-     * @return the InstanceMetadataProject builder
-     */
-    public Builder dataAssetId(String dataAssetId) {
-      this.dataAssetId = dataAssetId;
-      return this;
-    }
-
-    /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the InstanceMetadataProject builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
-    }
   }
 
   protected InstanceMetadataProject(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.projectId,
       "projectId cannot be null");
+    projectId = builder.projectId;
+    dataAssetId = builder.dataAssetId;
     assetId = builder.assetId;
     projectName = builder.projectName;
-    dataAssetId = builder.dataAssetId;
-    projectId = builder.projectId;
   }
 
   /**
@@ -130,6 +130,28 @@ public class InstanceMetadataProject extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the projectId.
+   *
+   * Unique Identifier of the project associated with instance.
+   *
+   * @return the projectId
+   */
+  public String projectId() {
+    return projectId;
+  }
+
+  /**
+   * Gets the dataAssetId.
+   *
+   * Identifier for the data asset created on the project.
+   *
+   * @return the dataAssetId
+   */
+  public String dataAssetId() {
+    return dataAssetId;
   }
 
   /**
@@ -152,28 +174,6 @@ public class InstanceMetadataProject extends GenericModel {
    */
   public String projectName() {
     return projectName;
-  }
-
-  /**
-   * Gets the dataAssetId.
-   *
-   * Identifier for the data asset created on the project.
-   *
-   * @return the dataAssetId
-   */
-  public String dataAssetId() {
-    return dataAssetId;
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * Unique Identifier of the project associated with instance.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
   }
 }
 

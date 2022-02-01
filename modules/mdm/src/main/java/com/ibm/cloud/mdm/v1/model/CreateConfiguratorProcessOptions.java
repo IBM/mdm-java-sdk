@@ -20,12 +20,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateConfiguratorProcessOptions extends GenericModel {
 
   protected String processName;
-  protected ProcessRequestAssetSourceDetails assetSourceDetails;
+  protected String recordType;
+  protected Boolean doForceMatching;
   protected String assetIds;
   protected String initiator;
   protected Boolean doDerive;
-  protected Boolean doForceMatching;
-  protected String recordType;
+  protected ProcessRequestAssetSourceDetails assetSourceDetails;
   protected String entityType;
 
   /**
@@ -33,22 +33,22 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
    */
   public static class Builder {
     private String processName;
-    private ProcessRequestAssetSourceDetails assetSourceDetails;
+    private String recordType;
+    private Boolean doForceMatching;
     private String assetIds;
     private String initiator;
     private Boolean doDerive;
-    private Boolean doForceMatching;
-    private String recordType;
+    private ProcessRequestAssetSourceDetails assetSourceDetails;
     private String entityType;
 
     private Builder(CreateConfiguratorProcessOptions createConfiguratorProcessOptions) {
       this.processName = createConfiguratorProcessOptions.processName;
-      this.assetSourceDetails = createConfiguratorProcessOptions.assetSourceDetails;
+      this.recordType = createConfiguratorProcessOptions.recordType;
+      this.doForceMatching = createConfiguratorProcessOptions.doForceMatching;
       this.assetIds = createConfiguratorProcessOptions.assetIds;
       this.initiator = createConfiguratorProcessOptions.initiator;
       this.doDerive = createConfiguratorProcessOptions.doDerive;
-      this.doForceMatching = createConfiguratorProcessOptions.doForceMatching;
-      this.recordType = createConfiguratorProcessOptions.recordType;
+      this.assetSourceDetails = createConfiguratorProcessOptions.assetSourceDetails;
       this.entityType = createConfiguratorProcessOptions.entityType;
     }
 
@@ -88,13 +88,24 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
-     * Set the assetSourceDetails.
+     * Set the recordType.
      *
-     * @param assetSourceDetails the assetSourceDetails
+     * @param recordType the recordType
      * @return the CreateConfiguratorProcessOptions builder
      */
-    public Builder assetSourceDetails(ProcessRequestAssetSourceDetails assetSourceDetails) {
-      this.assetSourceDetails = assetSourceDetails;
+    public Builder recordType(String recordType) {
+      this.recordType = recordType;
+      return this;
+    }
+
+    /**
+     * Set the doForceMatching.
+     *
+     * @param doForceMatching the doForceMatching
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder doForceMatching(Boolean doForceMatching) {
+      this.doForceMatching = doForceMatching;
       return this;
     }
 
@@ -132,24 +143,13 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
-     * Set the doForceMatching.
+     * Set the assetSourceDetails.
      *
-     * @param doForceMatching the doForceMatching
+     * @param assetSourceDetails the assetSourceDetails
      * @return the CreateConfiguratorProcessOptions builder
      */
-    public Builder doForceMatching(Boolean doForceMatching) {
-      this.doForceMatching = doForceMatching;
-      return this;
-    }
-
-    /**
-     * Set the recordType.
-     *
-     * @param recordType the recordType
-     * @return the CreateConfiguratorProcessOptions builder
-     */
-    public Builder recordType(String recordType) {
-      this.recordType = recordType;
+    public Builder assetSourceDetails(ProcessRequestAssetSourceDetails assetSourceDetails) {
+      this.assetSourceDetails = assetSourceDetails;
       return this;
     }
 
@@ -169,12 +169,12 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.processName,
       "processName cannot be null");
     processName = builder.processName;
-    assetSourceDetails = builder.assetSourceDetails;
+    recordType = builder.recordType;
+    doForceMatching = builder.doForceMatching;
     assetIds = builder.assetIds;
     initiator = builder.initiator;
     doDerive = builder.doDerive;
-    doForceMatching = builder.doForceMatching;
-    recordType = builder.recordType;
+    assetSourceDetails = builder.assetSourceDetails;
     entityType = builder.entityType;
   }
 
@@ -199,14 +199,25 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
   }
 
   /**
-   * Gets the assetSourceDetails.
+   * Gets the recordType.
    *
-   * The asset source details for the data asset to be published for publish_data process.
+   * The record type which needs to be processed for match and publish_data processes.
    *
-   * @return the assetSourceDetails
+   * @return the recordType
    */
-  public ProcessRequestAssetSourceDetails assetSourceDetails() {
-    return assetSourceDetails;
+  public String recordType() {
+    return recordType;
+  }
+
+  /**
+   * Gets the doForceMatching.
+   *
+   * Flag to enable/disable force derive/match operations.
+   *
+   * @return the doForceMatching
+   */
+  public Boolean doForceMatching() {
+    return doForceMatching;
   }
 
   /**
@@ -244,25 +255,14 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
   }
 
   /**
-   * Gets the doForceMatching.
+   * Gets the assetSourceDetails.
    *
-   * Flag to enable/disable force derive/match operations.
+   * The asset source details for the data asset to be published for publish_data process.
    *
-   * @return the doForceMatching
+   * @return the assetSourceDetails
    */
-  public Boolean doForceMatching() {
-    return doForceMatching;
-  }
-
-  /**
-   * Gets the recordType.
-   *
-   * The record type which needs to be processed for match and publish_data processes.
-   *
-   * @return the recordType
-   */
-  public String recordType() {
-    return recordType;
+  public ProcessRequestAssetSourceDetails assetSourceDetails() {
+    return assetSourceDetails;
   }
 
   /**

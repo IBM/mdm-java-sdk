@@ -28,8 +28,8 @@ public class ProcessModelStatus extends GenericModel {
   protected String processName;
   @SerializedName("process_count")
   protected String processCount;
-  protected String status;
   protected String message;
+  protected String status;
 
   /**
    * Gets the recordTypeLabel.
@@ -76,17 +76,6 @@ public class ProcessModelStatus extends GenericModel {
   }
 
   /**
-   * Gets the status.
-   *
-   * Status of the Process execution.
-   *
-   * @return the status
-   */
-  public String getStatus() {
-    return status;
-  }
-
-  /**
    * Gets the message.
    *
    * Additional details about the Process execution.
@@ -95,6 +84,17 @@ public class ProcessModelStatus extends GenericModel {
    */
   public String getMessage() {
     return message;
+  }
+
+  /**
+   * Gets the status.
+   *
+   * Status of the Process execution.
+   *
+   * @return the status
+   */
+  public String getStatus() {
+    return status;
   }
 }
 

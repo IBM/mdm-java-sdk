@@ -34,10 +34,12 @@ public class ReplaceDataRecordOptionsTest {
     ReplaceDataRecordOptions replaceDataRecordOptionsModel = new ReplaceDataRecordOptions.Builder()
       .id(Long.valueOf("26"))
       .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .newTypeName("testString")
       .newId("testString")
       .build();
     assertEquals(replaceDataRecordOptionsModel.id(), Long.valueOf("26"));
     assertEquals(replaceDataRecordOptionsModel.newAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(replaceDataRecordOptionsModel.newTypeName(), "testString");
     assertEquals(replaceDataRecordOptionsModel.newId(), "testString");
   }
 

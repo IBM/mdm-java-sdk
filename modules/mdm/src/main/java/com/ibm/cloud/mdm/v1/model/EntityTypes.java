@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class EntityTypes extends GenericModel {
 
-  protected String label;
-  protected String description;
-  @SerializedName("data_type")
-  protected String dataType;
   protected Boolean editable;
   protected Boolean indexed;
+  @SerializedName("data_type")
+  protected String dataType;
+  protected String label;
+  protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
-    private String description;
-    private String dataType;
     private Boolean editable;
     private Boolean indexed;
+    private String dataType;
+    private String label;
+    private String description;
 
     private Builder(EntityTypes entityTypes) {
-      this.label = entityTypes.label;
-      this.description = entityTypes.description;
-      this.dataType = entityTypes.dataType;
       this.editable = entityTypes.editable;
       this.indexed = entityTypes.indexed;
+      this.dataType = entityTypes.dataType;
+      this.label = entityTypes.label;
+      this.description = entityTypes.description;
     }
 
     /**
@@ -54,12 +54,12 @@ public class EntityTypes extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param label the label
      * @param dataType the dataType
+     * @param label the label
      */
-    public Builder(String label, String dataType) {
-      this.label = label;
+    public Builder(String dataType, String label) {
       this.dataType = dataType;
+      this.label = label;
     }
 
     /**
@@ -69,39 +69,6 @@ public class EntityTypes extends GenericModel {
      */
     public EntityTypes build() {
       return new EntityTypes(this);
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the EntityTypes builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the EntityTypes builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
-     * Set the dataType.
-     *
-     * @param dataType the dataType
-     * @return the EntityTypes builder
-     */
-    public Builder dataType(String dataType) {
-      this.dataType = dataType;
-      return this;
     }
 
     /**
@@ -125,18 +92,51 @@ public class EntityTypes extends GenericModel {
       this.indexed = indexed;
       return this;
     }
+
+    /**
+     * Set the dataType.
+     *
+     * @param dataType the dataType
+     * @return the EntityTypes builder
+     */
+    public Builder dataType(String dataType) {
+      this.dataType = dataType;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the EntityTypes builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the EntityTypes builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
   }
 
   protected EntityTypes(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
-      "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
       "dataType cannot be null");
-    label = builder.label;
-    description = builder.description;
-    dataType = builder.dataType;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
+      "label cannot be null");
     editable = builder.editable;
     indexed = builder.indexed;
+    dataType = builder.dataType;
+    label = builder.label;
+    description = builder.description;
   }
 
   /**
@@ -146,39 +146,6 @@ public class EntityTypes extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the label.
-   *
-   * The displayable text for this system property.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
-   * Gets the description.
-   *
-   * The description of the system property.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
-   * Gets the dataType.
-   *
-   * The data type of the system property.
-   *
-   * @return the dataType
-   */
-  public String dataType() {
-    return dataType;
   }
 
   /**
@@ -201,6 +168,39 @@ public class EntityTypes extends GenericModel {
    */
   public Boolean indexed() {
     return indexed;
+  }
+
+  /**
+   * Gets the dataType.
+   *
+   * The data type of the system property.
+   *
+   * @return the dataType
+   */
+  public String dataType() {
+    return dataType;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * The displayable text for this system property.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * The description of the system property.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
   }
 }
 

@@ -41,10 +41,35 @@ public class CreateDataExportOptions extends GenericModel {
     String TSV = "tsv";
   }
 
+  /**
+   * The type of file compression used when exporting the output file. Required when a partition type of
+   * 'executor_count' is specified.
+   */
+  public interface CompressionType {
+    /** tar. */
+    String TAR = "tar";
+    /** tgz. */
+    String TGZ = "tgz";
+    /** zip. */
+    String ZIP = "zip";
+  }
+
+  /**
+   * The type of partitioning used when exporting the results.
+   */
+  public interface PartitionType {
+    /** none. */
+    String NONE = "none";
+    /** executor_count. */
+    String EXECUTOR_COUNT = "executor_count";
+  }
+
   protected String exportType;
   protected String format;
   protected DataSearchCriteria searchCriteria;
   protected String fileName;
+  protected String compressionType;
+  protected String partitionType;
 
   /**
    * Builder.
@@ -54,12 +79,16 @@ public class CreateDataExportOptions extends GenericModel {
     private String format;
     private DataSearchCriteria searchCriteria;
     private String fileName;
+    private String compressionType;
+    private String partitionType;
 
     private Builder(CreateDataExportOptions createDataExportOptions) {
       this.exportType = createDataExportOptions.exportType;
       this.format = createDataExportOptions.format;
       this.searchCriteria = createDataExportOptions.searchCriteria;
       this.fileName = createDataExportOptions.fileName;
+      this.compressionType = createDataExportOptions.compressionType;
+      this.partitionType = createDataExportOptions.partitionType;
     }
 
     /**
@@ -133,6 +162,28 @@ public class CreateDataExportOptions extends GenericModel {
       this.fileName = fileName;
       return this;
     }
+
+    /**
+     * Set the compressionType.
+     *
+     * @param compressionType the compressionType
+     * @return the CreateDataExportOptions builder
+     */
+    public Builder compressionType(String compressionType) {
+      this.compressionType = compressionType;
+      return this;
+    }
+
+    /**
+     * Set the partitionType.
+     *
+     * @param partitionType the partitionType
+     * @return the CreateDataExportOptions builder
+     */
+    public Builder partitionType(String partitionType) {
+      this.partitionType = partitionType;
+      return this;
+    }
   }
 
   protected CreateDataExportOptions(Builder builder) {
@@ -146,6 +197,8 @@ public class CreateDataExportOptions extends GenericModel {
     format = builder.format;
     searchCriteria = builder.searchCriteria;
     fileName = builder.fileName;
+    compressionType = builder.compressionType;
+    partitionType = builder.partitionType;
   }
 
   /**
@@ -199,6 +252,29 @@ public class CreateDataExportOptions extends GenericModel {
    */
   public String fileName() {
     return fileName;
+  }
+
+  /**
+   * Gets the compressionType.
+   *
+   * The type of file compression used when exporting the output file. Required when a partition type of
+   * 'executor_count' is specified.
+   *
+   * @return the compressionType
+   */
+  public String compressionType() {
+    return compressionType;
+  }
+
+  /**
+   * Gets the partitionType.
+   *
+   * The type of partitioning used when exporting the results.
+   *
+   * @return the partitionType
+   */
+  public String partitionType() {
+    return partitionType;
   }
 }
 

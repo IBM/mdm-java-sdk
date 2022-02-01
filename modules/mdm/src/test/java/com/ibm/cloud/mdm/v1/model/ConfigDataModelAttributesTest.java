@@ -13,7 +13,8 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.GetDataStorageMetadataOptions;
+import com.ibm.cloud.mdm.v1.model.ConfigDataModelAttributes;
+import com.ibm.cloud.mdm.v1.model.Property;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,15 +24,15 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the GetDataStorageMetadataOptions model.
+ * Unit test class for the ConfigDataModelAttributes model.
  */
-public class GetDataStorageMetadataOptionsTest {
+public class ConfigDataModelAttributesTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testGetDataStorageMetadataOptions() throws Throwable {
-    GetDataStorageMetadataOptions getDataStorageMetadataOptionsModel = new GetDataStorageMetadataOptions();
-    assertNotNull(getDataStorageMetadataOptionsModel);
+  public void testConfigDataModelAttributes() throws Throwable {
+    ConfigDataModelAttributes configDataModelAttributesModel = new ConfigDataModelAttributes();
+    assertNull(configDataModelAttributesModel.getAttributes());
   }
 }

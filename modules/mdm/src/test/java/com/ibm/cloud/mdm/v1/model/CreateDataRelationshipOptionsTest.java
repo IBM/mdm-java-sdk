@@ -14,6 +14,7 @@
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.CreateDataRelationshipOptions;
+import com.ibm.cloud.mdm.v1.model.DataVertexSummary;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -31,12 +32,23 @@ public class CreateDataRelationshipOptionsTest {
 
   @Test
   public void testCreateDataRelationshipOptions() throws Throwable {
-    CreateDataRelationshipOptions createDataRelationshipOptionsModel = new CreateDataRelationshipOptions.Builder()
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+    DataVertexSummary dataVertexSummaryModel = new DataVertexSummary.Builder()
       .id("testString")
       .build();
+    assertEquals(dataVertexSummaryModel.id(), "testString");
+
+    CreateDataRelationshipOptions createDataRelationshipOptionsModel = new CreateDataRelationshipOptions.Builder()
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .typeName("testString")
+      .id("testString")
+      .source(dataVertexSummaryModel)
+      .target(dataVertexSummaryModel)
+      .build();
     assertEquals(createDataRelationshipOptionsModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(createDataRelationshipOptionsModel.typeName(), "testString");
     assertEquals(createDataRelationshipOptionsModel.id(), "testString");
+    assertEquals(createDataRelationshipOptionsModel.source(), dataVertexSummaryModel);
+    assertEquals(createDataRelationshipOptionsModel.target(), dataVertexSummaryModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

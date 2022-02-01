@@ -33,14 +33,14 @@ public class SingleRecordRequestTest {
   @Test
   public void testSingleRecordRequest() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
-      .recordId("testString")
       .recordLastUpdated(Long.valueOf("26"))
       .recordSource("testString")
+      .recordId("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
     assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
+    assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
     SingleRecordRequest singleRecordRequestModel = new SingleRecordRequest.Builder()

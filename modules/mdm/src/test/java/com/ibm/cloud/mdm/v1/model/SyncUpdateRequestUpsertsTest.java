@@ -15,6 +15,7 @@ package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.DataRecord;
 import com.ibm.cloud.mdm.v1.model.DataRelationship;
+import com.ibm.cloud.mdm.v1.model.DataVertexSummary;
 import com.ibm.cloud.mdm.v1.model.SyncUpdateRequestUpserts;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -38,16 +39,29 @@ public class SyncUpdateRequestUpsertsTest {
     DataRecord dataRecordModel = new DataRecord.Builder()
       .id("testString")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .typeName("testString")
       .build();
     assertEquals(dataRecordModel.id(), "testString");
     assertEquals(dataRecordModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataRecordModel.typeName(), "testString");
+
+    DataVertexSummary dataVertexSummaryModel = new DataVertexSummary.Builder()
+      .id("testString")
+      .build();
+    assertEquals(dataVertexSummaryModel.id(), "testString");
 
     DataRelationship dataRelationshipModel = new DataRelationship.Builder()
       .id("testString")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .typeName("testString")
+      .source(dataVertexSummaryModel)
+      .target(dataVertexSummaryModel)
       .build();
     assertEquals(dataRelationshipModel.id(), "testString");
     assertEquals(dataRelationshipModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataRelationshipModel.typeName(), "testString");
+    assertEquals(dataRelationshipModel.source(), dataVertexSummaryModel);
+    assertEquals(dataRelationshipModel.target(), dataVertexSummaryModel);
 
     SyncUpdateRequestUpserts syncUpdateRequestUpsertsModel = new SyncUpdateRequestUpserts.Builder()
       .records(new java.util.ArrayList<DataRecord>(java.util.Arrays.asList(dataRecordModel)))
