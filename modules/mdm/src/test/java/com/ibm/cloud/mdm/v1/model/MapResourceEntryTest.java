@@ -37,16 +37,16 @@ public class MapResourceEntryTest {
       .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .category("testString")
       .dataType("testString")
+      .key("testString")
       .cardinality("testString")
       .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .key("testString")
       .build();
     assertEquals(mapResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(mapResourceEntryModel.category(), "testString");
     assertEquals(mapResourceEntryModel.dataType(), "testString");
+    assertEquals(mapResourceEntryModel.key(), "testString");
     assertEquals(mapResourceEntryModel.cardinality(), "testString");
     assertEquals(mapResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(mapResourceEntryModel.key(), "testString");
 
     String json = TestUtilities.serialize(mapResourceEntryModel);
 
@@ -54,8 +54,8 @@ public class MapResourceEntryTest {
     assertTrue(mapResourceEntryModelNew instanceof MapResourceEntry);
     assertEquals(mapResourceEntryModelNew.category(), "testString");
     assertEquals(mapResourceEntryModelNew.dataType(), "testString");
-    assertEquals(mapResourceEntryModelNew.cardinality(), "testString");
     assertEquals(mapResourceEntryModelNew.key(), "testString");
+    assertEquals(mapResourceEntryModelNew.cardinality(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

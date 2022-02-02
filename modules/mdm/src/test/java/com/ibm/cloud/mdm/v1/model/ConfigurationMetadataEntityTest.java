@@ -32,24 +32,24 @@ public class ConfigurationMetadataEntityTest {
   @Test
   public void testConfigurationMetadataEntity() throws Throwable {
     ConfigurationMetadataEntity configurationMetadataEntityModel = new ConfigurationMetadataEntity.Builder()
-      .jobId("testString")
       .pairOffset(Long.valueOf("26"))
       .tunedConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .currentConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .jobId("testString")
       .status("testString")
       .build();
-    assertEquals(configurationMetadataEntityModel.jobId(), "testString");
     assertEquals(configurationMetadataEntityModel.pairOffset(), Long.valueOf("26"));
     assertEquals(configurationMetadataEntityModel.tunedConfiguration(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
     assertEquals(configurationMetadataEntityModel.currentConfiguration(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(configurationMetadataEntityModel.jobId(), "testString");
     assertEquals(configurationMetadataEntityModel.status(), "testString");
 
     String json = TestUtilities.serialize(configurationMetadataEntityModel);
 
     ConfigurationMetadataEntity configurationMetadataEntityModelNew = TestUtilities.deserialize(json, ConfigurationMetadataEntity.class);
     assertTrue(configurationMetadataEntityModelNew instanceof ConfigurationMetadataEntity);
-    assertEquals(configurationMetadataEntityModelNew.jobId(), "testString");
     assertEquals(configurationMetadataEntityModelNew.pairOffset(), Long.valueOf("26"));
+    assertEquals(configurationMetadataEntityModelNew.jobId(), "testString");
     assertEquals(configurationMetadataEntityModelNew.status(), "testString");
   }
 }

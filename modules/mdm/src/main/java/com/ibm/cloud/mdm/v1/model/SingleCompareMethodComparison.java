@@ -23,23 +23,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SingleCompareMethodComparison extends GenericModel {
 
-  protected Float score;
-  protected Map<String, Object> details;
-  protected Float distance;
   @SerializedName("feature_vector")
   protected Map<String, Object> featureVector;
+  protected Map<String, Object> details;
+  protected Float distance;
+  protected Float score;
   protected List<String> values;
   protected List<String> types;
 
   /**
-   * Gets the score.
+   * Gets the featureVector.
    *
-   * The comparison score of compared values.
+   * Collection of feature outcomes of the current compared values.
    *
-   * @return the score
+   * @return the featureVector
    */
-  public Float getScore() {
-    return score;
+  public Map<String, Object> getFeatureVector() {
+    return featureVector;
   }
 
   /**
@@ -65,14 +65,14 @@ public class SingleCompareMethodComparison extends GenericModel {
   }
 
   /**
-   * Gets the featureVector.
+   * Gets the score.
    *
-   * Collection of feature outcomes of the current compared values.
+   * The comparison score of compared values.
    *
-   * @return the featureVector
+   * @return the score
    */
-  public Map<String, Object> getFeatureVector() {
-    return featureVector;
+  public Float getScore() {
+    return score;
   }
 
   /**

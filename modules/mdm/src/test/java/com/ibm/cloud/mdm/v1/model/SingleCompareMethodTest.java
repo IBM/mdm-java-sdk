@@ -36,8 +36,8 @@ public class SingleCompareMethodTest {
   @Test
   public void testSingleCompareMethod() throws Throwable {
     SingleCompareMethod singleCompareMethodModel = new SingleCompareMethod();
-    assertNull(singleCompareMethodModel.getMethods());
     assertNull(singleCompareMethodModel.getScore());
+    assertNull(singleCompareMethodModel.getMethods());
     assertNull(singleCompareMethodModel.getName());
   }
 }

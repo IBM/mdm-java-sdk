@@ -36,7 +36,7 @@ public class ProcessModelStatusTest {
     assertNull(processModelStatusModel.getRecordType());
     assertNull(processModelStatusModel.getProcessName());
     assertNull(processModelStatusModel.getProcessCount());
-    assertNull(processModelStatusModel.getStatus());
     assertNull(processModelStatusModel.getMessage());
+    assertNull(processModelStatusModel.getStatus());
   }
 }

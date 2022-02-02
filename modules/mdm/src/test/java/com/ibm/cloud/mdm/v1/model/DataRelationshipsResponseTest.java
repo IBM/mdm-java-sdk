@@ -15,6 +15,7 @@ package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.DataRelationship;
 import com.ibm.cloud.mdm.v1.model.DataRelationshipsResponse;
+import com.ibm.cloud.mdm.v1.model.DataVertexSummary;
 import com.ibm.cloud.mdm.v1.model.PagedResponseFirst;
 import com.ibm.cloud.mdm.v1.model.PagedResponseLast;
 import com.ibm.cloud.mdm.v1.model.PagedResponseNext;

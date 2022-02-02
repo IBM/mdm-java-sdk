@@ -13,12 +13,7 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.EntityBreakdown;
-import com.ibm.cloud.mdm.v1.model.MatchEntityCountStats;
-import com.ibm.cloud.mdm.v1.model.MatchEntitySizeStats;
-import com.ibm.cloud.mdm.v1.model.MatchStatistics;
-import com.ibm.cloud.mdm.v1.model.Status;
-import com.ibm.cloud.mdm.v1.model.Summary;
+import com.ibm.cloud.mdm.v1.model.GetConfiguratorConfigDataModelAttributesOptions;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -28,19 +23,25 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the MatchStatistics model.
+ * Unit test class for the GetConfiguratorConfigDataModelAttributesOptions model.
  */
-public class MatchStatisticsTest {
+public class GetConfiguratorConfigDataModelAttributesOptionsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testMatchStatistics() throws Throwable {
-    MatchStatistics matchStatisticsModel = new MatchStatistics();
-    assertNull(matchStatisticsModel.getEntityBreakdown());
-    assertNull(matchStatisticsModel.getEntitySizeDistribution());
-    assertNull(matchStatisticsModel.getLargestEntities());
-    assertNull(matchStatisticsModel.getSummary());
-    assertNull(matchStatisticsModel.getStatus());
+  public void testGetConfiguratorConfigDataModelAttributesOptions() throws Throwable {
+    GetConfiguratorConfigDataModelAttributesOptions getConfiguratorConfigDataModelAttributesOptionsModel = new GetConfiguratorConfigDataModelAttributesOptions.Builder()
+      .typeCategory("testString")
+      .typeName("testString")
+      .build();
+    assertEquals(getConfiguratorConfigDataModelAttributesOptionsModel.typeCategory(), "testString");
+    assertEquals(getConfiguratorConfigDataModelAttributesOptionsModel.typeName(), "testString");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetConfiguratorConfigDataModelAttributesOptionsError() throws Throwable {
+    new GetConfiguratorConfigDataModelAttributesOptions.Builder().build();
+  }
+
 }

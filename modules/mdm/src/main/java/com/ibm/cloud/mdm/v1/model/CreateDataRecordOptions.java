@@ -22,6 +22,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateDataRecordOptions extends GenericModel {
 
   protected Map<String, Object> attributes;
+  protected String typeName;
   protected String id;
 
   /**
@@ -29,10 +30,12 @@ public class CreateDataRecordOptions extends GenericModel {
    */
   public static class Builder {
     private Map<String, Object> attributes;
+    private String typeName;
     private String id;
 
     private Builder(CreateDataRecordOptions createDataRecordOptions) {
       this.attributes = createDataRecordOptions.attributes;
+      this.typeName = createDataRecordOptions.typeName;
       this.id = createDataRecordOptions.id;
     }
 
@@ -46,9 +49,11 @@ public class CreateDataRecordOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param attributes the attributes
+     * @param typeName the typeName
      */
-    public Builder(Map<String, Object> attributes) {
+    public Builder(Map<String, Object> attributes, String typeName) {
       this.attributes = attributes;
+      this.typeName = typeName;
     }
 
     /**
@@ -72,6 +77,17 @@ public class CreateDataRecordOptions extends GenericModel {
     }
 
     /**
+     * Set the typeName.
+     *
+     * @param typeName the typeName
+     * @return the CreateDataRecordOptions builder
+     */
+    public Builder typeName(String typeName) {
+      this.typeName = typeName;
+      return this;
+    }
+
+    /**
      * Set the id.
      *
      * @param id the id
@@ -86,7 +102,10 @@ public class CreateDataRecordOptions extends GenericModel {
   protected CreateDataRecordOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
       "attributes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typeName,
+      "typeName cannot be null");
     attributes = builder.attributes;
+    typeName = builder.typeName;
     id = builder.id;
   }
 
@@ -108,6 +127,17 @@ public class CreateDataRecordOptions extends GenericModel {
    */
   public Map<String, Object> attributes() {
     return attributes;
+  }
+
+  /**
+   * Gets the typeName.
+   *
+   * The name of the record type as defined in the data model.
+   *
+   * @return the typeName
+   */
+  public String typeName() {
+    return typeName;
   }
 
   /**

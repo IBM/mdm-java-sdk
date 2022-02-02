@@ -32,9 +32,9 @@ public class InstanceMetadataResponseProjectTest {
   @Test
   public void testInstanceMetadataResponseProject() throws Throwable {
     InstanceMetadataResponseProject instanceMetadataResponseProjectModel = new InstanceMetadataResponseProject();
+    assertNull(instanceMetadataResponseProjectModel.getProjectId());
+    assertNull(instanceMetadataResponseProjectModel.getDataAssetId());
     assertNull(instanceMetadataResponseProjectModel.getAssetId());
     assertNull(instanceMetadataResponseProjectModel.getProjectName());
-    assertNull(instanceMetadataResponseProjectModel.getDataAssetId());
-    assertNull(instanceMetadataResponseProjectModel.getProjectId());
   }
 }

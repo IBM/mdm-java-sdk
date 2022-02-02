@@ -78,11 +78,15 @@ public class CreateDataExportOptionsTest {
       .format("csv")
       .searchCriteria(dataSearchCriteriaModel)
       .fileName("testString")
+      .compressionType("tar")
+      .partitionType("none")
       .build();
     assertEquals(createDataExportOptionsModel.exportType(), "record");
     assertEquals(createDataExportOptionsModel.format(), "csv");
     assertEquals(createDataExportOptionsModel.searchCriteria(), dataSearchCriteriaModel);
     assertEquals(createDataExportOptionsModel.fileName(), "testString");
+    assertEquals(createDataExportOptionsModel.compressionType(), "tar");
+    assertEquals(createDataExportOptionsModel.partitionType(), "none");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

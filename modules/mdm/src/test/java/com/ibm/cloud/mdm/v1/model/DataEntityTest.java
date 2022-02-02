@@ -34,15 +34,21 @@ public class DataEntityTest {
     DataEntity dataEntityModel = new DataEntity.Builder()
       .id("testString")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .typeName("testString")
+      .recordCount(Long.valueOf("26"))
       .build();
     assertEquals(dataEntityModel.id(), "testString");
     assertEquals(dataEntityModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataEntityModel.typeName(), "testString");
+    assertEquals(dataEntityModel.recordCount(), Long.valueOf("26"));
 
     String json = TestUtilities.serialize(dataEntityModel);
 
     DataEntity dataEntityModelNew = TestUtilities.deserialize(json, DataEntity.class);
     assertTrue(dataEntityModelNew instanceof DataEntity);
     assertEquals(dataEntityModelNew.id(), "testString");
+    assertEquals(dataEntityModelNew.typeName(), "testString");
+    assertEquals(dataEntityModelNew.recordCount(), Long.valueOf("26"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

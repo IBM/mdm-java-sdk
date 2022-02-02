@@ -37,8 +37,8 @@ public class GetMatchingJobsTest {
     assertNull(getMatchingJobsModel.getCreatedAt());
     assertNull(getMatchingJobsModel.getImage());
     assertNull(getMatchingJobsModel.getStartedAt());
-    assertNull(getMatchingJobsModel.getSummary());
     assertNull(getMatchingJobsModel.getStatus());
+    assertNull(getMatchingJobsModel.getSummary());
     assertNull(getMatchingJobsModel.getId());
   }
 }

@@ -20,32 +20,32 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Attribute extends GenericModel {
 
-  protected String classification;
+  @SerializedName("attribute_type")
+  protected String attributeType;
   protected Boolean indexed;
   protected String label;
   protected String description;
+  protected String classification;
   protected String cardinality;
-  @SerializedName("attribute_type")
-  protected String attributeType;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String classification;
+    private String attributeType;
     private Boolean indexed;
     private String label;
     private String description;
+    private String classification;
     private String cardinality;
-    private String attributeType;
 
     private Builder(Attribute attribute) {
-      this.classification = attribute.classification;
+      this.attributeType = attribute.attributeType;
       this.indexed = attribute.indexed;
       this.label = attribute.label;
       this.description = attribute.description;
+      this.classification = attribute.classification;
       this.cardinality = attribute.cardinality;
-      this.attributeType = attribute.attributeType;
     }
 
     /**
@@ -57,12 +57,12 @@ public class Attribute extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param label the label
      * @param attributeType the attributeType
+     * @param label the label
      */
-    public Builder(String label, String attributeType) {
-      this.label = label;
+    public Builder(String attributeType, String label) {
       this.attributeType = attributeType;
+      this.label = label;
     }
 
     /**
@@ -75,13 +75,13 @@ public class Attribute extends GenericModel {
     }
 
     /**
-     * Set the classification.
+     * Set the attributeType.
      *
-     * @param classification the classification
+     * @param attributeType the attributeType
      * @return the Attribute builder
      */
-    public Builder classification(String classification) {
-      this.classification = classification;
+    public Builder attributeType(String attributeType) {
+      this.attributeType = attributeType;
       return this;
     }
 
@@ -119,6 +119,17 @@ public class Attribute extends GenericModel {
     }
 
     /**
+     * Set the classification.
+     *
+     * @param classification the classification
+     * @return the Attribute builder
+     */
+    public Builder classification(String classification) {
+      this.classification = classification;
+      return this;
+    }
+
+    /**
      * Set the cardinality.
      *
      * @param cardinality the cardinality
@@ -128,30 +139,19 @@ public class Attribute extends GenericModel {
       this.cardinality = cardinality;
       return this;
     }
-
-    /**
-     * Set the attributeType.
-     *
-     * @param attributeType the attributeType
-     * @return the Attribute builder
-     */
-    public Builder attributeType(String attributeType) {
-      this.attributeType = attributeType;
-      return this;
-    }
   }
 
   protected Attribute(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
-      "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
       "attributeType cannot be null");
-    classification = builder.classification;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
+      "label cannot be null");
+    attributeType = builder.attributeType;
     indexed = builder.indexed;
     label = builder.label;
     description = builder.description;
+    classification = builder.classification;
     cardinality = builder.cardinality;
-    attributeType = builder.attributeType;
   }
 
   /**
@@ -164,14 +164,14 @@ public class Attribute extends GenericModel {
   }
 
   /**
-   * Gets the classification.
+   * Gets the attributeType.
    *
-   * The classification of this Data Model Attribute.
+   * The data type of this Attribute element.
    *
-   * @return the classification
+   * @return the attributeType
    */
-  public String classification() {
-    return classification;
+  public String attributeType() {
+    return attributeType;
   }
 
   /**
@@ -208,6 +208,17 @@ public class Attribute extends GenericModel {
   }
 
   /**
+   * Gets the classification.
+   *
+   * The classification of this Data Model Attribute.
+   *
+   * @return the classification
+   */
+  public String classification() {
+    return classification;
+  }
+
+  /**
    * Gets the cardinality.
    *
    * The number of data points the specific attribute can represen.
@@ -216,17 +227,6 @@ public class Attribute extends GenericModel {
    */
   public String cardinality() {
     return cardinality;
-  }
-
-  /**
-   * Gets the attributeType.
-   *
-   * The data type of this Attribute element.
-   *
-   * @return the attributeType
-   */
-  public String attributeType() {
-    return attributeType;
   }
 }
 

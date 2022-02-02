@@ -24,12 +24,12 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class SingleRecordRequestAttributes extends DynamicModel<Object> {
 
-  @SerializedName("record_id")
-  protected String recordId;
   @SerializedName("record_last_updated")
   protected Long recordLastUpdated;
   @SerializedName("record_source")
   protected String recordSource;
+  @SerializedName("record_id")
+  protected String recordId;
 
   public SingleRecordRequestAttributes() {
     super(new TypeToken<Object>() { });
@@ -39,15 +39,15 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private String recordId;
     private Long recordLastUpdated;
     private String recordSource;
+    private String recordId;
     private Map<String, Object> dynamicProperties;
 
     private Builder(SingleRecordRequestAttributes singleRecordRequestAttributes) {
-      this.recordId = singleRecordRequestAttributes.recordId;
       this.recordLastUpdated = singleRecordRequestAttributes.recordLastUpdated;
       this.recordSource = singleRecordRequestAttributes.recordSource;
+      this.recordId = singleRecordRequestAttributes.recordId;
       this.dynamicProperties = singleRecordRequestAttributes.getProperties();
     }
 
@@ -64,17 +64,6 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
      */
     public SingleRecordRequestAttributes build() {
       return new SingleRecordRequestAttributes(this);
-    }
-
-    /**
-     * Set the recordId.
-     *
-     * @param recordId the recordId
-     * @return the SingleRecordRequestAttributes builder
-     */
-    public Builder recordId(String recordId) {
-      this.recordId = recordId;
-      return this;
     }
 
     /**
@@ -100,6 +89,17 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
     }
 
     /**
+     * Set the recordId.
+     *
+     * @param recordId the recordId
+     * @return the SingleRecordRequestAttributes builder
+     */
+    public Builder recordId(String recordId) {
+      this.recordId = recordId;
+      return this;
+    }
+
+    /**
      * Add an arbitrary property.
      *
      * @param name the name of the property to add
@@ -118,9 +118,9 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
 
   protected SingleRecordRequestAttributes(Builder builder) {
     super(new TypeToken<Object>() { });
-    recordId = builder.recordId;
     recordLastUpdated = builder.recordLastUpdated;
     recordSource = builder.recordSource;
+    recordId = builder.recordId;
     this.setProperties(builder.dynamicProperties);
   }
 
@@ -131,26 +131,6 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the recordId.
-   *
-   * The identifier of the record.
-   *
-   * @return the recordId
-   */
-  public String getRecordId() {
-    return this.recordId;
-  }
-
-  /**
-   * Sets the recordId.
-   *
-   * @param recordId the new recordId
-   */
-  public void setRecordId(final String recordId) {
-    this.recordId = recordId;
   }
 
   /**
@@ -191,5 +171,25 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
    */
   public void setRecordSource(final String recordSource) {
     this.recordSource = recordSource;
+  }
+
+  /**
+   * Gets the recordId.
+   *
+   * The identifier of the record.
+   *
+   * @return the recordId
+   */
+  public String getRecordId() {
+    return this.recordId;
+  }
+
+  /**
+   * Sets the recordId.
+   *
+   * @param recordId the new recordId
+   */
+  public void setRecordId(final String recordId) {
+    this.recordId = recordId;
   }
 }

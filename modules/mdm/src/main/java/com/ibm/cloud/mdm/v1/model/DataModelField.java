@@ -19,24 +19,24 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelField extends GenericModel {
 
-  protected String classification;
   protected String label;
   protected Boolean indexed;
+  protected String classification;
   protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String classification;
     private String label;
     private Boolean indexed;
+    private String classification;
     private String description;
 
     private Builder(DataModelField dataModelField) {
-      this.classification = dataModelField.classification;
       this.label = dataModelField.label;
       this.indexed = dataModelField.indexed;
+      this.classification = dataModelField.classification;
       this.description = dataModelField.description;
     }
 
@@ -65,17 +65,6 @@ public class DataModelField extends GenericModel {
     }
 
     /**
-     * Set the classification.
-     *
-     * @param classification the classification
-     * @return the DataModelField builder
-     */
-    public Builder classification(String classification) {
-      this.classification = classification;
-      return this;
-    }
-
-    /**
      * Set the label.
      *
      * @param label the label
@@ -98,6 +87,17 @@ public class DataModelField extends GenericModel {
     }
 
     /**
+     * Set the classification.
+     *
+     * @param classification the classification
+     * @return the DataModelField builder
+     */
+    public Builder classification(String classification) {
+      this.classification = classification;
+      return this;
+    }
+
+    /**
      * Set the description.
      *
      * @param description the description
@@ -112,9 +112,9 @@ public class DataModelField extends GenericModel {
   protected DataModelField(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    classification = builder.classification;
     label = builder.label;
     indexed = builder.indexed;
+    classification = builder.classification;
     description = builder.description;
   }
 
@@ -125,17 +125,6 @@ public class DataModelField extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the classification.
-   *
-   * User defined classification.
-   *
-   * @return the classification
-   */
-  public String classification() {
-    return classification;
   }
 
   /**
@@ -158,6 +147,17 @@ public class DataModelField extends GenericModel {
    */
   public Boolean indexed() {
     return indexed;
+  }
+
+  /**
+   * Gets the classification.
+   *
+   * User defined classification.
+   *
+   * @return the classification
+   */
+  public String classification() {
+    return classification;
   }
 
   /**

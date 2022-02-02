@@ -15,6 +15,7 @@ package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.DataRelationship;
 import com.ibm.cloud.mdm.v1.model.DataRelationshipResponse;
+import com.ibm.cloud.mdm.v1.model.DataVertexSummary;
 import com.ibm.cloud.mdm.v1.model.Metadata;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

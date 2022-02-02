@@ -12,12 +12,26 @@
  */
 package com.ibm.cloud.mdm.v1.model;
 
+import java.util.List;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The getDataStorageMetadata options.
+ * The Config Data Model attributes for a record type.
  */
-public class GetDataStorageMetadataOptions extends GenericModel {
+public class ConfigDataModelAttributes extends GenericModel {
 
+  protected List<Property> attributes;
+
+  /**
+   * Gets the attributes.
+   *
+   * Collection of Data Model Attribute property for a record type.
+   *
+   * @return the attributes
+   */
+  public List<Property> getAttributes() {
+    return attributes;
+  }
 }
 

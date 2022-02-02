@@ -22,29 +22,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmEntityType extends GenericModel {
 
-  @SerializedName("compare_methods")
-  protected Map<String, AlgorithmCompareMethod> compareMethods;
   @SerializedName("bucket_generators")
   protected Map<String, AlgorithmBucketGenerator> bucketGenerators;
   @SerializedName("clerical_review_threshold")
   protected Float clericalReviewThreshold;
   @SerializedName("auto_link_threshold")
   protected Float autoLinkThreshold;
+  @SerializedName("compare_methods")
+  protected Map<String, AlgorithmCompareMethod> compareMethods;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Map<String, AlgorithmCompareMethod> compareMethods;
     private Map<String, AlgorithmBucketGenerator> bucketGenerators;
     private Float clericalReviewThreshold;
     private Float autoLinkThreshold;
+    private Map<String, AlgorithmCompareMethod> compareMethods;
 
     private Builder(AlgorithmEntityType algorithmEntityType) {
-      this.compareMethods = algorithmEntityType.compareMethods;
       this.bucketGenerators = algorithmEntityType.bucketGenerators;
       this.clericalReviewThreshold = algorithmEntityType.clericalReviewThreshold;
       this.autoLinkThreshold = algorithmEntityType.autoLinkThreshold;
+      this.compareMethods = algorithmEntityType.compareMethods;
     }
 
     /**
@@ -69,17 +69,6 @@ public class AlgorithmEntityType extends GenericModel {
      */
     public AlgorithmEntityType build() {
       return new AlgorithmEntityType(this);
-    }
-
-    /**
-     * Set the compareMethods.
-     *
-     * @param compareMethods the compareMethods
-     * @return the AlgorithmEntityType builder
-     */
-    public Builder compareMethods(Map<String, AlgorithmCompareMethod> compareMethods) {
-      this.compareMethods = compareMethods;
-      return this;
     }
 
     /**
@@ -114,15 +103,26 @@ public class AlgorithmEntityType extends GenericModel {
       this.autoLinkThreshold = autoLinkThreshold;
       return this;
     }
+
+    /**
+     * Set the compareMethods.
+     *
+     * @param compareMethods the compareMethods
+     * @return the AlgorithmEntityType builder
+     */
+    public Builder compareMethods(Map<String, AlgorithmCompareMethod> compareMethods) {
+      this.compareMethods = compareMethods;
+      return this;
+    }
   }
 
   protected AlgorithmEntityType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.autoLinkThreshold,
       "autoLinkThreshold cannot be null");
-    compareMethods = builder.compareMethods;
     bucketGenerators = builder.bucketGenerators;
     clericalReviewThreshold = builder.clericalReviewThreshold;
     autoLinkThreshold = builder.autoLinkThreshold;
+    compareMethods = builder.compareMethods;
   }
 
   /**
@@ -132,17 +132,6 @@ public class AlgorithmEntityType extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the compareMethods.
-   *
-   * Collection of comparators.
-   *
-   * @return the compareMethods
-   */
-  public Map<String, AlgorithmCompareMethod> compareMethods() {
-    return compareMethods;
   }
 
   /**
@@ -176,6 +165,17 @@ public class AlgorithmEntityType extends GenericModel {
    */
   public Float autoLinkThreshold() {
     return autoLinkThreshold;
+  }
+
+  /**
+   * Gets the compareMethods.
+   *
+   * Collection of comparators.
+   *
+   * @return the compareMethods
+   */
+  public Map<String, AlgorithmCompareMethod> compareMethods() {
+    return compareMethods;
   }
 }
 

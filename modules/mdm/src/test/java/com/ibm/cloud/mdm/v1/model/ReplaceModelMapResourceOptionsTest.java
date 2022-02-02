@@ -38,16 +38,16 @@ public class ReplaceModelMapResourceOptionsTest {
       .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .category("testString")
       .dataType("testString")
+      .key("testString")
       .cardinality("testString")
       .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .key("testString")
       .build();
     assertEquals(mapResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(mapResourceEntryModel.category(), "testString");
     assertEquals(mapResourceEntryModel.dataType(), "testString");
+    assertEquals(mapResourceEntryModel.key(), "testString");
     assertEquals(mapResourceEntryModel.cardinality(), "testString");
     assertEquals(mapResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(mapResourceEntryModel.key(), "testString");
 
     ReplaceModelMapResourceOptions replaceModelMapResourceOptionsModel = new ReplaceModelMapResourceOptions.Builder()
       .resourceName("testString")

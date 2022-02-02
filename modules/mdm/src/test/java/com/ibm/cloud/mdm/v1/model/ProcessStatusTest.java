@@ -33,7 +33,7 @@ public class ProcessStatusTest {
   public void testProcessStatus() throws Throwable {
     ProcessStatus processStatusModel = new ProcessStatus();
     assertNull(processStatusModel.getSummary());
-    assertNull(processStatusModel.getStatus());
     assertNull(processStatusModel.getMessage());
+    assertNull(processStatusModel.getStatus());
   }
 }

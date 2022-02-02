@@ -25,8 +25,8 @@ public class EntityBreakdown extends GenericModel {
   protected Double standardDeviation;
   protected Double variance;
   protected Double max;
-  protected Double min;
   protected Double count;
+  protected Double min;
 
   /**
    * Gets the average.
@@ -73,17 +73,6 @@ public class EntityBreakdown extends GenericModel {
   }
 
   /**
-   * Gets the min.
-   *
-   * The minimum size of the entity.
-   *
-   * @return the min
-   */
-  public Double getMin() {
-    return min;
-  }
-
-  /**
    * Gets the count.
    *
    * The count of the entities.
@@ -92,6 +81,17 @@ public class EntityBreakdown extends GenericModel {
    */
   public Double getCount() {
     return count;
+  }
+
+  /**
+   * Gets the min.
+   *
+   * The minimum size of the entity.
+   *
+   * @return the min
+   */
+  public Double getMin() {
+    return min;
   }
 }
 

@@ -22,12 +22,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ConfigDataModel extends GenericModel {
 
-  @SerializedName("record_types")
-  protected Map<String, RecordType> recordTypes;
   @SerializedName("relationship_types")
   protected Map<String, RelationshipType> relationshipTypes;
   @SerializedName("attribute_types")
   protected Map<String, AttributeType> attributeTypes;
+  @SerializedName("record_types")
+  protected Map<String, RecordType> recordTypes;
   protected String locale;
   @SerializedName("system_properties")
   protected Map<String, SystemProperties> systemProperties;
@@ -36,16 +36,16 @@ public class ConfigDataModel extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private Map<String, RecordType> recordTypes;
     private Map<String, RelationshipType> relationshipTypes;
     private Map<String, AttributeType> attributeTypes;
+    private Map<String, RecordType> recordTypes;
     private String locale;
     private Map<String, SystemProperties> systemProperties;
 
     private Builder(ConfigDataModel configDataModel) {
-      this.recordTypes = configDataModel.recordTypes;
       this.relationshipTypes = configDataModel.relationshipTypes;
       this.attributeTypes = configDataModel.attributeTypes;
+      this.recordTypes = configDataModel.recordTypes;
       this.locale = configDataModel.locale;
       this.systemProperties = configDataModel.systemProperties;
     }
@@ -63,17 +63,6 @@ public class ConfigDataModel extends GenericModel {
      */
     public ConfigDataModel build() {
       return new ConfigDataModel(this);
-    }
-
-    /**
-     * Set the recordTypes.
-     *
-     * @param recordTypes the recordTypes
-     * @return the ConfigDataModel builder
-     */
-    public Builder recordTypes(Map<String, RecordType> recordTypes) {
-      this.recordTypes = recordTypes;
-      return this;
     }
 
     /**
@@ -95,6 +84,17 @@ public class ConfigDataModel extends GenericModel {
      */
     public Builder attributeTypes(Map<String, AttributeType> attributeTypes) {
       this.attributeTypes = attributeTypes;
+      return this;
+    }
+
+    /**
+     * Set the recordTypes.
+     *
+     * @param recordTypes the recordTypes
+     * @return the ConfigDataModel builder
+     */
+    public Builder recordTypes(Map<String, RecordType> recordTypes) {
+      this.recordTypes = recordTypes;
       return this;
     }
 
@@ -122,9 +122,9 @@ public class ConfigDataModel extends GenericModel {
   }
 
   protected ConfigDataModel(Builder builder) {
-    recordTypes = builder.recordTypes;
     relationshipTypes = builder.relationshipTypes;
     attributeTypes = builder.attributeTypes;
+    recordTypes = builder.recordTypes;
     locale = builder.locale;
     systemProperties = builder.systemProperties;
   }
@@ -136,17 +136,6 @@ public class ConfigDataModel extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the recordTypes.
-   *
-   * Collection of record data types.
-   *
-   * @return the recordTypes
-   */
-  public Map<String, RecordType> recordTypes() {
-    return recordTypes;
   }
 
   /**
@@ -169,6 +158,17 @@ public class ConfigDataModel extends GenericModel {
    */
   public Map<String, AttributeType> attributeTypes() {
     return attributeTypes;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Collection of record data types.
+   *
+   * @return the recordTypes
+   */
+  public Map<String, RecordType> recordTypes() {
+    return recordTypes;
   }
 
   /**

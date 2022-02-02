@@ -26,18 +26,18 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmBucketStep extends DynamicModel<Object> {
 
-  @SerializedName("set_resource")
-  protected String setResource;
-  @SerializedName("order")
-  protected Boolean order;
-  @SerializedName("label")
-  protected String label;
-  @SerializedName("map_resource")
-  protected String mapResource;
   @SerializedName("comparison_resource")
   protected String comparisonResource;
+  @SerializedName("set_resource")
+  protected String setResource;
   @SerializedName("inputs")
   protected List<Long> inputs;
+  @SerializedName("map_resource")
+  protected String mapResource;
+  @SerializedName("label")
+  protected String label;
+  @SerializedName("order")
+  protected Boolean order;
   @SerializedName("fields")
   protected List<String> fields;
   @SerializedName("method")
@@ -51,23 +51,23 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private String setResource;
-    private Boolean order;
-    private String label;
-    private String mapResource;
     private String comparisonResource;
+    private String setResource;
     private List<Long> inputs;
+    private String mapResource;
+    private String label;
+    private Boolean order;
     private List<String> fields;
     private String method;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmBucketStep algorithmBucketStep) {
-      this.setResource = algorithmBucketStep.setResource;
-      this.order = algorithmBucketStep.order;
-      this.label = algorithmBucketStep.label;
-      this.mapResource = algorithmBucketStep.mapResource;
       this.comparisonResource = algorithmBucketStep.comparisonResource;
+      this.setResource = algorithmBucketStep.setResource;
       this.inputs = algorithmBucketStep.inputs;
+      this.mapResource = algorithmBucketStep.mapResource;
+      this.label = algorithmBucketStep.label;
+      this.order = algorithmBucketStep.order;
       this.fields = algorithmBucketStep.fields;
       this.method = algorithmBucketStep.method;
       this.dynamicProperties = algorithmBucketStep.getProperties();
@@ -132,6 +132,17 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
     }
 
     /**
+     * Set the comparisonResource.
+     *
+     * @param comparisonResource the comparisonResource
+     * @return the AlgorithmBucketStep builder
+     */
+    public Builder comparisonResource(String comparisonResource) {
+      this.comparisonResource = comparisonResource;
+      return this;
+    }
+
+    /**
      * Set the setResource.
      *
      * @param setResource the setResource
@@ -143,24 +154,14 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the order.
+     * Set the inputs.
+     * Existing inputs will be replaced.
      *
-     * @param order the order
+     * @param inputs the inputs
      * @return the AlgorithmBucketStep builder
      */
-    public Builder order(Boolean order) {
-      this.order = order;
-      return this;
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the AlgorithmBucketStep builder
-     */
-    public Builder label(String label) {
-      this.label = label;
+    public Builder inputs(List<Long> inputs) {
+      this.inputs = inputs;
       return this;
     }
 
@@ -176,25 +177,24 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the comparisonResource.
+     * Set the label.
      *
-     * @param comparisonResource the comparisonResource
+     * @param label the label
      * @return the AlgorithmBucketStep builder
      */
-    public Builder comparisonResource(String comparisonResource) {
-      this.comparisonResource = comparisonResource;
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
     /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
+     * Set the order.
      *
-     * @param inputs the inputs
+     * @param order the order
      * @return the AlgorithmBucketStep builder
      */
-    public Builder inputs(List<Long> inputs) {
-      this.inputs = inputs;
+    public Builder order(Boolean order) {
+      this.order = order;
       return this;
     }
 
@@ -244,12 +244,12 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
       "method cannot be null");
-    setResource = builder.setResource;
-    order = builder.order;
-    label = builder.label;
-    mapResource = builder.mapResource;
     comparisonResource = builder.comparisonResource;
+    setResource = builder.setResource;
     inputs = builder.inputs;
+    mapResource = builder.mapResource;
+    label = builder.label;
+    order = builder.order;
     fields = builder.fields;
     method = builder.method;
     this.setProperties(builder.dynamicProperties);
@@ -262,86 +262,6 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the setResource.
-   *
-   * An existing set resource name, if applicable.
-   *
-   * @return the setResource
-   */
-  public String getSetResource() {
-    return this.setResource;
-  }
-
-  /**
-   * Sets the setResource.
-   *
-   * @param setResource the new setResource
-   */
-  public void setSetResource(final String setResource) {
-    this.setResource = setResource;
-  }
-
-  /**
-   * Gets the order.
-   *
-   * True the tokens within the same input will be pre-sorted alphabetically.
-   *
-   * @return the order
-   */
-  public Boolean isOrder() {
-    return this.order;
-  }
-
-  /**
-   * Sets the order.
-   *
-   * @param order the new order
-   */
-  public void setOrder(final Boolean order) {
-    this.order = order;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String getLabel() {
-    return this.label;
-  }
-
-  /**
-   * Sets the label.
-   *
-   * @param label the new label
-   */
-  public void setLabel(final String label) {
-    this.label = label;
-  }
-
-  /**
-   * Gets the mapResource.
-   *
-   * An existing map resource name, if applicable.
-   *
-   * @return the mapResource
-   */
-  public String getMapResource() {
-    return this.mapResource;
-  }
-
-  /**
-   * Sets the mapResource.
-   *
-   * @param mapResource the new mapResource
-   */
-  public void setMapResource(final String mapResource) {
-    this.mapResource = mapResource;
   }
 
   /**
@@ -365,6 +285,26 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
   }
 
   /**
+   * Gets the setResource.
+   *
+   * An existing set resource name, if applicable.
+   *
+   * @return the setResource
+   */
+  public String getSetResource() {
+    return this.setResource;
+  }
+
+  /**
+   * Sets the setResource.
+   *
+   * @param setResource the new setResource
+   */
+  public void setSetResource(final String setResource) {
+    this.setResource = setResource;
+  }
+
+  /**
    * Gets the inputs.
    *
    * Collection of numbers, referencing the position of one or more defined inputs. The default value is [1].
@@ -382,6 +322,66 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
    */
   public void setInputs(final List<Long> inputs) {
     this.inputs = inputs;
+  }
+
+  /**
+   * Gets the mapResource.
+   *
+   * An existing map resource name, if applicable.
+   *
+   * @return the mapResource
+   */
+  public String getMapResource() {
+    return this.mapResource;
+  }
+
+  /**
+   * Sets the mapResource.
+   *
+   * @param mapResource the new mapResource
+   */
+  public void setMapResource(final String mapResource) {
+    this.mapResource = mapResource;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String getLabel() {
+    return this.label;
+  }
+
+  /**
+   * Sets the label.
+   *
+   * @param label the new label
+   */
+  public void setLabel(final String label) {
+    this.label = label;
+  }
+
+  /**
+   * Gets the order.
+   *
+   * True the tokens within the same input will be pre-sorted alphabetically.
+   *
+   * @return the order
+   */
+  public Boolean isOrder() {
+    return this.order;
+  }
+
+  /**
+   * Sets the order.
+   *
+   * @param order the new order
+   */
+  public void setOrder(final Boolean order) {
+    this.order = order;
   }
 
   /**

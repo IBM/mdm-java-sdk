@@ -53,11 +53,11 @@ public class CompositeRulesTest {
     assertEquals(compositeRulesRecordTypeModel.entityRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
 
     CompositeRulesRules compositeRulesRulesModel = new CompositeRulesRules.Builder()
-      .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })
       .global(compositeRulesRuleModel)
+      .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })
       .build();
-    assertEquals(compositeRulesRulesModel.recordTypes(), new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } });
     assertEquals(compositeRulesRulesModel.global(), compositeRulesRuleModel);
+    assertEquals(compositeRulesRulesModel.recordTypes(), new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } });
 
     CompositeRules compositeRulesModel = new CompositeRules.Builder()
       .rules(compositeRulesRulesModel)

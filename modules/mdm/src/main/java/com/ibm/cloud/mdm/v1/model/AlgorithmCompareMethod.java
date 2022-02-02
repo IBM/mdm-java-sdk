@@ -22,21 +22,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmCompareMethod extends GenericModel {
 
-  protected String label;
   protected List<Float> weights;
+  protected String label;
   protected List<AlgorithmMethods> methods;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
     private List<Float> weights;
+    private String label;
     private List<AlgorithmMethods> methods;
 
     private Builder(AlgorithmCompareMethod algorithmCompareMethod) {
-      this.label = algorithmCompareMethod.label;
       this.weights = algorithmCompareMethod.weights;
+      this.label = algorithmCompareMethod.label;
       this.methods = algorithmCompareMethod.methods;
     }
 
@@ -97,17 +97,6 @@ public class AlgorithmCompareMethod extends GenericModel {
     }
 
     /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the AlgorithmCompareMethod builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
      * Set the weights.
      * Existing weights will be replaced.
      *
@@ -116,6 +105,17 @@ public class AlgorithmCompareMethod extends GenericModel {
      */
     public Builder weights(List<Float> weights) {
       this.weights = weights;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the AlgorithmCompareMethod builder
+     */
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -135,8 +135,8 @@ public class AlgorithmCompareMethod extends GenericModel {
   protected AlgorithmCompareMethod(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    label = builder.label;
     weights = builder.weights;
+    label = builder.label;
     methods = builder.methods;
   }
 
@@ -150,17 +150,6 @@ public class AlgorithmCompareMethod extends GenericModel {
   }
 
   /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
    * Gets the weights.
    *
    * An array of 11 weights that map to the distance measures from 0 to 10.
@@ -169,6 +158,17 @@ public class AlgorithmCompareMethod extends GenericModel {
    */
   public List<Float> weights() {
     return weights;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**

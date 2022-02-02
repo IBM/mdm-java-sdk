@@ -20,36 +20,36 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelAttribute extends GenericModel {
 
+  protected String label;
   @SerializedName("matching_type")
   protected String matchingType;
   @SerializedName("attribute_type")
   protected String attributeType;
-  protected String classification;
-  protected String label;
   protected Boolean indexed;
-  protected String cardinality;
+  protected String classification;
   protected String description;
+  protected String cardinality;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String label;
     private String matchingType;
     private String attributeType;
-    private String classification;
-    private String label;
     private Boolean indexed;
-    private String cardinality;
+    private String classification;
     private String description;
+    private String cardinality;
 
     private Builder(DataModelAttribute dataModelAttribute) {
+      this.label = dataModelAttribute.label;
       this.matchingType = dataModelAttribute.matchingType;
       this.attributeType = dataModelAttribute.attributeType;
-      this.classification = dataModelAttribute.classification;
-      this.label = dataModelAttribute.label;
       this.indexed = dataModelAttribute.indexed;
-      this.cardinality = dataModelAttribute.cardinality;
+      this.classification = dataModelAttribute.classification;
       this.description = dataModelAttribute.description;
+      this.cardinality = dataModelAttribute.cardinality;
     }
 
     /**
@@ -61,12 +61,12 @@ public class DataModelAttribute extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param attributeType the attributeType
      * @param label the label
+     * @param attributeType the attributeType
      */
-    public Builder(String attributeType, String label) {
-      this.attributeType = attributeType;
+    public Builder(String label, String attributeType) {
       this.label = label;
+      this.attributeType = attributeType;
     }
 
     /**
@@ -76,6 +76,17 @@ public class DataModelAttribute extends GenericModel {
      */
     public DataModelAttribute build() {
       return new DataModelAttribute(this);
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the DataModelAttribute builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
     }
 
     /**
@@ -101,28 +112,6 @@ public class DataModelAttribute extends GenericModel {
     }
 
     /**
-     * Set the classification.
-     *
-     * @param classification the classification
-     * @return the DataModelAttribute builder
-     */
-    public Builder classification(String classification) {
-      this.classification = classification;
-      return this;
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the DataModelAttribute builder
-     */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
      * Set the indexed.
      *
      * @param indexed the indexed
@@ -134,13 +123,13 @@ public class DataModelAttribute extends GenericModel {
     }
 
     /**
-     * Set the cardinality.
+     * Set the classification.
      *
-     * @param cardinality the cardinality
+     * @param classification the classification
      * @return the DataModelAttribute builder
      */
-    public Builder cardinality(String cardinality) {
-      this.cardinality = cardinality;
+    public Builder classification(String classification) {
+      this.classification = classification;
       return this;
     }
 
@@ -154,20 +143,31 @@ public class DataModelAttribute extends GenericModel {
       this.description = description;
       return this;
     }
+
+    /**
+     * Set the cardinality.
+     *
+     * @param cardinality the cardinality
+     * @return the DataModelAttribute builder
+     */
+    public Builder cardinality(String cardinality) {
+      this.cardinality = cardinality;
+      return this;
+    }
   }
 
   protected DataModelAttribute(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
-      "attributeType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeType,
+      "attributeType cannot be null");
+    label = builder.label;
     matchingType = builder.matchingType;
     attributeType = builder.attributeType;
-    classification = builder.classification;
-    label = builder.label;
     indexed = builder.indexed;
-    cardinality = builder.cardinality;
+    classification = builder.classification;
     description = builder.description;
+    cardinality = builder.cardinality;
   }
 
   /**
@@ -177,6 +177,17 @@ public class DataModelAttribute extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
   }
 
   /**
@@ -203,28 +214,6 @@ public class DataModelAttribute extends GenericModel {
   }
 
   /**
-   * Gets the classification.
-   *
-   * User defined classification.
-   *
-   * @return the classification
-   */
-  public String classification() {
-    return classification;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
-  }
-
-  /**
    * Gets the indexed.
    *
    * User defined indexed indicator. The default value is true.
@@ -236,14 +225,14 @@ public class DataModelAttribute extends GenericModel {
   }
 
   /**
-   * Gets the cardinality.
+   * Gets the classification.
    *
-   * User defined cardinality, one of SINGLE, LIST or SET. The default value is LIST.
+   * User defined classification.
    *
-   * @return the cardinality
+   * @return the classification
    */
-  public String cardinality() {
-    return cardinality;
+  public String classification() {
+    return classification;
   }
 
   /**
@@ -255,6 +244,17 @@ public class DataModelAttribute extends GenericModel {
    */
   public String description() {
     return description;
+  }
+
+  /**
+   * Gets the cardinality.
+   *
+   * User defined cardinality, one of SINGLE, LIST or SET. The default value is LIST.
+   *
+   * @return the cardinality
+   */
+  public String cardinality() {
+    return cardinality;
   }
 }
 

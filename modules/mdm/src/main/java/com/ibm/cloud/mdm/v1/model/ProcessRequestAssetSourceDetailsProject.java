@@ -20,10 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ProcessRequestAssetSourceDetailsProject extends GenericModel {
 
-  @SerializedName("cos_bucket_name")
-  protected String cosBucketName;
   @SerializedName("cos_api_key")
   protected String cosApiKey;
+  @SerializedName("cos_bucket_name")
+  protected String cosBucketName;
   @SerializedName("cos_endpoint")
   protected String cosEndpoint;
   protected String id;
@@ -32,14 +32,14 @@ public class ProcessRequestAssetSourceDetailsProject extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String cosBucketName;
     private String cosApiKey;
+    private String cosBucketName;
     private String cosEndpoint;
     private String id;
 
     private Builder(ProcessRequestAssetSourceDetailsProject processRequestAssetSourceDetailsProject) {
-      this.cosBucketName = processRequestAssetSourceDetailsProject.cosBucketName;
       this.cosApiKey = processRequestAssetSourceDetailsProject.cosApiKey;
+      this.cosBucketName = processRequestAssetSourceDetailsProject.cosBucketName;
       this.cosEndpoint = processRequestAssetSourceDetailsProject.cosEndpoint;
       this.id = processRequestAssetSourceDetailsProject.id;
     }
@@ -60,17 +60,6 @@ public class ProcessRequestAssetSourceDetailsProject extends GenericModel {
     }
 
     /**
-     * Set the cosBucketName.
-     *
-     * @param cosBucketName the cosBucketName
-     * @return the ProcessRequestAssetSourceDetailsProject builder
-     */
-    public Builder cosBucketName(String cosBucketName) {
-      this.cosBucketName = cosBucketName;
-      return this;
-    }
-
-    /**
      * Set the cosApiKey.
      *
      * @param cosApiKey the cosApiKey
@@ -78,6 +67,17 @@ public class ProcessRequestAssetSourceDetailsProject extends GenericModel {
      */
     public Builder cosApiKey(String cosApiKey) {
       this.cosApiKey = cosApiKey;
+      return this;
+    }
+
+    /**
+     * Set the cosBucketName.
+     *
+     * @param cosBucketName the cosBucketName
+     * @return the ProcessRequestAssetSourceDetailsProject builder
+     */
+    public Builder cosBucketName(String cosBucketName) {
+      this.cosBucketName = cosBucketName;
       return this;
     }
 
@@ -105,8 +105,8 @@ public class ProcessRequestAssetSourceDetailsProject extends GenericModel {
   }
 
   protected ProcessRequestAssetSourceDetailsProject(Builder builder) {
-    cosBucketName = builder.cosBucketName;
     cosApiKey = builder.cosApiKey;
+    cosBucketName = builder.cosBucketName;
     cosEndpoint = builder.cosEndpoint;
     id = builder.id;
   }
@@ -121,17 +121,6 @@ public class ProcessRequestAssetSourceDetailsProject extends GenericModel {
   }
 
   /**
-   * Gets the cosBucketName.
-   *
-   * Bucket Name of data asset file in the Cloud Object Storage.
-   *
-   * @return the cosBucketName
-   */
-  public String cosBucketName() {
-    return cosBucketName;
-  }
-
-  /**
    * Gets the cosApiKey.
    *
    * API Key of the Cloud Object Storage account.
@@ -140,6 +129,17 @@ public class ProcessRequestAssetSourceDetailsProject extends GenericModel {
    */
   public String cosApiKey() {
     return cosApiKey;
+  }
+
+  /**
+   * Gets the cosBucketName.
+   *
+   * Bucket Name of data asset file in the Cloud Object Storage.
+   *
+   * @return the cosBucketName
+   */
+  public String cosBucketName() {
+    return cosBucketName;
   }
 
   /**
