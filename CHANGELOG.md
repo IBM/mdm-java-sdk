@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/IBM/mdm-java-sdk/compare/1.0.4...1.0.5) (2022-02-02)
+
+
+### Bug Fixes
+
+* Java SDK for Public Cloud ([d4f42c5](https://github.com/IBM/mdm-java-sdk/commit/d4f42c5bc402372050a1890d8e28580c3750d435))
+
 ## [1.0.4](https://github.com/IBM/mdm-java-sdk/compare/1.0.3...1.0.4) (2022-02-01)
 
 
