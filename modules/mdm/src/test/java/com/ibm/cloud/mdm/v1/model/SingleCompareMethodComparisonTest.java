@@ -32,9 +32,9 @@ public class SingleCompareMethodComparisonTest {
   @Test
   public void testSingleCompareMethodComparison() throws Throwable {
     SingleCompareMethodComparison singleCompareMethodComparisonModel = new SingleCompareMethodComparison();
-    assertNull(singleCompareMethodComparisonModel.getFeatureVector());
     assertNull(singleCompareMethodComparisonModel.getDetails());
     assertNull(singleCompareMethodComparisonModel.getDistance());
+    assertNull(singleCompareMethodComparisonModel.getFeatureVector());
     assertNull(singleCompareMethodComparisonModel.getScore());
     assertNull(singleCompareMethodComparisonModel.getValues());
     assertNull(singleCompareMethodComparisonModel.getTypes());

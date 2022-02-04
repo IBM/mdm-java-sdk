@@ -32,7 +32,7 @@ public class InstanceMetadataResponseCatalogTest {
   @Test
   public void testInstanceMetadataResponseCatalog() throws Throwable {
     InstanceMetadataResponseCatalog instanceMetadataResponseCatalogModel = new InstanceMetadataResponseCatalog();
-    assertNull(instanceMetadataResponseCatalogModel.getCatalogInstance());
     assertNull(instanceMetadataResponseCatalogModel.getCatalogId());
+    assertNull(instanceMetadataResponseCatalogModel.getCatalogInstance());
   }
 }

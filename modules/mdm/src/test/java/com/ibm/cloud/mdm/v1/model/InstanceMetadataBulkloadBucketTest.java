@@ -32,21 +32,21 @@ public class InstanceMetadataBulkloadBucketTest {
   @Test
   public void testInstanceMetadataBulkloadBucket() throws Throwable {
     InstanceMetadataBulkloadBucket instanceMetadataBulkloadBucketModel = new InstanceMetadataBulkloadBucket.Builder()
-      .cosBucketName("testString")
       .cosBucketLocation("testString")
       .cosBucketApiKey("testString")
+      .cosBucketName("testString")
       .build();
-    assertEquals(instanceMetadataBulkloadBucketModel.cosBucketName(), "testString");
     assertEquals(instanceMetadataBulkloadBucketModel.cosBucketLocation(), "testString");
     assertEquals(instanceMetadataBulkloadBucketModel.cosBucketApiKey(), "testString");
+    assertEquals(instanceMetadataBulkloadBucketModel.cosBucketName(), "testString");
 
     String json = TestUtilities.serialize(instanceMetadataBulkloadBucketModel);
 
     InstanceMetadataBulkloadBucket instanceMetadataBulkloadBucketModelNew = TestUtilities.deserialize(json, InstanceMetadataBulkloadBucket.class);
     assertTrue(instanceMetadataBulkloadBucketModelNew instanceof InstanceMetadataBulkloadBucket);
-    assertEquals(instanceMetadataBulkloadBucketModelNew.cosBucketName(), "testString");
     assertEquals(instanceMetadataBulkloadBucketModelNew.cosBucketLocation(), "testString");
     assertEquals(instanceMetadataBulkloadBucketModelNew.cosBucketApiKey(), "testString");
+    assertEquals(instanceMetadataBulkloadBucketModelNew.cosBucketName(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

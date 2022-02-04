@@ -20,8 +20,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRecordTypeSystemProperties extends GenericModel {
 
-  @SerializedName("collection_id")
-  protected DataModelSystemProperty collectionId;
   @SerializedName("record_id")
   protected DataModelSystemProperty recordId;
   @SerializedName("record_last_updated")
@@ -30,23 +28,25 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
   protected DataModelSystemProperty recordNumber;
   @SerializedName("record_source")
   protected DataModelSystemProperty recordSource;
+  @SerializedName("collection_id")
+  protected DataModelSystemProperty collectionId;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private DataModelSystemProperty collectionId;
     private DataModelSystemProperty recordId;
     private DataModelSystemProperty recordLastUpdated;
     private DataModelSystemProperty recordNumber;
     private DataModelSystemProperty recordSource;
+    private DataModelSystemProperty collectionId;
 
     private Builder(DataModelRecordTypeSystemProperties dataModelRecordTypeSystemProperties) {
-      this.collectionId = dataModelRecordTypeSystemProperties.collectionId;
       this.recordId = dataModelRecordTypeSystemProperties.recordId;
       this.recordLastUpdated = dataModelRecordTypeSystemProperties.recordLastUpdated;
       this.recordNumber = dataModelRecordTypeSystemProperties.recordNumber;
       this.recordSource = dataModelRecordTypeSystemProperties.recordSource;
+      this.collectionId = dataModelRecordTypeSystemProperties.collectionId;
     }
 
     /**
@@ -58,18 +58,18 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param collectionId the collectionId
      * @param recordId the recordId
      * @param recordLastUpdated the recordLastUpdated
      * @param recordNumber the recordNumber
      * @param recordSource the recordSource
+     * @param collectionId the collectionId
      */
-    public Builder(DataModelSystemProperty collectionId, DataModelSystemProperty recordId, DataModelSystemProperty recordLastUpdated, DataModelSystemProperty recordNumber, DataModelSystemProperty recordSource) {
-      this.collectionId = collectionId;
+    public Builder(DataModelSystemProperty recordId, DataModelSystemProperty recordLastUpdated, DataModelSystemProperty recordNumber, DataModelSystemProperty recordSource, DataModelSystemProperty collectionId) {
       this.recordId = recordId;
       this.recordLastUpdated = recordLastUpdated;
       this.recordNumber = recordNumber;
       this.recordSource = recordSource;
+      this.collectionId = collectionId;
     }
 
     /**
@@ -79,17 +79,6 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
      */
     public DataModelRecordTypeSystemProperties build() {
       return new DataModelRecordTypeSystemProperties(this);
-    }
-
-    /**
-     * Set the collectionId.
-     *
-     * @param collectionId the collectionId
-     * @return the DataModelRecordTypeSystemProperties builder
-     */
-    public Builder collectionId(DataModelSystemProperty collectionId) {
-      this.collectionId = collectionId;
-      return this;
     }
 
     /**
@@ -135,11 +124,20 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
       this.recordSource = recordSource;
       return this;
     }
+
+    /**
+     * Set the collectionId.
+     *
+     * @param collectionId the collectionId
+     * @return the DataModelRecordTypeSystemProperties builder
+     */
+    public Builder collectionId(DataModelSystemProperty collectionId) {
+      this.collectionId = collectionId;
+      return this;
+    }
   }
 
   protected DataModelRecordTypeSystemProperties(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.collectionId,
-      "collectionId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordId,
       "recordId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordLastUpdated,
@@ -148,11 +146,13 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
       "recordNumber cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordSource,
       "recordSource cannot be null");
-    collectionId = builder.collectionId;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.collectionId,
+      "collectionId cannot be null");
     recordId = builder.recordId;
     recordLastUpdated = builder.recordLastUpdated;
     recordNumber = builder.recordNumber;
     recordSource = builder.recordSource;
+    collectionId = builder.collectionId;
   }
 
   /**
@@ -162,17 +162,6 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the collectionId.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the collectionId
-   */
-  public DataModelSystemProperty collectionId() {
-    return collectionId;
   }
 
   /**
@@ -217,6 +206,17 @@ public class DataModelRecordTypeSystemProperties extends GenericModel {
    */
   public DataModelSystemProperty recordSource() {
     return recordSource;
+  }
+
+  /**
+   * Gets the collectionId.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the collectionId
+   */
+  public DataModelSystemProperty collectionId() {
+    return collectionId;
   }
 }
 

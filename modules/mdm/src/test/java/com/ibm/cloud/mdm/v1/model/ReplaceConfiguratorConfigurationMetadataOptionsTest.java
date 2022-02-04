@@ -47,15 +47,15 @@ public class ReplaceConfiguratorConfigurationMetadataOptionsTest {
     assertEquals(configurationMetadataEntityModel.status(), "testString");
 
     ReplaceConfiguratorConfigurationMetadataOptions replaceConfiguratorConfigurationMetadataOptionsModel = new ReplaceConfiguratorConfigurationMetadataOptions.Builder()
-      .projectId("0e4bb17d-4871-40a5-b5a1-55b2866fe000")
       .catalogId("ee1de5f6-54da-4246-95bc-7bc282151000")
       .pairAnalysis(new java.util.HashMap<String, Map<String, ConfigurationMetadataEntity>>() { { put("foo", new java.util.HashMap<String, ConfigurationMetadataEntity>() { { put("foo", configurationMetadataEntityModel); } }); } })
+      .projectId("0e4bb17d-4871-40a5-b5a1-55b2866fe000")
       .description("testString")
       .name("testString")
       .build();
-    assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");
     assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.catalogId(), "ee1de5f6-54da-4246-95bc-7bc282151000");
     assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.pairAnalysis(), new java.util.HashMap<String, Map<String, ConfigurationMetadataEntity>>() { { put("foo", new java.util.HashMap<String, ConfigurationMetadataEntity>() { { put("foo", configurationMetadataEntityModel); } }); } });
+    assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");
     assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.description(), "testString");
     assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.name(), "testString");
   }

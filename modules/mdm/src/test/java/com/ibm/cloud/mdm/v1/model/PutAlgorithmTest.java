@@ -23,6 +23,10 @@ import com.ibm.cloud.mdm.v1.model.AlgorithmEncryption;
 import com.ibm.cloud.mdm.v1.model.AlgorithmEntityType;
 import com.ibm.cloud.mdm.v1.model.AlgorithmInput;
 import com.ibm.cloud.mdm.v1.model.AlgorithmMethods;
+import com.ibm.cloud.mdm.v1.model.AlgorithmPostFilterMethod;
+import com.ibm.cloud.mdm.v1.model.AlgorithmPostFilterMethodInput;
+import com.ibm.cloud.mdm.v1.model.AlgorithmPostFilterStep;
+import com.ibm.cloud.mdm.v1.model.AlgorithmPostFilterWeight;
 import com.ibm.cloud.mdm.v1.model.AlgorithmStandardizer;
 import com.ibm.cloud.mdm.v1.model.AlgorithmStandardizerStep;
 import com.ibm.cloud.mdm.v1.model.PutAlgorithm;
@@ -46,8 +50,8 @@ public class PutAlgorithmTest {
   @Test
   public void testPutAlgorithm() throws Throwable {
     PutAlgorithm putAlgorithmModel = new PutAlgorithm();
-    assertNull(putAlgorithmModel.getFlowId());
     assertNull(putAlgorithmModel.getFlowState());
+    assertNull(putAlgorithmModel.getFlowId());
     assertNull(putAlgorithmModel.getAlgorithm());
   }
 }

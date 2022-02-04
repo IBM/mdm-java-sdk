@@ -27,9 +27,9 @@ public class MapResourceEntry extends GenericModel {
   protected String category;
   @SerializedName("data_type")
   protected String dataType;
-  protected String key;
   protected String cardinality;
   protected List<String> values;
+  protected String key;
 
   /**
    * Builder.
@@ -38,17 +38,17 @@ public class MapResourceEntry extends GenericModel {
     private List<String> regex;
     private String category;
     private String dataType;
-    private String key;
     private String cardinality;
     private List<String> values;
+    private String key;
 
     private Builder(MapResourceEntry mapResourceEntry) {
       this.regex = mapResourceEntry.regex;
       this.category = mapResourceEntry.category;
       this.dataType = mapResourceEntry.dataType;
-      this.key = mapResourceEntry.key;
       this.cardinality = mapResourceEntry.cardinality;
       this.values = mapResourceEntry.values;
+      this.key = mapResourceEntry.key;
     }
 
     /**
@@ -144,17 +144,6 @@ public class MapResourceEntry extends GenericModel {
     }
 
     /**
-     * Set the key.
-     *
-     * @param key the key
-     * @return the MapResourceEntry builder
-     */
-    public Builder key(String key) {
-      this.key = key;
-      return this;
-    }
-
-    /**
      * Set the cardinality.
      *
      * @param cardinality the cardinality
@@ -176,6 +165,17 @@ public class MapResourceEntry extends GenericModel {
       this.values = values;
       return this;
     }
+
+    /**
+     * Set the key.
+     *
+     * @param key the key
+     * @return the MapResourceEntry builder
+     */
+    public Builder key(String key) {
+      this.key = key;
+      return this;
+    }
   }
 
   protected MapResourceEntry(Builder builder) {
@@ -186,9 +186,9 @@ public class MapResourceEntry extends GenericModel {
     regex = builder.regex;
     category = builder.category;
     dataType = builder.dataType;
-    key = builder.key;
     cardinality = builder.cardinality;
     values = builder.values;
+    key = builder.key;
   }
 
   /**
@@ -235,17 +235,6 @@ public class MapResourceEntry extends GenericModel {
   }
 
   /**
-   * Gets the key.
-   *
-   * User defined key (i.e. Ron).
-   *
-   * @return the key
-   */
-  public String key() {
-    return key;
-  }
-
-  /**
    * Gets the cardinality.
    *
    * The cardinality of map entry, when applicable.
@@ -265,6 +254,17 @@ public class MapResourceEntry extends GenericModel {
    */
   public List<String> values() {
     return values;
+  }
+
+  /**
+   * Gets the key.
+   *
+   * User defined key (i.e. Ron).
+   *
+   * @return the key
+   */
+  public String key() {
+    return key;
   }
 }
 

@@ -22,10 +22,10 @@ public class PutDataModel extends GenericModel {
 
   @SerializedName("data_model")
   protected DataModel dataModel;
-  @SerializedName("flow_id")
-  protected String flowId;
   @SerializedName("flow_state")
   protected String flowState;
+  @SerializedName("flow_id")
+  protected String flowId;
 
   /**
    * Gets the dataModel.
@@ -39,17 +39,6 @@ public class PutDataModel extends GenericModel {
   }
 
   /**
-   * Gets the flowId.
-   *
-   * System generated flow identifier.
-   *
-   * @return the flowId
-   */
-  public String getFlowId() {
-    return flowId;
-  }
-
-  /**
    * Gets the flowState.
    *
    * Current state of flow according to its state machine.
@@ -58,6 +47,17 @@ public class PutDataModel extends GenericModel {
    */
   public String getFlowState() {
     return flowState;
+  }
+
+  /**
+   * Gets the flowId.
+   *
+   * System generated flow identifier.
+   *
+   * @return the flowId
+   */
+  public String getFlowId() {
+    return flowId;
   }
 }
 

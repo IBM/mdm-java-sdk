@@ -32,29 +32,29 @@ public class DataModelSystemPropertyTest {
   @Test
   public void testDataModelSystemProperty() throws Throwable {
     DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
-      .settable(true)
-      .editable(true)
       .label("testString")
+      .editable(true)
       .indexed(true)
       .dataType("testString")
+      .settable(true)
       .description("testString")
       .build();
-    assertEquals(dataModelSystemPropertyModel.settable(), Boolean.valueOf(true));
-    assertEquals(dataModelSystemPropertyModel.editable(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModel.label(), "testString");
+    assertEquals(dataModelSystemPropertyModel.editable(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
+    assertEquals(dataModelSystemPropertyModel.settable(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModel.description(), "testString");
 
     String json = TestUtilities.serialize(dataModelSystemPropertyModel);
 
     DataModelSystemProperty dataModelSystemPropertyModelNew = TestUtilities.deserialize(json, DataModelSystemProperty.class);
     assertTrue(dataModelSystemPropertyModelNew instanceof DataModelSystemProperty);
-    assertEquals(dataModelSystemPropertyModelNew.settable(), Boolean.valueOf(true));
-    assertEquals(dataModelSystemPropertyModelNew.editable(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModelNew.label(), "testString");
+    assertEquals(dataModelSystemPropertyModelNew.editable(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModelNew.indexed(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModelNew.dataType(), "testString");
+    assertEquals(dataModelSystemPropertyModelNew.settable(), Boolean.valueOf(true));
     assertEquals(dataModelSystemPropertyModelNew.description(), "testString");
   }
 

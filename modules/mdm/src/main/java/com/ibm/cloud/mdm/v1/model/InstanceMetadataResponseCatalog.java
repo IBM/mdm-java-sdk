@@ -20,21 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataResponseCatalog extends GenericModel {
 
-  @SerializedName("catalog_instance")
-  protected String catalogInstance;
   @SerializedName("catalog_id")
   protected String catalogId;
-
-  /**
-   * Gets the catalogInstance.
-   *
-   * Name of the catalog associated with instance.
-   *
-   * @return the catalogInstance
-   */
-  public String getCatalogInstance() {
-    return catalogInstance;
-  }
+  @SerializedName("catalog_instance")
+  protected String catalogInstance;
 
   /**
    * Gets the catalogId.
@@ -45,6 +34,17 @@ public class InstanceMetadataResponseCatalog extends GenericModel {
    */
   public String getCatalogId() {
     return catalogId;
+  }
+
+  /**
+   * Gets the catalogInstance.
+   *
+   * Name of the catalog associated with instance.
+   *
+   * @return the catalogInstance
+   */
+  public String getCatalogInstance() {
+    return catalogInstance;
   }
 }
 

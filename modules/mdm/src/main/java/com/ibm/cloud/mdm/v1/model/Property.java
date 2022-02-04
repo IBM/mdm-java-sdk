@@ -20,12 +20,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Property extends GenericModel {
 
+  protected String designation;
   @SerializedName("data_type")
   protected String dataType;
   @SerializedName("default_display_name")
   protected String defaultDisplayName;
-  protected String designation;
   protected String name;
+
+  /**
+   * Gets the designation.
+   *
+   * The designation of this property.
+   *
+   * @return the designation
+   */
+  public String getDesignation() {
+    return designation;
+  }
 
   /**
    * Gets the dataType.
@@ -47,17 +58,6 @@ public class Property extends GenericModel {
    */
   public String getDefaultDisplayName() {
     return defaultDisplayName;
-  }
-
-  /**
-   * Gets the designation.
-   *
-   * The designation of this property.
-   *
-   * @return the designation
-   */
-  public String getDesignation() {
-    return designation;
   }
 
   /**

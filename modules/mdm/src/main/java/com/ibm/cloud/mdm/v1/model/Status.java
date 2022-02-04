@@ -20,25 +20,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Status extends GenericModel {
 
-  @SerializedName("date_completed")
-  protected String dateCompleted;
   @SerializedName("comparison_count")
   protected Long comparisonCount;
+  @SerializedName("date_completed")
+  protected String dateCompleted;
   @SerializedName("bucket_count")
   protected Long bucketCount;
   @SerializedName("run_time")
   protected Long runTime;
-
-  /**
-   * Gets the dateCompleted.
-   *
-   * The match process execution completion date.
-   *
-   * @return the dateCompleted
-   */
-  public String getDateCompleted() {
-    return dateCompleted;
-  }
 
   /**
    * Gets the comparisonCount.
@@ -49,6 +38,17 @@ public class Status extends GenericModel {
    */
   public Long getComparisonCount() {
     return comparisonCount;
+  }
+
+  /**
+   * Gets the dateCompleted.
+   *
+   * The match process execution completion date.
+   *
+   * @return the dateCompleted
+   */
+  public String getDateCompleted() {
+    return dateCompleted;
   }
 
   /**

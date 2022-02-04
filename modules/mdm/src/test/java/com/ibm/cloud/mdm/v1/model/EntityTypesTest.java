@@ -32,27 +32,27 @@ public class EntityTypesTest {
   @Test
   public void testEntityTypes() throws Throwable {
     EntityTypes entityTypesModel = new EntityTypes.Builder()
-      .editable(true)
-      .indexed(true)
-      .dataType("testString")
       .label("testString")
       .description("testString")
+      .dataType("testString")
+      .indexed(true)
+      .editable(true)
       .build();
-    assertEquals(entityTypesModel.editable(), Boolean.valueOf(true));
-    assertEquals(entityTypesModel.indexed(), Boolean.valueOf(true));
-    assertEquals(entityTypesModel.dataType(), "testString");
     assertEquals(entityTypesModel.label(), "testString");
     assertEquals(entityTypesModel.description(), "testString");
+    assertEquals(entityTypesModel.dataType(), "testString");
+    assertEquals(entityTypesModel.indexed(), Boolean.valueOf(true));
+    assertEquals(entityTypesModel.editable(), Boolean.valueOf(true));
 
     String json = TestUtilities.serialize(entityTypesModel);
 
     EntityTypes entityTypesModelNew = TestUtilities.deserialize(json, EntityTypes.class);
     assertTrue(entityTypesModelNew instanceof EntityTypes);
-    assertEquals(entityTypesModelNew.editable(), Boolean.valueOf(true));
-    assertEquals(entityTypesModelNew.indexed(), Boolean.valueOf(true));
-    assertEquals(entityTypesModelNew.dataType(), "testString");
     assertEquals(entityTypesModelNew.label(), "testString");
     assertEquals(entityTypesModelNew.description(), "testString");
+    assertEquals(entityTypesModelNew.dataType(), "testString");
+    assertEquals(entityTypesModelNew.indexed(), Boolean.valueOf(true));
+    assertEquals(entityTypesModelNew.editable(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -22,10 +22,10 @@ public class PutCompareSpecResources extends GenericModel {
 
   @SerializedName("compare_spec_resources")
   protected CompareSpecResource compareSpecResources;
-  @SerializedName("flow_id")
-  protected String flowId;
   @SerializedName("flow_state")
   protected String flowState;
+  @SerializedName("flow_id")
+  protected String flowId;
 
   /**
    * Gets the compareSpecResources.
@@ -39,17 +39,6 @@ public class PutCompareSpecResources extends GenericModel {
   }
 
   /**
-   * Gets the flowId.
-   *
-   * System generated flow identifier.
-   *
-   * @return the flowId
-   */
-  public String getFlowId() {
-    return flowId;
-  }
-
-  /**
    * Gets the flowState.
    *
    * Current state of flow according to its state machine.
@@ -58,6 +47,17 @@ public class PutCompareSpecResources extends GenericModel {
    */
   public String getFlowState() {
     return flowState;
+  }
+
+  /**
+   * Gets the flowId.
+   *
+   * System generated flow identifier.
+   *
+   * @return the flowId
+   */
+  public String getFlowId() {
+    return flowId;
   }
 }
 

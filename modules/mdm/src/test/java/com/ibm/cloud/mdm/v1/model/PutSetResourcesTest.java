@@ -36,7 +36,7 @@ public class PutSetResourcesTest {
   public void testPutSetResources() throws Throwable {
     PutSetResources putSetResourcesModel = new PutSetResources();
     assertNull(putSetResourcesModel.getSetResources());
-    assertNull(putSetResourcesModel.getFlowId());
     assertNull(putSetResourcesModel.getFlowState());
+    assertNull(putSetResourcesModel.getFlowId());
   }
 }

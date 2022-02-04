@@ -23,16 +23,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceMetadataResponse extends GenericModel {
 
   protected List<InstanceMetadataResponseProject> projects;
+  @SerializedName("cos_crn")
+  protected String cosCrn;
   @SerializedName("bulkload_bucket")
   protected InstanceMetadataResponseBulkloadBucket bulkloadBucket;
   protected List<InstanceMetadataResponseCatalog> catalogs;
+  protected String label;
   @SerializedName("job_project_id")
   protected String jobProjectId;
   @SerializedName("cos_endpoint")
   protected String cosEndpoint;
-  @SerializedName("cos_crn")
-  protected String cosCrn;
-  protected String label;
 
   /**
    * Gets the projects.
@@ -43,6 +43,17 @@ public class InstanceMetadataResponse extends GenericModel {
    */
   public List<InstanceMetadataResponseProject> getProjects() {
     return projects;
+  }
+
+  /**
+   * Gets the cosCrn.
+   *
+   * The cloud resource Name of cloud object storage.
+   *
+   * @return the cosCrn
+   */
+  public String getCosCrn() {
+    return cosCrn;
   }
 
   /**
@@ -68,6 +79,17 @@ public class InstanceMetadataResponse extends GenericModel {
   }
 
   /**
+   * Gets the label.
+   *
+   * Label for instance metadata.
+   *
+   * @return the label
+   */
+  public String getLabel() {
+    return label;
+  }
+
+  /**
    * Gets the jobProjectId.
    *
    * The unique identifier of a project for the jobs.
@@ -87,28 +109,6 @@ public class InstanceMetadataResponse extends GenericModel {
    */
   public String getCosEndpoint() {
     return cosEndpoint;
-  }
-
-  /**
-   * Gets the cosCrn.
-   *
-   * The cloud resource Name of cloud object storage.
-   *
-   * @return the cosCrn
-   */
-  public String getCosCrn() {
-    return cosCrn;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * Label for instance metadata.
-   *
-   * @return the label
-   */
-  public String getLabel() {
-    return label;
   }
 }
 

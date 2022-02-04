@@ -30,6 +30,8 @@ public class AlgorithmEntityType extends GenericModel {
   protected Float autoLinkThreshold;
   @SerializedName("compare_methods")
   protected Map<String, AlgorithmCompareMethod> compareMethods;
+  @SerializedName("post_filter_methods")
+  protected Map<String, AlgorithmPostFilterMethod> postFilterMethods;
 
   /**
    * Builder.
@@ -39,12 +41,14 @@ public class AlgorithmEntityType extends GenericModel {
     private Float clericalReviewThreshold;
     private Float autoLinkThreshold;
     private Map<String, AlgorithmCompareMethod> compareMethods;
+    private Map<String, AlgorithmPostFilterMethod> postFilterMethods;
 
     private Builder(AlgorithmEntityType algorithmEntityType) {
       this.bucketGenerators = algorithmEntityType.bucketGenerators;
       this.clericalReviewThreshold = algorithmEntityType.clericalReviewThreshold;
       this.autoLinkThreshold = algorithmEntityType.autoLinkThreshold;
       this.compareMethods = algorithmEntityType.compareMethods;
+      this.postFilterMethods = algorithmEntityType.postFilterMethods;
     }
 
     /**
@@ -114,6 +118,17 @@ public class AlgorithmEntityType extends GenericModel {
       this.compareMethods = compareMethods;
       return this;
     }
+
+    /**
+     * Set the postFilterMethods.
+     *
+     * @param postFilterMethods the postFilterMethods
+     * @return the AlgorithmEntityType builder
+     */
+    public Builder postFilterMethods(Map<String, AlgorithmPostFilterMethod> postFilterMethods) {
+      this.postFilterMethods = postFilterMethods;
+      return this;
+    }
   }
 
   protected AlgorithmEntityType(Builder builder) {
@@ -123,6 +138,7 @@ public class AlgorithmEntityType extends GenericModel {
     clericalReviewThreshold = builder.clericalReviewThreshold;
     autoLinkThreshold = builder.autoLinkThreshold;
     compareMethods = builder.compareMethods;
+    postFilterMethods = builder.postFilterMethods;
   }
 
   /**
@@ -176,6 +192,17 @@ public class AlgorithmEntityType extends GenericModel {
    */
   public Map<String, AlgorithmCompareMethod> compareMethods() {
     return compareMethods;
+  }
+
+  /**
+   * Gets the postFilterMethods.
+   *
+   * Collection of post filter methods.
+   *
+   * @return the postFilterMethods
+   */
+  public Map<String, AlgorithmPostFilterMethod> postFilterMethods() {
+    return postFilterMethods;
   }
 }
 
