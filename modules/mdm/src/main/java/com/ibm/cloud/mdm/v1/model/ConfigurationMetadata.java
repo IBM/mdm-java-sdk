@@ -22,8 +22,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ConfigurationMetadata extends GenericModel {
 
-  @SerializedName("project_id")
-  protected String projectId;
   @SerializedName("catalog_id")
   protected String catalogId;
   @SerializedName("last_update_date")
@@ -32,6 +30,8 @@ public class ConfigurationMetadata extends GenericModel {
   protected String createdDate;
   @SerializedName("pair_analysis")
   protected Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
+  @SerializedName("project_id")
+  protected String projectId;
   protected String description;
   protected String name;
   protected String id;
@@ -40,16 +40,16 @@ public class ConfigurationMetadata extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String projectId;
     private String catalogId;
     private Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
+    private String projectId;
     private String description;
     private String name;
 
     private Builder(ConfigurationMetadata configurationMetadata) {
-      this.projectId = configurationMetadata.projectId;
       this.catalogId = configurationMetadata.catalogId;
       this.pairAnalysis = configurationMetadata.pairAnalysis;
+      this.projectId = configurationMetadata.projectId;
       this.description = configurationMetadata.description;
       this.name = configurationMetadata.name;
     }
@@ -67,17 +67,6 @@ public class ConfigurationMetadata extends GenericModel {
      */
     public ConfigurationMetadata build() {
       return new ConfigurationMetadata(this);
-    }
-
-    /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the ConfigurationMetadata builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
     }
 
     /**
@@ -99,6 +88,17 @@ public class ConfigurationMetadata extends GenericModel {
      */
     public Builder pairAnalysis(Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis) {
       this.pairAnalysis = pairAnalysis;
+      return this;
+    }
+
+    /**
+     * Set the projectId.
+     *
+     * @param projectId the projectId
+     * @return the ConfigurationMetadata builder
+     */
+    public Builder projectId(String projectId) {
+      this.projectId = projectId;
       return this;
     }
 
@@ -126,9 +126,9 @@ public class ConfigurationMetadata extends GenericModel {
   }
 
   protected ConfigurationMetadata(Builder builder) {
-    projectId = builder.projectId;
     catalogId = builder.catalogId;
     pairAnalysis = builder.pairAnalysis;
+    projectId = builder.projectId;
     description = builder.description;
     name = builder.name;
   }
@@ -140,17 +140,6 @@ public class ConfigurationMetadata extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * The project id of the linked WKC project.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
   }
 
   /**
@@ -195,6 +184,17 @@ public class ConfigurationMetadata extends GenericModel {
    */
   public Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis() {
     return pairAnalysis;
+  }
+
+  /**
+   * Gets the projectId.
+   *
+   * The project id of the linked WKC project.
+   *
+   * @return the projectId
+   */
+  public String projectId() {
+    return projectId;
   }
 
   /**

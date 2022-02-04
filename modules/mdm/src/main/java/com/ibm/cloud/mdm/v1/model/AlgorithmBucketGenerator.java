@@ -26,16 +26,16 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmBucketGenerator extends DynamicModel<Object> {
 
-  @SerializedName("bucket_recipe")
-  protected List<AlgorithmBucketStep> bucketRecipe;
-  @SerializedName("maximum_bucket_size")
-  protected Long maximumBucketSize;
-  @SerializedName("bucket_group_recipe")
-  protected List<AlgorithmBucketGroupStep> bucketGroupRecipe;
   @SerializedName("inputs")
   protected List<AlgorithmInput> inputs;
+  @SerializedName("maximum_bucket_size")
+  protected Long maximumBucketSize;
+  @SerializedName("bucket_recipe")
+  protected List<AlgorithmBucketStep> bucketRecipe;
   @SerializedName("label")
   protected String label;
+  @SerializedName("bucket_group_recipe")
+  protected List<AlgorithmBucketGroupStep> bucketGroupRecipe;
 
   public AlgorithmBucketGenerator() {
     super(new TypeToken<Object>() { });
@@ -45,19 +45,19 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private List<AlgorithmBucketStep> bucketRecipe;
-    private Long maximumBucketSize;
-    private List<AlgorithmBucketGroupStep> bucketGroupRecipe;
     private List<AlgorithmInput> inputs;
+    private Long maximumBucketSize;
+    private List<AlgorithmBucketStep> bucketRecipe;
     private String label;
+    private List<AlgorithmBucketGroupStep> bucketGroupRecipe;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmBucketGenerator algorithmBucketGenerator) {
-      this.bucketRecipe = algorithmBucketGenerator.bucketRecipe;
-      this.maximumBucketSize = algorithmBucketGenerator.maximumBucketSize;
-      this.bucketGroupRecipe = algorithmBucketGenerator.bucketGroupRecipe;
       this.inputs = algorithmBucketGenerator.inputs;
+      this.maximumBucketSize = algorithmBucketGenerator.maximumBucketSize;
+      this.bucketRecipe = algorithmBucketGenerator.bucketRecipe;
       this.label = algorithmBucketGenerator.label;
+      this.bucketGroupRecipe = algorithmBucketGenerator.bucketGroupRecipe;
       this.dynamicProperties = algorithmBucketGenerator.getProperties();
     }
 
@@ -85,6 +85,22 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
      */
     public AlgorithmBucketGenerator build() {
       return new AlgorithmBucketGenerator(this);
+    }
+
+    /**
+     * Adds an inputs to inputs.
+     *
+     * @param inputs the new inputs
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder addInputs(AlgorithmInput inputs) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,
+        "inputs cannot be null");
+      if (this.inputs == null) {
+        this.inputs = new ArrayList<AlgorithmInput>();
+      }
+      this.inputs.add(inputs);
+      return this;
     }
 
     /**
@@ -120,18 +136,25 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
     }
 
     /**
-     * Adds an inputs to inputs.
+     * Set the inputs.
+     * Existing inputs will be replaced.
      *
-     * @param inputs the new inputs
+     * @param inputs the inputs
      * @return the AlgorithmBucketGenerator builder
      */
-    public Builder addInputs(AlgorithmInput inputs) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(inputs,
-        "inputs cannot be null");
-      if (this.inputs == null) {
-        this.inputs = new ArrayList<AlgorithmInput>();
-      }
-      this.inputs.add(inputs);
+    public Builder inputs(List<AlgorithmInput> inputs) {
+      this.inputs = inputs;
+      return this;
+    }
+
+    /**
+     * Set the maximumBucketSize.
+     *
+     * @param maximumBucketSize the maximumBucketSize
+     * @return the AlgorithmBucketGenerator builder
+     */
+    public Builder maximumBucketSize(long maximumBucketSize) {
+      this.maximumBucketSize = maximumBucketSize;
       return this;
     }
 
@@ -148,13 +171,13 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
     }
 
     /**
-     * Set the maximumBucketSize.
+     * Set the label.
      *
-     * @param maximumBucketSize the maximumBucketSize
+     * @param label the label
      * @return the AlgorithmBucketGenerator builder
      */
-    public Builder maximumBucketSize(long maximumBucketSize) {
-      this.maximumBucketSize = maximumBucketSize;
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -167,29 +190,6 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
      */
     public Builder bucketGroupRecipe(List<AlgorithmBucketGroupStep> bucketGroupRecipe) {
       this.bucketGroupRecipe = bucketGroupRecipe;
-      return this;
-    }
-
-    /**
-     * Set the inputs.
-     * Existing inputs will be replaced.
-     *
-     * @param inputs the inputs
-     * @return the AlgorithmBucketGenerator builder
-     */
-    public Builder inputs(List<AlgorithmInput> inputs) {
-      this.inputs = inputs;
-      return this;
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the AlgorithmBucketGenerator builder
-     */
-    public Builder label(String label) {
-      this.label = label;
       return this;
     }
 
@@ -216,11 +216,11 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
       "maximumBucketSize cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    bucketRecipe = builder.bucketRecipe;
-    maximumBucketSize = builder.maximumBucketSize;
-    bucketGroupRecipe = builder.bucketGroupRecipe;
     inputs = builder.inputs;
+    maximumBucketSize = builder.maximumBucketSize;
+    bucketRecipe = builder.bucketRecipe;
     label = builder.label;
+    bucketGroupRecipe = builder.bucketGroupRecipe;
     this.setProperties(builder.dynamicProperties);
   }
 
@@ -231,66 +231,6 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the bucketRecipe.
-   *
-   * Collection of bucket generator steps.
-   *
-   * @return the bucketRecipe
-   */
-  public List<AlgorithmBucketStep> getBucketRecipe() {
-    return this.bucketRecipe;
-  }
-
-  /**
-   * Sets the bucketRecipe.
-   *
-   * @param bucketRecipe the new bucketRecipe
-   */
-  public void setBucketRecipe(final List<AlgorithmBucketStep> bucketRecipe) {
-    this.bucketRecipe = bucketRecipe;
-  }
-
-  /**
-   * Gets the maximumBucketSize.
-   *
-   * An integer value indicating maximum size of any buckets of this type.
-   *
-   * @return the maximumBucketSize
-   */
-  public Long getMaximumBucketSize() {
-    return this.maximumBucketSize;
-  }
-
-  /**
-   * Sets the maximumBucketSize.
-   *
-   * @param maximumBucketSize the new maximumBucketSize
-   */
-  public void setMaximumBucketSize(final long maximumBucketSize) {
-    this.maximumBucketSize = maximumBucketSize;
-  }
-
-  /**
-   * Gets the bucketGroupRecipe.
-   *
-   * Collection of bucket group generator steps.
-   *
-   * @return the bucketGroupRecipe
-   */
-  public List<AlgorithmBucketGroupStep> getBucketGroupRecipe() {
-    return this.bucketGroupRecipe;
-  }
-
-  /**
-   * Sets the bucketGroupRecipe.
-   *
-   * @param bucketGroupRecipe the new bucketGroupRecipe
-   */
-  public void setBucketGroupRecipe(final List<AlgorithmBucketGroupStep> bucketGroupRecipe) {
-    this.bucketGroupRecipe = bucketGroupRecipe;
   }
 
   /**
@@ -314,6 +254,46 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
   }
 
   /**
+   * Gets the maximumBucketSize.
+   *
+   * An integer value indicating maximum size of any buckets of this type.
+   *
+   * @return the maximumBucketSize
+   */
+  public Long getMaximumBucketSize() {
+    return this.maximumBucketSize;
+  }
+
+  /**
+   * Sets the maximumBucketSize.
+   *
+   * @param maximumBucketSize the new maximumBucketSize
+   */
+  public void setMaximumBucketSize(final long maximumBucketSize) {
+    this.maximumBucketSize = maximumBucketSize;
+  }
+
+  /**
+   * Gets the bucketRecipe.
+   *
+   * Collection of bucket generator steps.
+   *
+   * @return the bucketRecipe
+   */
+  public List<AlgorithmBucketStep> getBucketRecipe() {
+    return this.bucketRecipe;
+  }
+
+  /**
+   * Sets the bucketRecipe.
+   *
+   * @param bucketRecipe the new bucketRecipe
+   */
+  public void setBucketRecipe(final List<AlgorithmBucketStep> bucketRecipe) {
+    this.bucketRecipe = bucketRecipe;
+  }
+
+  /**
    * Gets the label.
    *
    * User defined translatable label.
@@ -331,5 +311,25 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
    */
   public void setLabel(final String label) {
     this.label = label;
+  }
+
+  /**
+   * Gets the bucketGroupRecipe.
+   *
+   * Collection of bucket group generator steps.
+   *
+   * @return the bucketGroupRecipe
+   */
+  public List<AlgorithmBucketGroupStep> getBucketGroupRecipe() {
+    return this.bucketGroupRecipe;
+  }
+
+  /**
+   * Sets the bucketGroupRecipe.
+   *
+   * @param bucketGroupRecipe the new bucketGroupRecipe
+   */
+  public void setBucketGroupRecipe(final List<AlgorithmBucketGroupStep> bucketGroupRecipe) {
+    this.bucketGroupRecipe = bucketGroupRecipe;
   }
 }

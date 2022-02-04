@@ -20,31 +20,31 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelSystemProperty extends GenericModel {
 
-  protected Boolean settable;
-  protected Boolean editable;
   protected String label;
+  protected Boolean editable;
   protected Boolean indexed;
   @SerializedName("data_type")
   protected String dataType;
+  protected Boolean settable;
   protected String description;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Boolean settable;
-    private Boolean editable;
     private String label;
+    private Boolean editable;
     private Boolean indexed;
     private String dataType;
+    private Boolean settable;
     private String description;
 
     private Builder(DataModelSystemProperty dataModelSystemProperty) {
-      this.settable = dataModelSystemProperty.settable;
-      this.editable = dataModelSystemProperty.editable;
       this.label = dataModelSystemProperty.label;
+      this.editable = dataModelSystemProperty.editable;
       this.indexed = dataModelSystemProperty.indexed;
       this.dataType = dataModelSystemProperty.dataType;
+      this.settable = dataModelSystemProperty.settable;
       this.description = dataModelSystemProperty.description;
     }
 
@@ -75,13 +75,13 @@ public class DataModelSystemProperty extends GenericModel {
     }
 
     /**
-     * Set the settable.
+     * Set the label.
      *
-     * @param settable the settable
+     * @param label the label
      * @return the DataModelSystemProperty builder
      */
-    public Builder settable(Boolean settable) {
-      this.settable = settable;
+    public Builder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -93,17 +93,6 @@ public class DataModelSystemProperty extends GenericModel {
      */
     public Builder editable(Boolean editable) {
       this.editable = editable;
-      return this;
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the DataModelSystemProperty builder
-     */
-    public Builder label(String label) {
-      this.label = label;
       return this;
     }
 
@@ -130,6 +119,17 @@ public class DataModelSystemProperty extends GenericModel {
     }
 
     /**
+     * Set the settable.
+     *
+     * @param settable the settable
+     * @return the DataModelSystemProperty builder
+     */
+    public Builder settable(Boolean settable) {
+      this.settable = settable;
+      return this;
+    }
+
+    /**
      * Set the description.
      *
      * @param description the description
@@ -146,11 +146,11 @@ public class DataModelSystemProperty extends GenericModel {
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataType,
       "dataType cannot be null");
-    settable = builder.settable;
-    editable = builder.editable;
     label = builder.label;
+    editable = builder.editable;
     indexed = builder.indexed;
     dataType = builder.dataType;
+    settable = builder.settable;
     description = builder.description;
   }
 
@@ -164,14 +164,14 @@ public class DataModelSystemProperty extends GenericModel {
   }
 
   /**
-   * Gets the settable.
+   * Gets the label.
    *
-   * System pre-defined settable indicator. The default value is false.
+   * System pre-defined label.
    *
-   * @return the settable
+   * @return the label
    */
-  public Boolean settable() {
-    return settable;
+  public String label() {
+    return label;
   }
 
   /**
@@ -183,17 +183,6 @@ public class DataModelSystemProperty extends GenericModel {
    */
   public Boolean editable() {
     return editable;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * System pre-defined label.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 
   /**
@@ -216,6 +205,17 @@ public class DataModelSystemProperty extends GenericModel {
    */
   public String dataType() {
     return dataType;
+  }
+
+  /**
+   * Gets the settable.
+   *
+   * System pre-defined settable indicator. The default value is false.
+   *
+   * @return the settable
+   */
+  public Boolean settable() {
+    return settable;
   }
 
   /**

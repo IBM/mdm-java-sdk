@@ -20,39 +20,39 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AssetMapping extends GenericModel {
 
-  @SerializedName("data_mapping_name")
-  protected String dataMappingName;
-  @SerializedName("completeness_percent")
-  protected String completenessPercent;
-  @SerializedName("data_mapping_attribute_type")
-  protected String dataMappingAttributeType;
   @SerializedName("exclude_column")
   protected Boolean excludeColumn;
   @SerializedName("auto_mapped")
   protected Boolean autoMapped;
   @SerializedName("classified_class")
   protected String classifiedClass;
+  @SerializedName("data_mapping_name")
+  protected String dataMappingName;
+  @SerializedName("completeness_percent")
+  protected String completenessPercent;
+  @SerializedName("data_mapping_attribute_type")
+  protected String dataMappingAttributeType;
   protected String key;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String dataMappingName;
-    private String completenessPercent;
-    private String dataMappingAttributeType;
     private Boolean excludeColumn;
     private Boolean autoMapped;
     private String classifiedClass;
+    private String dataMappingName;
+    private String completenessPercent;
+    private String dataMappingAttributeType;
     private String key;
 
     private Builder(AssetMapping assetMapping) {
-      this.dataMappingName = assetMapping.dataMappingName;
-      this.completenessPercent = assetMapping.completenessPercent;
-      this.dataMappingAttributeType = assetMapping.dataMappingAttributeType;
       this.excludeColumn = assetMapping.excludeColumn;
       this.autoMapped = assetMapping.autoMapped;
       this.classifiedClass = assetMapping.classifiedClass;
+      this.dataMappingName = assetMapping.dataMappingName;
+      this.completenessPercent = assetMapping.completenessPercent;
+      this.dataMappingAttributeType = assetMapping.dataMappingAttributeType;
       this.key = assetMapping.key;
     }
 
@@ -69,39 +69,6 @@ public class AssetMapping extends GenericModel {
      */
     public AssetMapping build() {
       return new AssetMapping(this);
-    }
-
-    /**
-     * Set the dataMappingName.
-     *
-     * @param dataMappingName the dataMappingName
-     * @return the AssetMapping builder
-     */
-    public Builder dataMappingName(String dataMappingName) {
-      this.dataMappingName = dataMappingName;
-      return this;
-    }
-
-    /**
-     * Set the completenessPercent.
-     *
-     * @param completenessPercent the completenessPercent
-     * @return the AssetMapping builder
-     */
-    public Builder completenessPercent(String completenessPercent) {
-      this.completenessPercent = completenessPercent;
-      return this;
-    }
-
-    /**
-     * Set the dataMappingAttributeType.
-     *
-     * @param dataMappingAttributeType the dataMappingAttributeType
-     * @return the AssetMapping builder
-     */
-    public Builder dataMappingAttributeType(String dataMappingAttributeType) {
-      this.dataMappingAttributeType = dataMappingAttributeType;
-      return this;
     }
 
     /**
@@ -138,6 +105,39 @@ public class AssetMapping extends GenericModel {
     }
 
     /**
+     * Set the dataMappingName.
+     *
+     * @param dataMappingName the dataMappingName
+     * @return the AssetMapping builder
+     */
+    public Builder dataMappingName(String dataMappingName) {
+      this.dataMappingName = dataMappingName;
+      return this;
+    }
+
+    /**
+     * Set the completenessPercent.
+     *
+     * @param completenessPercent the completenessPercent
+     * @return the AssetMapping builder
+     */
+    public Builder completenessPercent(String completenessPercent) {
+      this.completenessPercent = completenessPercent;
+      return this;
+    }
+
+    /**
+     * Set the dataMappingAttributeType.
+     *
+     * @param dataMappingAttributeType the dataMappingAttributeType
+     * @return the AssetMapping builder
+     */
+    public Builder dataMappingAttributeType(String dataMappingAttributeType) {
+      this.dataMappingAttributeType = dataMappingAttributeType;
+      return this;
+    }
+
+    /**
      * Set the key.
      *
      * @param key the key
@@ -150,12 +150,12 @@ public class AssetMapping extends GenericModel {
   }
 
   protected AssetMapping(Builder builder) {
-    dataMappingName = builder.dataMappingName;
-    completenessPercent = builder.completenessPercent;
-    dataMappingAttributeType = builder.dataMappingAttributeType;
     excludeColumn = builder.excludeColumn;
     autoMapped = builder.autoMapped;
     classifiedClass = builder.classifiedClass;
+    dataMappingName = builder.dataMappingName;
+    completenessPercent = builder.completenessPercent;
+    dataMappingAttributeType = builder.dataMappingAttributeType;
     key = builder.key;
   }
 
@@ -166,39 +166,6 @@ public class AssetMapping extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the dataMappingName.
-   *
-   * The Data mapping name of the Data Asset column.
-   *
-   * @return the dataMappingName
-   */
-  public String dataMappingName() {
-    return dataMappingName;
-  }
-
-  /**
-   * Gets the completenessPercent.
-   *
-   * The data values completeness percentage of the Data asset column.
-   *
-   * @return the completenessPercent
-   */
-  public String completenessPercent() {
-    return completenessPercent;
-  }
-
-  /**
-   * Gets the dataMappingAttributeType.
-   *
-   * The attribute type mapped to this Data Asset column.
-   *
-   * @return the dataMappingAttributeType
-   */
-  public String dataMappingAttributeType() {
-    return dataMappingAttributeType;
   }
 
   /**
@@ -232,6 +199,39 @@ public class AssetMapping extends GenericModel {
    */
   public String classifiedClass() {
     return classifiedClass;
+  }
+
+  /**
+   * Gets the dataMappingName.
+   *
+   * The Data mapping name of the Data Asset column.
+   *
+   * @return the dataMappingName
+   */
+  public String dataMappingName() {
+    return dataMappingName;
+  }
+
+  /**
+   * Gets the completenessPercent.
+   *
+   * The data values completeness percentage of the Data asset column.
+   *
+   * @return the completenessPercent
+   */
+  public String completenessPercent() {
+    return completenessPercent;
+  }
+
+  /**
+   * Gets the dataMappingAttributeType.
+   *
+   * The attribute type mapped to this Data Asset column.
+   *
+   * @return the dataMappingAttributeType
+   */
+  public String dataMappingAttributeType() {
+    return dataMappingAttributeType;
   }
 
   /**

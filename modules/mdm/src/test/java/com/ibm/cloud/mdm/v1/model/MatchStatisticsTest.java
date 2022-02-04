@@ -38,8 +38,8 @@ public class MatchStatisticsTest {
   public void testMatchStatistics() throws Throwable {
     MatchStatistics matchStatisticsModel = new MatchStatistics();
     assertNull(matchStatisticsModel.getEntityBreakdown());
-    assertNull(matchStatisticsModel.getEntitySizeDistribution());
     assertNull(matchStatisticsModel.getLargestEntities());
+    assertNull(matchStatisticsModel.getEntitySizeDistribution());
     assertNull(matchStatisticsModel.getSummary());
     assertNull(matchStatisticsModel.getStatus());
   }

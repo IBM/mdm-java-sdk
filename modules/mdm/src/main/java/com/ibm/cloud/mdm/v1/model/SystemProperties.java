@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SystemProperties extends GenericModel {
 
-  @SerializedName("relationship_types")
-  protected SystemPropertiesRelationshipTypes relationshipTypes;
-  @SerializedName("attribute_types")
-  protected AttributeTypes attributeTypes;
   @SerializedName("record_types")
   protected RecordTypes recordTypes;
   @SerializedName("entity_types")
   protected EntityTypes entityTypes;
+  @SerializedName("relationship_types")
+  protected SystemPropertiesRelationshipTypes relationshipTypes;
+  @SerializedName("attribute_types")
+  protected AttributeTypes attributeTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private SystemPropertiesRelationshipTypes relationshipTypes;
-    private AttributeTypes attributeTypes;
     private RecordTypes recordTypes;
     private EntityTypes entityTypes;
+    private SystemPropertiesRelationshipTypes relationshipTypes;
+    private AttributeTypes attributeTypes;
 
     private Builder(SystemProperties systemProperties) {
-      this.relationshipTypes = systemProperties.relationshipTypes;
-      this.attributeTypes = systemProperties.attributeTypes;
       this.recordTypes = systemProperties.recordTypes;
       this.entityTypes = systemProperties.entityTypes;
+      this.relationshipTypes = systemProperties.relationshipTypes;
+      this.attributeTypes = systemProperties.attributeTypes;
     }
 
     /**
@@ -58,28 +58,6 @@ public class SystemProperties extends GenericModel {
      */
     public SystemProperties build() {
       return new SystemProperties(this);
-    }
-
-    /**
-     * Set the relationshipTypes.
-     *
-     * @param relationshipTypes the relationshipTypes
-     * @return the SystemProperties builder
-     */
-    public Builder relationshipTypes(SystemPropertiesRelationshipTypes relationshipTypes) {
-      this.relationshipTypes = relationshipTypes;
-      return this;
-    }
-
-    /**
-     * Set the attributeTypes.
-     *
-     * @param attributeTypes the attributeTypes
-     * @return the SystemProperties builder
-     */
-    public Builder attributeTypes(AttributeTypes attributeTypes) {
-      this.attributeTypes = attributeTypes;
-      return this;
     }
 
     /**
@@ -103,13 +81,35 @@ public class SystemProperties extends GenericModel {
       this.entityTypes = entityTypes;
       return this;
     }
+
+    /**
+     * Set the relationshipTypes.
+     *
+     * @param relationshipTypes the relationshipTypes
+     * @return the SystemProperties builder
+     */
+    public Builder relationshipTypes(SystemPropertiesRelationshipTypes relationshipTypes) {
+      this.relationshipTypes = relationshipTypes;
+      return this;
+    }
+
+    /**
+     * Set the attributeTypes.
+     *
+     * @param attributeTypes the attributeTypes
+     * @return the SystemProperties builder
+     */
+    public Builder attributeTypes(AttributeTypes attributeTypes) {
+      this.attributeTypes = attributeTypes;
+      return this;
+    }
   }
 
   protected SystemProperties(Builder builder) {
-    relationshipTypes = builder.relationshipTypes;
-    attributeTypes = builder.attributeTypes;
     recordTypes = builder.recordTypes;
     entityTypes = builder.entityTypes;
+    relationshipTypes = builder.relationshipTypes;
+    attributeTypes = builder.attributeTypes;
   }
 
   /**
@@ -119,28 +119,6 @@ public class SystemProperties extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the relationshipTypes.
-   *
-   * System properties for relationship type.
-   *
-   * @return the relationshipTypes
-   */
-  public SystemPropertiesRelationshipTypes relationshipTypes() {
-    return relationshipTypes;
-  }
-
-  /**
-   * Gets the attributeTypes.
-   *
-   * System properties for attribute type.
-   *
-   * @return the attributeTypes
-   */
-  public AttributeTypes attributeTypes() {
-    return attributeTypes;
   }
 
   /**
@@ -163,6 +141,28 @@ public class SystemProperties extends GenericModel {
    */
   public EntityTypes entityTypes() {
     return entityTypes;
+  }
+
+  /**
+   * Gets the relationshipTypes.
+   *
+   * System properties for relationship type.
+   *
+   * @return the relationshipTypes
+   */
+  public SystemPropertiesRelationshipTypes relationshipTypes() {
+    return relationshipTypes;
+  }
+
+  /**
+   * Gets the attributeTypes.
+   *
+   * System properties for attribute type.
+   *
+   * @return the attributeTypes
+   */
+  public AttributeTypes attributeTypes() {
+    return attributeTypes;
   }
 }
 

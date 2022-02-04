@@ -20,11 +20,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateConfiguratorProcessOptions extends GenericModel {
 
   protected String processName;
-  protected String recordType;
-  protected Boolean doForceMatching;
   protected String assetIds;
   protected String initiator;
   protected Boolean doDerive;
+  protected Boolean doForceMatching;
+  protected String recordType;
   protected ProcessRequestAssetSourceDetails assetSourceDetails;
   protected String entityType;
 
@@ -33,21 +33,21 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
    */
   public static class Builder {
     private String processName;
-    private String recordType;
-    private Boolean doForceMatching;
     private String assetIds;
     private String initiator;
     private Boolean doDerive;
+    private Boolean doForceMatching;
+    private String recordType;
     private ProcessRequestAssetSourceDetails assetSourceDetails;
     private String entityType;
 
     private Builder(CreateConfiguratorProcessOptions createConfiguratorProcessOptions) {
       this.processName = createConfiguratorProcessOptions.processName;
-      this.recordType = createConfiguratorProcessOptions.recordType;
-      this.doForceMatching = createConfiguratorProcessOptions.doForceMatching;
       this.assetIds = createConfiguratorProcessOptions.assetIds;
       this.initiator = createConfiguratorProcessOptions.initiator;
       this.doDerive = createConfiguratorProcessOptions.doDerive;
+      this.doForceMatching = createConfiguratorProcessOptions.doForceMatching;
+      this.recordType = createConfiguratorProcessOptions.recordType;
       this.assetSourceDetails = createConfiguratorProcessOptions.assetSourceDetails;
       this.entityType = createConfiguratorProcessOptions.entityType;
     }
@@ -88,28 +88,6 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
-     * Set the recordType.
-     *
-     * @param recordType the recordType
-     * @return the CreateConfiguratorProcessOptions builder
-     */
-    public Builder recordType(String recordType) {
-      this.recordType = recordType;
-      return this;
-    }
-
-    /**
-     * Set the doForceMatching.
-     *
-     * @param doForceMatching the doForceMatching
-     * @return the CreateConfiguratorProcessOptions builder
-     */
-    public Builder doForceMatching(Boolean doForceMatching) {
-      this.doForceMatching = doForceMatching;
-      return this;
-    }
-
-    /**
      * Set the assetIds.
      *
      * @param assetIds the assetIds
@@ -143,6 +121,28 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
+     * Set the doForceMatching.
+     *
+     * @param doForceMatching the doForceMatching
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder doForceMatching(Boolean doForceMatching) {
+      this.doForceMatching = doForceMatching;
+      return this;
+    }
+
+    /**
+     * Set the recordType.
+     *
+     * @param recordType the recordType
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder recordType(String recordType) {
+      this.recordType = recordType;
+      return this;
+    }
+
+    /**
      * Set the assetSourceDetails.
      *
      * @param assetSourceDetails the assetSourceDetails
@@ -169,11 +169,11 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.processName,
       "processName cannot be null");
     processName = builder.processName;
-    recordType = builder.recordType;
-    doForceMatching = builder.doForceMatching;
     assetIds = builder.assetIds;
     initiator = builder.initiator;
     doDerive = builder.doDerive;
+    doForceMatching = builder.doForceMatching;
+    recordType = builder.recordType;
     assetSourceDetails = builder.assetSourceDetails;
     entityType = builder.entityType;
   }
@@ -196,28 +196,6 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
    */
   public String processName() {
     return processName;
-  }
-
-  /**
-   * Gets the recordType.
-   *
-   * The record type which needs to be processed for match and publish_data processes.
-   *
-   * @return the recordType
-   */
-  public String recordType() {
-    return recordType;
-  }
-
-  /**
-   * Gets the doForceMatching.
-   *
-   * Flag to enable/disable force derive/match operations.
-   *
-   * @return the doForceMatching
-   */
-  public Boolean doForceMatching() {
-    return doForceMatching;
   }
 
   /**
@@ -252,6 +230,28 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
    */
   public Boolean doDerive() {
     return doDerive;
+  }
+
+  /**
+   * Gets the doForceMatching.
+   *
+   * Flag to enable/disable force derive/match operations.
+   *
+   * @return the doForceMatching
+   */
+  public Boolean doForceMatching() {
+    return doForceMatching;
+  }
+
+  /**
+   * Gets the recordType.
+   *
+   * The record type which needs to be processed for match and publish_data processes.
+   *
+   * @return the recordType
+   */
+  public String recordType() {
+    return recordType;
   }
 
   /**

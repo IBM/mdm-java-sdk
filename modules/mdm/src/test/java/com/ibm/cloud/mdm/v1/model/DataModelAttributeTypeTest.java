@@ -47,14 +47,14 @@ public class DataModelAttributeTypeTest {
 
     DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
       .label("testString")
-      .classification("testString")
       .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .classification("testString")
       .description("testString")
       .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
       .build();
     assertEquals(dataModelAttributeTypeModel.label(), "testString");
-    assertEquals(dataModelAttributeTypeModel.classification(), "testString");
     assertEquals(dataModelAttributeTypeModel.matchingTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(dataModelAttributeTypeModel.classification(), "testString");
     assertEquals(dataModelAttributeTypeModel.description(), "testString");
     assertEquals(dataModelAttributeTypeModel.fields(), new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } });
 

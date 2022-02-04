@@ -21,9 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
 
+  protected Map<String, RecordType> recordTypes;
   protected Map<String, RelationshipType> relationshipTypes;
   protected Map<String, AttributeType> attributeTypes;
-  protected Map<String, RecordType> recordTypes;
   protected String locale;
   protected Map<String, SystemProperties> systemProperties;
 
@@ -31,16 +31,16 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private Map<String, RecordType> recordTypes;
     private Map<String, RelationshipType> relationshipTypes;
     private Map<String, AttributeType> attributeTypes;
-    private Map<String, RecordType> recordTypes;
     private String locale;
     private Map<String, SystemProperties> systemProperties;
 
     private Builder(ReplaceConfiguratorConfigDataModelOptions replaceConfiguratorConfigDataModelOptions) {
+      this.recordTypes = replaceConfiguratorConfigDataModelOptions.recordTypes;
       this.relationshipTypes = replaceConfiguratorConfigDataModelOptions.relationshipTypes;
       this.attributeTypes = replaceConfiguratorConfigDataModelOptions.attributeTypes;
-      this.recordTypes = replaceConfiguratorConfigDataModelOptions.recordTypes;
       this.locale = replaceConfiguratorConfigDataModelOptions.locale;
       this.systemProperties = replaceConfiguratorConfigDataModelOptions.systemProperties;
     }
@@ -58,6 +58,17 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
      */
     public ReplaceConfiguratorConfigDataModelOptions build() {
       return new ReplaceConfiguratorConfigDataModelOptions(this);
+    }
+
+    /**
+     * Set the recordTypes.
+     *
+     * @param recordTypes the recordTypes
+     * @return the ReplaceConfiguratorConfigDataModelOptions builder
+     */
+    public Builder recordTypes(Map<String, RecordType> recordTypes) {
+      this.recordTypes = recordTypes;
+      return this;
     }
 
     /**
@@ -79,17 +90,6 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
      */
     public Builder attributeTypes(Map<String, AttributeType> attributeTypes) {
       this.attributeTypes = attributeTypes;
-      return this;
-    }
-
-    /**
-     * Set the recordTypes.
-     *
-     * @param recordTypes the recordTypes
-     * @return the ReplaceConfiguratorConfigDataModelOptions builder
-     */
-    public Builder recordTypes(Map<String, RecordType> recordTypes) {
-      this.recordTypes = recordTypes;
       return this;
     }
 
@@ -122,9 +122,9 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
      * @return the ReplaceConfiguratorConfigDataModelOptions builder
      */
     public Builder configDataModel(ConfigDataModel configDataModel) {
+      this.recordTypes = configDataModel.recordTypes();
       this.relationshipTypes = configDataModel.relationshipTypes();
       this.attributeTypes = configDataModel.attributeTypes();
-      this.recordTypes = configDataModel.recordTypes();
       this.locale = configDataModel.locale();
       this.systemProperties = configDataModel.systemProperties();
       return this;
@@ -132,9 +132,9 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
   }
 
   protected ReplaceConfiguratorConfigDataModelOptions(Builder builder) {
+    recordTypes = builder.recordTypes;
     relationshipTypes = builder.relationshipTypes;
     attributeTypes = builder.attributeTypes;
-    recordTypes = builder.recordTypes;
     locale = builder.locale;
     systemProperties = builder.systemProperties;
   }
@@ -146,6 +146,17 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Collection of record data types.
+   *
+   * @return the recordTypes
+   */
+  public Map<String, RecordType> recordTypes() {
+    return recordTypes;
   }
 
   /**
@@ -168,17 +179,6 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
    */
   public Map<String, AttributeType> attributeTypes() {
     return attributeTypes;
-  }
-
-  /**
-   * Gets the recordTypes.
-   *
-   * Collection of record data types.
-   *
-   * @return the recordTypes
-   */
-  public Map<String, RecordType> recordTypes() {
-    return recordTypes;
   }
 
   /**

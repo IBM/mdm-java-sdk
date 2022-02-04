@@ -34,25 +34,25 @@ public class ProcessRequestAssetSourceDetailsTest {
   @Test
   public void testProcessRequestAssetSourceDetails() throws Throwable {
     ProcessRequestAssetSourceDetailsProject processRequestAssetSourceDetailsProjectModel = new ProcessRequestAssetSourceDetailsProject.Builder()
-      .cosApiKey("testString")
-      .cosBucketName("testString")
       .cosEndpoint("testString")
+      .cosBucketName("testString")
+      .cosApiKey("testString")
       .id("testString")
       .build();
-    assertEquals(processRequestAssetSourceDetailsProjectModel.cosApiKey(), "testString");
-    assertEquals(processRequestAssetSourceDetailsProjectModel.cosBucketName(), "testString");
     assertEquals(processRequestAssetSourceDetailsProjectModel.cosEndpoint(), "testString");
+    assertEquals(processRequestAssetSourceDetailsProjectModel.cosBucketName(), "testString");
+    assertEquals(processRequestAssetSourceDetailsProjectModel.cosApiKey(), "testString");
     assertEquals(processRequestAssetSourceDetailsProjectModel.id(), "testString");
 
     ProcessRequestAssetSourceDetailsCatalog processRequestAssetSourceDetailsCatalogModel = new ProcessRequestAssetSourceDetailsCatalog.Builder()
-      .cosApiKey("testString")
-      .cosBucketName("testString")
       .cosEndpoint("testString")
+      .cosBucketName("testString")
+      .cosApiKey("testString")
       .id("testString")
       .build();
-    assertEquals(processRequestAssetSourceDetailsCatalogModel.cosApiKey(), "testString");
-    assertEquals(processRequestAssetSourceDetailsCatalogModel.cosBucketName(), "testString");
     assertEquals(processRequestAssetSourceDetailsCatalogModel.cosEndpoint(), "testString");
+    assertEquals(processRequestAssetSourceDetailsCatalogModel.cosBucketName(), "testString");
+    assertEquals(processRequestAssetSourceDetailsCatalogModel.cosApiKey(), "testString");
     assertEquals(processRequestAssetSourceDetailsCatalogModel.id(), "testString");
 
     ProcessRequestAssetSourceDetails processRequestAssetSourceDetailsModel = new ProcessRequestAssetSourceDetails.Builder()

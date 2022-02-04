@@ -32,32 +32,32 @@ public class AssetMappingTest {
   @Test
   public void testAssetMapping() throws Throwable {
     AssetMapping assetMappingModel = new AssetMapping.Builder()
-      .dataMappingName("gender")
-      .completenessPercent("100.0")
-      .dataMappingAttributeType("string")
       .excludeColumn(false)
       .autoMapped(true)
       .classifiedClass("GEN")
+      .dataMappingName("gender")
+      .completenessPercent("100.0")
+      .dataMappingAttributeType("string")
       .key("COLUMN 1")
       .build();
-    assertEquals(assetMappingModel.dataMappingName(), "gender");
-    assertEquals(assetMappingModel.completenessPercent(), "100.0");
-    assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
     assertEquals(assetMappingModel.classifiedClass(), "GEN");
+    assertEquals(assetMappingModel.dataMappingName(), "gender");
+    assertEquals(assetMappingModel.completenessPercent(), "100.0");
+    assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModel.key(), "COLUMN 1");
 
     String json = TestUtilities.serialize(assetMappingModel);
 
     AssetMapping assetMappingModelNew = TestUtilities.deserialize(json, AssetMapping.class);
     assertTrue(assetMappingModelNew instanceof AssetMapping);
-    assertEquals(assetMappingModelNew.dataMappingName(), "gender");
-    assertEquals(assetMappingModelNew.completenessPercent(), "100.0");
-    assertEquals(assetMappingModelNew.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModelNew.excludeColumn(), Boolean.valueOf(false));
     assertEquals(assetMappingModelNew.autoMapped(), Boolean.valueOf(true));
     assertEquals(assetMappingModelNew.classifiedClass(), "GEN");
+    assertEquals(assetMappingModelNew.dataMappingName(), "gender");
+    assertEquals(assetMappingModelNew.completenessPercent(), "100.0");
+    assertEquals(assetMappingModelNew.dataMappingAttributeType(), "string");
     assertEquals(assetMappingModelNew.key(), "COLUMN 1");
   }
 }

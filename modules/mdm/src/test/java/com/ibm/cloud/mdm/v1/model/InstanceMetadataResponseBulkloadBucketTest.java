@@ -32,8 +32,8 @@ public class InstanceMetadataResponseBulkloadBucketTest {
   @Test
   public void testInstanceMetadataResponseBulkloadBucket() throws Throwable {
     InstanceMetadataResponseBulkloadBucket instanceMetadataResponseBulkloadBucketModel = new InstanceMetadataResponseBulkloadBucket();
-    assertNull(instanceMetadataResponseBulkloadBucketModel.getCosBucketName());
     assertNull(instanceMetadataResponseBulkloadBucketModel.getCosBucketLocation());
     assertNull(instanceMetadataResponseBulkloadBucketModel.getCosBucketApiKey());
+    assertNull(instanceMetadataResponseBulkloadBucketModel.getCosBucketName());
   }
 }

@@ -21,8 +21,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DataModelEntityType extends GenericModel {
 
   protected String label;
-  protected String description;
   protected String type;
+  protected String description;
   @SerializedName("default")
   protected Boolean xDefault;
 
@@ -31,14 +31,14 @@ public class DataModelEntityType extends GenericModel {
    */
   public static class Builder {
     private String label;
-    private String description;
     private String type;
+    private String description;
     private Boolean xDefault;
 
     private Builder(DataModelEntityType dataModelEntityType) {
       this.label = dataModelEntityType.label;
-      this.description = dataModelEntityType.description;
       this.type = dataModelEntityType.type;
+      this.description = dataModelEntityType.description;
       this.xDefault = dataModelEntityType.xDefault;
     }
 
@@ -78,17 +78,6 @@ public class DataModelEntityType extends GenericModel {
     }
 
     /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the DataModelEntityType builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
      * Set the type.
      *
      * @param type the type
@@ -96,6 +85,17 @@ public class DataModelEntityType extends GenericModel {
      */
     public Builder type(String type) {
       this.type = type;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the DataModelEntityType builder
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -115,8 +115,8 @@ public class DataModelEntityType extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
     label = builder.label;
-    description = builder.description;
     type = builder.type;
+    description = builder.description;
     xDefault = builder.xDefault;
   }
 
@@ -141,17 +141,6 @@ public class DataModelEntityType extends GenericModel {
   }
 
   /**
-   * Gets the description.
-   *
-   * Read-only description of entity type.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
    * Gets the type.
    *
    * Read-only type of entity type, one of individual or household.
@@ -160,6 +149,17 @@ public class DataModelEntityType extends GenericModel {
    */
   public String type() {
     return type;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * Read-only description of entity type.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
   }
 
   /**

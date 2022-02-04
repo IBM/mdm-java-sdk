@@ -34,19 +34,19 @@ public class RecordTypeTest {
   @Test
   public void testRecordType() throws Throwable {
     Attribute attributeModel = new Attribute.Builder()
-      .attributeType("email")
-      .indexed(true)
       .label("testString")
       .description("testString")
+      .indexed(true)
       .classification("testString")
       .cardinality("testString")
+      .attributeType("email")
       .build();
-    assertEquals(attributeModel.attributeType(), "email");
-    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(attributeModel.label(), "testString");
     assertEquals(attributeModel.description(), "testString");
+    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
     assertEquals(attributeModel.classification(), "testString");
     assertEquals(attributeModel.cardinality(), "testString");
+    assertEquals(attributeModel.attributeType(), "email");
 
     EntityType entityTypeModel = new EntityType.Builder()
       .label("testString")

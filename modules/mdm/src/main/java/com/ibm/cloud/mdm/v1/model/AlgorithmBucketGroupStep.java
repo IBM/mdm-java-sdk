@@ -28,14 +28,14 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
 
   @SerializedName("inputs")
   protected List<Long> inputs;
-  @SerializedName("label")
-  protected String label;
   @SerializedName("order")
   protected Boolean order;
-  @SerializedName("fields")
-  protected List<List<String>> fields;
+  @SerializedName("label")
+  protected String label;
   @SerializedName("method")
   protected String method;
+  @SerializedName("fields")
+  protected List<List<String>> fields;
 
   public AlgorithmBucketGroupStep() {
     super(new TypeToken<Object>() { });
@@ -46,18 +46,18 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
    */
   public static class Builder {
     private List<Long> inputs;
-    private String label;
     private Boolean order;
-    private List<List<String>> fields;
+    private String label;
     private String method;
+    private List<List<String>> fields;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmBucketGroupStep algorithmBucketGroupStep) {
       this.inputs = algorithmBucketGroupStep.inputs;
-      this.label = algorithmBucketGroupStep.label;
       this.order = algorithmBucketGroupStep.order;
-      this.fields = algorithmBucketGroupStep.fields;
+      this.label = algorithmBucketGroupStep.label;
       this.method = algorithmBucketGroupStep.method;
+      this.fields = algorithmBucketGroupStep.fields;
       this.dynamicProperties = algorithmBucketGroupStep.getProperties();
     }
 
@@ -72,14 +72,14 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
      *
      * @param inputs the inputs
      * @param label the label
-     * @param fields the fields
      * @param method the method
+     * @param fields the fields
      */
-    public Builder(List<Long> inputs, String label, List<List<String>> fields, String method) {
+    public Builder(List<Long> inputs, String label, String method, List<List<String>> fields) {
       this.inputs = inputs;
       this.label = label;
-      this.fields = fields;
       this.method = method;
+      this.fields = fields;
     }
 
     /**
@@ -136,6 +136,17 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
     }
 
     /**
+     * Set the order.
+     *
+     * @param order the order
+     * @return the AlgorithmBucketGroupStep builder
+     */
+    public Builder order(Boolean order) {
+      this.order = order;
+      return this;
+    }
+
+    /**
      * Set the label.
      *
      * @param label the label
@@ -147,13 +158,13 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
     }
 
     /**
-     * Set the order.
+     * Set the method.
      *
-     * @param order the order
+     * @param method the method
      * @return the AlgorithmBucketGroupStep builder
      */
-    public Builder order(Boolean order) {
-      this.order = order;
+    public Builder method(String method) {
+      this.method = method;
       return this;
     }
 
@@ -166,17 +177,6 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
      */
     public Builder fields(List<List<String>> fields) {
       this.fields = fields;
-      return this;
-    }
-
-    /**
-     * Set the method.
-     *
-     * @param method the method
-     * @return the AlgorithmBucketGroupStep builder
-     */
-    public Builder method(String method) {
-      this.method = method;
       return this;
     }
 
@@ -203,15 +203,15 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
       "inputs cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fields,
-      "fields cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
       "method cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fields,
+      "fields cannot be null");
     inputs = builder.inputs;
-    label = builder.label;
     order = builder.order;
-    fields = builder.fields;
+    label = builder.label;
     method = builder.method;
+    fields = builder.fields;
     this.setProperties(builder.dynamicProperties);
   }
 
@@ -245,26 +245,6 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the label.
-   *
-   * User defined translatable label.
-   *
-   * @return the label
-   */
-  public String getLabel() {
-    return this.label;
-  }
-
-  /**
-   * Sets the label.
-   *
-   * @param label the new label
-   */
-  public void setLabel(final String label) {
-    this.label = label;
-  }
-
-  /**
    * Gets the order.
    *
    * True the tokens within the same input will be pre-sorted alphabetically.
@@ -285,23 +265,23 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the fields.
+   * Gets the label.
    *
-   * Collection of collection of field names.
+   * User defined translatable label.
    *
-   * @return the fields
+   * @return the label
    */
-  public List<List<String>> getFields() {
-    return this.fields;
+  public String getLabel() {
+    return this.label;
   }
 
   /**
-   * Sets the fields.
+   * Sets the label.
    *
-   * @param fields the new fields
+   * @param label the new label
    */
-  public void setFields(final List<List<String>> fields) {
-    this.fields = fields;
+  public void setLabel(final String label) {
+    this.label = label;
   }
 
   /**
@@ -322,5 +302,25 @@ public class AlgorithmBucketGroupStep extends DynamicModel<Object> {
    */
   public void setMethod(final String method) {
     this.method = method;
+  }
+
+  /**
+   * Gets the fields.
+   *
+   * Collection of collection of field names.
+   *
+   * @return the fields
+   */
+  public List<List<String>> getFields() {
+    return this.fields;
+  }
+
+  /**
+   * Sets the fields.
+   *
+   * @param fields the new fields
+   */
+  public void setFields(final List<List<String>> fields) {
+    this.fields = fields;
   }
 }

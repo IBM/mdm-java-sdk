@@ -36,11 +36,11 @@ public class InstanceMetadataResponseTest {
   public void testInstanceMetadataResponse() throws Throwable {
     InstanceMetadataResponse instanceMetadataResponseModel = new InstanceMetadataResponse();
     assertNull(instanceMetadataResponseModel.getProjects());
+    assertNull(instanceMetadataResponseModel.getCosCrn());
     assertNull(instanceMetadataResponseModel.getBulkloadBucket());
     assertNull(instanceMetadataResponseModel.getCatalogs());
+    assertNull(instanceMetadataResponseModel.getLabel());
     assertNull(instanceMetadataResponseModel.getJobProjectId());
     assertNull(instanceMetadataResponseModel.getCosEndpoint());
-    assertNull(instanceMetadataResponseModel.getCosCrn());
-    assertNull(instanceMetadataResponseModel.getLabel());
   }
 }

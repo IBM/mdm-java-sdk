@@ -20,22 +20,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutAlgorithm extends GenericModel {
 
-  @SerializedName("flow_id")
-  protected String flowId;
   @SerializedName("flow_state")
   protected String flowState;
+  @SerializedName("flow_id")
+  protected String flowId;
   protected Algorithm algorithm;
-
-  /**
-   * Gets the flowId.
-   *
-   * System generated flow identifier.
-   *
-   * @return the flowId
-   */
-  public String getFlowId() {
-    return flowId;
-  }
 
   /**
    * Gets the flowState.
@@ -46,6 +35,17 @@ public class PutAlgorithm extends GenericModel {
    */
   public String getFlowState() {
     return flowState;
+  }
+
+  /**
+   * Gets the flowId.
+   *
+   * System generated flow identifier.
+   *
+   * @return the flowId
+   */
+  public String getFlowId() {
+    return flowId;
   }
 
   /**

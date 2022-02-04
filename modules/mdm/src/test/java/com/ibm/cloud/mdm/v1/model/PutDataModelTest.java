@@ -50,7 +50,7 @@ public class PutDataModelTest {
   public void testPutDataModel() throws Throwable {
     PutDataModel putDataModelModel = new PutDataModel();
     assertNull(putDataModelModel.getDataModel());
-    assertNull(putDataModelModel.getFlowId());
     assertNull(putDataModelModel.getFlowState());
+    assertNull(putDataModelModel.getFlowId());
   }
 }
