@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,8 +18,6 @@ import com.ibm.cloud.mdm.v1.model.AssetMapping;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -35,34 +33,34 @@ public class AddConfiguratorConfigurationAssetOptionsTest {
   @Test
   public void testAddConfiguratorConfigurationAssetOptions() throws Throwable {
     AssetMapping assetMappingModel = new AssetMapping.Builder()
-      .excludeColumn(false)
-      .autoMapped(true)
+      .key("COLUMN 1")
       .classifiedClass("GEN")
       .dataMappingName("gender")
+      .excludeColumn(false)
+      .autoMapped(true)
       .completenessPercent("100.0")
       .dataMappingAttributeType("string")
-      .key("COLUMN 1")
       .build();
-    assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
-    assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
+    assertEquals(assetMappingModel.key(), "COLUMN 1");
     assertEquals(assetMappingModel.classifiedClass(), "GEN");
     assertEquals(assetMappingModel.dataMappingName(), "gender");
+    assertEquals(assetMappingModel.excludeColumn(), Boolean.valueOf(false));
+    assertEquals(assetMappingModel.autoMapped(), Boolean.valueOf(true));
     assertEquals(assetMappingModel.completenessPercent(), "100.0");
     assertEquals(assetMappingModel.dataMappingAttributeType(), "string");
-    assertEquals(assetMappingModel.key(), "COLUMN 1");
 
     AddConfiguratorConfigurationAssetOptions addConfiguratorConfigurationAssetOptionsModel = new AddConfiguratorConfigurationAssetOptions.Builder()
       .assetId("d8868c51-a96e-48ab-a4cd-0000000")
       .assetName("Person10k.csv")
       .assetStatus("Mapped")
       .assetCreatedDate("testString")
-      .assetMappings(new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)))
+      .assetMappings(java.util.Arrays.asList(assetMappingModel))
       .build();
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetId(), "d8868c51-a96e-48ab-a4cd-0000000");
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetName(), "Person10k.csv");
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetStatus(), "Mapped");
     assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetCreatedDate(), "testString");
-    assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetMappings(), new java.util.ArrayList<AssetMapping>(java.util.Arrays.asList(assetMappingModel)));
+    assertEquals(addConfiguratorConfigurationAssetOptionsModel.assetMappings(), java.util.Arrays.asList(assetMappingModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

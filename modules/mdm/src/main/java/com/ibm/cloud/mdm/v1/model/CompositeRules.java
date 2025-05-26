@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -41,17 +41,6 @@ public class CompositeRules extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param rules the rules
-     * @param locale the locale
-     */
-    public Builder(CompositeRulesRules rules, String locale) {
-      this.rules = rules;
-      this.locale = locale;
-    }
-
-    /**
      * Builds a CompositeRules.
      *
      * @return the new CompositeRules instance
@@ -83,11 +72,9 @@ public class CompositeRules extends GenericModel {
     }
   }
 
+  protected CompositeRules() { }
+
   protected CompositeRules(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.rules,
-      "rules cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
-      "locale cannot be null");
     rules = builder.rules;
     locale = builder.locale;
   }

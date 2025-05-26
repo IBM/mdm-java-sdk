@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,12 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CompareSpecResource extends GenericModel {
 
-  @SerializedName("typo_distance")
-  protected Float typoDistance;
   @SerializedName("feature_categories")
   protected Map<String, CompareSpecResourceFeatureCategory> featureCategories;
+  @SerializedName("typo_distance")
+  protected Float typoDistance;
+  @SerializedName("similar_characters_enabled")
+  protected Boolean similarCharactersEnabled;
   @SerializedName("similar_characters_map_resource")
   protected String similarCharactersMapResource;
+  @SerializedName("raw_edit_distance_enabled")
+  protected Boolean rawEditDistanceEnabled;
+  @SerializedName("max_geo_distance")
+  protected Float maxGeoDistance;
   @SerializedName("feature_coefficients")
   protected Map<String, Float> featureCoefficients;
   @SerializedName("similar_characters_distance")
@@ -37,16 +43,22 @@ public class CompareSpecResource extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private Float typoDistance;
     private Map<String, CompareSpecResourceFeatureCategory> featureCategories;
+    private Float typoDistance;
+    private Boolean similarCharactersEnabled;
     private String similarCharactersMapResource;
+    private Boolean rawEditDistanceEnabled;
+    private Float maxGeoDistance;
     private Map<String, Float> featureCoefficients;
     private Float similarCharactersDistance;
 
     private Builder(CompareSpecResource compareSpecResource) {
-      this.typoDistance = compareSpecResource.typoDistance;
       this.featureCategories = compareSpecResource.featureCategories;
+      this.typoDistance = compareSpecResource.typoDistance;
+      this.similarCharactersEnabled = compareSpecResource.similarCharactersEnabled;
       this.similarCharactersMapResource = compareSpecResource.similarCharactersMapResource;
+      this.rawEditDistanceEnabled = compareSpecResource.rawEditDistanceEnabled;
+      this.maxGeoDistance = compareSpecResource.maxGeoDistance;
       this.featureCoefficients = compareSpecResource.featureCoefficients;
       this.similarCharactersDistance = compareSpecResource.similarCharactersDistance;
     }
@@ -60,12 +72,10 @@ public class CompareSpecResource extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param typoDistance the typoDistance
      * @param featureCategories the featureCategories
      * @param featureCoefficients the featureCoefficients
      */
-    public Builder(Float typoDistance, Map<String, CompareSpecResourceFeatureCategory> featureCategories, Map<String, Float> featureCoefficients) {
-      this.typoDistance = typoDistance;
+    public Builder(Map<String, CompareSpecResourceFeatureCategory> featureCategories, Map<String, Float> featureCoefficients) {
       this.featureCategories = featureCategories;
       this.featureCoefficients = featureCoefficients;
     }
@@ -80,17 +90,6 @@ public class CompareSpecResource extends GenericModel {
     }
 
     /**
-     * Set the typoDistance.
-     *
-     * @param typoDistance the typoDistance
-     * @return the CompareSpecResource builder
-     */
-    public Builder typoDistance(Float typoDistance) {
-      this.typoDistance = typoDistance;
-      return this;
-    }
-
-    /**
      * Set the featureCategories.
      *
      * @param featureCategories the featureCategories
@@ -102,6 +101,28 @@ public class CompareSpecResource extends GenericModel {
     }
 
     /**
+     * Set the typoDistance.
+     *
+     * @param typoDistance the typoDistance
+     * @return the CompareSpecResource builder
+     */
+    public Builder typoDistance(Float typoDistance) {
+      this.typoDistance = typoDistance;
+      return this;
+    }
+
+    /**
+     * Set the similarCharactersEnabled.
+     *
+     * @param similarCharactersEnabled the similarCharactersEnabled
+     * @return the CompareSpecResource builder
+     */
+    public Builder similarCharactersEnabled(Boolean similarCharactersEnabled) {
+      this.similarCharactersEnabled = similarCharactersEnabled;
+      return this;
+    }
+
+    /**
      * Set the similarCharactersMapResource.
      *
      * @param similarCharactersMapResource the similarCharactersMapResource
@@ -109,6 +130,28 @@ public class CompareSpecResource extends GenericModel {
      */
     public Builder similarCharactersMapResource(String similarCharactersMapResource) {
       this.similarCharactersMapResource = similarCharactersMapResource;
+      return this;
+    }
+
+    /**
+     * Set the rawEditDistanceEnabled.
+     *
+     * @param rawEditDistanceEnabled the rawEditDistanceEnabled
+     * @return the CompareSpecResource builder
+     */
+    public Builder rawEditDistanceEnabled(Boolean rawEditDistanceEnabled) {
+      this.rawEditDistanceEnabled = rawEditDistanceEnabled;
+      return this;
+    }
+
+    /**
+     * Set the maxGeoDistance.
+     *
+     * @param maxGeoDistance the maxGeoDistance
+     * @return the CompareSpecResource builder
+     */
+    public Builder maxGeoDistance(Float maxGeoDistance) {
+      this.maxGeoDistance = maxGeoDistance;
       return this;
     }
 
@@ -135,16 +178,19 @@ public class CompareSpecResource extends GenericModel {
     }
   }
 
+  protected CompareSpecResource() { }
+
   protected CompareSpecResource(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typoDistance,
-      "typoDistance cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCategories,
       "featureCategories cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCoefficients,
       "featureCoefficients cannot be null");
-    typoDistance = builder.typoDistance;
     featureCategories = builder.featureCategories;
+    typoDistance = builder.typoDistance;
+    similarCharactersEnabled = builder.similarCharactersEnabled;
     similarCharactersMapResource = builder.similarCharactersMapResource;
+    rawEditDistanceEnabled = builder.rawEditDistanceEnabled;
+    maxGeoDistance = builder.maxGeoDistance;
     featureCoefficients = builder.featureCoefficients;
     similarCharactersDistance = builder.similarCharactersDistance;
   }
@@ -159,17 +205,6 @@ public class CompareSpecResource extends GenericModel {
   }
 
   /**
-   * Gets the typoDistance.
-   *
-   * The distance factor for each occurence of typographical error. The value must be between 0 to 1.
-   *
-   * @return the typoDistance
-   */
-  public Float typoDistance() {
-    return typoDistance;
-  }
-
-  /**
    * Gets the featureCategories.
    *
    * Collection of user defined comparison feature categories. The feature category key must be lower snake case.
@@ -181,6 +216,28 @@ public class CompareSpecResource extends GenericModel {
   }
 
   /**
+   * Gets the typoDistance.
+   *
+   * The distance factor for each occurence of typographical error. The value must be between 0 to 1.
+   *
+   * @return the typoDistance
+   */
+  public Float typoDistance() {
+    return typoDistance;
+  }
+
+  /**
+   * Gets the similarCharactersEnabled.
+   *
+   * The indicator of using similarity edit distance. The default value is false.
+   *
+   * @return the similarCharactersEnabled
+   */
+  public Boolean similarCharactersEnabled() {
+    return similarCharactersEnabled;
+  }
+
+  /**
    * Gets the similarCharactersMapResource.
    *
    * An existing map resource name for lookalike characters.
@@ -189,6 +246,28 @@ public class CompareSpecResource extends GenericModel {
    */
   public String similarCharactersMapResource() {
     return similarCharactersMapResource;
+  }
+
+  /**
+   * Gets the rawEditDistanceEnabled.
+   *
+   * The indicator of using the raw edit distance value instead of the weighted one. The default value is false.
+   *
+   * @return the rawEditDistanceEnabled
+   */
+  public Boolean rawEditDistanceEnabled() {
+    return rawEditDistanceEnabled;
+  }
+
+  /**
+   * Gets the maxGeoDistance.
+   *
+   * The max distance for geo compare should consider.
+   *
+   * @return the maxGeoDistance
+   */
+  public Float maxGeoDistance() {
+    return maxGeoDistance;
   }
 
   /**

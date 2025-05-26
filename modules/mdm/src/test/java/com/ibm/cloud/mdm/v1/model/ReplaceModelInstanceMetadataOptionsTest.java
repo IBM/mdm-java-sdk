@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,13 +15,15 @@ package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataBulkloadBucket;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataCatalog;
+import com.ibm.cloud.mdm.v1.model.InstanceMetadataConfiguration;
+import com.ibm.cloud.mdm.v1.model.InstanceMetadataConnenctionDetails;
 import com.ibm.cloud.mdm.v1.model.InstanceMetadataProject;
+import com.ibm.cloud.mdm.v1.model.InstanceMetadataStreamConnection;
+import com.ibm.cloud.mdm.v1.model.InstanceMetadataWorkflow;
 import com.ibm.cloud.mdm.v1.model.ReplaceModelInstanceMetadataOptions;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -37,24 +39,54 @@ public class ReplaceModelInstanceMetadataOptionsTest {
   @Test
   public void testReplaceModelInstanceMetadataOptions() throws Throwable {
     InstanceMetadataProject instanceMetadataProjectModel = new InstanceMetadataProject.Builder()
+      .projectId("testString")
       .dataAssetId("testString")
       .assetId("testString")
-      .projectId("testString")
       .projectName("testString")
       .build();
+    assertEquals(instanceMetadataProjectModel.projectId(), "testString");
     assertEquals(instanceMetadataProjectModel.dataAssetId(), "testString");
     assertEquals(instanceMetadataProjectModel.assetId(), "testString");
-    assertEquals(instanceMetadataProjectModel.projectId(), "testString");
     assertEquals(instanceMetadataProjectModel.projectName(), "testString");
+
+    InstanceMetadataConfiguration instanceMetadataConfigurationModel = new InstanceMetadataConfiguration.Builder()
+      .typeId("testString")
+      .name("testString")
+      .id("testString")
+      .build();
+    assertEquals(instanceMetadataConfigurationModel.typeId(), "testString");
+    assertEquals(instanceMetadataConfigurationModel.name(), "testString");
+    assertEquals(instanceMetadataConfigurationModel.id(), "testString");
+
+    InstanceMetadataWorkflow instanceMetadataWorkflowModel = new InstanceMetadataWorkflow.Builder()
+      .configurations(java.util.Arrays.asList(instanceMetadataConfigurationModel))
+      .build();
+    assertEquals(instanceMetadataWorkflowModel.configurations(), java.util.Arrays.asList(instanceMetadataConfigurationModel));
 
     InstanceMetadataBulkloadBucket instanceMetadataBulkloadBucketModel = new InstanceMetadataBulkloadBucket.Builder()
       .cosBucketLocation("testString")
-      .cosBucketApiKey("testString")
       .cosBucketName("testString")
+      .cosBucketApiKey("testString")
       .build();
     assertEquals(instanceMetadataBulkloadBucketModel.cosBucketLocation(), "testString");
-    assertEquals(instanceMetadataBulkloadBucketModel.cosBucketApiKey(), "testString");
     assertEquals(instanceMetadataBulkloadBucketModel.cosBucketName(), "testString");
+    assertEquals(instanceMetadataBulkloadBucketModel.cosBucketApiKey(), "testString");
+
+    InstanceMetadataConnenctionDetails instanceMetadataConnenctionDetailsModel = new InstanceMetadataConnenctionDetails.Builder()
+      .assetScope("testString")
+      .assetId("testString")
+      .containerId("testString")
+      .build();
+    assertEquals(instanceMetadataConnenctionDetailsModel.assetScope(), "testString");
+    assertEquals(instanceMetadataConnenctionDetailsModel.assetId(), "testString");
+    assertEquals(instanceMetadataConnenctionDetailsModel.containerId(), "testString");
+
+    InstanceMetadataStreamConnection instanceMetadataStreamConnectionModel = new InstanceMetadataStreamConnection.Builder()
+      .streamType("testString")
+      .connenctionDetails(instanceMetadataConnenctionDetailsModel)
+      .build();
+    assertEquals(instanceMetadataStreamConnectionModel.streamType(), "testString");
+    assertEquals(instanceMetadataStreamConnectionModel.connenctionDetails(), instanceMetadataConnenctionDetailsModel);
 
     InstanceMetadataCatalog instanceMetadataCatalogModel = new InstanceMetadataCatalog.Builder()
       .catalogId("testString")
@@ -64,20 +96,38 @@ public class ReplaceModelInstanceMetadataOptionsTest {
     assertEquals(instanceMetadataCatalogModel.catalogInstance(), "testString");
 
     ReplaceModelInstanceMetadataOptions replaceModelInstanceMetadataOptionsModel = new ReplaceModelInstanceMetadataOptions.Builder()
-      .projects(new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)))
+      .projects(java.util.Arrays.asList(instanceMetadataProjectModel))
+      .workflowConfigurationId("testString")
+      .generateConnectedDataAsset(true)
+      .workflows(new java.util.HashMap<String, InstanceMetadataWorkflow>() { { put("foo", instanceMetadataWorkflowModel); } })
+      .label("testString")
+      .cosEndpoint("testString")
+      .modeOfOperation("testString")
       .cosCrn("testString")
       .bulkloadBucket(instanceMetadataBulkloadBucketModel)
-      .catalogs(new java.util.ArrayList<InstanceMetadataCatalog>(java.util.Arrays.asList(instanceMetadataCatalogModel)))
-      .label("testString")
+      .connectionId("testString")
+      .governanceEnabled(true)
+      .createApiKey(true)
+      .streamConnection(java.util.Arrays.asList(instanceMetadataStreamConnectionModel))
+      .catalogs(java.util.Arrays.asList(instanceMetadataCatalogModel))
       .jobProjectId("testString")
-      .cosEndpoint("testString")
+      .workflowTypeId("testString")
       .build();
-    assertEquals(replaceModelInstanceMetadataOptionsModel.projects(), new java.util.ArrayList<InstanceMetadataProject>(java.util.Arrays.asList(instanceMetadataProjectModel)));
+    assertEquals(replaceModelInstanceMetadataOptionsModel.projects(), java.util.Arrays.asList(instanceMetadataProjectModel));
+    assertEquals(replaceModelInstanceMetadataOptionsModel.workflowConfigurationId(), "testString");
+    assertEquals(replaceModelInstanceMetadataOptionsModel.generateConnectedDataAsset(), Boolean.valueOf(true));
+    assertEquals(replaceModelInstanceMetadataOptionsModel.workflows(), new java.util.HashMap<String, InstanceMetadataWorkflow>() { { put("foo", instanceMetadataWorkflowModel); } });
+    assertEquals(replaceModelInstanceMetadataOptionsModel.label(), "testString");
+    assertEquals(replaceModelInstanceMetadataOptionsModel.cosEndpoint(), "testString");
+    assertEquals(replaceModelInstanceMetadataOptionsModel.modeOfOperation(), "testString");
     assertEquals(replaceModelInstanceMetadataOptionsModel.cosCrn(), "testString");
     assertEquals(replaceModelInstanceMetadataOptionsModel.bulkloadBucket(), instanceMetadataBulkloadBucketModel);
-    assertEquals(replaceModelInstanceMetadataOptionsModel.catalogs(), new java.util.ArrayList<InstanceMetadataCatalog>(java.util.Arrays.asList(instanceMetadataCatalogModel)));
-    assertEquals(replaceModelInstanceMetadataOptionsModel.label(), "testString");
+    assertEquals(replaceModelInstanceMetadataOptionsModel.connectionId(), "testString");
+    assertEquals(replaceModelInstanceMetadataOptionsModel.governanceEnabled(), Boolean.valueOf(true));
+    assertEquals(replaceModelInstanceMetadataOptionsModel.createApiKey(), Boolean.valueOf(true));
+    assertEquals(replaceModelInstanceMetadataOptionsModel.streamConnection(), java.util.Arrays.asList(instanceMetadataStreamConnectionModel));
+    assertEquals(replaceModelInstanceMetadataOptionsModel.catalogs(), java.util.Arrays.asList(instanceMetadataCatalogModel));
     assertEquals(replaceModelInstanceMetadataOptionsModel.jobProjectId(), "testString");
-    assertEquals(replaceModelInstanceMetadataOptionsModel.cosEndpoint(), "testString");
+    assertEquals(replaceModelInstanceMetadataOptionsModel.workflowTypeId(), "testString");
   }
 }

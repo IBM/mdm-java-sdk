@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,17 +38,6 @@ public class ReplaceModelCompositeRulesOptions extends GenericModel {
      * Instantiates a new builder.
      */
     public Builder() {
-    }
-
-    /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param rules the rules
-     * @param locale the locale
-     */
-    public Builder(CompositeRulesRules rules, String locale) {
-      this.rules = rules;
-      this.locale = locale;
     }
 
     /**
@@ -95,11 +84,9 @@ public class ReplaceModelCompositeRulesOptions extends GenericModel {
     }
   }
 
+  protected ReplaceModelCompositeRulesOptions() { }
+
   protected ReplaceModelCompositeRulesOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.rules,
-      "rules cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
-      "locale cannot be null");
     rules = builder.rules;
     locale = builder.locale;
   }

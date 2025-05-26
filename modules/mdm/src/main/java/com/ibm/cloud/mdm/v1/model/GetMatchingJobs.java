@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,18 +22,40 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GetMatchingJobs extends GenericModel {
 
+  protected Map<String, Object> summary;
+  protected String image;
   @SerializedName("job_name")
   protected String jobName;
   @SerializedName("last_updated_at")
   protected String lastUpdatedAt;
   @SerializedName("created_at")
   protected String createdAt;
-  protected String image;
   @SerializedName("started_at")
   protected String startedAt;
-  protected String status;
-  protected Map<String, Object> summary;
   protected String id;
+  protected String status;
+
+  /**
+   * Gets the summary.
+   *
+   * Summary of a job.
+   *
+   * @return the summary
+   */
+  public Map<String, Object> getSummary() {
+    return summary;
+  }
+
+  /**
+   * Gets the image.
+   *
+   * System defined image for a given job e.g. mdm-spark-job.
+   *
+   * @return the image
+   */
+  public String getImage() {
+    return image;
+  }
 
   /**
    * Gets the jobName.
@@ -69,17 +91,6 @@ public class GetMatchingJobs extends GenericModel {
   }
 
   /**
-   * Gets the image.
-   *
-   * System defined image for a given job e.g. mdm-spark-job.
-   *
-   * @return the image
-   */
-  public String getImage() {
-    return image;
-  }
-
-  /**
    * Gets the startedAt.
    *
    * System generated timestamp when a job was started.
@@ -91,28 +102,6 @@ public class GetMatchingJobs extends GenericModel {
   }
 
   /**
-   * Gets the status.
-   *
-   * Status of a job. One Of: Queued, Running, Completed, Failed, Canceled.
-   *
-   * @return the status
-   */
-  public String getStatus() {
-    return status;
-  }
-
-  /**
-   * Gets the summary.
-   *
-   * Summary of a job.
-   *
-   * @return the summary
-   */
-  public Map<String, Object> getSummary() {
-    return summary;
-  }
-
-  /**
    * Gets the id.
    *
    * System generated identifier of a job.
@@ -121,6 +110,17 @@ public class GetMatchingJobs extends GenericModel {
    */
   public String getId() {
     return id;
+  }
+
+  /**
+   * Gets the status.
+   *
+   * Status of a job. One Of: Queued, Running, Completed, Failed, Canceled.
+   *
+   * @return the status
+   */
+  public String getStatus() {
+    return status;
   }
 }
 

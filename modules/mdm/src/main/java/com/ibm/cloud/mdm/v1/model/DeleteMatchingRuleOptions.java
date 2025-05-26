@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,19 +22,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DeleteMatchingRuleOptions extends GenericModel {
 
-  protected List<RulesRequestRule> rules;
   protected String entityType;
+  protected List<RulesRequestRule> rules;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<RulesRequestRule> rules;
     private String entityType;
+    private List<RulesRequestRule> rules;
 
     private Builder(DeleteMatchingRuleOptions deleteMatchingRuleOptions) {
-      this.rules = deleteMatchingRuleOptions.rules;
       this.entityType = deleteMatchingRuleOptions.entityType;
+      this.rules = deleteMatchingRuleOptions.rules;
     }
 
     /**
@@ -46,12 +46,12 @@ public class DeleteMatchingRuleOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param rules the rules
      * @param entityType the entityType
+     * @param rules the rules
      */
-    public Builder(List<RulesRequestRule> rules, String entityType) {
-      this.rules = rules;
+    public Builder(String entityType, List<RulesRequestRule> rules) {
       this.entityType = entityType;
+      this.rules = rules;
     }
 
     /**
@@ -80,6 +80,17 @@ public class DeleteMatchingRuleOptions extends GenericModel {
     }
 
     /**
+     * Set the entityType.
+     *
+     * @param entityType the entityType
+     * @return the DeleteMatchingRuleOptions builder
+     */
+    public Builder entityType(String entityType) {
+      this.entityType = entityType;
+      return this;
+    }
+
+    /**
      * Set the rules.
      * Existing rules will be replaced.
      *
@@ -90,26 +101,17 @@ public class DeleteMatchingRuleOptions extends GenericModel {
       this.rules = rules;
       return this;
     }
-
-    /**
-     * Set the entityType.
-     *
-     * @param entityType the entityType
-     * @return the DeleteMatchingRuleOptions builder
-     */
-    public Builder entityType(String entityType) {
-      this.entityType = entityType;
-      return this;
-    }
   }
 
+  protected DeleteMatchingRuleOptions() { }
+
   protected DeleteMatchingRuleOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.rules,
-      "rules cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityType,
       "entityType cannot be null");
-    rules = builder.rules;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.rules,
+      "rules cannot be null");
     entityType = builder.entityType;
+    rules = builder.rules;
   }
 
   /**
@@ -122,17 +124,6 @@ public class DeleteMatchingRuleOptions extends GenericModel {
   }
 
   /**
-   * Gets the rules.
-   *
-   * Collection of linkage rules.
-   *
-   * @return the rules
-   */
-  public List<RulesRequestRule> rules() {
-    return rules;
-  }
-
-  /**
    * Gets the entityType.
    *
    * The data type identifier of entity, ie. person_entity, organization_entity, household_entity.
@@ -141,6 +132,17 @@ public class DeleteMatchingRuleOptions extends GenericModel {
    */
   public String entityType() {
     return entityType;
+  }
+
+  /**
+   * Gets the rules.
+   *
+   * Collection of linkage rules.
+   *
+   * @return the rules
+   */
+  public List<RulesRequestRule> rules() {
+    return rules;
   }
 }
 

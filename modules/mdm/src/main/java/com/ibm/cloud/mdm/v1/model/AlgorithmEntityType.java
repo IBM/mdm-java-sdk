@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,12 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmEntityType extends GenericModel {
 
+  @SerializedName("glue_threshold")
+  protected Float glueThreshold;
   @SerializedName("bucket_generators")
   protected Map<String, AlgorithmBucketGenerator> bucketGenerators;
+  @SerializedName("record_filter")
+  protected AlgorithmRecordFilter recordFilter;
   @SerializedName("clerical_review_threshold")
   protected Float clericalReviewThreshold;
   @SerializedName("auto_link_threshold")
   protected Float autoLinkThreshold;
+  @SerializedName("source_level_thresholds")
+  protected Map<String, AlgorithmSourceLevelThreshold> sourceLevelThresholds;
   @SerializedName("compare_methods")
   protected Map<String, AlgorithmCompareMethod> compareMethods;
   @SerializedName("post_filter_methods")
@@ -37,16 +43,22 @@ public class AlgorithmEntityType extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private Float glueThreshold;
     private Map<String, AlgorithmBucketGenerator> bucketGenerators;
+    private AlgorithmRecordFilter recordFilter;
     private Float clericalReviewThreshold;
     private Float autoLinkThreshold;
+    private Map<String, AlgorithmSourceLevelThreshold> sourceLevelThresholds;
     private Map<String, AlgorithmCompareMethod> compareMethods;
     private Map<String, AlgorithmPostFilterMethod> postFilterMethods;
 
     private Builder(AlgorithmEntityType algorithmEntityType) {
+      this.glueThreshold = algorithmEntityType.glueThreshold;
       this.bucketGenerators = algorithmEntityType.bucketGenerators;
+      this.recordFilter = algorithmEntityType.recordFilter;
       this.clericalReviewThreshold = algorithmEntityType.clericalReviewThreshold;
       this.autoLinkThreshold = algorithmEntityType.autoLinkThreshold;
+      this.sourceLevelThresholds = algorithmEntityType.sourceLevelThresholds;
       this.compareMethods = algorithmEntityType.compareMethods;
       this.postFilterMethods = algorithmEntityType.postFilterMethods;
     }
@@ -76,6 +88,17 @@ public class AlgorithmEntityType extends GenericModel {
     }
 
     /**
+     * Set the glueThreshold.
+     *
+     * @param glueThreshold the glueThreshold
+     * @return the AlgorithmEntityType builder
+     */
+    public Builder glueThreshold(Float glueThreshold) {
+      this.glueThreshold = glueThreshold;
+      return this;
+    }
+
+    /**
      * Set the bucketGenerators.
      *
      * @param bucketGenerators the bucketGenerators
@@ -83,6 +106,17 @@ public class AlgorithmEntityType extends GenericModel {
      */
     public Builder bucketGenerators(Map<String, AlgorithmBucketGenerator> bucketGenerators) {
       this.bucketGenerators = bucketGenerators;
+      return this;
+    }
+
+    /**
+     * Set the recordFilter.
+     *
+     * @param recordFilter the recordFilter
+     * @return the AlgorithmEntityType builder
+     */
+    public Builder recordFilter(AlgorithmRecordFilter recordFilter) {
+      this.recordFilter = recordFilter;
       return this;
     }
 
@@ -109,6 +143,17 @@ public class AlgorithmEntityType extends GenericModel {
     }
 
     /**
+     * Set the sourceLevelThresholds.
+     *
+     * @param sourceLevelThresholds the sourceLevelThresholds
+     * @return the AlgorithmEntityType builder
+     */
+    public Builder sourceLevelThresholds(Map<String, AlgorithmSourceLevelThreshold> sourceLevelThresholds) {
+      this.sourceLevelThresholds = sourceLevelThresholds;
+      return this;
+    }
+
+    /**
      * Set the compareMethods.
      *
      * @param compareMethods the compareMethods
@@ -131,12 +176,17 @@ public class AlgorithmEntityType extends GenericModel {
     }
   }
 
+  protected AlgorithmEntityType() { }
+
   protected AlgorithmEntityType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.autoLinkThreshold,
       "autoLinkThreshold cannot be null");
+    glueThreshold = builder.glueThreshold;
     bucketGenerators = builder.bucketGenerators;
+    recordFilter = builder.recordFilter;
     clericalReviewThreshold = builder.clericalReviewThreshold;
     autoLinkThreshold = builder.autoLinkThreshold;
+    sourceLevelThresholds = builder.sourceLevelThresholds;
     compareMethods = builder.compareMethods;
     postFilterMethods = builder.postFilterMethods;
   }
@@ -151,6 +201,17 @@ public class AlgorithmEntityType extends GenericModel {
   }
 
   /**
+   * Gets the glueThreshold.
+   *
+   * The threshold to control the self score difference between records within same entity.
+   *
+   * @return the glueThreshold
+   */
+  public Float glueThreshold() {
+    return glueThreshold;
+  }
+
+  /**
    * Gets the bucketGenerators.
    *
    * Collection of bucket generators.
@@ -159,6 +220,18 @@ public class AlgorithmEntityType extends GenericModel {
    */
   public Map<String, AlgorithmBucketGenerator> bucketGenerators() {
     return bucketGenerators;
+  }
+
+  /**
+   * Gets the recordFilter.
+   *
+   * A single criteria using a collection of rules for filtering out record(s).The record filter key must be lower snake
+   * case (i.e. record_filter).
+   *
+   * @return the recordFilter
+   */
+  public AlgorithmRecordFilter recordFilter() {
+    return recordFilter;
   }
 
   /**
@@ -181,6 +254,17 @@ public class AlgorithmEntityType extends GenericModel {
    */
   public Float autoLinkThreshold() {
     return autoLinkThreshold;
+  }
+
+  /**
+   * Gets the sourceLevelThresholds.
+   *
+   * Collection of source across source thresholds.
+   *
+   * @return the sourceLevelThresholds
+   */
+  public Map<String, AlgorithmSourceLevelThreshold> sourceLevelThresholds() {
+    return sourceLevelThresholds;
   }
 
   /**

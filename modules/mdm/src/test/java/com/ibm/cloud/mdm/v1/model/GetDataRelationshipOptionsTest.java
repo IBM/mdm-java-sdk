@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,8 +33,14 @@ public class GetDataRelationshipOptionsTest {
   public void testGetDataRelationshipOptions() throws Throwable {
     GetDataRelationshipOptions getDataRelationshipOptionsModel = new GetDataRelationshipOptions.Builder()
       .id("testString")
+      .sourceInclude(java.util.Arrays.asList("all"))
+      .targetInclude(java.util.Arrays.asList("all"))
+      .relationshipType("[\"all\"]")
       .build();
     assertEquals(getDataRelationshipOptionsModel.id(), "testString");
+    assertEquals(getDataRelationshipOptionsModel.sourceInclude(), java.util.Arrays.asList("all"));
+    assertEquals(getDataRelationshipOptionsModel.targetInclude(), java.util.Arrays.asList("all"));
+    assertEquals(getDataRelationshipOptionsModel.relationshipType(), "[\"all\"]");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

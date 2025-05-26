@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,10 +32,10 @@ public class FlowTest {
   @Test
   public void testFlow() throws Throwable {
     Flow flowModel = new Flow();
-    assertNull(flowModel.getFlowType());
     assertNull(flowModel.getFlowState());
-    assertNull(flowModel.getFlowId());
+    assertNull(flowModel.getFlowType());
     assertNull(flowModel.getRejections());
+    assertNull(flowModel.getFlowId());
     assertNull(flowModel.getApprovals());
     assertNull(flowModel.isActive());
   }

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,26 +22,30 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Algorithm extends GenericModel {
 
-  @SerializedName("entity_types")
-  protected Map<String, AlgorithmEntityType> entityTypes;
   protected Map<String, AlgorithmStandardizer> standardizers;
   protected AlgorithmEncryption encryption;
+  @SerializedName("entity_types")
+  protected Map<String, AlgorithmEntityType> entityTypes;
   protected String locale;
+  @SerializedName("bucket_group_bit_length")
+  protected Long bucketGroupBitLength;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Map<String, AlgorithmEntityType> entityTypes;
     private Map<String, AlgorithmStandardizer> standardizers;
     private AlgorithmEncryption encryption;
+    private Map<String, AlgorithmEntityType> entityTypes;
     private String locale;
+    private Long bucketGroupBitLength;
 
     private Builder(Algorithm algorithm) {
-      this.entityTypes = algorithm.entityTypes;
       this.standardizers = algorithm.standardizers;
       this.encryption = algorithm.encryption;
+      this.entityTypes = algorithm.entityTypes;
       this.locale = algorithm.locale;
+      this.bucketGroupBitLength = algorithm.bucketGroupBitLength;
     }
 
     /**
@@ -53,15 +57,15 @@ public class Algorithm extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param entityTypes the entityTypes
      * @param standardizers the standardizers
      * @param encryption the encryption
+     * @param entityTypes the entityTypes
      * @param locale the locale
      */
-    public Builder(Map<String, AlgorithmEntityType> entityTypes, Map<String, AlgorithmStandardizer> standardizers, AlgorithmEncryption encryption, String locale) {
-      this.entityTypes = entityTypes;
+    public Builder(Map<String, AlgorithmStandardizer> standardizers, AlgorithmEncryption encryption, Map<String, AlgorithmEntityType> entityTypes, String locale) {
       this.standardizers = standardizers;
       this.encryption = encryption;
+      this.entityTypes = entityTypes;
       this.locale = locale;
     }
 
@@ -72,17 +76,6 @@ public class Algorithm extends GenericModel {
      */
     public Algorithm build() {
       return new Algorithm(this);
-    }
-
-    /**
-     * Set the entityTypes.
-     *
-     * @param entityTypes the entityTypes
-     * @return the Algorithm builder
-     */
-    public Builder entityTypes(Map<String, AlgorithmEntityType> entityTypes) {
-      this.entityTypes = entityTypes;
-      return this;
     }
 
     /**
@@ -108,6 +101,17 @@ public class Algorithm extends GenericModel {
     }
 
     /**
+     * Set the entityTypes.
+     *
+     * @param entityTypes the entityTypes
+     * @return the Algorithm builder
+     */
+    public Builder entityTypes(Map<String, AlgorithmEntityType> entityTypes) {
+      this.entityTypes = entityTypes;
+      return this;
+    }
+
+    /**
      * Set the locale.
      *
      * @param locale the locale
@@ -117,21 +121,35 @@ public class Algorithm extends GenericModel {
       this.locale = locale;
       return this;
     }
+
+    /**
+     * Set the bucketGroupBitLength.
+     *
+     * @param bucketGroupBitLength the bucketGroupBitLength
+     * @return the Algorithm builder
+     */
+    public Builder bucketGroupBitLength(long bucketGroupBitLength) {
+      this.bucketGroupBitLength = bucketGroupBitLength;
+      return this;
+    }
   }
 
+  protected Algorithm() { }
+
   protected Algorithm(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
-      "entityTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.standardizers,
       "standardizers cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.encryption,
       "encryption cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
+      "entityTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
-    entityTypes = builder.entityTypes;
     standardizers = builder.standardizers;
     encryption = builder.encryption;
+    entityTypes = builder.entityTypes;
     locale = builder.locale;
+    bucketGroupBitLength = builder.bucketGroupBitLength;
   }
 
   /**
@@ -141,17 +159,6 @@ public class Algorithm extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the entityTypes.
-   *
-   * Collection of entity type definitions.
-   *
-   * @return the entityTypes
-   */
-  public Map<String, AlgorithmEntityType> entityTypes() {
-    return entityTypes;
   }
 
   /**
@@ -177,6 +184,17 @@ public class Algorithm extends GenericModel {
   }
 
   /**
+   * Gets the entityTypes.
+   *
+   * Collection of entity type definitions.
+   *
+   * @return the entityTypes
+   */
+  public Map<String, AlgorithmEntityType> entityTypes() {
+    return entityTypes;
+  }
+
+  /**
    * Gets the locale.
    *
    * The request language and location (i.e. enUS).
@@ -185,6 +203,17 @@ public class Algorithm extends GenericModel {
    */
   public String locale() {
     return locale;
+  }
+
+  /**
+   * Gets the bucketGroupBitLength.
+   *
+   * Bit length for bucket group.The default length is 4.
+   *
+   * @return the bucketGroupBitLength
+   */
+  public Long bucketGroupBitLength() {
+    return bucketGroupBitLength;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,25 +21,39 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReplaceDataRecordOptions extends GenericModel {
 
+  public interface Type {
+    /** record. */
+    String RECORD = "record";
+  }
+
   protected Long id;
-  protected Map<String, Object> newAttributes;
-  protected String newTypeName;
-  protected String newId;
+  protected String type;
+  protected Map<String, Object> attributes;
+  protected String typeName;
+  protected Map<String, Object> systemAttributes;
+  protected Boolean isBlockedForUpdate;
+  protected Boolean isQuarantined;
 
   /**
    * Builder.
    */
   public static class Builder {
     private Long id;
-    private Map<String, Object> newAttributes;
-    private String newTypeName;
-    private String newId;
+    private String type;
+    private Map<String, Object> attributes;
+    private String typeName;
+    private Map<String, Object> systemAttributes;
+    private Boolean isBlockedForUpdate;
+    private Boolean isQuarantined;
 
     private Builder(ReplaceDataRecordOptions replaceDataRecordOptions) {
       this.id = replaceDataRecordOptions.id;
-      this.newAttributes = replaceDataRecordOptions.newAttributes;
-      this.newTypeName = replaceDataRecordOptions.newTypeName;
-      this.newId = replaceDataRecordOptions.newId;
+      this.type = replaceDataRecordOptions.type;
+      this.attributes = replaceDataRecordOptions.attributes;
+      this.typeName = replaceDataRecordOptions.typeName;
+      this.systemAttributes = replaceDataRecordOptions.systemAttributes;
+      this.isBlockedForUpdate = replaceDataRecordOptions.isBlockedForUpdate;
+      this.isQuarantined = replaceDataRecordOptions.isQuarantined;
     }
 
     /**
@@ -52,13 +66,15 @@ public class ReplaceDataRecordOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
-     * @param newAttributes the newAttributes
-     * @param newTypeName the newTypeName
+     * @param type the type
+     * @param attributes the attributes
+     * @param typeName the typeName
      */
-    public Builder(Long id, Map<String, Object> newAttributes, String newTypeName) {
+    public Builder(Long id, String type, Map<String, Object> attributes, String typeName) {
       this.id = id;
-      this.newAttributes = newAttributes;
-      this.newTypeName = newTypeName;
+      this.type = type;
+      this.attributes = attributes;
+      this.typeName = typeName;
     }
 
     /**
@@ -82,50 +98,106 @@ public class ReplaceDataRecordOptions extends GenericModel {
     }
 
     /**
-     * Set the newAttributes.
+     * Set the type.
      *
-     * @param newAttributes the newAttributes
+     * @param type the type
      * @return the ReplaceDataRecordOptions builder
      */
-    public Builder newAttributes(Map<String, Object> newAttributes) {
-      this.newAttributes = newAttributes;
+    public Builder type(String type) {
+      this.type = type;
       return this;
     }
 
     /**
-     * Set the newTypeName.
+     * Set the attributes.
      *
-     * @param newTypeName the newTypeName
+     * @param attributes the attributes
      * @return the ReplaceDataRecordOptions builder
      */
-    public Builder newTypeName(String newTypeName) {
-      this.newTypeName = newTypeName;
+    public Builder attributes(Map<String, Object> attributes) {
+      this.attributes = attributes;
       return this;
     }
 
     /**
-     * Set the newId.
+     * Set the typeName.
      *
-     * @param newId the newId
+     * @param typeName the typeName
      * @return the ReplaceDataRecordOptions builder
      */
-    public Builder newId(String newId) {
-      this.newId = newId;
+    public Builder typeName(String typeName) {
+      this.typeName = typeName;
+      return this;
+    }
+
+    /**
+     * Set the systemAttributes.
+     *
+     * @param systemAttributes the systemAttributes
+     * @return the ReplaceDataRecordOptions builder
+     */
+    public Builder systemAttributes(Map<String, Object> systemAttributes) {
+      this.systemAttributes = systemAttributes;
+      return this;
+    }
+
+    /**
+     * Set the isBlockedForUpdate.
+     *
+     * @param isBlockedForUpdate the isBlockedForUpdate
+     * @return the ReplaceDataRecordOptions builder
+     */
+    public Builder isBlockedForUpdate(Boolean isBlockedForUpdate) {
+      this.isBlockedForUpdate = isBlockedForUpdate;
+      return this;
+    }
+
+    /**
+     * Set the isQuarantined.
+     *
+     * @param isQuarantined the isQuarantined
+     * @return the ReplaceDataRecordOptions builder
+     */
+    public Builder isQuarantined(Boolean isQuarantined) {
+      this.isQuarantined = isQuarantined;
+      return this;
+    }
+
+    /**
+     * Set the dataRecord.
+     *
+     * @param dataRecord the dataRecord
+     * @return the ReplaceDataRecordOptions builder
+     */
+    public Builder dataRecord(DataRecord dataRecord) {
+      this.type = dataRecord.type();
+      this.attributes = dataRecord.attributes();
+      this.typeName = dataRecord.typeName();
+      this.systemAttributes = dataRecord.systemAttributes();
+      this.isBlockedForUpdate = dataRecord.isBlockedForUpdate();
+      this.isQuarantined = dataRecord.isQuarantined();
       return this;
     }
   }
 
+  protected ReplaceDataRecordOptions() { }
+
   protected ReplaceDataRecordOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,
       "id cannot be num");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.newAttributes,
-      "newAttributes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.newTypeName,
-      "newTypeName cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,
+      "type cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
+      "attributes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typeName,
+      "typeName cannot be null");
     id = builder.id;
-    newAttributes = builder.newAttributes;
-    newTypeName = builder.newTypeName;
-    newId = builder.newId;
+    type = builder.type;
+    attributes = builder.attributes;
+    typeName = builder.typeName;
+    systemAttributes = builder.systemAttributes;
+    isBlockedForUpdate = builder.isBlockedForUpdate;
+    isQuarantined = builder.isQuarantined;
   }
 
   /**
@@ -149,36 +221,67 @@ public class ReplaceDataRecordOptions extends GenericModel {
   }
 
   /**
-   * Gets the newAttributes.
+   * Gets the type.
+   *
+   * @return the type
+   */
+  public String type() {
+    return type;
+  }
+
+  /**
+   * Gets the attributes.
    *
    * The list of the attributes of the element.
    *
-   * @return the newAttributes
+   * @return the attributes
    */
-  public Map<String, Object> newAttributes() {
-    return newAttributes;
+  public Map<String, Object> attributes() {
+    return attributes;
   }
 
   /**
-   * Gets the newTypeName.
+   * Gets the typeName.
    *
-   * The name of the record type as defined in the data model.
+   * The type as defined in the data model.
    *
-   * @return the newTypeName
+   * @return the typeName
    */
-  public String newTypeName() {
-    return newTypeName;
+  public String typeName() {
+    return typeName;
   }
 
   /**
-   * Gets the newId.
+   * Gets the systemAttributes.
    *
-   * The id of the element.
+   * The list of the system attributes of the element.
    *
-   * @return the newId
+   * @return the systemAttributes
    */
-  public String newId() {
-    return newId;
+  public Map<String, Object> systemAttributes() {
+    return systemAttributes;
+  }
+
+  /**
+   * Gets the isBlockedForUpdate.
+   *
+   * Is the Record Blocked for Update.
+   *
+   * @return the isBlockedForUpdate
+   */
+  public Boolean isBlockedForUpdate() {
+    return isBlockedForUpdate;
+  }
+
+  /**
+   * Gets the isQuarantined.
+   *
+   * Is the Record quarantined.
+   *
+   * @return the isQuarantined
+   */
+  public Boolean isQuarantined() {
+    return isQuarantined;
   }
 }
 

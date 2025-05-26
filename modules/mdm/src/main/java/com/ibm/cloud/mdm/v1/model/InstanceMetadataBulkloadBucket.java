@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,23 +22,23 @@ public class InstanceMetadataBulkloadBucket extends GenericModel {
 
   @SerializedName("cos_bucket_location")
   protected String cosBucketLocation;
-  @SerializedName("cos_bucket_api_key")
-  protected String cosBucketApiKey;
   @SerializedName("cos_bucket_name")
   protected String cosBucketName;
+  @SerializedName("cos_bucket_api_key")
+  protected String cosBucketApiKey;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String cosBucketLocation;
-    private String cosBucketApiKey;
     private String cosBucketName;
+    private String cosBucketApiKey;
 
     private Builder(InstanceMetadataBulkloadBucket instanceMetadataBulkloadBucket) {
       this.cosBucketLocation = instanceMetadataBulkloadBucket.cosBucketLocation;
-      this.cosBucketApiKey = instanceMetadataBulkloadBucket.cosBucketApiKey;
       this.cosBucketName = instanceMetadataBulkloadBucket.cosBucketName;
+      this.cosBucketApiKey = instanceMetadataBulkloadBucket.cosBucketApiKey;
     }
 
     /**
@@ -50,12 +50,12 @@ public class InstanceMetadataBulkloadBucket extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param cosBucketApiKey the cosBucketApiKey
      * @param cosBucketName the cosBucketName
+     * @param cosBucketApiKey the cosBucketApiKey
      */
-    public Builder(String cosBucketApiKey, String cosBucketName) {
-      this.cosBucketApiKey = cosBucketApiKey;
+    public Builder(String cosBucketName, String cosBucketApiKey) {
       this.cosBucketName = cosBucketName;
+      this.cosBucketApiKey = cosBucketApiKey;
     }
 
     /**
@@ -79,17 +79,6 @@ public class InstanceMetadataBulkloadBucket extends GenericModel {
     }
 
     /**
-     * Set the cosBucketApiKey.
-     *
-     * @param cosBucketApiKey the cosBucketApiKey
-     * @return the InstanceMetadataBulkloadBucket builder
-     */
-    public Builder cosBucketApiKey(String cosBucketApiKey) {
-      this.cosBucketApiKey = cosBucketApiKey;
-      return this;
-    }
-
-    /**
      * Set the cosBucketName.
      *
      * @param cosBucketName the cosBucketName
@@ -99,16 +88,29 @@ public class InstanceMetadataBulkloadBucket extends GenericModel {
       this.cosBucketName = cosBucketName;
       return this;
     }
+
+    /**
+     * Set the cosBucketApiKey.
+     *
+     * @param cosBucketApiKey the cosBucketApiKey
+     * @return the InstanceMetadataBulkloadBucket builder
+     */
+    public Builder cosBucketApiKey(String cosBucketApiKey) {
+      this.cosBucketApiKey = cosBucketApiKey;
+      return this;
+    }
   }
 
+  protected InstanceMetadataBulkloadBucket() { }
+
   protected InstanceMetadataBulkloadBucket(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cosBucketApiKey,
-      "cosBucketApiKey cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cosBucketName,
       "cosBucketName cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cosBucketApiKey,
+      "cosBucketApiKey cannot be null");
     cosBucketLocation = builder.cosBucketLocation;
-    cosBucketApiKey = builder.cosBucketApiKey;
     cosBucketName = builder.cosBucketName;
+    cosBucketApiKey = builder.cosBucketApiKey;
   }
 
   /**
@@ -132,17 +134,6 @@ public class InstanceMetadataBulkloadBucket extends GenericModel {
   }
 
   /**
-   * Gets the cosBucketApiKey.
-   *
-   * Bucket API key of a cloud object storage.
-   *
-   * @return the cosBucketApiKey
-   */
-  public String cosBucketApiKey() {
-    return cosBucketApiKey;
-  }
-
-  /**
    * Gets the cosBucketName.
    *
    * Name of a bucket on cloud object storage.
@@ -151,6 +142,17 @@ public class InstanceMetadataBulkloadBucket extends GenericModel {
    */
   public String cosBucketName() {
     return cosBucketName;
+  }
+
+  /**
+   * Gets the cosBucketApiKey.
+   *
+   * Bucket API key of a cloud object storage.
+   *
+   * @return the cosBucketApiKey
+   */
+  public String cosBucketApiKey() {
+    return cosBucketApiKey;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -42,6 +42,12 @@ public class DataLoadProperties extends GenericModel {
   protected String fileType;
   @SerializedName("csv_options")
   protected CSVOptions csvOptions;
+  @SerializedName("fail_on_missing_records")
+  protected Boolean failOnMissingRecords;
+  @SerializedName("group_type")
+  protected String groupType;
+  @SerializedName("group_associations_type")
+  protected String groupAssociationsType;
 
   /**
    * Builder.
@@ -53,6 +59,9 @@ public class DataLoadProperties extends GenericModel {
     private String defaultSource;
     private String fileType;
     private CSVOptions csvOptions;
+    private Boolean failOnMissingRecords;
+    private String groupType;
+    private String groupAssociationsType;
 
     private Builder(DataLoadProperties dataLoadProperties) {
       this.collectionId = dataLoadProperties.collectionId;
@@ -61,6 +70,9 @@ public class DataLoadProperties extends GenericModel {
       this.defaultSource = dataLoadProperties.defaultSource;
       this.fileType = dataLoadProperties.fileType;
       this.csvOptions = dataLoadProperties.csvOptions;
+      this.failOnMissingRecords = dataLoadProperties.failOnMissingRecords;
+      this.groupType = dataLoadProperties.groupType;
+      this.groupAssociationsType = dataLoadProperties.groupAssociationsType;
     }
 
     /**
@@ -152,7 +164,42 @@ public class DataLoadProperties extends GenericModel {
       this.csvOptions = csvOptions;
       return this;
     }
+
+    /**
+     * Set the failOnMissingRecords.
+     *
+     * @param failOnMissingRecords the failOnMissingRecords
+     * @return the DataLoadProperties builder
+     */
+    public Builder failOnMissingRecords(Boolean failOnMissingRecords) {
+      this.failOnMissingRecords = failOnMissingRecords;
+      return this;
+    }
+
+    /**
+     * Set the groupType.
+     *
+     * @param groupType the groupType
+     * @return the DataLoadProperties builder
+     */
+    public Builder groupType(String groupType) {
+      this.groupType = groupType;
+      return this;
+    }
+
+    /**
+     * Set the groupAssociationsType.
+     *
+     * @param groupAssociationsType the groupAssociationsType
+     * @return the DataLoadProperties builder
+     */
+    public Builder groupAssociationsType(String groupAssociationsType) {
+      this.groupAssociationsType = groupAssociationsType;
+      return this;
+    }
   }
+
+  protected DataLoadProperties() { }
 
   protected DataLoadProperties(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fileType,
@@ -163,6 +210,9 @@ public class DataLoadProperties extends GenericModel {
     defaultSource = builder.defaultSource;
     fileType = builder.fileType;
     csvOptions = builder.csvOptions;
+    failOnMissingRecords = builder.failOnMissingRecords;
+    groupType = builder.groupType;
+    groupAssociationsType = builder.groupAssociationsType;
   }
 
   /**
@@ -238,6 +288,40 @@ public class DataLoadProperties extends GenericModel {
    */
   public CSVOptions csvOptions() {
     return csvOptions;
+  }
+
+  /**
+   * Gets the failOnMissingRecords.
+   *
+   * Setting this would determine if bulk load of relationshipsshould fail when source/target records are missing. By
+   * default this setting is false.
+   *
+   * @return the failOnMissingRecords
+   */
+  public Boolean failOnMissingRecords() {
+    return failOnMissingRecords;
+  }
+
+  /**
+   * Gets the groupType.
+   *
+   * The group type of the bulk load data.
+   *
+   * @return the groupType
+   */
+  public String groupType() {
+    return groupType;
+  }
+
+  /**
+   * Gets the groupAssociationsType.
+   *
+   * The group associations type of the bulk load data.
+   *
+   * @return the groupAssociationsType
+   */
+  public String groupAssociationsType() {
+    return groupAssociationsType;
   }
 }
 

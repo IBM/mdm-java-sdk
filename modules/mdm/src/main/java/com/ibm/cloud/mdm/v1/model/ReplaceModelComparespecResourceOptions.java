@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,10 +22,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ReplaceModelComparespecResourceOptions extends GenericModel {
 
   protected String resourceName;
-  protected Float typoDistance;
   protected Map<String, CompareSpecResourceFeatureCategory> featureCategories;
   protected Map<String, Float> featureCoefficients;
+  protected Float typoDistance;
+  protected Boolean similarCharactersEnabled;
   protected String similarCharactersMapResource;
+  protected Boolean rawEditDistanceEnabled;
+  protected Float maxGeoDistance;
   protected Float similarCharactersDistance;
 
   /**
@@ -33,18 +36,24 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
    */
   public static class Builder {
     private String resourceName;
-    private Float typoDistance;
     private Map<String, CompareSpecResourceFeatureCategory> featureCategories;
     private Map<String, Float> featureCoefficients;
+    private Float typoDistance;
+    private Boolean similarCharactersEnabled;
     private String similarCharactersMapResource;
+    private Boolean rawEditDistanceEnabled;
+    private Float maxGeoDistance;
     private Float similarCharactersDistance;
 
     private Builder(ReplaceModelComparespecResourceOptions replaceModelComparespecResourceOptions) {
       this.resourceName = replaceModelComparespecResourceOptions.resourceName;
-      this.typoDistance = replaceModelComparespecResourceOptions.typoDistance;
       this.featureCategories = replaceModelComparespecResourceOptions.featureCategories;
       this.featureCoefficients = replaceModelComparespecResourceOptions.featureCoefficients;
+      this.typoDistance = replaceModelComparespecResourceOptions.typoDistance;
+      this.similarCharactersEnabled = replaceModelComparespecResourceOptions.similarCharactersEnabled;
       this.similarCharactersMapResource = replaceModelComparespecResourceOptions.similarCharactersMapResource;
+      this.rawEditDistanceEnabled = replaceModelComparespecResourceOptions.rawEditDistanceEnabled;
+      this.maxGeoDistance = replaceModelComparespecResourceOptions.maxGeoDistance;
       this.similarCharactersDistance = replaceModelComparespecResourceOptions.similarCharactersDistance;
     }
 
@@ -58,13 +67,11 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param resourceName the resourceName
-     * @param typoDistance the typoDistance
      * @param featureCategories the featureCategories
      * @param featureCoefficients the featureCoefficients
      */
-    public Builder(String resourceName, Float typoDistance, Map<String, CompareSpecResourceFeatureCategory> featureCategories, Map<String, Float> featureCoefficients) {
+    public Builder(String resourceName, Map<String, CompareSpecResourceFeatureCategory> featureCategories, Map<String, Float> featureCoefficients) {
       this.resourceName = resourceName;
-      this.typoDistance = typoDistance;
       this.featureCategories = featureCategories;
       this.featureCoefficients = featureCoefficients;
     }
@@ -86,17 +93,6 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
      */
     public Builder resourceName(String resourceName) {
       this.resourceName = resourceName;
-      return this;
-    }
-
-    /**
-     * Set the typoDistance.
-     *
-     * @param typoDistance the typoDistance
-     * @return the ReplaceModelComparespecResourceOptions builder
-     */
-    public Builder typoDistance(Float typoDistance) {
-      this.typoDistance = typoDistance;
       return this;
     }
 
@@ -123,6 +119,28 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
     }
 
     /**
+     * Set the typoDistance.
+     *
+     * @param typoDistance the typoDistance
+     * @return the ReplaceModelComparespecResourceOptions builder
+     */
+    public Builder typoDistance(Float typoDistance) {
+      this.typoDistance = typoDistance;
+      return this;
+    }
+
+    /**
+     * Set the similarCharactersEnabled.
+     *
+     * @param similarCharactersEnabled the similarCharactersEnabled
+     * @return the ReplaceModelComparespecResourceOptions builder
+     */
+    public Builder similarCharactersEnabled(Boolean similarCharactersEnabled) {
+      this.similarCharactersEnabled = similarCharactersEnabled;
+      return this;
+    }
+
+    /**
      * Set the similarCharactersMapResource.
      *
      * @param similarCharactersMapResource the similarCharactersMapResource
@@ -130,6 +148,28 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
      */
     public Builder similarCharactersMapResource(String similarCharactersMapResource) {
       this.similarCharactersMapResource = similarCharactersMapResource;
+      return this;
+    }
+
+    /**
+     * Set the rawEditDistanceEnabled.
+     *
+     * @param rawEditDistanceEnabled the rawEditDistanceEnabled
+     * @return the ReplaceModelComparespecResourceOptions builder
+     */
+    public Builder rawEditDistanceEnabled(Boolean rawEditDistanceEnabled) {
+      this.rawEditDistanceEnabled = rawEditDistanceEnabled;
+      return this;
+    }
+
+    /**
+     * Set the maxGeoDistance.
+     *
+     * @param maxGeoDistance the maxGeoDistance
+     * @return the ReplaceModelComparespecResourceOptions builder
+     */
+    public Builder maxGeoDistance(Float maxGeoDistance) {
+      this.maxGeoDistance = maxGeoDistance;
       return this;
     }
 
@@ -151,29 +191,35 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
      * @return the ReplaceModelComparespecResourceOptions builder
      */
     public Builder compareSpecResource(CompareSpecResource compareSpecResource) {
-      this.typoDistance = compareSpecResource.typoDistance();
       this.featureCategories = compareSpecResource.featureCategories();
       this.featureCoefficients = compareSpecResource.featureCoefficients();
+      this.typoDistance = compareSpecResource.typoDistance();
+      this.similarCharactersEnabled = compareSpecResource.similarCharactersEnabled();
       this.similarCharactersMapResource = compareSpecResource.similarCharactersMapResource();
+      this.rawEditDistanceEnabled = compareSpecResource.rawEditDistanceEnabled();
+      this.maxGeoDistance = compareSpecResource.maxGeoDistance();
       this.similarCharactersDistance = compareSpecResource.similarCharactersDistance();
       return this;
     }
   }
 
+  protected ReplaceModelComparespecResourceOptions() { }
+
   protected ReplaceModelComparespecResourceOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.resourceName,
       "resourceName cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typoDistance,
-      "typoDistance cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCategories,
       "featureCategories cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.featureCoefficients,
       "featureCoefficients cannot be null");
     resourceName = builder.resourceName;
-    typoDistance = builder.typoDistance;
     featureCategories = builder.featureCategories;
     featureCoefficients = builder.featureCoefficients;
+    typoDistance = builder.typoDistance;
+    similarCharactersEnabled = builder.similarCharactersEnabled;
     similarCharactersMapResource = builder.similarCharactersMapResource;
+    rawEditDistanceEnabled = builder.rawEditDistanceEnabled;
+    maxGeoDistance = builder.maxGeoDistance;
     similarCharactersDistance = builder.similarCharactersDistance;
   }
 
@@ -195,17 +241,6 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
    */
   public String resourceName() {
     return resourceName;
-  }
-
-  /**
-   * Gets the typoDistance.
-   *
-   * The distance factor for each occurence of typographical error. The value must be between 0 to 1.
-   *
-   * @return the typoDistance
-   */
-  public Float typoDistance() {
-    return typoDistance;
   }
 
   /**
@@ -232,6 +267,28 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
   }
 
   /**
+   * Gets the typoDistance.
+   *
+   * The distance factor for each occurence of typographical error. The value must be between 0 to 1.
+   *
+   * @return the typoDistance
+   */
+  public Float typoDistance() {
+    return typoDistance;
+  }
+
+  /**
+   * Gets the similarCharactersEnabled.
+   *
+   * The indicator of using similarity edit distance. The default value is false.
+   *
+   * @return the similarCharactersEnabled
+   */
+  public Boolean similarCharactersEnabled() {
+    return similarCharactersEnabled;
+  }
+
+  /**
    * Gets the similarCharactersMapResource.
    *
    * An existing map resource name for lookalike characters.
@@ -240,6 +297,28 @@ public class ReplaceModelComparespecResourceOptions extends GenericModel {
    */
   public String similarCharactersMapResource() {
     return similarCharactersMapResource;
+  }
+
+  /**
+   * Gets the rawEditDistanceEnabled.
+   *
+   * The indicator of using the raw edit distance value instead of the weighted one. The default value is false.
+   *
+   * @return the rawEditDistanceEnabled
+   */
+  public Boolean rawEditDistanceEnabled() {
+    return rawEditDistanceEnabled;
+  }
+
+  /**
+   * Gets the maxGeoDistance.
+   *
+   * The max distance for geo compare should consider.
+   *
+   * @return the maxGeoDistance
+   */
+  public Float maxGeoDistance() {
+    return maxGeoDistance;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -51,6 +51,12 @@ public class ListDataJobsOptions extends GenericModel {
     String DELETE = "delete";
     /** export. */
     String EXPORT = "export";
+    /** migration_export. */
+    String MIGRATION_EXPORT = "migration_export";
+    /** reindex. */
+    String REINDEX = "reindex";
+    /** sync_entities. */
+    String SYNC_ENTITIES = "sync_entities";
   }
 
   protected Long offset;
@@ -133,6 +139,8 @@ public class ListDataJobsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListDataJobsOptions() { }
 
   protected ListDataJobsOptions(Builder builder) {
     offset = builder.offset;

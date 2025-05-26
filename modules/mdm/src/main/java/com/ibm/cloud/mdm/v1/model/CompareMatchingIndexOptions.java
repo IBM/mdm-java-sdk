@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,8 +22,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CompareMatchingIndexOptions extends GenericModel {
 
-  protected List<SingleRecordRequest> records;
   protected String entityType;
+  protected List<SingleRecordRequest> records;
   protected String details;
   protected Long recordNumber1;
   protected Long recordNumber2;
@@ -33,16 +33,16 @@ public class CompareMatchingIndexOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private List<SingleRecordRequest> records;
     private String entityType;
+    private List<SingleRecordRequest> records;
     private String details;
     private Long recordNumber1;
     private Long recordNumber2;
     private String recordType;
 
     private Builder(CompareMatchingIndexOptions compareMatchingIndexOptions) {
-      this.records = compareMatchingIndexOptions.records;
       this.entityType = compareMatchingIndexOptions.entityType;
+      this.records = compareMatchingIndexOptions.records;
       this.details = compareMatchingIndexOptions.details;
       this.recordNumber1 = compareMatchingIndexOptions.recordNumber1;
       this.recordNumber2 = compareMatchingIndexOptions.recordNumber2;
@@ -53,6 +53,15 @@ public class CompareMatchingIndexOptions extends GenericModel {
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param entityType the entityType
+     */
+    public Builder(String entityType) {
+      this.entityType = entityType;
     }
 
     /**
@@ -81,6 +90,17 @@ public class CompareMatchingIndexOptions extends GenericModel {
     }
 
     /**
+     * Set the entityType.
+     *
+     * @param entityType the entityType
+     * @return the CompareMatchingIndexOptions builder
+     */
+    public Builder entityType(String entityType) {
+      this.entityType = entityType;
+      return this;
+    }
+
+    /**
      * Set the records.
      * Existing records will be replaced.
      *
@@ -89,17 +109,6 @@ public class CompareMatchingIndexOptions extends GenericModel {
      */
     public Builder records(List<SingleRecordRequest> records) {
       this.records = records;
-      return this;
-    }
-
-    /**
-     * Set the entityType.
-     *
-     * @param entityType the entityType
-     * @return the CompareMatchingIndexOptions builder
-     */
-    public Builder entityType(String entityType) {
-      this.entityType = entityType;
       return this;
     }
 
@@ -148,9 +157,13 @@ public class CompareMatchingIndexOptions extends GenericModel {
     }
   }
 
+  protected CompareMatchingIndexOptions() { }
+
   protected CompareMatchingIndexOptions(Builder builder) {
-    records = builder.records;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityType,
+      "entityType cannot be null");
     entityType = builder.entityType;
+    records = builder.records;
     details = builder.details;
     recordNumber1 = builder.recordNumber1;
     recordNumber2 = builder.recordNumber2;
@@ -167,17 +180,6 @@ public class CompareMatchingIndexOptions extends GenericModel {
   }
 
   /**
-   * Gets the records.
-   *
-   * Collection of records.
-   *
-   * @return the records
-   */
-  public List<SingleRecordRequest> records() {
-    return records;
-  }
-
-  /**
    * Gets the entityType.
    *
    * The data type identifier of entity, ie. person_entity, organization_entity, household_entity.
@@ -186,6 +188,17 @@ public class CompareMatchingIndexOptions extends GenericModel {
    */
   public String entityType() {
     return entityType;
+  }
+
+  /**
+   * Gets the records.
+   *
+   * Collection of records.
+   *
+   * @return the records
+   */
+  public List<SingleRecordRequest> records() {
+    return records;
   }
 
   /**

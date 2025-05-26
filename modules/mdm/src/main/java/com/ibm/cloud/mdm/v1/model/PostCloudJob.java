@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,10 +27,10 @@ public class PostCloudJob extends DynamicModel<Object> {
   protected String lastUpdatedAt;
   @SerializedName("created_at")
   protected String createdAt;
-  @SerializedName("status")
-  protected String status;
   @SerializedName("id")
   protected String id;
+  @SerializedName("status")
+  protected String status;
 
   public PostCloudJob() {
     super(new TypeToken<Object>() { });
@@ -70,17 +70,6 @@ public class PostCloudJob extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the status.
-   *
-   * Status of a job. One Of: Queued, Running, Completed, Failed, Canceled.
-   *
-   * @return the status
-   */
-  public String getStatus() {
-    return this.status;
-  }
-
-  /**
    * Gets the id.
    *
    * System generated identifier of a job.
@@ -89,5 +78,16 @@ public class PostCloudJob extends DynamicModel<Object> {
    */
   public String getId() {
     return this.id;
+  }
+
+  /**
+   * Gets the status.
+   *
+   * Status of a job. One Of: Queued, Running, Completed, Failed, Canceled.
+   *
+   * @return the status
+   */
+  public String getStatus() {
+    return this.status;
   }
 }

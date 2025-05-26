@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,7 +14,7 @@
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.DataRelationship;
-import com.ibm.cloud.mdm.v1.model.DataVertexSummary;
+import com.ibm.cloud.mdm.v1.model.NodeWithAttributesDataRecord;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,32 +32,44 @@ public class DataRelationshipTest {
 
   @Test
   public void testDataRelationship() throws Throwable {
-    DataVertexSummary dataVertexSummaryModel = new DataVertexSummary.Builder()
-      .id("testString")
+    NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
+      .type("record")
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .typeName("testString")
+      .isBlockedForUpdate(true)
+      .isQuarantined(true)
       .build();
-    assertEquals(dataVertexSummaryModel.id(), "testString");
+    assertEquals(nodeWithAttributesModel.type(), "record");
+    assertEquals(nodeWithAttributesModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(nodeWithAttributesModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(nodeWithAttributesModel.typeName(), "testString");
+    assertEquals(nodeWithAttributesModel.isBlockedForUpdate(), Boolean.valueOf(true));
+    assertEquals(nodeWithAttributesModel.isQuarantined(), Boolean.valueOf(true));
 
     DataRelationship dataRelationshipModel = new DataRelationship.Builder()
-      .id("testString")
+      .type("relationship")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .typeName("testString")
-      .source(dataVertexSummaryModel)
-      .target(dataVertexSummaryModel)
+      .source(nodeWithAttributesModel)
+      .target(nodeWithAttributesModel)
       .build();
-    assertEquals(dataRelationshipModel.id(), "testString");
+    assertEquals(dataRelationshipModel.type(), "relationship");
     assertEquals(dataRelationshipModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataRelationshipModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
     assertEquals(dataRelationshipModel.typeName(), "testString");
-    assertEquals(dataRelationshipModel.source(), dataVertexSummaryModel);
-    assertEquals(dataRelationshipModel.target(), dataVertexSummaryModel);
+    assertEquals(dataRelationshipModel.source(), nodeWithAttributesModel);
+    assertEquals(dataRelationshipModel.target(), nodeWithAttributesModel);
 
     String json = TestUtilities.serialize(dataRelationshipModel);
 
     DataRelationship dataRelationshipModelNew = TestUtilities.deserialize(json, DataRelationship.class);
     assertTrue(dataRelationshipModelNew instanceof DataRelationship);
-    assertEquals(dataRelationshipModelNew.id(), "testString");
+    assertEquals(dataRelationshipModelNew.type(), "relationship");
     assertEquals(dataRelationshipModelNew.typeName(), "testString");
-    assertEquals(dataRelationshipModelNew.source().toString(), dataVertexSummaryModel.toString());
-    assertEquals(dataRelationshipModelNew.target().toString(), dataVertexSummaryModel.toString());
+    assertEquals(dataRelationshipModelNew.source().toString(), nodeWithAttributesModel.toString());
+    assertEquals(dataRelationshipModelNew.target().toString(), nodeWithAttributesModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

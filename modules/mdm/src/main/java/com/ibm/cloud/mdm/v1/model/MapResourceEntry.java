@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,11 +24,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class MapResourceEntry extends GenericModel {
 
   protected List<String> regex;
-  protected String category;
+  protected List<String> values;
   @SerializedName("data_type")
   protected String dataType;
+  protected String category;
   protected String cardinality;
-  protected List<String> values;
   protected String key;
 
   /**
@@ -36,18 +36,18 @@ public class MapResourceEntry extends GenericModel {
    */
   public static class Builder {
     private List<String> regex;
-    private String category;
-    private String dataType;
-    private String cardinality;
     private List<String> values;
+    private String dataType;
+    private String category;
+    private String cardinality;
     private String key;
 
     private Builder(MapResourceEntry mapResourceEntry) {
       this.regex = mapResourceEntry.regex;
-      this.category = mapResourceEntry.category;
-      this.dataType = mapResourceEntry.dataType;
-      this.cardinality = mapResourceEntry.cardinality;
       this.values = mapResourceEntry.values;
+      this.dataType = mapResourceEntry.dataType;
+      this.category = mapResourceEntry.category;
+      this.cardinality = mapResourceEntry.cardinality;
       this.key = mapResourceEntry.key;
     }
 
@@ -55,17 +55,6 @@ public class MapResourceEntry extends GenericModel {
      * Instantiates a new builder.
      */
     public Builder() {
-    }
-
-    /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param regex the regex
-     * @param values the values
-     */
-    public Builder(List<String> regex, List<String> values) {
-      this.regex = regex;
-      this.values = values;
     }
 
     /**
@@ -122,13 +111,14 @@ public class MapResourceEntry extends GenericModel {
     }
 
     /**
-     * Set the category.
+     * Set the values.
+     * Existing values will be replaced.
      *
-     * @param category the category
+     * @param values the values
      * @return the MapResourceEntry builder
      */
-    public Builder category(String category) {
-      this.category = category;
+    public Builder values(List<String> values) {
+      this.values = values;
       return this;
     }
 
@@ -144,6 +134,17 @@ public class MapResourceEntry extends GenericModel {
     }
 
     /**
+     * Set the category.
+     *
+     * @param category the category
+     * @return the MapResourceEntry builder
+     */
+    public Builder category(String category) {
+      this.category = category;
+      return this;
+    }
+
+    /**
      * Set the cardinality.
      *
      * @param cardinality the cardinality
@@ -151,18 +152,6 @@ public class MapResourceEntry extends GenericModel {
      */
     public Builder cardinality(String cardinality) {
       this.cardinality = cardinality;
-      return this;
-    }
-
-    /**
-     * Set the values.
-     * Existing values will be replaced.
-     *
-     * @param values the values
-     * @return the MapResourceEntry builder
-     */
-    public Builder values(List<String> values) {
-      this.values = values;
       return this;
     }
 
@@ -178,16 +167,14 @@ public class MapResourceEntry extends GenericModel {
     }
   }
 
+  protected MapResourceEntry() { }
+
   protected MapResourceEntry(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.regex,
-      "regex cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.values,
-      "values cannot be null");
     regex = builder.regex;
-    category = builder.category;
-    dataType = builder.dataType;
-    cardinality = builder.cardinality;
     values = builder.values;
+    dataType = builder.dataType;
+    category = builder.category;
+    cardinality = builder.cardinality;
     key = builder.key;
   }
 
@@ -212,14 +199,14 @@ public class MapResourceEntry extends GenericModel {
   }
 
   /**
-   * Gets the category.
+   * Gets the values.
    *
-   * User defined context category, when applicable (i.e. UNITEDSTATES).
+   * Collection of user defined values mapped to the key.
    *
-   * @return the category
+   * @return the values
    */
-  public String category() {
-    return category;
+  public List<String> values() {
+    return values;
   }
 
   /**
@@ -235,6 +222,17 @@ public class MapResourceEntry extends GenericModel {
   }
 
   /**
+   * Gets the category.
+   *
+   * User defined context category, when applicable (i.e. UNITEDSTATES).
+   *
+   * @return the category
+   */
+  public String category() {
+    return category;
+  }
+
+  /**
    * Gets the cardinality.
    *
    * The cardinality of map entry, when applicable.
@@ -243,17 +241,6 @@ public class MapResourceEntry extends GenericModel {
    */
   public String cardinality() {
     return cardinality;
-  }
-
-  /**
-   * Gets the values.
-   *
-   * Collection of user defined values mapped to the key.
-   *
-   * @return the values
-   */
-  public List<String> values() {
-    return values;
   }
 
   /**

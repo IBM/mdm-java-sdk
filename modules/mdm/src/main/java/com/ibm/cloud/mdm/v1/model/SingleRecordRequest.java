@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,20 +20,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SingleRecordRequest extends GenericModel {
 
+  protected SingleRecordRequestAttributes attributes;
+  protected Long id;
   @SerializedName("record_type")
   protected String recordType;
-  protected SingleRecordRequestAttributes attributes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String recordType;
     private SingleRecordRequestAttributes attributes;
+    private Long id;
+    private String recordType;
 
     private Builder(SingleRecordRequest singleRecordRequest) {
-      this.recordType = singleRecordRequest.recordType;
       this.attributes = singleRecordRequest.attributes;
+      this.id = singleRecordRequest.id;
+      this.recordType = singleRecordRequest.recordType;
     }
 
     /**
@@ -45,12 +48,12 @@ public class SingleRecordRequest extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param recordType the recordType
      * @param attributes the attributes
+     * @param recordType the recordType
      */
-    public Builder(String recordType, SingleRecordRequestAttributes attributes) {
-      this.recordType = recordType;
+    public Builder(SingleRecordRequestAttributes attributes, String recordType) {
       this.attributes = attributes;
+      this.recordType = recordType;
     }
 
     /**
@@ -63,17 +66,6 @@ public class SingleRecordRequest extends GenericModel {
     }
 
     /**
-     * Set the recordType.
-     *
-     * @param recordType the recordType
-     * @return the SingleRecordRequest builder
-     */
-    public Builder recordType(String recordType) {
-      this.recordType = recordType;
-      return this;
-    }
-
-    /**
      * Set the attributes.
      *
      * @param attributes the attributes
@@ -83,15 +75,40 @@ public class SingleRecordRequest extends GenericModel {
       this.attributes = attributes;
       return this;
     }
+
+    /**
+     * Set the id.
+     *
+     * @param id the id
+     * @return the SingleRecordRequest builder
+     */
+    public Builder id(long id) {
+      this.id = id;
+      return this;
+    }
+
+    /**
+     * Set the recordType.
+     *
+     * @param recordType the recordType
+     * @return the SingleRecordRequest builder
+     */
+    public Builder recordType(String recordType) {
+      this.recordType = recordType;
+      return this;
+    }
   }
 
+  protected SingleRecordRequest() { }
+
   protected SingleRecordRequest(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
-      "recordType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
       "attributes cannot be null");
-    recordType = builder.recordType;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
+      "recordType cannot be null");
     attributes = builder.attributes;
+    id = builder.id;
+    recordType = builder.recordType;
   }
 
   /**
@@ -104,17 +121,6 @@ public class SingleRecordRequest extends GenericModel {
   }
 
   /**
-   * Gets the recordType.
-   *
-   * The data type identifier of the record, ie. person, organization.
-   *
-   * @return the recordType
-   */
-  public String recordType() {
-    return recordType;
-  }
-
-  /**
    * Gets the attributes.
    *
    * Details of a single record including external record reference and record attributes.
@@ -123,6 +129,28 @@ public class SingleRecordRequest extends GenericModel {
    */
   public SingleRecordRequestAttributes attributes() {
     return attributes;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * Optional record number.
+   *
+   * @return the id
+   */
+  public Long id() {
+    return id;
+  }
+
+  /**
+   * Gets the recordType.
+   *
+   * The data type identifier of the record, ie. person, organization.
+   *
+   * @return the recordType
+   */
+  public String recordType() {
+    return recordType;
   }
 }
 

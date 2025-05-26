@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -44,11 +44,9 @@ public class GetMatchingRecordRulesOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param recordNumber the recordNumber
-     * @param entityType the entityType
      */
-    public Builder(Long recordNumber, String entityType) {
+    public Builder(Long recordNumber) {
       this.recordNumber = recordNumber;
-      this.entityType = entityType;
     }
 
     /**
@@ -83,11 +81,11 @@ public class GetMatchingRecordRulesOptions extends GenericModel {
     }
   }
 
+  protected GetMatchingRecordRulesOptions() { }
+
   protected GetMatchingRecordRulesOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordNumber,
       "recordNumber cannot be num");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityType,
-      "entityType cannot be null");
     recordNumber = builder.recordNumber;
     entityType = builder.entityType;
   }

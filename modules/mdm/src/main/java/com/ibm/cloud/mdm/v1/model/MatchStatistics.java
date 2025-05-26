@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,14 +22,36 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class MatchStatistics extends GenericModel {
 
+  protected Status status;
+  protected Summary summary;
   @SerializedName("entity_breakdown")
   protected EntityBreakdown entityBreakdown;
   @SerializedName("largest_entities")
   protected List<MatchEntitySizeStats> largestEntities;
   @SerializedName("entity_size_distribution")
   protected List<MatchEntityCountStats> entitySizeDistribution;
-  protected Summary summary;
-  protected Status status;
+
+  /**
+   * Gets the status.
+   *
+   * The status of match process execution.
+   *
+   * @return the status
+   */
+  public Status getStatus() {
+    return status;
+  }
+
+  /**
+   * Gets the summary.
+   *
+   * The summary of statistics of the match process results.
+   *
+   * @return the summary
+   */
+  public Summary getSummary() {
+    return summary;
+  }
 
   /**
    * Gets the entityBreakdown.
@@ -62,28 +84,6 @@ public class MatchStatistics extends GenericModel {
    */
   public List<MatchEntityCountStats> getEntitySizeDistribution() {
     return entitySizeDistribution;
-  }
-
-  /**
-   * Gets the summary.
-   *
-   * The summary of statistics of the match process results.
-   *
-   * @return the summary
-   */
-  public Summary getSummary() {
-    return summary;
-  }
-
-  /**
-   * Gets the status.
-   *
-   * The status of match process execution.
-   *
-   * @return the status
-   */
-  public Status getStatus() {
-    return status;
   }
 }
 

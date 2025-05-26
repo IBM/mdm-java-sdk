@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -159,6 +159,8 @@ public class ListDataEntitiesForRecordOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListDataEntitiesForRecordOptions() { }
 
   protected ListDataEntitiesForRecordOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

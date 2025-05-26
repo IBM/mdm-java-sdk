@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -95,6 +95,8 @@ public class GetConfiguratorProcessOptions extends GenericModel {
     }
   }
 
+  protected GetConfiguratorProcessOptions() { }
+
   protected GetConfiguratorProcessOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.processName,
       "processName cannot be empty");
@@ -115,7 +117,8 @@ public class GetConfiguratorProcessOptions extends GenericModel {
   /**
    * Gets the processName.
    *
-   * Unique process name to get the process status. i.e. publish_model, publish_data, match, delete_asset.
+   * Unique process name to get the process status. i.e. publish_model, publish_data, match, delete_asset and
+   * import_snapshot.
    *
    * @return the processName
    */

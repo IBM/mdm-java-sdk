@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,7 +14,7 @@
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.CreateDataRelationshipOptions;
-import com.ibm.cloud.mdm.v1.model.DataVertexSummary;
+import com.ibm.cloud.mdm.v1.model.NodeWithAttributesDataRecord;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,23 +32,35 @@ public class CreateDataRelationshipOptionsTest {
 
   @Test
   public void testCreateDataRelationshipOptions() throws Throwable {
-    DataVertexSummary dataVertexSummaryModel = new DataVertexSummary.Builder()
-      .id("testString")
+    NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
+      .type("record")
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .typeName("testString")
+      .isBlockedForUpdate(true)
+      .isQuarantined(true)
       .build();
-    assertEquals(dataVertexSummaryModel.id(), "testString");
+    assertEquals(nodeWithAttributesModel.type(), "record");
+    assertEquals(nodeWithAttributesModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(nodeWithAttributesModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(nodeWithAttributesModel.typeName(), "testString");
+    assertEquals(nodeWithAttributesModel.isBlockedForUpdate(), Boolean.valueOf(true));
+    assertEquals(nodeWithAttributesModel.isQuarantined(), Boolean.valueOf(true));
 
     CreateDataRelationshipOptions createDataRelationshipOptionsModel = new CreateDataRelationshipOptions.Builder()
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .typeName("testString")
-      .id("testString")
-      .source(dataVertexSummaryModel)
-      .target(dataVertexSummaryModel)
+      .type("relationship")
+      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .source(nodeWithAttributesModel)
+      .target(nodeWithAttributesModel)
       .build();
     assertEquals(createDataRelationshipOptionsModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
     assertEquals(createDataRelationshipOptionsModel.typeName(), "testString");
-    assertEquals(createDataRelationshipOptionsModel.id(), "testString");
-    assertEquals(createDataRelationshipOptionsModel.source(), dataVertexSummaryModel);
-    assertEquals(createDataRelationshipOptionsModel.target(), dataVertexSummaryModel);
+    assertEquals(createDataRelationshipOptionsModel.type(), "relationship");
+    assertEquals(createDataRelationshipOptionsModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(createDataRelationshipOptionsModel.source(), nodeWithAttributesModel);
+    assertEquals(createDataRelationshipOptionsModel.target(), nodeWithAttributesModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

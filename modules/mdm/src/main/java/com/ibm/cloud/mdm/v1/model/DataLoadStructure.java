@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,6 +36,18 @@ public class DataLoadStructure extends GenericModel {
   protected DataLoadProperties recordPropertiesContents;
   @SerializedName("relationship_properties_contents")
   protected DataLoadProperties relationshipPropertiesContents;
+  @SerializedName("group_path")
+  protected String groupPath;
+  @SerializedName("group_properties")
+  protected String groupProperties;
+  @SerializedName("group_properties_contents")
+  protected DataLoadProperties groupPropertiesContents;
+  @SerializedName("group_associations_path")
+  protected String groupAssociationsPath;
+  @SerializedName("group_associations_properties")
+  protected String groupAssociationsProperties;
+  @SerializedName("group_associations_properties_contents")
+  protected DataLoadProperties groupAssociationsPropertiesContents;
 
   /**
    * Builder.
@@ -49,6 +61,12 @@ public class DataLoadStructure extends GenericModel {
     private String relationshipAssetId;
     private DataLoadProperties recordPropertiesContents;
     private DataLoadProperties relationshipPropertiesContents;
+    private String groupPath;
+    private String groupProperties;
+    private DataLoadProperties groupPropertiesContents;
+    private String groupAssociationsPath;
+    private String groupAssociationsProperties;
+    private DataLoadProperties groupAssociationsPropertiesContents;
 
     private Builder(DataLoadStructure dataLoadStructure) {
       this.recordPath = dataLoadStructure.recordPath;
@@ -59,6 +77,12 @@ public class DataLoadStructure extends GenericModel {
       this.relationshipAssetId = dataLoadStructure.relationshipAssetId;
       this.recordPropertiesContents = dataLoadStructure.recordPropertiesContents;
       this.relationshipPropertiesContents = dataLoadStructure.relationshipPropertiesContents;
+      this.groupPath = dataLoadStructure.groupPath;
+      this.groupProperties = dataLoadStructure.groupProperties;
+      this.groupPropertiesContents = dataLoadStructure.groupPropertiesContents;
+      this.groupAssociationsPath = dataLoadStructure.groupAssociationsPath;
+      this.groupAssociationsProperties = dataLoadStructure.groupAssociationsProperties;
+      this.groupAssociationsPropertiesContents = dataLoadStructure.groupAssociationsPropertiesContents;
     }
 
     /**
@@ -163,7 +187,75 @@ public class DataLoadStructure extends GenericModel {
       this.relationshipPropertiesContents = relationshipPropertiesContents;
       return this;
     }
+
+    /**
+     * Set the groupPath.
+     *
+     * @param groupPath the groupPath
+     * @return the DataLoadStructure builder
+     */
+    public Builder groupPath(String groupPath) {
+      this.groupPath = groupPath;
+      return this;
+    }
+
+    /**
+     * Set the groupProperties.
+     *
+     * @param groupProperties the groupProperties
+     * @return the DataLoadStructure builder
+     */
+    public Builder groupProperties(String groupProperties) {
+      this.groupProperties = groupProperties;
+      return this;
+    }
+
+    /**
+     * Set the groupPropertiesContents.
+     *
+     * @param groupPropertiesContents the groupPropertiesContents
+     * @return the DataLoadStructure builder
+     */
+    public Builder groupPropertiesContents(DataLoadProperties groupPropertiesContents) {
+      this.groupPropertiesContents = groupPropertiesContents;
+      return this;
+    }
+
+    /**
+     * Set the groupAssociationsPath.
+     *
+     * @param groupAssociationsPath the groupAssociationsPath
+     * @return the DataLoadStructure builder
+     */
+    public Builder groupAssociationsPath(String groupAssociationsPath) {
+      this.groupAssociationsPath = groupAssociationsPath;
+      return this;
+    }
+
+    /**
+     * Set the groupAssociationsProperties.
+     *
+     * @param groupAssociationsProperties the groupAssociationsProperties
+     * @return the DataLoadStructure builder
+     */
+    public Builder groupAssociationsProperties(String groupAssociationsProperties) {
+      this.groupAssociationsProperties = groupAssociationsProperties;
+      return this;
+    }
+
+    /**
+     * Set the groupAssociationsPropertiesContents.
+     *
+     * @param groupAssociationsPropertiesContents the groupAssociationsPropertiesContents
+     * @return the DataLoadStructure builder
+     */
+    public Builder groupAssociationsPropertiesContents(DataLoadProperties groupAssociationsPropertiesContents) {
+      this.groupAssociationsPropertiesContents = groupAssociationsPropertiesContents;
+      return this;
+    }
   }
+
+  protected DataLoadStructure() { }
 
   protected DataLoadStructure(Builder builder) {
     recordPath = builder.recordPath;
@@ -174,6 +266,12 @@ public class DataLoadStructure extends GenericModel {
     relationshipAssetId = builder.relationshipAssetId;
     recordPropertiesContents = builder.recordPropertiesContents;
     relationshipPropertiesContents = builder.relationshipPropertiesContents;
+    groupPath = builder.groupPath;
+    groupProperties = builder.groupProperties;
+    groupPropertiesContents = builder.groupPropertiesContents;
+    groupAssociationsPath = builder.groupAssociationsPath;
+    groupAssociationsProperties = builder.groupAssociationsProperties;
+    groupAssociationsPropertiesContents = builder.groupAssociationsPropertiesContents;
   }
 
   /**
@@ -271,6 +369,72 @@ public class DataLoadStructure extends GenericModel {
    */
   public DataLoadProperties relationshipPropertiesContents() {
     return relationshipPropertiesContents;
+  }
+
+  /**
+   * Gets the groupPath.
+   *
+   * The relative path from directory_path to the file or directory containing group data.
+   *
+   * @return the groupPath
+   */
+  public String groupPath() {
+    return groupPath;
+  }
+
+  /**
+   * Gets the groupProperties.
+   *
+   * The relative path from directory_path to the group properties file.
+   *
+   * @return the groupProperties
+   */
+  public String groupProperties() {
+    return groupProperties;
+  }
+
+  /**
+   * Gets the groupPropertiesContents.
+   *
+   * The properties of the data to be loaded.
+   *
+   * @return the groupPropertiesContents
+   */
+  public DataLoadProperties groupPropertiesContents() {
+    return groupPropertiesContents;
+  }
+
+  /**
+   * Gets the groupAssociationsPath.
+   *
+   * The relative path from directory_path to the file or directory containing group associations data.
+   *
+   * @return the groupAssociationsPath
+   */
+  public String groupAssociationsPath() {
+    return groupAssociationsPath;
+  }
+
+  /**
+   * Gets the groupAssociationsProperties.
+   *
+   * The relative path from directory_path to the group associations properties file.
+   *
+   * @return the groupAssociationsProperties
+   */
+  public String groupAssociationsProperties() {
+    return groupAssociationsProperties;
+  }
+
+  /**
+   * Gets the groupAssociationsPropertiesContents.
+   *
+   * The properties of the data to be loaded.
+   *
+   * @return the groupAssociationsPropertiesContents
+   */
+  public DataLoadProperties groupAssociationsPropertiesContents() {
+    return groupAssociationsPropertiesContents;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,18 +34,20 @@ public class SearchMatchingIndexOptionsTest {
   public void testSearchMatchingIndexOptions() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
       .recordId("testString")
-      .recordSource("testString")
       .recordLastUpdated(Long.valueOf("26"))
+      .recordSource("testString")
       .add("foo", "testString")
       .build();
     assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
-    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
+    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
     SearchMatchingIndexOptions searchMatchingIndexOptionsModel = new SearchMatchingIndexOptions.Builder()
-      .recordType("testString")
       .attributes(singleRecordRequestAttributesModel)
+      .recordType("testString")
+      .id(Long.valueOf("26"))
+      .includeLogicalKey(true)
       .details("low")
       .minScore(Long.valueOf("26"))
       .maxScore(Long.valueOf("26"))
@@ -53,8 +55,10 @@ public class SearchMatchingIndexOptionsTest {
       .entityType("person_entity")
       .limit(Long.valueOf("26"))
       .build();
-    assertEquals(searchMatchingIndexOptionsModel.recordType(), "testString");
     assertEquals(searchMatchingIndexOptionsModel.attributes(), singleRecordRequestAttributesModel);
+    assertEquals(searchMatchingIndexOptionsModel.recordType(), "testString");
+    assertEquals(searchMatchingIndexOptionsModel.id(), Long.valueOf("26"));
+    assertEquals(searchMatchingIndexOptionsModel.includeLogicalKey(), Boolean.valueOf(true));
     assertEquals(searchMatchingIndexOptionsModel.details(), "low");
     assertEquals(searchMatchingIndexOptionsModel.minScore(), Long.valueOf("26"));
     assertEquals(searchMatchingIndexOptionsModel.maxScore(), Long.valueOf("26"));

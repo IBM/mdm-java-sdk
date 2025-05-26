@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,21 +23,33 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRelationshipEndpoint extends GenericModel {
 
-  @SerializedName("record_types")
-  protected List<String> recordTypes;
+  @SerializedName("hierarchy_types")
+  protected List<String> hierarchyTypes;
+  @SerializedName("node_types")
+  protected List<String> nodeTypes;
+  @SerializedName("group_types")
+  protected List<String> groupTypes;
   @SerializedName("entity_types")
   protected List<String> entityTypes;
+  @SerializedName("record_types")
+  protected List<String> recordTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<String> recordTypes;
+    private List<String> hierarchyTypes;
+    private List<String> nodeTypes;
+    private List<String> groupTypes;
     private List<String> entityTypes;
+    private List<String> recordTypes;
 
     private Builder(DataModelRelationshipEndpoint dataModelRelationshipEndpoint) {
-      this.recordTypes = dataModelRelationshipEndpoint.recordTypes;
+      this.hierarchyTypes = dataModelRelationshipEndpoint.hierarchyTypes;
+      this.nodeTypes = dataModelRelationshipEndpoint.nodeTypes;
+      this.groupTypes = dataModelRelationshipEndpoint.groupTypes;
       this.entityTypes = dataModelRelationshipEndpoint.entityTypes;
+      this.recordTypes = dataModelRelationshipEndpoint.recordTypes;
     }
 
     /**
@@ -56,18 +68,50 @@ public class DataModelRelationshipEndpoint extends GenericModel {
     }
 
     /**
-     * Adds an recordTypes to recordTypes.
+     * Adds an hierarchyTypes to hierarchyTypes.
      *
-     * @param recordTypes the new recordTypes
+     * @param hierarchyTypes the new hierarchyTypes
      * @return the DataModelRelationshipEndpoint builder
      */
-    public Builder addRecordTypes(String recordTypes) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(recordTypes,
-        "recordTypes cannot be null");
-      if (this.recordTypes == null) {
-        this.recordTypes = new ArrayList<String>();
+    public Builder addHierarchyTypes(String hierarchyTypes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(hierarchyTypes,
+        "hierarchyTypes cannot be null");
+      if (this.hierarchyTypes == null) {
+        this.hierarchyTypes = new ArrayList<String>();
       }
-      this.recordTypes.add(recordTypes);
+      this.hierarchyTypes.add(hierarchyTypes);
+      return this;
+    }
+
+    /**
+     * Adds an nodeTypes to nodeTypes.
+     *
+     * @param nodeTypes the new nodeTypes
+     * @return the DataModelRelationshipEndpoint builder
+     */
+    public Builder addNodeTypes(String nodeTypes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(nodeTypes,
+        "nodeTypes cannot be null");
+      if (this.nodeTypes == null) {
+        this.nodeTypes = new ArrayList<String>();
+      }
+      this.nodeTypes.add(nodeTypes);
+      return this;
+    }
+
+    /**
+     * Adds an groupTypes to groupTypes.
+     *
+     * @param groupTypes the new groupTypes
+     * @return the DataModelRelationshipEndpoint builder
+     */
+    public Builder addGroupTypes(String groupTypes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(groupTypes,
+        "groupTypes cannot be null");
+      if (this.groupTypes == null) {
+        this.groupTypes = new ArrayList<String>();
+      }
+      this.groupTypes.add(groupTypes);
       return this;
     }
 
@@ -88,14 +132,54 @@ public class DataModelRelationshipEndpoint extends GenericModel {
     }
 
     /**
-     * Set the recordTypes.
-     * Existing recordTypes will be replaced.
+     * Adds an recordTypes to recordTypes.
      *
-     * @param recordTypes the recordTypes
+     * @param recordTypes the new recordTypes
      * @return the DataModelRelationshipEndpoint builder
      */
-    public Builder recordTypes(List<String> recordTypes) {
-      this.recordTypes = recordTypes;
+    public Builder addRecordTypes(String recordTypes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(recordTypes,
+        "recordTypes cannot be null");
+      if (this.recordTypes == null) {
+        this.recordTypes = new ArrayList<String>();
+      }
+      this.recordTypes.add(recordTypes);
+      return this;
+    }
+
+    /**
+     * Set the hierarchyTypes.
+     * Existing hierarchyTypes will be replaced.
+     *
+     * @param hierarchyTypes the hierarchyTypes
+     * @return the DataModelRelationshipEndpoint builder
+     */
+    public Builder hierarchyTypes(List<String> hierarchyTypes) {
+      this.hierarchyTypes = hierarchyTypes;
+      return this;
+    }
+
+    /**
+     * Set the nodeTypes.
+     * Existing nodeTypes will be replaced.
+     *
+     * @param nodeTypes the nodeTypes
+     * @return the DataModelRelationshipEndpoint builder
+     */
+    public Builder nodeTypes(List<String> nodeTypes) {
+      this.nodeTypes = nodeTypes;
+      return this;
+    }
+
+    /**
+     * Set the groupTypes.
+     * Existing groupTypes will be replaced.
+     *
+     * @param groupTypes the groupTypes
+     * @return the DataModelRelationshipEndpoint builder
+     */
+    public Builder groupTypes(List<String> groupTypes) {
+      this.groupTypes = groupTypes;
       return this;
     }
 
@@ -110,11 +194,28 @@ public class DataModelRelationshipEndpoint extends GenericModel {
       this.entityTypes = entityTypes;
       return this;
     }
+
+    /**
+     * Set the recordTypes.
+     * Existing recordTypes will be replaced.
+     *
+     * @param recordTypes the recordTypes
+     * @return the DataModelRelationshipEndpoint builder
+     */
+    public Builder recordTypes(List<String> recordTypes) {
+      this.recordTypes = recordTypes;
+      return this;
+    }
   }
 
+  protected DataModelRelationshipEndpoint() { }
+
   protected DataModelRelationshipEndpoint(Builder builder) {
-    recordTypes = builder.recordTypes;
+    hierarchyTypes = builder.hierarchyTypes;
+    nodeTypes = builder.nodeTypes;
+    groupTypes = builder.groupTypes;
     entityTypes = builder.entityTypes;
+    recordTypes = builder.recordTypes;
   }
 
   /**
@@ -127,14 +228,36 @@ public class DataModelRelationshipEndpoint extends GenericModel {
   }
 
   /**
-   * Gets the recordTypes.
+   * Gets the hierarchyTypes.
    *
-   * Collection of allowed record types.
+   * Collection of allowed hierarchy types.
    *
-   * @return the recordTypes
+   * @return the hierarchyTypes
    */
-  public List<String> recordTypes() {
-    return recordTypes;
+  public List<String> hierarchyTypes() {
+    return hierarchyTypes;
+  }
+
+  /**
+   * Gets the nodeTypes.
+   *
+   * Collection of allowed node types.
+   *
+   * @return the nodeTypes
+   */
+  public List<String> nodeTypes() {
+    return nodeTypes;
+  }
+
+  /**
+   * Gets the groupTypes.
+   *
+   * Collection of allowed group types.
+   *
+   * @return the groupTypes
+   */
+  public List<String> groupTypes() {
+    return groupTypes;
   }
 
   /**
@@ -146,6 +269,17 @@ public class DataModelRelationshipEndpoint extends GenericModel {
    */
   public List<String> entityTypes() {
     return entityTypes;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Collection of allowed record types.
+   *
+   * @return the recordTypes
+   */
+  public List<String> recordTypes() {
+    return recordTypes;
   }
 }
 

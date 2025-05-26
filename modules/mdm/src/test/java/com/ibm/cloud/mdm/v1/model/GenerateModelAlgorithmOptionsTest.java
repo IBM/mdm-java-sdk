@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,12 +15,13 @@ package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.AlgorithmGenerationAttributeItem;
 import com.ibm.cloud.mdm.v1.model.AlgorithmGenerationEntityType;
+import com.ibm.cloud.mdm.v1.model.AlgorithmGenerationRecordFilter;
+import com.ibm.cloud.mdm.v1.model.AlgorithmGenerationSingleCriteria;
+import com.ibm.cloud.mdm.v1.model.AlgorithmGenerationSourceLevelThreshold;
 import com.ibm.cloud.mdm.v1.model.GenerateModelAlgorithmOptions;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -35,20 +36,51 @@ public class GenerateModelAlgorithmOptionsTest {
 
   @Test
   public void testGenerateModelAlgorithmOptions() throws Throwable {
-    AlgorithmGenerationAttributeItem algorithmGenerationAttributeItemModel = new AlgorithmGenerationAttributeItem.Builder()
-      .matchingFields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+    AlgorithmGenerationSingleCriteria algorithmGenerationSingleCriteriaModel = new AlgorithmGenerationSingleCriteria.Builder()
+      .allowed(java.util.Arrays.asList("testString"))
+      .disallowed(java.util.Arrays.asList("testString"))
       .build();
-    assertEquals(algorithmGenerationAttributeItemModel.matchingFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(algorithmGenerationAttributeItemModel.attributes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmGenerationSingleCriteriaModel.allowed(), java.util.Arrays.asList("testString"));
+    assertEquals(algorithmGenerationSingleCriteriaModel.disallowed(), java.util.Arrays.asList("testString"));
+
+    AlgorithmGenerationRecordFilter algorithmGenerationRecordFilterModel = new AlgorithmGenerationRecordFilter.Builder()
+      .criteria(new java.util.HashMap<String, AlgorithmGenerationSingleCriteria>() { { put("foo", algorithmGenerationSingleCriteriaModel); } })
+      .build();
+    assertEquals(algorithmGenerationRecordFilterModel.criteria(), new java.util.HashMap<String, AlgorithmGenerationSingleCriteria>() { { put("foo", algorithmGenerationSingleCriteriaModel); } });
+
+    AlgorithmGenerationAttributeItem algorithmGenerationAttributeItemModel = new AlgorithmGenerationAttributeItem.Builder()
+      .overallScoreContribution(true)
+      .attributes(java.util.Arrays.asList("testString"))
+      .matchingFields(java.util.Arrays.asList("testString"))
+      .postFilterMethods(java.util.Arrays.asList("testString"))
+      .build();
+    assertEquals(algorithmGenerationAttributeItemModel.overallScoreContribution(), Boolean.valueOf(true));
+    assertEquals(algorithmGenerationAttributeItemModel.attributes(), java.util.Arrays.asList("testString"));
+    assertEquals(algorithmGenerationAttributeItemModel.matchingFields(), java.util.Arrays.asList("testString"));
+    assertEquals(algorithmGenerationAttributeItemModel.postFilterMethods(), java.util.Arrays.asList("testString"));
+
+    AlgorithmGenerationSourceLevelThreshold algorithmGenerationSourceLevelThresholdModel = new AlgorithmGenerationSourceLevelThreshold.Builder()
+      .srcxsrc(new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } })
+      .xDefault(java.util.Arrays.asList(Float.valueOf("36.0")))
+      .build();
+    assertEquals(algorithmGenerationSourceLevelThresholdModel.srcxsrc(), new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } });
+    assertEquals(algorithmGenerationSourceLevelThresholdModel.xDefault(), java.util.Arrays.asList(Float.valueOf("36.0")));
 
     AlgorithmGenerationEntityType algorithmGenerationEntityTypeModel = new AlgorithmGenerationEntityType.Builder()
+      .glueThreshold(Float.valueOf("36.0"))
+      .recordFilter(algorithmGenerationRecordFilterModel)
+      .clericalReviewThreshold(Float.valueOf("0"))
+      .matchingAttributes(java.util.Arrays.asList(algorithmGenerationAttributeItemModel))
       .autoLinkThreshold(Float.valueOf("0"))
-      .matchingAttributes(new java.util.ArrayList<AlgorithmGenerationAttributeItem>(java.util.Arrays.asList(algorithmGenerationAttributeItemModel)))
+      .sourceLevelThresholds(new java.util.HashMap<String, AlgorithmGenerationSourceLevelThreshold>() { { put("foo", algorithmGenerationSourceLevelThresholdModel); } })
       .add("foo", "testString")
       .build();
+    assertEquals(algorithmGenerationEntityTypeModel.getGlueThreshold(), Float.valueOf("36.0"));
+    assertEquals(algorithmGenerationEntityTypeModel.getRecordFilter(), algorithmGenerationRecordFilterModel);
+    assertEquals(algorithmGenerationEntityTypeModel.getClericalReviewThreshold(), Float.valueOf("0"));
+    assertEquals(algorithmGenerationEntityTypeModel.getMatchingAttributes(), java.util.Arrays.asList(algorithmGenerationAttributeItemModel));
     assertEquals(algorithmGenerationEntityTypeModel.getAutoLinkThreshold(), Float.valueOf("0"));
-    assertEquals(algorithmGenerationEntityTypeModel.getMatchingAttributes(), new java.util.ArrayList<AlgorithmGenerationAttributeItem>(java.util.Arrays.asList(algorithmGenerationAttributeItemModel)));
+    assertEquals(algorithmGenerationEntityTypeModel.getSourceLevelThresholds(), new java.util.HashMap<String, AlgorithmGenerationSourceLevelThreshold>() { { put("foo", algorithmGenerationSourceLevelThresholdModel); } });
     assertEquals(algorithmGenerationEntityTypeModel.get("foo"), "testString");
 
     GenerateModelAlgorithmOptions generateModelAlgorithmOptionsModel = new GenerateModelAlgorithmOptions.Builder()

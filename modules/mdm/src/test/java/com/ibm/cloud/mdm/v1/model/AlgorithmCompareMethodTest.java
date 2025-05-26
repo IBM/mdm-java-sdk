@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,8 +20,6 @@ import com.ibm.cloud.mdm.v1.model.AlgorithmMethods;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -37,53 +35,56 @@ public class AlgorithmCompareMethodTest {
   @Test
   public void testAlgorithmCompareMethod() throws Throwable {
     AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
-      .encryptedFields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .attributes(java.util.Arrays.asList("testString"))
+      .fields(java.util.Arrays.asList("testString"))
+      .encryptedFields(java.util.Arrays.asList("testString"))
       .build();
-    assertEquals(algorithmInputModel.encryptedFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(algorithmInputModel.attributes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(algorithmInputModel.fields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmInputModel.attributes(), java.util.Arrays.asList("testString"));
+    assertEquals(algorithmInputModel.fields(), java.util.Arrays.asList("testString"));
+    assertEquals(algorithmInputModel.encryptedFields(), java.util.Arrays.asList("testString"));
 
     AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-      .setResource("testString")
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
       .comparisonResource("testString")
-      .mapResource("testString")
       .method("testString")
-      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .inputs(java.util.Arrays.asList(Long.valueOf("26")))
+      .label("testString")
+      .setResource("testString")
+      .fields(java.util.Arrays.asList("testString"))
+      .mapResource("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmCompareStepModel.getSetResource(), "testString");
-    assertEquals(algorithmCompareStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmCompareStepModel.getLabel(), "testString");
     assertEquals(algorithmCompareStepModel.getComparisonResource(), "testString");
-    assertEquals(algorithmCompareStepModel.getMapResource(), "testString");
     assertEquals(algorithmCompareStepModel.getMethod(), "testString");
-    assertEquals(algorithmCompareStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmCompareStepModel.getInputs(), java.util.Arrays.asList(Long.valueOf("26")));
+    assertEquals(algorithmCompareStepModel.getLabel(), "testString");
+    assertEquals(algorithmCompareStepModel.getSetResource(), "testString");
+    assertEquals(algorithmCompareStepModel.getFields(), java.util.Arrays.asList("testString"));
+    assertEquals(algorithmCompareStepModel.getMapResource(), "testString");
     assertEquals(algorithmCompareStepModel.get("foo"), "testString");
 
     AlgorithmMethods algorithmMethodsModel = new AlgorithmMethods.Builder()
-      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
-      .compareRecipe(new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)))
+      .inputs(java.util.Arrays.asList(algorithmInputModel))
+      .compareRecipe(java.util.Arrays.asList(algorithmCompareStepModel))
       .build();
-    assertEquals(algorithmMethodsModel.inputs(), new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)));
-    assertEquals(algorithmMethodsModel.compareRecipe(), new java.util.ArrayList<AlgorithmCompareStep>(java.util.Arrays.asList(algorithmCompareStepModel)));
+    assertEquals(algorithmMethodsModel.inputs(), java.util.Arrays.asList(algorithmInputModel));
+    assertEquals(algorithmMethodsModel.compareRecipe(), java.util.Arrays.asList(algorithmCompareStepModel));
 
     AlgorithmCompareMethod algorithmCompareMethodModel = new AlgorithmCompareMethod.Builder()
+      .methods(java.util.Arrays.asList(algorithmMethodsModel))
+      .overallScoreContribution(true)
       .label("testString")
-      .weights(new java.util.ArrayList<Float>(java.util.Arrays.asList(Float.valueOf("36.0"))))
-      .methods(new java.util.ArrayList<AlgorithmMethods>(java.util.Arrays.asList(algorithmMethodsModel)))
+      .weights(java.util.Arrays.asList(Float.valueOf("36.0")))
       .build();
+    assertEquals(algorithmCompareMethodModel.methods(), java.util.Arrays.asList(algorithmMethodsModel));
+    assertEquals(algorithmCompareMethodModel.overallScoreContribution(), Boolean.valueOf(true));
     assertEquals(algorithmCompareMethodModel.label(), "testString");
-    assertEquals(algorithmCompareMethodModel.weights(), new java.util.ArrayList<Float>(java.util.Arrays.asList(Float.valueOf("36.0"))));
-    assertEquals(algorithmCompareMethodModel.methods(), new java.util.ArrayList<AlgorithmMethods>(java.util.Arrays.asList(algorithmMethodsModel)));
+    assertEquals(algorithmCompareMethodModel.weights(), java.util.Arrays.asList(Float.valueOf("36.0")));
 
     String json = TestUtilities.serialize(algorithmCompareMethodModel);
 
     AlgorithmCompareMethod algorithmCompareMethodModelNew = TestUtilities.deserialize(json, AlgorithmCompareMethod.class);
     assertTrue(algorithmCompareMethodModelNew instanceof AlgorithmCompareMethod);
+    assertEquals(algorithmCompareMethodModelNew.overallScoreContribution(), Boolean.valueOf(true));
     assertEquals(algorithmCompareMethodModelNew.label(), "testString");
   }
 

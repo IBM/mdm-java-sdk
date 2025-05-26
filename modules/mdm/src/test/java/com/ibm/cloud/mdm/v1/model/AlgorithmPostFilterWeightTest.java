@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,8 +17,6 @@ import com.ibm.cloud.mdm.v1.model.AlgorithmPostFilterWeight;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -34,11 +32,11 @@ public class AlgorithmPostFilterWeightTest {
   @Test
   public void testAlgorithmPostFilterWeight() throws Throwable {
     AlgorithmPostFilterWeight algorithmPostFilterWeightModel = new AlgorithmPostFilterWeight.Builder()
-      .distances(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .values(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
+      .distances(java.util.Arrays.asList(Long.valueOf("26")))
+      .values(java.util.Arrays.asList(Float.valueOf("36.0")))
       .build();
-    assertEquals(algorithmPostFilterWeightModel.distances(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmPostFilterWeightModel.values(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
+    assertEquals(algorithmPostFilterWeightModel.distances(), java.util.Arrays.asList(Long.valueOf("26")));
+    assertEquals(algorithmPostFilterWeightModel.values(), java.util.Arrays.asList(Float.valueOf("36.0")));
 
     String json = TestUtilities.serialize(algorithmPostFilterWeightModel);
 

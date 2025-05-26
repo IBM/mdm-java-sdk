@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,7 @@ package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -23,33 +24,60 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ReplaceModelInstanceMetadataOptions extends GenericModel {
 
   protected List<InstanceMetadataProject> projects;
+  protected String workflowConfigurationId;
+  protected Boolean generateConnectedDataAsset;
+  protected Map<String, InstanceMetadataWorkflow> workflows;
+  protected String label;
+  protected String cosEndpoint;
+  protected String modeOfOperation;
   protected String cosCrn;
   protected InstanceMetadataBulkloadBucket bulkloadBucket;
+  protected String connectionId;
+  protected Boolean governanceEnabled;
+  protected Boolean createApiKey;
+  protected List<InstanceMetadataStreamConnection> streamConnection;
   protected List<InstanceMetadataCatalog> catalogs;
-  protected String label;
   protected String jobProjectId;
-  protected String cosEndpoint;
+  protected String workflowTypeId;
 
   /**
    * Builder.
    */
   public static class Builder {
     private List<InstanceMetadataProject> projects;
+    private String workflowConfigurationId;
+    private Boolean generateConnectedDataAsset;
+    private Map<String, InstanceMetadataWorkflow> workflows;
+    private String label;
+    private String cosEndpoint;
+    private String modeOfOperation;
     private String cosCrn;
     private InstanceMetadataBulkloadBucket bulkloadBucket;
+    private String connectionId;
+    private Boolean governanceEnabled;
+    private Boolean createApiKey;
+    private List<InstanceMetadataStreamConnection> streamConnection;
     private List<InstanceMetadataCatalog> catalogs;
-    private String label;
     private String jobProjectId;
-    private String cosEndpoint;
+    private String workflowTypeId;
 
     private Builder(ReplaceModelInstanceMetadataOptions replaceModelInstanceMetadataOptions) {
       this.projects = replaceModelInstanceMetadataOptions.projects;
+      this.workflowConfigurationId = replaceModelInstanceMetadataOptions.workflowConfigurationId;
+      this.generateConnectedDataAsset = replaceModelInstanceMetadataOptions.generateConnectedDataAsset;
+      this.workflows = replaceModelInstanceMetadataOptions.workflows;
+      this.label = replaceModelInstanceMetadataOptions.label;
+      this.cosEndpoint = replaceModelInstanceMetadataOptions.cosEndpoint;
+      this.modeOfOperation = replaceModelInstanceMetadataOptions.modeOfOperation;
       this.cosCrn = replaceModelInstanceMetadataOptions.cosCrn;
       this.bulkloadBucket = replaceModelInstanceMetadataOptions.bulkloadBucket;
+      this.connectionId = replaceModelInstanceMetadataOptions.connectionId;
+      this.governanceEnabled = replaceModelInstanceMetadataOptions.governanceEnabled;
+      this.createApiKey = replaceModelInstanceMetadataOptions.createApiKey;
+      this.streamConnection = replaceModelInstanceMetadataOptions.streamConnection;
       this.catalogs = replaceModelInstanceMetadataOptions.catalogs;
-      this.label = replaceModelInstanceMetadataOptions.label;
       this.jobProjectId = replaceModelInstanceMetadataOptions.jobProjectId;
-      this.cosEndpoint = replaceModelInstanceMetadataOptions.cosEndpoint;
+      this.workflowTypeId = replaceModelInstanceMetadataOptions.workflowTypeId;
     }
 
     /**
@@ -84,6 +112,22 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
+     * Adds an streamConnection to streamConnection.
+     *
+     * @param streamConnection the new streamConnection
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder addStreamConnection(InstanceMetadataStreamConnection streamConnection) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(streamConnection,
+        "streamConnection cannot be null");
+      if (this.streamConnection == null) {
+        this.streamConnection = new ArrayList<InstanceMetadataStreamConnection>();
+      }
+      this.streamConnection.add(streamConnection);
+      return this;
+    }
+
+    /**
      * Adds an catalogs to catalogs.
      *
      * @param catalogs the new catalogs
@@ -112,6 +156,72 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
+     * Set the workflowConfigurationId.
+     *
+     * @param workflowConfigurationId the workflowConfigurationId
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder workflowConfigurationId(String workflowConfigurationId) {
+      this.workflowConfigurationId = workflowConfigurationId;
+      return this;
+    }
+
+    /**
+     * Set the generateConnectedDataAsset.
+     *
+     * @param generateConnectedDataAsset the generateConnectedDataAsset
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder generateConnectedDataAsset(Boolean generateConnectedDataAsset) {
+      this.generateConnectedDataAsset = generateConnectedDataAsset;
+      return this;
+    }
+
+    /**
+     * Set the workflows.
+     *
+     * @param workflows the workflows
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder workflows(Map<String, InstanceMetadataWorkflow> workflows) {
+      this.workflows = workflows;
+      return this;
+    }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the cosEndpoint.
+     *
+     * @param cosEndpoint the cosEndpoint
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder cosEndpoint(String cosEndpoint) {
+      this.cosEndpoint = cosEndpoint;
+      return this;
+    }
+
+    /**
+     * Set the modeOfOperation.
+     *
+     * @param modeOfOperation the modeOfOperation
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder modeOfOperation(String modeOfOperation) {
+      this.modeOfOperation = modeOfOperation;
+      return this;
+    }
+
+    /**
      * Set the cosCrn.
      *
      * @param cosCrn the cosCrn
@@ -134,6 +244,51 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
+     * Set the connectionId.
+     *
+     * @param connectionId the connectionId
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder connectionId(String connectionId) {
+      this.connectionId = connectionId;
+      return this;
+    }
+
+    /**
+     * Set the governanceEnabled.
+     *
+     * @param governanceEnabled the governanceEnabled
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder governanceEnabled(Boolean governanceEnabled) {
+      this.governanceEnabled = governanceEnabled;
+      return this;
+    }
+
+    /**
+     * Set the createApiKey.
+     *
+     * @param createApiKey the createApiKey
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder createApiKey(Boolean createApiKey) {
+      this.createApiKey = createApiKey;
+      return this;
+    }
+
+    /**
+     * Set the streamConnection.
+     * Existing streamConnection will be replaced.
+     *
+     * @param streamConnection the streamConnection
+     * @return the ReplaceModelInstanceMetadataOptions builder
+     */
+    public Builder streamConnection(List<InstanceMetadataStreamConnection> streamConnection) {
+      this.streamConnection = streamConnection;
+      return this;
+    }
+
+    /**
      * Set the catalogs.
      * Existing catalogs will be replaced.
      *
@@ -142,17 +297,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
      */
     public Builder catalogs(List<InstanceMetadataCatalog> catalogs) {
       this.catalogs = catalogs;
-      return this;
-    }
-
-    /**
-     * Set the label.
-     *
-     * @param label the label
-     * @return the ReplaceModelInstanceMetadataOptions builder
-     */
-    public Builder label(String label) {
-      this.label = label;
       return this;
     }
 
@@ -168,25 +312,36 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Set the cosEndpoint.
+     * Set the workflowTypeId.
      *
-     * @param cosEndpoint the cosEndpoint
+     * @param workflowTypeId the workflowTypeId
      * @return the ReplaceModelInstanceMetadataOptions builder
      */
-    public Builder cosEndpoint(String cosEndpoint) {
-      this.cosEndpoint = cosEndpoint;
+    public Builder workflowTypeId(String workflowTypeId) {
+      this.workflowTypeId = workflowTypeId;
       return this;
     }
   }
 
+  protected ReplaceModelInstanceMetadataOptions() { }
+
   protected ReplaceModelInstanceMetadataOptions(Builder builder) {
     projects = builder.projects;
+    workflowConfigurationId = builder.workflowConfigurationId;
+    generateConnectedDataAsset = builder.generateConnectedDataAsset;
+    workflows = builder.workflows;
+    label = builder.label;
+    cosEndpoint = builder.cosEndpoint;
+    modeOfOperation = builder.modeOfOperation;
     cosCrn = builder.cosCrn;
     bulkloadBucket = builder.bulkloadBucket;
+    connectionId = builder.connectionId;
+    governanceEnabled = builder.governanceEnabled;
+    createApiKey = builder.createApiKey;
+    streamConnection = builder.streamConnection;
     catalogs = builder.catalogs;
-    label = builder.label;
     jobProjectId = builder.jobProjectId;
-    cosEndpoint = builder.cosEndpoint;
+    workflowTypeId = builder.workflowTypeId;
   }
 
   /**
@@ -207,6 +362,72 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
    */
   public List<InstanceMetadataProject> projects() {
     return projects;
+  }
+
+  /**
+   * Gets the workflowConfigurationId.
+   *
+   * The workflow configuration id created in WKC workflow for a Match360 instance.
+   *
+   * @return the workflowConfigurationId
+   */
+  public String workflowConfigurationId() {
+    return workflowConfigurationId;
+  }
+
+  /**
+   * Gets the generateConnectedDataAsset.
+   *
+   * Generate connected data asset indicator, true or false.
+   *
+   * @return the generateConnectedDataAsset
+   */
+  public Boolean generateConnectedDataAsset() {
+    return generateConnectedDataAsset;
+  }
+
+  /**
+   * Gets the workflows.
+   *
+   * Collection of workflow objects configured with current instnce.
+   *
+   * @return the workflows
+   */
+  public Map<String, InstanceMetadataWorkflow> workflows() {
+    return workflows;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * Label for instance metadata.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
+  }
+
+  /**
+   * Gets the cosEndpoint.
+   *
+   * Endpoint of a cloud object storage.
+   *
+   * @return the cosEndpoint
+   */
+  public String cosEndpoint() {
+    return cosEndpoint;
+  }
+
+  /**
+   * Gets the modeOfOperation.
+   *
+   * Match360 modes of operation-&gt; operational_cache, probabilistic_search or usual mode(when not present).
+   *
+   * @return the modeOfOperation
+   */
+  public String modeOfOperation() {
+    return modeOfOperation;
   }
 
   /**
@@ -232,6 +453,50 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
   }
 
   /**
+   * Gets the connectionId.
+   *
+   * The unique identifier of a connection to a Match360 instance.
+   *
+   * @return the connectionId
+   */
+  public String connectionId() {
+    return connectionId;
+  }
+
+  /**
+   * Gets the governanceEnabled.
+   *
+   * Governance enabled indicator, true or false.
+   *
+   * @return the governanceEnabled
+   */
+  public Boolean governanceEnabled() {
+    return governanceEnabled;
+  }
+
+  /**
+   * Gets the createApiKey.
+   *
+   * Generate API key from service id, true or false.
+   *
+   * @return the createApiKey
+   */
+  public Boolean createApiKey() {
+    return createApiKey;
+  }
+
+  /**
+   * Gets the streamConnection.
+   *
+   * Stream connection details.
+   *
+   * @return the streamConnection
+   */
+  public List<InstanceMetadataStreamConnection> streamConnection() {
+    return streamConnection;
+  }
+
+  /**
    * Gets the catalogs.
    *
    * Collection of catalog objects as available in Watson Knowledge Catalog (WKC).
@@ -240,17 +505,6 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
    */
   public List<InstanceMetadataCatalog> catalogs() {
     return catalogs;
-  }
-
-  /**
-   * Gets the label.
-   *
-   * Label for instance metadata.
-   *
-   * @return the label
-   */
-  public String label() {
-    return label;
   }
 
   /**
@@ -265,14 +519,14 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
   }
 
   /**
-   * Gets the cosEndpoint.
+   * Gets the workflowTypeId.
    *
-   * Endpoint of a cloud object storage.
+   * The workflow type id created in WKC workflow services.
    *
-   * @return the cosEndpoint
+   * @return the workflowTypeId
    */
-  public String cosEndpoint() {
-    return cosEndpoint;
+  public String workflowTypeId() {
+    return workflowTypeId;
   }
 }
 

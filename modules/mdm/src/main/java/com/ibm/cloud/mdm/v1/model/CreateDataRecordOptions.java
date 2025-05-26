@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,22 +21,36 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CreateDataRecordOptions extends GenericModel {
 
+  public interface Type {
+    /** record. */
+    String RECORD = "record";
+  }
+
+  protected String type;
   protected Map<String, Object> attributes;
   protected String typeName;
-  protected String id;
+  protected Map<String, Object> systemAttributes;
+  protected Boolean isBlockedForUpdate;
+  protected Boolean isQuarantined;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String type;
     private Map<String, Object> attributes;
     private String typeName;
-    private String id;
+    private Map<String, Object> systemAttributes;
+    private Boolean isBlockedForUpdate;
+    private Boolean isQuarantined;
 
     private Builder(CreateDataRecordOptions createDataRecordOptions) {
+      this.type = createDataRecordOptions.type;
       this.attributes = createDataRecordOptions.attributes;
       this.typeName = createDataRecordOptions.typeName;
-      this.id = createDataRecordOptions.id;
+      this.systemAttributes = createDataRecordOptions.systemAttributes;
+      this.isBlockedForUpdate = createDataRecordOptions.isBlockedForUpdate;
+      this.isQuarantined = createDataRecordOptions.isQuarantined;
     }
 
     /**
@@ -48,10 +62,12 @@ public class CreateDataRecordOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
+     * @param type the type
      * @param attributes the attributes
      * @param typeName the typeName
      */
-    public Builder(Map<String, Object> attributes, String typeName) {
+    public Builder(String type, Map<String, Object> attributes, String typeName) {
+      this.type = type;
       this.attributes = attributes;
       this.typeName = typeName;
     }
@@ -63,6 +79,17 @@ public class CreateDataRecordOptions extends GenericModel {
      */
     public CreateDataRecordOptions build() {
       return new CreateDataRecordOptions(this);
+    }
+
+    /**
+     * Set the type.
+     *
+     * @param type the type
+     * @return the CreateDataRecordOptions builder
+     */
+    public Builder type(String type) {
+      this.type = type;
+      return this;
     }
 
     /**
@@ -88,25 +115,70 @@ public class CreateDataRecordOptions extends GenericModel {
     }
 
     /**
-     * Set the id.
+     * Set the systemAttributes.
      *
-     * @param id the id
+     * @param systemAttributes the systemAttributes
      * @return the CreateDataRecordOptions builder
      */
-    public Builder id(String id) {
-      this.id = id;
+    public Builder systemAttributes(Map<String, Object> systemAttributes) {
+      this.systemAttributes = systemAttributes;
+      return this;
+    }
+
+    /**
+     * Set the isBlockedForUpdate.
+     *
+     * @param isBlockedForUpdate the isBlockedForUpdate
+     * @return the CreateDataRecordOptions builder
+     */
+    public Builder isBlockedForUpdate(Boolean isBlockedForUpdate) {
+      this.isBlockedForUpdate = isBlockedForUpdate;
+      return this;
+    }
+
+    /**
+     * Set the isQuarantined.
+     *
+     * @param isQuarantined the isQuarantined
+     * @return the CreateDataRecordOptions builder
+     */
+    public Builder isQuarantined(Boolean isQuarantined) {
+      this.isQuarantined = isQuarantined;
+      return this;
+    }
+
+    /**
+     * Set the dataRecord.
+     *
+     * @param dataRecord the dataRecord
+     * @return the CreateDataRecordOptions builder
+     */
+    public Builder dataRecord(DataRecord dataRecord) {
+      this.type = dataRecord.type();
+      this.attributes = dataRecord.attributes();
+      this.typeName = dataRecord.typeName();
+      this.systemAttributes = dataRecord.systemAttributes();
+      this.isBlockedForUpdate = dataRecord.isBlockedForUpdate();
+      this.isQuarantined = dataRecord.isQuarantined();
       return this;
     }
   }
 
+  protected CreateDataRecordOptions() { }
+
   protected CreateDataRecordOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,
+      "type cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
       "attributes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typeName,
       "typeName cannot be null");
+    type = builder.type;
     attributes = builder.attributes;
     typeName = builder.typeName;
-    id = builder.id;
+    systemAttributes = builder.systemAttributes;
+    isBlockedForUpdate = builder.isBlockedForUpdate;
+    isQuarantined = builder.isQuarantined;
   }
 
   /**
@@ -116,6 +188,15 @@ public class CreateDataRecordOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   */
+  public String type() {
+    return type;
   }
 
   /**
@@ -132,7 +213,7 @@ public class CreateDataRecordOptions extends GenericModel {
   /**
    * Gets the typeName.
    *
-   * The name of the record type as defined in the data model.
+   * The type as defined in the data model.
    *
    * @return the typeName
    */
@@ -141,14 +222,36 @@ public class CreateDataRecordOptions extends GenericModel {
   }
 
   /**
-   * Gets the id.
+   * Gets the systemAttributes.
    *
-   * The id of the element.
+   * The list of the system attributes of the element.
    *
-   * @return the id
+   * @return the systemAttributes
    */
-  public String id() {
-    return id;
+  public Map<String, Object> systemAttributes() {
+    return systemAttributes;
+  }
+
+  /**
+   * Gets the isBlockedForUpdate.
+   *
+   * Is the Record Blocked for Update.
+   *
+   * @return the isBlockedForUpdate
+   */
+  public Boolean isBlockedForUpdate() {
+    return isBlockedForUpdate;
+  }
+
+  /**
+   * Gets the isQuarantined.
+   *
+   * Is the Record quarantined.
+   *
+   * @return the isQuarantined
+   */
+  public Boolean isQuarantined() {
+    return isQuarantined;
   }
 }
 

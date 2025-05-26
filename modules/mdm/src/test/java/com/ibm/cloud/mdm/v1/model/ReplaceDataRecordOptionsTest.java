@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,14 +33,20 @@ public class ReplaceDataRecordOptionsTest {
   public void testReplaceDataRecordOptions() throws Throwable {
     ReplaceDataRecordOptions replaceDataRecordOptionsModel = new ReplaceDataRecordOptions.Builder()
       .id(Long.valueOf("26"))
-      .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .newTypeName("testString")
-      .newId("testString")
+      .type("record")
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .typeName("testString")
+      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .isBlockedForUpdate(true)
+      .isQuarantined(true)
       .build();
     assertEquals(replaceDataRecordOptionsModel.id(), Long.valueOf("26"));
-    assertEquals(replaceDataRecordOptionsModel.newAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(replaceDataRecordOptionsModel.newTypeName(), "testString");
-    assertEquals(replaceDataRecordOptionsModel.newId(), "testString");
+    assertEquals(replaceDataRecordOptionsModel.type(), "record");
+    assertEquals(replaceDataRecordOptionsModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(replaceDataRecordOptionsModel.typeName(), "testString");
+    assertEquals(replaceDataRecordOptionsModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(replaceDataRecordOptionsModel.isBlockedForUpdate(), Boolean.valueOf(true));
+    assertEquals(replaceDataRecordOptionsModel.isQuarantined(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

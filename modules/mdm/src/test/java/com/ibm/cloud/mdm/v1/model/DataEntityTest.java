@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,23 +32,28 @@ public class DataEntityTest {
   @Test
   public void testDataEntity() throws Throwable {
     DataEntity dataEntityModel = new DataEntity.Builder()
-      .id("testString")
+      .type("entity")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .typeName("testString")
       .recordCount(Long.valueOf("26"))
+      .includesCompositeView(true)
       .build();
-    assertEquals(dataEntityModel.id(), "testString");
+    assertEquals(dataEntityModel.type(), "entity");
     assertEquals(dataEntityModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataEntityModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
     assertEquals(dataEntityModel.typeName(), "testString");
     assertEquals(dataEntityModel.recordCount(), Long.valueOf("26"));
+    assertEquals(dataEntityModel.includesCompositeView(), Boolean.valueOf(true));
 
     String json = TestUtilities.serialize(dataEntityModel);
 
     DataEntity dataEntityModelNew = TestUtilities.deserialize(json, DataEntity.class);
     assertTrue(dataEntityModelNew instanceof DataEntity);
-    assertEquals(dataEntityModelNew.id(), "testString");
+    assertEquals(dataEntityModelNew.type(), "entity");
     assertEquals(dataEntityModelNew.typeName(), "testString");
     assertEquals(dataEntityModelNew.recordCount(), Long.valueOf("26"));
+    assertEquals(dataEntityModelNew.includesCompositeView(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

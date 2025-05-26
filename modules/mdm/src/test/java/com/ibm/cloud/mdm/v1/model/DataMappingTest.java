@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,18 +32,18 @@ public class DataMappingTest {
   @Test
   public void testDataMapping() throws Throwable {
     DataMapping dataMappingModel = new DataMapping.Builder()
-      .classifiedClass("GEN")
       .key("COLUMN 1")
+      .classifiedClass("GEN")
       .build();
-    assertEquals(dataMappingModel.classifiedClass(), "GEN");
     assertEquals(dataMappingModel.key(), "COLUMN 1");
+    assertEquals(dataMappingModel.classifiedClass(), "GEN");
 
     String json = TestUtilities.serialize(dataMappingModel);
 
     DataMapping dataMappingModelNew = TestUtilities.deserialize(json, DataMapping.class);
     assertTrue(dataMappingModelNew instanceof DataMapping);
-    assertEquals(dataMappingModelNew.classifiedClass(), "GEN");
     assertEquals(dataMappingModelNew.key(), "COLUMN 1");
+    assertEquals(dataMappingModelNew.classifiedClass(), "GEN");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

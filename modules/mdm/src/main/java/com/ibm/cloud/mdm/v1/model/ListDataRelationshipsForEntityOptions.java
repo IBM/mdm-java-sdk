@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,8 @@ public class ListDataRelationshipsForEntityOptions extends GenericModel {
   protected String includeRecordRelationships;
   protected Long offset;
   protected Long limit;
+  protected List<String> sourceInclude;
+  protected List<String> targetInclude;
 
   /**
    * Builder.
@@ -37,6 +39,8 @@ public class ListDataRelationshipsForEntityOptions extends GenericModel {
     private String includeRecordRelationships;
     private Long offset;
     private Long limit;
+    private List<String> sourceInclude;
+    private List<String> targetInclude;
 
     private Builder(ListDataRelationshipsForEntityOptions listDataRelationshipsForEntityOptions) {
       this.id = listDataRelationshipsForEntityOptions.id;
@@ -44,6 +48,8 @@ public class ListDataRelationshipsForEntityOptions extends GenericModel {
       this.includeRecordRelationships = listDataRelationshipsForEntityOptions.includeRecordRelationships;
       this.offset = listDataRelationshipsForEntityOptions.offset;
       this.limit = listDataRelationshipsForEntityOptions.limit;
+      this.sourceInclude = listDataRelationshipsForEntityOptions.sourceInclude;
+      this.targetInclude = listDataRelationshipsForEntityOptions.targetInclude;
     }
 
     /**
@@ -83,6 +89,38 @@ public class ListDataRelationshipsForEntityOptions extends GenericModel {
         this.relationshipTypes = new ArrayList<String>();
       }
       this.relationshipTypes.add(relationshipTypes);
+      return this;
+    }
+
+    /**
+     * Adds an sourceInclude to sourceInclude.
+     *
+     * @param sourceInclude the new sourceInclude
+     * @return the ListDataRelationshipsForEntityOptions builder
+     */
+    public Builder addSourceInclude(String sourceInclude) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(sourceInclude,
+        "sourceInclude cannot be null");
+      if (this.sourceInclude == null) {
+        this.sourceInclude = new ArrayList<String>();
+      }
+      this.sourceInclude.add(sourceInclude);
+      return this;
+    }
+
+    /**
+     * Adds an targetInclude to targetInclude.
+     *
+     * @param targetInclude the new targetInclude
+     * @return the ListDataRelationshipsForEntityOptions builder
+     */
+    public Builder addTargetInclude(String targetInclude) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(targetInclude,
+        "targetInclude cannot be null");
+      if (this.targetInclude == null) {
+        this.targetInclude = new ArrayList<String>();
+      }
+      this.targetInclude.add(targetInclude);
       return this;
     }
 
@@ -141,7 +179,33 @@ public class ListDataRelationshipsForEntityOptions extends GenericModel {
       this.limit = limit;
       return this;
     }
+
+    /**
+     * Set the sourceInclude.
+     * Existing sourceInclude will be replaced.
+     *
+     * @param sourceInclude the sourceInclude
+     * @return the ListDataRelationshipsForEntityOptions builder
+     */
+    public Builder sourceInclude(List<String> sourceInclude) {
+      this.sourceInclude = sourceInclude;
+      return this;
+    }
+
+    /**
+     * Set the targetInclude.
+     * Existing targetInclude will be replaced.
+     *
+     * @param targetInclude the targetInclude
+     * @return the ListDataRelationshipsForEntityOptions builder
+     */
+    public Builder targetInclude(List<String> targetInclude) {
+      this.targetInclude = targetInclude;
+      return this;
+    }
   }
+
+  protected ListDataRelationshipsForEntityOptions() { }
 
   protected ListDataRelationshipsForEntityOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
@@ -151,6 +215,8 @@ public class ListDataRelationshipsForEntityOptions extends GenericModel {
     includeRecordRelationships = builder.includeRecordRelationships;
     offset = builder.offset;
     limit = builder.limit;
+    sourceInclude = builder.sourceInclude;
+    targetInclude = builder.targetInclude;
   }
 
   /**
@@ -215,6 +281,28 @@ public class ListDataRelationshipsForEntityOptions extends GenericModel {
    */
   public Long limit() {
     return limit;
+  }
+
+  /**
+   * Gets the sourceInclude.
+   *
+   * Attributes from the data model to include in the results for the source vertex.
+   *
+   * @return the sourceInclude
+   */
+  public List<String> sourceInclude() {
+    return sourceInclude;
+  }
+
+  /**
+   * Gets the targetInclude.
+   *
+   * Attributes from the data model to include in the results for the target vertex.
+   *
+   * @return the targetInclude
+   */
+  public List<String> targetInclude() {
+    return targetInclude;
   }
 }
 

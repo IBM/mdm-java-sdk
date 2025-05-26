@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -48,6 +48,9 @@ public class DataLoadPropertiesTest {
       .defaultSource("testString")
       .fileType("csv")
       .csvOptions(csvOptionsModel)
+      .failOnMissingRecords(true)
+      .groupType("testString")
+      .groupAssociationsType("testString")
       .build();
     assertEquals(dataLoadPropertiesModel.collectionId(), "testString");
     assertEquals(dataLoadPropertiesModel.recordType(), "testString");
@@ -55,6 +58,9 @@ public class DataLoadPropertiesTest {
     assertEquals(dataLoadPropertiesModel.defaultSource(), "testString");
     assertEquals(dataLoadPropertiesModel.fileType(), "csv");
     assertEquals(dataLoadPropertiesModel.csvOptions(), csvOptionsModel);
+    assertEquals(dataLoadPropertiesModel.failOnMissingRecords(), Boolean.valueOf(true));
+    assertEquals(dataLoadPropertiesModel.groupType(), "testString");
+    assertEquals(dataLoadPropertiesModel.groupAssociationsType(), "testString");
 
     String json = TestUtilities.serialize(dataLoadPropertiesModel);
 
@@ -66,6 +72,9 @@ public class DataLoadPropertiesTest {
     assertEquals(dataLoadPropertiesModelNew.defaultSource(), "testString");
     assertEquals(dataLoadPropertiesModelNew.fileType(), "csv");
     assertEquals(dataLoadPropertiesModelNew.csvOptions().toString(), csvOptionsModel.toString());
+    assertEquals(dataLoadPropertiesModelNew.failOnMissingRecords(), Boolean.valueOf(true));
+    assertEquals(dataLoadPropertiesModelNew.groupType(), "testString");
+    assertEquals(dataLoadPropertiesModelNew.groupAssociationsType(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

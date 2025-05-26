@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,21 +20,41 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelEntityTypeSystemProperties extends GenericModel {
 
-  @SerializedName("entity_id")
-  protected DataModelSystemProperty entityId;
+  @SerializedName("record_count")
+  protected DataModelSystemProperty recordCount;
+  @SerializedName("link_last_updated_date")
+  protected DataModelSystemProperty linkLastUpdatedDate;
+  @SerializedName("last_updated_user")
+  protected DataModelSystemProperty lastUpdatedUser;
   @SerializedName("entity_last_updated")
   protected DataModelSystemProperty entityLastUpdated;
+  @SerializedName("created_date")
+  protected DataModelSystemProperty createdDate;
+  @SerializedName("entity_id")
+  protected DataModelSystemProperty entityId;
+  @SerializedName("last_updated_date")
+  protected DataModelSystemProperty lastUpdatedDate;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private DataModelSystemProperty entityId;
+    private DataModelSystemProperty recordCount;
+    private DataModelSystemProperty linkLastUpdatedDate;
+    private DataModelSystemProperty lastUpdatedUser;
     private DataModelSystemProperty entityLastUpdated;
+    private DataModelSystemProperty createdDate;
+    private DataModelSystemProperty entityId;
+    private DataModelSystemProperty lastUpdatedDate;
 
     private Builder(DataModelEntityTypeSystemProperties dataModelEntityTypeSystemProperties) {
-      this.entityId = dataModelEntityTypeSystemProperties.entityId;
+      this.recordCount = dataModelEntityTypeSystemProperties.recordCount;
+      this.linkLastUpdatedDate = dataModelEntityTypeSystemProperties.linkLastUpdatedDate;
+      this.lastUpdatedUser = dataModelEntityTypeSystemProperties.lastUpdatedUser;
       this.entityLastUpdated = dataModelEntityTypeSystemProperties.entityLastUpdated;
+      this.createdDate = dataModelEntityTypeSystemProperties.createdDate;
+      this.entityId = dataModelEntityTypeSystemProperties.entityId;
+      this.lastUpdatedDate = dataModelEntityTypeSystemProperties.lastUpdatedDate;
     }
 
     /**
@@ -46,12 +66,12 @@ public class DataModelEntityTypeSystemProperties extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param entityId the entityId
      * @param entityLastUpdated the entityLastUpdated
+     * @param entityId the entityId
      */
-    public Builder(DataModelSystemProperty entityId, DataModelSystemProperty entityLastUpdated) {
-      this.entityId = entityId;
+    public Builder(DataModelSystemProperty entityLastUpdated, DataModelSystemProperty entityId) {
       this.entityLastUpdated = entityLastUpdated;
+      this.entityId = entityId;
     }
 
     /**
@@ -61,6 +81,61 @@ public class DataModelEntityTypeSystemProperties extends GenericModel {
      */
     public DataModelEntityTypeSystemProperties build() {
       return new DataModelEntityTypeSystemProperties(this);
+    }
+
+    /**
+     * Set the recordCount.
+     *
+     * @param recordCount the recordCount
+     * @return the DataModelEntityTypeSystemProperties builder
+     */
+    public Builder recordCount(DataModelSystemProperty recordCount) {
+      this.recordCount = recordCount;
+      return this;
+    }
+
+    /**
+     * Set the linkLastUpdatedDate.
+     *
+     * @param linkLastUpdatedDate the linkLastUpdatedDate
+     * @return the DataModelEntityTypeSystemProperties builder
+     */
+    public Builder linkLastUpdatedDate(DataModelSystemProperty linkLastUpdatedDate) {
+      this.linkLastUpdatedDate = linkLastUpdatedDate;
+      return this;
+    }
+
+    /**
+     * Set the lastUpdatedUser.
+     *
+     * @param lastUpdatedUser the lastUpdatedUser
+     * @return the DataModelEntityTypeSystemProperties builder
+     */
+    public Builder lastUpdatedUser(DataModelSystemProperty lastUpdatedUser) {
+      this.lastUpdatedUser = lastUpdatedUser;
+      return this;
+    }
+
+    /**
+     * Set the entityLastUpdated.
+     *
+     * @param entityLastUpdated the entityLastUpdated
+     * @return the DataModelEntityTypeSystemProperties builder
+     */
+    public Builder entityLastUpdated(DataModelSystemProperty entityLastUpdated) {
+      this.entityLastUpdated = entityLastUpdated;
+      return this;
+    }
+
+    /**
+     * Set the createdDate.
+     *
+     * @param createdDate the createdDate
+     * @return the DataModelEntityTypeSystemProperties builder
+     */
+    public Builder createdDate(DataModelSystemProperty createdDate) {
+      this.createdDate = createdDate;
+      return this;
     }
 
     /**
@@ -75,24 +150,31 @@ public class DataModelEntityTypeSystemProperties extends GenericModel {
     }
 
     /**
-     * Set the entityLastUpdated.
+     * Set the lastUpdatedDate.
      *
-     * @param entityLastUpdated the entityLastUpdated
+     * @param lastUpdatedDate the lastUpdatedDate
      * @return the DataModelEntityTypeSystemProperties builder
      */
-    public Builder entityLastUpdated(DataModelSystemProperty entityLastUpdated) {
-      this.entityLastUpdated = entityLastUpdated;
+    public Builder lastUpdatedDate(DataModelSystemProperty lastUpdatedDate) {
+      this.lastUpdatedDate = lastUpdatedDate;
       return this;
     }
   }
 
+  protected DataModelEntityTypeSystemProperties() { }
+
   protected DataModelEntityTypeSystemProperties(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityId,
-      "entityId cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityLastUpdated,
       "entityLastUpdated cannot be null");
-    entityId = builder.entityId;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityId,
+      "entityId cannot be null");
+    recordCount = builder.recordCount;
+    linkLastUpdatedDate = builder.linkLastUpdatedDate;
+    lastUpdatedUser = builder.lastUpdatedUser;
     entityLastUpdated = builder.entityLastUpdated;
+    createdDate = builder.createdDate;
+    entityId = builder.entityId;
+    lastUpdatedDate = builder.lastUpdatedDate;
   }
 
   /**
@@ -102,6 +184,61 @@ public class DataModelEntityTypeSystemProperties extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the recordCount.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the recordCount
+   */
+  public DataModelSystemProperty recordCount() {
+    return recordCount;
+  }
+
+  /**
+   * Gets the linkLastUpdatedDate.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the linkLastUpdatedDate
+   */
+  public DataModelSystemProperty linkLastUpdatedDate() {
+    return linkLastUpdatedDate;
+  }
+
+  /**
+   * Gets the lastUpdatedUser.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the lastUpdatedUser
+   */
+  public DataModelSystemProperty lastUpdatedUser() {
+    return lastUpdatedUser;
+  }
+
+  /**
+   * Gets the entityLastUpdated.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the entityLastUpdated
+   */
+  public DataModelSystemProperty entityLastUpdated() {
+    return entityLastUpdated;
+  }
+
+  /**
+   * Gets the createdDate.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the createdDate
+   */
+  public DataModelSystemProperty createdDate() {
+    return createdDate;
   }
 
   /**
@@ -116,14 +253,14 @@ public class DataModelEntityTypeSystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the entityLastUpdated.
+   * Gets the lastUpdatedDate.
    *
    * Defines metadata of a system property.
    *
-   * @return the entityLastUpdated
+   * @return the lastUpdatedDate
    */
-  public DataModelSystemProperty entityLastUpdated() {
-    return entityLastUpdated;
+  public DataModelSystemProperty lastUpdatedDate() {
+    return lastUpdatedDate;
   }
 }
 

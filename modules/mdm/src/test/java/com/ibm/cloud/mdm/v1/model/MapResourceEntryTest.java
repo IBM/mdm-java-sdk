@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,8 +17,6 @@ import com.ibm.cloud.mdm.v1.model.MapResourceEntry;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -34,33 +32,27 @@ public class MapResourceEntryTest {
   @Test
   public void testMapResourceEntry() throws Throwable {
     MapResourceEntry mapResourceEntryModel = new MapResourceEntry.Builder()
-      .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .category("testString")
+      .regex(java.util.Arrays.asList("testString"))
+      .values(java.util.Arrays.asList("testString"))
       .dataType("testString")
+      .category("testString")
       .cardinality("testString")
-      .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .key("testString")
       .build();
-    assertEquals(mapResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(mapResourceEntryModel.category(), "testString");
+    assertEquals(mapResourceEntryModel.regex(), java.util.Arrays.asList("testString"));
+    assertEquals(mapResourceEntryModel.values(), java.util.Arrays.asList("testString"));
     assertEquals(mapResourceEntryModel.dataType(), "testString");
+    assertEquals(mapResourceEntryModel.category(), "testString");
     assertEquals(mapResourceEntryModel.cardinality(), "testString");
-    assertEquals(mapResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(mapResourceEntryModel.key(), "testString");
 
     String json = TestUtilities.serialize(mapResourceEntryModel);
 
     MapResourceEntry mapResourceEntryModelNew = TestUtilities.deserialize(json, MapResourceEntry.class);
     assertTrue(mapResourceEntryModelNew instanceof MapResourceEntry);
-    assertEquals(mapResourceEntryModelNew.category(), "testString");
     assertEquals(mapResourceEntryModelNew.dataType(), "testString");
+    assertEquals(mapResourceEntryModelNew.category(), "testString");
     assertEquals(mapResourceEntryModelNew.cardinality(), "testString");
     assertEquals(mapResourceEntryModelNew.key(), "testString");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testMapResourceEntryError() throws Throwable {
-    new MapResourceEntry.Builder().build();
-  }
-
 }

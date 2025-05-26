@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,10 +26,10 @@ public class DataJobs extends GenericModel {
   protected Long limit;
   @SerializedName("total_count")
   protected Long totalCount;
-  protected PagedResponseFirst first;
-  protected PagedResponseLast last;
-  protected PagedResponsePrevious previous;
-  protected PagedResponseNext next;
+  protected DataJobsFirst first;
+  protected DataJobsLast last;
+  protected DataJobsPrevious previous;
+  protected DataJobsNext next;
   protected List<DataJob> jobs;
 
   /**
@@ -72,7 +72,7 @@ public class DataJobs extends GenericModel {
    *
    * @return the first
    */
-  public PagedResponseFirst getFirst() {
+  public DataJobsFirst getFirst() {
     return first;
   }
 
@@ -83,7 +83,7 @@ public class DataJobs extends GenericModel {
    *
    * @return the last
    */
-  public PagedResponseLast getLast() {
+  public DataJobsLast getLast() {
     return last;
   }
 
@@ -94,7 +94,7 @@ public class DataJobs extends GenericModel {
    *
    * @return the previous
    */
-  public PagedResponsePrevious getPrevious() {
+  public DataJobsPrevious getPrevious() {
     return previous;
   }
 
@@ -105,7 +105,7 @@ public class DataJobs extends GenericModel {
    *
    * @return the next
    */
-  public PagedResponseNext getNext() {
+  public DataJobsNext getNext() {
     return next;
   }
 

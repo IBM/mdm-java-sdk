@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,11 +21,17 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CreateDataRelationshipOptions extends GenericModel {
 
+  public interface Type {
+    /** relationship. */
+    String RELATIONSHIP = "relationship";
+  }
+
   protected Map<String, Object> attributes;
   protected String typeName;
-  protected String id;
-  protected DataVertexSummary source;
-  protected DataVertexSummary target;
+  protected String type;
+  protected Map<String, Object> systemAttributes;
+  protected NodeWithAttributes source;
+  protected NodeWithAttributes target;
 
   /**
    * Builder.
@@ -33,14 +39,16 @@ public class CreateDataRelationshipOptions extends GenericModel {
   public static class Builder {
     private Map<String, Object> attributes;
     private String typeName;
-    private String id;
-    private DataVertexSummary source;
-    private DataVertexSummary target;
+    private String type;
+    private Map<String, Object> systemAttributes;
+    private NodeWithAttributes source;
+    private NodeWithAttributes target;
 
     private Builder(CreateDataRelationshipOptions createDataRelationshipOptions) {
       this.attributes = createDataRelationshipOptions.attributes;
       this.typeName = createDataRelationshipOptions.typeName;
-      this.id = createDataRelationshipOptions.id;
+      this.type = createDataRelationshipOptions.type;
+      this.systemAttributes = createDataRelationshipOptions.systemAttributes;
       this.source = createDataRelationshipOptions.source;
       this.target = createDataRelationshipOptions.target;
     }
@@ -94,13 +102,24 @@ public class CreateDataRelationshipOptions extends GenericModel {
     }
 
     /**
-     * Set the id.
+     * Set the type.
      *
-     * @param id the id
+     * @param type the type
      * @return the CreateDataRelationshipOptions builder
      */
-    public Builder id(String id) {
-      this.id = id;
+    public Builder type(String type) {
+      this.type = type;
+      return this;
+    }
+
+    /**
+     * Set the systemAttributes.
+     *
+     * @param systemAttributes the systemAttributes
+     * @return the CreateDataRelationshipOptions builder
+     */
+    public Builder systemAttributes(Map<String, Object> systemAttributes) {
+      this.systemAttributes = systemAttributes;
       return this;
     }
 
@@ -110,7 +129,7 @@ public class CreateDataRelationshipOptions extends GenericModel {
      * @param source the source
      * @return the CreateDataRelationshipOptions builder
      */
-    public Builder source(DataVertexSummary source) {
+    public Builder source(NodeWithAttributes source) {
       this.source = source;
       return this;
     }
@@ -121,11 +140,29 @@ public class CreateDataRelationshipOptions extends GenericModel {
      * @param target the target
      * @return the CreateDataRelationshipOptions builder
      */
-    public Builder target(DataVertexSummary target) {
+    public Builder target(NodeWithAttributes target) {
       this.target = target;
       return this;
     }
+
+    /**
+     * Set the dataRelationship.
+     *
+     * @param dataRelationship the dataRelationship
+     * @return the CreateDataRelationshipOptions builder
+     */
+    public Builder dataRelationship(DataRelationship dataRelationship) {
+      this.attributes = dataRelationship.attributes();
+      this.typeName = dataRelationship.typeName();
+      this.type = dataRelationship.type();
+      this.systemAttributes = dataRelationship.systemAttributes();
+      this.source = dataRelationship.source();
+      this.target = dataRelationship.target();
+      return this;
+    }
   }
+
+  protected CreateDataRelationshipOptions() { }
 
   protected CreateDataRelationshipOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
@@ -134,7 +171,8 @@ public class CreateDataRelationshipOptions extends GenericModel {
       "typeName cannot be null");
     attributes = builder.attributes;
     typeName = builder.typeName;
-    id = builder.id;
+    type = builder.type;
+    systemAttributes = builder.systemAttributes;
     source = builder.source;
     target = builder.target;
   }
@@ -162,7 +200,7 @@ public class CreateDataRelationshipOptions extends GenericModel {
   /**
    * Gets the typeName.
    *
-   * The name of the relationship type as defined in the data model.
+   * The type as defined in the data model.
    *
    * @return the typeName
    */
@@ -171,35 +209,44 @@ public class CreateDataRelationshipOptions extends GenericModel {
   }
 
   /**
-   * Gets the id.
+   * Gets the type.
    *
-   * The id of the element.
-   *
-   * @return the id
+   * @return the type
    */
-  public String id() {
-    return id;
+  public String type() {
+    return type;
+  }
+
+  /**
+   * Gets the systemAttributes.
+   *
+   * The list of the system attributes of the element.
+   *
+   * @return the systemAttributes
+   */
+  public Map<String, Object> systemAttributes() {
+    return systemAttributes;
   }
 
   /**
    * Gets the source.
    *
-   * Core information about a vertex on the graph.
+   * A node with attributes.
    *
    * @return the source
    */
-  public DataVertexSummary source() {
+  public NodeWithAttributes source() {
     return source;
   }
 
   /**
    * Gets the target.
    *
-   * Core information about a vertex on the graph.
+   * A node with attributes.
    *
    * @return the target
    */
-  public DataVertexSummary target() {
+  public NodeWithAttributes target() {
     return target;
   }
 }

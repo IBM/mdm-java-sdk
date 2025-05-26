@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,8 +17,6 @@ import com.ibm.cloud.mdm.v1.model.AlgorithmBucketStep;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -34,36 +32,36 @@ public class AlgorithmBucketStepTest {
   @Test
   public void testAlgorithmBucketStep() throws Throwable {
     AlgorithmBucketStep algorithmBucketStepModel = new AlgorithmBucketStep.Builder()
-      .setResource("testString")
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .order(true)
-      .label("testString")
       .comparisonResource("testString")
-      .mapResource("testString")
       .method("testString")
-      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .inputs(java.util.Arrays.asList(Long.valueOf("26")))
+      .label("testString")
+      .setResource("testString")
+      .fields(java.util.Arrays.asList("testString"))
+      .mapResource("testString")
+      .order(true)
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmBucketStepModel.getSetResource(), "testString");
-    assertEquals(algorithmBucketStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmBucketStepModel.isOrder(), Boolean.valueOf(true));
-    assertEquals(algorithmBucketStepModel.getLabel(), "testString");
     assertEquals(algorithmBucketStepModel.getComparisonResource(), "testString");
-    assertEquals(algorithmBucketStepModel.getMapResource(), "testString");
     assertEquals(algorithmBucketStepModel.getMethod(), "testString");
-    assertEquals(algorithmBucketStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmBucketStepModel.getInputs(), java.util.Arrays.asList(Long.valueOf("26")));
+    assertEquals(algorithmBucketStepModel.getLabel(), "testString");
+    assertEquals(algorithmBucketStepModel.getSetResource(), "testString");
+    assertEquals(algorithmBucketStepModel.getFields(), java.util.Arrays.asList("testString"));
+    assertEquals(algorithmBucketStepModel.getMapResource(), "testString");
+    assertEquals(algorithmBucketStepModel.isOrder(), Boolean.valueOf(true));
     assertEquals(algorithmBucketStepModel.get("foo"), "testString");
 
     String json = TestUtilities.serialize(algorithmBucketStepModel);
 
     AlgorithmBucketStep algorithmBucketStepModelNew = TestUtilities.deserialize(json, AlgorithmBucketStep.class);
     assertTrue(algorithmBucketStepModelNew instanceof AlgorithmBucketStep);
-    assertEquals(algorithmBucketStepModelNew.getSetResource(), "testString");
-    assertEquals(algorithmBucketStepModelNew.isOrder(), Boolean.valueOf(true));
-    assertEquals(algorithmBucketStepModelNew.getLabel(), "testString");
     assertEquals(algorithmBucketStepModelNew.getComparisonResource(), "testString");
-    assertEquals(algorithmBucketStepModelNew.getMapResource(), "testString");
     assertEquals(algorithmBucketStepModelNew.getMethod(), "testString");
+    assertEquals(algorithmBucketStepModelNew.getLabel(), "testString");
+    assertEquals(algorithmBucketStepModelNew.getSetResource(), "testString");
+    assertEquals(algorithmBucketStepModelNew.getMapResource(), "testString");
+    assertEquals(algorithmBucketStepModelNew.isOrder(), Boolean.valueOf(true));
     assertEquals(algorithmBucketStepModelNew.get("foo"), "testString");
   }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,8 +18,6 @@ import com.ibm.cloud.mdm.v1.model.CompareSpecResourceFeatureCategory;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -35,24 +33,30 @@ public class CompareSpecResourceTest {
   @Test
   public void testCompareSpecResource() throws Throwable {
     CompareSpecResourceFeatureCategory compareSpecResourceFeatureCategoryModel = new CompareSpecResourceFeatureCategory.Builder()
+      .features(java.util.Arrays.asList("testString"))
+      .fields(java.util.Arrays.asList("testString"))
       .equivalencyMapResource("testString")
-      .features(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
+    assertEquals(compareSpecResourceFeatureCategoryModel.features(), java.util.Arrays.asList("testString"));
+    assertEquals(compareSpecResourceFeatureCategoryModel.fields(), java.util.Arrays.asList("testString"));
     assertEquals(compareSpecResourceFeatureCategoryModel.equivalencyMapResource(), "testString");
-    assertEquals(compareSpecResourceFeatureCategoryModel.features(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(compareSpecResourceFeatureCategoryModel.fields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
 
     CompareSpecResource compareSpecResourceModel = new CompareSpecResource.Builder()
-      .typoDistance(Float.valueOf("36.0"))
       .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
+      .typoDistance(Float.valueOf("36.0"))
+      .similarCharactersEnabled(true)
       .similarCharactersMapResource("testString")
+      .rawEditDistanceEnabled(true)
+      .maxGeoDistance(Float.valueOf("36.0"))
       .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
       .similarCharactersDistance(Float.valueOf("36.0"))
       .build();
-    assertEquals(compareSpecResourceModel.typoDistance(), Float.valueOf("36.0"));
     assertEquals(compareSpecResourceModel.featureCategories(), new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } });
+    assertEquals(compareSpecResourceModel.typoDistance(), Float.valueOf("36.0"));
+    assertEquals(compareSpecResourceModel.similarCharactersEnabled(), Boolean.valueOf(true));
     assertEquals(compareSpecResourceModel.similarCharactersMapResource(), "testString");
+    assertEquals(compareSpecResourceModel.rawEditDistanceEnabled(), Boolean.valueOf(true));
+    assertEquals(compareSpecResourceModel.maxGeoDistance(), Float.valueOf("36.0"));
     assertEquals(compareSpecResourceModel.featureCoefficients(), new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } });
     assertEquals(compareSpecResourceModel.similarCharactersDistance(), Float.valueOf("36.0"));
 
@@ -61,7 +65,10 @@ public class CompareSpecResourceTest {
     CompareSpecResource compareSpecResourceModelNew = TestUtilities.deserialize(json, CompareSpecResource.class);
     assertTrue(compareSpecResourceModelNew instanceof CompareSpecResource);
     assertEquals(compareSpecResourceModelNew.typoDistance(), Float.valueOf("36.0"));
+    assertEquals(compareSpecResourceModelNew.similarCharactersEnabled(), Boolean.valueOf(true));
     assertEquals(compareSpecResourceModelNew.similarCharactersMapResource(), "testString");
+    assertEquals(compareSpecResourceModelNew.rawEditDistanceEnabled(), Boolean.valueOf(true));
+    assertEquals(compareSpecResourceModelNew.maxGeoDistance(), Float.valueOf("36.0"));
     assertEquals(compareSpecResourceModelNew.similarCharactersDistance(), Float.valueOf("36.0"));
   }
 

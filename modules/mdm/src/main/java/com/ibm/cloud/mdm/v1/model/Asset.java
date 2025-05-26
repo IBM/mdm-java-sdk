@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,6 +22,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Asset extends GenericModel {
 
+  @SerializedName("asset_name")
+  protected String assetName;
   @SerializedName("asset_status")
   protected String assetStatus;
   @SerializedName("asset_created_date")
@@ -32,8 +34,23 @@ public class Asset extends GenericModel {
   protected String assetId;
   @SerializedName("asset_last_updated_date")
   protected String assetLastUpdatedDate;
-  @SerializedName("asset_name")
-  protected String assetName;
+  @SerializedName("mapping_pattern_id")
+  protected String mappingPatternId;
+  @SerializedName("mapping_pattern_hash")
+  protected String mappingPatternHash;
+  @SerializedName("mapping_pattern_name")
+  protected String mappingPatternName;
+
+  /**
+   * Gets the assetName.
+   *
+   * The name of the Data asset.
+   *
+   * @return the assetName
+   */
+  public String getAssetName() {
+    return assetName;
+  }
 
   /**
    * Gets the assetStatus.
@@ -91,14 +108,36 @@ public class Asset extends GenericModel {
   }
 
   /**
-   * Gets the assetName.
+   * Gets the mappingPatternId.
    *
-   * The name of the Data asset.
+   * The identifier of this suggested mapping pattern id.
    *
-   * @return the assetName
+   * @return the mappingPatternId
    */
-  public String getAssetName() {
-    return assetName;
+  public String getMappingPatternId() {
+    return mappingPatternId;
+  }
+
+  /**
+   * Gets the mappingPatternHash.
+   *
+   * The hash identifier of this suggested mapping pattern hash.
+   *
+   * @return the mappingPatternHash
+   */
+  public String getMappingPatternHash() {
+    return mappingPatternHash;
+  }
+
+  /**
+   * Gets the mappingPatternName.
+   *
+   * The name of the suggested mapping pattern.
+   *
+   * @return the mappingPatternName
+   */
+  public String getMappingPatternName() {
+    return mappingPatternName;
   }
 }
 

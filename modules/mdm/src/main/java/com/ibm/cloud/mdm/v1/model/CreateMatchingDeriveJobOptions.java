@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -80,6 +80,15 @@ public class CreateMatchingDeriveJobOptions extends GenericModel {
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param recordType the recordType
+     */
+    public Builder(String recordType) {
+      this.recordType = recordType;
     }
 
     /**
@@ -268,7 +277,11 @@ public class CreateMatchingDeriveJobOptions extends GenericModel {
     }
   }
 
+  protected CreateMatchingDeriveJobOptions() { }
+
   protected CreateMatchingDeriveJobOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
+      "recordType cannot be null");
     recordType = builder.recordType;
     doForce = builder.doForce;
     csvFile = builder.csvFile;

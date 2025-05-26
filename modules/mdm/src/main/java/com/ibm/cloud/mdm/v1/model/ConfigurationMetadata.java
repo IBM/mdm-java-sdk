@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,36 +22,36 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ConfigurationMetadata extends GenericModel {
 
+  protected String name;
+  protected String description;
+  @SerializedName("project_id")
+  protected String projectId;
   @SerializedName("catalog_id")
   protected String catalogId;
+  protected String id;
   @SerializedName("last_update_date")
   protected String lastUpdateDate;
   @SerializedName("created_date")
   protected String createdDate;
   @SerializedName("pair_analysis")
   protected Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
-  @SerializedName("project_id")
-  protected String projectId;
-  protected String description;
-  protected String name;
-  protected String id;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String name;
+    private String description;
+    private String projectId;
     private String catalogId;
     private Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
-    private String projectId;
-    private String description;
-    private String name;
 
     private Builder(ConfigurationMetadata configurationMetadata) {
+      this.name = configurationMetadata.name;
+      this.description = configurationMetadata.description;
+      this.projectId = configurationMetadata.projectId;
       this.catalogId = configurationMetadata.catalogId;
       this.pairAnalysis = configurationMetadata.pairAnalysis;
-      this.projectId = configurationMetadata.projectId;
-      this.description = configurationMetadata.description;
-      this.name = configurationMetadata.name;
     }
 
     /**
@@ -67,6 +67,39 @@ public class ConfigurationMetadata extends GenericModel {
      */
     public ConfigurationMetadata build() {
       return new ConfigurationMetadata(this);
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the ConfigurationMetadata builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the ConfigurationMetadata builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+
+    /**
+     * Set the projectId.
+     *
+     * @param projectId the projectId
+     * @return the ConfigurationMetadata builder
+     */
+    public Builder projectId(String projectId) {
+      this.projectId = projectId;
+      return this;
     }
 
     /**
@@ -90,47 +123,16 @@ public class ConfigurationMetadata extends GenericModel {
       this.pairAnalysis = pairAnalysis;
       return this;
     }
-
-    /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the ConfigurationMetadata builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
-    }
-
-    /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the ConfigurationMetadata builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the ConfigurationMetadata builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
   }
 
+  protected ConfigurationMetadata() { }
+
   protected ConfigurationMetadata(Builder builder) {
+    name = builder.name;
+    description = builder.description;
+    projectId = builder.projectId;
     catalogId = builder.catalogId;
     pairAnalysis = builder.pairAnalysis;
-    projectId = builder.projectId;
-    description = builder.description;
-    name = builder.name;
   }
 
   /**
@@ -143,6 +145,39 @@ public class ConfigurationMetadata extends GenericModel {
   }
 
   /**
+   * Gets the name.
+   *
+   * The name of the Configuration metadata.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * The description of the Configuration metadata.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
+  }
+
+  /**
+   * Gets the projectId.
+   *
+   * The project id of the linked WKC project.
+   *
+   * @return the projectId
+   */
+  public String projectId() {
+    return projectId;
+  }
+
+  /**
    * Gets the catalogId.
    *
    * The catalog id from the linked WKC project.
@@ -151,6 +186,17 @@ public class ConfigurationMetadata extends GenericModel {
    */
   public String catalogId() {
     return catalogId;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The identifier of this Configuration metadata.
+   *
+   * @return the id
+   */
+  public String id() {
+    return id;
   }
 
   /**
@@ -184,50 +230,6 @@ public class ConfigurationMetadata extends GenericModel {
    */
   public Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis() {
     return pairAnalysis;
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * The project id of the linked WKC project.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
-  }
-
-  /**
-   * Gets the description.
-   *
-   * The description of the Configuration metadata.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The name of the Configuration metadata.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the id.
-   *
-   * The identifier of this Configuration metadata.
-   *
-   * @return the id
-   */
-  public String id() {
-    return id;
   }
 }
 

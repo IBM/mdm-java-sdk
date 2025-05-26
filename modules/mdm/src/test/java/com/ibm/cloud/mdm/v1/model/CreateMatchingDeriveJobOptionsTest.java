@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -66,4 +66,10 @@ public class CreateMatchingDeriveJobOptionsTest {
     assertEquals(createMatchingDeriveJobOptionsModel.logCosAccessKey(), "b33037e4e8954207a434cc032c1139d1");
     assertEquals(createMatchingDeriveJobOptionsModel.logCosSecretKey(), "<hex string>");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreateMatchingDeriveJobOptionsError() throws Throwable {
+    new CreateMatchingDeriveJobOptions.Builder().build();
+  }
+
 }

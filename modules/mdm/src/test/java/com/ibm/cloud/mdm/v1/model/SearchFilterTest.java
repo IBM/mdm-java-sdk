@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,8 +17,6 @@ import com.ibm.cloud.mdm.v1.model.SearchFilter;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -35,10 +33,12 @@ public class SearchFilterTest {
   public void testSearchFilter() throws Throwable {
     SearchFilter searchFilterModel = new SearchFilter.Builder()
       .type("record")
-      .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .values(java.util.Arrays.asList("testString"))
+      .dataQualityIssues(java.util.Arrays.asList("potential_match"))
       .build();
     assertEquals(searchFilterModel.type(), "record");
-    assertEquals(searchFilterModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(searchFilterModel.values(), java.util.Arrays.asList("testString"));
+    assertEquals(searchFilterModel.dataQualityIssues(), java.util.Arrays.asList("potential_match"));
 
     String json = TestUtilities.serialize(searchFilterModel);
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,8 +31,18 @@ public class BulkDeleteJob extends GenericModel {
     String DELETE = "delete";
     /** export. */
     String EXPORT = "export";
+    /** migration_export. */
+    String MIGRATION_EXPORT = "migration_export";
     /** bulk_load. */
     String BULK_LOAD = "bulk_load";
+    /** reindex. */
+    String REINDEX = "reindex";
+    /** sync_entities. */
+    String SYNC_ENTITIES = "sync_entities";
+    /** backend_sync. */
+    String BACKEND_SYNC = "backend_sync";
+    /** cleanup_deleted_elements. */
+    String CLEANUP_DELETED_ELEMENTS = "cleanup_deleted_elements";
   }
 
   /**
@@ -71,6 +81,18 @@ public class BulkDeleteJob extends GenericModel {
     String SOURCE = "source";
   }
 
+  /**
+   * The data type to target for deletion.
+   */
+  public interface DeleteTarget {
+    /** record. */
+    String RECORD = "record";
+    /** relationship. */
+    String RELATIONSHIP = "relationship";
+    /** hierarchy. */
+    String HIERARCHY = "hierarchy";
+  }
+
   @SerializedName("job_id")
   protected String jobId;
   @SerializedName("job_type")
@@ -88,6 +110,10 @@ public class BulkDeleteJob extends GenericModel {
   protected List<String> collectionIds;
   @SerializedName("record_source")
   protected String recordSource;
+  @SerializedName("delete_target")
+  protected String deleteTarget;
+  @SerializedName("relationship_source")
+  protected String relationshipSource;
   @SerializedName("search_criteria")
   protected DataSearchCriteria searchCriteria;
 
@@ -188,6 +214,28 @@ public class BulkDeleteJob extends GenericModel {
    */
   public String getRecordSource() {
     return recordSource;
+  }
+
+  /**
+   * Gets the deleteTarget.
+   *
+   * The data type to target for deletion.
+   *
+   * @return the deleteTarget
+   */
+  public String getDeleteTarget() {
+    return deleteTarget;
+  }
+
+  /**
+   * Gets the relationshipSource.
+   *
+   * Relationship source for delete by source.
+   *
+   * @return the relationshipSource
+   */
+  public String getRelationshipSource() {
+    return relationshipSource;
   }
 
   /**

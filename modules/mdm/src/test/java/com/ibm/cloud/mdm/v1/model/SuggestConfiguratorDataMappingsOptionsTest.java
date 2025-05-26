@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,8 +18,6 @@ import com.ibm.cloud.mdm.v1.model.SuggestConfiguratorDataMappingsOptions;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -35,18 +33,18 @@ public class SuggestConfiguratorDataMappingsOptionsTest {
   @Test
   public void testSuggestConfiguratorDataMappingsOptions() throws Throwable {
     DataMapping dataMappingModel = new DataMapping.Builder()
-      .classifiedClass("GEN")
       .key("COLUMN 1")
+      .classifiedClass("GEN")
       .build();
-    assertEquals(dataMappingModel.classifiedClass(), "GEN");
     assertEquals(dataMappingModel.key(), "COLUMN 1");
+    assertEquals(dataMappingModel.classifiedClass(), "GEN");
 
     SuggestConfiguratorDataMappingsOptions suggestConfiguratorDataMappingsOptionsModel = new SuggestConfiguratorDataMappingsOptions.Builder()
       .recordType("person")
-      .columns(new java.util.ArrayList<DataMapping>(java.util.Arrays.asList(dataMappingModel)))
+      .columns(java.util.Arrays.asList(dataMappingModel))
       .build();
     assertEquals(suggestConfiguratorDataMappingsOptionsModel.recordType(), "person");
-    assertEquals(suggestConfiguratorDataMappingsOptionsModel.columns(), new java.util.ArrayList<DataMapping>(java.util.Arrays.asList(dataMappingModel)));
+    assertEquals(suggestConfiguratorDataMappingsOptionsModel.columns(), java.util.Arrays.asList(dataMappingModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

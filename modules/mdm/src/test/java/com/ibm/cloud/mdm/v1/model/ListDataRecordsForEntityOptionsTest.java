@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,8 +17,6 @@ import com.ibm.cloud.mdm.v1.model.ListDataRecordsForEntityOptions;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -37,14 +35,16 @@ public class ListDataRecordsForEntityOptionsTest {
       .id("testString")
       .limit(Long.valueOf("50"))
       .offset(Long.valueOf("26"))
-      .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
-      .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
+      .include(java.util.Arrays.asList("legal_name.given_name"))
+      .exclude(java.util.Arrays.asList("legal_name.given_name"))
+      .includeTotalCount(true)
       .build();
     assertEquals(listDataRecordsForEntityOptionsModel.id(), "testString");
     assertEquals(listDataRecordsForEntityOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listDataRecordsForEntityOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(listDataRecordsForEntityOptionsModel.include(), new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")));
-    assertEquals(listDataRecordsForEntityOptionsModel.exclude(), new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")));
+    assertEquals(listDataRecordsForEntityOptionsModel.include(), java.util.Arrays.asList("legal_name.given_name"));
+    assertEquals(listDataRecordsForEntityOptionsModel.exclude(), java.util.Arrays.asList("legal_name.given_name"));
+    assertEquals(listDataRecordsForEntityOptionsModel.includeTotalCount(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

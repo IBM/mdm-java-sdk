@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,23 +20,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PutCompareSpecResources extends GenericModel {
 
-  @SerializedName("compare_spec_resources")
-  protected CompareSpecResource compareSpecResources;
   @SerializedName("flow_state")
   protected String flowState;
+  @SerializedName("compare_spec_resources")
+  protected CompareSpecResource compareSpecResources;
   @SerializedName("flow_id")
   protected String flowId;
-
-  /**
-   * Gets the compareSpecResources.
-   *
-   * A single comparison resource used to customize comparison logic of a matching algorithm.
-   *
-   * @return the compareSpecResources
-   */
-  public CompareSpecResource getCompareSpecResources() {
-    return compareSpecResources;
-  }
 
   /**
    * Gets the flowState.
@@ -47,6 +36,17 @@ public class PutCompareSpecResources extends GenericModel {
    */
   public String getFlowState() {
     return flowState;
+  }
+
+  /**
+   * Gets the compareSpecResources.
+   *
+   * A single comparison resource used to customize comparison logic of a matching algorithm.
+   *
+   * @return the compareSpecResources
+   */
+  public CompareSpecResource getCompareSpecResources() {
+    return compareSpecResources;
   }
 
   /**

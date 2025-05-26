@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,8 +17,6 @@ import com.ibm.cloud.mdm.v1.model.ListDataRelatedRecordsForEntityOptions;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -39,16 +37,18 @@ public class ListDataRelatedRecordsForEntityOptionsTest {
       .relationshipType("testString")
       .limit(Long.valueOf("50"))
       .offset(Long.valueOf("26"))
-      .include(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
-      .exclude(new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")))
+      .include(java.util.Arrays.asList("legal_name.given_name"))
+      .exclude(java.util.Arrays.asList("legal_name.given_name"))
+      .includeTotalCount(true)
       .build();
     assertEquals(listDataRelatedRecordsForEntityOptionsModel.id(), "testString");
     assertEquals(listDataRelatedRecordsForEntityOptionsModel.recordType(), "testString");
     assertEquals(listDataRelatedRecordsForEntityOptionsModel.relationshipType(), "testString");
     assertEquals(listDataRelatedRecordsForEntityOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listDataRelatedRecordsForEntityOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(listDataRelatedRecordsForEntityOptionsModel.include(), new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")));
-    assertEquals(listDataRelatedRecordsForEntityOptionsModel.exclude(), new java.util.ArrayList<String>(java.util.Arrays.asList("legal_name.given_name")));
+    assertEquals(listDataRelatedRecordsForEntityOptionsModel.include(), java.util.Arrays.asList("legal_name.given_name"));
+    assertEquals(listDataRelatedRecordsForEntityOptionsModel.exclude(), java.util.Arrays.asList("legal_name.given_name"));
+    assertEquals(listDataRelatedRecordsForEntityOptionsModel.includeTotalCount(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

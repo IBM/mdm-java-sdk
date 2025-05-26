@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,17 +13,19 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.DataRecord;
+import com.ibm.cloud.mdm.v1.model.ActionElement;
 import com.ibm.cloud.mdm.v1.model.DataRecordsResponse;
-import com.ibm.cloud.mdm.v1.model.PagedResponseFirst;
-import com.ibm.cloud.mdm.v1.model.PagedResponseLast;
-import com.ibm.cloud.mdm.v1.model.PagedResponseNext;
-import com.ibm.cloud.mdm.v1.model.PagedResponsePrevious;
+import com.ibm.cloud.mdm.v1.model.DataRecordsResponseFirst;
+import com.ibm.cloud.mdm.v1.model.DataRecordsResponseLast;
+import com.ibm.cloud.mdm.v1.model.DataRecordsResponseNext;
+import com.ibm.cloud.mdm.v1.model.DataRecordsResponsePrevious;
+import com.ibm.cloud.mdm.v1.model.DataWorkflow;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -44,6 +46,6 @@ public class DataRecordsResponseTest {
     assertNull(dataRecordsResponseModel.getLast());
     assertNull(dataRecordsResponseModel.getPrevious());
     assertNull(dataRecordsResponseModel.getNext());
-    assertNull(dataRecordsResponseModel.getRecords());
+    assertNull(dataRecordsResponseModel.getWorkflows());
   }
 }

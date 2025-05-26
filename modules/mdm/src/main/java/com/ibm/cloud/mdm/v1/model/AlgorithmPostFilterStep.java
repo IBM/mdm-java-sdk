@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,29 +23,33 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmPostFilterStep extends GenericModel {
 
+  protected String method;
   protected List<Long> inputs;
   protected String label;
   protected List<AlgorithmPostFilterWeight> weights;
   @SerializedName("filter_resource")
   protected String filterResource;
-  protected String method;
+  @SerializedName("max_distance")
+  protected Long maxDistance;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String method;
     private List<Long> inputs;
     private String label;
     private List<AlgorithmPostFilterWeight> weights;
     private String filterResource;
-    private String method;
+    private Long maxDistance;
 
     private Builder(AlgorithmPostFilterStep algorithmPostFilterStep) {
+      this.method = algorithmPostFilterStep.method;
       this.inputs = algorithmPostFilterStep.inputs;
       this.label = algorithmPostFilterStep.label;
       this.weights = algorithmPostFilterStep.weights;
       this.filterResource = algorithmPostFilterStep.filterResource;
-      this.method = algorithmPostFilterStep.method;
+      this.maxDistance = algorithmPostFilterStep.maxDistance;
     }
 
     /**
@@ -57,16 +61,16 @@ public class AlgorithmPostFilterStep extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
+     * @param method the method
      * @param inputs the inputs
      * @param label the label
      * @param weights the weights
-     * @param method the method
      */
-    public Builder(List<Long> inputs, String label, List<AlgorithmPostFilterWeight> weights, String method) {
+    public Builder(String method, List<Long> inputs, String label, List<AlgorithmPostFilterWeight> weights) {
+      this.method = method;
       this.inputs = inputs;
       this.label = label;
       this.weights = weights;
-      this.method = method;
     }
 
     /**
@@ -107,6 +111,17 @@ public class AlgorithmPostFilterStep extends GenericModel {
         this.weights = new ArrayList<AlgorithmPostFilterWeight>();
       }
       this.weights.add(weights);
+      return this;
+    }
+
+    /**
+     * Set the method.
+     *
+     * @param method the method
+     * @return the AlgorithmPostFilterStep builder
+     */
+    public Builder method(String method) {
+      this.method = method;
       return this;
     }
 
@@ -157,31 +172,34 @@ public class AlgorithmPostFilterStep extends GenericModel {
     }
 
     /**
-     * Set the method.
+     * Set the maxDistance.
      *
-     * @param method the method
+     * @param maxDistance the maxDistance
      * @return the AlgorithmPostFilterStep builder
      */
-    public Builder method(String method) {
-      this.method = method;
+    public Builder maxDistance(long maxDistance) {
+      this.maxDistance = maxDistance;
       return this;
     }
   }
 
+  protected AlgorithmPostFilterStep() { }
+
   protected AlgorithmPostFilterStep(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
+      "method cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.inputs,
       "inputs cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.weights,
       "weights cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,
-      "method cannot be null");
+    method = builder.method;
     inputs = builder.inputs;
     label = builder.label;
     weights = builder.weights;
     filterResource = builder.filterResource;
-    method = builder.method;
+    maxDistance = builder.maxDistance;
   }
 
   /**
@@ -191,6 +209,17 @@ public class AlgorithmPostFilterStep extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the method.
+   *
+   * A post filter method name.
+   *
+   * @return the method
+   */
+  public String method() {
+    return method;
   }
 
   /**
@@ -238,14 +267,14 @@ public class AlgorithmPostFilterStep extends GenericModel {
   }
 
   /**
-   * Gets the method.
+   * Gets the maxDistance.
    *
-   * A post filter method name.
+   * maximum value for a distance.
    *
-   * @return the method
+   * @return the maxDistance
    */
-  public String method() {
-    return method;
+  public Long maxDistance() {
+    return maxDistance;
   }
 }
 

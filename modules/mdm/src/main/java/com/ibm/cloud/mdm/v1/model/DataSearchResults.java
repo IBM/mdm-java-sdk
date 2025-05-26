@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,10 +26,10 @@ public class DataSearchResults extends GenericModel {
   protected Long limit;
   @SerializedName("total_count")
   protected Long totalCount;
-  protected PagedResponseFirst first;
-  protected PagedResponseLast last;
-  protected PagedResponsePrevious previous;
-  protected PagedResponseNext next;
+  protected DataSearchResultsFirst first;
+  protected DataSearchResultsLast last;
+  protected DataSearchResultsPrevious previous;
+  protected DataSearchResultsNext next;
   protected List<ElementWithAttributes> results;
   @SerializedName("is_exact_count")
   protected Boolean isExactCount;
@@ -75,7 +75,7 @@ public class DataSearchResults extends GenericModel {
    *
    * @return the first
    */
-  public PagedResponseFirst getFirst() {
+  public DataSearchResultsFirst getFirst() {
     return first;
   }
 
@@ -86,7 +86,7 @@ public class DataSearchResults extends GenericModel {
    *
    * @return the last
    */
-  public PagedResponseLast getLast() {
+  public DataSearchResultsLast getLast() {
     return last;
   }
 
@@ -97,7 +97,7 @@ public class DataSearchResults extends GenericModel {
    *
    * @return the previous
    */
-  public PagedResponsePrevious getPrevious() {
+  public DataSearchResultsPrevious getPrevious() {
     return previous;
   }
 
@@ -108,7 +108,7 @@ public class DataSearchResults extends GenericModel {
    *
    * @return the next
    */
-  public PagedResponseNext getNext() {
+  public DataSearchResultsNext getNext() {
     return next;
   }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,24 +23,24 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RulesRequestRule extends GenericModel {
 
-  @SerializedName("record_numbers")
-  protected List<String> recordNumbers;
   @SerializedName("rule_type")
   protected String ruleType;
   protected String description;
+  @SerializedName("record_numbers")
+  protected List<String> recordNumbers;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<String> recordNumbers;
     private String ruleType;
     private String description;
+    private List<String> recordNumbers;
 
     private Builder(RulesRequestRule rulesRequestRule) {
-      this.recordNumbers = rulesRequestRule.recordNumbers;
       this.ruleType = rulesRequestRule.ruleType;
       this.description = rulesRequestRule.description;
+      this.recordNumbers = rulesRequestRule.recordNumbers;
     }
 
     /**
@@ -52,14 +52,14 @@ public class RulesRequestRule extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param recordNumbers the recordNumbers
      * @param ruleType the ruleType
      * @param description the description
+     * @param recordNumbers the recordNumbers
      */
-    public Builder(List<String> recordNumbers, String ruleType, String description) {
-      this.recordNumbers = recordNumbers;
+    public Builder(String ruleType, String description, List<String> recordNumbers) {
       this.ruleType = ruleType;
       this.description = description;
+      this.recordNumbers = recordNumbers;
     }
 
     /**
@@ -88,18 +88,6 @@ public class RulesRequestRule extends GenericModel {
     }
 
     /**
-     * Set the recordNumbers.
-     * Existing recordNumbers will be replaced.
-     *
-     * @param recordNumbers the recordNumbers
-     * @return the RulesRequestRule builder
-     */
-    public Builder recordNumbers(List<String> recordNumbers) {
-      this.recordNumbers = recordNumbers;
-      return this;
-    }
-
-    /**
      * Set the ruleType.
      *
      * @param ruleType the ruleType
@@ -120,18 +108,32 @@ public class RulesRequestRule extends GenericModel {
       this.description = description;
       return this;
     }
+
+    /**
+     * Set the recordNumbers.
+     * Existing recordNumbers will be replaced.
+     *
+     * @param recordNumbers the recordNumbers
+     * @return the RulesRequestRule builder
+     */
+    public Builder recordNumbers(List<String> recordNumbers) {
+      this.recordNumbers = recordNumbers;
+      return this;
+    }
   }
 
+  protected RulesRequestRule() { }
+
   protected RulesRequestRule(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordNumbers,
-      "recordNumbers cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.ruleType,
       "ruleType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.description,
       "description cannot be null");
-    recordNumbers = builder.recordNumbers;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordNumbers,
+      "recordNumbers cannot be null");
     ruleType = builder.ruleType;
     description = builder.description;
+    recordNumbers = builder.recordNumbers;
   }
 
   /**
@@ -141,17 +143,6 @@ public class RulesRequestRule extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the recordNumbers.
-   *
-   * Collection of record numbers.
-   *
-   * @return the recordNumbers
-   */
-  public List<String> recordNumbers() {
-    return recordNumbers;
   }
 
   /**
@@ -174,6 +165,17 @@ public class RulesRequestRule extends GenericModel {
    */
   public String description() {
     return description;
+  }
+
+  /**
+   * Gets the recordNumbers.
+   *
+   * Collection of record numbers.
+   *
+   * @return the recordNumbers
+   */
+  public List<String> recordNumbers() {
+    return recordNumbers;
   }
 }
 

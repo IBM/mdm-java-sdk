@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,20 +32,28 @@ public class DataRecordTest {
   @Test
   public void testDataRecord() throws Throwable {
     DataRecord dataRecordModel = new DataRecord.Builder()
-      .id("testString")
+      .type("record")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .typeName("testString")
+      .isBlockedForUpdate(true)
+      .isQuarantined(true)
       .build();
-    assertEquals(dataRecordModel.id(), "testString");
+    assertEquals(dataRecordModel.type(), "record");
     assertEquals(dataRecordModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataRecordModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
     assertEquals(dataRecordModel.typeName(), "testString");
+    assertEquals(dataRecordModel.isBlockedForUpdate(), Boolean.valueOf(true));
+    assertEquals(dataRecordModel.isQuarantined(), Boolean.valueOf(true));
 
     String json = TestUtilities.serialize(dataRecordModel);
 
     DataRecord dataRecordModelNew = TestUtilities.deserialize(json, DataRecord.class);
     assertTrue(dataRecordModelNew instanceof DataRecord);
-    assertEquals(dataRecordModelNew.id(), "testString");
+    assertEquals(dataRecordModelNew.type(), "record");
     assertEquals(dataRecordModelNew.typeName(), "testString");
+    assertEquals(dataRecordModelNew.isBlockedForUpdate(), Boolean.valueOf(true));
+    assertEquals(dataRecordModelNew.isQuarantined(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

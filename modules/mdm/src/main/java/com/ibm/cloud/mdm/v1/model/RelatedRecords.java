@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,10 +26,10 @@ public class RelatedRecords extends GenericModel {
   protected Long limit;
   @SerializedName("total_count")
   protected Long totalCount;
-  protected PagedResponseFirst first;
-  protected PagedResponseLast last;
-  protected PagedResponsePrevious previous;
-  protected PagedResponseNext next;
+  protected RelatedRecordsFirst first;
+  protected RelatedRecordsLast last;
+  protected RelatedRecordsPrevious previous;
+  protected RelatedRecordsNext next;
   @SerializedName("related_records")
   protected List<DataRecord> relatedRecords;
 
@@ -73,7 +73,7 @@ public class RelatedRecords extends GenericModel {
    *
    * @return the first
    */
-  public PagedResponseFirst getFirst() {
+  public RelatedRecordsFirst getFirst() {
     return first;
   }
 
@@ -84,7 +84,7 @@ public class RelatedRecords extends GenericModel {
    *
    * @return the last
    */
-  public PagedResponseLast getLast() {
+  public RelatedRecordsLast getLast() {
     return last;
   }
 
@@ -95,7 +95,7 @@ public class RelatedRecords extends GenericModel {
    *
    * @return the previous
    */
-  public PagedResponsePrevious getPrevious() {
+  public RelatedRecordsPrevious getPrevious() {
     return previous;
   }
 
@@ -106,7 +106,7 @@ public class RelatedRecords extends GenericModel {
    *
    * @return the next
    */
-  public PagedResponseNext getNext() {
+  public RelatedRecordsNext getNext() {
     return next;
   }
 

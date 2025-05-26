@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,26 +13,30 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.Attribute;
-import com.ibm.cloud.mdm.v1.model.AttributeType;
-import com.ibm.cloud.mdm.v1.model.AttributeTypes;
-import com.ibm.cloud.mdm.v1.model.EntityType;
-import com.ibm.cloud.mdm.v1.model.EntityTypes;
-import com.ibm.cloud.mdm.v1.model.FieldType;
-import com.ibm.cloud.mdm.v1.model.RecordType;
-import com.ibm.cloud.mdm.v1.model.RecordTypes;
-import com.ibm.cloud.mdm.v1.model.RelationshipType;
+import com.ibm.cloud.mdm.v1.model.DataModelAttribute;
+import com.ibm.cloud.mdm.v1.model.DataModelAttributeType;
+import com.ibm.cloud.mdm.v1.model.DataModelAttributeTypeSystemProperties;
+import com.ibm.cloud.mdm.v1.model.DataModelEntityType;
+import com.ibm.cloud.mdm.v1.model.DataModelEntityTypeSystemProperties;
+import com.ibm.cloud.mdm.v1.model.DataModelField;
+import com.ibm.cloud.mdm.v1.model.DataModelGroupType;
+import com.ibm.cloud.mdm.v1.model.DataModelGroupTypeSystemProperties;
+import com.ibm.cloud.mdm.v1.model.DataModelHierarchyType;
+import com.ibm.cloud.mdm.v1.model.DataModelHierarchyTypeSystemProperties;
+import com.ibm.cloud.mdm.v1.model.DataModelNodeType;
+import com.ibm.cloud.mdm.v1.model.DataModelNodeTypeSystemProperties;
+import com.ibm.cloud.mdm.v1.model.DataModelRecordType;
+import com.ibm.cloud.mdm.v1.model.DataModelRecordTypeSystemProperties;
+import com.ibm.cloud.mdm.v1.model.DataModelRelationshipEndpoint;
+import com.ibm.cloud.mdm.v1.model.DataModelRelationshipRule;
+import com.ibm.cloud.mdm.v1.model.DataModelRelationshipType;
+import com.ibm.cloud.mdm.v1.model.DataModelRelationshipTypeSystemProperties;
+import com.ibm.cloud.mdm.v1.model.DataModelSystemProperties;
+import com.ibm.cloud.mdm.v1.model.DataModelSystemProperty;
 import com.ibm.cloud.mdm.v1.model.ReplaceConfiguratorConfigDataModelOptions;
-import com.ibm.cloud.mdm.v1.model.Rule;
-import com.ibm.cloud.mdm.v1.model.Source;
-import com.ibm.cloud.mdm.v1.model.SystemProperties;
-import com.ibm.cloud.mdm.v1.model.SystemPropertiesRelationshipTypes;
-import com.ibm.cloud.mdm.v1.model.Target;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -47,175 +51,349 @@ public class ReplaceConfiguratorConfigDataModelOptionsTest {
 
   @Test
   public void testReplaceConfiguratorConfigDataModelOptions() throws Throwable {
-    Attribute attributeModel = new Attribute.Builder()
-      .label("testString")
-      .description("testString")
+    DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
+      .settable(true)
       .indexed(true)
+      .editable(true)
+      .deprecated(true)
+      .dataType("testString")
+      .description("testString")
+      .label("testString")
+      .classification("testString")
+      .build();
+    assertEquals(dataModelSystemPropertyModel.settable(), Boolean.valueOf(true));
+    assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
+    assertEquals(dataModelSystemPropertyModel.editable(), Boolean.valueOf(true));
+    assertEquals(dataModelSystemPropertyModel.deprecated(), Boolean.valueOf(true));
+    assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
+    assertEquals(dataModelSystemPropertyModel.description(), "testString");
+    assertEquals(dataModelSystemPropertyModel.label(), "testString");
+    assertEquals(dataModelSystemPropertyModel.classification(), "testString");
+
+    DataModelHierarchyTypeSystemProperties dataModelHierarchyTypeSystemPropertiesModel = new DataModelHierarchyTypeSystemProperties.Builder()
+      .hierarchyId(dataModelSystemPropertyModel)
+      .createdUser(dataModelSystemPropertyModel)
+      .hierarchySource(dataModelSystemPropertyModel)
+      .lastUpdatedUser(dataModelSystemPropertyModel)
+      .createdDate(dataModelSystemPropertyModel)
+      .lastUpdatedDate(dataModelSystemPropertyModel)
+      .hierarchyNumber(dataModelSystemPropertyModel)
+      .build();
+    assertEquals(dataModelHierarchyTypeSystemPropertiesModel.hierarchyId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelHierarchyTypeSystemPropertiesModel.createdUser(), dataModelSystemPropertyModel);
+    assertEquals(dataModelHierarchyTypeSystemPropertiesModel.hierarchySource(), dataModelSystemPropertyModel);
+    assertEquals(dataModelHierarchyTypeSystemPropertiesModel.lastUpdatedUser(), dataModelSystemPropertyModel);
+    assertEquals(dataModelHierarchyTypeSystemPropertiesModel.createdDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelHierarchyTypeSystemPropertiesModel.lastUpdatedDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelHierarchyTypeSystemPropertiesModel.hierarchyNumber(), dataModelSystemPropertyModel);
+
+    DataModelNodeTypeSystemProperties dataModelNodeTypeSystemPropertiesModel = new DataModelNodeTypeSystemProperties.Builder()
+      .nodeNumber(dataModelSystemPropertyModel)
+      .createdUser(dataModelSystemPropertyModel)
+      .lastUpdatedUser(dataModelSystemPropertyModel)
+      .contextId(dataModelSystemPropertyModel)
+      .createdDate(dataModelSystemPropertyModel)
+      .lastUpdatedDate(dataModelSystemPropertyModel)
+      .build();
+    assertEquals(dataModelNodeTypeSystemPropertiesModel.nodeNumber(), dataModelSystemPropertyModel);
+    assertEquals(dataModelNodeTypeSystemPropertiesModel.createdUser(), dataModelSystemPropertyModel);
+    assertEquals(dataModelNodeTypeSystemPropertiesModel.lastUpdatedUser(), dataModelSystemPropertyModel);
+    assertEquals(dataModelNodeTypeSystemPropertiesModel.contextId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelNodeTypeSystemPropertiesModel.createdDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelNodeTypeSystemPropertiesModel.lastUpdatedDate(), dataModelSystemPropertyModel);
+
+    DataModelAttributeTypeSystemProperties dataModelAttributeTypeSystemPropertiesModel = new DataModelAttributeTypeSystemProperties.Builder()
+      .attributeLastUpdated(dataModelSystemPropertyModel)
+      .build();
+    assertEquals(dataModelAttributeTypeSystemPropertiesModel.attributeLastUpdated(), dataModelSystemPropertyModel);
+
+    DataModelGroupTypeSystemProperties dataModelGroupTypeSystemPropertiesModel = new DataModelGroupTypeSystemProperties.Builder()
+      .createdUser(dataModelSystemPropertyModel)
+      .groupNumber(dataModelSystemPropertyModel)
+      .groupId(dataModelSystemPropertyModel)
+      .lastUpdatedUser(dataModelSystemPropertyModel)
+      .groupSource(dataModelSystemPropertyModel)
+      .createdDate(dataModelSystemPropertyModel)
+      .lastUpdatedDate(dataModelSystemPropertyModel)
+      .build();
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.createdUser(), dataModelSystemPropertyModel);
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupNumber(), dataModelSystemPropertyModel);
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.lastUpdatedUser(), dataModelSystemPropertyModel);
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupSource(), dataModelSystemPropertyModel);
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.createdDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.lastUpdatedDate(), dataModelSystemPropertyModel);
+
+    DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
+      .recordCount(dataModelSystemPropertyModel)
+      .linkLastUpdatedDate(dataModelSystemPropertyModel)
+      .lastUpdatedUser(dataModelSystemPropertyModel)
+      .entityLastUpdated(dataModelSystemPropertyModel)
+      .createdDate(dataModelSystemPropertyModel)
+      .entityId(dataModelSystemPropertyModel)
+      .lastUpdatedDate(dataModelSystemPropertyModel)
+      .build();
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.recordCount(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.linkLastUpdatedDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.lastUpdatedUser(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityLastUpdated(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.createdDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.lastUpdatedDate(), dataModelSystemPropertyModel);
+
+    DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemPropertiesModel = new DataModelRelationshipTypeSystemProperties.Builder()
+      .fromRecordId(dataModelSystemPropertyModel)
+      .createdUser(dataModelSystemPropertyModel)
+      .toRecordId(dataModelSystemPropertyModel)
+      .relationshipNumber(dataModelSystemPropertyModel)
+      .toRecordType(dataModelSystemPropertyModel)
+      .relationshipLastUpdated(dataModelSystemPropertyModel)
+      .fromRecordType(dataModelSystemPropertyModel)
+      .toRecordNumber(dataModelSystemPropertyModel)
+      .fromRecordNumber(dataModelSystemPropertyModel)
+      .relationshipSource(dataModelSystemPropertyModel)
+      .fromRecordSource(dataModelSystemPropertyModel)
+      .relationshipType(dataModelSystemPropertyModel)
+      .toRecordSource(dataModelSystemPropertyModel)
+      .lastUpdatedUser(dataModelSystemPropertyModel)
+      .relationshipId(dataModelSystemPropertyModel)
+      .createdDate(dataModelSystemPropertyModel)
+      .lastUpdatedDate(dataModelSystemPropertyModel)
+      .build();
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.createdUser(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipNumber(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordType(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipLastUpdated(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordType(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordNumber(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordNumber(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipSource(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.fromRecordSource(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipType(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.toRecordSource(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.lastUpdatedUser(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.relationshipId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.createdDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRelationshipTypeSystemPropertiesModel.lastUpdatedDate(), dataModelSystemPropertyModel);
+
+    DataModelRecordTypeSystemProperties dataModelRecordTypeSystemPropertiesModel = new DataModelRecordTypeSystemProperties.Builder()
+      .collectionId(dataModelSystemPropertyModel)
+      .recordId(dataModelSystemPropertyModel)
+      .createdUser(dataModelSystemPropertyModel)
+      .recordLastUpdated(dataModelSystemPropertyModel)
+      .lastUpdatedUser(dataModelSystemPropertyModel)
+      .recordNumber(dataModelSystemPropertyModel)
+      .createdDate(dataModelSystemPropertyModel)
+      .lastUpdatedDate(dataModelSystemPropertyModel)
+      .recordSource(dataModelSystemPropertyModel)
+      .build();
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.collectionId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.createdUser(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordLastUpdated(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.lastUpdatedUser(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordNumber(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.createdDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.lastUpdatedDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelRecordTypeSystemPropertiesModel.recordSource(), dataModelSystemPropertyModel);
+
+    DataModelSystemProperties dataModelSystemPropertiesModel = new DataModelSystemProperties.Builder()
+      .hierarchyTypes(dataModelHierarchyTypeSystemPropertiesModel)
+      .nodeTypes(dataModelNodeTypeSystemPropertiesModel)
+      .attributeTypes(dataModelAttributeTypeSystemPropertiesModel)
+      .groupTypes(dataModelGroupTypeSystemPropertiesModel)
+      .entityTypes(dataModelEntityTypeSystemPropertiesModel)
+      .relationshipTypes(dataModelRelationshipTypeSystemPropertiesModel)
+      .version("testString")
+      .recordTypes(dataModelRecordTypeSystemPropertiesModel)
+      .build();
+    assertEquals(dataModelSystemPropertiesModel.hierarchyTypes(), dataModelHierarchyTypeSystemPropertiesModel);
+    assertEquals(dataModelSystemPropertiesModel.nodeTypes(), dataModelNodeTypeSystemPropertiesModel);
+    assertEquals(dataModelSystemPropertiesModel.attributeTypes(), dataModelAttributeTypeSystemPropertiesModel);
+    assertEquals(dataModelSystemPropertiesModel.groupTypes(), dataModelGroupTypeSystemPropertiesModel);
+    assertEquals(dataModelSystemPropertiesModel.entityTypes(), dataModelEntityTypeSystemPropertiesModel);
+    assertEquals(dataModelSystemPropertiesModel.relationshipTypes(), dataModelRelationshipTypeSystemPropertiesModel);
+    assertEquals(dataModelSystemPropertiesModel.version(), "testString");
+    assertEquals(dataModelSystemPropertiesModel.recordTypes(), dataModelRecordTypeSystemPropertiesModel);
+
+    DataModelField dataModelFieldModel = new DataModelField.Builder()
+      .indexed(true)
+      .description("testString")
+      .label("testString")
+      .classification("testString")
+      .build();
+    assertEquals(dataModelFieldModel.indexed(), Boolean.valueOf(true));
+    assertEquals(dataModelFieldModel.description(), "testString");
+    assertEquals(dataModelFieldModel.label(), "testString");
+    assertEquals(dataModelFieldModel.classification(), "testString");
+
+    DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
+      .matchingTypes(java.util.Arrays.asList("testString"))
+      .description("testString")
+      .label("testString")
+      .classification("testString")
+      .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
+      .build();
+    assertEquals(dataModelAttributeTypeModel.matchingTypes(), java.util.Arrays.asList("testString"));
+    assertEquals(dataModelAttributeTypeModel.description(), "testString");
+    assertEquals(dataModelAttributeTypeModel.label(), "testString");
+    assertEquals(dataModelAttributeTypeModel.classification(), "testString");
+    assertEquals(dataModelAttributeTypeModel.fields(), new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } });
+
+    DataModelRelationshipEndpoint dataModelRelationshipEndpointModel = new DataModelRelationshipEndpoint.Builder()
+      .hierarchyTypes(java.util.Arrays.asList("testString"))
+      .nodeTypes(java.util.Arrays.asList("testString"))
+      .groupTypes(java.util.Arrays.asList("testString"))
+      .entityTypes(java.util.Arrays.asList("testString"))
+      .recordTypes(java.util.Arrays.asList("testString"))
+      .build();
+    assertEquals(dataModelRelationshipEndpointModel.hierarchyTypes(), java.util.Arrays.asList("testString"));
+    assertEquals(dataModelRelationshipEndpointModel.nodeTypes(), java.util.Arrays.asList("testString"));
+    assertEquals(dataModelRelationshipEndpointModel.groupTypes(), java.util.Arrays.asList("testString"));
+    assertEquals(dataModelRelationshipEndpointModel.entityTypes(), java.util.Arrays.asList("testString"));
+    assertEquals(dataModelRelationshipEndpointModel.recordTypes(), java.util.Arrays.asList("testString"));
+
+    DataModelRelationshipRule dataModelRelationshipRuleModel = new DataModelRelationshipRule.Builder()
+      .source(dataModelRelationshipEndpointModel)
+      .target(dataModelRelationshipEndpointModel)
+      .build();
+    assertEquals(dataModelRelationshipRuleModel.source(), dataModelRelationshipEndpointModel);
+    assertEquals(dataModelRelationshipRuleModel.target(), dataModelRelationshipEndpointModel);
+
+    DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
+      .indexed(true)
+      .matchingType("testString")
+      .description("testString")
+      .attributeType("testString")
+      .label("testString")
       .classification("testString")
       .cardinality("testString")
-      .attributeType("email")
       .build();
-    assertEquals(attributeModel.label(), "testString");
-    assertEquals(attributeModel.description(), "testString");
-    assertEquals(attributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeModel.classification(), "testString");
-    assertEquals(attributeModel.cardinality(), "testString");
-    assertEquals(attributeModel.attributeType(), "email");
+    assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
+    assertEquals(dataModelAttributeModel.matchingType(), "testString");
+    assertEquals(dataModelAttributeModel.description(), "testString");
+    assertEquals(dataModelAttributeModel.attributeType(), "testString");
+    assertEquals(dataModelAttributeModel.label(), "testString");
+    assertEquals(dataModelAttributeModel.classification(), "testString");
+    assertEquals(dataModelAttributeModel.cardinality(), "testString");
 
-    EntityType entityTypeModel = new EntityType.Builder()
-      .label("testString")
-      .description("testString")
-      .build();
-    assertEquals(entityTypeModel.label(), "testString");
-    assertEquals(entityTypeModel.description(), "testString");
-
-    RecordType recordTypeModel = new RecordType.Builder()
-      .label("testString")
-      .description("testString")
-      .attributes(new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } })
-      .entityTypes(new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } })
-      .build();
-    assertEquals(recordTypeModel.label(), "testString");
-    assertEquals(recordTypeModel.description(), "testString");
-    assertEquals(recordTypeModel.attributes(), new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } });
-    assertEquals(recordTypeModel.entityTypes(), new java.util.HashMap<String, EntityType>() { { put("foo", entityTypeModel); } });
-
-    Source sourceModel = new Source.Builder()
-      .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .build();
-    assertEquals(sourceModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(sourceModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-
-    Target targetModel = new Target.Builder()
-      .recordTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .entityTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .build();
-    assertEquals(targetModel.recordTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(targetModel.entityTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-
-    Rule ruleModel = new Rule.Builder()
-      .source(sourceModel)
-      .target(targetModel)
-      .build();
-    assertEquals(ruleModel.source(), sourceModel);
-    assertEquals(ruleModel.target(), targetModel);
-
-    RelationshipType relationshipTypeModel = new RelationshipType.Builder()
-      .label("testString")
+    DataModelRelationshipType dataModelRelationshipTypeModel = new DataModelRelationshipType.Builder()
+      .internal(true)
       .labelFromSource("testString")
-      .rules(new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)))
       .labelFromTarget("testString")
       .directional(true)
+      .description("testString")
+      .rules(java.util.Arrays.asList(dataModelRelationshipRuleModel))
+      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .label("testString")
+      .classification("testString")
       .cardinality("testString")
-      .description("testString")
-      .attributes(new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } })
+      .discoveryEnabled(true)
       .build();
-    assertEquals(relationshipTypeModel.label(), "testString");
-    assertEquals(relationshipTypeModel.labelFromSource(), "testString");
-    assertEquals(relationshipTypeModel.rules(), new java.util.ArrayList<Rule>(java.util.Arrays.asList(ruleModel)));
-    assertEquals(relationshipTypeModel.labelFromTarget(), "testString");
-    assertEquals(relationshipTypeModel.directional(), Boolean.valueOf(true));
-    assertEquals(relationshipTypeModel.cardinality(), "testString");
-    assertEquals(relationshipTypeModel.description(), "testString");
-    assertEquals(relationshipTypeModel.attributes(), new java.util.HashMap<String, Attribute>() { { put("foo", attributeModel); } });
+    assertEquals(dataModelRelationshipTypeModel.internal(), Boolean.valueOf(true));
+    assertEquals(dataModelRelationshipTypeModel.labelFromSource(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.labelFromTarget(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.directional(), Boolean.valueOf(true));
+    assertEquals(dataModelRelationshipTypeModel.description(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.rules(), java.util.Arrays.asList(dataModelRelationshipRuleModel));
+    assertEquals(dataModelRelationshipTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelRelationshipTypeModel.label(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.classification(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.cardinality(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.discoveryEnabled(), Boolean.valueOf(true));
 
-    FieldType fieldTypeModel = new FieldType.Builder()
-      .label("testString")
+    DataModelEntityType dataModelEntityTypeModel = new DataModelEntityType.Builder()
+      .xDefault(true)
+      .persistCompView(true)
       .description("testString")
+      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .label("testString")
+      .type("testString")
+      .build();
+    assertEquals(dataModelEntityTypeModel.xDefault(), Boolean.valueOf(true));
+    assertEquals(dataModelEntityTypeModel.persistCompView(), Boolean.valueOf(true));
+    assertEquals(dataModelEntityTypeModel.description(), "testString");
+    assertEquals(dataModelEntityTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelEntityTypeModel.label(), "testString");
+    assertEquals(dataModelEntityTypeModel.type(), "testString");
+
+    DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
+      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
+      .description("testString")
+      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .label("testString")
+      .build();
+    assertEquals(dataModelRecordTypeModel.entityTypes(), new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } });
+    assertEquals(dataModelRecordTypeModel.description(), "testString");
+    assertEquals(dataModelRecordTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelRecordTypeModel.label(), "testString");
+
+    DataModelHierarchyType dataModelHierarchyTypeModel = new DataModelHierarchyType.Builder()
+      .nodeType("testString")
+      .nodeRelationshipType("testString")
+      .description("testString")
+      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .label("testString")
+      .nodeAssociations(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .build();
+    assertEquals(dataModelHierarchyTypeModel.nodeType(), "testString");
+    assertEquals(dataModelHierarchyTypeModel.nodeRelationshipType(), "testString");
+    assertEquals(dataModelHierarchyTypeModel.description(), "testString");
+    assertEquals(dataModelHierarchyTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelHierarchyTypeModel.label(), "testString");
+    assertEquals(dataModelHierarchyTypeModel.nodeAssociations(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+
+    DataModelNodeType dataModelNodeTypeModel = new DataModelNodeType.Builder()
+      .description("testString")
+      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .label("testString")
       .classification("testString")
-      .indexed(true)
       .build();
-    assertEquals(fieldTypeModel.label(), "testString");
-    assertEquals(fieldTypeModel.description(), "testString");
-    assertEquals(fieldTypeModel.classification(), "testString");
-    assertEquals(fieldTypeModel.indexed(), Boolean.valueOf(true));
+    assertEquals(dataModelNodeTypeModel.description(), "testString");
+    assertEquals(dataModelNodeTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelNodeTypeModel.label(), "testString");
+    assertEquals(dataModelNodeTypeModel.classification(), "testString");
 
-    AttributeType attributeTypeModel = new AttributeType.Builder()
-      .label("testString")
+    DataModelGroupType dataModelGroupTypeModel = new DataModelGroupType.Builder()
+      .memberLimit(Long.valueOf("26"))
+      .groupAssociations(java.util.Arrays.asList("testString"))
       .description("testString")
-      .classification("testString")
-      .fields(new java.util.HashMap<String, FieldType>() { { put("foo", fieldTypeModel); } })
-      .build();
-    assertEquals(attributeTypeModel.label(), "testString");
-    assertEquals(attributeTypeModel.description(), "testString");
-    assertEquals(attributeTypeModel.classification(), "testString");
-    assertEquals(attributeTypeModel.fields(), new java.util.HashMap<String, FieldType>() { { put("foo", fieldTypeModel); } });
-
-    RecordTypes recordTypesModel = new RecordTypes.Builder()
+      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
       .label("testString")
-      .description("testString")
-      .dataType("testString")
-      .indexed(true)
-      .editable(true)
       .build();
-    assertEquals(recordTypesModel.label(), "testString");
-    assertEquals(recordTypesModel.description(), "testString");
-    assertEquals(recordTypesModel.dataType(), "testString");
-    assertEquals(recordTypesModel.indexed(), Boolean.valueOf(true));
-    assertEquals(recordTypesModel.editable(), Boolean.valueOf(true));
-
-    EntityTypes entityTypesModel = new EntityTypes.Builder()
-      .label("testString")
-      .description("testString")
-      .dataType("testString")
-      .indexed(true)
-      .editable(true)
-      .build();
-    assertEquals(entityTypesModel.label(), "testString");
-    assertEquals(entityTypesModel.description(), "testString");
-    assertEquals(entityTypesModel.dataType(), "testString");
-    assertEquals(entityTypesModel.indexed(), Boolean.valueOf(true));
-    assertEquals(entityTypesModel.editable(), Boolean.valueOf(true));
-
-    SystemPropertiesRelationshipTypes systemPropertiesRelationshipTypesModel = new SystemPropertiesRelationshipTypes.Builder()
-      .label("testString")
-      .description("testString")
-      .dataType("testString")
-      .indexed(true)
-      .editable(true)
-      .build();
-    assertEquals(systemPropertiesRelationshipTypesModel.label(), "testString");
-    assertEquals(systemPropertiesRelationshipTypesModel.description(), "testString");
-    assertEquals(systemPropertiesRelationshipTypesModel.dataType(), "testString");
-    assertEquals(systemPropertiesRelationshipTypesModel.indexed(), Boolean.valueOf(true));
-    assertEquals(systemPropertiesRelationshipTypesModel.editable(), Boolean.valueOf(true));
-
-    AttributeTypes attributeTypesModel = new AttributeTypes.Builder()
-      .label("testString")
-      .description("testString")
-      .dataType("testString")
-      .indexed(true)
-      .editable(true)
-      .build();
-    assertEquals(attributeTypesModel.label(), "testString");
-    assertEquals(attributeTypesModel.description(), "testString");
-    assertEquals(attributeTypesModel.dataType(), "testString");
-    assertEquals(attributeTypesModel.indexed(), Boolean.valueOf(true));
-    assertEquals(attributeTypesModel.editable(), Boolean.valueOf(true));
-
-    SystemProperties systemPropertiesModel = new SystemProperties.Builder()
-      .recordTypes(recordTypesModel)
-      .entityTypes(entityTypesModel)
-      .relationshipTypes(systemPropertiesRelationshipTypesModel)
-      .attributeTypes(attributeTypesModel)
-      .build();
-    assertEquals(systemPropertiesModel.recordTypes(), recordTypesModel);
-    assertEquals(systemPropertiesModel.entityTypes(), entityTypesModel);
-    assertEquals(systemPropertiesModel.relationshipTypes(), systemPropertiesRelationshipTypesModel);
-    assertEquals(systemPropertiesModel.attributeTypes(), attributeTypesModel);
+    assertEquals(dataModelGroupTypeModel.memberLimit(), Long.valueOf("26"));
+    assertEquals(dataModelGroupTypeModel.groupAssociations(), java.util.Arrays.asList("testString"));
+    assertEquals(dataModelGroupTypeModel.description(), "testString");
+    assertEquals(dataModelGroupTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelGroupTypeModel.label(), "testString");
 
     ReplaceConfiguratorConfigDataModelOptions replaceConfiguratorConfigDataModelOptionsModel = new ReplaceConfiguratorConfigDataModelOptions.Builder()
-      .recordTypes(new java.util.HashMap<String, RecordType>() { { put("foo", recordTypeModel); } })
-      .relationshipTypes(new java.util.HashMap<String, RelationshipType>() { { put("foo", relationshipTypeModel); } })
-      .attributeTypes(new java.util.HashMap<String, AttributeType>() { { put("foo", attributeTypeModel); } })
+      .systemProperties(dataModelSystemPropertiesModel)
+      .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
+      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
       .locale("testString")
-      .systemProperties(new java.util.HashMap<String, SystemProperties>() { { put("foo", systemPropertiesModel); } })
+      .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
+      .hierarchyTypes(new java.util.HashMap<String, DataModelHierarchyType>() { { put("foo", dataModelHierarchyTypeModel); } })
+      .nodeTypes(new java.util.HashMap<String, DataModelNodeType>() { { put("foo", dataModelNodeTypeModel); } })
+      .groupTypes(new java.util.HashMap<String, DataModelGroupType>() { { put("foo", dataModelGroupTypeModel); } })
+      .isModelPublished("testString")
       .build();
-    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.recordTypes(), new java.util.HashMap<String, RecordType>() { { put("foo", recordTypeModel); } });
-    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.relationshipTypes(), new java.util.HashMap<String, RelationshipType>() { { put("foo", relationshipTypeModel); } });
-    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.attributeTypes(), new java.util.HashMap<String, AttributeType>() { { put("foo", attributeTypeModel); } });
+    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.systemProperties(), dataModelSystemPropertiesModel);
+    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.attributeTypes(), new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } });
+    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.relationshipTypes(), new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } });
     assertEquals(replaceConfiguratorConfigDataModelOptionsModel.locale(), "testString");
-    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.systemProperties(), new java.util.HashMap<String, SystemProperties>() { { put("foo", systemPropertiesModel); } });
+    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.recordTypes(), new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } });
+    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.hierarchyTypes(), new java.util.HashMap<String, DataModelHierarchyType>() { { put("foo", dataModelHierarchyTypeModel); } });
+    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.nodeTypes(), new java.util.HashMap<String, DataModelNodeType>() { { put("foo", dataModelNodeTypeModel); } });
+    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.groupTypes(), new java.util.HashMap<String, DataModelGroupType>() { { put("foo", dataModelGroupTypeModel); } });
+    assertEquals(replaceConfiguratorConfigDataModelOptionsModel.isModelPublished(), "testString");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testReplaceConfiguratorConfigDataModelOptionsError() throws Throwable {
+    new ReplaceConfiguratorConfigDataModelOptions.Builder().build();
+  }
+
 }

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,42 +24,49 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRelationshipType extends GenericModel {
 
-  protected String label;
-  protected List<DataModelRelationshipRule> rules;
+  protected Boolean internal;
   @SerializedName("label_from_source")
   protected String labelFromSource;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
   protected Boolean directional;
-  protected String cardinality;
   protected String description;
-  protected Boolean internal;
+  protected List<DataModelRelationshipRule> rules;
   protected Map<String, DataModelAttribute> attributes;
+  protected String label;
+  protected String classification;
+  protected String cardinality;
+  @SerializedName("discovery_enabled")
+  protected Boolean discoveryEnabled;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String label;
-    private List<DataModelRelationshipRule> rules;
+    private Boolean internal;
     private String labelFromSource;
     private String labelFromTarget;
     private Boolean directional;
-    private String cardinality;
     private String description;
-    private Boolean internal;
+    private List<DataModelRelationshipRule> rules;
     private Map<String, DataModelAttribute> attributes;
+    private String label;
+    private String classification;
+    private String cardinality;
+    private Boolean discoveryEnabled;
 
     private Builder(DataModelRelationshipType dataModelRelationshipType) {
-      this.label = dataModelRelationshipType.label;
-      this.rules = dataModelRelationshipType.rules;
+      this.internal = dataModelRelationshipType.internal;
       this.labelFromSource = dataModelRelationshipType.labelFromSource;
       this.labelFromTarget = dataModelRelationshipType.labelFromTarget;
       this.directional = dataModelRelationshipType.directional;
-      this.cardinality = dataModelRelationshipType.cardinality;
       this.description = dataModelRelationshipType.description;
-      this.internal = dataModelRelationshipType.internal;
+      this.rules = dataModelRelationshipType.rules;
       this.attributes = dataModelRelationshipType.attributes;
+      this.label = dataModelRelationshipType.label;
+      this.classification = dataModelRelationshipType.classification;
+      this.cardinality = dataModelRelationshipType.cardinality;
+      this.discoveryEnabled = dataModelRelationshipType.discoveryEnabled;
     }
 
     /**
@@ -103,25 +110,13 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the label.
+     * Set the internal.
      *
-     * @param label the label
+     * @param internal the internal
      * @return the DataModelRelationshipType builder
      */
-    public Builder label(String label) {
-      this.label = label;
-      return this;
-    }
-
-    /**
-     * Set the rules.
-     * Existing rules will be replaced.
-     *
-     * @param rules the rules
-     * @return the DataModelRelationshipType builder
-     */
-    public Builder rules(List<DataModelRelationshipRule> rules) {
-      this.rules = rules;
+    public Builder internal(Boolean internal) {
+      this.internal = internal;
       return this;
     }
 
@@ -159,17 +154,6 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the cardinality.
-     *
-     * @param cardinality the cardinality
-     * @return the DataModelRelationshipType builder
-     */
-    public Builder cardinality(String cardinality) {
-      this.cardinality = cardinality;
-      return this;
-    }
-
-    /**
      * Set the description.
      *
      * @param description the description
@@ -181,13 +165,14 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Set the internal.
+     * Set the rules.
+     * Existing rules will be replaced.
      *
-     * @param internal the internal
+     * @param rules the rules
      * @return the DataModelRelationshipType builder
      */
-    public Builder internal(Boolean internal) {
-      this.internal = internal;
+    public Builder rules(List<DataModelRelationshipRule> rules) {
+      this.rules = rules;
       return this;
     }
 
@@ -201,20 +186,68 @@ public class DataModelRelationshipType extends GenericModel {
       this.attributes = attributes;
       return this;
     }
+
+    /**
+     * Set the label.
+     *
+     * @param label the label
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder label(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
+     * Set the classification.
+     *
+     * @param classification the classification
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder classification(String classification) {
+      this.classification = classification;
+      return this;
+    }
+
+    /**
+     * Set the cardinality.
+     *
+     * @param cardinality the cardinality
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder cardinality(String cardinality) {
+      this.cardinality = cardinality;
+      return this;
+    }
+
+    /**
+     * Set the discoveryEnabled.
+     *
+     * @param discoveryEnabled the discoveryEnabled
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder discoveryEnabled(Boolean discoveryEnabled) {
+      this.discoveryEnabled = discoveryEnabled;
+      return this;
+    }
   }
+
+  protected DataModelRelationshipType() { }
 
   protected DataModelRelationshipType(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    label = builder.label;
-    rules = builder.rules;
+    internal = builder.internal;
     labelFromSource = builder.labelFromSource;
     labelFromTarget = builder.labelFromTarget;
     directional = builder.directional;
-    cardinality = builder.cardinality;
     description = builder.description;
-    internal = builder.internal;
+    rules = builder.rules;
     attributes = builder.attributes;
+    label = builder.label;
+    classification = builder.classification;
+    cardinality = builder.cardinality;
+    discoveryEnabled = builder.discoveryEnabled;
   }
 
   /**
@@ -227,25 +260,14 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the label.
+   * Gets the internal.
    *
-   * User defined translatable label.
+   * True for linkage relationship, otherwise false. The default value is false.
    *
-   * @return the label
+   * @return the internal
    */
-  public String label() {
-    return label;
-  }
-
-  /**
-   * Gets the rules.
-   *
-   * Collection of defined relationship rules.
-   *
-   * @return the rules
-   */
-  public List<DataModelRelationshipRule> rules() {
-    return rules;
+  public Boolean internal() {
+    return internal;
   }
 
   /**
@@ -282,17 +304,6 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the cardinality.
-   *
-   * User defined cardinality, one of MULTI, SIMPLE, MANY2ONE, ONE2MANY or ONE2ONE. The default value is MULTI.
-   *
-   * @return the cardinality
-   */
-  public String cardinality() {
-    return cardinality;
-  }
-
-  /**
    * Gets the description.
    *
    * User defined translatable description.
@@ -304,14 +315,14 @@ public class DataModelRelationshipType extends GenericModel {
   }
 
   /**
-   * Gets the internal.
+   * Gets the rules.
    *
-   * True for linkage relationship, otherwise false. The default value is false.
+   * Collection of defined relationship rules.
    *
-   * @return the internal
+   * @return the rules
    */
-  public Boolean internal() {
-    return internal;
+  public List<DataModelRelationshipRule> rules() {
+    return rules;
   }
 
   /**
@@ -323,6 +334,50 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public Map<String, DataModelAttribute> attributes() {
     return attributes;
+  }
+
+  /**
+   * Gets the label.
+   *
+   * User defined translatable label.
+   *
+   * @return the label
+   */
+  public String label() {
+    return label;
+  }
+
+  /**
+   * Gets the classification.
+   *
+   * A relationship class type.
+   *
+   * @return the classification
+   */
+  public String classification() {
+    return classification;
+  }
+
+  /**
+   * Gets the cardinality.
+   *
+   * User defined cardinality, one of MULTI, SIMPLE, MANY2ONE, ONE2MANY or ONE2ONE. The default value is MULTI.
+   *
+   * @return the cardinality
+   */
+  public String cardinality() {
+    return cardinality;
+  }
+
+  /**
+   * Gets the discoveryEnabled.
+   *
+   * True if relationship discovery is enabled.
+   *
+   * @return the discoveryEnabled
+   */
+  public Boolean discoveryEnabled() {
+    return discoveryEnabled;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,24 +20,24 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataMapping extends GenericModel {
 
-  @SerializedName("data_mapping_default_display_name")
-  protected String dataMappingDefaultDisplayName;
+  protected String key;
   @SerializedName("classified_class")
   protected String classifiedClass;
   @SerializedName("data_mapping_name")
   protected String dataMappingName;
-  protected String key;
+  @SerializedName("data_mapping_default_display_name")
+  protected String dataMappingDefaultDisplayName;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String classifiedClass;
     private String key;
+    private String classifiedClass;
 
     private Builder(DataMapping dataMapping) {
-      this.classifiedClass = dataMapping.classifiedClass;
       this.key = dataMapping.key;
+      this.classifiedClass = dataMapping.classifiedClass;
     }
 
     /**
@@ -49,12 +49,12 @@ public class DataMapping extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param classifiedClass the classifiedClass
      * @param key the key
+     * @param classifiedClass the classifiedClass
      */
-    public Builder(String classifiedClass, String key) {
-      this.classifiedClass = classifiedClass;
+    public Builder(String key, String classifiedClass) {
       this.key = key;
+      this.classifiedClass = classifiedClass;
     }
 
     /**
@@ -67,17 +67,6 @@ public class DataMapping extends GenericModel {
     }
 
     /**
-     * Set the classifiedClass.
-     *
-     * @param classifiedClass the classifiedClass
-     * @return the DataMapping builder
-     */
-    public Builder classifiedClass(String classifiedClass) {
-      this.classifiedClass = classifiedClass;
-      return this;
-    }
-
-    /**
      * Set the key.
      *
      * @param key the key
@@ -87,15 +76,28 @@ public class DataMapping extends GenericModel {
       this.key = key;
       return this;
     }
+
+    /**
+     * Set the classifiedClass.
+     *
+     * @param classifiedClass the classifiedClass
+     * @return the DataMapping builder
+     */
+    public Builder classifiedClass(String classifiedClass) {
+      this.classifiedClass = classifiedClass;
+      return this;
+    }
   }
 
+  protected DataMapping() { }
+
   protected DataMapping(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.classifiedClass,
-      "classifiedClass cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.key,
       "key cannot be null");
-    classifiedClass = builder.classifiedClass;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.classifiedClass,
+      "classifiedClass cannot be null");
     key = builder.key;
+    classifiedClass = builder.classifiedClass;
   }
 
   /**
@@ -108,14 +110,14 @@ public class DataMapping extends GenericModel {
   }
 
   /**
-   * Gets the dataMappingDefaultDisplayName.
+   * Gets the key.
    *
-   * The displayable name for the data mapping attribute.
+   * The key of the Data asset column.
    *
-   * @return the dataMappingDefaultDisplayName
+   * @return the key
    */
-  public String dataMappingDefaultDisplayName() {
-    return dataMappingDefaultDisplayName;
+  public String key() {
+    return key;
   }
 
   /**
@@ -141,14 +143,14 @@ public class DataMapping extends GenericModel {
   }
 
   /**
-   * Gets the key.
+   * Gets the dataMappingDefaultDisplayName.
    *
-   * The key of the Data asset column.
+   * The displayable name for the data mapping attribute.
    *
-   * @return the key
+   * @return the dataMappingDefaultDisplayName
    */
-  public String key() {
-    return key;
+  public String dataMappingDefaultDisplayName() {
+    return dataMappingDefaultDisplayName;
   }
 }
 

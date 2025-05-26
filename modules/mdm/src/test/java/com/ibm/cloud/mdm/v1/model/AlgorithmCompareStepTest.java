@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,8 +17,6 @@ import com.ibm.cloud.mdm.v1.model.AlgorithmCompareStep;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -34,33 +32,33 @@ public class AlgorithmCompareStepTest {
   @Test
   public void testAlgorithmCompareStep() throws Throwable {
     AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
-      .setResource("testString")
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
       .comparisonResource("testString")
-      .mapResource("testString")
       .method("testString")
-      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .inputs(java.util.Arrays.asList(Long.valueOf("26")))
+      .label("testString")
+      .setResource("testString")
+      .fields(java.util.Arrays.asList("testString"))
+      .mapResource("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmCompareStepModel.getSetResource(), "testString");
-    assertEquals(algorithmCompareStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmCompareStepModel.getLabel(), "testString");
     assertEquals(algorithmCompareStepModel.getComparisonResource(), "testString");
-    assertEquals(algorithmCompareStepModel.getMapResource(), "testString");
     assertEquals(algorithmCompareStepModel.getMethod(), "testString");
-    assertEquals(algorithmCompareStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmCompareStepModel.getInputs(), java.util.Arrays.asList(Long.valueOf("26")));
+    assertEquals(algorithmCompareStepModel.getLabel(), "testString");
+    assertEquals(algorithmCompareStepModel.getSetResource(), "testString");
+    assertEquals(algorithmCompareStepModel.getFields(), java.util.Arrays.asList("testString"));
+    assertEquals(algorithmCompareStepModel.getMapResource(), "testString");
     assertEquals(algorithmCompareStepModel.get("foo"), "testString");
 
     String json = TestUtilities.serialize(algorithmCompareStepModel);
 
     AlgorithmCompareStep algorithmCompareStepModelNew = TestUtilities.deserialize(json, AlgorithmCompareStep.class);
     assertTrue(algorithmCompareStepModelNew instanceof AlgorithmCompareStep);
-    assertEquals(algorithmCompareStepModelNew.getSetResource(), "testString");
-    assertEquals(algorithmCompareStepModelNew.getLabel(), "testString");
     assertEquals(algorithmCompareStepModelNew.getComparisonResource(), "testString");
-    assertEquals(algorithmCompareStepModelNew.getMapResource(), "testString");
     assertEquals(algorithmCompareStepModelNew.getMethod(), "testString");
+    assertEquals(algorithmCompareStepModelNew.getLabel(), "testString");
+    assertEquals(algorithmCompareStepModelNew.getSetResource(), "testString");
+    assertEquals(algorithmCompareStepModelNew.getMapResource(), "testString");
     assertEquals(algorithmCompareStepModelNew.get("foo"), "testString");
   }
 

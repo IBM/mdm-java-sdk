@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,24 +20,24 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Status extends GenericModel {
 
-  @SerializedName("comparison_count")
-  protected Long comparisonCount;
-  @SerializedName("date_completed")
-  protected String dateCompleted;
-  @SerializedName("bucket_count")
-  protected Long bucketCount;
   @SerializedName("run_time")
   protected Long runTime;
+  @SerializedName("date_completed")
+  protected String dateCompleted;
+  @SerializedName("comparison_count")
+  protected Long comparisonCount;
+  @SerializedName("bucket_count")
+  protected Long bucketCount;
 
   /**
-   * Gets the comparisonCount.
+   * Gets the runTime.
    *
-   * Count of the comparisons made during match process.
+   * The total time consumed to run match process.
    *
-   * @return the comparisonCount
+   * @return the runTime
    */
-  public Long getComparisonCount() {
-    return comparisonCount;
+  public Long getRunTime() {
+    return runTime;
   }
 
   /**
@@ -52,6 +52,17 @@ public class Status extends GenericModel {
   }
 
   /**
+   * Gets the comparisonCount.
+   *
+   * Count of the comparisons made during match process.
+   *
+   * @return the comparisonCount
+   */
+  public Long getComparisonCount() {
+    return comparisonCount;
+  }
+
+  /**
    * Gets the bucketCount.
    *
    * Count of the comparison buckets created during match process.
@@ -60,17 +71,6 @@ public class Status extends GenericModel {
    */
   public Long getBucketCount() {
     return bucketCount;
-  }
-
-  /**
-   * Gets the runTime.
-   *
-   * The total time consumed to run match process.
-   *
-   * @return the runTime
-   */
-  public Long getRunTime() {
-    return runTime;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,6 +25,8 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
   protected Boolean doDeduplicate;
   protected Boolean doAnalytics;
   protected Boolean doReplicate;
+  protected Boolean doCheckpoint;
+  protected Boolean resumeFromDriver;
   protected Long executorCount;
   protected String executorMemory;
   protected Long executorCoreCount;
@@ -44,6 +46,8 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
     private Boolean doDeduplicate;
     private Boolean doAnalytics;
     private Boolean doReplicate;
+    private Boolean doCheckpoint;
+    private Boolean resumeFromDriver;
     private Long executorCount;
     private String executorMemory;
     private Long executorCoreCount;
@@ -60,6 +64,8 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
       this.doDeduplicate = createMatchingMatchJobOptions.doDeduplicate;
       this.doAnalytics = createMatchingMatchJobOptions.doAnalytics;
       this.doReplicate = createMatchingMatchJobOptions.doReplicate;
+      this.doCheckpoint = createMatchingMatchJobOptions.doCheckpoint;
+      this.resumeFromDriver = createMatchingMatchJobOptions.resumeFromDriver;
       this.executorCount = createMatchingMatchJobOptions.executorCount;
       this.executorMemory = createMatchingMatchJobOptions.executorMemory;
       this.executorCoreCount = createMatchingMatchJobOptions.executorCoreCount;
@@ -74,6 +80,15 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param recordType the recordType
+     */
+    public Builder(String recordType) {
+      this.recordType = recordType;
     }
 
     /**
@@ -148,6 +163,28 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
      */
     public Builder doReplicate(Boolean doReplicate) {
       this.doReplicate = doReplicate;
+      return this;
+    }
+
+    /**
+     * Set the doCheckpoint.
+     *
+     * @param doCheckpoint the doCheckpoint
+     * @return the CreateMatchingMatchJobOptions builder
+     */
+    public Builder doCheckpoint(Boolean doCheckpoint) {
+      this.doCheckpoint = doCheckpoint;
+      return this;
+    }
+
+    /**
+     * Set the resumeFromDriver.
+     *
+     * @param resumeFromDriver the resumeFromDriver
+     * @return the CreateMatchingMatchJobOptions builder
+     */
+    public Builder resumeFromDriver(Boolean resumeFromDriver) {
+      this.resumeFromDriver = resumeFromDriver;
       return this;
     }
 
@@ -240,13 +277,19 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
     }
   }
 
+  protected CreateMatchingMatchJobOptions() { }
+
   protected CreateMatchingMatchJobOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
+      "recordType cannot be null");
     recordType = builder.recordType;
     entityType = builder.entityType;
     doForce = builder.doForce;
     doDeduplicate = builder.doDeduplicate;
     doAnalytics = builder.doAnalytics;
     doReplicate = builder.doReplicate;
+    doCheckpoint = builder.doCheckpoint;
+    resumeFromDriver = builder.resumeFromDriver;
     executorCount = builder.executorCount;
     executorMemory = builder.executorMemory;
     executorCoreCount = builder.executorCoreCount;
@@ -324,12 +367,34 @@ public class CreateMatchingMatchJobOptions extends GenericModel {
   /**
    * Gets the doReplicate.
    *
-   * Replicate entity id, default is false.
+   * Replicate entity id, default is true.
    *
    * @return the doReplicate
    */
   public Boolean doReplicate() {
     return doReplicate;
+  }
+
+  /**
+   * Gets the doCheckpoint.
+   *
+   * Do checkpoint.
+   *
+   * @return the doCheckpoint
+   */
+  public Boolean doCheckpoint() {
+    return doCheckpoint;
+  }
+
+  /**
+   * Gets the resumeFromDriver.
+   *
+   * Resume from step copying entity id, default is false.
+   *
+   * @return the resumeFromDriver
+   */
+  public Boolean resumeFromDriver() {
+    return resumeFromDriver;
   }
 
   /**

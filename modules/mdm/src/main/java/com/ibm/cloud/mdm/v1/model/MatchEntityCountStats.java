@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,21 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class MatchEntityCountStats extends GenericModel {
 
-  @SerializedName("entity_count")
-  protected Double entityCount;
   @SerializedName("entity_size")
   protected Long entitySize;
-
-  /**
-   * Gets the entityCount.
-   *
-   * Count of the entities of specified size.
-   *
-   * @return the entityCount
-   */
-  public Double getEntityCount() {
-    return entityCount;
-  }
+  @SerializedName("entity_count")
+  protected Double entityCount;
 
   /**
    * Gets the entitySize.
@@ -45,6 +34,17 @@ public class MatchEntityCountStats extends GenericModel {
    */
   public Long getEntitySize() {
     return entitySize;
+  }
+
+  /**
+   * Gets the entityCount.
+   *
+   * Count of the entities of specified size.
+   *
+   * @return the entityCount
+   */
+  public Double getEntityCount() {
+    return entityCount;
   }
 }
 

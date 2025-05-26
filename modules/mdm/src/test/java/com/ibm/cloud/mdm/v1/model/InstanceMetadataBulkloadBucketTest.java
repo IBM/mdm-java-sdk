@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,20 +33,20 @@ public class InstanceMetadataBulkloadBucketTest {
   public void testInstanceMetadataBulkloadBucket() throws Throwable {
     InstanceMetadataBulkloadBucket instanceMetadataBulkloadBucketModel = new InstanceMetadataBulkloadBucket.Builder()
       .cosBucketLocation("testString")
-      .cosBucketApiKey("testString")
       .cosBucketName("testString")
+      .cosBucketApiKey("testString")
       .build();
     assertEquals(instanceMetadataBulkloadBucketModel.cosBucketLocation(), "testString");
-    assertEquals(instanceMetadataBulkloadBucketModel.cosBucketApiKey(), "testString");
     assertEquals(instanceMetadataBulkloadBucketModel.cosBucketName(), "testString");
+    assertEquals(instanceMetadataBulkloadBucketModel.cosBucketApiKey(), "testString");
 
     String json = TestUtilities.serialize(instanceMetadataBulkloadBucketModel);
 
     InstanceMetadataBulkloadBucket instanceMetadataBulkloadBucketModelNew = TestUtilities.deserialize(json, InstanceMetadataBulkloadBucket.class);
     assertTrue(instanceMetadataBulkloadBucketModelNew instanceof InstanceMetadataBulkloadBucket);
     assertEquals(instanceMetadataBulkloadBucketModelNew.cosBucketLocation(), "testString");
-    assertEquals(instanceMetadataBulkloadBucketModelNew.cosBucketApiKey(), "testString");
     assertEquals(instanceMetadataBulkloadBucketModelNew.cosBucketName(), "testString");
+    assertEquals(instanceMetadataBulkloadBucketModelNew.cosBucketApiKey(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
