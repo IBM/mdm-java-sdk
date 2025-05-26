@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,13 +33,13 @@ public class SingleRecordRequestAttributesTest {
   public void testSingleRecordRequestAttributes() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
       .recordId("testString")
-      .recordSource("testString")
       .recordLastUpdated(Long.valueOf("26"))
+      .recordSource("testString")
       .add("foo", "testString")
       .build();
     assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
-    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
+    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
     String json = TestUtilities.serialize(singleRecordRequestAttributesModel);
@@ -47,8 +47,8 @@ public class SingleRecordRequestAttributesTest {
     SingleRecordRequestAttributes singleRecordRequestAttributesModelNew = TestUtilities.deserialize(json, SingleRecordRequestAttributes.class);
     assertTrue(singleRecordRequestAttributesModelNew instanceof SingleRecordRequestAttributes);
     assertEquals(singleRecordRequestAttributesModelNew.getRecordId(), "testString");
-    assertEquals(singleRecordRequestAttributesModelNew.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModelNew.getRecordLastUpdated(), Long.valueOf("26"));
+    assertEquals(singleRecordRequestAttributesModelNew.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModelNew.get("foo"), "testString");
   }
 }

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,36 +20,54 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateConfiguratorProcessOptions extends GenericModel {
 
   protected String processName;
-  protected String assetIds;
-  protected String initiator;
-  protected Boolean doDerive;
-  protected Boolean doForceMatching;
   protected String recordType;
-  protected ProcessRequestAssetSourceDetails assetSourceDetails;
   protected String entityType;
+  protected Boolean doDerive;
+  protected Boolean doMatch;
+  protected Boolean doSync;
+  protected Boolean doReport;
+  protected String assetIds;
+  protected ProcessRequestAssetSourceDetails assetSourceDetails;
+  protected String initiator;
+  protected Boolean doForceMatching;
+  protected Boolean doForceDerive;
+  protected Boolean doForceEntitySync;
+  protected String reportJobList;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String processName;
-    private String assetIds;
-    private String initiator;
-    private Boolean doDerive;
-    private Boolean doForceMatching;
     private String recordType;
-    private ProcessRequestAssetSourceDetails assetSourceDetails;
     private String entityType;
+    private Boolean doDerive;
+    private Boolean doMatch;
+    private Boolean doSync;
+    private Boolean doReport;
+    private String assetIds;
+    private ProcessRequestAssetSourceDetails assetSourceDetails;
+    private String initiator;
+    private Boolean doForceMatching;
+    private Boolean doForceDerive;
+    private Boolean doForceEntitySync;
+    private String reportJobList;
 
     private Builder(CreateConfiguratorProcessOptions createConfiguratorProcessOptions) {
       this.processName = createConfiguratorProcessOptions.processName;
-      this.assetIds = createConfiguratorProcessOptions.assetIds;
-      this.initiator = createConfiguratorProcessOptions.initiator;
-      this.doDerive = createConfiguratorProcessOptions.doDerive;
-      this.doForceMatching = createConfiguratorProcessOptions.doForceMatching;
       this.recordType = createConfiguratorProcessOptions.recordType;
-      this.assetSourceDetails = createConfiguratorProcessOptions.assetSourceDetails;
       this.entityType = createConfiguratorProcessOptions.entityType;
+      this.doDerive = createConfiguratorProcessOptions.doDerive;
+      this.doMatch = createConfiguratorProcessOptions.doMatch;
+      this.doSync = createConfiguratorProcessOptions.doSync;
+      this.doReport = createConfiguratorProcessOptions.doReport;
+      this.assetIds = createConfiguratorProcessOptions.assetIds;
+      this.assetSourceDetails = createConfiguratorProcessOptions.assetSourceDetails;
+      this.initiator = createConfiguratorProcessOptions.initiator;
+      this.doForceMatching = createConfiguratorProcessOptions.doForceMatching;
+      this.doForceDerive = createConfiguratorProcessOptions.doForceDerive;
+      this.doForceEntitySync = createConfiguratorProcessOptions.doForceEntitySync;
+      this.reportJobList = createConfiguratorProcessOptions.reportJobList;
     }
 
     /**
@@ -88,24 +106,24 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
-     * Set the assetIds.
+     * Set the recordType.
      *
-     * @param assetIds the assetIds
+     * @param recordType the recordType
      * @return the CreateConfiguratorProcessOptions builder
      */
-    public Builder assetIds(String assetIds) {
-      this.assetIds = assetIds;
+    public Builder recordType(String recordType) {
+      this.recordType = recordType;
       return this;
     }
 
     /**
-     * Set the initiator.
+     * Set the entityType.
      *
-     * @param initiator the initiator
+     * @param entityType the entityType
      * @return the CreateConfiguratorProcessOptions builder
      */
-    public Builder initiator(String initiator) {
-      this.initiator = initiator;
+    public Builder entityType(String entityType) {
+      this.entityType = entityType;
       return this;
     }
 
@@ -121,24 +139,46 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
-     * Set the doForceMatching.
+     * Set the doMatch.
      *
-     * @param doForceMatching the doForceMatching
+     * @param doMatch the doMatch
      * @return the CreateConfiguratorProcessOptions builder
      */
-    public Builder doForceMatching(Boolean doForceMatching) {
-      this.doForceMatching = doForceMatching;
+    public Builder doMatch(Boolean doMatch) {
+      this.doMatch = doMatch;
       return this;
     }
 
     /**
-     * Set the recordType.
+     * Set the doSync.
      *
-     * @param recordType the recordType
+     * @param doSync the doSync
      * @return the CreateConfiguratorProcessOptions builder
      */
-    public Builder recordType(String recordType) {
-      this.recordType = recordType;
+    public Builder doSync(Boolean doSync) {
+      this.doSync = doSync;
+      return this;
+    }
+
+    /**
+     * Set the doReport.
+     *
+     * @param doReport the doReport
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder doReport(Boolean doReport) {
+      this.doReport = doReport;
+      return this;
+    }
+
+    /**
+     * Set the assetIds.
+     *
+     * @param assetIds the assetIds
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder assetIds(String assetIds) {
+      this.assetIds = assetIds;
       return this;
     }
 
@@ -154,28 +194,80 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     }
 
     /**
-     * Set the entityType.
+     * Set the initiator.
      *
-     * @param entityType the entityType
+     * @param initiator the initiator
      * @return the CreateConfiguratorProcessOptions builder
      */
-    public Builder entityType(String entityType) {
-      this.entityType = entityType;
+    public Builder initiator(String initiator) {
+      this.initiator = initiator;
+      return this;
+    }
+
+    /**
+     * Set the doForceMatching.
+     *
+     * @param doForceMatching the doForceMatching
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder doForceMatching(Boolean doForceMatching) {
+      this.doForceMatching = doForceMatching;
+      return this;
+    }
+
+    /**
+     * Set the doForceDerive.
+     *
+     * @param doForceDerive the doForceDerive
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder doForceDerive(Boolean doForceDerive) {
+      this.doForceDerive = doForceDerive;
+      return this;
+    }
+
+    /**
+     * Set the doForceEntitySync.
+     *
+     * @param doForceEntitySync the doForceEntitySync
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder doForceEntitySync(Boolean doForceEntitySync) {
+      this.doForceEntitySync = doForceEntitySync;
+      return this;
+    }
+
+    /**
+     * Set the reportJobList.
+     *
+     * @param reportJobList the reportJobList
+     * @return the CreateConfiguratorProcessOptions builder
+     */
+    public Builder reportJobList(String reportJobList) {
+      this.reportJobList = reportJobList;
       return this;
     }
   }
+
+  protected CreateConfiguratorProcessOptions() { }
 
   protected CreateConfiguratorProcessOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.processName,
       "processName cannot be null");
     processName = builder.processName;
-    assetIds = builder.assetIds;
-    initiator = builder.initiator;
-    doDerive = builder.doDerive;
-    doForceMatching = builder.doForceMatching;
     recordType = builder.recordType;
-    assetSourceDetails = builder.assetSourceDetails;
     entityType = builder.entityType;
+    doDerive = builder.doDerive;
+    doMatch = builder.doMatch;
+    doSync = builder.doSync;
+    doReport = builder.doReport;
+    assetIds = builder.assetIds;
+    assetSourceDetails = builder.assetSourceDetails;
+    initiator = builder.initiator;
+    doForceMatching = builder.doForceMatching;
+    doForceDerive = builder.doForceDerive;
+    doForceEntitySync = builder.doForceEntitySync;
+    reportJobList = builder.reportJobList;
   }
 
   /**
@@ -199,6 +291,76 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
   }
 
   /**
+   * Gets the recordType.
+   *
+   * The record type which needs to be processed for match and publish_data processes.
+   *
+   * @return the recordType
+   */
+  public String recordType() {
+    return recordType;
+  }
+
+  /**
+   * Gets the entityType.
+   *
+   * The entity type which needs to be processed for match process.
+   *
+   * @return the entityType
+   */
+  public String entityType() {
+    return entityType;
+  }
+
+  /**
+   * Gets the doDerive.
+   *
+   * Flag to enable/disable derive operation for matching process. If do_derive flag is set to true, the rest of the
+   * match jobs (do-match, do-sync, report) will get executed even if they are set to false.
+   *
+   * @return the doDerive
+   */
+  public Boolean doDerive() {
+    return doDerive;
+  }
+
+  /**
+   * Gets the doMatch.
+   *
+   * Flag to enable/disable Bulkmatch operation for matching process. If do_match flag is set to true, the rest of the
+   * match jobs (do-sync, report) will get executed even if they are set to false.
+   *
+   * @return the doMatch
+   */
+  public Boolean doMatch() {
+    return doMatch;
+  }
+
+  /**
+   * Gets the doSync.
+   *
+   * Flag to enable/disable PersistEntity operation for matching process. If do_sync flag is set to true, the rest of
+   * the match jobs (report) will get executed even if they are set to false.
+   *
+   * @return the doSync
+   */
+  public Boolean doSync() {
+    return doSync;
+  }
+
+  /**
+   * Gets the doReport.
+   *
+   * Flag to enable/disable Reporting operation for matching process. If do_sync flag is set to true, the rest of the
+   * match jobs (report) will get executed even if they are set to false.
+   *
+   * @return the doReport
+   */
+  public Boolean doReport() {
+    return doReport;
+  }
+
+  /**
    * Gets the assetIds.
    *
    * Comma separated asset ids of assets to be processed by delete_assets and publish_data processes.
@@ -207,6 +369,17 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
    */
   public String assetIds() {
     return assetIds;
+  }
+
+  /**
+   * Gets the assetSourceDetails.
+   *
+   * The asset source details for the data asset to be published for publish_data process.
+   *
+   * @return the assetSourceDetails
+   */
+  public ProcessRequestAssetSourceDetails assetSourceDetails() {
+    return assetSourceDetails;
   }
 
   /**
@@ -222,20 +395,9 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
   }
 
   /**
-   * Gets the doDerive.
-   *
-   * Flag to enable/disable derive operation for match process.
-   *
-   * @return the doDerive
-   */
-  public Boolean doDerive() {
-    return doDerive;
-  }
-
-  /**
    * Gets the doForceMatching.
    *
-   * Flag to enable/disable force derive/match operations.
+   * Flag to enable/disable force match operation.
    *
    * @return the doForceMatching
    */
@@ -244,36 +406,36 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
   }
 
   /**
-   * Gets the recordType.
+   * Gets the doForceDerive.
    *
-   * The record type which needs to be processed for match and publish_data processes.
+   * Flag to enable/disable force derive operation.
    *
-   * @return the recordType
+   * @return the doForceDerive
    */
-  public String recordType() {
-    return recordType;
+  public Boolean doForceDerive() {
+    return doForceDerive;
   }
 
   /**
-   * Gets the assetSourceDetails.
+   * Gets the doForceEntitySync.
    *
-   * The asset source details for the data asset to be published for publish_data process.
+   * Flag to enable/disable force entity sync operation.
    *
-   * @return the assetSourceDetails
+   * @return the doForceEntitySync
    */
-  public ProcessRequestAssetSourceDetails assetSourceDetails() {
-    return assetSourceDetails;
+  public Boolean doForceEntitySync() {
+    return doForceEntitySync;
   }
 
   /**
-   * Gets the entityType.
+   * Gets the reportJobList.
    *
-   * The entity type which needs to be processed for match process.
+   * The list of jobs that should be considered during reporting.
    *
-   * @return the entityType
+   * @return the reportJobList
    */
-  public String entityType() {
-    return entityType;
+  public String reportJobList() {
+    return reportJobList;
   }
 }
 

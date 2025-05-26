@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -41,6 +41,10 @@ public class SubgraphVertex extends GenericModel {
   @SerializedName("is_global")
   protected Boolean isGlobal;
   protected Map<String, Object> attributes;
+  @SerializedName("is_blocked_for_update")
+  protected Boolean isBlockedForUpdate;
+  @SerializedName("is_quarantined")
+  protected Boolean isQuarantined;
 
   /**
    * Gets the id.
@@ -106,6 +110,28 @@ public class SubgraphVertex extends GenericModel {
    */
   public Map<String, Object> getAttributes() {
     return attributes;
+  }
+
+  /**
+   * Gets the isBlockedForUpdate.
+   *
+   * Is the Vertex Blocked for Update.
+   *
+   * @return the isBlockedForUpdate
+   */
+  public Boolean isIsBlockedForUpdate() {
+    return isBlockedForUpdate;
+  }
+
+  /**
+   * Gets the isQuarantined.
+   *
+   * Is the Vertex quarantined.
+   *
+   * @return the isQuarantined
+   */
+  public Boolean isIsQuarantined() {
+    return isQuarantined;
   }
 }
 

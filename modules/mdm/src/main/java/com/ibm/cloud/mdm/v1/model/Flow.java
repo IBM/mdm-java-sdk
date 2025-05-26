@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,15 +22,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Flow extends GenericModel {
 
-  @SerializedName("flow_type")
-  protected String flowType;
   @SerializedName("flow_state")
   protected String flowState;
+  @SerializedName("flow_type")
+  protected String flowType;
+  protected List<String> rejections;
   @SerializedName("flow_id")
   protected String flowId;
-  protected List<String> rejections;
   protected List<String> approvals;
   protected Boolean active;
+
+  /**
+   * Gets the flowState.
+   *
+   * Current state of flow according to its state machine.
+   *
+   * @return the flowState
+   */
+  public String getFlowState() {
+    return flowState;
+  }
 
   /**
    * Gets the flowType.
@@ -45,14 +56,14 @@ public class Flow extends GenericModel {
   }
 
   /**
-   * Gets the flowState.
+   * Gets the rejections.
    *
-   * Current state of flow according to its state machine.
+   * Collection of authorized approvers that rejected the flow.
    *
-   * @return the flowState
+   * @return the rejections
    */
-  public String getFlowState() {
-    return flowState;
+  public List<String> getRejections() {
+    return rejections;
   }
 
   /**
@@ -64,17 +75,6 @@ public class Flow extends GenericModel {
    */
   public String getFlowId() {
     return flowId;
-  }
-
-  /**
-   * Gets the rejections.
-   *
-   * Collection of authorized approvers that rejected the flow.
-   *
-   * @return the rejections
-   */
-  public List<String> getRejections() {
-    return rejections;
   }
 
   /**

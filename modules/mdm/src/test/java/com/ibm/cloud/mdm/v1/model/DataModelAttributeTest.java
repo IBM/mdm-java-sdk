@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,33 +32,33 @@ public class DataModelAttributeTest {
   @Test
   public void testDataModelAttribute() throws Throwable {
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
-      .label("testString")
       .indexed(true)
-      .classification("testString")
       .matchingType("testString")
-      .attributeType("testString")
-      .cardinality("testString")
       .description("testString")
+      .attributeType("testString")
+      .label("testString")
+      .classification("testString")
+      .cardinality("testString")
       .build();
-    assertEquals(dataModelAttributeModel.label(), "testString");
     assertEquals(dataModelAttributeModel.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelAttributeModel.classification(), "testString");
     assertEquals(dataModelAttributeModel.matchingType(), "testString");
-    assertEquals(dataModelAttributeModel.attributeType(), "testString");
-    assertEquals(dataModelAttributeModel.cardinality(), "testString");
     assertEquals(dataModelAttributeModel.description(), "testString");
+    assertEquals(dataModelAttributeModel.attributeType(), "testString");
+    assertEquals(dataModelAttributeModel.label(), "testString");
+    assertEquals(dataModelAttributeModel.classification(), "testString");
+    assertEquals(dataModelAttributeModel.cardinality(), "testString");
 
     String json = TestUtilities.serialize(dataModelAttributeModel);
 
     DataModelAttribute dataModelAttributeModelNew = TestUtilities.deserialize(json, DataModelAttribute.class);
     assertTrue(dataModelAttributeModelNew instanceof DataModelAttribute);
-    assertEquals(dataModelAttributeModelNew.label(), "testString");
     assertEquals(dataModelAttributeModelNew.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelAttributeModelNew.classification(), "testString");
     assertEquals(dataModelAttributeModelNew.matchingType(), "testString");
-    assertEquals(dataModelAttributeModelNew.attributeType(), "testString");
-    assertEquals(dataModelAttributeModelNew.cardinality(), "testString");
     assertEquals(dataModelAttributeModelNew.description(), "testString");
+    assertEquals(dataModelAttributeModelNew.attributeType(), "testString");
+    assertEquals(dataModelAttributeModelNew.label(), "testString");
+    assertEquals(dataModelAttributeModelNew.classification(), "testString");
+    assertEquals(dataModelAttributeModelNew.cardinality(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

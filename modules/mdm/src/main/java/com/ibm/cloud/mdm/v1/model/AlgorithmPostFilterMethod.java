@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,23 +23,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmPostFilterMethod extends GenericModel {
 
-  protected List<AlgorithmPostFilterMethodInput> inputs;
-  protected String label;
   @SerializedName("filter_recipe")
   protected List<AlgorithmPostFilterStep> filterRecipe;
+  protected List<AlgorithmPostFilterMethodInput> inputs;
+  protected String label;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private List<AlgorithmPostFilterStep> filterRecipe;
     private List<AlgorithmPostFilterMethodInput> inputs;
     private String label;
-    private List<AlgorithmPostFilterStep> filterRecipe;
 
     private Builder(AlgorithmPostFilterMethod algorithmPostFilterMethod) {
+      this.filterRecipe = algorithmPostFilterMethod.filterRecipe;
       this.inputs = algorithmPostFilterMethod.inputs;
       this.label = algorithmPostFilterMethod.label;
-      this.filterRecipe = algorithmPostFilterMethod.filterRecipe;
     }
 
     /**
@@ -51,14 +51,14 @@ public class AlgorithmPostFilterMethod extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
+     * @param filterRecipe the filterRecipe
      * @param inputs the inputs
      * @param label the label
-     * @param filterRecipe the filterRecipe
      */
-    public Builder(List<AlgorithmPostFilterMethodInput> inputs, String label, List<AlgorithmPostFilterStep> filterRecipe) {
+    public Builder(List<AlgorithmPostFilterStep> filterRecipe, List<AlgorithmPostFilterMethodInput> inputs, String label) {
+      this.filterRecipe = filterRecipe;
       this.inputs = inputs;
       this.label = label;
-      this.filterRecipe = filterRecipe;
     }
 
     /**
@@ -68,6 +68,22 @@ public class AlgorithmPostFilterMethod extends GenericModel {
      */
     public AlgorithmPostFilterMethod build() {
       return new AlgorithmPostFilterMethod(this);
+    }
+
+    /**
+     * Adds an filterRecipe to filterRecipe.
+     *
+     * @param filterRecipe the new filterRecipe
+     * @return the AlgorithmPostFilterMethod builder
+     */
+    public Builder addFilterRecipe(AlgorithmPostFilterStep filterRecipe) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(filterRecipe,
+        "filterRecipe cannot be null");
+      if (this.filterRecipe == null) {
+        this.filterRecipe = new ArrayList<AlgorithmPostFilterStep>();
+      }
+      this.filterRecipe.add(filterRecipe);
+      return this;
     }
 
     /**
@@ -87,18 +103,14 @@ public class AlgorithmPostFilterMethod extends GenericModel {
     }
 
     /**
-     * Adds an filterRecipe to filterRecipe.
+     * Set the filterRecipe.
+     * Existing filterRecipe will be replaced.
      *
-     * @param filterRecipe the new filterRecipe
+     * @param filterRecipe the filterRecipe
      * @return the AlgorithmPostFilterMethod builder
      */
-    public Builder addFilterRecipe(AlgorithmPostFilterStep filterRecipe) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(filterRecipe,
-        "filterRecipe cannot be null");
-      if (this.filterRecipe == null) {
-        this.filterRecipe = new ArrayList<AlgorithmPostFilterStep>();
-      }
-      this.filterRecipe.add(filterRecipe);
+    public Builder filterRecipe(List<AlgorithmPostFilterStep> filterRecipe) {
+      this.filterRecipe = filterRecipe;
       return this;
     }
 
@@ -124,30 +136,20 @@ public class AlgorithmPostFilterMethod extends GenericModel {
       this.label = label;
       return this;
     }
-
-    /**
-     * Set the filterRecipe.
-     * Existing filterRecipe will be replaced.
-     *
-     * @param filterRecipe the filterRecipe
-     * @return the AlgorithmPostFilterMethod builder
-     */
-    public Builder filterRecipe(List<AlgorithmPostFilterStep> filterRecipe) {
-      this.filterRecipe = filterRecipe;
-      return this;
-    }
   }
 
+  protected AlgorithmPostFilterMethod() { }
+
   protected AlgorithmPostFilterMethod(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.filterRecipe,
+      "filterRecipe cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.inputs,
       "inputs cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.filterRecipe,
-      "filterRecipe cannot be null");
+    filterRecipe = builder.filterRecipe;
     inputs = builder.inputs;
     label = builder.label;
-    filterRecipe = builder.filterRecipe;
   }
 
   /**
@@ -157,6 +159,17 @@ public class AlgorithmPostFilterMethod extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the filterRecipe.
+   *
+   * Collection of post filter steps.
+   *
+   * @return the filterRecipe
+   */
+  public List<AlgorithmPostFilterStep> filterRecipe() {
+    return filterRecipe;
   }
 
   /**
@@ -179,17 +192,6 @@ public class AlgorithmPostFilterMethod extends GenericModel {
    */
   public String label() {
     return label;
-  }
-
-  /**
-   * Gets the filterRecipe.
-   *
-   * Collection of post filter steps.
-   *
-   * @return the filterRecipe
-   */
-  public List<AlgorithmPostFilterStep> filterRecipe() {
-    return filterRecipe;
   }
 }
 

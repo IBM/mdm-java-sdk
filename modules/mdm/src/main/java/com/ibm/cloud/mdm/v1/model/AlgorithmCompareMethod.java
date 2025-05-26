@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,6 +15,7 @@ package com.ibm.cloud.mdm.v1.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -22,22 +23,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmCompareMethod extends GenericModel {
 
+  protected List<AlgorithmMethods> methods;
+  @SerializedName("overall_score_contribution")
+  protected Boolean overallScoreContribution;
   protected String label;
   protected List<Float> weights;
-  protected List<AlgorithmMethods> methods;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private List<AlgorithmMethods> methods;
+    private Boolean overallScoreContribution;
     private String label;
     private List<Float> weights;
-    private List<AlgorithmMethods> methods;
 
     private Builder(AlgorithmCompareMethod algorithmCompareMethod) {
+      this.methods = algorithmCompareMethod.methods;
+      this.overallScoreContribution = algorithmCompareMethod.overallScoreContribution;
       this.label = algorithmCompareMethod.label;
       this.weights = algorithmCompareMethod.weights;
-      this.methods = algorithmCompareMethod.methods;
     }
 
     /**
@@ -65,6 +70,22 @@ public class AlgorithmCompareMethod extends GenericModel {
     }
 
     /**
+     * Adds an methods to methods.
+     *
+     * @param methods the new methods
+     * @return the AlgorithmCompareMethod builder
+     */
+    public Builder addMethods(AlgorithmMethods methods) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(methods,
+        "methods cannot be null");
+      if (this.methods == null) {
+        this.methods = new ArrayList<AlgorithmMethods>();
+      }
+      this.methods.add(methods);
+      return this;
+    }
+
+    /**
      * Adds an weights to weights.
      *
      * @param weights the new weights
@@ -81,18 +102,25 @@ public class AlgorithmCompareMethod extends GenericModel {
     }
 
     /**
-     * Adds an methods to methods.
+     * Set the methods.
+     * Existing methods will be replaced.
      *
-     * @param methods the new methods
+     * @param methods the methods
      * @return the AlgorithmCompareMethod builder
      */
-    public Builder addMethods(AlgorithmMethods methods) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(methods,
-        "methods cannot be null");
-      if (this.methods == null) {
-        this.methods = new ArrayList<AlgorithmMethods>();
-      }
-      this.methods.add(methods);
+    public Builder methods(List<AlgorithmMethods> methods) {
+      this.methods = methods;
+      return this;
+    }
+
+    /**
+     * Set the overallScoreContribution.
+     *
+     * @param overallScoreContribution the overallScoreContribution
+     * @return the AlgorithmCompareMethod builder
+     */
+    public Builder overallScoreContribution(Boolean overallScoreContribution) {
+      this.overallScoreContribution = overallScoreContribution;
       return this;
     }
 
@@ -118,26 +146,17 @@ public class AlgorithmCompareMethod extends GenericModel {
       this.weights = weights;
       return this;
     }
-
-    /**
-     * Set the methods.
-     * Existing methods will be replaced.
-     *
-     * @param methods the methods
-     * @return the AlgorithmCompareMethod builder
-     */
-    public Builder methods(List<AlgorithmMethods> methods) {
-      this.methods = methods;
-      return this;
-    }
   }
+
+  protected AlgorithmCompareMethod() { }
 
   protected AlgorithmCompareMethod(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.label,
       "label cannot be null");
+    methods = builder.methods;
+    overallScoreContribution = builder.overallScoreContribution;
     label = builder.label;
     weights = builder.weights;
-    methods = builder.methods;
   }
 
   /**
@@ -147,6 +166,28 @@ public class AlgorithmCompareMethod extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the methods.
+   *
+   * Collection of compare methods, considered in the same group.
+   *
+   * @return the methods
+   */
+  public List<AlgorithmMethods> methods() {
+    return methods;
+  }
+
+  /**
+   * Gets the overallScoreContribution.
+   *
+   * Overall score contriubution of a single compare method.
+   *
+   * @return the overallScoreContribution
+   */
+  public Boolean overallScoreContribution() {
+    return overallScoreContribution;
   }
 
   /**
@@ -169,17 +210,6 @@ public class AlgorithmCompareMethod extends GenericModel {
    */
   public List<Float> weights() {
     return weights;
-  }
-
-  /**
-   * Gets the methods.
-   *
-   * Collection of compare methods, considered in the same group.
-   *
-   * @return the methods
-   */
-  public List<AlgorithmMethods> methods() {
-    return methods;
   }
 }
 

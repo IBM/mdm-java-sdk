@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,28 +21,37 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReplaceModelDataModelOptions extends GenericModel {
 
-  protected Map<String, DataModelRecordType> recordTypes;
-  protected Map<String, DataModelRelationshipType> relationshipTypes;
-  protected Map<String, DataModelAttributeType> attributeTypes;
   protected DataModelSystemProperties systemProperties;
+  protected Map<String, DataModelAttributeType> attributeTypes;
+  protected Map<String, DataModelRelationshipType> relationshipTypes;
   protected String locale;
+  protected Map<String, DataModelRecordType> recordTypes;
+  protected Map<String, DataModelHierarchyType> hierarchyTypes;
+  protected Map<String, DataModelNodeType> nodeTypes;
+  protected Map<String, DataModelGroupType> groupTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Map<String, DataModelRecordType> recordTypes;
-    private Map<String, DataModelRelationshipType> relationshipTypes;
-    private Map<String, DataModelAttributeType> attributeTypes;
     private DataModelSystemProperties systemProperties;
+    private Map<String, DataModelAttributeType> attributeTypes;
+    private Map<String, DataModelRelationshipType> relationshipTypes;
     private String locale;
+    private Map<String, DataModelRecordType> recordTypes;
+    private Map<String, DataModelHierarchyType> hierarchyTypes;
+    private Map<String, DataModelNodeType> nodeTypes;
+    private Map<String, DataModelGroupType> groupTypes;
 
     private Builder(ReplaceModelDataModelOptions replaceModelDataModelOptions) {
-      this.recordTypes = replaceModelDataModelOptions.recordTypes;
-      this.relationshipTypes = replaceModelDataModelOptions.relationshipTypes;
-      this.attributeTypes = replaceModelDataModelOptions.attributeTypes;
       this.systemProperties = replaceModelDataModelOptions.systemProperties;
+      this.attributeTypes = replaceModelDataModelOptions.attributeTypes;
+      this.relationshipTypes = replaceModelDataModelOptions.relationshipTypes;
       this.locale = replaceModelDataModelOptions.locale;
+      this.recordTypes = replaceModelDataModelOptions.recordTypes;
+      this.hierarchyTypes = replaceModelDataModelOptions.hierarchyTypes;
+      this.nodeTypes = replaceModelDataModelOptions.nodeTypes;
+      this.groupTypes = replaceModelDataModelOptions.groupTypes;
     }
 
     /**
@@ -54,18 +63,18 @@ public class ReplaceModelDataModelOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param recordTypes the recordTypes
-     * @param relationshipTypes the relationshipTypes
-     * @param attributeTypes the attributeTypes
      * @param systemProperties the systemProperties
+     * @param attributeTypes the attributeTypes
+     * @param relationshipTypes the relationshipTypes
      * @param locale the locale
+     * @param recordTypes the recordTypes
      */
-    public Builder(Map<String, DataModelRecordType> recordTypes, Map<String, DataModelRelationshipType> relationshipTypes, Map<String, DataModelAttributeType> attributeTypes, DataModelSystemProperties systemProperties, String locale) {
-      this.recordTypes = recordTypes;
-      this.relationshipTypes = relationshipTypes;
-      this.attributeTypes = attributeTypes;
+    public Builder(DataModelSystemProperties systemProperties, Map<String, DataModelAttributeType> attributeTypes, Map<String, DataModelRelationshipType> relationshipTypes, String locale, Map<String, DataModelRecordType> recordTypes) {
       this.systemProperties = systemProperties;
+      this.attributeTypes = attributeTypes;
+      this.relationshipTypes = relationshipTypes;
       this.locale = locale;
+      this.recordTypes = recordTypes;
     }
 
     /**
@@ -78,24 +87,13 @@ public class ReplaceModelDataModelOptions extends GenericModel {
     }
 
     /**
-     * Set the recordTypes.
+     * Set the systemProperties.
      *
-     * @param recordTypes the recordTypes
+     * @param systemProperties the systemProperties
      * @return the ReplaceModelDataModelOptions builder
      */
-    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
-      this.recordTypes = recordTypes;
-      return this;
-    }
-
-    /**
-     * Set the relationshipTypes.
-     *
-     * @param relationshipTypes the relationshipTypes
-     * @return the ReplaceModelDataModelOptions builder
-     */
-    public Builder relationshipTypes(Map<String, DataModelRelationshipType> relationshipTypes) {
-      this.relationshipTypes = relationshipTypes;
+    public Builder systemProperties(DataModelSystemProperties systemProperties) {
+      this.systemProperties = systemProperties;
       return this;
     }
 
@@ -111,13 +109,13 @@ public class ReplaceModelDataModelOptions extends GenericModel {
     }
 
     /**
-     * Set the systemProperties.
+     * Set the relationshipTypes.
      *
-     * @param systemProperties the systemProperties
+     * @param relationshipTypes the relationshipTypes
      * @return the ReplaceModelDataModelOptions builder
      */
-    public Builder systemProperties(DataModelSystemProperties systemProperties) {
-      this.systemProperties = systemProperties;
+    public Builder relationshipTypes(Map<String, DataModelRelationshipType> relationshipTypes) {
+      this.relationshipTypes = relationshipTypes;
       return this;
     }
 
@@ -133,37 +131,89 @@ public class ReplaceModelDataModelOptions extends GenericModel {
     }
 
     /**
+     * Set the recordTypes.
+     *
+     * @param recordTypes the recordTypes
+     * @return the ReplaceModelDataModelOptions builder
+     */
+    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
+      this.recordTypes = recordTypes;
+      return this;
+    }
+
+    /**
+     * Set the hierarchyTypes.
+     *
+     * @param hierarchyTypes the hierarchyTypes
+     * @return the ReplaceModelDataModelOptions builder
+     */
+    public Builder hierarchyTypes(Map<String, DataModelHierarchyType> hierarchyTypes) {
+      this.hierarchyTypes = hierarchyTypes;
+      return this;
+    }
+
+    /**
+     * Set the nodeTypes.
+     *
+     * @param nodeTypes the nodeTypes
+     * @return the ReplaceModelDataModelOptions builder
+     */
+    public Builder nodeTypes(Map<String, DataModelNodeType> nodeTypes) {
+      this.nodeTypes = nodeTypes;
+      return this;
+    }
+
+    /**
+     * Set the groupTypes.
+     *
+     * @param groupTypes the groupTypes
+     * @return the ReplaceModelDataModelOptions builder
+     */
+    public Builder groupTypes(Map<String, DataModelGroupType> groupTypes) {
+      this.groupTypes = groupTypes;
+      return this;
+    }
+
+    /**
      * Set the dataModel.
      *
      * @param dataModel the dataModel
      * @return the ReplaceModelDataModelOptions builder
      */
     public Builder dataModel(DataModel dataModel) {
-      this.recordTypes = dataModel.recordTypes();
-      this.relationshipTypes = dataModel.relationshipTypes();
-      this.attributeTypes = dataModel.attributeTypes();
       this.systemProperties = dataModel.systemProperties();
+      this.attributeTypes = dataModel.attributeTypes();
+      this.relationshipTypes = dataModel.relationshipTypes();
       this.locale = dataModel.locale();
+      this.recordTypes = dataModel.recordTypes();
+      this.hierarchyTypes = dataModel.hierarchyTypes();
+      this.nodeTypes = dataModel.nodeTypes();
+      this.groupTypes = dataModel.groupTypes();
       return this;
     }
   }
 
+  protected ReplaceModelDataModelOptions() { }
+
   protected ReplaceModelDataModelOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
-      "recordTypes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
-      "relationshipTypes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
-      "attributeTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.systemProperties,
       "systemProperties cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
+      "attributeTypes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
+      "relationshipTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
-    recordTypes = builder.recordTypes;
-    relationshipTypes = builder.relationshipTypes;
-    attributeTypes = builder.attributeTypes;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
+      "recordTypes cannot be null");
     systemProperties = builder.systemProperties;
+    attributeTypes = builder.attributeTypes;
+    relationshipTypes = builder.relationshipTypes;
     locale = builder.locale;
+    recordTypes = builder.recordTypes;
+    hierarchyTypes = builder.hierarchyTypes;
+    nodeTypes = builder.nodeTypes;
+    groupTypes = builder.groupTypes;
   }
 
   /**
@@ -173,39 +223,6 @@ public class ReplaceModelDataModelOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the recordTypes.
-   *
-   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
-   *
-   * @return the recordTypes
-   */
-  public Map<String, DataModelRecordType> recordTypes() {
-    return recordTypes;
-  }
-
-  /**
-   * Gets the relationshipTypes.
-   *
-   * Collection of relationship types. The relationship type key must be lower snake case (i.e. employment).
-   *
-   * @return the relationshipTypes
-   */
-  public Map<String, DataModelRelationshipType> relationshipTypes() {
-    return relationshipTypes;
-  }
-
-  /**
-   * Gets the attributeTypes.
-   *
-   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
-   *
-   * @return the attributeTypes
-   */
-  public Map<String, DataModelAttributeType> attributeTypes() {
-    return attributeTypes;
   }
 
   /**
@@ -220,6 +237,28 @@ public class ReplaceModelDataModelOptions extends GenericModel {
   }
 
   /**
+   * Gets the attributeTypes.
+   *
+   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
+   *
+   * @return the attributeTypes
+   */
+  public Map<String, DataModelAttributeType> attributeTypes() {
+    return attributeTypes;
+  }
+
+  /**
+   * Gets the relationshipTypes.
+   *
+   * Collection of relationship types. The relationship type key must be lower snake case (i.e. employment).
+   *
+   * @return the relationshipTypes
+   */
+  public Map<String, DataModelRelationshipType> relationshipTypes() {
+    return relationshipTypes;
+  }
+
+  /**
    * Gets the locale.
    *
    * The request language and location (i.e. enUS).
@@ -228,6 +267,50 @@ public class ReplaceModelDataModelOptions extends GenericModel {
    */
   public String locale() {
     return locale;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
+   *
+   * @return the recordTypes
+   */
+  public Map<String, DataModelRecordType> recordTypes() {
+    return recordTypes;
+  }
+
+  /**
+   * Gets the hierarchyTypes.
+   *
+   * Collection of hierarchy types. The hierarchy type key must be lower snake case (i.e. legal_hierarchy).
+   *
+   * @return the hierarchyTypes
+   */
+  public Map<String, DataModelHierarchyType> hierarchyTypes() {
+    return hierarchyTypes;
+  }
+
+  /**
+   * Gets the nodeTypes.
+   *
+   * Collection of node types. The node type key must be lower snake case (i.e. hierarchy_node).
+   *
+   * @return the nodeTypes
+   */
+  public Map<String, DataModelNodeType> nodeTypes() {
+    return nodeTypes;
+  }
+
+  /**
+   * Gets the groupTypes.
+   *
+   * Collection of group types. The group type key must be lower snake case (i.e. baseball_club).
+   *
+   * @return the groupTypes
+   */
+  public Map<String, DataModelGroupType> groupTypes() {
+    return groupTypes;
   }
 }
 

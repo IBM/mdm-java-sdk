@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,8 +18,6 @@ import com.ibm.cloud.mdm.v1.model.DataModelField;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -35,36 +33,36 @@ public class DataModelAttributeTypeTest {
   @Test
   public void testDataModelAttributeType() throws Throwable {
     DataModelField dataModelFieldModel = new DataModelField.Builder()
-      .label("testString")
       .indexed(true)
-      .classification("testString")
       .description("testString")
+      .label("testString")
+      .classification("testString")
       .build();
-    assertEquals(dataModelFieldModel.label(), "testString");
     assertEquals(dataModelFieldModel.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelFieldModel.classification(), "testString");
     assertEquals(dataModelFieldModel.description(), "testString");
+    assertEquals(dataModelFieldModel.label(), "testString");
+    assertEquals(dataModelFieldModel.classification(), "testString");
 
     DataModelAttributeType dataModelAttributeTypeModel = new DataModelAttributeType.Builder()
-      .label("testString")
-      .matchingTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .classification("testString")
+      .matchingTypes(java.util.Arrays.asList("testString"))
       .description("testString")
+      .label("testString")
+      .classification("testString")
       .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
       .build();
-    assertEquals(dataModelAttributeTypeModel.label(), "testString");
-    assertEquals(dataModelAttributeTypeModel.matchingTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(dataModelAttributeTypeModel.classification(), "testString");
+    assertEquals(dataModelAttributeTypeModel.matchingTypes(), java.util.Arrays.asList("testString"));
     assertEquals(dataModelAttributeTypeModel.description(), "testString");
+    assertEquals(dataModelAttributeTypeModel.label(), "testString");
+    assertEquals(dataModelAttributeTypeModel.classification(), "testString");
     assertEquals(dataModelAttributeTypeModel.fields(), new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } });
 
     String json = TestUtilities.serialize(dataModelAttributeTypeModel);
 
     DataModelAttributeType dataModelAttributeTypeModelNew = TestUtilities.deserialize(json, DataModelAttributeType.class);
     assertTrue(dataModelAttributeTypeModelNew instanceof DataModelAttributeType);
+    assertEquals(dataModelAttributeTypeModelNew.description(), "testString");
     assertEquals(dataModelAttributeTypeModelNew.label(), "testString");
     assertEquals(dataModelAttributeTypeModelNew.classification(), "testString");
-    assertEquals(dataModelAttributeTypeModelNew.description(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -65,22 +65,34 @@ public class CreateConfiguratorProcessOptionsTest {
 
     CreateConfiguratorProcessOptions createConfiguratorProcessOptionsModel = new CreateConfiguratorProcessOptions.Builder()
       .processName("match")
-      .assetIds("testString")
-      .initiator("testString")
-      .doDerive(true)
-      .doForceMatching(true)
       .recordType("person")
-      .assetSourceDetails(processRequestAssetSourceDetailsModel)
       .entityType("person_entity")
+      .doDerive(true)
+      .doMatch(true)
+      .doSync(true)
+      .doReport(true)
+      .assetIds("testString")
+      .assetSourceDetails(processRequestAssetSourceDetailsModel)
+      .initiator("testString")
+      .doForceMatching(true)
+      .doForceDerive(true)
+      .doForceEntitySync(true)
+      .reportJobList("entity_summary")
       .build();
     assertEquals(createConfiguratorProcessOptionsModel.processName(), "match");
-    assertEquals(createConfiguratorProcessOptionsModel.assetIds(), "testString");
-    assertEquals(createConfiguratorProcessOptionsModel.initiator(), "testString");
-    assertEquals(createConfiguratorProcessOptionsModel.doDerive(), Boolean.valueOf(true));
-    assertEquals(createConfiguratorProcessOptionsModel.doForceMatching(), Boolean.valueOf(true));
     assertEquals(createConfiguratorProcessOptionsModel.recordType(), "person");
-    assertEquals(createConfiguratorProcessOptionsModel.assetSourceDetails(), processRequestAssetSourceDetailsModel);
     assertEquals(createConfiguratorProcessOptionsModel.entityType(), "person_entity");
+    assertEquals(createConfiguratorProcessOptionsModel.doDerive(), Boolean.valueOf(true));
+    assertEquals(createConfiguratorProcessOptionsModel.doMatch(), Boolean.valueOf(true));
+    assertEquals(createConfiguratorProcessOptionsModel.doSync(), Boolean.valueOf(true));
+    assertEquals(createConfiguratorProcessOptionsModel.doReport(), Boolean.valueOf(true));
+    assertEquals(createConfiguratorProcessOptionsModel.assetIds(), "testString");
+    assertEquals(createConfiguratorProcessOptionsModel.assetSourceDetails(), processRequestAssetSourceDetailsModel);
+    assertEquals(createConfiguratorProcessOptionsModel.initiator(), "testString");
+    assertEquals(createConfiguratorProcessOptionsModel.doForceMatching(), Boolean.valueOf(true));
+    assertEquals(createConfiguratorProcessOptionsModel.doForceDerive(), Boolean.valueOf(true));
+    assertEquals(createConfiguratorProcessOptionsModel.doForceEntitySync(), Boolean.valueOf(true));
+    assertEquals(createConfiguratorProcessOptionsModel.reportJobList(), "entity_summary");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

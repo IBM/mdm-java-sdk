@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,14 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelRelationshipTypeSystemProperties extends GenericModel {
 
-  @SerializedName("relationship_type")
-  protected DataModelSystemProperty relationshipType;
-  @SerializedName("to_record_source")
-  protected DataModelSystemProperty toRecordSource;
-  @SerializedName("relationship_id")
-  protected DataModelSystemProperty relationshipId;
   @SerializedName("from_record_id")
   protected DataModelSystemProperty fromRecordId;
+  @SerializedName("created_user")
+  protected DataModelSystemProperty createdUser;
   @SerializedName("to_record_id")
   protected DataModelSystemProperty toRecordId;
   @SerializedName("relationship_number")
@@ -46,15 +42,25 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
   protected DataModelSystemProperty relationshipSource;
   @SerializedName("from_record_source")
   protected DataModelSystemProperty fromRecordSource;
+  @SerializedName("relationship_type")
+  protected DataModelSystemProperty relationshipType;
+  @SerializedName("to_record_source")
+  protected DataModelSystemProperty toRecordSource;
+  @SerializedName("last_updated_user")
+  protected DataModelSystemProperty lastUpdatedUser;
+  @SerializedName("relationship_id")
+  protected DataModelSystemProperty relationshipId;
+  @SerializedName("created_date")
+  protected DataModelSystemProperty createdDate;
+  @SerializedName("last_updated_date")
+  protected DataModelSystemProperty lastUpdatedDate;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private DataModelSystemProperty relationshipType;
-    private DataModelSystemProperty toRecordSource;
-    private DataModelSystemProperty relationshipId;
     private DataModelSystemProperty fromRecordId;
+    private DataModelSystemProperty createdUser;
     private DataModelSystemProperty toRecordId;
     private DataModelSystemProperty relationshipNumber;
     private DataModelSystemProperty toRecordType;
@@ -64,12 +70,16 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
     private DataModelSystemProperty fromRecordNumber;
     private DataModelSystemProperty relationshipSource;
     private DataModelSystemProperty fromRecordSource;
+    private DataModelSystemProperty relationshipType;
+    private DataModelSystemProperty toRecordSource;
+    private DataModelSystemProperty lastUpdatedUser;
+    private DataModelSystemProperty relationshipId;
+    private DataModelSystemProperty createdDate;
+    private DataModelSystemProperty lastUpdatedDate;
 
     private Builder(DataModelRelationshipTypeSystemProperties dataModelRelationshipTypeSystemProperties) {
-      this.relationshipType = dataModelRelationshipTypeSystemProperties.relationshipType;
-      this.toRecordSource = dataModelRelationshipTypeSystemProperties.toRecordSource;
-      this.relationshipId = dataModelRelationshipTypeSystemProperties.relationshipId;
       this.fromRecordId = dataModelRelationshipTypeSystemProperties.fromRecordId;
+      this.createdUser = dataModelRelationshipTypeSystemProperties.createdUser;
       this.toRecordId = dataModelRelationshipTypeSystemProperties.toRecordId;
       this.relationshipNumber = dataModelRelationshipTypeSystemProperties.relationshipNumber;
       this.toRecordType = dataModelRelationshipTypeSystemProperties.toRecordType;
@@ -79,6 +89,12 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
       this.fromRecordNumber = dataModelRelationshipTypeSystemProperties.fromRecordNumber;
       this.relationshipSource = dataModelRelationshipTypeSystemProperties.relationshipSource;
       this.fromRecordSource = dataModelRelationshipTypeSystemProperties.fromRecordSource;
+      this.relationshipType = dataModelRelationshipTypeSystemProperties.relationshipType;
+      this.toRecordSource = dataModelRelationshipTypeSystemProperties.toRecordSource;
+      this.lastUpdatedUser = dataModelRelationshipTypeSystemProperties.lastUpdatedUser;
+      this.relationshipId = dataModelRelationshipTypeSystemProperties.relationshipId;
+      this.createdDate = dataModelRelationshipTypeSystemProperties.createdDate;
+      this.lastUpdatedDate = dataModelRelationshipTypeSystemProperties.lastUpdatedDate;
     }
 
     /**
@@ -106,39 +122,6 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
     }
 
     /**
-     * Set the relationshipType.
-     *
-     * @param relationshipType the relationshipType
-     * @return the DataModelRelationshipTypeSystemProperties builder
-     */
-    public Builder relationshipType(DataModelSystemProperty relationshipType) {
-      this.relationshipType = relationshipType;
-      return this;
-    }
-
-    /**
-     * Set the toRecordSource.
-     *
-     * @param toRecordSource the toRecordSource
-     * @return the DataModelRelationshipTypeSystemProperties builder
-     */
-    public Builder toRecordSource(DataModelSystemProperty toRecordSource) {
-      this.toRecordSource = toRecordSource;
-      return this;
-    }
-
-    /**
-     * Set the relationshipId.
-     *
-     * @param relationshipId the relationshipId
-     * @return the DataModelRelationshipTypeSystemProperties builder
-     */
-    public Builder relationshipId(DataModelSystemProperty relationshipId) {
-      this.relationshipId = relationshipId;
-      return this;
-    }
-
-    /**
      * Set the fromRecordId.
      *
      * @param fromRecordId the fromRecordId
@@ -146,6 +129,17 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
      */
     public Builder fromRecordId(DataModelSystemProperty fromRecordId) {
       this.fromRecordId = fromRecordId;
+      return this;
+    }
+
+    /**
+     * Set the createdUser.
+     *
+     * @param createdUser the createdUser
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder createdUser(DataModelSystemProperty createdUser) {
+      this.createdUser = createdUser;
       return this;
     }
 
@@ -247,15 +241,81 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
       this.fromRecordSource = fromRecordSource;
       return this;
     }
+
+    /**
+     * Set the relationshipType.
+     *
+     * @param relationshipType the relationshipType
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder relationshipType(DataModelSystemProperty relationshipType) {
+      this.relationshipType = relationshipType;
+      return this;
+    }
+
+    /**
+     * Set the toRecordSource.
+     *
+     * @param toRecordSource the toRecordSource
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder toRecordSource(DataModelSystemProperty toRecordSource) {
+      this.toRecordSource = toRecordSource;
+      return this;
+    }
+
+    /**
+     * Set the lastUpdatedUser.
+     *
+     * @param lastUpdatedUser the lastUpdatedUser
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder lastUpdatedUser(DataModelSystemProperty lastUpdatedUser) {
+      this.lastUpdatedUser = lastUpdatedUser;
+      return this;
+    }
+
+    /**
+     * Set the relationshipId.
+     *
+     * @param relationshipId the relationshipId
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder relationshipId(DataModelSystemProperty relationshipId) {
+      this.relationshipId = relationshipId;
+      return this;
+    }
+
+    /**
+     * Set the createdDate.
+     *
+     * @param createdDate the createdDate
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder createdDate(DataModelSystemProperty createdDate) {
+      this.createdDate = createdDate;
+      return this;
+    }
+
+    /**
+     * Set the lastUpdatedDate.
+     *
+     * @param lastUpdatedDate the lastUpdatedDate
+     * @return the DataModelRelationshipTypeSystemProperties builder
+     */
+    public Builder lastUpdatedDate(DataModelSystemProperty lastUpdatedDate) {
+      this.lastUpdatedDate = lastUpdatedDate;
+      return this;
+    }
   }
+
+  protected DataModelRelationshipTypeSystemProperties() { }
 
   protected DataModelRelationshipTypeSystemProperties(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipLastUpdated,
       "relationshipLastUpdated cannot be null");
-    relationshipType = builder.relationshipType;
-    toRecordSource = builder.toRecordSource;
-    relationshipId = builder.relationshipId;
     fromRecordId = builder.fromRecordId;
+    createdUser = builder.createdUser;
     toRecordId = builder.toRecordId;
     relationshipNumber = builder.relationshipNumber;
     toRecordType = builder.toRecordType;
@@ -265,6 +325,12 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
     fromRecordNumber = builder.fromRecordNumber;
     relationshipSource = builder.relationshipSource;
     fromRecordSource = builder.fromRecordSource;
+    relationshipType = builder.relationshipType;
+    toRecordSource = builder.toRecordSource;
+    lastUpdatedUser = builder.lastUpdatedUser;
+    relationshipId = builder.relationshipId;
+    createdDate = builder.createdDate;
+    lastUpdatedDate = builder.lastUpdatedDate;
   }
 
   /**
@@ -277,39 +343,6 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the relationshipType.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the relationshipType
-   */
-  public DataModelSystemProperty relationshipType() {
-    return relationshipType;
-  }
-
-  /**
-   * Gets the toRecordSource.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the toRecordSource
-   */
-  public DataModelSystemProperty toRecordSource() {
-    return toRecordSource;
-  }
-
-  /**
-   * Gets the relationshipId.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the relationshipId
-   */
-  public DataModelSystemProperty relationshipId() {
-    return relationshipId;
-  }
-
-  /**
    * Gets the fromRecordId.
    *
    * Defines metadata of a system property.
@@ -318,6 +351,17 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
    */
   public DataModelSystemProperty fromRecordId() {
     return fromRecordId;
+  }
+
+  /**
+   * Gets the createdUser.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the createdUser
+   */
+  public DataModelSystemProperty createdUser() {
+    return createdUser;
   }
 
   /**
@@ -417,6 +461,72 @@ public class DataModelRelationshipTypeSystemProperties extends GenericModel {
    */
   public DataModelSystemProperty fromRecordSource() {
     return fromRecordSource;
+  }
+
+  /**
+   * Gets the relationshipType.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the relationshipType
+   */
+  public DataModelSystemProperty relationshipType() {
+    return relationshipType;
+  }
+
+  /**
+   * Gets the toRecordSource.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the toRecordSource
+   */
+  public DataModelSystemProperty toRecordSource() {
+    return toRecordSource;
+  }
+
+  /**
+   * Gets the lastUpdatedUser.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the lastUpdatedUser
+   */
+  public DataModelSystemProperty lastUpdatedUser() {
+    return lastUpdatedUser;
+  }
+
+  /**
+   * Gets the relationshipId.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the relationshipId
+   */
+  public DataModelSystemProperty relationshipId() {
+    return relationshipId;
+  }
+
+  /**
+   * Gets the createdDate.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the createdDate
+   */
+  public DataModelSystemProperty createdDate() {
+    return createdDate;
+  }
+
+  /**
+   * Gets the lastUpdatedDate.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the lastUpdatedDate
+   */
+  public DataModelSystemProperty lastUpdatedDate() {
+    return lastUpdatedDate;
   }
 }
 

@@ -19,22 +19,21 @@
     <packaging>pom</packaging>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--
             This is the version associated with the Java core. The version used here should be compatible with the version
             of the SDK generator used to generate your SDK code.
             See this link for details: https://github.ibm.com/CloudEngineering/openapi-sdkgen/wiki/Compatibility-Chart
         -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sdk-core-version>9.15.3</sdk-core-version>
-
+        <sdk-core-version>9.21.2</sdk-core-version>
         <!-- >>> Replace this with the name of your SDK's github repository -->
         <git-repository-name>mdm-java-sdk</git-repository-name>
 
+        <awaitility-version>3.1.6</awaitility-version>
         <testng-version>7.4.0</testng-version>
-        <okhttp3-version>4.9.1</okhttp3-version>
+        <okhttp3-version>4.12.0</okhttp3-version>
         <surefire-version>3.0.0-M3</surefire-version>
-        <jacoco-plugin-version>0.8.5</jacoco-plugin-version>
-        <!-- versions of transitive dependencies we need to override to avoid vulnerability alerts -->
+        <jacoco-plugin-version>0.8.7</jacoco-plugin-version>
         <junit-version>4.13.2</junit-version>
         <maven-deploy-plugin-version>3.0.0-M1</maven-deploy-plugin-version>
         <maven-gpg-plugin-version>3.0.1</maven-gpg-plugin-version>
@@ -49,9 +48,11 @@
         <maven-failsafe-plugin-version>3.0.0-M4</maven-failsafe-plugin-version>
         <maven-buildnumber-plugin-version>1.4</maven-buildnumber-plugin-version>
         <nexus-staging-plugin-version>1.6.8</nexus-staging-plugin-version>
-        <powermock-version>2.0.5</powermock-version>
-        <mockito-version>3.2.4</mockito-version>
-        <slf4j-version>1.7.28</slf4j-version>
+        <powermock-version>2.0.9</powermock-version>
+        <mockito-version>3.12.4</mockito-version>
+        <slf4j-version>1.7.36</slf4j-version>
+        <json-simple.version>1.1.1</json-simple.version>
+        <ibm-cos-java-sdk-version>2.13.6</ibm-cos-java-sdk-version>
     </properties>
 
     <modules>

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,6 +29,7 @@ public class ListDataRelatedRecordsForEntityOptions extends GenericModel {
   protected Long offset;
   protected List<String> include;
   protected List<String> exclude;
+  protected Boolean includeTotalCount;
 
   /**
    * Builder.
@@ -41,6 +42,7 @@ public class ListDataRelatedRecordsForEntityOptions extends GenericModel {
     private Long offset;
     private List<String> include;
     private List<String> exclude;
+    private Boolean includeTotalCount;
 
     private Builder(ListDataRelatedRecordsForEntityOptions listDataRelatedRecordsForEntityOptions) {
       this.id = listDataRelatedRecordsForEntityOptions.id;
@@ -50,6 +52,7 @@ public class ListDataRelatedRecordsForEntityOptions extends GenericModel {
       this.offset = listDataRelatedRecordsForEntityOptions.offset;
       this.include = listDataRelatedRecordsForEntityOptions.include;
       this.exclude = listDataRelatedRecordsForEntityOptions.exclude;
+      this.includeTotalCount = listDataRelatedRecordsForEntityOptions.includeTotalCount;
     }
 
     /**
@@ -190,7 +193,20 @@ public class ListDataRelatedRecordsForEntityOptions extends GenericModel {
       this.exclude = exclude;
       return this;
     }
+
+    /**
+     * Set the includeTotalCount.
+     *
+     * @param includeTotalCount the includeTotalCount
+     * @return the ListDataRelatedRecordsForEntityOptions builder
+     */
+    public Builder includeTotalCount(Boolean includeTotalCount) {
+      this.includeTotalCount = includeTotalCount;
+      return this;
+    }
   }
+
+  protected ListDataRelatedRecordsForEntityOptions() { }
 
   protected ListDataRelatedRecordsForEntityOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
@@ -206,6 +222,7 @@ public class ListDataRelatedRecordsForEntityOptions extends GenericModel {
     offset = builder.offset;
     include = builder.include;
     exclude = builder.exclude;
+    includeTotalCount = builder.includeTotalCount;
   }
 
   /**
@@ -292,6 +309,17 @@ public class ListDataRelatedRecordsForEntityOptions extends GenericModel {
    */
   public List<String> exclude() {
     return exclude;
+  }
+
+  /**
+   * Gets the includeTotalCount.
+   *
+   * Flag to include the total record count on pages other than the first.
+   *
+   * @return the includeTotalCount
+   */
+  public Boolean includeTotalCount() {
+    return includeTotalCount;
   }
 }
 

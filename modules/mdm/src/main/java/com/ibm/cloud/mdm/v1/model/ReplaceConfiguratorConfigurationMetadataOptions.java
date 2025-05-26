@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,28 +21,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericModel {
 
+  protected String name;
+  protected String description;
+  protected String projectId;
   protected String catalogId;
   protected Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
-  protected String projectId;
-  protected String description;
-  protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String name;
+    private String description;
+    private String projectId;
     private String catalogId;
     private Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis;
-    private String projectId;
-    private String description;
-    private String name;
 
     private Builder(ReplaceConfiguratorConfigurationMetadataOptions replaceConfiguratorConfigurationMetadataOptions) {
+      this.name = replaceConfiguratorConfigurationMetadataOptions.name;
+      this.description = replaceConfiguratorConfigurationMetadataOptions.description;
+      this.projectId = replaceConfiguratorConfigurationMetadataOptions.projectId;
       this.catalogId = replaceConfiguratorConfigurationMetadataOptions.catalogId;
       this.pairAnalysis = replaceConfiguratorConfigurationMetadataOptions.pairAnalysis;
-      this.projectId = replaceConfiguratorConfigurationMetadataOptions.projectId;
-      this.description = replaceConfiguratorConfigurationMetadataOptions.description;
-      this.name = replaceConfiguratorConfigurationMetadataOptions.name;
     }
 
     /**
@@ -58,6 +58,39 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
      */
     public ReplaceConfiguratorConfigurationMetadataOptions build() {
       return new ReplaceConfiguratorConfigurationMetadataOptions(this);
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+
+    /**
+     * Set the projectId.
+     *
+     * @param projectId the projectId
+     * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
+     */
+    public Builder projectId(String projectId) {
+      this.projectId = projectId;
+      return this;
     }
 
     /**
@@ -83,60 +116,29 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
     }
 
     /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
-    }
-
-    /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the configurationMetadata.
      *
      * @param configurationMetadata the configurationMetadata
      * @return the ReplaceConfiguratorConfigurationMetadataOptions builder
      */
     public Builder configurationMetadata(ConfigurationMetadata configurationMetadata) {
+      this.name = configurationMetadata.name();
+      this.description = configurationMetadata.description();
+      this.projectId = configurationMetadata.projectId();
       this.catalogId = configurationMetadata.catalogId();
       this.pairAnalysis = configurationMetadata.pairAnalysis();
-      this.projectId = configurationMetadata.projectId();
-      this.description = configurationMetadata.description();
-      this.name = configurationMetadata.name();
       return this;
     }
   }
 
+  protected ReplaceConfiguratorConfigurationMetadataOptions() { }
+
   protected ReplaceConfiguratorConfigurationMetadataOptions(Builder builder) {
+    name = builder.name;
+    description = builder.description;
+    projectId = builder.projectId;
     catalogId = builder.catalogId;
     pairAnalysis = builder.pairAnalysis;
-    projectId = builder.projectId;
-    description = builder.description;
-    name = builder.name;
   }
 
   /**
@@ -146,6 +148,39 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The name of the Configuration metadata.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * The description of the Configuration metadata.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
+  }
+
+  /**
+   * Gets the projectId.
+   *
+   * The project id of the linked WKC project.
+   *
+   * @return the projectId
+   */
+  public String projectId() {
+    return projectId;
   }
 
   /**
@@ -168,39 +203,6 @@ public class ReplaceConfiguratorConfigurationMetadataOptions extends GenericMode
    */
   public Map<String, Map<String, ConfigurationMetadataEntity>> pairAnalysis() {
     return pairAnalysis;
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * The project id of the linked WKC project.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
-  }
-
-  /**
-   * Gets the description.
-   *
-   * The description of the Configuration metadata.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The name of the Configuration metadata.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
   }
 }
 

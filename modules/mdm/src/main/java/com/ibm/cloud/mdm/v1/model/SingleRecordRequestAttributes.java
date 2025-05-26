@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,10 +26,10 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
 
   @SerializedName("record_id")
   protected String recordId;
-  @SerializedName("record_source")
-  protected String recordSource;
   @SerializedName("record_last_updated")
   protected Long recordLastUpdated;
+  @SerializedName("record_source")
+  protected String recordSource;
 
   public SingleRecordRequestAttributes() {
     super(new TypeToken<Object>() { });
@@ -40,14 +40,14 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
    */
   public static class Builder {
     private String recordId;
-    private String recordSource;
     private Long recordLastUpdated;
+    private String recordSource;
     private Map<String, Object> dynamicProperties;
 
     private Builder(SingleRecordRequestAttributes singleRecordRequestAttributes) {
       this.recordId = singleRecordRequestAttributes.recordId;
-      this.recordSource = singleRecordRequestAttributes.recordSource;
       this.recordLastUpdated = singleRecordRequestAttributes.recordLastUpdated;
+      this.recordSource = singleRecordRequestAttributes.recordSource;
       this.dynamicProperties = singleRecordRequestAttributes.getProperties();
     }
 
@@ -78,17 +78,6 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
     }
 
     /**
-     * Set the recordSource.
-     *
-     * @param recordSource the recordSource
-     * @return the SingleRecordRequestAttributes builder
-     */
-    public Builder recordSource(String recordSource) {
-      this.recordSource = recordSource;
-      return this;
-    }
-
-    /**
      * Set the recordLastUpdated.
      *
      * @param recordLastUpdated the recordLastUpdated
@@ -96,6 +85,17 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
      */
     public Builder recordLastUpdated(long recordLastUpdated) {
       this.recordLastUpdated = recordLastUpdated;
+      return this;
+    }
+
+    /**
+     * Set the recordSource.
+     *
+     * @param recordSource the recordSource
+     * @return the SingleRecordRequestAttributes builder
+     */
+    public Builder recordSource(String recordSource) {
+      this.recordSource = recordSource;
       return this;
     }
 
@@ -119,8 +119,8 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
   protected SingleRecordRequestAttributes(Builder builder) {
     super(new TypeToken<Object>() { });
     recordId = builder.recordId;
-    recordSource = builder.recordSource;
     recordLastUpdated = builder.recordLastUpdated;
+    recordSource = builder.recordSource;
     this.setProperties(builder.dynamicProperties);
   }
 
@@ -154,26 +154,6 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the recordSource.
-   *
-   * The source system name of a record.
-   *
-   * @return the recordSource
-   */
-  public String getRecordSource() {
-    return this.recordSource;
-  }
-
-  /**
-   * Sets the recordSource.
-   *
-   * @param recordSource the new recordSource
-   */
-  public void setRecordSource(final String recordSource) {
-    this.recordSource = recordSource;
-  }
-
-  /**
    * Gets the recordLastUpdated.
    *
    * System generated timestamp when the record was last updated.
@@ -191,5 +171,25 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
    */
   public void setRecordLastUpdated(final long recordLastUpdated) {
     this.recordLastUpdated = recordLastUpdated;
+  }
+
+  /**
+   * Gets the recordSource.
+   *
+   * The source system name of a record.
+   *
+   * @return the recordSource
+   */
+  public String getRecordSource() {
+    return this.recordSource;
+  }
+
+  /**
+   * Sets the recordSource.
+   *
+   * @param recordSource the new recordSource
+   */
+  public void setRecordSource(final String recordSource) {
+    this.recordSource = recordSource;
   }
 }

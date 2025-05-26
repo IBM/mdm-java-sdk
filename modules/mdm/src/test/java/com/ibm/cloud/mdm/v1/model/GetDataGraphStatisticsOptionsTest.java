@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,7 +31,11 @@ public class GetDataGraphStatisticsOptionsTest {
 
   @Test
   public void testGetDataGraphStatisticsOptions() throws Throwable {
-    GetDataGraphStatisticsOptions getDataGraphStatisticsOptionsModel = new GetDataGraphStatisticsOptions();
-    assertNotNull(getDataGraphStatisticsOptionsModel);
+    GetDataGraphStatisticsOptions getDataGraphStatisticsOptionsModel = new GetDataGraphStatisticsOptions.Builder()
+      .includeSourceStatistics("true")
+      .approximateStatistics("false")
+      .build();
+    assertEquals(getDataGraphStatisticsOptionsModel.includeSourceStatistics(), "true");
+    assertEquals(getDataGraphStatisticsOptionsModel.approximateStatistics(), "false");
   }
 }

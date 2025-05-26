@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,24 +32,24 @@ public class DataModelFieldTest {
   @Test
   public void testDataModelField() throws Throwable {
     DataModelField dataModelFieldModel = new DataModelField.Builder()
-      .label("testString")
       .indexed(true)
-      .classification("testString")
       .description("testString")
+      .label("testString")
+      .classification("testString")
       .build();
-    assertEquals(dataModelFieldModel.label(), "testString");
     assertEquals(dataModelFieldModel.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelFieldModel.classification(), "testString");
     assertEquals(dataModelFieldModel.description(), "testString");
+    assertEquals(dataModelFieldModel.label(), "testString");
+    assertEquals(dataModelFieldModel.classification(), "testString");
 
     String json = TestUtilities.serialize(dataModelFieldModel);
 
     DataModelField dataModelFieldModelNew = TestUtilities.deserialize(json, DataModelField.class);
     assertTrue(dataModelFieldModelNew instanceof DataModelField);
-    assertEquals(dataModelFieldModelNew.label(), "testString");
     assertEquals(dataModelFieldModelNew.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelFieldModelNew.classification(), "testString");
     assertEquals(dataModelFieldModelNew.description(), "testString");
+    assertEquals(dataModelFieldModelNew.label(), "testString");
+    assertEquals(dataModelFieldModelNew.classification(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,7 @@ package com.ibm.cloud.mdm.v1.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -31,8 +32,18 @@ public class DataExport extends GenericModel {
     String DELETE = "delete";
     /** export. */
     String EXPORT = "export";
+    /** migration_export. */
+    String MIGRATION_EXPORT = "migration_export";
     /** bulk_load. */
     String BULK_LOAD = "bulk_load";
+    /** reindex. */
+    String REINDEX = "reindex";
+    /** sync_entities. */
+    String SYNC_ENTITIES = "sync_entities";
+    /** backend_sync. */
+    String BACKEND_SYNC = "backend_sync";
+    /** cleanup_deleted_elements. */
+    String CLEANUP_DELETED_ELEMENTS = "cleanup_deleted_elements";
   }
 
   /**
@@ -65,6 +76,8 @@ public class DataExport extends GenericModel {
     String RECORD = "record";
     /** entity. */
     String ENTITY = "entity";
+    /** relationship. */
+    String RELATIONSHIP = "relationship";
   }
 
   @SerializedName("job_id")
@@ -86,6 +99,8 @@ public class DataExport extends GenericModel {
   protected Boolean fileExpired;
   @SerializedName("search_criteria")
   protected DataSearchCriteria searchCriteria;
+  @SerializedName("additional_info")
+  protected Map<String, String> additionalInfo;
 
   /**
    * Gets the jobId.
@@ -195,6 +210,17 @@ public class DataExport extends GenericModel {
    */
   public DataSearchCriteria getSearchCriteria() {
     return searchCriteria;
+  }
+
+  /**
+   * Gets the additionalInfo.
+   *
+   * Additional Information of Export Job.
+   *
+   * @return the additionalInfo
+   */
+  public Map<String, String> getAdditionalInfo() {
+    return additionalInfo;
   }
 }
 

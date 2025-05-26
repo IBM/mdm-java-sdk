@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,6 +15,7 @@ package com.ibm.cloud.mdm.v1.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -28,12 +29,33 @@ public class SearchFilter extends GenericModel {
   public interface Type {
     /** record. */
     String RECORD = "record";
+    /** entity. */
+    String ENTITY = "entity";
     /** source. */
     String SOURCE = "source";
+    /** relationship. */
+    String RELATIONSHIP = "relationship";
+    /** data_quality. */
+    String DATA_QUALITY = "data_quality";
+    /** hierarchy_type. */
+    String HIERARCHY_TYPE = "hierarchy_type";
+    /** hierarchy_number. */
+    String HIERARCHY_NUMBER = "hierarchy_number";
+  }
+
+  public interface DataQualityIssues {
+    /** potential_match. */
+    String POTENTIAL_MATCH = "potential_match";
+    /** potential_overlay. */
+    String POTENTIAL_OVERLAY = "potential_overlay";
+    /** user_tasks_only. */
+    String USER_TASKS_ONLY = "user_tasks_only";
   }
 
   protected String type;
   protected List<String> values;
+  @SerializedName("data_quality_issues")
+  protected List<String> dataQualityIssues;
 
   /**
    * Builder.
@@ -41,10 +63,12 @@ public class SearchFilter extends GenericModel {
   public static class Builder {
     private String type;
     private List<String> values;
+    private List<String> dataQualityIssues;
 
     private Builder(SearchFilter searchFilter) {
       this.type = searchFilter.type;
       this.values = searchFilter.values;
+      this.dataQualityIssues = searchFilter.dataQualityIssues;
     }
 
     /**
@@ -57,11 +81,9 @@ public class SearchFilter extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param type the type
-     * @param values the values
      */
-    public Builder(String type, List<String> values) {
+    public Builder(String type) {
       this.type = type;
-      this.values = values;
     }
 
     /**
@@ -90,6 +112,22 @@ public class SearchFilter extends GenericModel {
     }
 
     /**
+     * Adds an dataQualityIssues to dataQualityIssues.
+     *
+     * @param dataQualityIssues the new dataQualityIssues
+     * @return the SearchFilter builder
+     */
+    public Builder addDataQualityIssues(String dataQualityIssues) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(dataQualityIssues,
+        "dataQualityIssues cannot be null");
+      if (this.dataQualityIssues == null) {
+        this.dataQualityIssues = new ArrayList<String>();
+      }
+      this.dataQualityIssues.add(dataQualityIssues);
+      return this;
+    }
+
+    /**
      * Set the type.
      *
      * @param type the type
@@ -111,15 +149,28 @@ public class SearchFilter extends GenericModel {
       this.values = values;
       return this;
     }
+
+    /**
+     * Set the dataQualityIssues.
+     * Existing dataQualityIssues will be replaced.
+     *
+     * @param dataQualityIssues the dataQualityIssues
+     * @return the SearchFilter builder
+     */
+    public Builder dataQualityIssues(List<String> dataQualityIssues) {
+      this.dataQualityIssues = dataQualityIssues;
+      return this;
+    }
   }
+
+  protected SearchFilter() { }
 
   protected SearchFilter(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,
       "type cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.values,
-      "values cannot be null");
     type = builder.type;
     values = builder.values;
+    dataQualityIssues = builder.dataQualityIssues;
   }
 
   /**
@@ -145,12 +196,23 @@ public class SearchFilter extends GenericModel {
   /**
    * Gets the values.
    *
-   * The values to filter upon.
+   * The values to filter upon, either values or data_quality_issues is required.
    *
    * @return the values
    */
   public List<String> values() {
     return values;
+  }
+
+  /**
+   * Gets the dataQualityIssues.
+   *
+   * The issues of data quality, either data_quality_issues or values is required.
+   *
+   * @return the dataQualityIssues
+   */
+  public List<String> dataQualityIssues() {
+    return dataQualityIssues;
   }
 }
 

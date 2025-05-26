@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,11 +26,11 @@ public class DataRecordsResponse extends GenericModel {
   protected Long limit;
   @SerializedName("total_count")
   protected Long totalCount;
-  protected PagedResponseFirst first;
-  protected PagedResponseLast last;
-  protected PagedResponsePrevious previous;
-  protected PagedResponseNext next;
-  protected List<DataRecord> records;
+  protected DataRecordsResponseFirst first;
+  protected DataRecordsResponseLast last;
+  protected DataRecordsResponsePrevious previous;
+  protected DataRecordsResponseNext next;
+  protected List<DataWorkflow> workflows;
 
   /**
    * Gets the offset.
@@ -72,7 +72,7 @@ public class DataRecordsResponse extends GenericModel {
    *
    * @return the first
    */
-  public PagedResponseFirst getFirst() {
+  public DataRecordsResponseFirst getFirst() {
     return first;
   }
 
@@ -83,7 +83,7 @@ public class DataRecordsResponse extends GenericModel {
    *
    * @return the last
    */
-  public PagedResponseLast getLast() {
+  public DataRecordsResponseLast getLast() {
     return last;
   }
 
@@ -94,7 +94,7 @@ public class DataRecordsResponse extends GenericModel {
    *
    * @return the previous
    */
-  public PagedResponsePrevious getPrevious() {
+  public DataRecordsResponsePrevious getPrevious() {
     return previous;
   }
 
@@ -105,19 +105,19 @@ public class DataRecordsResponse extends GenericModel {
    *
    * @return the next
    */
-  public PagedResponseNext getNext() {
+  public DataRecordsResponseNext getNext() {
     return next;
   }
 
   /**
-   * Gets the records.
+   * Gets the workflows.
    *
-   * The paged collection of records.
+   * The paged collection of workflows.
    *
-   * @return the records
+   * @return the workflows
    */
-  public List<DataRecord> getRecords() {
-    return records;
+  public List<DataWorkflow> getWorkflows() {
+    return workflows;
   }
 }
 

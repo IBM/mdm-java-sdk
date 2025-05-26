@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,6 +21,7 @@ public class ListDataRecordsOptions extends GenericModel {
 
   protected Long offset;
   protected Long limit;
+  protected String recordtype;
 
   /**
    * Builder.
@@ -28,10 +29,12 @@ public class ListDataRecordsOptions extends GenericModel {
   public static class Builder {
     private Long offset;
     private Long limit;
+    private String recordtype;
 
     private Builder(ListDataRecordsOptions listDataRecordsOptions) {
       this.offset = listDataRecordsOptions.offset;
       this.limit = listDataRecordsOptions.limit;
+      this.recordtype = listDataRecordsOptions.recordtype;
     }
 
     /**
@@ -70,11 +73,25 @@ public class ListDataRecordsOptions extends GenericModel {
       this.limit = limit;
       return this;
     }
+
+    /**
+     * Set the recordtype.
+     *
+     * @param recordtype the recordtype
+     * @return the ListDataRecordsOptions builder
+     */
+    public Builder recordtype(String recordtype) {
+      this.recordtype = recordtype;
+      return this;
+    }
   }
+
+  protected ListDataRecordsOptions() { }
 
   protected ListDataRecordsOptions(Builder builder) {
     offset = builder.offset;
     limit = builder.limit;
+    recordtype = builder.recordtype;
   }
 
   /**
@@ -106,6 +123,17 @@ public class ListDataRecordsOptions extends GenericModel {
    */
   public Long limit() {
     return limit;
+  }
+
+  /**
+   * Gets the recordtype.
+   *
+   * Record type.
+   *
+   * @return the recordtype
+   */
+  public String recordtype() {
+    return recordtype;
   }
 }
 

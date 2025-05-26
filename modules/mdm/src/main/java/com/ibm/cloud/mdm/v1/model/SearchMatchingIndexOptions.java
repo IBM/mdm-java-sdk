@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,8 +19,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SearchMatchingIndexOptions extends GenericModel {
 
-  protected String recordType;
   protected SingleRecordRequestAttributes attributes;
+  protected String recordType;
+  protected Long id;
+  protected Boolean includeLogicalKey;
   protected String details;
   protected Long minScore;
   protected Long maxScore;
@@ -32,8 +34,10 @@ public class SearchMatchingIndexOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String recordType;
     private SingleRecordRequestAttributes attributes;
+    private String recordType;
+    private Long id;
+    private Boolean includeLogicalKey;
     private String details;
     private Long minScore;
     private Long maxScore;
@@ -42,8 +46,10 @@ public class SearchMatchingIndexOptions extends GenericModel {
     private Long limit;
 
     private Builder(SearchMatchingIndexOptions searchMatchingIndexOptions) {
-      this.recordType = searchMatchingIndexOptions.recordType;
       this.attributes = searchMatchingIndexOptions.attributes;
+      this.recordType = searchMatchingIndexOptions.recordType;
+      this.id = searchMatchingIndexOptions.id;
+      this.includeLogicalKey = searchMatchingIndexOptions.includeLogicalKey;
       this.details = searchMatchingIndexOptions.details;
       this.minScore = searchMatchingIndexOptions.minScore;
       this.maxScore = searchMatchingIndexOptions.maxScore;
@@ -61,12 +67,12 @@ public class SearchMatchingIndexOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param recordType the recordType
      * @param attributes the attributes
+     * @param recordType the recordType
      */
-    public Builder(String recordType, SingleRecordRequestAttributes attributes) {
-      this.recordType = recordType;
+    public Builder(SingleRecordRequestAttributes attributes, String recordType) {
       this.attributes = attributes;
+      this.recordType = recordType;
     }
 
     /**
@@ -76,6 +82,17 @@ public class SearchMatchingIndexOptions extends GenericModel {
      */
     public SearchMatchingIndexOptions build() {
       return new SearchMatchingIndexOptions(this);
+    }
+
+    /**
+     * Set the attributes.
+     *
+     * @param attributes the attributes
+     * @return the SearchMatchingIndexOptions builder
+     */
+    public Builder attributes(SingleRecordRequestAttributes attributes) {
+      this.attributes = attributes;
+      return this;
     }
 
     /**
@@ -90,13 +107,24 @@ public class SearchMatchingIndexOptions extends GenericModel {
     }
 
     /**
-     * Set the attributes.
+     * Set the id.
      *
-     * @param attributes the attributes
+     * @param id the id
      * @return the SearchMatchingIndexOptions builder
      */
-    public Builder attributes(SingleRecordRequestAttributes attributes) {
-      this.attributes = attributes;
+    public Builder id(long id) {
+      this.id = id;
+      return this;
+    }
+
+    /**
+     * Set the includeLogicalKey.
+     *
+     * @param includeLogicalKey the includeLogicalKey
+     * @return the SearchMatchingIndexOptions builder
+     */
+    public Builder includeLogicalKey(Boolean includeLogicalKey) {
+      this.includeLogicalKey = includeLogicalKey;
       return this;
     }
 
@@ -167,13 +195,17 @@ public class SearchMatchingIndexOptions extends GenericModel {
     }
   }
 
+  protected SearchMatchingIndexOptions() { }
+
   protected SearchMatchingIndexOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
-      "recordType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
       "attributes cannot be null");
-    recordType = builder.recordType;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordType,
+      "recordType cannot be null");
     attributes = builder.attributes;
+    recordType = builder.recordType;
+    id = builder.id;
+    includeLogicalKey = builder.includeLogicalKey;
     details = builder.details;
     minScore = builder.minScore;
     maxScore = builder.maxScore;
@@ -192,6 +224,17 @@ public class SearchMatchingIndexOptions extends GenericModel {
   }
 
   /**
+   * Gets the attributes.
+   *
+   * Details of a single record including external record reference and record attributes.
+   *
+   * @return the attributes
+   */
+  public SingleRecordRequestAttributes attributes() {
+    return attributes;
+  }
+
+  /**
    * Gets the recordType.
    *
    * The data type identifier of the record, ie. person, organization.
@@ -203,14 +246,25 @@ public class SearchMatchingIndexOptions extends GenericModel {
   }
 
   /**
-   * Gets the attributes.
+   * Gets the id.
    *
-   * Details of a single record including external record reference and record attributes.
+   * Optional record number.
    *
-   * @return the attributes
+   * @return the id
    */
-  public SingleRecordRequestAttributes attributes() {
-    return attributes;
+  public Long id() {
+    return id;
+  }
+
+  /**
+   * Gets the includeLogicalKey.
+   *
+   * To include logical keys in the response, default is true.
+   *
+   * @return the includeLogicalKey
+   */
+  public Boolean includeLogicalKey() {
+    return includeLogicalKey;
   }
 
   /**

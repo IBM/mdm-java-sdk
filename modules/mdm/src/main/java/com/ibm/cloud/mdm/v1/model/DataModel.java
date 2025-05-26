@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,32 +22,44 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModel extends GenericModel {
 
-  @SerializedName("record_types")
-  protected Map<String, DataModelRecordType> recordTypes;
-  @SerializedName("relationship_types")
-  protected Map<String, DataModelRelationshipType> relationshipTypes;
-  @SerializedName("attribute_types")
-  protected Map<String, DataModelAttributeType> attributeTypes;
+  @SerializedName("hierarchy_types")
+  protected Map<String, DataModelHierarchyType> hierarchyTypes;
+  @SerializedName("node_types")
+  protected Map<String, DataModelNodeType> nodeTypes;
   @SerializedName("system_properties")
   protected DataModelSystemProperties systemProperties;
+  @SerializedName("attribute_types")
+  protected Map<String, DataModelAttributeType> attributeTypes;
+  @SerializedName("group_types")
+  protected Map<String, DataModelGroupType> groupTypes;
+  @SerializedName("relationship_types")
+  protected Map<String, DataModelRelationshipType> relationshipTypes;
   protected String locale;
+  @SerializedName("record_types")
+  protected Map<String, DataModelRecordType> recordTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Map<String, DataModelRecordType> recordTypes;
-    private Map<String, DataModelRelationshipType> relationshipTypes;
-    private Map<String, DataModelAttributeType> attributeTypes;
+    private Map<String, DataModelHierarchyType> hierarchyTypes;
+    private Map<String, DataModelNodeType> nodeTypes;
     private DataModelSystemProperties systemProperties;
+    private Map<String, DataModelAttributeType> attributeTypes;
+    private Map<String, DataModelGroupType> groupTypes;
+    private Map<String, DataModelRelationshipType> relationshipTypes;
     private String locale;
+    private Map<String, DataModelRecordType> recordTypes;
 
     private Builder(DataModel dataModel) {
-      this.recordTypes = dataModel.recordTypes;
-      this.relationshipTypes = dataModel.relationshipTypes;
-      this.attributeTypes = dataModel.attributeTypes;
+      this.hierarchyTypes = dataModel.hierarchyTypes;
+      this.nodeTypes = dataModel.nodeTypes;
       this.systemProperties = dataModel.systemProperties;
+      this.attributeTypes = dataModel.attributeTypes;
+      this.groupTypes = dataModel.groupTypes;
+      this.relationshipTypes = dataModel.relationshipTypes;
       this.locale = dataModel.locale;
+      this.recordTypes = dataModel.recordTypes;
     }
 
     /**
@@ -59,18 +71,18 @@ public class DataModel extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param recordTypes the recordTypes
-     * @param relationshipTypes the relationshipTypes
-     * @param attributeTypes the attributeTypes
      * @param systemProperties the systemProperties
+     * @param attributeTypes the attributeTypes
+     * @param relationshipTypes the relationshipTypes
      * @param locale the locale
+     * @param recordTypes the recordTypes
      */
-    public Builder(Map<String, DataModelRecordType> recordTypes, Map<String, DataModelRelationshipType> relationshipTypes, Map<String, DataModelAttributeType> attributeTypes, DataModelSystemProperties systemProperties, String locale) {
-      this.recordTypes = recordTypes;
-      this.relationshipTypes = relationshipTypes;
-      this.attributeTypes = attributeTypes;
+    public Builder(DataModelSystemProperties systemProperties, Map<String, DataModelAttributeType> attributeTypes, Map<String, DataModelRelationshipType> relationshipTypes, String locale, Map<String, DataModelRecordType> recordTypes) {
       this.systemProperties = systemProperties;
+      this.attributeTypes = attributeTypes;
+      this.relationshipTypes = relationshipTypes;
       this.locale = locale;
+      this.recordTypes = recordTypes;
     }
 
     /**
@@ -83,35 +95,24 @@ public class DataModel extends GenericModel {
     }
 
     /**
-     * Set the recordTypes.
+     * Set the hierarchyTypes.
      *
-     * @param recordTypes the recordTypes
+     * @param hierarchyTypes the hierarchyTypes
      * @return the DataModel builder
      */
-    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
-      this.recordTypes = recordTypes;
+    public Builder hierarchyTypes(Map<String, DataModelHierarchyType> hierarchyTypes) {
+      this.hierarchyTypes = hierarchyTypes;
       return this;
     }
 
     /**
-     * Set the relationshipTypes.
+     * Set the nodeTypes.
      *
-     * @param relationshipTypes the relationshipTypes
+     * @param nodeTypes the nodeTypes
      * @return the DataModel builder
      */
-    public Builder relationshipTypes(Map<String, DataModelRelationshipType> relationshipTypes) {
-      this.relationshipTypes = relationshipTypes;
-      return this;
-    }
-
-    /**
-     * Set the attributeTypes.
-     *
-     * @param attributeTypes the attributeTypes
-     * @return the DataModel builder
-     */
-    public Builder attributeTypes(Map<String, DataModelAttributeType> attributeTypes) {
-      this.attributeTypes = attributeTypes;
+    public Builder nodeTypes(Map<String, DataModelNodeType> nodeTypes) {
+      this.nodeTypes = nodeTypes;
       return this;
     }
 
@@ -127,6 +128,39 @@ public class DataModel extends GenericModel {
     }
 
     /**
+     * Set the attributeTypes.
+     *
+     * @param attributeTypes the attributeTypes
+     * @return the DataModel builder
+     */
+    public Builder attributeTypes(Map<String, DataModelAttributeType> attributeTypes) {
+      this.attributeTypes = attributeTypes;
+      return this;
+    }
+
+    /**
+     * Set the groupTypes.
+     *
+     * @param groupTypes the groupTypes
+     * @return the DataModel builder
+     */
+    public Builder groupTypes(Map<String, DataModelGroupType> groupTypes) {
+      this.groupTypes = groupTypes;
+      return this;
+    }
+
+    /**
+     * Set the relationshipTypes.
+     *
+     * @param relationshipTypes the relationshipTypes
+     * @return the DataModel builder
+     */
+    public Builder relationshipTypes(Map<String, DataModelRelationshipType> relationshipTypes) {
+      this.relationshipTypes = relationshipTypes;
+      return this;
+    }
+
+    /**
      * Set the locale.
      *
      * @param locale the locale
@@ -136,24 +170,40 @@ public class DataModel extends GenericModel {
       this.locale = locale;
       return this;
     }
+
+    /**
+     * Set the recordTypes.
+     *
+     * @param recordTypes the recordTypes
+     * @return the DataModel builder
+     */
+    public Builder recordTypes(Map<String, DataModelRecordType> recordTypes) {
+      this.recordTypes = recordTypes;
+      return this;
+    }
   }
 
+  protected DataModel() { }
+
   protected DataModel(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
-      "recordTypes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
-      "relationshipTypes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
-      "attributeTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.systemProperties,
       "systemProperties cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
+      "attributeTypes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
+      "relationshipTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.locale,
       "locale cannot be null");
-    recordTypes = builder.recordTypes;
-    relationshipTypes = builder.relationshipTypes;
-    attributeTypes = builder.attributeTypes;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
+      "recordTypes cannot be null");
+    hierarchyTypes = builder.hierarchyTypes;
+    nodeTypes = builder.nodeTypes;
     systemProperties = builder.systemProperties;
+    attributeTypes = builder.attributeTypes;
+    groupTypes = builder.groupTypes;
+    relationshipTypes = builder.relationshipTypes;
     locale = builder.locale;
+    recordTypes = builder.recordTypes;
   }
 
   /**
@@ -166,36 +216,25 @@ public class DataModel extends GenericModel {
   }
 
   /**
-   * Gets the recordTypes.
+   * Gets the hierarchyTypes.
    *
-   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
+   * Collection of hierarchy types. The hierarchy type key must be lower snake case (i.e. legal_hierarchy).
    *
-   * @return the recordTypes
+   * @return the hierarchyTypes
    */
-  public Map<String, DataModelRecordType> recordTypes() {
-    return recordTypes;
+  public Map<String, DataModelHierarchyType> hierarchyTypes() {
+    return hierarchyTypes;
   }
 
   /**
-   * Gets the relationshipTypes.
+   * Gets the nodeTypes.
    *
-   * Collection of relationship types. The relationship type key must be lower snake case (i.e. employment).
+   * Collection of node types. The node type key must be lower snake case (i.e. hierarchy_node).
    *
-   * @return the relationshipTypes
+   * @return the nodeTypes
    */
-  public Map<String, DataModelRelationshipType> relationshipTypes() {
-    return relationshipTypes;
-  }
-
-  /**
-   * Gets the attributeTypes.
-   *
-   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
-   *
-   * @return the attributeTypes
-   */
-  public Map<String, DataModelAttributeType> attributeTypes() {
-    return attributeTypes;
+  public Map<String, DataModelNodeType> nodeTypes() {
+    return nodeTypes;
   }
 
   /**
@@ -210,6 +249,39 @@ public class DataModel extends GenericModel {
   }
 
   /**
+   * Gets the attributeTypes.
+   *
+   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
+   *
+   * @return the attributeTypes
+   */
+  public Map<String, DataModelAttributeType> attributeTypes() {
+    return attributeTypes;
+  }
+
+  /**
+   * Gets the groupTypes.
+   *
+   * Collection of group types. The group type key must be lower snake case (i.e. baseball_club).
+   *
+   * @return the groupTypes
+   */
+  public Map<String, DataModelGroupType> groupTypes() {
+    return groupTypes;
+  }
+
+  /**
+   * Gets the relationshipTypes.
+   *
+   * Collection of relationship types. The relationship type key must be lower snake case (i.e. employment).
+   *
+   * @return the relationshipTypes
+   */
+  public Map<String, DataModelRelationshipType> relationshipTypes() {
+    return relationshipTypes;
+  }
+
+  /**
    * Gets the locale.
    *
    * The request language and location (i.e. enUS).
@@ -218,6 +290,17 @@ public class DataModel extends GenericModel {
    */
   public String locale() {
     return locale;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Collection of user defined record types. The record type key must be lower snake case (i.e. person, organization).
+   *
+   * @return the recordTypes
+   */
+  public Map<String, DataModelRecordType> recordTypes() {
+    return recordTypes;
   }
 }
 

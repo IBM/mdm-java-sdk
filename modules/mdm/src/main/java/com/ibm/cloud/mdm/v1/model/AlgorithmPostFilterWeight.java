@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,14 +23,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class AlgorithmPostFilterWeight extends GenericModel {
 
   protected List<Long> distances;
-  protected List<Long> values;
+  protected List<Float> values;
 
   /**
    * Builder.
    */
   public static class Builder {
     private List<Long> distances;
-    private List<Long> values;
+    private List<Float> values;
 
     private Builder(AlgorithmPostFilterWeight algorithmPostFilterWeight) {
       this.distances = algorithmPostFilterWeight.distances;
@@ -49,7 +49,7 @@ public class AlgorithmPostFilterWeight extends GenericModel {
      * @param distances the distances
      * @param values the values
      */
-    public Builder(List<Long> distances, List<Long> values) {
+    public Builder(List<Long> distances, List<Float> values) {
       this.distances = distances;
       this.values = values;
     }
@@ -85,11 +85,11 @@ public class AlgorithmPostFilterWeight extends GenericModel {
      * @param values the new values
      * @return the AlgorithmPostFilterWeight builder
      */
-    public Builder addValues(Long values) {
+    public Builder addValues(Float values) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(values,
         "values cannot be null");
       if (this.values == null) {
-        this.values = new ArrayList<Long>();
+        this.values = new ArrayList<Float>();
       }
       this.values.add(values);
       return this;
@@ -114,11 +114,13 @@ public class AlgorithmPostFilterWeight extends GenericModel {
      * @param values the values
      * @return the AlgorithmPostFilterWeight builder
      */
-    public Builder values(List<Long> values) {
+    public Builder values(List<Float> values) {
       this.values = values;
       return this;
     }
   }
+
+  protected AlgorithmPostFilterWeight() { }
 
   protected AlgorithmPostFilterWeight(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.distances,
@@ -156,7 +158,7 @@ public class AlgorithmPostFilterWeight extends GenericModel {
    *
    * @return the values
    */
-  public List<Long> values() {
+  public List<Float> values() {
     return values;
   }
 }

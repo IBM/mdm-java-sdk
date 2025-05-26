@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,13 +32,19 @@ public class CreateDataRecordOptionsTest {
   @Test
   public void testCreateDataRecordOptions() throws Throwable {
     CreateDataRecordOptions createDataRecordOptionsModel = new CreateDataRecordOptions.Builder()
+      .type("record")
       .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .typeName("testString")
-      .id("testString")
+      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .isBlockedForUpdate(true)
+      .isQuarantined(true)
       .build();
+    assertEquals(createDataRecordOptionsModel.type(), "record");
     assertEquals(createDataRecordOptionsModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
     assertEquals(createDataRecordOptionsModel.typeName(), "testString");
-    assertEquals(createDataRecordOptionsModel.id(), "testString");
+    assertEquals(createDataRecordOptionsModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(createDataRecordOptionsModel.isBlockedForUpdate(), Boolean.valueOf(true));
+    assertEquals(createDataRecordOptionsModel.isQuarantined(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

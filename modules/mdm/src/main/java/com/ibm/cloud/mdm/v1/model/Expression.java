@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -70,6 +70,8 @@ public class Expression extends GenericModel {
   protected String value;
   @SerializedName("record_type")
   protected String recordType;
+  @SerializedName("entity_type")
+  protected String entityType;
   protected String operation;
   protected List<Expression> expressions;
 
@@ -81,6 +83,7 @@ public class Expression extends GenericModel {
     private String condition;
     private String value;
     private String recordType;
+    private String entityType;
     private String operation;
     private List<Expression> expressions;
 
@@ -89,6 +92,7 @@ public class Expression extends GenericModel {
       this.condition = expression.condition;
       this.value = expression.value;
       this.recordType = expression.recordType;
+      this.entityType = expression.entityType;
       this.operation = expression.operation;
       this.expressions = expression.expressions;
     }
@@ -169,6 +173,17 @@ public class Expression extends GenericModel {
     }
 
     /**
+     * Set the entityType.
+     *
+     * @param entityType the entityType
+     * @return the Expression builder
+     */
+    public Builder entityType(String entityType) {
+      this.entityType = entityType;
+      return this;
+    }
+
+    /**
      * Set the operation.
      *
      * @param operation the operation
@@ -192,11 +207,14 @@ public class Expression extends GenericModel {
     }
   }
 
+  protected Expression() { }
+
   protected Expression(Builder builder) {
     property = builder.property;
     condition = builder.condition;
     value = builder.value;
     recordType = builder.recordType;
+    entityType = builder.entityType;
     operation = builder.operation;
     expressions = builder.expressions;
   }
@@ -252,6 +270,17 @@ public class Expression extends GenericModel {
    */
   public String recordType() {
     return recordType;
+  }
+
+  /**
+   * Gets the entityType.
+   *
+   * The entity type to search on.
+   *
+   * @return the entityType
+   */
+  public String entityType() {
+    return entityType;
   }
 
   /**

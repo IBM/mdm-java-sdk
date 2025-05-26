@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,20 +23,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AlgorithmGenerationAttributeItem extends GenericModel {
 
+  @SerializedName("overall_score_contribution")
+  protected Boolean overallScoreContribution;
+  protected List<String> attributes;
   @SerializedName("matching_fields")
   protected List<String> matchingFields;
-  protected List<String> attributes;
+  @SerializedName("post_filter_methods")
+  protected List<String> postFilterMethods;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<String> matchingFields;
+    private Boolean overallScoreContribution;
     private List<String> attributes;
+    private List<String> matchingFields;
+    private List<String> postFilterMethods;
 
     private Builder(AlgorithmGenerationAttributeItem algorithmGenerationAttributeItem) {
-      this.matchingFields = algorithmGenerationAttributeItem.matchingFields;
+      this.overallScoreContribution = algorithmGenerationAttributeItem.overallScoreContribution;
       this.attributes = algorithmGenerationAttributeItem.attributes;
+      this.matchingFields = algorithmGenerationAttributeItem.matchingFields;
+      this.postFilterMethods = algorithmGenerationAttributeItem.postFilterMethods;
     }
 
     /**
@@ -64,22 +72,6 @@ public class AlgorithmGenerationAttributeItem extends GenericModel {
     }
 
     /**
-     * Adds an matchingFields to matchingFields.
-     *
-     * @param matchingFields the new matchingFields
-     * @return the AlgorithmGenerationAttributeItem builder
-     */
-    public Builder addMatchingFields(String matchingFields) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(matchingFields,
-        "matchingFields cannot be null");
-      if (this.matchingFields == null) {
-        this.matchingFields = new ArrayList<String>();
-      }
-      this.matchingFields.add(matchingFields);
-      return this;
-    }
-
-    /**
      * Adds an attributes to attributes.
      *
      * @param attributes the new attributes
@@ -96,14 +88,45 @@ public class AlgorithmGenerationAttributeItem extends GenericModel {
     }
 
     /**
-     * Set the matchingFields.
-     * Existing matchingFields will be replaced.
+     * Adds an matchingFields to matchingFields.
      *
-     * @param matchingFields the matchingFields
+     * @param matchingFields the new matchingFields
      * @return the AlgorithmGenerationAttributeItem builder
      */
-    public Builder matchingFields(List<String> matchingFields) {
-      this.matchingFields = matchingFields;
+    public Builder addMatchingFields(String matchingFields) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(matchingFields,
+        "matchingFields cannot be null");
+      if (this.matchingFields == null) {
+        this.matchingFields = new ArrayList<String>();
+      }
+      this.matchingFields.add(matchingFields);
+      return this;
+    }
+
+    /**
+     * Adds an postFilterMethods to postFilterMethods.
+     *
+     * @param postFilterMethods the new postFilterMethods
+     * @return the AlgorithmGenerationAttributeItem builder
+     */
+    public Builder addPostFilterMethods(String postFilterMethods) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(postFilterMethods,
+        "postFilterMethods cannot be null");
+      if (this.postFilterMethods == null) {
+        this.postFilterMethods = new ArrayList<String>();
+      }
+      this.postFilterMethods.add(postFilterMethods);
+      return this;
+    }
+
+    /**
+     * Set the overallScoreContribution.
+     *
+     * @param overallScoreContribution the overallScoreContribution
+     * @return the AlgorithmGenerationAttributeItem builder
+     */
+    public Builder overallScoreContribution(Boolean overallScoreContribution) {
+      this.overallScoreContribution = overallScoreContribution;
       return this;
     }
 
@@ -118,13 +141,41 @@ public class AlgorithmGenerationAttributeItem extends GenericModel {
       this.attributes = attributes;
       return this;
     }
+
+    /**
+     * Set the matchingFields.
+     * Existing matchingFields will be replaced.
+     *
+     * @param matchingFields the matchingFields
+     * @return the AlgorithmGenerationAttributeItem builder
+     */
+    public Builder matchingFields(List<String> matchingFields) {
+      this.matchingFields = matchingFields;
+      return this;
+    }
+
+    /**
+     * Set the postFilterMethods.
+     * Existing postFilterMethods will be replaced.
+     *
+     * @param postFilterMethods the postFilterMethods
+     * @return the AlgorithmGenerationAttributeItem builder
+     */
+    public Builder postFilterMethods(List<String> postFilterMethods) {
+      this.postFilterMethods = postFilterMethods;
+      return this;
+    }
   }
+
+  protected AlgorithmGenerationAttributeItem() { }
 
   protected AlgorithmGenerationAttributeItem(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
       "attributes cannot be null");
-    matchingFields = builder.matchingFields;
+    overallScoreContribution = builder.overallScoreContribution;
     attributes = builder.attributes;
+    matchingFields = builder.matchingFields;
+    postFilterMethods = builder.postFilterMethods;
   }
 
   /**
@@ -134,6 +185,28 @@ public class AlgorithmGenerationAttributeItem extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the overallScoreContribution.
+   *
+   * whether or not the corresponding compare_method should contribute to overall score.
+   *
+   * @return the overallScoreContribution
+   */
+  public Boolean overallScoreContribution() {
+    return overallScoreContribution;
+  }
+
+  /**
+   * Gets the attributes.
+   *
+   * Collection of applicable attributes. The attribute key must be lower snake case (i.e. employment_detail).
+   *
+   * @return the attributes
+   */
+  public List<String> attributes() {
+    return attributes;
   }
 
   /**
@@ -148,14 +221,14 @@ public class AlgorithmGenerationAttributeItem extends GenericModel {
   }
 
   /**
-   * Gets the attributes.
+   * Gets the postFilterMethods.
    *
-   * Collection of applicable attributes. The attribute key must be lower snake case (i.e. employment_detail).
+   * Collection of post_filter_method that attributes contribute to.
    *
-   * @return the attributes
+   * @return the postFilterMethods
    */
-  public List<String> attributes() {
-    return attributes;
+  public List<String> postFilterMethods() {
+    return postFilterMethods;
   }
 }
 

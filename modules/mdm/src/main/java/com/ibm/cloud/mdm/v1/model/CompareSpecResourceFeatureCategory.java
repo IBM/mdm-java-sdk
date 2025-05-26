@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,23 +23,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CompareSpecResourceFeatureCategory extends GenericModel {
 
-  @SerializedName("equivalency_map_resource")
-  protected String equivalencyMapResource;
   protected List<String> features;
   protected List<String> fields;
+  @SerializedName("equivalency_map_resource")
+  protected String equivalencyMapResource;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String equivalencyMapResource;
     private List<String> features;
     private List<String> fields;
+    private String equivalencyMapResource;
 
     private Builder(CompareSpecResourceFeatureCategory compareSpecResourceFeatureCategory) {
-      this.equivalencyMapResource = compareSpecResourceFeatureCategory.equivalencyMapResource;
       this.features = compareSpecResourceFeatureCategory.features;
       this.fields = compareSpecResourceFeatureCategory.fields;
+      this.equivalencyMapResource = compareSpecResourceFeatureCategory.equivalencyMapResource;
     }
 
     /**
@@ -90,17 +90,6 @@ public class CompareSpecResourceFeatureCategory extends GenericModel {
     }
 
     /**
-     * Set the equivalencyMapResource.
-     *
-     * @param equivalencyMapResource the equivalencyMapResource
-     * @return the CompareSpecResourceFeatureCategory builder
-     */
-    public Builder equivalencyMapResource(String equivalencyMapResource) {
-      this.equivalencyMapResource = equivalencyMapResource;
-      return this;
-    }
-
-    /**
      * Set the features.
      * Existing features will be replaced.
      *
@@ -123,12 +112,25 @@ public class CompareSpecResourceFeatureCategory extends GenericModel {
       this.fields = fields;
       return this;
     }
+
+    /**
+     * Set the equivalencyMapResource.
+     *
+     * @param equivalencyMapResource the equivalencyMapResource
+     * @return the CompareSpecResourceFeatureCategory builder
+     */
+    public Builder equivalencyMapResource(String equivalencyMapResource) {
+      this.equivalencyMapResource = equivalencyMapResource;
+      return this;
+    }
   }
 
+  protected CompareSpecResourceFeatureCategory() { }
+
   protected CompareSpecResourceFeatureCategory(Builder builder) {
-    equivalencyMapResource = builder.equivalencyMapResource;
     features = builder.features;
     fields = builder.fields;
+    equivalencyMapResource = builder.equivalencyMapResource;
   }
 
   /**
@@ -138,17 +140,6 @@ public class CompareSpecResourceFeatureCategory extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the equivalencyMapResource.
-   *
-   * An existing map resource name for equivalent tokens.
-   *
-   * @return the equivalencyMapResource
-   */
-  public String equivalencyMapResource() {
-    return equivalencyMapResource;
   }
 
   /**
@@ -172,6 +163,17 @@ public class CompareSpecResourceFeatureCategory extends GenericModel {
    */
   public List<String> fields() {
     return fields;
+  }
+
+  /**
+   * Gets the equivalencyMapResource.
+   *
+   * An existing map resource name for equivalent tokens.
+   *
+   * @return the equivalencyMapResource
+   */
+  public String equivalencyMapResource() {
+    return equivalencyMapResource;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,30 +15,43 @@ package com.ibm.cloud.mdm.v1.model;
 import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * Information about a relationship.
  */
-public class DataRelationship extends ElementWithAttributes {
+public class DataRelationship extends GenericModel {
 
+  public interface Type {
+    /** relationship. */
+    String RELATIONSHIP = "relationship";
+  }
+
+  protected String id;
+  protected String type;
+  protected Map<String, Object> attributes;
+  @SerializedName("system_attributes")
+  protected Map<String, Object> systemAttributes;
   @SerializedName("type_name")
   protected String typeName;
-  protected DataVertexSummary source;
-  protected DataVertexSummary target;
+  protected NodeWithAttributes source;
+  protected NodeWithAttributes target;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String id;
+    private String type;
     private Map<String, Object> attributes;
+    private Map<String, Object> systemAttributes;
     private String typeName;
-    private DataVertexSummary source;
-    private DataVertexSummary target;
+    private NodeWithAttributes source;
+    private NodeWithAttributes target;
 
-    public Builder(DataRelationship dataRelationship) {
-      this.id = dataRelationship.id;
+    private Builder(DataRelationship dataRelationship) {
+      this.type = dataRelationship.type;
       this.attributes = dataRelationship.attributes;
+      this.systemAttributes = dataRelationship.systemAttributes;
       this.typeName = dataRelationship.typeName;
       this.source = dataRelationship.source;
       this.target = dataRelationship.target;
@@ -71,13 +84,13 @@ public class DataRelationship extends ElementWithAttributes {
     }
 
     /**
-     * Set the id.
+     * Set the type.
      *
-     * @param id the id
+     * @param type the type
      * @return the DataRelationship builder
      */
-    public Builder id(String id) {
-      this.id = id;
+    public Builder type(String type) {
+      this.type = type;
       return this;
     }
 
@@ -89,6 +102,17 @@ public class DataRelationship extends ElementWithAttributes {
      */
     public Builder attributes(Map<String, Object> attributes) {
       this.attributes = attributes;
+      return this;
+    }
+
+    /**
+     * Set the systemAttributes.
+     *
+     * @param systemAttributes the systemAttributes
+     * @return the DataRelationship builder
+     */
+    public Builder systemAttributes(Map<String, Object> systemAttributes) {
+      this.systemAttributes = systemAttributes;
       return this;
     }
 
@@ -109,7 +133,7 @@ public class DataRelationship extends ElementWithAttributes {
      * @param source the source
      * @return the DataRelationship builder
      */
-    public Builder source(DataVertexSummary source) {
+    public Builder source(NodeWithAttributes source) {
       this.source = source;
       return this;
     }
@@ -120,19 +144,22 @@ public class DataRelationship extends ElementWithAttributes {
      * @param target the target
      * @return the DataRelationship builder
      */
-    public Builder target(DataVertexSummary target) {
+    public Builder target(NodeWithAttributes target) {
       this.target = target;
       return this;
     }
   }
+
+  protected DataRelationship() { }
 
   protected DataRelationship(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
       "attributes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typeName,
       "typeName cannot be null");
-    id = builder.id;
+    type = builder.type;
     attributes = builder.attributes;
+    systemAttributes = builder.systemAttributes;
     typeName = builder.typeName;
     source = builder.source;
     target = builder.target;
@@ -148,9 +175,51 @@ public class DataRelationship extends ElementWithAttributes {
   }
 
   /**
+   * Gets the id.
+   *
+   * The id of the element.
+   *
+   * @return the id
+   */
+  public String id() {
+    return id;
+  }
+
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   */
+  public String type() {
+    return type;
+  }
+
+  /**
+   * Gets the attributes.
+   *
+   * The list of the attributes of the element.
+   *
+   * @return the attributes
+   */
+  public Map<String, Object> attributes() {
+    return attributes;
+  }
+
+  /**
+   * Gets the systemAttributes.
+   *
+   * The list of the system attributes of the element.
+   *
+   * @return the systemAttributes
+   */
+  public Map<String, Object> systemAttributes() {
+    return systemAttributes;
+  }
+
+  /**
    * Gets the typeName.
    *
-   * The name of the relationship type as defined in the data model.
+   * The type as defined in the data model.
    *
    * @return the typeName
    */
@@ -161,18 +230,22 @@ public class DataRelationship extends ElementWithAttributes {
   /**
    * Gets the source.
    *
+   * A node with attributes.
+   *
    * @return the source
    */
-  public DataVertexSummary source() {
+  public NodeWithAttributes source() {
     return source;
   }
 
   /**
    * Gets the target.
    *
+   * A node with attributes.
+   *
    * @return the target
    */
-  public DataVertexSummary target() {
+  public NodeWithAttributes target() {
     return target;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,15 +14,15 @@
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.CompositeRules;
+import com.ibm.cloud.mdm.v1.model.CompositeRulesEntityRules;
 import com.ibm.cloud.mdm.v1.model.CompositeRulesRecordType;
 import com.ibm.cloud.mdm.v1.model.CompositeRulesRule;
 import com.ibm.cloud.mdm.v1.model.CompositeRulesRules;
+import com.ibm.cloud.mdm.v1.model.CompositeRulesSubRuleType;
 import com.ibm.cloud.mdm.v1.model.PutCompositeRules;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -38,8 +38,8 @@ public class PutCompositeRulesTest {
   @Test
   public void testPutCompositeRules() throws Throwable {
     PutCompositeRules putCompositeRulesModel = new PutCompositeRules();
-    assertNull(putCompositeRulesModel.getCompositeRules());
     assertNull(putCompositeRulesModel.getFlowState());
     assertNull(putCompositeRulesModel.getFlowId());
+    assertNull(putCompositeRulesModel.getCompositeRules());
   }
 }

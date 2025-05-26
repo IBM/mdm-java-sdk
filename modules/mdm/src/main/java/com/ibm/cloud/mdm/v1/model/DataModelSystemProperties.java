@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,32 +20,44 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelSystemProperties extends GenericModel {
 
-  @SerializedName("record_types")
-  protected DataModelRecordTypeSystemProperties recordTypes;
+  @SerializedName("hierarchy_types")
+  protected DataModelHierarchyTypeSystemProperties hierarchyTypes;
+  @SerializedName("node_types")
+  protected DataModelNodeTypeSystemProperties nodeTypes;
+  @SerializedName("attribute_types")
+  protected DataModelAttributeTypeSystemProperties attributeTypes;
+  @SerializedName("group_types")
+  protected DataModelGroupTypeSystemProperties groupTypes;
   @SerializedName("entity_types")
   protected DataModelEntityTypeSystemProperties entityTypes;
   @SerializedName("relationship_types")
   protected DataModelRelationshipTypeSystemProperties relationshipTypes;
-  @SerializedName("attribute_types")
-  protected DataModelAttributeTypeSystemProperties attributeTypes;
   protected String version;
+  @SerializedName("record_types")
+  protected DataModelRecordTypeSystemProperties recordTypes;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private DataModelRecordTypeSystemProperties recordTypes;
+    private DataModelHierarchyTypeSystemProperties hierarchyTypes;
+    private DataModelNodeTypeSystemProperties nodeTypes;
+    private DataModelAttributeTypeSystemProperties attributeTypes;
+    private DataModelGroupTypeSystemProperties groupTypes;
     private DataModelEntityTypeSystemProperties entityTypes;
     private DataModelRelationshipTypeSystemProperties relationshipTypes;
-    private DataModelAttributeTypeSystemProperties attributeTypes;
     private String version;
+    private DataModelRecordTypeSystemProperties recordTypes;
 
     private Builder(DataModelSystemProperties dataModelSystemProperties) {
-      this.recordTypes = dataModelSystemProperties.recordTypes;
+      this.hierarchyTypes = dataModelSystemProperties.hierarchyTypes;
+      this.nodeTypes = dataModelSystemProperties.nodeTypes;
+      this.attributeTypes = dataModelSystemProperties.attributeTypes;
+      this.groupTypes = dataModelSystemProperties.groupTypes;
       this.entityTypes = dataModelSystemProperties.entityTypes;
       this.relationshipTypes = dataModelSystemProperties.relationshipTypes;
-      this.attributeTypes = dataModelSystemProperties.attributeTypes;
       this.version = dataModelSystemProperties.version;
+      this.recordTypes = dataModelSystemProperties.recordTypes;
     }
 
     /**
@@ -57,16 +69,16 @@ public class DataModelSystemProperties extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param recordTypes the recordTypes
+     * @param attributeTypes the attributeTypes
      * @param entityTypes the entityTypes
      * @param relationshipTypes the relationshipTypes
-     * @param attributeTypes the attributeTypes
+     * @param recordTypes the recordTypes
      */
-    public Builder(DataModelRecordTypeSystemProperties recordTypes, DataModelEntityTypeSystemProperties entityTypes, DataModelRelationshipTypeSystemProperties relationshipTypes, DataModelAttributeTypeSystemProperties attributeTypes) {
-      this.recordTypes = recordTypes;
+    public Builder(DataModelAttributeTypeSystemProperties attributeTypes, DataModelEntityTypeSystemProperties entityTypes, DataModelRelationshipTypeSystemProperties relationshipTypes, DataModelRecordTypeSystemProperties recordTypes) {
+      this.attributeTypes = attributeTypes;
       this.entityTypes = entityTypes;
       this.relationshipTypes = relationshipTypes;
-      this.attributeTypes = attributeTypes;
+      this.recordTypes = recordTypes;
     }
 
     /**
@@ -79,13 +91,46 @@ public class DataModelSystemProperties extends GenericModel {
     }
 
     /**
-     * Set the recordTypes.
+     * Set the hierarchyTypes.
      *
-     * @param recordTypes the recordTypes
+     * @param hierarchyTypes the hierarchyTypes
      * @return the DataModelSystemProperties builder
      */
-    public Builder recordTypes(DataModelRecordTypeSystemProperties recordTypes) {
-      this.recordTypes = recordTypes;
+    public Builder hierarchyTypes(DataModelHierarchyTypeSystemProperties hierarchyTypes) {
+      this.hierarchyTypes = hierarchyTypes;
+      return this;
+    }
+
+    /**
+     * Set the nodeTypes.
+     *
+     * @param nodeTypes the nodeTypes
+     * @return the DataModelSystemProperties builder
+     */
+    public Builder nodeTypes(DataModelNodeTypeSystemProperties nodeTypes) {
+      this.nodeTypes = nodeTypes;
+      return this;
+    }
+
+    /**
+     * Set the attributeTypes.
+     *
+     * @param attributeTypes the attributeTypes
+     * @return the DataModelSystemProperties builder
+     */
+    public Builder attributeTypes(DataModelAttributeTypeSystemProperties attributeTypes) {
+      this.attributeTypes = attributeTypes;
+      return this;
+    }
+
+    /**
+     * Set the groupTypes.
+     *
+     * @param groupTypes the groupTypes
+     * @return the DataModelSystemProperties builder
+     */
+    public Builder groupTypes(DataModelGroupTypeSystemProperties groupTypes) {
+      this.groupTypes = groupTypes;
       return this;
     }
 
@@ -112,17 +157,6 @@ public class DataModelSystemProperties extends GenericModel {
     }
 
     /**
-     * Set the attributeTypes.
-     *
-     * @param attributeTypes the attributeTypes
-     * @return the DataModelSystemProperties builder
-     */
-    public Builder attributeTypes(DataModelAttributeTypeSystemProperties attributeTypes) {
-      this.attributeTypes = attributeTypes;
-      return this;
-    }
-
-    /**
      * Set the version.
      *
      * @param version the version
@@ -132,22 +166,38 @@ public class DataModelSystemProperties extends GenericModel {
       this.version = version;
       return this;
     }
+
+    /**
+     * Set the recordTypes.
+     *
+     * @param recordTypes the recordTypes
+     * @return the DataModelSystemProperties builder
+     */
+    public Builder recordTypes(DataModelRecordTypeSystemProperties recordTypes) {
+      this.recordTypes = recordTypes;
+      return this;
+    }
   }
 
+  protected DataModelSystemProperties() { }
+
   protected DataModelSystemProperties(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
-      "recordTypes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
+      "attributeTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.entityTypes,
       "entityTypes cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.relationshipTypes,
       "relationshipTypes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributeTypes,
-      "attributeTypes cannot be null");
-    recordTypes = builder.recordTypes;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.recordTypes,
+      "recordTypes cannot be null");
+    hierarchyTypes = builder.hierarchyTypes;
+    nodeTypes = builder.nodeTypes;
+    attributeTypes = builder.attributeTypes;
+    groupTypes = builder.groupTypes;
     entityTypes = builder.entityTypes;
     relationshipTypes = builder.relationshipTypes;
-    attributeTypes = builder.attributeTypes;
     version = builder.version;
+    recordTypes = builder.recordTypes;
   }
 
   /**
@@ -160,14 +210,47 @@ public class DataModelSystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the recordTypes.
+   * Gets the hierarchyTypes.
    *
-   * Defines metadata of system properties of record types.
+   * Defines metadata of system properties of hierarchy types.
    *
-   * @return the recordTypes
+   * @return the hierarchyTypes
    */
-  public DataModelRecordTypeSystemProperties recordTypes() {
-    return recordTypes;
+  public DataModelHierarchyTypeSystemProperties hierarchyTypes() {
+    return hierarchyTypes;
+  }
+
+  /**
+   * Gets the nodeTypes.
+   *
+   * Defines metadata of system properties of node types.
+   *
+   * @return the nodeTypes
+   */
+  public DataModelNodeTypeSystemProperties nodeTypes() {
+    return nodeTypes;
+  }
+
+  /**
+   * Gets the attributeTypes.
+   *
+   * Defines metadata of system properties of all attribute types.
+   *
+   * @return the attributeTypes
+   */
+  public DataModelAttributeTypeSystemProperties attributeTypes() {
+    return attributeTypes;
+  }
+
+  /**
+   * Gets the groupTypes.
+   *
+   * Defines metadata of system properties of group types.
+   *
+   * @return the groupTypes
+   */
+  public DataModelGroupTypeSystemProperties groupTypes() {
+    return groupTypes;
   }
 
   /**
@@ -193,17 +276,6 @@ public class DataModelSystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the attributeTypes.
-   *
-   * Defines metadata of system properties of all attribute types.
-   *
-   * @return the attributeTypes
-   */
-  public DataModelAttributeTypeSystemProperties attributeTypes() {
-    return attributeTypes;
-  }
-
-  /**
    * Gets the version.
    *
    * Internal version of system properties.
@@ -212,6 +284,17 @@ public class DataModelSystemProperties extends GenericModel {
    */
   public String version() {
     return version;
+  }
+
+  /**
+   * Gets the recordTypes.
+   *
+   * Defines metadata of system properties of record types.
+   *
+   * @return the recordTypes
+   */
+  public DataModelRecordTypeSystemProperties recordTypes() {
+    return recordTypes;
   }
 }
 

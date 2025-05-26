@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,6 +23,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CompositeRulesRules extends GenericModel {
 
   protected CompositeRulesRule global;
+  @SerializedName("entity_rules")
+  protected Map<String, CompositeRulesEntityRules> entityRules;
   @SerializedName("record_types")
   protected Map<String, CompositeRulesRecordType> recordTypes;
 
@@ -31,10 +33,12 @@ public class CompositeRulesRules extends GenericModel {
    */
   public static class Builder {
     private CompositeRulesRule global;
+    private Map<String, CompositeRulesEntityRules> entityRules;
     private Map<String, CompositeRulesRecordType> recordTypes;
 
     private Builder(CompositeRulesRules compositeRulesRules) {
       this.global = compositeRulesRules.global;
+      this.entityRules = compositeRulesRules.entityRules;
       this.recordTypes = compositeRulesRules.recordTypes;
     }
 
@@ -42,15 +46,6 @@ public class CompositeRulesRules extends GenericModel {
      * Instantiates a new builder.
      */
     public Builder() {
-    }
-
-    /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param global the global
-     */
-    public Builder(CompositeRulesRule global) {
-      this.global = global;
     }
 
     /**
@@ -74,6 +69,17 @@ public class CompositeRulesRules extends GenericModel {
     }
 
     /**
+     * Set the entityRules.
+     *
+     * @param entityRules the entityRules
+     * @return the CompositeRulesRules builder
+     */
+    public Builder entityRules(Map<String, CompositeRulesEntityRules> entityRules) {
+      this.entityRules = entityRules;
+      return this;
+    }
+
+    /**
      * Set the recordTypes.
      *
      * @param recordTypes the recordTypes
@@ -85,10 +91,11 @@ public class CompositeRulesRules extends GenericModel {
     }
   }
 
+  protected CompositeRulesRules() { }
+
   protected CompositeRulesRules(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.global,
-      "global cannot be null");
     global = builder.global;
+    entityRules = builder.entityRules;
     recordTypes = builder.recordTypes;
   }
 
@@ -110,6 +117,17 @@ public class CompositeRulesRules extends GenericModel {
    */
   public CompositeRulesRule global() {
     return global;
+  }
+
+  /**
+   * Gets the entityRules.
+   *
+   * Collection of composite rule definitions per entity type. The entity type key must be lower snake case.
+   *
+   * @return the entityRules
+   */
+  public Map<String, CompositeRulesEntityRules> entityRules() {
+    return entityRules;
   }
 
   /**

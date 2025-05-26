@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -76,6 +76,9 @@ public class RunDataBulkLoadOptionsTest {
       .defaultSource("testString")
       .fileType("csv")
       .csvOptions(csvOptionsModel)
+      .failOnMissingRecords(true)
+      .groupType("testString")
+      .groupAssociationsType("testString")
       .build();
     assertEquals(dataLoadPropertiesModel.collectionId(), "testString");
     assertEquals(dataLoadPropertiesModel.recordType(), "testString");
@@ -83,6 +86,9 @@ public class RunDataBulkLoadOptionsTest {
     assertEquals(dataLoadPropertiesModel.defaultSource(), "testString");
     assertEquals(dataLoadPropertiesModel.fileType(), "csv");
     assertEquals(dataLoadPropertiesModel.csvOptions(), csvOptionsModel);
+    assertEquals(dataLoadPropertiesModel.failOnMissingRecords(), Boolean.valueOf(true));
+    assertEquals(dataLoadPropertiesModel.groupType(), "testString");
+    assertEquals(dataLoadPropertiesModel.groupAssociationsType(), "testString");
 
     DataLoadStructure dataLoadStructureModel = new DataLoadStructure.Builder()
       .recordPath("testString")
@@ -93,6 +99,12 @@ public class RunDataBulkLoadOptionsTest {
       .relationshipAssetId("testString")
       .recordPropertiesContents(dataLoadPropertiesModel)
       .relationshipPropertiesContents(dataLoadPropertiesModel)
+      .groupPath("testString")
+      .groupProperties("testString")
+      .groupPropertiesContents(dataLoadPropertiesModel)
+      .groupAssociationsPath("testString")
+      .groupAssociationsProperties("testString")
+      .groupAssociationsPropertiesContents(dataLoadPropertiesModel)
       .build();
     assertEquals(dataLoadStructureModel.recordPath(), "testString");
     assertEquals(dataLoadStructureModel.recordProperties(), "testString");
@@ -102,15 +114,33 @@ public class RunDataBulkLoadOptionsTest {
     assertEquals(dataLoadStructureModel.relationshipAssetId(), "testString");
     assertEquals(dataLoadStructureModel.recordPropertiesContents(), dataLoadPropertiesModel);
     assertEquals(dataLoadStructureModel.relationshipPropertiesContents(), dataLoadPropertiesModel);
+    assertEquals(dataLoadStructureModel.groupPath(), "testString");
+    assertEquals(dataLoadStructureModel.groupProperties(), "testString");
+    assertEquals(dataLoadStructureModel.groupPropertiesContents(), dataLoadPropertiesModel);
+    assertEquals(dataLoadStructureModel.groupAssociationsPath(), "testString");
+    assertEquals(dataLoadStructureModel.groupAssociationsProperties(), "testString");
+    assertEquals(dataLoadStructureModel.groupAssociationsPropertiesContents(), dataLoadPropertiesModel);
 
     RunDataBulkLoadOptions runDataBulkLoadOptionsModel = new RunDataBulkLoadOptions.Builder()
       .dataSource(dataLoadSourceModel)
       .dataStructure(dataLoadStructureModel)
       .updateStrategy("append")
+      .executorCount(Long.valueOf("1"))
+      .executorMemory("8g")
+      .executorCoreCount(Long.valueOf("1"))
+      .batchSize(Long.valueOf("100"))
+      .sparkParallelism(Long.valueOf("2"))
+      .isInitialLoad(true)
       .build();
     assertEquals(runDataBulkLoadOptionsModel.dataSource(), dataLoadSourceModel);
     assertEquals(runDataBulkLoadOptionsModel.dataStructure(), dataLoadStructureModel);
     assertEquals(runDataBulkLoadOptionsModel.updateStrategy(), "append");
+    assertEquals(runDataBulkLoadOptionsModel.executorCount(), Long.valueOf("1"));
+    assertEquals(runDataBulkLoadOptionsModel.executorMemory(), "8g");
+    assertEquals(runDataBulkLoadOptionsModel.executorCoreCount(), Long.valueOf("1"));
+    assertEquals(runDataBulkLoadOptionsModel.batchSize(), Long.valueOf("100"));
+    assertEquals(runDataBulkLoadOptionsModel.sparkParallelism(), Long.valueOf("2"));
+    assertEquals(runDataBulkLoadOptionsModel.isInitialLoad(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

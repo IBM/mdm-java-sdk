@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,6 +24,8 @@ public class DataSearchResultsStats extends GenericModel {
 
   @SerializedName("record_types")
   protected List<Statistic> recordTypes;
+  @SerializedName("entity_types")
+  protected List<Statistic> entityTypes;
   protected List<Statistic> sources;
 
   /**
@@ -35,6 +37,17 @@ public class DataSearchResultsStats extends GenericModel {
    */
   public List<Statistic> getRecordTypes() {
     return recordTypes;
+  }
+
+  /**
+   * Gets the entityTypes.
+   *
+   * The aggregate counts by entity type.
+   *
+   * @return the entityTypes
+   */
+  public List<Statistic> getEntityTypes() {
+    return entityTypes;
   }
 
   /**

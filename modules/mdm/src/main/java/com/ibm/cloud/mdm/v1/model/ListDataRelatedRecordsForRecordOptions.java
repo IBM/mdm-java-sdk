@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,6 +24,7 @@ public class ListDataRelatedRecordsForRecordOptions extends GenericModel {
   protected String relationshipType;
   protected Long limit;
   protected Long offset;
+  protected Boolean includeTotalCount;
 
   /**
    * Builder.
@@ -34,6 +35,7 @@ public class ListDataRelatedRecordsForRecordOptions extends GenericModel {
     private String relationshipType;
     private Long limit;
     private Long offset;
+    private Boolean includeTotalCount;
 
     private Builder(ListDataRelatedRecordsForRecordOptions listDataRelatedRecordsForRecordOptions) {
       this.id = listDataRelatedRecordsForRecordOptions.id;
@@ -41,6 +43,7 @@ public class ListDataRelatedRecordsForRecordOptions extends GenericModel {
       this.relationshipType = listDataRelatedRecordsForRecordOptions.relationshipType;
       this.limit = listDataRelatedRecordsForRecordOptions.limit;
       this.offset = listDataRelatedRecordsForRecordOptions.offset;
+      this.includeTotalCount = listDataRelatedRecordsForRecordOptions.includeTotalCount;
     }
 
     /**
@@ -121,7 +124,20 @@ public class ListDataRelatedRecordsForRecordOptions extends GenericModel {
       this.offset = offset;
       return this;
     }
+
+    /**
+     * Set the includeTotalCount.
+     *
+     * @param includeTotalCount the includeTotalCount
+     * @return the ListDataRelatedRecordsForRecordOptions builder
+     */
+    public Builder includeTotalCount(Boolean includeTotalCount) {
+      this.includeTotalCount = includeTotalCount;
+      return this;
+    }
   }
+
+  protected ListDataRelatedRecordsForRecordOptions() { }
 
   protected ListDataRelatedRecordsForRecordOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,
@@ -131,6 +147,7 @@ public class ListDataRelatedRecordsForRecordOptions extends GenericModel {
     relationshipType = builder.relationshipType;
     limit = builder.limit;
     offset = builder.offset;
+    includeTotalCount = builder.includeTotalCount;
   }
 
   /**
@@ -195,6 +212,17 @@ public class ListDataRelatedRecordsForRecordOptions extends GenericModel {
    */
   public Long offset() {
     return offset;
+  }
+
+  /**
+   * Gets the includeTotalCount.
+   *
+   * Flag to include the total record count on pages other than the first.
+   *
+   * @return the includeTotalCount
+   */
+  public Boolean includeTotalCount() {
+    return includeTotalCount;
   }
 }
 

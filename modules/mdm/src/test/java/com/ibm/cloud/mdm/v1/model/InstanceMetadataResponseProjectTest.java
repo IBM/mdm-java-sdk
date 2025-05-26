@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,9 +32,9 @@ public class InstanceMetadataResponseProjectTest {
   @Test
   public void testInstanceMetadataResponseProject() throws Throwable {
     InstanceMetadataResponseProject instanceMetadataResponseProjectModel = new InstanceMetadataResponseProject();
+    assertNull(instanceMetadataResponseProjectModel.getProjectId());
     assertNull(instanceMetadataResponseProjectModel.getDataAssetId());
     assertNull(instanceMetadataResponseProjectModel.getAssetId());
-    assertNull(instanceMetadataResponseProjectModel.getProjectId());
     assertNull(instanceMetadataResponseProjectModel.getProjectName());
   }
 }

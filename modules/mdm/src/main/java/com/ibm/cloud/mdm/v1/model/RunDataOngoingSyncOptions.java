@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,6 +19,17 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RunDataOngoingSyncOptions extends GenericModel {
 
+  /**
+   * The strategy for updating existing data during the ongoing sync.
+   */
+  public interface OperationStrategy {
+    /** patch. */
+    String PATCH = "patch";
+    /** put. */
+    String PUT = "put";
+  }
+
+  protected String operationStrategy;
   protected SyncUpdateRequestUpserts upserts;
   protected SyncUpdateRequestDeletions deletions;
   protected Boolean ignoreRedundantUpdates;
@@ -27,11 +38,13 @@ public class RunDataOngoingSyncOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private String operationStrategy;
     private SyncUpdateRequestUpserts upserts;
     private SyncUpdateRequestDeletions deletions;
     private Boolean ignoreRedundantUpdates;
 
     private Builder(RunDataOngoingSyncOptions runDataOngoingSyncOptions) {
+      this.operationStrategy = runDataOngoingSyncOptions.operationStrategy;
       this.upserts = runDataOngoingSyncOptions.upserts;
       this.deletions = runDataOngoingSyncOptions.deletions;
       this.ignoreRedundantUpdates = runDataOngoingSyncOptions.ignoreRedundantUpdates;
@@ -50,6 +63,17 @@ public class RunDataOngoingSyncOptions extends GenericModel {
      */
     public RunDataOngoingSyncOptions build() {
       return new RunDataOngoingSyncOptions(this);
+    }
+
+    /**
+     * Set the operationStrategy.
+     *
+     * @param operationStrategy the operationStrategy
+     * @return the RunDataOngoingSyncOptions builder
+     */
+    public Builder operationStrategy(String operationStrategy) {
+      this.operationStrategy = operationStrategy;
+      return this;
     }
 
     /**
@@ -86,7 +110,10 @@ public class RunDataOngoingSyncOptions extends GenericModel {
     }
   }
 
+  protected RunDataOngoingSyncOptions() { }
+
   protected RunDataOngoingSyncOptions(Builder builder) {
+    operationStrategy = builder.operationStrategy;
     upserts = builder.upserts;
     deletions = builder.deletions;
     ignoreRedundantUpdates = builder.ignoreRedundantUpdates;
@@ -99,6 +126,17 @@ public class RunDataOngoingSyncOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the operationStrategy.
+   *
+   * The strategy for updating existing data during the ongoing sync.
+   *
+   * @return the operationStrategy
+   */
+  public String operationStrategy() {
+    return operationStrategy;
   }
 
   /**

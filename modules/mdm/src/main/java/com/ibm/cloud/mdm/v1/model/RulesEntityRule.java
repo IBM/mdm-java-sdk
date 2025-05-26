@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,9 +26,9 @@ public class RulesEntityRule extends GenericModel {
   protected String ruleType;
   @SerializedName("src_recno")
   protected String srcRecno;
+  protected String description;
   @SerializedName("target_recno")
   protected String targetRecno;
-  protected String description;
   protected String user;
 
   /**
@@ -65,17 +65,6 @@ public class RulesEntityRule extends GenericModel {
   }
 
   /**
-   * Gets the targetRecno.
-   *
-   * The other record number in linkage rule.
-   *
-   * @return the targetRecno
-   */
-  public String getTargetRecno() {
-    return targetRecno;
-  }
-
-  /**
    * Gets the description.
    *
    * User defined description for the linkage rule.
@@ -84,6 +73,17 @@ public class RulesEntityRule extends GenericModel {
    */
   public String getDescription() {
     return description;
+  }
+
+  /**
+   * Gets the targetRecno.
+   *
+   * The other record number in linkage rule.
+   *
+   * @return the targetRecno
+   */
+  public String getTargetRecno() {
+    return targetRecno;
   }
 
   /**

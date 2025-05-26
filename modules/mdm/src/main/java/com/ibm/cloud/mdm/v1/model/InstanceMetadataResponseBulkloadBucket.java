@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,10 +22,10 @@ public class InstanceMetadataResponseBulkloadBucket extends GenericModel {
 
   @SerializedName("cos_bucket_location")
   protected String cosBucketLocation;
-  @SerializedName("cos_bucket_api_key")
-  protected String cosBucketApiKey;
   @SerializedName("cos_bucket_name")
   protected String cosBucketName;
+  @SerializedName("cos_bucket_api_key")
+  protected String cosBucketApiKey;
 
   /**
    * Gets the cosBucketLocation.
@@ -39,17 +39,6 @@ public class InstanceMetadataResponseBulkloadBucket extends GenericModel {
   }
 
   /**
-   * Gets the cosBucketApiKey.
-   *
-   * Bucket API key of a cloud object storage.
-   *
-   * @return the cosBucketApiKey
-   */
-  public String getCosBucketApiKey() {
-    return cosBucketApiKey;
-  }
-
-  /**
    * Gets the cosBucketName.
    *
    * Name of a bucket on cloud object storage.
@@ -58,6 +47,17 @@ public class InstanceMetadataResponseBulkloadBucket extends GenericModel {
    */
   public String getCosBucketName() {
     return cosBucketName;
+  }
+
+  /**
+   * Gets the cosBucketApiKey.
+   *
+   * Bucket API key of a cloud object storage.
+   *
+   * @return the cosBucketApiKey
+   */
+  public String getCosBucketApiKey() {
+    return cosBucketApiKey;
   }
 }
 

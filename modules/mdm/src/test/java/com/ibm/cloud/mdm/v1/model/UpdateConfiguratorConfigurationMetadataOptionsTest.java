@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,29 +34,29 @@ public class UpdateConfiguratorConfigurationMetadataOptionsTest {
   @Test
   public void testUpdateConfiguratorConfigurationMetadataOptions() throws Throwable {
     ConfigurationMetadataEntity configurationMetadataEntityModel = new ConfigurationMetadataEntity.Builder()
+      .jobId("testString")
+      .status("testString")
       .pairOffset(Long.valueOf("26"))
       .tunedConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .currentConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .jobId("testString")
-      .status("testString")
       .build();
+    assertEquals(configurationMetadataEntityModel.jobId(), "testString");
+    assertEquals(configurationMetadataEntityModel.status(), "testString");
     assertEquals(configurationMetadataEntityModel.pairOffset(), Long.valueOf("26"));
     assertEquals(configurationMetadataEntityModel.tunedConfiguration(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
     assertEquals(configurationMetadataEntityModel.currentConfiguration(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(configurationMetadataEntityModel.jobId(), "testString");
-    assertEquals(configurationMetadataEntityModel.status(), "testString");
 
     UpdateConfiguratorConfigurationMetadataOptions updateConfiguratorConfigurationMetadataOptionsModel = new UpdateConfiguratorConfigurationMetadataOptions.Builder()
+      .name("testString")
+      .description("testString")
+      .projectId("0e4bb17d-4871-40a5-b5a1-55b2866fe000")
       .catalogId("ee1de5f6-54da-4246-95bc-7bc282151000")
       .pairAnalysis(new java.util.HashMap<String, Map<String, ConfigurationMetadataEntity>>() { { put("foo", new java.util.HashMap<String, ConfigurationMetadataEntity>() { { put("foo", configurationMetadataEntityModel); } }); } })
-      .projectId("0e4bb17d-4871-40a5-b5a1-55b2866fe000")
-      .description("testString")
-      .name("testString")
       .build();
+    assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.name(), "testString");
+    assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.description(), "testString");
+    assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");
     assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.catalogId(), "ee1de5f6-54da-4246-95bc-7bc282151000");
     assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.pairAnalysis(), new java.util.HashMap<String, Map<String, ConfigurationMetadataEntity>>() { { put("foo", new java.util.HashMap<String, ConfigurationMetadataEntity>() { { put("foo", configurationMetadataEntityModel); } }); } });
-    assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");
-    assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.description(), "testString");
-    assertEquals(updateConfiguratorConfigurationMetadataOptionsModel.name(), "testString");
   }
 }

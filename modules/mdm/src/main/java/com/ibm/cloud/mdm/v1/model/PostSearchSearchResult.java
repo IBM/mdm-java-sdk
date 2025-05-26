@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,11 +24,15 @@ public class PostSearchSearchResult extends GenericModel {
 
   @SerializedName("record_id")
   protected String recordId;
+  protected Float score;
+  @SerializedName("comparison_post_filter_methods")
+  protected List<SinglePostFilterMethod> comparisonPostFilterMethods;
+  @SerializedName("record_number")
+  protected String recordNumber;
   @SerializedName("record_source")
   protected String recordSource;
   @SerializedName("compare_methods")
   protected List<SingleCompareMethod> compareMethods;
-  protected Float score;
 
   /**
    * Gets the recordId.
@@ -39,6 +43,39 @@ public class PostSearchSearchResult extends GenericModel {
    */
   public String getRecordId() {
     return recordId;
+  }
+
+  /**
+   * Gets the score.
+   *
+   * The overall comparison score of the record.
+   *
+   * @return the score
+   */
+  public Float getScore() {
+    return score;
+  }
+
+  /**
+   * Gets the comparisonPostFilterMethods.
+   *
+   * Collection of post filter methods.
+   *
+   * @return the comparisonPostFilterMethods
+   */
+  public List<SinglePostFilterMethod> getComparisonPostFilterMethods() {
+    return comparisonPostFilterMethods;
+  }
+
+  /**
+   * Gets the recordNumber.
+   *
+   * The unique identifier of a source record as assigned by the system.
+   *
+   * @return the recordNumber
+   */
+  public String getRecordNumber() {
+    return recordNumber;
   }
 
   /**
@@ -61,17 +98,6 @@ public class PostSearchSearchResult extends GenericModel {
    */
   public List<SingleCompareMethod> getCompareMethods() {
     return compareMethods;
-  }
-
-  /**
-   * Gets the score.
-   *
-   * The overall comparison score of the record.
-   *
-   * @return the score
-   */
-  public Float getScore() {
-    return score;
   }
 }
 

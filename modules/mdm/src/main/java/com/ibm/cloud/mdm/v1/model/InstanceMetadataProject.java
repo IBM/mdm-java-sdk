@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,12 +20,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataProject extends GenericModel {
 
+  @SerializedName("project_id")
+  protected String projectId;
   @SerializedName("data_asset_id")
   protected String dataAssetId;
   @SerializedName("asset_id")
   protected String assetId;
-  @SerializedName("project_id")
-  protected String projectId;
   @SerializedName("project_name")
   protected String projectName;
 
@@ -33,15 +33,15 @@ public class InstanceMetadataProject extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private String projectId;
     private String dataAssetId;
     private String assetId;
-    private String projectId;
     private String projectName;
 
     private Builder(InstanceMetadataProject instanceMetadataProject) {
+      this.projectId = instanceMetadataProject.projectId;
       this.dataAssetId = instanceMetadataProject.dataAssetId;
       this.assetId = instanceMetadataProject.assetId;
-      this.projectId = instanceMetadataProject.projectId;
       this.projectName = instanceMetadataProject.projectName;
     }
 
@@ -70,6 +70,17 @@ public class InstanceMetadataProject extends GenericModel {
     }
 
     /**
+     * Set the projectId.
+     *
+     * @param projectId the projectId
+     * @return the InstanceMetadataProject builder
+     */
+    public Builder projectId(String projectId) {
+      this.projectId = projectId;
+      return this;
+    }
+
+    /**
      * Set the dataAssetId.
      *
      * @param dataAssetId the dataAssetId
@@ -92,17 +103,6 @@ public class InstanceMetadataProject extends GenericModel {
     }
 
     /**
-     * Set the projectId.
-     *
-     * @param projectId the projectId
-     * @return the InstanceMetadataProject builder
-     */
-    public Builder projectId(String projectId) {
-      this.projectId = projectId;
-      return this;
-    }
-
-    /**
      * Set the projectName.
      *
      * @param projectName the projectName
@@ -114,12 +114,14 @@ public class InstanceMetadataProject extends GenericModel {
     }
   }
 
+  protected InstanceMetadataProject() { }
+
   protected InstanceMetadataProject(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.projectId,
       "projectId cannot be null");
+    projectId = builder.projectId;
     dataAssetId = builder.dataAssetId;
     assetId = builder.assetId;
-    projectId = builder.projectId;
     projectName = builder.projectName;
   }
 
@@ -130,6 +132,17 @@ public class InstanceMetadataProject extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the projectId.
+   *
+   * Unique Identifier of the project associated with instance.
+   *
+   * @return the projectId
+   */
+  public String projectId() {
+    return projectId;
   }
 
   /**
@@ -152,17 +165,6 @@ public class InstanceMetadataProject extends GenericModel {
    */
   public String assetId() {
     return assetId;
-  }
-
-  /**
-   * Gets the projectId.
-   *
-   * Unique Identifier of the project associated with instance.
-   *
-   * @return the projectId
-   */
-  public String projectId() {
-    return projectId;
   }
 
   /**

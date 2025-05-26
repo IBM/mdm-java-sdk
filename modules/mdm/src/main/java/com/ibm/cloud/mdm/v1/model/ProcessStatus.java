@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,20 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ProcessStatus extends GenericModel {
 
-  protected Map<String, String> summary;
   protected String status;
   protected String message;
-
-  /**
-   * Gets the summary.
-   *
-   * Optional summary of the processes.
-   *
-   * @return the summary
-   */
-  public Map<String, String> getSummary() {
-    return summary;
-  }
+  protected Map<String, String> summary;
 
   /**
    * Gets the status.
@@ -56,6 +45,17 @@ public class ProcessStatus extends GenericModel {
    */
   public String getMessage() {
     return message;
+  }
+
+  /**
+   * Gets the summary.
+   *
+   * Optional summary of the processes.
+   *
+   * @return the summary
+   */
+  public Map<String, String> getSummary() {
+    return summary;
   }
 }
 

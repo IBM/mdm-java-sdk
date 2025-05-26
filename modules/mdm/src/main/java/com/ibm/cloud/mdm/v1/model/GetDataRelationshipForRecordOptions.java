@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,6 +12,9 @@
  */
 package com.ibm.cloud.mdm.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -21,6 +24,8 @@ public class GetDataRelationshipForRecordOptions extends GenericModel {
 
   protected Long id;
   protected String relationshipId;
+  protected List<String> sourceInclude;
+  protected List<String> targetInclude;
 
   /**
    * Builder.
@@ -28,10 +33,14 @@ public class GetDataRelationshipForRecordOptions extends GenericModel {
   public static class Builder {
     private Long id;
     private String relationshipId;
+    private List<String> sourceInclude;
+    private List<String> targetInclude;
 
     private Builder(GetDataRelationshipForRecordOptions getDataRelationshipForRecordOptions) {
       this.id = getDataRelationshipForRecordOptions.id;
       this.relationshipId = getDataRelationshipForRecordOptions.relationshipId;
+      this.sourceInclude = getDataRelationshipForRecordOptions.sourceInclude;
+      this.targetInclude = getDataRelationshipForRecordOptions.targetInclude;
     }
 
     /**
@@ -61,6 +70,38 @@ public class GetDataRelationshipForRecordOptions extends GenericModel {
     }
 
     /**
+     * Adds an sourceInclude to sourceInclude.
+     *
+     * @param sourceInclude the new sourceInclude
+     * @return the GetDataRelationshipForRecordOptions builder
+     */
+    public Builder addSourceInclude(String sourceInclude) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(sourceInclude,
+        "sourceInclude cannot be null");
+      if (this.sourceInclude == null) {
+        this.sourceInclude = new ArrayList<String>();
+      }
+      this.sourceInclude.add(sourceInclude);
+      return this;
+    }
+
+    /**
+     * Adds an targetInclude to targetInclude.
+     *
+     * @param targetInclude the new targetInclude
+     * @return the GetDataRelationshipForRecordOptions builder
+     */
+    public Builder addTargetInclude(String targetInclude) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(targetInclude,
+        "targetInclude cannot be null");
+      if (this.targetInclude == null) {
+        this.targetInclude = new ArrayList<String>();
+      }
+      this.targetInclude.add(targetInclude);
+      return this;
+    }
+
+    /**
      * Set the id.
      *
      * @param id the id
@@ -81,7 +122,33 @@ public class GetDataRelationshipForRecordOptions extends GenericModel {
       this.relationshipId = relationshipId;
       return this;
     }
+
+    /**
+     * Set the sourceInclude.
+     * Existing sourceInclude will be replaced.
+     *
+     * @param sourceInclude the sourceInclude
+     * @return the GetDataRelationshipForRecordOptions builder
+     */
+    public Builder sourceInclude(List<String> sourceInclude) {
+      this.sourceInclude = sourceInclude;
+      return this;
+    }
+
+    /**
+     * Set the targetInclude.
+     * Existing targetInclude will be replaced.
+     *
+     * @param targetInclude the targetInclude
+     * @return the GetDataRelationshipForRecordOptions builder
+     */
+    public Builder targetInclude(List<String> targetInclude) {
+      this.targetInclude = targetInclude;
+      return this;
+    }
   }
+
+  protected GetDataRelationshipForRecordOptions() { }
 
   protected GetDataRelationshipForRecordOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,
@@ -90,6 +157,8 @@ public class GetDataRelationshipForRecordOptions extends GenericModel {
       "relationshipId cannot be empty");
     id = builder.id;
     relationshipId = builder.relationshipId;
+    sourceInclude = builder.sourceInclude;
+    targetInclude = builder.targetInclude;
   }
 
   /**
@@ -121,6 +190,28 @@ public class GetDataRelationshipForRecordOptions extends GenericModel {
    */
   public String relationshipId() {
     return relationshipId;
+  }
+
+  /**
+   * Gets the sourceInclude.
+   *
+   * Attributes from the data model to include in the results for the source vertex.
+   *
+   * @return the sourceInclude
+   */
+  public List<String> sourceInclude() {
+    return sourceInclude;
+  }
+
+  /**
+   * Gets the targetInclude.
+   *
+   * Attributes from the data model to include in the results for the target vertex.
+   *
+   * @return the targetInclude
+   */
+  public List<String> targetInclude() {
+    return targetInclude;
   }
 }
 

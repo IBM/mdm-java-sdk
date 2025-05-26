@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,10 +26,18 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
  */
 public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
 
-  @SerializedName("auto_link_threshold")
-  protected Float autoLinkThreshold;
+  @SerializedName("glue_threshold")
+  protected Float glueThreshold;
+  @SerializedName("record_filter")
+  protected AlgorithmGenerationRecordFilter recordFilter;
+  @SerializedName("clerical_review_threshold")
+  protected Float clericalReviewThreshold;
   @SerializedName("matching_attributes")
   protected List<AlgorithmGenerationAttributeItem> matchingAttributes;
+  @SerializedName("auto_link_threshold")
+  protected Float autoLinkThreshold;
+  @SerializedName("source_level_thresholds")
+  protected Map<String, AlgorithmGenerationSourceLevelThreshold> sourceLevelThresholds;
 
   public AlgorithmGenerationEntityType() {
     super(new TypeToken<Object>() { });
@@ -39,13 +47,21 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
    * Builder.
    */
   public static class Builder {
-    private Float autoLinkThreshold;
+    private Float glueThreshold;
+    private AlgorithmGenerationRecordFilter recordFilter;
+    private Float clericalReviewThreshold;
     private List<AlgorithmGenerationAttributeItem> matchingAttributes;
+    private Float autoLinkThreshold;
+    private Map<String, AlgorithmGenerationSourceLevelThreshold> sourceLevelThresholds;
     private Map<String, Object> dynamicProperties;
 
     private Builder(AlgorithmGenerationEntityType algorithmGenerationEntityType) {
-      this.autoLinkThreshold = algorithmGenerationEntityType.autoLinkThreshold;
+      this.glueThreshold = algorithmGenerationEntityType.glueThreshold;
+      this.recordFilter = algorithmGenerationEntityType.recordFilter;
+      this.clericalReviewThreshold = algorithmGenerationEntityType.clericalReviewThreshold;
       this.matchingAttributes = algorithmGenerationEntityType.matchingAttributes;
+      this.autoLinkThreshold = algorithmGenerationEntityType.autoLinkThreshold;
+      this.sourceLevelThresholds = algorithmGenerationEntityType.sourceLevelThresholds;
       this.dynamicProperties = algorithmGenerationEntityType.getProperties();
     }
 
@@ -90,13 +106,35 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
     }
 
     /**
-     * Set the autoLinkThreshold.
+     * Set the glueThreshold.
      *
-     * @param autoLinkThreshold the autoLinkThreshold
+     * @param glueThreshold the glueThreshold
      * @return the AlgorithmGenerationEntityType builder
      */
-    public Builder autoLinkThreshold(Float autoLinkThreshold) {
-      this.autoLinkThreshold = autoLinkThreshold;
+    public Builder glueThreshold(Float glueThreshold) {
+      this.glueThreshold = glueThreshold;
+      return this;
+    }
+
+    /**
+     * Set the recordFilter.
+     *
+     * @param recordFilter the recordFilter
+     * @return the AlgorithmGenerationEntityType builder
+     */
+    public Builder recordFilter(AlgorithmGenerationRecordFilter recordFilter) {
+      this.recordFilter = recordFilter;
+      return this;
+    }
+
+    /**
+     * Set the clericalReviewThreshold.
+     *
+     * @param clericalReviewThreshold the clericalReviewThreshold
+     * @return the AlgorithmGenerationEntityType builder
+     */
+    public Builder clericalReviewThreshold(Float clericalReviewThreshold) {
+      this.clericalReviewThreshold = clericalReviewThreshold;
       return this;
     }
 
@@ -109,6 +147,28 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
      */
     public Builder matchingAttributes(List<AlgorithmGenerationAttributeItem> matchingAttributes) {
       this.matchingAttributes = matchingAttributes;
+      return this;
+    }
+
+    /**
+     * Set the autoLinkThreshold.
+     *
+     * @param autoLinkThreshold the autoLinkThreshold
+     * @return the AlgorithmGenerationEntityType builder
+     */
+    public Builder autoLinkThreshold(Float autoLinkThreshold) {
+      this.autoLinkThreshold = autoLinkThreshold;
+      return this;
+    }
+
+    /**
+     * Set the sourceLevelThresholds.
+     *
+     * @param sourceLevelThresholds the sourceLevelThresholds
+     * @return the AlgorithmGenerationEntityType builder
+     */
+    public Builder sourceLevelThresholds(Map<String, AlgorithmGenerationSourceLevelThreshold> sourceLevelThresholds) {
+      this.sourceLevelThresholds = sourceLevelThresholds;
       return this;
     }
 
@@ -133,8 +193,12 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
     super(new TypeToken<Object>() { });
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.matchingAttributes,
       "matchingAttributes cannot be null");
-    autoLinkThreshold = builder.autoLinkThreshold;
+    glueThreshold = builder.glueThreshold;
+    recordFilter = builder.recordFilter;
+    clericalReviewThreshold = builder.clericalReviewThreshold;
     matchingAttributes = builder.matchingAttributes;
+    autoLinkThreshold = builder.autoLinkThreshold;
+    sourceLevelThresholds = builder.sourceLevelThresholds;
     this.setProperties(builder.dynamicProperties);
   }
 
@@ -145,6 +209,87 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the glueThreshold.
+   *
+   * The threshold to control the self score difference between records within same entity.
+   *
+   * @return the glueThreshold
+   */
+  public Float getGlueThreshold() {
+    return this.glueThreshold;
+  }
+
+  /**
+   * Sets the glueThreshold.
+   *
+   * @param glueThreshold the new glueThreshold
+   */
+  public void setGlueThreshold(final Float glueThreshold) {
+    this.glueThreshold = glueThreshold;
+  }
+
+  /**
+   * Gets the recordFilter.
+   *
+   * A single criteria using a collection of rules for filtering out record(s).The record filter key must be lower snake
+   * case (i.e. record_filter).
+   *
+   * @return the recordFilter
+   */
+  public AlgorithmGenerationRecordFilter getRecordFilter() {
+    return this.recordFilter;
+  }
+
+  /**
+   * Sets the recordFilter.
+   *
+   * @param recordFilter the new recordFilter
+   */
+  public void setRecordFilter(final AlgorithmGenerationRecordFilter recordFilter) {
+    this.recordFilter = recordFilter;
+  }
+
+  /**
+   * Gets the clericalReviewThreshold.
+   *
+   * The minimum matching score between two records for clerical review.
+   *
+   * @return the clericalReviewThreshold
+   */
+  public Float getClericalReviewThreshold() {
+    return this.clericalReviewThreshold;
+  }
+
+  /**
+   * Sets the clericalReviewThreshold.
+   *
+   * @param clericalReviewThreshold the new clericalReviewThreshold
+   */
+  public void setClericalReviewThreshold(final Float clericalReviewThreshold) {
+    this.clericalReviewThreshold = clericalReviewThreshold;
+  }
+
+  /**
+   * Gets the matchingAttributes.
+   *
+   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
+   *
+   * @return the matchingAttributes
+   */
+  public List<AlgorithmGenerationAttributeItem> getMatchingAttributes() {
+    return this.matchingAttributes;
+  }
+
+  /**
+   * Sets the matchingAttributes.
+   *
+   * @param matchingAttributes the new matchingAttributes
+   */
+  public void setMatchingAttributes(final List<AlgorithmGenerationAttributeItem> matchingAttributes) {
+    this.matchingAttributes = matchingAttributes;
   }
 
   /**
@@ -168,22 +313,22 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
   }
 
   /**
-   * Gets the matchingAttributes.
+   * Gets the sourceLevelThresholds.
    *
-   * Collection of user defined attribute types. The attribute type key must be lower snake case (i.e. address).
+   * Collection of source across source thresholds.
    *
-   * @return the matchingAttributes
+   * @return the sourceLevelThresholds
    */
-  public List<AlgorithmGenerationAttributeItem> getMatchingAttributes() {
-    return this.matchingAttributes;
+  public Map<String, AlgorithmGenerationSourceLevelThreshold> getSourceLevelThresholds() {
+    return this.sourceLevelThresholds;
   }
 
   /**
-   * Sets the matchingAttributes.
+   * Sets the sourceLevelThresholds.
    *
-   * @param matchingAttributes the new matchingAttributes
+   * @param sourceLevelThresholds the new sourceLevelThresholds
    */
-  public void setMatchingAttributes(final List<AlgorithmGenerationAttributeItem> matchingAttributes) {
-    this.matchingAttributes = matchingAttributes;
+  public void setSourceLevelThresholds(final Map<String, AlgorithmGenerationSourceLevelThreshold> sourceLevelThresholds) {
+    this.sourceLevelThresholds = sourceLevelThresholds;
   }
 }

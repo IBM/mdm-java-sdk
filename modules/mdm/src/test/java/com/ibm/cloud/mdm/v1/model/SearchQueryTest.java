@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,8 +18,6 @@ import com.ibm.cloud.mdm.v1.model.SearchQuery;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -39,19 +37,21 @@ public class SearchQueryTest {
       .condition("equal")
       .value("testString")
       .recordType("testString")
+      .entityType("testString")
       .operation("and")
       .build();
     assertEquals(expressionModel.property(), "testString");
     assertEquals(expressionModel.condition(), "equal");
     assertEquals(expressionModel.value(), "testString");
     assertEquals(expressionModel.recordType(), "testString");
+    assertEquals(expressionModel.entityType(), "testString");
     assertEquals(expressionModel.operation(), "and");
 
     SearchQuery searchQueryModel = new SearchQuery.Builder()
-      .expressions(new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)))
+      .expressions(java.util.Arrays.asList(expressionModel))
       .operation("and")
       .build();
-    assertEquals(searchQueryModel.expressions(), new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)));
+    assertEquals(searchQueryModel.expressions(), java.util.Arrays.asList(expressionModel));
     assertEquals(searchQueryModel.operation(), "and");
 
     String json = TestUtilities.serialize(searchQueryModel);

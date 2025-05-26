@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,32 +22,32 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ConfigurationMetadataEntity extends GenericModel {
 
+  @SerializedName("job_id")
+  protected String jobId;
+  protected String status;
   @SerializedName("pair_offset")
   protected Long pairOffset;
   @SerializedName("tuned_configuration")
   protected Map<String, Object> tunedConfiguration;
   @SerializedName("current_configuration")
   protected Map<String, Object> currentConfiguration;
-  @SerializedName("job_id")
-  protected String jobId;
-  protected String status;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String jobId;
+    private String status;
     private Long pairOffset;
     private Map<String, Object> tunedConfiguration;
     private Map<String, Object> currentConfiguration;
-    private String jobId;
-    private String status;
 
     private Builder(ConfigurationMetadataEntity configurationMetadataEntity) {
+      this.jobId = configurationMetadataEntity.jobId;
+      this.status = configurationMetadataEntity.status;
       this.pairOffset = configurationMetadataEntity.pairOffset;
       this.tunedConfiguration = configurationMetadataEntity.tunedConfiguration;
       this.currentConfiguration = configurationMetadataEntity.currentConfiguration;
-      this.jobId = configurationMetadataEntity.jobId;
-      this.status = configurationMetadataEntity.status;
     }
 
     /**
@@ -63,6 +63,28 @@ public class ConfigurationMetadataEntity extends GenericModel {
      */
     public ConfigurationMetadataEntity build() {
       return new ConfigurationMetadataEntity(this);
+    }
+
+    /**
+     * Set the jobId.
+     *
+     * @param jobId the jobId
+     * @return the ConfigurationMetadataEntity builder
+     */
+    public Builder jobId(String jobId) {
+      this.jobId = jobId;
+      return this;
+    }
+
+    /**
+     * Set the status.
+     *
+     * @param status the status
+     * @return the ConfigurationMetadataEntity builder
+     */
+    public Builder status(String status) {
+      this.status = status;
+      return this;
     }
 
     /**
@@ -97,36 +119,16 @@ public class ConfigurationMetadataEntity extends GenericModel {
       this.currentConfiguration = currentConfiguration;
       return this;
     }
-
-    /**
-     * Set the jobId.
-     *
-     * @param jobId the jobId
-     * @return the ConfigurationMetadataEntity builder
-     */
-    public Builder jobId(String jobId) {
-      this.jobId = jobId;
-      return this;
-    }
-
-    /**
-     * Set the status.
-     *
-     * @param status the status
-     * @return the ConfigurationMetadataEntity builder
-     */
-    public Builder status(String status) {
-      this.status = status;
-      return this;
-    }
   }
 
+  protected ConfigurationMetadataEntity() { }
+
   protected ConfigurationMetadataEntity(Builder builder) {
+    jobId = builder.jobId;
+    status = builder.status;
     pairOffset = builder.pairOffset;
     tunedConfiguration = builder.tunedConfiguration;
     currentConfiguration = builder.currentConfiguration;
-    jobId = builder.jobId;
-    status = builder.status;
   }
 
   /**
@@ -136,6 +138,28 @@ public class ConfigurationMetadataEntity extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the jobId.
+   *
+   * The job id of an entity in Configuration metadata.
+   *
+   * @return the jobId
+   */
+  public String jobId() {
+    return jobId;
+  }
+
+  /**
+   * Gets the status.
+   *
+   * job status.
+   *
+   * @return the status
+   */
+  public String status() {
+    return status;
   }
 
   /**
@@ -169,28 +193,6 @@ public class ConfigurationMetadataEntity extends GenericModel {
    */
   public Map<String, Object> currentConfiguration() {
     return currentConfiguration;
-  }
-
-  /**
-   * Gets the jobId.
-   *
-   * The job id of an entity in Configuration metadata.
-   *
-   * @return the jobId
-   */
-  public String jobId() {
-    return jobId;
-  }
-
-  /**
-   * Gets the status.
-   *
-   * job status.
-   *
-   * @return the status
-   */
-  public String status() {
-    return status;
   }
 }
 

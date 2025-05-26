@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,8 +18,6 @@ import com.ibm.cloud.mdm.v1.model.ReplaceModelMapResourceOptions;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -35,26 +33,26 @@ public class ReplaceModelMapResourceOptionsTest {
   @Test
   public void testReplaceModelMapResourceOptions() throws Throwable {
     MapResourceEntry mapResourceEntryModel = new MapResourceEntry.Builder()
-      .regex(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .category("testString")
+      .regex(java.util.Arrays.asList("testString"))
+      .values(java.util.Arrays.asList("testString"))
       .dataType("testString")
+      .category("testString")
       .cardinality("testString")
-      .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .key("testString")
       .build();
-    assertEquals(mapResourceEntryModel.regex(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(mapResourceEntryModel.category(), "testString");
+    assertEquals(mapResourceEntryModel.regex(), java.util.Arrays.asList("testString"));
+    assertEquals(mapResourceEntryModel.values(), java.util.Arrays.asList("testString"));
     assertEquals(mapResourceEntryModel.dataType(), "testString");
+    assertEquals(mapResourceEntryModel.category(), "testString");
     assertEquals(mapResourceEntryModel.cardinality(), "testString");
-    assertEquals(mapResourceEntryModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(mapResourceEntryModel.key(), "testString");
 
     ReplaceModelMapResourceOptions replaceModelMapResourceOptionsModel = new ReplaceModelMapResourceOptions.Builder()
       .resourceName("testString")
-      .requestBody(new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", new java.util.ArrayList<MapResourceEntry>(java.util.Arrays.asList(mapResourceEntryModel))); } })
+      .requestBody(new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", java.util.Arrays.asList(mapResourceEntryModel)); } })
       .build();
     assertEquals(replaceModelMapResourceOptionsModel.resourceName(), "testString");
-    assertEquals(replaceModelMapResourceOptionsModel.requestBody(), new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", new java.util.ArrayList<MapResourceEntry>(java.util.Arrays.asList(mapResourceEntryModel))); } });
+    assertEquals(replaceModelMapResourceOptionsModel.requestBody(), new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", java.util.Arrays.asList(mapResourceEntryModel)); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

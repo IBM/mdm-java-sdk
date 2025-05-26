@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,6 +32,12 @@ public class RunDataBulkLoadOptions extends GenericModel {
   protected DataLoadSource dataSource;
   protected DataLoadStructure dataStructure;
   protected String updateStrategy;
+  protected Long executorCount;
+  protected String executorMemory;
+  protected Long executorCoreCount;
+  protected Long batchSize;
+  protected Long sparkParallelism;
+  protected Boolean isInitialLoad;
 
   /**
    * Builder.
@@ -40,11 +46,23 @@ public class RunDataBulkLoadOptions extends GenericModel {
     private DataLoadSource dataSource;
     private DataLoadStructure dataStructure;
     private String updateStrategy;
+    private Long executorCount;
+    private String executorMemory;
+    private Long executorCoreCount;
+    private Long batchSize;
+    private Long sparkParallelism;
+    private Boolean isInitialLoad;
 
     private Builder(RunDataBulkLoadOptions runDataBulkLoadOptions) {
       this.dataSource = runDataBulkLoadOptions.dataSource;
       this.dataStructure = runDataBulkLoadOptions.dataStructure;
       this.updateStrategy = runDataBulkLoadOptions.updateStrategy;
+      this.executorCount = runDataBulkLoadOptions.executorCount;
+      this.executorMemory = runDataBulkLoadOptions.executorMemory;
+      this.executorCoreCount = runDataBulkLoadOptions.executorCoreCount;
+      this.batchSize = runDataBulkLoadOptions.batchSize;
+      this.sparkParallelism = runDataBulkLoadOptions.sparkParallelism;
+      this.isInitialLoad = runDataBulkLoadOptions.isInitialLoad;
     }
 
     /**
@@ -103,7 +121,75 @@ public class RunDataBulkLoadOptions extends GenericModel {
       this.updateStrategy = updateStrategy;
       return this;
     }
+
+    /**
+     * Set the executorCount.
+     *
+     * @param executorCount the executorCount
+     * @return the RunDataBulkLoadOptions builder
+     */
+    public Builder executorCount(long executorCount) {
+      this.executorCount = executorCount;
+      return this;
+    }
+
+    /**
+     * Set the executorMemory.
+     *
+     * @param executorMemory the executorMemory
+     * @return the RunDataBulkLoadOptions builder
+     */
+    public Builder executorMemory(String executorMemory) {
+      this.executorMemory = executorMemory;
+      return this;
+    }
+
+    /**
+     * Set the executorCoreCount.
+     *
+     * @param executorCoreCount the executorCoreCount
+     * @return the RunDataBulkLoadOptions builder
+     */
+    public Builder executorCoreCount(long executorCoreCount) {
+      this.executorCoreCount = executorCoreCount;
+      return this;
+    }
+
+    /**
+     * Set the batchSize.
+     *
+     * @param batchSize the batchSize
+     * @return the RunDataBulkLoadOptions builder
+     */
+    public Builder batchSize(long batchSize) {
+      this.batchSize = batchSize;
+      return this;
+    }
+
+    /**
+     * Set the sparkParallelism.
+     *
+     * @param sparkParallelism the sparkParallelism
+     * @return the RunDataBulkLoadOptions builder
+     */
+    public Builder sparkParallelism(long sparkParallelism) {
+      this.sparkParallelism = sparkParallelism;
+      return this;
+    }
+
+    /**
+     * Set the isInitialLoad.
+     *
+     * @param isInitialLoad the isInitialLoad
+     * @return the RunDataBulkLoadOptions builder
+     */
+    public Builder isInitialLoad(Boolean isInitialLoad) {
+      this.isInitialLoad = isInitialLoad;
+      return this;
+    }
   }
+
+  protected RunDataBulkLoadOptions() { }
 
   protected RunDataBulkLoadOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataSource,
@@ -111,6 +197,12 @@ public class RunDataBulkLoadOptions extends GenericModel {
     dataSource = builder.dataSource;
     dataStructure = builder.dataStructure;
     updateStrategy = builder.updateStrategy;
+    executorCount = builder.executorCount;
+    executorMemory = builder.executorMemory;
+    executorCoreCount = builder.executorCoreCount;
+    batchSize = builder.batchSize;
+    sparkParallelism = builder.sparkParallelism;
+    isInitialLoad = builder.isInitialLoad;
   }
 
   /**
@@ -153,6 +245,72 @@ public class RunDataBulkLoadOptions extends GenericModel {
    */
   public String updateStrategy() {
     return updateStrategy;
+  }
+
+  /**
+   * Gets the executorCount.
+   *
+   * The number of spark executors.
+   *
+   * @return the executorCount
+   */
+  public Long executorCount() {
+    return executorCount;
+  }
+
+  /**
+   * Gets the executorMemory.
+   *
+   * Amount of memory to use per executor process.
+   *
+   * @return the executorMemory
+   */
+  public String executorMemory() {
+    return executorMemory;
+  }
+
+  /**
+   * Gets the executorCoreCount.
+   *
+   * The number of cores to use on each executor.
+   *
+   * @return the executorCoreCount
+   */
+  public Long executorCoreCount() {
+    return executorCoreCount;
+  }
+
+  /**
+   * Gets the batchSize.
+   *
+   * Batch Size.
+   *
+   * @return the batchSize
+   */
+  public Long batchSize() {
+    return batchSize;
+  }
+
+  /**
+   * Gets the sparkParallelism.
+   *
+   * The number of partitions to be used by spark.
+   *
+   * @return the sparkParallelism
+   */
+  public Long sparkParallelism() {
+    return sparkParallelism;
+  }
+
+  /**
+   * Gets the isInitialLoad.
+   *
+   * Is initial load of data.
+   *
+   * @return the isInitialLoad
+   */
+  public Boolean isInitialLoad() {
+    return isInitialLoad;
   }
 }
 

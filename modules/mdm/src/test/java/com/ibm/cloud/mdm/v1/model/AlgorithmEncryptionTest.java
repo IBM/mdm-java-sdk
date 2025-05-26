@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,8 +17,6 @@ import com.ibm.cloud.mdm.v1.model.AlgorithmEncryption;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -35,22 +33,22 @@ public class AlgorithmEncryptionTest {
   public void testAlgorithmEncryption() throws Throwable {
     AlgorithmEncryption algorithmEncryptionModel = new AlgorithmEncryption.Builder()
       .subType("testString")
-      .pubKey(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .enabled(true)
       .type("testString")
+      .enabled(true)
+      .pubKey(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(algorithmEncryptionModel.subType(), "testString");
-    assertEquals(algorithmEncryptionModel.pubKey(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(algorithmEncryptionModel.enabled(), Boolean.valueOf(true));
     assertEquals(algorithmEncryptionModel.type(), "testString");
+    assertEquals(algorithmEncryptionModel.enabled(), Boolean.valueOf(true));
+    assertEquals(algorithmEncryptionModel.pubKey(), java.util.Arrays.asList("testString"));
 
     String json = TestUtilities.serialize(algorithmEncryptionModel);
 
     AlgorithmEncryption algorithmEncryptionModelNew = TestUtilities.deserialize(json, AlgorithmEncryption.class);
     assertTrue(algorithmEncryptionModelNew instanceof AlgorithmEncryption);
     assertEquals(algorithmEncryptionModelNew.subType(), "testString");
-    assertEquals(algorithmEncryptionModelNew.enabled(), Boolean.valueOf(true));
     assertEquals(algorithmEncryptionModelNew.type(), "testString");
+    assertEquals(algorithmEncryptionModelNew.enabled(), Boolean.valueOf(true));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

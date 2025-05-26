@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,33 +33,52 @@ public class DataModelEntityTypeSystemPropertiesTest {
   @Test
   public void testDataModelEntityTypeSystemProperties() throws Throwable {
     DataModelSystemProperty dataModelSystemPropertyModel = new DataModelSystemProperty.Builder()
-      .label("testString")
-      .editable(true)
-      .indexed(true)
-      .dataType("testString")
       .settable(true)
+      .indexed(true)
+      .editable(true)
+      .deprecated(true)
+      .dataType("testString")
       .description("testString")
+      .label("testString")
+      .classification("testString")
       .build();
-    assertEquals(dataModelSystemPropertyModel.label(), "testString");
-    assertEquals(dataModelSystemPropertyModel.editable(), Boolean.valueOf(true));
-    assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
-    assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
     assertEquals(dataModelSystemPropertyModel.settable(), Boolean.valueOf(true));
+    assertEquals(dataModelSystemPropertyModel.indexed(), Boolean.valueOf(true));
+    assertEquals(dataModelSystemPropertyModel.editable(), Boolean.valueOf(true));
+    assertEquals(dataModelSystemPropertyModel.deprecated(), Boolean.valueOf(true));
+    assertEquals(dataModelSystemPropertyModel.dataType(), "testString");
     assertEquals(dataModelSystemPropertyModel.description(), "testString");
+    assertEquals(dataModelSystemPropertyModel.label(), "testString");
+    assertEquals(dataModelSystemPropertyModel.classification(), "testString");
 
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
-      .entityId(dataModelSystemPropertyModel)
+      .recordCount(dataModelSystemPropertyModel)
+      .linkLastUpdatedDate(dataModelSystemPropertyModel)
+      .lastUpdatedUser(dataModelSystemPropertyModel)
       .entityLastUpdated(dataModelSystemPropertyModel)
+      .createdDate(dataModelSystemPropertyModel)
+      .entityId(dataModelSystemPropertyModel)
+      .lastUpdatedDate(dataModelSystemPropertyModel)
       .build();
-    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.recordCount(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.linkLastUpdatedDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.lastUpdatedUser(), dataModelSystemPropertyModel);
     assertEquals(dataModelEntityTypeSystemPropertiesModel.entityLastUpdated(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.createdDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.entityId(), dataModelSystemPropertyModel);
+    assertEquals(dataModelEntityTypeSystemPropertiesModel.lastUpdatedDate(), dataModelSystemPropertyModel);
 
     String json = TestUtilities.serialize(dataModelEntityTypeSystemPropertiesModel);
 
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModelNew = TestUtilities.deserialize(json, DataModelEntityTypeSystemProperties.class);
     assertTrue(dataModelEntityTypeSystemPropertiesModelNew instanceof DataModelEntityTypeSystemProperties);
-    assertEquals(dataModelEntityTypeSystemPropertiesModelNew.entityId().toString(), dataModelSystemPropertyModel.toString());
+    assertEquals(dataModelEntityTypeSystemPropertiesModelNew.recordCount().toString(), dataModelSystemPropertyModel.toString());
+    assertEquals(dataModelEntityTypeSystemPropertiesModelNew.linkLastUpdatedDate().toString(), dataModelSystemPropertyModel.toString());
+    assertEquals(dataModelEntityTypeSystemPropertiesModelNew.lastUpdatedUser().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelEntityTypeSystemPropertiesModelNew.entityLastUpdated().toString(), dataModelSystemPropertyModel.toString());
+    assertEquals(dataModelEntityTypeSystemPropertiesModelNew.createdDate().toString(), dataModelSystemPropertyModel.toString());
+    assertEquals(dataModelEntityTypeSystemPropertiesModelNew.entityId().toString(), dataModelSystemPropertyModel.toString());
+    assertEquals(dataModelEntityTypeSystemPropertiesModelNew.lastUpdatedDate().toString(), dataModelSystemPropertyModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

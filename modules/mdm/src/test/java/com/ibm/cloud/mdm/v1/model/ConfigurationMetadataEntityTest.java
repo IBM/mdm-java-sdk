@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,24 +32,24 @@ public class ConfigurationMetadataEntityTest {
   @Test
   public void testConfigurationMetadataEntity() throws Throwable {
     ConfigurationMetadataEntity configurationMetadataEntityModel = new ConfigurationMetadataEntity.Builder()
+      .jobId("testString")
+      .status("testString")
       .pairOffset(Long.valueOf("26"))
       .tunedConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .currentConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .jobId("testString")
-      .status("testString")
       .build();
+    assertEquals(configurationMetadataEntityModel.jobId(), "testString");
+    assertEquals(configurationMetadataEntityModel.status(), "testString");
     assertEquals(configurationMetadataEntityModel.pairOffset(), Long.valueOf("26"));
     assertEquals(configurationMetadataEntityModel.tunedConfiguration(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
     assertEquals(configurationMetadataEntityModel.currentConfiguration(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(configurationMetadataEntityModel.jobId(), "testString");
-    assertEquals(configurationMetadataEntityModel.status(), "testString");
 
     String json = TestUtilities.serialize(configurationMetadataEntityModel);
 
     ConfigurationMetadataEntity configurationMetadataEntityModelNew = TestUtilities.deserialize(json, ConfigurationMetadataEntity.class);
     assertTrue(configurationMetadataEntityModelNew instanceof ConfigurationMetadataEntity);
-    assertEquals(configurationMetadataEntityModelNew.pairOffset(), Long.valueOf("26"));
     assertEquals(configurationMetadataEntityModelNew.jobId(), "testString");
     assertEquals(configurationMetadataEntityModelNew.status(), "testString");
+    assertEquals(configurationMetadataEntityModelNew.pairOffset(), Long.valueOf("26"));
   }
 }

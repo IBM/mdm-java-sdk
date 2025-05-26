@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,8 +21,6 @@ import com.ibm.cloud.mdm.v1.model.SearchQuery;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -42,47 +40,67 @@ public class RunDataBulkDeleteOptionsTest {
       .condition("equal")
       .value("testString")
       .recordType("testString")
+      .entityType("testString")
       .operation("and")
       .build();
     assertEquals(expressionModel.property(), "testString");
     assertEquals(expressionModel.condition(), "equal");
     assertEquals(expressionModel.value(), "testString");
     assertEquals(expressionModel.recordType(), "testString");
+    assertEquals(expressionModel.entityType(), "testString");
     assertEquals(expressionModel.operation(), "and");
 
     SearchQuery searchQueryModel = new SearchQuery.Builder()
-      .expressions(new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)))
+      .expressions(java.util.Arrays.asList(expressionModel))
       .operation("and")
       .build();
-    assertEquals(searchQueryModel.expressions(), new java.util.ArrayList<Expression>(java.util.Arrays.asList(expressionModel)));
+    assertEquals(searchQueryModel.expressions(), java.util.Arrays.asList(expressionModel));
     assertEquals(searchQueryModel.operation(), "and");
 
     SearchFilter searchFilterModel = new SearchFilter.Builder()
       .type("record")
-      .values(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .values(java.util.Arrays.asList("testString"))
+      .dataQualityIssues(java.util.Arrays.asList("potential_match"))
       .build();
     assertEquals(searchFilterModel.type(), "record");
-    assertEquals(searchFilterModel.values(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(searchFilterModel.values(), java.util.Arrays.asList("testString"));
+    assertEquals(searchFilterModel.dataQualityIssues(), java.util.Arrays.asList("potential_match"));
 
     DataSearchCriteria dataSearchCriteriaModel = new DataSearchCriteria.Builder()
       .searchType("record")
       .query(searchQueryModel)
-      .filters(new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)))
+      .filters(java.util.Arrays.asList(searchFilterModel))
       .build();
     assertEquals(dataSearchCriteriaModel.searchType(), "record");
     assertEquals(dataSearchCriteriaModel.query(), searchQueryModel);
-    assertEquals(dataSearchCriteriaModel.filters(), new java.util.ArrayList<SearchFilter>(java.util.Arrays.asList(searchFilterModel)));
+    assertEquals(dataSearchCriteriaModel.filters(), java.util.Arrays.asList(searchFilterModel));
 
     RunDataBulkDeleteOptions runDataBulkDeleteOptionsModel = new RunDataBulkDeleteOptions.Builder()
       .deleteType("asset")
-      .collectionIds(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .deleteTarget("record")
+      .collectionIds(java.util.Arrays.asList("testString"))
       .recordSource("testString")
+      .relationshipSource("testString")
       .searchCriteria(dataSearchCriteriaModel)
+      .executorCount(Long.valueOf("1"))
+      .executorMemory("8g")
+      .executorCoreCount(Long.valueOf("1"))
+      .sparkParallelism(Long.valueOf("2"))
+      .batchSize(Long.valueOf("1000"))
+      .retryCount(Long.valueOf("10"))
       .build();
     assertEquals(runDataBulkDeleteOptionsModel.deleteType(), "asset");
-    assertEquals(runDataBulkDeleteOptionsModel.collectionIds(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(runDataBulkDeleteOptionsModel.deleteTarget(), "record");
+    assertEquals(runDataBulkDeleteOptionsModel.collectionIds(), java.util.Arrays.asList("testString"));
     assertEquals(runDataBulkDeleteOptionsModel.recordSource(), "testString");
+    assertEquals(runDataBulkDeleteOptionsModel.relationshipSource(), "testString");
     assertEquals(runDataBulkDeleteOptionsModel.searchCriteria(), dataSearchCriteriaModel);
+    assertEquals(runDataBulkDeleteOptionsModel.executorCount(), Long.valueOf("1"));
+    assertEquals(runDataBulkDeleteOptionsModel.executorMemory(), "8g");
+    assertEquals(runDataBulkDeleteOptionsModel.executorCoreCount(), Long.valueOf("1"));
+    assertEquals(runDataBulkDeleteOptionsModel.sparkParallelism(), Long.valueOf("2"));
+    assertEquals(runDataBulkDeleteOptionsModel.batchSize(), Long.valueOf("1000"));
+    assertEquals(runDataBulkDeleteOptionsModel.retryCount(), Long.valueOf("10"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

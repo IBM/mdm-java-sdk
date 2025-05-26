@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,6 +26,8 @@ public class ListDataRelationshipsForRecordOptions extends GenericModel {
   protected List<String> relationshipTypes;
   protected Long offset;
   protected Long limit;
+  protected List<String> sourceInclude;
+  protected List<String> targetInclude;
 
   /**
    * Builder.
@@ -35,12 +37,16 @@ public class ListDataRelationshipsForRecordOptions extends GenericModel {
     private List<String> relationshipTypes;
     private Long offset;
     private Long limit;
+    private List<String> sourceInclude;
+    private List<String> targetInclude;
 
     private Builder(ListDataRelationshipsForRecordOptions listDataRelationshipsForRecordOptions) {
       this.id = listDataRelationshipsForRecordOptions.id;
       this.relationshipTypes = listDataRelationshipsForRecordOptions.relationshipTypes;
       this.offset = listDataRelationshipsForRecordOptions.offset;
       this.limit = listDataRelationshipsForRecordOptions.limit;
+      this.sourceInclude = listDataRelationshipsForRecordOptions.sourceInclude;
+      this.targetInclude = listDataRelationshipsForRecordOptions.targetInclude;
     }
 
     /**
@@ -80,6 +86,38 @@ public class ListDataRelationshipsForRecordOptions extends GenericModel {
         this.relationshipTypes = new ArrayList<String>();
       }
       this.relationshipTypes.add(relationshipTypes);
+      return this;
+    }
+
+    /**
+     * Adds an sourceInclude to sourceInclude.
+     *
+     * @param sourceInclude the new sourceInclude
+     * @return the ListDataRelationshipsForRecordOptions builder
+     */
+    public Builder addSourceInclude(String sourceInclude) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(sourceInclude,
+        "sourceInclude cannot be null");
+      if (this.sourceInclude == null) {
+        this.sourceInclude = new ArrayList<String>();
+      }
+      this.sourceInclude.add(sourceInclude);
+      return this;
+    }
+
+    /**
+     * Adds an targetInclude to targetInclude.
+     *
+     * @param targetInclude the new targetInclude
+     * @return the ListDataRelationshipsForRecordOptions builder
+     */
+    public Builder addTargetInclude(String targetInclude) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(targetInclude,
+        "targetInclude cannot be null");
+      if (this.targetInclude == null) {
+        this.targetInclude = new ArrayList<String>();
+      }
+      this.targetInclude.add(targetInclude);
       return this;
     }
 
@@ -127,7 +165,33 @@ public class ListDataRelationshipsForRecordOptions extends GenericModel {
       this.limit = limit;
       return this;
     }
+
+    /**
+     * Set the sourceInclude.
+     * Existing sourceInclude will be replaced.
+     *
+     * @param sourceInclude the sourceInclude
+     * @return the ListDataRelationshipsForRecordOptions builder
+     */
+    public Builder sourceInclude(List<String> sourceInclude) {
+      this.sourceInclude = sourceInclude;
+      return this;
+    }
+
+    /**
+     * Set the targetInclude.
+     * Existing targetInclude will be replaced.
+     *
+     * @param targetInclude the targetInclude
+     * @return the ListDataRelationshipsForRecordOptions builder
+     */
+    public Builder targetInclude(List<String> targetInclude) {
+      this.targetInclude = targetInclude;
+      return this;
+    }
   }
+
+  protected ListDataRelationshipsForRecordOptions() { }
 
   protected ListDataRelationshipsForRecordOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,
@@ -136,6 +200,8 @@ public class ListDataRelationshipsForRecordOptions extends GenericModel {
     relationshipTypes = builder.relationshipTypes;
     offset = builder.offset;
     limit = builder.limit;
+    sourceInclude = builder.sourceInclude;
+    targetInclude = builder.targetInclude;
   }
 
   /**
@@ -189,6 +255,28 @@ public class ListDataRelationshipsForRecordOptions extends GenericModel {
    */
   public Long limit() {
     return limit;
+  }
+
+  /**
+   * Gets the sourceInclude.
+   *
+   * Attributes from the data model to include in the results for the source vertex.
+   *
+   * @return the sourceInclude
+   */
+  public List<String> sourceInclude() {
+    return sourceInclude;
+  }
+
+  /**
+   * Gets the targetInclude.
+   *
+   * Attributes from the data model to include in the results for the target vertex.
+   *
+   * @return the targetInclude
+   */
+  public List<String> targetInclude() {
+    return targetInclude;
   }
 }
 

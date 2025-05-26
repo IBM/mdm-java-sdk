@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,13 +20,57 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class EntityBreakdown extends GenericModel {
 
+  protected Double count;
+  protected Double min;
+  protected Double max;
+  protected Double variance;
   protected Double average;
   @SerializedName("standard_deviation")
   protected Double standardDeviation;
-  protected Double variance;
-  protected Double max;
-  protected Double min;
-  protected Double count;
+
+  /**
+   * Gets the count.
+   *
+   * The count of the entities.
+   *
+   * @return the count
+   */
+  public Double getCount() {
+    return count;
+  }
+
+  /**
+   * Gets the min.
+   *
+   * The minimum size of the entity.
+   *
+   * @return the min
+   */
+  public Double getMin() {
+    return min;
+  }
+
+  /**
+   * Gets the max.
+   *
+   * The maximum size of the entity.
+   *
+   * @return the max
+   */
+  public Double getMax() {
+    return max;
+  }
+
+  /**
+   * Gets the variance.
+   *
+   * The variance of the entity sizes.
+   *
+   * @return the variance
+   */
+  public Double getVariance() {
+    return variance;
+  }
 
   /**
    * Gets the average.
@@ -48,50 +92,6 @@ public class EntityBreakdown extends GenericModel {
    */
   public Double getStandardDeviation() {
     return standardDeviation;
-  }
-
-  /**
-   * Gets the variance.
-   *
-   * The variance of the entity sizes.
-   *
-   * @return the variance
-   */
-  public Double getVariance() {
-    return variance;
-  }
-
-  /**
-   * Gets the max.
-   *
-   * The maximum size of the entity.
-   *
-   * @return the max
-   */
-  public Double getMax() {
-    return max;
-  }
-
-  /**
-   * Gets the min.
-   *
-   * The minimum size of the entity.
-   *
-   * @return the min
-   */
-  public Double getMin() {
-    return min;
-  }
-
-  /**
-   * Gets the count.
-   *
-   * The count of the entities.
-   *
-   * @return the count
-   */
-  public Double getCount() {
-    return count;
   }
 }
 

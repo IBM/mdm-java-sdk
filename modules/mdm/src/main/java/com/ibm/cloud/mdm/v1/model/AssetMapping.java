@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,40 +20,40 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AssetMapping extends GenericModel {
 
-  @SerializedName("exclude_column")
-  protected Boolean excludeColumn;
-  @SerializedName("auto_mapped")
-  protected Boolean autoMapped;
+  protected String key;
   @SerializedName("classified_class")
   protected String classifiedClass;
   @SerializedName("data_mapping_name")
   protected String dataMappingName;
+  @SerializedName("exclude_column")
+  protected Boolean excludeColumn;
+  @SerializedName("auto_mapped")
+  protected Boolean autoMapped;
   @SerializedName("completeness_percent")
   protected String completenessPercent;
   @SerializedName("data_mapping_attribute_type")
   protected String dataMappingAttributeType;
-  protected String key;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private Boolean excludeColumn;
-    private Boolean autoMapped;
+    private String key;
     private String classifiedClass;
     private String dataMappingName;
+    private Boolean excludeColumn;
+    private Boolean autoMapped;
     private String completenessPercent;
     private String dataMappingAttributeType;
-    private String key;
 
     private Builder(AssetMapping assetMapping) {
-      this.excludeColumn = assetMapping.excludeColumn;
-      this.autoMapped = assetMapping.autoMapped;
+      this.key = assetMapping.key;
       this.classifiedClass = assetMapping.classifiedClass;
       this.dataMappingName = assetMapping.dataMappingName;
+      this.excludeColumn = assetMapping.excludeColumn;
+      this.autoMapped = assetMapping.autoMapped;
       this.completenessPercent = assetMapping.completenessPercent;
       this.dataMappingAttributeType = assetMapping.dataMappingAttributeType;
-      this.key = assetMapping.key;
     }
 
     /**
@@ -72,24 +72,13 @@ public class AssetMapping extends GenericModel {
     }
 
     /**
-     * Set the excludeColumn.
+     * Set the key.
      *
-     * @param excludeColumn the excludeColumn
+     * @param key the key
      * @return the AssetMapping builder
      */
-    public Builder excludeColumn(Boolean excludeColumn) {
-      this.excludeColumn = excludeColumn;
-      return this;
-    }
-
-    /**
-     * Set the autoMapped.
-     *
-     * @param autoMapped the autoMapped
-     * @return the AssetMapping builder
-     */
-    public Builder autoMapped(Boolean autoMapped) {
-      this.autoMapped = autoMapped;
+    public Builder key(String key) {
+      this.key = key;
       return this;
     }
 
@@ -116,6 +105,28 @@ public class AssetMapping extends GenericModel {
     }
 
     /**
+     * Set the excludeColumn.
+     *
+     * @param excludeColumn the excludeColumn
+     * @return the AssetMapping builder
+     */
+    public Builder excludeColumn(Boolean excludeColumn) {
+      this.excludeColumn = excludeColumn;
+      return this;
+    }
+
+    /**
+     * Set the autoMapped.
+     *
+     * @param autoMapped the autoMapped
+     * @return the AssetMapping builder
+     */
+    public Builder autoMapped(Boolean autoMapped) {
+      this.autoMapped = autoMapped;
+      return this;
+    }
+
+    /**
      * Set the completenessPercent.
      *
      * @param completenessPercent the completenessPercent
@@ -136,27 +147,18 @@ public class AssetMapping extends GenericModel {
       this.dataMappingAttributeType = dataMappingAttributeType;
       return this;
     }
-
-    /**
-     * Set the key.
-     *
-     * @param key the key
-     * @return the AssetMapping builder
-     */
-    public Builder key(String key) {
-      this.key = key;
-      return this;
-    }
   }
 
+  protected AssetMapping() { }
+
   protected AssetMapping(Builder builder) {
-    excludeColumn = builder.excludeColumn;
-    autoMapped = builder.autoMapped;
+    key = builder.key;
     classifiedClass = builder.classifiedClass;
     dataMappingName = builder.dataMappingName;
+    excludeColumn = builder.excludeColumn;
+    autoMapped = builder.autoMapped;
     completenessPercent = builder.completenessPercent;
     dataMappingAttributeType = builder.dataMappingAttributeType;
-    key = builder.key;
   }
 
   /**
@@ -169,25 +171,14 @@ public class AssetMapping extends GenericModel {
   }
 
   /**
-   * Gets the excludeColumn.
+   * Gets the key.
    *
-   * Specifies whether this Data Asset column is excluded from mapping.
+   * The key of the Data Asset column.
    *
-   * @return the excludeColumn
+   * @return the key
    */
-  public Boolean excludeColumn() {
-    return excludeColumn;
-  }
-
-  /**
-   * Gets the autoMapped.
-   *
-   * Specifies whether this data asset column is automatically mapped.
-   *
-   * @return the autoMapped
-   */
-  public Boolean autoMapped() {
-    return autoMapped;
+  public String key() {
+    return key;
   }
 
   /**
@@ -213,6 +204,28 @@ public class AssetMapping extends GenericModel {
   }
 
   /**
+   * Gets the excludeColumn.
+   *
+   * Specifies whether this Data Asset column is excluded from mapping.
+   *
+   * @return the excludeColumn
+   */
+  public Boolean excludeColumn() {
+    return excludeColumn;
+  }
+
+  /**
+   * Gets the autoMapped.
+   *
+   * Specifies whether this data asset column is automatically mapped.
+   *
+   * @return the autoMapped
+   */
+  public Boolean autoMapped() {
+    return autoMapped;
+  }
+
+  /**
    * Gets the completenessPercent.
    *
    * The data values completeness percentage of the Data asset column.
@@ -232,17 +245,6 @@ public class AssetMapping extends GenericModel {
    */
   public String dataMappingAttributeType() {
     return dataMappingAttributeType;
-  }
-
-  /**
-   * Gets the key.
-   *
-   * The key of the Data Asset column.
-   *
-   * @return the key
-   */
-  public String key() {
-    return key;
   }
 }
 

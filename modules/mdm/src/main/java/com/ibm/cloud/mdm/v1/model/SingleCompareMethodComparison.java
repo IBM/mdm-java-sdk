@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,23 +23,34 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SingleCompareMethodComparison extends GenericModel {
 
-  protected Map<String, Object> details;
+  protected Float score;
+  protected List<String> types;
   protected Float distance;
   @SerializedName("feature_vector")
   protected Map<String, Object> featureVector;
-  protected Float score;
   protected List<String> values;
-  protected List<String> types;
+  protected Map<String, Object> details;
 
   /**
-   * Gets the details.
+   * Gets the score.
    *
-   * Collection of details of compared tokens.
+   * The comparison score of compared values.
    *
-   * @return the details
+   * @return the score
    */
-  public Map<String, Object> getDetails() {
-    return details;
+  public Float getScore() {
+    return score;
+  }
+
+  /**
+   * Gets the types.
+   *
+   * Pair of attribute types.
+   *
+   * @return the types
+   */
+  public List<String> getTypes() {
+    return types;
   }
 
   /**
@@ -65,17 +76,6 @@ public class SingleCompareMethodComparison extends GenericModel {
   }
 
   /**
-   * Gets the score.
-   *
-   * The comparison score of compared values.
-   *
-   * @return the score
-   */
-  public Float getScore() {
-    return score;
-  }
-
-  /**
    * Gets the values.
    *
    * Pair of compared values.
@@ -87,14 +87,14 @@ public class SingleCompareMethodComparison extends GenericModel {
   }
 
   /**
-   * Gets the types.
+   * Gets the details.
    *
-   * Pair of attribute types.
+   * Collection of details of compared tokens.
    *
-   * @return the types
+   * @return the details
    */
-  public List<String> getTypes() {
-    return types;
+  public Map<String, Object> getDetails() {
+    return details;
   }
 }
 

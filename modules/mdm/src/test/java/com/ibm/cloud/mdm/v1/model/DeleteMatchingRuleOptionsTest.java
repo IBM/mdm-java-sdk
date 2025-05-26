@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,8 +18,6 @@ import com.ibm.cloud.mdm.v1.model.RulesRequestRule;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -35,20 +33,20 @@ public class DeleteMatchingRuleOptionsTest {
   @Test
   public void testDeleteMatchingRuleOptions() throws Throwable {
     RulesRequestRule rulesRequestRuleModel = new RulesRequestRule.Builder()
-      .recordNumbers(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .ruleType("testString")
       .description("testString")
+      .recordNumbers(java.util.Arrays.asList("testString"))
       .build();
-    assertEquals(rulesRequestRuleModel.recordNumbers(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(rulesRequestRuleModel.ruleType(), "testString");
     assertEquals(rulesRequestRuleModel.description(), "testString");
+    assertEquals(rulesRequestRuleModel.recordNumbers(), java.util.Arrays.asList("testString"));
 
     DeleteMatchingRuleOptions deleteMatchingRuleOptionsModel = new DeleteMatchingRuleOptions.Builder()
-      .rules(new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)))
       .entityType("testString")
+      .rules(java.util.Arrays.asList(rulesRequestRuleModel))
       .build();
-    assertEquals(deleteMatchingRuleOptionsModel.rules(), new java.util.ArrayList<RulesRequestRule>(java.util.Arrays.asList(rulesRequestRuleModel)));
     assertEquals(deleteMatchingRuleOptionsModel.entityType(), "testString");
+    assertEquals(deleteMatchingRuleOptionsModel.rules(), java.util.Arrays.asList(rulesRequestRuleModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

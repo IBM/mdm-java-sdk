@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.DataVertexSummary;
+import com.ibm.cloud.mdm.v1.model.NodeWithAttributesDataRecord;
 import com.ibm.cloud.mdm.v1.model.ReplaceDataRelationshipOptions;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -32,25 +32,37 @@ public class ReplaceDataRelationshipOptionsTest {
 
   @Test
   public void testReplaceDataRelationshipOptions() throws Throwable {
-    DataVertexSummary dataVertexSummaryModel = new DataVertexSummary.Builder()
-      .id("testString")
+    NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
+      .type("record")
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .typeName("testString")
+      .isBlockedForUpdate(true)
+      .isQuarantined(true)
       .build();
-    assertEquals(dataVertexSummaryModel.id(), "testString");
+    assertEquals(nodeWithAttributesModel.type(), "record");
+    assertEquals(nodeWithAttributesModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(nodeWithAttributesModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(nodeWithAttributesModel.typeName(), "testString");
+    assertEquals(nodeWithAttributesModel.isBlockedForUpdate(), Boolean.valueOf(true));
+    assertEquals(nodeWithAttributesModel.isQuarantined(), Boolean.valueOf(true));
 
     ReplaceDataRelationshipOptions replaceDataRelationshipOptionsModel = new ReplaceDataRelationshipOptions.Builder()
       .id("testString")
-      .newAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .newTypeName("testString")
-      .newId("testString")
-      .newSource(dataVertexSummaryModel)
-      .newTarget(dataVertexSummaryModel)
+      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .typeName("testString")
+      .type("relationship")
+      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .source(nodeWithAttributesModel)
+      .target(nodeWithAttributesModel)
       .build();
     assertEquals(replaceDataRelationshipOptionsModel.id(), "testString");
-    assertEquals(replaceDataRelationshipOptionsModel.newAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(replaceDataRelationshipOptionsModel.newTypeName(), "testString");
-    assertEquals(replaceDataRelationshipOptionsModel.newId(), "testString");
-    assertEquals(replaceDataRelationshipOptionsModel.newSource(), dataVertexSummaryModel);
-    assertEquals(replaceDataRelationshipOptionsModel.newTarget(), dataVertexSummaryModel);
+    assertEquals(replaceDataRelationshipOptionsModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(replaceDataRelationshipOptionsModel.typeName(), "testString");
+    assertEquals(replaceDataRelationshipOptionsModel.type(), "relationship");
+    assertEquals(replaceDataRelationshipOptionsModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(replaceDataRelationshipOptionsModel.source(), nodeWithAttributesModel);
+    assertEquals(replaceDataRelationshipOptionsModel.target(), nodeWithAttributesModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

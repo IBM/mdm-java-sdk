@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,31 +21,39 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReplaceDataRelationshipOptions extends GenericModel {
 
+  public interface Type {
+    /** relationship. */
+    String RELATIONSHIP = "relationship";
+  }
+
   protected String id;
-  protected Map<String, Object> newAttributes;
-  protected String newTypeName;
-  protected String newId;
-  protected DataVertexSummary newSource;
-  protected DataVertexSummary newTarget;
+  protected Map<String, Object> attributes;
+  protected String typeName;
+  protected String type;
+  protected Map<String, Object> systemAttributes;
+  protected NodeWithAttributes source;
+  protected NodeWithAttributes target;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private Map<String, Object> newAttributes;
-    private String newTypeName;
-    private String newId;
-    private DataVertexSummary newSource;
-    private DataVertexSummary newTarget;
+    private Map<String, Object> attributes;
+    private String typeName;
+    private String type;
+    private Map<String, Object> systemAttributes;
+    private NodeWithAttributes source;
+    private NodeWithAttributes target;
 
     private Builder(ReplaceDataRelationshipOptions replaceDataRelationshipOptions) {
       this.id = replaceDataRelationshipOptions.id;
-      this.newAttributes = replaceDataRelationshipOptions.newAttributes;
-      this.newTypeName = replaceDataRelationshipOptions.newTypeName;
-      this.newId = replaceDataRelationshipOptions.newId;
-      this.newSource = replaceDataRelationshipOptions.newSource;
-      this.newTarget = replaceDataRelationshipOptions.newTarget;
+      this.attributes = replaceDataRelationshipOptions.attributes;
+      this.typeName = replaceDataRelationshipOptions.typeName;
+      this.type = replaceDataRelationshipOptions.type;
+      this.systemAttributes = replaceDataRelationshipOptions.systemAttributes;
+      this.source = replaceDataRelationshipOptions.source;
+      this.target = replaceDataRelationshipOptions.target;
     }
 
     /**
@@ -58,13 +66,13 @@ public class ReplaceDataRelationshipOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
-     * @param newAttributes the newAttributes
-     * @param newTypeName the newTypeName
+     * @param attributes the attributes
+     * @param typeName the typeName
      */
-    public Builder(String id, Map<String, Object> newAttributes, String newTypeName) {
+    public Builder(String id, Map<String, Object> attributes, String typeName) {
       this.id = id;
-      this.newAttributes = newAttributes;
-      this.newTypeName = newTypeName;
+      this.attributes = attributes;
+      this.typeName = typeName;
     }
 
     /**
@@ -88,74 +96,104 @@ public class ReplaceDataRelationshipOptions extends GenericModel {
     }
 
     /**
-     * Set the newAttributes.
+     * Set the attributes.
      *
-     * @param newAttributes the newAttributes
+     * @param attributes the attributes
      * @return the ReplaceDataRelationshipOptions builder
      */
-    public Builder newAttributes(Map<String, Object> newAttributes) {
-      this.newAttributes = newAttributes;
+    public Builder attributes(Map<String, Object> attributes) {
+      this.attributes = attributes;
       return this;
     }
 
     /**
-     * Set the newTypeName.
+     * Set the typeName.
      *
-     * @param newTypeName the newTypeName
+     * @param typeName the typeName
      * @return the ReplaceDataRelationshipOptions builder
      */
-    public Builder newTypeName(String newTypeName) {
-      this.newTypeName = newTypeName;
+    public Builder typeName(String typeName) {
+      this.typeName = typeName;
       return this;
     }
 
     /**
-     * Set the newId.
+     * Set the type.
      *
-     * @param newId the newId
+     * @param type the type
      * @return the ReplaceDataRelationshipOptions builder
      */
-    public Builder newId(String newId) {
-      this.newId = newId;
+    public Builder type(String type) {
+      this.type = type;
       return this;
     }
 
     /**
-     * Set the newSource.
+     * Set the systemAttributes.
      *
-     * @param newSource the newSource
+     * @param systemAttributes the systemAttributes
      * @return the ReplaceDataRelationshipOptions builder
      */
-    public Builder newSource(DataVertexSummary newSource) {
-      this.newSource = newSource;
+    public Builder systemAttributes(Map<String, Object> systemAttributes) {
+      this.systemAttributes = systemAttributes;
       return this;
     }
 
     /**
-     * Set the newTarget.
+     * Set the source.
      *
-     * @param newTarget the newTarget
+     * @param source the source
      * @return the ReplaceDataRelationshipOptions builder
      */
-    public Builder newTarget(DataVertexSummary newTarget) {
-      this.newTarget = newTarget;
+    public Builder source(NodeWithAttributes source) {
+      this.source = source;
+      return this;
+    }
+
+    /**
+     * Set the target.
+     *
+     * @param target the target
+     * @return the ReplaceDataRelationshipOptions builder
+     */
+    public Builder target(NodeWithAttributes target) {
+      this.target = target;
+      return this;
+    }
+
+    /**
+     * Set the dataRelationship.
+     *
+     * @param dataRelationship the dataRelationship
+     * @return the ReplaceDataRelationshipOptions builder
+     */
+    public Builder dataRelationship(DataRelationship dataRelationship) {
+      this.attributes = dataRelationship.attributes();
+      this.typeName = dataRelationship.typeName();
+      this.type = dataRelationship.type();
+      this.systemAttributes = dataRelationship.systemAttributes();
+      this.source = dataRelationship.source();
+      this.target = dataRelationship.target();
       return this;
     }
   }
 
+  protected ReplaceDataRelationshipOptions() { }
+
   protected ReplaceDataRelationshipOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.newAttributes,
-      "newAttributes cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.newTypeName,
-      "newTypeName cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.attributes,
+      "attributes cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.typeName,
+      "typeName cannot be null");
     id = builder.id;
-    newAttributes = builder.newAttributes;
-    newTypeName = builder.newTypeName;
-    newId = builder.newId;
-    newSource = builder.newSource;
-    newTarget = builder.newTarget;
+    attributes = builder.attributes;
+    typeName = builder.typeName;
+    type = builder.type;
+    systemAttributes = builder.systemAttributes;
+    source = builder.source;
+    target = builder.target;
   }
 
   /**
@@ -179,58 +217,67 @@ public class ReplaceDataRelationshipOptions extends GenericModel {
   }
 
   /**
-   * Gets the newAttributes.
+   * Gets the attributes.
    *
    * The list of the attributes of the element.
    *
-   * @return the newAttributes
+   * @return the attributes
    */
-  public Map<String, Object> newAttributes() {
-    return newAttributes;
+  public Map<String, Object> attributes() {
+    return attributes;
   }
 
   /**
-   * Gets the newTypeName.
+   * Gets the typeName.
    *
-   * The name of the relationship type as defined in the data model.
+   * The type as defined in the data model.
    *
-   * @return the newTypeName
+   * @return the typeName
    */
-  public String newTypeName() {
-    return newTypeName;
+  public String typeName() {
+    return typeName;
   }
 
   /**
-   * Gets the newId.
+   * Gets the type.
    *
-   * The id of the element.
-   *
-   * @return the newId
+   * @return the type
    */
-  public String newId() {
-    return newId;
+  public String type() {
+    return type;
   }
 
   /**
-   * Gets the newSource.
+   * Gets the systemAttributes.
    *
-   * Core information about a vertex on the graph.
+   * The list of the system attributes of the element.
    *
-   * @return the newSource
+   * @return the systemAttributes
    */
-  public DataVertexSummary newSource() {
-    return newSource;
+  public Map<String, Object> systemAttributes() {
+    return systemAttributes;
   }
 
   /**
-   * Gets the newTarget.
+   * Gets the source.
    *
-   * Core information about a vertex on the graph.
+   * A node with attributes.
    *
-   * @return the newTarget
+   * @return the source
    */
-  public DataVertexSummary newTarget() {
-    return newTarget;
+  public NodeWithAttributes source() {
+    return source;
+  }
+
+  /**
+   * Gets the target.
+   *
+   * A node with attributes.
+   *
+   * @return the target
+   */
+  public NodeWithAttributes target() {
+    return target;
   }
 }
 

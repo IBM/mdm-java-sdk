@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,8 +17,6 @@ import com.ibm.cloud.mdm.v1.model.ListDataRelationshipsForRecordOptions;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -35,14 +33,18 @@ public class ListDataRelationshipsForRecordOptionsTest {
   public void testListDataRelationshipsForRecordOptions() throws Throwable {
     ListDataRelationshipsForRecordOptions listDataRelationshipsForRecordOptionsModel = new ListDataRelationshipsForRecordOptions.Builder()
       .id(Long.valueOf("26"))
-      .relationshipTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .relationshipTypes(java.util.Arrays.asList("preference_association"))
       .offset(Long.valueOf("26"))
       .limit(Long.valueOf("50"))
+      .sourceInclude(java.util.Arrays.asList("all"))
+      .targetInclude(java.util.Arrays.asList("all"))
       .build();
     assertEquals(listDataRelationshipsForRecordOptionsModel.id(), Long.valueOf("26"));
-    assertEquals(listDataRelationshipsForRecordOptionsModel.relationshipTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(listDataRelationshipsForRecordOptionsModel.relationshipTypes(), java.util.Arrays.asList("preference_association"));
     assertEquals(listDataRelationshipsForRecordOptionsModel.offset(), Long.valueOf("26"));
     assertEquals(listDataRelationshipsForRecordOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(listDataRelationshipsForRecordOptionsModel.sourceInclude(), java.util.Arrays.asList("all"));
+    assertEquals(listDataRelationshipsForRecordOptionsModel.targetInclude(), java.util.Arrays.asList("all"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

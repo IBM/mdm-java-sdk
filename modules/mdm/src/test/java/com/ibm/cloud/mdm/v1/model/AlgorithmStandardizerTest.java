@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,8 +19,6 @@ import com.ibm.cloud.mdm.v1.model.AlgorithmStandardizerStep;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -36,41 +34,41 @@ public class AlgorithmStandardizerTest {
   @Test
   public void testAlgorithmStandardizer() throws Throwable {
     AlgorithmInput algorithmInputModel = new AlgorithmInput.Builder()
-      .encryptedFields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .attributes(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
-      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .attributes(java.util.Arrays.asList("testString"))
+      .fields(java.util.Arrays.asList("testString"))
+      .encryptedFields(java.util.Arrays.asList("testString"))
       .build();
-    assertEquals(algorithmInputModel.encryptedFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(algorithmInputModel.attributes(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
-    assertEquals(algorithmInputModel.fields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmInputModel.attributes(), java.util.Arrays.asList("testString"));
+    assertEquals(algorithmInputModel.fields(), java.util.Arrays.asList("testString"));
+    assertEquals(algorithmInputModel.encryptedFields(), java.util.Arrays.asList("testString"));
 
     AlgorithmStandardizerStep algorithmStandardizerStepModel = new AlgorithmStandardizerStep.Builder()
-      .setResource("testString")
-      .inputs(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))))
-      .label("testString")
       .comparisonResource("testString")
-      .mapResource("testString")
       .method("testString")
-      .fields(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .inputs(java.util.Arrays.asList(Long.valueOf("26")))
+      .label("testString")
+      .setResource("testString")
+      .fields(java.util.Arrays.asList("testString"))
+      .mapResource("testString")
       .add("foo", "testString")
       .build();
-    assertEquals(algorithmStandardizerStepModel.getSetResource(), "testString");
-    assertEquals(algorithmStandardizerStepModel.getInputs(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("26"))));
-    assertEquals(algorithmStandardizerStepModel.getLabel(), "testString");
     assertEquals(algorithmStandardizerStepModel.getComparisonResource(), "testString");
-    assertEquals(algorithmStandardizerStepModel.getMapResource(), "testString");
     assertEquals(algorithmStandardizerStepModel.getMethod(), "testString");
-    assertEquals(algorithmStandardizerStepModel.getFields(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(algorithmStandardizerStepModel.getInputs(), java.util.Arrays.asList(Long.valueOf("26")));
+    assertEquals(algorithmStandardizerStepModel.getLabel(), "testString");
+    assertEquals(algorithmStandardizerStepModel.getSetResource(), "testString");
+    assertEquals(algorithmStandardizerStepModel.getFields(), java.util.Arrays.asList("testString"));
+    assertEquals(algorithmStandardizerStepModel.getMapResource(), "testString");
     assertEquals(algorithmStandardizerStepModel.get("foo"), "testString");
 
     AlgorithmStandardizer algorithmStandardizerModel = new AlgorithmStandardizer.Builder()
-      .inputs(new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)))
+      .inputs(java.util.Arrays.asList(algorithmInputModel))
+      .standardizerRecipe(java.util.Arrays.asList(algorithmStandardizerStepModel))
       .label("testString")
-      .standardizerRecipe(new java.util.ArrayList<AlgorithmStandardizerStep>(java.util.Arrays.asList(algorithmStandardizerStepModel)))
       .build();
-    assertEquals(algorithmStandardizerModel.inputs(), new java.util.ArrayList<AlgorithmInput>(java.util.Arrays.asList(algorithmInputModel)));
+    assertEquals(algorithmStandardizerModel.inputs(), java.util.Arrays.asList(algorithmInputModel));
+    assertEquals(algorithmStandardizerModel.standardizerRecipe(), java.util.Arrays.asList(algorithmStandardizerStepModel));
     assertEquals(algorithmStandardizerModel.label(), "testString");
-    assertEquals(algorithmStandardizerModel.standardizerRecipe(), new java.util.ArrayList<AlgorithmStandardizerStep>(java.util.Arrays.asList(algorithmStandardizerStepModel)));
 
     String json = TestUtilities.serialize(algorithmStandardizerModel);
 

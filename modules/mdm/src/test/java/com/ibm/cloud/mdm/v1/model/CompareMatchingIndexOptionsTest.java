@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,8 +19,6 @@ import com.ibm.cloud.mdm.v1.model.SingleRecordRequestAttributes;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -37,35 +35,43 @@ public class CompareMatchingIndexOptionsTest {
   public void testCompareMatchingIndexOptions() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
       .recordId("testString")
-      .recordSource("testString")
       .recordLastUpdated(Long.valueOf("26"))
+      .recordSource("testString")
       .add("foo", "testString")
       .build();
     assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
-    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
+    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
     SingleRecordRequest singleRecordRequestModel = new SingleRecordRequest.Builder()
-      .recordType("testString")
       .attributes(singleRecordRequestAttributesModel)
+      .id(Long.valueOf("26"))
+      .recordType("testString")
       .build();
-    assertEquals(singleRecordRequestModel.recordType(), "testString");
     assertEquals(singleRecordRequestModel.attributes(), singleRecordRequestAttributesModel);
+    assertEquals(singleRecordRequestModel.id(), Long.valueOf("26"));
+    assertEquals(singleRecordRequestModel.recordType(), "testString");
 
     CompareMatchingIndexOptions compareMatchingIndexOptionsModel = new CompareMatchingIndexOptions.Builder()
-      .records(new java.util.ArrayList<SingleRecordRequest>(java.util.Arrays.asList(singleRecordRequestModel)))
       .entityType("person_entity")
+      .records(java.util.Arrays.asList(singleRecordRequestModel))
       .details("low")
       .recordNumber1(Long.valueOf("123456789"))
       .recordNumber2(Long.valueOf("123456789"))
       .recordType("person")
       .build();
-    assertEquals(compareMatchingIndexOptionsModel.records(), new java.util.ArrayList<SingleRecordRequest>(java.util.Arrays.asList(singleRecordRequestModel)));
     assertEquals(compareMatchingIndexOptionsModel.entityType(), "person_entity");
+    assertEquals(compareMatchingIndexOptionsModel.records(), java.util.Arrays.asList(singleRecordRequestModel));
     assertEquals(compareMatchingIndexOptionsModel.details(), "low");
     assertEquals(compareMatchingIndexOptionsModel.recordNumber1(), Long.valueOf("123456789"));
     assertEquals(compareMatchingIndexOptionsModel.recordNumber2(), Long.valueOf("123456789"));
     assertEquals(compareMatchingIndexOptionsModel.recordType(), "person");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCompareMatchingIndexOptionsError() throws Throwable {
+    new CompareMatchingIndexOptions.Builder().build();
+  }
+
 }

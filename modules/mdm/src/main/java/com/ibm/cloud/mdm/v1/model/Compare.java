@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,9 +22,76 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class Compare extends GenericModel {
 
+  protected Float score;
+  @SerializedName("comparison_post_filter_methods")
+  protected List<SinglePostFilterMethod> comparisonPostFilterMethods;
+  @SerializedName("score_category")
+  protected String scoreCategory;
+  @SerializedName("record_number2")
+  protected Float recordNumber2;
+  @SerializedName("record_number1")
+  protected Float recordNumber1;
   @SerializedName("compare_methods")
   protected List<SingleCompareMethod> compareMethods;
-  protected Float score;
+  @SerializedName("potential_overlay_triggers")
+  protected ComparePotentialOverlayTriggers potentialOverlayTriggers;
+  @SerializedName("is_potential_overlay")
+  protected Boolean isPotentialOverlay;
+
+  /**
+   * Gets the score.
+   *
+   * The overall comparison score of the record(s).
+   *
+   * @return the score
+   */
+  public Float getScore() {
+    return score;
+  }
+
+  /**
+   * Gets the comparisonPostFilterMethods.
+   *
+   * Collection of post filter methods.
+   *
+   * @return the comparisonPostFilterMethods
+   */
+  public List<SinglePostFilterMethod> getComparisonPostFilterMethods() {
+    return comparisonPostFilterMethods;
+  }
+
+  /**
+   * Gets the scoreCategory.
+   *
+   * The score category of the record(s).
+   *
+   * @return the scoreCategory
+   */
+  public String getScoreCategory() {
+    return scoreCategory;
+  }
+
+  /**
+   * Gets the recordNumber2.
+   *
+   * The record number of the second record.
+   *
+   * @return the recordNumber2
+   */
+  public Float getRecordNumber2() {
+    return recordNumber2;
+  }
+
+  /**
+   * Gets the recordNumber1.
+   *
+   * The record number of the first record.
+   *
+   * @return the recordNumber1
+   */
+  public Float getRecordNumber1() {
+    return recordNumber1;
+  }
 
   /**
    * Gets the compareMethods.
@@ -38,14 +105,25 @@ public class Compare extends GenericModel {
   }
 
   /**
-   * Gets the score.
+   * Gets the potentialOverlayTriggers.
    *
-   * The overall comparison score of the record(s).
+   * Collection of triggers that caused Potential Overlay.
    *
-   * @return the score
+   * @return the potentialOverlayTriggers
    */
-  public Float getScore() {
-    return score;
+  public ComparePotentialOverlayTriggers getPotentialOverlayTriggers() {
+    return potentialOverlayTriggers;
+  }
+
+  /**
+   * Gets the isPotentialOverlay.
+   *
+   * Flag to indicate Potential Overlay.
+   *
+   * @return the isPotentialOverlay
+   */
+  public Boolean isIsPotentialOverlay() {
+    return isPotentialOverlay;
   }
 }
 

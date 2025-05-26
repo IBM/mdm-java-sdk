@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,28 +34,31 @@ public class SingleRecordRequestTest {
   public void testSingleRecordRequest() throws Throwable {
     SingleRecordRequestAttributes singleRecordRequestAttributesModel = new SingleRecordRequestAttributes.Builder()
       .recordId("testString")
-      .recordSource("testString")
       .recordLastUpdated(Long.valueOf("26"))
+      .recordSource("testString")
       .add("foo", "testString")
       .build();
     assertEquals(singleRecordRequestAttributesModel.getRecordId(), "testString");
-    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.getRecordLastUpdated(), Long.valueOf("26"));
+    assertEquals(singleRecordRequestAttributesModel.getRecordSource(), "testString");
     assertEquals(singleRecordRequestAttributesModel.get("foo"), "testString");
 
     SingleRecordRequest singleRecordRequestModel = new SingleRecordRequest.Builder()
-      .recordType("testString")
       .attributes(singleRecordRequestAttributesModel)
+      .id(Long.valueOf("26"))
+      .recordType("testString")
       .build();
-    assertEquals(singleRecordRequestModel.recordType(), "testString");
     assertEquals(singleRecordRequestModel.attributes(), singleRecordRequestAttributesModel);
+    assertEquals(singleRecordRequestModel.id(), Long.valueOf("26"));
+    assertEquals(singleRecordRequestModel.recordType(), "testString");
 
     String json = TestUtilities.serialize(singleRecordRequestModel);
 
     SingleRecordRequest singleRecordRequestModelNew = TestUtilities.deserialize(json, SingleRecordRequest.class);
     assertTrue(singleRecordRequestModelNew instanceof SingleRecordRequest);
-    assertEquals(singleRecordRequestModelNew.recordType(), "testString");
     assertEquals(singleRecordRequestModelNew.attributes().toString(), singleRecordRequestAttributesModel.toString());
+    assertEquals(singleRecordRequestModelNew.id(), Long.valueOf("26"));
+    assertEquals(singleRecordRequestModelNew.recordType(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
