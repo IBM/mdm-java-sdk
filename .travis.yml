@@ -46,7 +46,7 @@ jobs:
     - stage: Semantic-Release
       install:
         - sudo apt-get install python
-        - nvm install 12
+        - nvm install 14
         - npm install -g npm@6.x
         - pip install --user bump2version
         - npm install @semantic-release/changelog
