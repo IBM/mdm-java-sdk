@@ -68,7 +68,7 @@ jobs:
         - echo "Javadocs successfully published to gh-pages!"
 
     - stage: Publish-Release
-	  jdk: openjdk8
+      jdk: openjdk8
       name: Publish-To-Maven-Central
       install: true
       script:
