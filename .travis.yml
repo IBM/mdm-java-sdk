@@ -20,7 +20,6 @@ cache:
   directories:
   - "$HOME/.m2"
 
-
 stages:
   - name: Build-Test
   - name: Semantic-Release
@@ -68,7 +67,8 @@ jobs:
       after_success:
         - echo "Javadocs successfully published to gh-pages!"
 
-    - jdk: openjdk8
+    - stage: Publish-Release
+	  jdk: openjdk8
       name: Publish-To-Maven-Central
       install: true
       script:
