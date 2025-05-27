@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/IBM/mdm-java-sdk/compare/1.0.7...1.0.8) (2025-05-27)
+
+
+### Bug Fixes
+
+* make publish to maven release happen ([ad6e9a2](https://github.com/IBM/mdm-java-sdk/commit/ad6e9a2597b3d95fc0e09eec17d6fb6bfa452098))
+
 ## [1.0.7](https://github.com/IBM/mdm-java-sdk/compare/1.0.6...1.0.7) (2025-05-27)
 
 
