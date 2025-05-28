@@ -1,3 +1,10 @@
+## [1.0.11](https://github.com/IBM/mdm-java-sdk/compare/1.0.10...1.0.11) (2025-05-28)
+
+
+### Bug Fixes
+
+* update OSSRH credentials ([#54](https://github.com/IBM/mdm-java-sdk/issues/54)) ([2d21b78](https://github.com/IBM/mdm-java-sdk/commit/2d21b78838fd072f45c5605bcfcc67a034531484))
+
 ## [1.0.10](https://github.com/IBM/mdm-java-sdk/compare/1.0.9...1.0.10) (2025-05-28)
 
 
