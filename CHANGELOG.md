@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/IBM/mdm-java-sdk/compare/1.0.9...1.0.10) (2025-05-28)
+
+
+### Bug Fixes
+
+* trigger release script ([#53](https://github.com/IBM/mdm-java-sdk/issues/53)) ([5379b41](https://github.com/IBM/mdm-java-sdk/commit/5379b41eb783be9ac9809302cd3f3fa75e728f1d))
+
 ## [1.0.9](https://github.com/IBM/mdm-java-sdk/compare/1.0.8...1.0.9) (2025-05-27)
 
 
