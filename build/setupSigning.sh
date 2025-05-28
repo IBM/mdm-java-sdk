@@ -18,4 +18,3 @@ gpg --batch --import build/signing.key
 rm build/signing.key
 
 echo "Signing key import finished!"
-
