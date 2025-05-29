@@ -39,8 +39,11 @@ jobs:
       jdk: openjdk8
       install: true
       script:
-        - build/setMavenVersion.sh
-        - mvn verify -fae -DskipITs $MVN_ARGS
+      #  - build/setMavenVersion.sh
+      #  - mvn verify -fae -DskipITs $MVN_ARGS
+	  - build/setupSigning.sh
+	  - build/setMavenVersion.sh
+	  - mvn deploy $MVN_ARGS -DskipTests -P central
 
     - stage: Semantic-Release
       install:
