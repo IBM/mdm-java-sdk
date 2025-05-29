@@ -1,3 +1,10 @@
+## [1.0.13](https://github.com/IBM/mdm-java-sdk/compare/1.0.12...1.0.13) (2025-05-29)
+
+
+### Bug Fixes
+
+* try release after adding key to openpgp ([#57](https://github.com/IBM/mdm-java-sdk/issues/57)) ([19299c7](https://github.com/IBM/mdm-java-sdk/commit/19299c7a819d9fc9ac089e49f11b34a63ece761b))
+
 ## [1.0.12](https://github.com/IBM/mdm-java-sdk/compare/1.0.11...1.0.12) (2025-05-29)
 
 
