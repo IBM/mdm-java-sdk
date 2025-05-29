@@ -1,3 +1,10 @@
+## [1.0.12](https://github.com/IBM/mdm-java-sdk/compare/1.0.11...1.0.12) (2025-05-29)
+
+
+### Bug Fixes
+
+* trigger new release after credentials updated ([#56](https://github.com/IBM/mdm-java-sdk/issues/56)) ([49382d4](https://github.com/IBM/mdm-java-sdk/commit/49382d4ded87ae082e6af2d2ceae042e4362b488))
+
 ## [1.0.11](https://github.com/IBM/mdm-java-sdk/compare/1.0.10...1.0.11) (2025-05-28)
 
 
