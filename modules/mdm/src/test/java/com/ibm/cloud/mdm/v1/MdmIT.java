@@ -3940,7 +3940,7 @@ public class MdmIT extends SdkIntegrationTestBase {
 
       UISummary uiSummaryModel = new UISummary.Builder()
         .label("Summary")
-        .attributes(java.util.Arrays.asList([], []))
+        .attributes(java.util.Arrays.asList(new ArrayList<>(), new ArrayList<>()))
         .build();
 
       UIAttributeGroup uiAttributeGroupModel = new UIAttributeGroup.Builder()
@@ -4073,7 +4073,7 @@ public class MdmIT extends SdkIntegrationTestBase {
 
       UISummary uiSummaryModel = new UISummary.Builder()
         .label("Summary")
-        .attributes(java.util.Arrays.asList([], []))
+        .attributes(java.util.Arrays.asList(new ArrayList<>(), new ArrayList<>()))
         .build();
 
       UIAttributeGroup uiAttributeGroupModel = new UIAttributeGroup.Builder()

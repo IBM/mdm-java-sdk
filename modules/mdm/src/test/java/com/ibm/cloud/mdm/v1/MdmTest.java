@@ -7635,7 +7635,7 @@ public class MdmTest {
     // Construct an instance of the UISummary model
     UISummary uiSummaryModel = new UISummary.Builder()
       .label("Summary")
-      .attributes(java.util.Arrays.asList([], []))
+      .attributes(java.util.Arrays.asList(new ArrayList<>(), new ArrayList<>()))
       .build();
 
     // Construct an instance of the UIAttributeGroup model
@@ -7865,7 +7865,7 @@ public class MdmTest {
     // Construct an instance of the UISummary model
     UISummary uiSummaryModel = new UISummary.Builder()
       .label("Summary")
-      .attributes(java.util.Arrays.asList([], []))
+      .attributes(java.util.Arrays.asList(new ArrayList<>(), new ArrayList<>()))
       .build();
 
     // Construct an instance of the UIAttributeGroup model
