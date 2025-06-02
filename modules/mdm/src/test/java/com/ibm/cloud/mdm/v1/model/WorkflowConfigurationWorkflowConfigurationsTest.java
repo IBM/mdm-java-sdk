@@ -32,17 +32,17 @@ public class WorkflowConfigurationWorkflowConfigurationsTest {
   @Test
   public void testWorkflowConfigurationWorkflowConfigurations() throws Throwable {
     WorkflowConfigurationWorkflowConfigurations workflowConfigurationWorkflowConfigurationsModel = new WorkflowConfigurationWorkflowConfigurations.Builder()
-      .xDefault(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .sourceBased(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .xDefault(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .sourceBased(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
-    assertEquals(workflowConfigurationWorkflowConfigurationsModel.xDefault(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
-    assertEquals(workflowConfigurationWorkflowConfigurationsModel.sourceBased(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(workflowConfigurationWorkflowConfigurationsModel.xDefault(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(workflowConfigurationWorkflowConfigurationsModel.sourceBased(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     String json = TestUtilities.serialize(workflowConfigurationWorkflowConfigurationsModel);
 
     WorkflowConfigurationWorkflowConfigurations workflowConfigurationWorkflowConfigurationsModelNew = TestUtilities.deserialize(json, WorkflowConfigurationWorkflowConfigurations.class);
     assertTrue(workflowConfigurationWorkflowConfigurationsModelNew instanceof WorkflowConfigurationWorkflowConfigurations);
-    assertEquals(workflowConfigurationWorkflowConfigurationsModelNew.xDefault().toString(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } }.toString());
-    assertEquals(workflowConfigurationWorkflowConfigurationsModelNew.sourceBased().toString(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } }.toString());
+    assertEquals(workflowConfigurationWorkflowConfigurationsModelNew.xDefault().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
+    assertEquals(workflowConfigurationWorkflowConfigurationsModelNew.sourceBased().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
   }
 }

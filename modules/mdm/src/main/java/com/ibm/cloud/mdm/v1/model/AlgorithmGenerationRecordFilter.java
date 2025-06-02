@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.Map;
@@ -30,6 +31,11 @@ public class AlgorithmGenerationRecordFilter extends GenericModel {
   public static class Builder {
     private Map<String, AlgorithmGenerationSingleCriteria> criteria;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmGenerationRecordFilter instance.
+     *
+     * @param algorithmGenerationRecordFilter the instance to initialize the Builder with
+     */
     private Builder(AlgorithmGenerationRecordFilter algorithmGenerationRecordFilter) {
       this.criteria = algorithmGenerationRecordFilter.criteria;
     }

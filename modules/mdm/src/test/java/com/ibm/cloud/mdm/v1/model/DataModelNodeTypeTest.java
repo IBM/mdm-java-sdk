@@ -51,12 +51,12 @@ public class DataModelNodeTypeTest {
 
     DataModelNodeType dataModelNodeTypeModel = new DataModelNodeType.Builder()
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .build();
     assertEquals(dataModelNodeTypeModel.description(), "testString");
-    assertEquals(dataModelNodeTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelNodeTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelNodeTypeModel.label(), "testString");
     assertEquals(dataModelNodeTypeModel.classification(), "testString");
 

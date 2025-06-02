@@ -105,11 +105,11 @@ public class UiLabelSettingsTest {
     assertEquals(uiCustomEnabledLabelSettingModel.isCustomLabelEnabled(), Boolean.valueOf(true));
 
     UiMemberLabelSettings uiMemberLabelSettingsModel = new UiMemberLabelSettings.Builder()
-      .recordTypes(new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } })
-      .entityTypes(new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel))
+      .entityTypes(java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel))
       .build();
-    assertEquals(uiMemberLabelSettingsModel.recordTypes(), new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } });
-    assertEquals(uiMemberLabelSettingsModel.entityTypes(), new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } });
+    assertEquals(uiMemberLabelSettingsModel.recordTypes(), java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel));
+    assertEquals(uiMemberLabelSettingsModel.entityTypes(), java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel));
 
     UiLabelSettings uiLabelSettingsModel = new UiLabelSettings.Builder()
       .label(java.util.Arrays.asList(uiAttributeModel))

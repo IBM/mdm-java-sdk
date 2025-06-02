@@ -35,10 +35,10 @@ public class CompositeRulesEntityRulesTest {
   public void testCompositeRulesEntityRules() throws Throwable {
     CompositeRulesSubRuleType compositeRulesSubRuleTypeModel = new CompositeRulesSubRuleType.Builder()
       .type("testString")
-      .params(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .params(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(compositeRulesSubRuleTypeModel.type(), "testString");
-    assertEquals(compositeRulesSubRuleTypeModel.params(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(compositeRulesSubRuleTypeModel.params(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     CompositeRulesRule compositeRulesRuleModel = new CompositeRulesRule.Builder()
       .sources(java.util.Arrays.asList("testString"))
@@ -56,14 +56,14 @@ public class CompositeRulesEntityRulesTest {
     assertEquals(compositeRulesRuleModel.choices(), java.util.Arrays.asList("testString"));
 
     CompositeRulesEntityRules compositeRulesEntityRulesModel = new CompositeRulesEntityRules.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .sources(java.util.Arrays.asList("testString"))
       .sortBy(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
       .filters(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
       .choices(java.util.Arrays.asList("testString"))
       .singleValues(true)
       .build();
-    assertEquals(compositeRulesEntityRulesModel.attributeRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
+    assertEquals(compositeRulesEntityRulesModel.attributeRules(), java.util.Collections.singletonMap("key1", compositeRulesRuleModel));
     assertEquals(compositeRulesEntityRulesModel.sources(), java.util.Arrays.asList("testString"));
     assertEquals(compositeRulesEntityRulesModel.sortBy(), java.util.Arrays.asList(compositeRulesSubRuleTypeModel));
     assertEquals(compositeRulesEntityRulesModel.filters(), java.util.Arrays.asList(compositeRulesSubRuleTypeModel));

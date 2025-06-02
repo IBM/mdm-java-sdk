@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.Map;
@@ -37,6 +38,11 @@ public class CompositeRulesRecordType extends GenericModel {
     private CompositeRulesRule recordTypeRule;
     private Map<String, CompositeRulesRule> entityRules;
 
+    /**
+     * Instantiates a new Builder from an existing CompositeRulesRecordType instance.
+     *
+     * @param compositeRulesRecordType the instance to initialize the Builder with
+     */
     private Builder(CompositeRulesRecordType compositeRulesRecordType) {
       this.attributeRules = compositeRulesRecordType.attributeRules;
       this.recordTypeRule = compositeRulesRecordType.recordTypeRule;

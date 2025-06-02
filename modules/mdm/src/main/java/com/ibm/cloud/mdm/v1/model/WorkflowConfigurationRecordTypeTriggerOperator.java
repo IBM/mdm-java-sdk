@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -49,6 +50,11 @@ public class WorkflowConfigurationRecordTypeTriggerOperator extends GenericModel
     private Float maxTasks;
     private String status;
 
+    /**
+     * Instantiates a new Builder from an existing WorkflowConfigurationRecordTypeTriggerOperator instance.
+     *
+     * @param workflowConfigurationRecordTypeTriggerOperator the instance to initialize the Builder with
+     */
     private Builder(WorkflowConfigurationRecordTypeTriggerOperator workflowConfigurationRecordTypeTriggerOperator) {
       this.name = workflowConfigurationRecordTypeTriggerOperator.name;
       this.entityTypes = workflowConfigurationRecordTypeTriggerOperator.entityTypes;
@@ -75,9 +81,9 @@ public class WorkflowConfigurationRecordTypeTriggerOperator extends GenericModel
     }
 
     /**
-     * Adds an excludedSources to excludedSources.
+     * Adds a new element to excludedSources.
      *
-     * @param excludedSources the new excludedSources
+     * @param excludedSources the new element to be added
      * @return the WorkflowConfigurationRecordTypeTriggerOperator builder
      */
     public Builder addExcludedSources(String excludedSources) {
@@ -91,9 +97,9 @@ public class WorkflowConfigurationRecordTypeTriggerOperator extends GenericModel
     }
 
     /**
-     * Adds an includedSources to includedSources.
+     * Adds a new element to includedSources.
      *
-     * @param includedSources the new includedSources
+     * @param includedSources the new element to be added
      * @return the WorkflowConfigurationRecordTypeTriggerOperator builder
      */
     public Builder addIncludedSources(String includedSources) {

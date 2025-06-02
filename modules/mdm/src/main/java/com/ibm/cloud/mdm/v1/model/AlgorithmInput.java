@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -36,6 +37,11 @@ public class AlgorithmInput extends GenericModel {
     private List<String> fields;
     private List<String> encryptedFields;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmInput instance.
+     *
+     * @param algorithmInput the instance to initialize the Builder with
+     */
     private Builder(AlgorithmInput algorithmInput) {
       this.attributes = algorithmInput.attributes;
       this.fields = algorithmInput.fields;
@@ -69,9 +75,9 @@ public class AlgorithmInput extends GenericModel {
     }
 
     /**
-     * Adds an attributes to attributes.
+     * Adds a new element to attributes.
      *
-     * @param attributes the new attributes
+     * @param attributes the new element to be added
      * @return the AlgorithmInput builder
      */
     public Builder addAttributes(String attributes) {
@@ -85,9 +91,9 @@ public class AlgorithmInput extends GenericModel {
     }
 
     /**
-     * Adds an fields to fields.
+     * Adds a new element to fields.
      *
-     * @param fields the new fields
+     * @param fields the new element to be added
      * @return the AlgorithmInput builder
      */
     public Builder addFields(String fields) {
@@ -101,9 +107,9 @@ public class AlgorithmInput extends GenericModel {
     }
 
     /**
-     * Adds an encryptedFields to encryptedFields.
+     * Adds a new element to encryptedFields.
      *
-     * @param encryptedFields the new encryptedFields
+     * @param encryptedFields the new element to be added
      * @return the AlgorithmInput builder
      */
     public Builder addEncryptedFields(String encryptedFields) {

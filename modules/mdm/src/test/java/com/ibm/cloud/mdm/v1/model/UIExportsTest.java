@@ -32,10 +32,10 @@ public class UIExportsTest {
   @Test
   public void testUIExports() throws Throwable {
     UIExports uiExportsModel = new UIExports.Builder()
-      .exportJobs(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
+      .exportJobs(java.util.Collections.singletonMap("key1", "testString"))
       .exportsId("testString")
       .build();
-    assertEquals(uiExportsModel.exportJobs(), new java.util.HashMap<String, String>() { { put("foo", "testString"); } });
+    assertEquals(uiExportsModel.exportJobs(), java.util.Collections.singletonMap("key1", "testString"));
     assertEquals(uiExportsModel.exportsId(), "testString");
 
     String json = TestUtilities.serialize(uiExportsModel);

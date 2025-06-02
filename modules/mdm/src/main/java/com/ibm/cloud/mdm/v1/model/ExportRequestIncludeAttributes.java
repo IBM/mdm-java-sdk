@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -38,6 +39,11 @@ public class ExportRequestIncludeAttributes extends GenericModel {
     private List<RelationshipAttributesRequest> relationshipAttributes;
     private List<EntityAttributesRequest> entityAttributes;
 
+    /**
+     * Instantiates a new Builder from an existing ExportRequestIncludeAttributes instance.
+     *
+     * @param exportRequestIncludeAttributes the instance to initialize the Builder with
+     */
     private Builder(ExportRequestIncludeAttributes exportRequestIncludeAttributes) {
       this.recordAttributes = exportRequestIncludeAttributes.recordAttributes;
       this.relationshipAttributes = exportRequestIncludeAttributes.relationshipAttributes;
@@ -60,9 +66,9 @@ public class ExportRequestIncludeAttributes extends GenericModel {
     }
 
     /**
-     * Adds an recordAttributes to recordAttributes.
+     * Adds a new element to recordAttributes.
      *
-     * @param recordAttributes the new recordAttributes
+     * @param recordAttributes the new element to be added
      * @return the ExportRequestIncludeAttributes builder
      */
     public Builder addRecordAttributes(RecordAttributesRequest recordAttributes) {
@@ -76,9 +82,9 @@ public class ExportRequestIncludeAttributes extends GenericModel {
     }
 
     /**
-     * Adds an relationshipAttributes to relationshipAttributes.
+     * Adds a new element to relationshipAttributes.
      *
-     * @param relationshipAttributes the new relationshipAttributes
+     * @param relationshipAttributes the new element to be added
      * @return the ExportRequestIncludeAttributes builder
      */
     public Builder addRelationshipAttributes(RelationshipAttributesRequest relationshipAttributes) {
@@ -92,9 +98,9 @@ public class ExportRequestIncludeAttributes extends GenericModel {
     }
 
     /**
-     * Adds an entityAttributes to entityAttributes.
+     * Adds a new element to entityAttributes.
      *
-     * @param entityAttributes the new entityAttributes
+     * @param entityAttributes the new element to be added
      * @return the ExportRequestIncludeAttributes builder
      */
     public Builder addEntityAttributes(EntityAttributesRequest entityAttributes) {

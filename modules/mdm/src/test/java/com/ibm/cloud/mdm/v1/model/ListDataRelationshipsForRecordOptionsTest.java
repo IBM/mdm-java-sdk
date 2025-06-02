@@ -34,15 +34,15 @@ public class ListDataRelationshipsForRecordOptionsTest {
     ListDataRelationshipsForRecordOptions listDataRelationshipsForRecordOptionsModel = new ListDataRelationshipsForRecordOptions.Builder()
       .id(Long.valueOf("26"))
       .relationshipTypes(java.util.Arrays.asList("preference_association"))
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .sourceInclude(java.util.Arrays.asList("all"))
       .targetInclude(java.util.Arrays.asList("all"))
       .build();
     assertEquals(listDataRelationshipsForRecordOptionsModel.id(), Long.valueOf("26"));
     assertEquals(listDataRelationshipsForRecordOptionsModel.relationshipTypes(), java.util.Arrays.asList("preference_association"));
-    assertEquals(listDataRelationshipsForRecordOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(listDataRelationshipsForRecordOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(listDataRelationshipsForRecordOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(listDataRelationshipsForRecordOptionsModel.limit(), Long.valueOf("10"));
     assertEquals(listDataRelationshipsForRecordOptionsModel.sourceInclude(), java.util.Arrays.asList("all"));
     assertEquals(listDataRelationshipsForRecordOptionsModel.targetInclude(), java.util.Arrays.asList("all"));
   }

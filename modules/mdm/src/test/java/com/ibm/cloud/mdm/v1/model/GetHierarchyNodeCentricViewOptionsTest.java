@@ -37,11 +37,11 @@ public class GetHierarchyNodeCentricViewOptionsTest {
       .type("testString")
       .typeName("testString")
       .centricId("testString")
-      .parentLevels(Long.valueOf("26"))
-      .childrenLevels(Long.valueOf("26"))
+      .parentLevels(Long.valueOf("0"))
+      .childrenLevels(Long.valueOf("0"))
       .includedAssociations("testString")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("200"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .includeTotalCount(false)
       .build();
     assertEquals(getHierarchyNodeCentricViewOptionsModel.id(), Long.valueOf("26"));
@@ -49,11 +49,11 @@ public class GetHierarchyNodeCentricViewOptionsTest {
     assertEquals(getHierarchyNodeCentricViewOptionsModel.type(), "testString");
     assertEquals(getHierarchyNodeCentricViewOptionsModel.typeName(), "testString");
     assertEquals(getHierarchyNodeCentricViewOptionsModel.centricId(), "testString");
-    assertEquals(getHierarchyNodeCentricViewOptionsModel.parentLevels(), Long.valueOf("26"));
-    assertEquals(getHierarchyNodeCentricViewOptionsModel.childrenLevels(), Long.valueOf("26"));
+    assertEquals(getHierarchyNodeCentricViewOptionsModel.parentLevels(), Long.valueOf("0"));
+    assertEquals(getHierarchyNodeCentricViewOptionsModel.childrenLevels(), Long.valueOf("0"));
     assertEquals(getHierarchyNodeCentricViewOptionsModel.includedAssociations(), "testString");
-    assertEquals(getHierarchyNodeCentricViewOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(getHierarchyNodeCentricViewOptionsModel.limit(), Long.valueOf("200"));
+    assertEquals(getHierarchyNodeCentricViewOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(getHierarchyNodeCentricViewOptionsModel.limit(), Long.valueOf("10"));
     assertEquals(getHierarchyNodeCentricViewOptionsModel.includeTotalCount(), Boolean.valueOf(false));
   }
 

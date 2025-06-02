@@ -32,13 +32,13 @@ public class ListDataJobsOptionsTest {
   @Test
   public void testListDataJobsOptions() throws Throwable {
     ListDataJobsOptions listDataJobsOptionsModel = new ListDataJobsOptions.Builder()
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .status("not_started")
       .type("bulk_load")
       .build();
-    assertEquals(listDataJobsOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(listDataJobsOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(listDataJobsOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(listDataJobsOptionsModel.limit(), Long.valueOf("10"));
     assertEquals(listDataJobsOptionsModel.status(), "not_started");
     assertEquals(listDataJobsOptionsModel.type(), "bulk_load");
   }

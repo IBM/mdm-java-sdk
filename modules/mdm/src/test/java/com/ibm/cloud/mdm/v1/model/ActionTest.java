@@ -44,18 +44,18 @@ public class ActionTest {
     Action actionModel = new Action.Builder()
       .actionType("testString")
       .entities(java.util.Arrays.asList(actionEntityModel))
-      .actionValues(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .actionValues(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(actionModel.actionType(), "testString");
     assertEquals(actionModel.entities(), java.util.Arrays.asList(actionEntityModel));
-    assertEquals(actionModel.actionValues(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(actionModel.actionValues(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     String json = TestUtilities.serialize(actionModel);
 
     Action actionModelNew = TestUtilities.deserialize(json, Action.class);
     assertTrue(actionModelNew instanceof Action);
     assertEquals(actionModelNew.actionType(), "testString");
-    assertEquals(actionModelNew.actionValues().toString(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } }.toString());
+    assertEquals(actionModelNew.actionValues().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -48,10 +48,10 @@ public class ReplaceModelGovernanceMetadataOptionsTest {
     assertEquals(governanceMetadataRecordTypeModel.assetId(), "testString");
 
     ReplaceModelGovernanceMetadataOptions replaceModelGovernanceMetadataOptionsModel = new ReplaceModelGovernanceMetadataOptions.Builder()
-      .entityTypes(new java.util.HashMap<String, GovernanceMetadataEntityType>() { { put("foo", governanceMetadataEntityTypeModel); } })
-      .recordTypes(new java.util.HashMap<String, GovernanceMetadataRecordType>() { { put("foo", governanceMetadataRecordTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", governanceMetadataEntityTypeModel))
+      .recordTypes(java.util.Collections.singletonMap("key1", governanceMetadataRecordTypeModel))
       .build();
-    assertEquals(replaceModelGovernanceMetadataOptionsModel.entityTypes(), new java.util.HashMap<String, GovernanceMetadataEntityType>() { { put("foo", governanceMetadataEntityTypeModel); } });
-    assertEquals(replaceModelGovernanceMetadataOptionsModel.recordTypes(), new java.util.HashMap<String, GovernanceMetadataRecordType>() { { put("foo", governanceMetadataRecordTypeModel); } });
+    assertEquals(replaceModelGovernanceMetadataOptionsModel.entityTypes(), java.util.Collections.singletonMap("key1", governanceMetadataEntityTypeModel));
+    assertEquals(replaceModelGovernanceMetadataOptionsModel.recordTypes(), java.util.Collections.singletonMap("key1", governanceMetadataRecordTypeModel));
   }
 }

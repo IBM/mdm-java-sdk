@@ -75,10 +75,11 @@ public class DataModelRelationshipTypeTest {
       .internal(true)
       .labelFromSource("testString")
       .labelFromTarget("testString")
+      .labelForRelationship("testString")
       .directional(true)
       .description("testString")
       .rules(java.util.Arrays.asList(dataModelRelationshipRuleModel))
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .cardinality("testString")
@@ -87,10 +88,11 @@ public class DataModelRelationshipTypeTest {
     assertEquals(dataModelRelationshipTypeModel.internal(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModel.labelFromSource(), "testString");
     assertEquals(dataModelRelationshipTypeModel.labelFromTarget(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.labelForRelationship(), "testString");
     assertEquals(dataModelRelationshipTypeModel.directional(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModel.description(), "testString");
     assertEquals(dataModelRelationshipTypeModel.rules(), java.util.Arrays.asList(dataModelRelationshipRuleModel));
-    assertEquals(dataModelRelationshipTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelRelationshipTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelRelationshipTypeModel.label(), "testString");
     assertEquals(dataModelRelationshipTypeModel.classification(), "testString");
     assertEquals(dataModelRelationshipTypeModel.cardinality(), "testString");
@@ -103,6 +105,7 @@ public class DataModelRelationshipTypeTest {
     assertEquals(dataModelRelationshipTypeModelNew.internal(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModelNew.labelFromSource(), "testString");
     assertEquals(dataModelRelationshipTypeModelNew.labelFromTarget(), "testString");
+    assertEquals(dataModelRelationshipTypeModelNew.labelForRelationship(), "testString");
     assertEquals(dataModelRelationshipTypeModelNew.directional(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModelNew.description(), "testString");
     assertEquals(dataModelRelationshipTypeModelNew.label(), "testString");

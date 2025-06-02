@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -38,6 +39,11 @@ public class ResolveWorkflowOptions extends GenericModel {
     private String comments;
     private Boolean previewOnly;
 
+    /**
+     * Instantiates a new Builder from an existing ResolveWorkflowOptions instance.
+     *
+     * @param resolveWorkflowOptions the instance to initialize the Builder with
+     */
     private Builder(ResolveWorkflowOptions resolveWorkflowOptions) {
       this.workflowId = resolveWorkflowOptions.workflowId;
       this.workflowType = resolveWorkflowOptions.workflowType;
@@ -75,9 +81,9 @@ public class ResolveWorkflowOptions extends GenericModel {
     }
 
     /**
-     * Adds an actions to actions.
+     * Adds a new element to actions.
      *
-     * @param actions the new actions
+     * @param actions the new element to be added
      * @return the ResolveWorkflowOptions builder
      */
     public Builder addActions(Action actions) {

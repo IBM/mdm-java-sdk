@@ -49,10 +49,10 @@ public class ReplaceModelMapResourceOptionsTest {
 
     ReplaceModelMapResourceOptions replaceModelMapResourceOptionsModel = new ReplaceModelMapResourceOptions.Builder()
       .resourceName("testString")
-      .requestBody(new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", java.util.Arrays.asList(mapResourceEntryModel)); } })
+      .requestBody(java.util.Collections.singletonMap("key1", java.util.Arrays.asList(mapResourceEntryModel)))
       .build();
     assertEquals(replaceModelMapResourceOptionsModel.resourceName(), "testString");
-    assertEquals(replaceModelMapResourceOptionsModel.requestBody(), new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", java.util.Arrays.asList(mapResourceEntryModel)); } });
+    assertEquals(replaceModelMapResourceOptionsModel.requestBody(), java.util.Collections.singletonMap("key1", java.util.Arrays.asList(mapResourceEntryModel)));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

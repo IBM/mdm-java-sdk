@@ -89,11 +89,11 @@ public class ResiliencyRulesTest {
     assertEquals(resiliencyRulesRecordModel.manualUnlink(), resiliencyRulesManualUnlinkModel);
 
     ResiliencyRulesLinkResiliencyRules resiliencyRulesLinkResiliencyRulesModel = new ResiliencyRulesLinkResiliencyRules.Builder()
-      .records(new java.util.HashMap<String, ResiliencyRulesRecord>() { { put("foo", resiliencyRulesRecordModel); } })
-      .entities(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .records(java.util.Collections.singletonMap("key1", resiliencyRulesRecordModel))
+      .entities(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
-    assertEquals(resiliencyRulesLinkResiliencyRulesModel.records(), new java.util.HashMap<String, ResiliencyRulesRecord>() { { put("foo", resiliencyRulesRecordModel); } });
-    assertEquals(resiliencyRulesLinkResiliencyRulesModel.entities(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(resiliencyRulesLinkResiliencyRulesModel.records(), java.util.Collections.singletonMap("key1", resiliencyRulesRecordModel));
+    assertEquals(resiliencyRulesLinkResiliencyRulesModel.entities(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     ResiliencyRules resiliencyRulesModel = new ResiliencyRules.Builder()
       .linkResiliencyRules(resiliencyRulesLinkResiliencyRulesModel)

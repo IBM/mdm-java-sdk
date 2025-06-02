@@ -32,10 +32,10 @@ public class AlgorithmSourceLevelThresholdTest {
   @Test
   public void testAlgorithmSourceLevelThreshold() throws Throwable {
     AlgorithmSourceLevelThreshold algorithmSourceLevelThresholdModel = new AlgorithmSourceLevelThreshold.Builder()
-      .srcxsrc(new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } })
+      .srcxsrc(java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))))
       .xDefault(java.util.Arrays.asList(Float.valueOf("36.0")))
       .build();
-    assertEquals(algorithmSourceLevelThresholdModel.srcxsrc(), new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } });
+    assertEquals(algorithmSourceLevelThresholdModel.srcxsrc(), java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))));
     assertEquals(algorithmSourceLevelThresholdModel.xDefault(), java.util.Arrays.asList(Float.valueOf("36.0")));
 
     String json = TestUtilities.serialize(algorithmSourceLevelThresholdModel);

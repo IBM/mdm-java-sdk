@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -55,6 +56,11 @@ public class DataGroup extends GenericModel {
     private Long groupNumber;
     private Long memberCount;
 
+    /**
+     * Instantiates a new Builder from an existing DataGroup instance.
+     *
+     * @param dataGroup the instance to initialize the Builder with
+     */
     private Builder(DataGroup dataGroup) {
       this.type = dataGroup.type;
       this.attributes = dataGroup.attributes;
@@ -94,9 +100,9 @@ public class DataGroup extends GenericModel {
     }
 
     /**
-     * Adds an groupAssociations to groupAssociations.
+     * Adds a new element to groupAssociations.
      *
-     * @param groupAssociations the new groupAssociations
+     * @param groupAssociations the new element to be added
      * @return the DataGroup builder
      */
     public Builder addGroupAssociations(DataRelationship groupAssociations) {

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -40,6 +41,11 @@ public class SyncUpdateRequestUpserts extends GenericModel {
     private List<DataHierarchy> hierarchies;
     private List<DataRelationship> groupAssociations;
 
+    /**
+     * Instantiates a new Builder from an existing SyncUpdateRequestUpserts instance.
+     *
+     * @param syncUpdateRequestUpserts the instance to initialize the Builder with
+     */
     private Builder(SyncUpdateRequestUpserts syncUpdateRequestUpserts) {
       this.records = syncUpdateRequestUpserts.records;
       this.relationships = syncUpdateRequestUpserts.relationships;
@@ -64,9 +70,9 @@ public class SyncUpdateRequestUpserts extends GenericModel {
     }
 
     /**
-     * Adds an records to records.
+     * Adds a new element to records.
      *
-     * @param records the new records
+     * @param records the new element to be added
      * @return the SyncUpdateRequestUpserts builder
      */
     public Builder addRecords(DataRecord records) {
@@ -80,9 +86,9 @@ public class SyncUpdateRequestUpserts extends GenericModel {
     }
 
     /**
-     * Adds an relationships to relationships.
+     * Adds a new element to relationships.
      *
-     * @param relationships the new relationships
+     * @param relationships the new element to be added
      * @return the SyncUpdateRequestUpserts builder
      */
     public Builder addRelationships(DataRelationship relationships) {
@@ -96,9 +102,9 @@ public class SyncUpdateRequestUpserts extends GenericModel {
     }
 
     /**
-     * Adds an groups to groups.
+     * Adds a new element to groups.
      *
-     * @param groups the new groups
+     * @param groups the new element to be added
      * @return the SyncUpdateRequestUpserts builder
      */
     public Builder addGroups(DataGroup groups) {
@@ -112,9 +118,9 @@ public class SyncUpdateRequestUpserts extends GenericModel {
     }
 
     /**
-     * Adds an hierarchies to hierarchies.
+     * Adds a new element to hierarchies.
      *
-     * @param hierarchies the new hierarchies
+     * @param hierarchies the new element to be added
      * @return the SyncUpdateRequestUpserts builder
      */
     public Builder addHierarchies(DataHierarchy hierarchies) {
@@ -128,9 +134,9 @@ public class SyncUpdateRequestUpserts extends GenericModel {
     }
 
     /**
-     * Adds an groupAssociations to groupAssociations.
+     * Adds a new element to groupAssociations.
      *
-     * @param groupAssociations the new groupAssociations
+     * @param groupAssociations the new element to be added
      * @return the SyncUpdateRequestUpserts builder
      */
     public Builder addGroupAssociations(DataRelationship groupAssociations) {

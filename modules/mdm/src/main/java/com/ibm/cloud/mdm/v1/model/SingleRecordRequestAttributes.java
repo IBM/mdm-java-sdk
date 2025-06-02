@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.HashMap;
@@ -21,6 +22,8 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * Details of a single record including external record reference and record attributes.
+ *
+ * This type supports additional properties of type Object.
  */
 public class SingleRecordRequestAttributes extends DynamicModel<Object> {
 
@@ -44,6 +47,11 @@ public class SingleRecordRequestAttributes extends DynamicModel<Object> {
     private String recordSource;
     private Map<String, Object> dynamicProperties;
 
+    /**
+     * Instantiates a new Builder from an existing SingleRecordRequestAttributes instance.
+     *
+     * @param singleRecordRequestAttributes the instance to initialize the Builder with
+     */
     private Builder(SingleRecordRequestAttributes singleRecordRequestAttributes) {
       this.recordId = singleRecordRequestAttributes.recordId;
       this.recordLastUpdated = singleRecordRequestAttributes.recordLastUpdated;

@@ -163,11 +163,11 @@ public class UISettingsTest {
     assertEquals(uiCustomEnabledLabelSettingModel.isCustomLabelEnabled(), Boolean.valueOf(true));
 
     UiMemberLabelSettings uiMemberLabelSettingsModel = new UiMemberLabelSettings.Builder()
-      .recordTypes(new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } })
-      .entityTypes(new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel))
+      .entityTypes(java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel))
       .build();
-    assertEquals(uiMemberLabelSettingsModel.recordTypes(), new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } });
-    assertEquals(uiMemberLabelSettingsModel.entityTypes(), new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } });
+    assertEquals(uiMemberLabelSettingsModel.recordTypes(), java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel));
+    assertEquals(uiMemberLabelSettingsModel.entityTypes(), java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel));
 
     UiLabelSettings uiLabelSettingsModel = new UiLabelSettings.Builder()
       .label(java.util.Arrays.asList(uiAttributeModel))
@@ -209,20 +209,20 @@ public class UISettingsTest {
 
     UISettings uiSettingsModel = new UISettings.Builder()
       .use(true)
-      .recordTypes(new java.util.HashMap<String, UIRecordType>() { { put("foo", uiRecordTypeModel); } })
-      .groupTypes(new java.util.HashMap<String, UIGroupType>() { { put("foo", uiGroupTypeModel); } })
-      .entityTypes(new java.util.HashMap<String, UIEntityType>() { { put("foo", uiEntityTypeModel); } })
-      .attributeTypes(new java.util.HashMap<String, UIAttributeType>() { { put("foo", uiAttributeTypeModel); } })
-      .hierarchyTypes(new java.util.HashMap<String, UiHierarchyType>() { { put("foo", uiHierarchyTypeModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", uiRecordTypeModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", uiGroupTypeModel))
+      .entityTypes(java.util.Collections.singletonMap("key1", uiEntityTypeModel))
+      .attributeTypes(java.util.Collections.singletonMap("key1", uiAttributeTypeModel))
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", uiHierarchyTypeModel))
       .workspace(uIworkspaceModel)
       .settingsId("testString")
       .build();
     assertEquals(uiSettingsModel.use(), Boolean.valueOf(true));
-    assertEquals(uiSettingsModel.recordTypes(), new java.util.HashMap<String, UIRecordType>() { { put("foo", uiRecordTypeModel); } });
-    assertEquals(uiSettingsModel.groupTypes(), new java.util.HashMap<String, UIGroupType>() { { put("foo", uiGroupTypeModel); } });
-    assertEquals(uiSettingsModel.entityTypes(), new java.util.HashMap<String, UIEntityType>() { { put("foo", uiEntityTypeModel); } });
-    assertEquals(uiSettingsModel.attributeTypes(), new java.util.HashMap<String, UIAttributeType>() { { put("foo", uiAttributeTypeModel); } });
-    assertEquals(uiSettingsModel.hierarchyTypes(), new java.util.HashMap<String, UiHierarchyType>() { { put("foo", uiHierarchyTypeModel); } });
+    assertEquals(uiSettingsModel.recordTypes(), java.util.Collections.singletonMap("key1", uiRecordTypeModel));
+    assertEquals(uiSettingsModel.groupTypes(), java.util.Collections.singletonMap("key1", uiGroupTypeModel));
+    assertEquals(uiSettingsModel.entityTypes(), java.util.Collections.singletonMap("key1", uiEntityTypeModel));
+    assertEquals(uiSettingsModel.attributeTypes(), java.util.Collections.singletonMap("key1", uiAttributeTypeModel));
+    assertEquals(uiSettingsModel.hierarchyTypes(), java.util.Collections.singletonMap("key1", uiHierarchyTypeModel));
     assertEquals(uiSettingsModel.workspace(), uIworkspaceModel);
     assertEquals(uiSettingsModel.settingsId(), "testString");
 

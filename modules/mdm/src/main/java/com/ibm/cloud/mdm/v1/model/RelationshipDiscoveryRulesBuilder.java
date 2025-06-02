@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -44,6 +45,11 @@ public class RelationshipDiscoveryRulesBuilder extends GenericModel {
     private List<RelationshipDiscoveryRulesBuilderOrderByItem> orderBy;
     private Map<String, Object> constants;
 
+    /**
+     * Instantiates a new Builder from an existing RelationshipDiscoveryRulesBuilder instance.
+     *
+     * @param relationshipDiscoveryRulesBuilder the instance to initialize the Builder with
+     */
     private Builder(RelationshipDiscoveryRulesBuilder relationshipDiscoveryRulesBuilder) {
       this.nodes = relationshipDiscoveryRulesBuilder.nodes;
       this.returnNodes = relationshipDiscoveryRulesBuilder.returnNodes;
@@ -80,9 +86,9 @@ public class RelationshipDiscoveryRulesBuilder extends GenericModel {
     }
 
     /**
-     * Adds an nodes to nodes.
+     * Adds a new element to nodes.
      *
-     * @param nodes the new nodes
+     * @param nodes the new element to be added
      * @return the RelationshipDiscoveryRulesBuilder builder
      */
     public Builder addNodes(RelationshipDiscoveryRulesBuilderNode nodes) {
@@ -96,9 +102,9 @@ public class RelationshipDiscoveryRulesBuilder extends GenericModel {
     }
 
     /**
-     * Adds an returnNodes to returnNodes.
+     * Adds a new element to returnNodes.
      *
-     * @param returnNodes the new returnNodes
+     * @param returnNodes the new element to be added
      * @return the RelationshipDiscoveryRulesBuilder builder
      */
     public Builder addReturnNodes(Long returnNodes) {
@@ -112,9 +118,9 @@ public class RelationshipDiscoveryRulesBuilder extends GenericModel {
     }
 
     /**
-     * Adds an edges to edges.
+     * Adds a new element to edges.
      *
-     * @param edges the new edges
+     * @param edges the new element to be added
      * @return the RelationshipDiscoveryRulesBuilder builder
      */
     public Builder addEdges(RelationshipDiscoveryRulesBuilderEdge edges) {
@@ -128,9 +134,9 @@ public class RelationshipDiscoveryRulesBuilder extends GenericModel {
     }
 
     /**
-     * Adds an orderBy to orderBy.
+     * Adds a new element to orderBy.
      *
-     * @param orderBy the new orderBy
+     * @param orderBy the new element to be added
      * @return the RelationshipDiscoveryRulesBuilder builder
      */
     public Builder addOrderBy(RelationshipDiscoveryRulesBuilderOrderByItem orderBy) {

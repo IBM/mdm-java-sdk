@@ -31,12 +31,16 @@ public class CriteriaGenericTest {
 
   @Test
   public void testCriteriaGeneric() throws Throwable {
-    CriteriaGeneric criteriaGenericModel = new CriteriaGeneric();
+    CriteriaGeneric criteriaGenericModel = new CriteriaGeneric.Builder()
+      .add("foo", "testString")
+      .build();
+    assertEquals(criteriaGenericModel.get("foo"), "testString");
 
     String json = TestUtilities.serialize(criteriaGenericModel);
 
     CriteriaGeneric criteriaGenericModelNew = TestUtilities.deserialize(json, CriteriaGeneric.class);
     assertTrue(criteriaGenericModelNew instanceof CriteriaGeneric);
+    assertEquals(criteriaGenericModelNew.get("foo"), "testString");
     assertNotNull(criteriaGenericModel);
   }
 }

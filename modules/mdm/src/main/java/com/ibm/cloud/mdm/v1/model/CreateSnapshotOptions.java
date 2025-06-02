@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -35,6 +36,11 @@ public class CreateSnapshotOptions extends GenericModel {
     private String user;
     private String createdTime;
 
+    /**
+     * Instantiates a new Builder from an existing CreateSnapshotOptions instance.
+     *
+     * @param createSnapshotOptions the instance to initialize the Builder with
+     */
     private Builder(CreateSnapshotOptions createSnapshotOptions) {
       this.description = createSnapshotOptions.description;
       this.id = createSnapshotOptions.id;

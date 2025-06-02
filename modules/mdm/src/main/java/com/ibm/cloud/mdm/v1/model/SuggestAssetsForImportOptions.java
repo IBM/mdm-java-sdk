@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -30,6 +31,11 @@ public class SuggestAssetsForImportOptions extends GenericModel {
   public static class Builder {
     private List<AssetMappingPatternSuggestion> mappingPatterns;
 
+    /**
+     * Instantiates a new Builder from an existing SuggestAssetsForImportOptions instance.
+     *
+     * @param suggestAssetsForImportOptions the instance to initialize the Builder with
+     */
     private Builder(SuggestAssetsForImportOptions suggestAssetsForImportOptions) {
       this.mappingPatterns = suggestAssetsForImportOptions.mappingPatterns;
     }
@@ -50,9 +56,9 @@ public class SuggestAssetsForImportOptions extends GenericModel {
     }
 
     /**
-     * Adds an mappingPatterns to mappingPatterns.
+     * Adds a new element to mappingPatterns.
      *
-     * @param mappingPatterns the new mappingPatterns
+     * @param mappingPatterns the new element to be added
      * @return the SuggestAssetsForImportOptions builder
      */
     public Builder addMappingPatterns(AssetMappingPatternSuggestion mappingPatterns) {

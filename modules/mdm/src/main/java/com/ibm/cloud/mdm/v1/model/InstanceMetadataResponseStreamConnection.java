@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -24,6 +25,8 @@ public class InstanceMetadataResponseStreamConnection extends GenericModel {
   protected String streamType;
   @SerializedName("connenction_details")
   protected InstanceMetadataResponseConnenctionDetails connenctionDetails;
+
+  protected InstanceMetadataResponseStreamConnection() { }
 
   /**
    * Gets the streamType.

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * A single bucket generator step.
+ *
+ * This type supports additional properties of type Object.
  */
 public class AlgorithmBucketStep extends DynamicModel<Object> {
 
@@ -61,6 +64,11 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
     private Boolean order;
     private Map<String, Object> dynamicProperties;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmBucketStep instance.
+     *
+     * @param algorithmBucketStep the instance to initialize the Builder with
+     */
     private Builder(AlgorithmBucketStep algorithmBucketStep) {
       this.comparisonResource = algorithmBucketStep.comparisonResource;
       this.method = algorithmBucketStep.method;
@@ -100,9 +108,9 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
     }
 
     /**
-     * Adds an inputs to inputs.
+     * Adds a new element to inputs.
      *
-     * @param inputs the new inputs
+     * @param inputs the new element to be added
      * @return the AlgorithmBucketStep builder
      */
     public Builder addInputs(Long inputs) {
@@ -116,9 +124,9 @@ public class AlgorithmBucketStep extends DynamicModel<Object> {
     }
 
     /**
-     * Adds an fields to fields.
+     * Adds a new element to fields.
      *
-     * @param fields the new fields
+     * @param fields the new element to be added
      * @return the AlgorithmBucketStep builder
      */
     public Builder addFields(String fields) {

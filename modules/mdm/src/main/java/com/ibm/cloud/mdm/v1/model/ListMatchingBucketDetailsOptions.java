@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -34,6 +35,11 @@ public class ListMatchingBucketDetailsOptions extends GenericModel {
     private List<String> bucketHashes;
     private Boolean includeStandardizedData;
 
+    /**
+     * Instantiates a new Builder from an existing ListMatchingBucketDetailsOptions instance.
+     *
+     * @param listMatchingBucketDetailsOptions the instance to initialize the Builder with
+     */
     private Builder(ListMatchingBucketDetailsOptions listMatchingBucketDetailsOptions) {
       this.recordType = listMatchingBucketDetailsOptions.recordType;
       this.bucketHashes = listMatchingBucketDetailsOptions.bucketHashes;
@@ -67,9 +73,9 @@ public class ListMatchingBucketDetailsOptions extends GenericModel {
     }
 
     /**
-     * Adds an bucketHashes to bucketHashes.
+     * Adds a new element to bucketHashes.
      *
-     * @param bucketHashes the new bucketHashes
+     * @param bucketHashes the new element to be added
      * @return the ListMatchingBucketDetailsOptions builder
      */
     public Builder addBucketHashes(String bucketHashes) {

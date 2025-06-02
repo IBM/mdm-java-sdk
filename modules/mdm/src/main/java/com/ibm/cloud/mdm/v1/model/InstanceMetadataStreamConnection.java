@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -32,6 +33,11 @@ public class InstanceMetadataStreamConnection extends GenericModel {
     private String streamType;
     private InstanceMetadataConnenctionDetails connenctionDetails;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceMetadataStreamConnection instance.
+     *
+     * @param instanceMetadataStreamConnection the instance to initialize the Builder with
+     */
     private Builder(InstanceMetadataStreamConnection instanceMetadataStreamConnection) {
       this.streamType = instanceMetadataStreamConnection.streamType;
       this.connenctionDetails = instanceMetadataStreamConnection.connenctionDetails;

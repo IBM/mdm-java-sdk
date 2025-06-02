@@ -14,7 +14,6 @@
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.mdm.v1.model.DataStatistics;
-import com.ibm.cloud.mdm.v1.model.DataStatisticsAggregateCounts;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,6 +32,5 @@ public class DataStatisticsTest {
   @Test
   public void testDataStatistics() throws Throwable {
     DataStatistics dataStatisticsModel = new DataStatistics();
-    assertNull(dataStatisticsModel.getAggregateCounts());
   }
 }

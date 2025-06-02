@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.Map;
@@ -43,6 +44,11 @@ public class UpdateModelDataModelOptions extends GenericModel {
     private Map<String, DataModelNodeType> nodeTypes;
     private Map<String, DataModelGroupType> groupTypes;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateModelDataModelOptions instance.
+     *
+     * @param updateModelDataModelOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateModelDataModelOptions updateModelDataModelOptions) {
       this.systemProperties = updateModelDataModelOptions.systemProperties;
       this.attributeTypes = updateModelDataModelOptions.attributeTypes;

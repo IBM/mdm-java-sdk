@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -29,6 +30,11 @@ public class GetDataGraphStatisticsOptions extends GenericModel {
     private String includeSourceStatistics;
     private String approximateStatistics;
 
+    /**
+     * Instantiates a new Builder from an existing GetDataGraphStatisticsOptions instance.
+     *
+     * @param getDataGraphStatisticsOptions the instance to initialize the Builder with
+     */
     private Builder(GetDataGraphStatisticsOptions getDataGraphStatisticsOptions) {
       this.includeSourceStatistics = getDataGraphStatisticsOptions.includeSourceStatistics;
       this.approximateStatistics = getDataGraphStatisticsOptions.approximateStatistics;
@@ -72,9 +78,9 @@ public class GetDataGraphStatisticsOptions extends GenericModel {
     }
   }
 
-  public GetDataGraphStatisticsOptions() { }
+  protected GetDataGraphStatisticsOptions() { }
 
-  public GetDataGraphStatisticsOptions(Builder builder) {
+  protected GetDataGraphStatisticsOptions(Builder builder) {
     includeSourceStatistics = builder.includeSourceStatistics;
     approximateStatistics = builder.approximateStatistics;
   }

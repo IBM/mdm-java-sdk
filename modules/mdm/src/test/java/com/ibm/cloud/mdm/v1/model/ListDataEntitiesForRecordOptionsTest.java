@@ -33,14 +33,14 @@ public class ListDataEntitiesForRecordOptionsTest {
   public void testListDataEntitiesForRecordOptions() throws Throwable {
     ListDataEntitiesForRecordOptions listDataEntitiesForRecordOptionsModel = new ListDataEntitiesForRecordOptions.Builder()
       .id(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
-      .offset(Long.valueOf("26"))
+      .limit(Long.valueOf("10"))
+      .offset(Long.valueOf("0"))
       .include(java.util.Arrays.asList("legal_name.given_name"))
       .exclude(java.util.Arrays.asList("legal_name.given_name"))
       .build();
     assertEquals(listDataEntitiesForRecordOptionsModel.id(), Long.valueOf("26"));
-    assertEquals(listDataEntitiesForRecordOptionsModel.limit(), Long.valueOf("50"));
-    assertEquals(listDataEntitiesForRecordOptionsModel.offset(), Long.valueOf("26"));
+    assertEquals(listDataEntitiesForRecordOptionsModel.limit(), Long.valueOf("10"));
+    assertEquals(listDataEntitiesForRecordOptionsModel.offset(), Long.valueOf("0"));
     assertEquals(listDataEntitiesForRecordOptionsModel.include(), java.util.Arrays.asList("legal_name.given_name"));
     assertEquals(listDataEntitiesForRecordOptionsModel.exclude(), java.util.Arrays.asList("legal_name.given_name"));
   }

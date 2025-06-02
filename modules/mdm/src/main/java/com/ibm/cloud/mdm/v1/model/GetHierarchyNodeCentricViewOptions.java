@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -47,6 +48,11 @@ public class GetHierarchyNodeCentricViewOptions extends GenericModel {
     private Long limit;
     private Boolean includeTotalCount;
 
+    /**
+     * Instantiates a new Builder from an existing GetHierarchyNodeCentricViewOptions instance.
+     *
+     * @param getHierarchyNodeCentricViewOptions the instance to initialize the Builder with
+     */
     private Builder(GetHierarchyNodeCentricViewOptions getHierarchyNodeCentricViewOptions) {
       this.id = getHierarchyNodeCentricViewOptions.id;
       this.hierarchyType = getHierarchyNodeCentricViewOptions.hierarchyType;

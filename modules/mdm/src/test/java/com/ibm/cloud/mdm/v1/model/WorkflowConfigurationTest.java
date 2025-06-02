@@ -36,20 +36,20 @@ public class WorkflowConfigurationTest {
   @Test
   public void testWorkflowConfiguration() throws Throwable {
     WorkflowConfigurationRecordEntityTypeOperator workflowConfigurationRecordEntityTypeOperatorModel = new WorkflowConfigurationRecordEntityTypeOperator.Builder()
-      .triggers(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .triggers(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
-    assertEquals(workflowConfigurationRecordEntityTypeOperatorModel.triggers(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(workflowConfigurationRecordEntityTypeOperatorModel.triggers(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     WorkflowConfigurationWorkflowConfigurations workflowConfigurationWorkflowConfigurationsModel = new WorkflowConfigurationWorkflowConfigurations.Builder()
-      .xDefault(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .sourceBased(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .xDefault(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .sourceBased(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
-    assertEquals(workflowConfigurationWorkflowConfigurationsModel.xDefault(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
-    assertEquals(workflowConfigurationWorkflowConfigurationsModel.sourceBased(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(workflowConfigurationWorkflowConfigurationsModel.xDefault(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(workflowConfigurationWorkflowConfigurationsModel.sourceBased(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     WorkflowConfigurationRecordTypeTriggerOperator workflowConfigurationRecordTypeTriggerOperatorModel = new WorkflowConfigurationRecordTypeTriggerOperator.Builder()
       .name("testString")
-      .entityTypes(new java.util.HashMap<String, WorkflowConfigurationRecordEntityTypeOperator>() { { put("foo", workflowConfigurationRecordEntityTypeOperatorModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", workflowConfigurationRecordEntityTypeOperatorModel))
       .excludedSources(java.util.Arrays.asList("testString"))
       .includedSources(java.util.Arrays.asList("testString"))
       .workflowConfigurations(workflowConfigurationWorkflowConfigurationsModel)
@@ -57,7 +57,7 @@ public class WorkflowConfigurationTest {
       .status("testString")
       .build();
     assertEquals(workflowConfigurationRecordTypeTriggerOperatorModel.name(), "testString");
-    assertEquals(workflowConfigurationRecordTypeTriggerOperatorModel.entityTypes(), new java.util.HashMap<String, WorkflowConfigurationRecordEntityTypeOperator>() { { put("foo", workflowConfigurationRecordEntityTypeOperatorModel); } });
+    assertEquals(workflowConfigurationRecordTypeTriggerOperatorModel.entityTypes(), java.util.Collections.singletonMap("key1", workflowConfigurationRecordEntityTypeOperatorModel));
     assertEquals(workflowConfigurationRecordTypeTriggerOperatorModel.excludedSources(), java.util.Arrays.asList("testString"));
     assertEquals(workflowConfigurationRecordTypeTriggerOperatorModel.includedSources(), java.util.Arrays.asList("testString"));
     assertEquals(workflowConfigurationRecordTypeTriggerOperatorModel.workflowConfigurations(), workflowConfigurationWorkflowConfigurationsModel);
@@ -65,26 +65,26 @@ public class WorkflowConfigurationTest {
     assertEquals(workflowConfigurationRecordTypeTriggerOperatorModel.status(), "testString");
 
     WorkflowConfigurationTriggerOperator workflowConfigurationTriggerOperatorModel = new WorkflowConfigurationTriggerOperator.Builder()
-      .hierarchyTypes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .entityTypes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .recordTypes(new java.util.HashMap<String, WorkflowConfigurationRecordTypeTriggerOperator>() { { put("foo", workflowConfigurationRecordTypeTriggerOperatorModel); } })
+      .hierarchyTypes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .entityTypes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .recordTypes(java.util.Collections.singletonMap("key1", workflowConfigurationRecordTypeTriggerOperatorModel))
       .build();
-    assertEquals(workflowConfigurationTriggerOperatorModel.hierarchyTypes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
-    assertEquals(workflowConfigurationTriggerOperatorModel.entityTypes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
-    assertEquals(workflowConfigurationTriggerOperatorModel.recordTypes(), new java.util.HashMap<String, WorkflowConfigurationRecordTypeTriggerOperator>() { { put("foo", workflowConfigurationRecordTypeTriggerOperatorModel); } });
+    assertEquals(workflowConfigurationTriggerOperatorModel.hierarchyTypes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(workflowConfigurationTriggerOperatorModel.entityTypes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(workflowConfigurationTriggerOperatorModel.recordTypes(), java.util.Collections.singletonMap("key1", workflowConfigurationRecordTypeTriggerOperatorModel));
 
     WorkflowConfiguration workflowConfigurationModel = new WorkflowConfiguration.Builder()
       .autoCreateTasks(true)
       .description("testString")
-      .applicableDataTypes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .customTags(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .applicableDataTypes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .customTags(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .maxAccumulatedUpdates(Long.valueOf("26"))
       .triggerOperator(workflowConfigurationTriggerOperatorModel)
       .build();
     assertEquals(workflowConfigurationModel.autoCreateTasks(), Boolean.valueOf(true));
     assertEquals(workflowConfigurationModel.description(), "testString");
-    assertEquals(workflowConfigurationModel.applicableDataTypes(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
-    assertEquals(workflowConfigurationModel.customTags(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(workflowConfigurationModel.applicableDataTypes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(workflowConfigurationModel.customTags(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(workflowConfigurationModel.maxAccumulatedUpdates(), Long.valueOf("26"));
     assertEquals(workflowConfigurationModel.triggerOperator(), workflowConfigurationTriggerOperatorModel);
 
@@ -94,8 +94,8 @@ public class WorkflowConfigurationTest {
     assertTrue(workflowConfigurationModelNew instanceof WorkflowConfiguration);
     assertEquals(workflowConfigurationModelNew.autoCreateTasks(), Boolean.valueOf(true));
     assertEquals(workflowConfigurationModelNew.description(), "testString");
-    assertEquals(workflowConfigurationModelNew.applicableDataTypes().toString(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } }.toString());
-    assertEquals(workflowConfigurationModelNew.customTags().toString(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } }.toString());
+    assertEquals(workflowConfigurationModelNew.applicableDataTypes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
+    assertEquals(workflowConfigurationModelNew.customTags().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
     assertEquals(workflowConfigurationModelNew.maxAccumulatedUpdates(), Long.valueOf("26"));
     assertEquals(workflowConfigurationModelNew.triggerOperator().toString(), workflowConfigurationTriggerOperatorModel.toString());
   }

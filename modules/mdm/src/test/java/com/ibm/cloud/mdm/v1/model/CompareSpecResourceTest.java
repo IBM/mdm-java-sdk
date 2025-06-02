@@ -42,22 +42,22 @@ public class CompareSpecResourceTest {
     assertEquals(compareSpecResourceFeatureCategoryModel.equivalencyMapResource(), "testString");
 
     CompareSpecResource compareSpecResourceModel = new CompareSpecResource.Builder()
-      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
+      .featureCategories(java.util.Collections.singletonMap("key1", compareSpecResourceFeatureCategoryModel))
       .typoDistance(Float.valueOf("36.0"))
       .similarCharactersEnabled(true)
       .similarCharactersMapResource("testString")
       .rawEditDistanceEnabled(true)
       .maxGeoDistance(Float.valueOf("36.0"))
-      .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
+      .featureCoefficients(java.util.Collections.singletonMap("key1", Float.valueOf("36.0")))
       .similarCharactersDistance(Float.valueOf("36.0"))
       .build();
-    assertEquals(compareSpecResourceModel.featureCategories(), new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } });
+    assertEquals(compareSpecResourceModel.featureCategories(), java.util.Collections.singletonMap("key1", compareSpecResourceFeatureCategoryModel));
     assertEquals(compareSpecResourceModel.typoDistance(), Float.valueOf("36.0"));
     assertEquals(compareSpecResourceModel.similarCharactersEnabled(), Boolean.valueOf(true));
     assertEquals(compareSpecResourceModel.similarCharactersMapResource(), "testString");
     assertEquals(compareSpecResourceModel.rawEditDistanceEnabled(), Boolean.valueOf(true));
     assertEquals(compareSpecResourceModel.maxGeoDistance(), Float.valueOf("36.0"));
-    assertEquals(compareSpecResourceModel.featureCoefficients(), new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } });
+    assertEquals(compareSpecResourceModel.featureCoefficients(), java.util.Collections.singletonMap("key1", Float.valueOf("36.0")));
     assertEquals(compareSpecResourceModel.similarCharactersDistance(), Float.valueOf("36.0"));
 
     String json = TestUtilities.serialize(compareSpecResourceModel);

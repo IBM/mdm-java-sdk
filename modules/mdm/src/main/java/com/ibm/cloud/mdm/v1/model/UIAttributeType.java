@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -39,6 +40,11 @@ public class UIAttributeType extends GenericModel {
     private List<String> fields;
     private List<List<UIAttribute>> concatenation;
 
+    /**
+     * Instantiates a new Builder from an existing UIAttributeType instance.
+     *
+     * @param uiAttributeType the instance to initialize the Builder with
+     */
     private Builder(UIAttributeType uiAttributeType) {
       this.tableDisplayMode = uiAttributeType.tableDisplayMode;
       this.detailDisplayMode = uiAttributeType.detailDisplayMode;
@@ -62,9 +68,9 @@ public class UIAttributeType extends GenericModel {
     }
 
     /**
-     * Adds an fields to fields.
+     * Adds a new element to fields.
      *
-     * @param fields the new fields
+     * @param fields the new element to be added
      * @return the UIAttributeType builder
      */
     public Builder addFields(String fields) {
@@ -78,9 +84,9 @@ public class UIAttributeType extends GenericModel {
     }
 
     /**
-     * Adds an concatenation to concatenation.
+     * Adds a new element to concatenation.
      *
-     * @param concatenation the new concatenation
+     * @param concatenation the new element to be added
      * @return the UIAttributeType builder
      */
     public Builder addConcatenation(List<UIAttribute> concatenation) {

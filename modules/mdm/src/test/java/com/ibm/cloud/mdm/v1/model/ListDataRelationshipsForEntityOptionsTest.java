@@ -35,16 +35,16 @@ public class ListDataRelationshipsForEntityOptionsTest {
       .id("testString")
       .relationshipTypes(java.util.Arrays.asList("testString"))
       .includeRecordRelationships("false")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .sourceInclude(java.util.Arrays.asList("all"))
       .targetInclude(java.util.Arrays.asList("all"))
       .build();
     assertEquals(listDataRelationshipsForEntityOptionsModel.id(), "testString");
     assertEquals(listDataRelationshipsForEntityOptionsModel.relationshipTypes(), java.util.Arrays.asList("testString"));
     assertEquals(listDataRelationshipsForEntityOptionsModel.includeRecordRelationships(), "false");
-    assertEquals(listDataRelationshipsForEntityOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(listDataRelationshipsForEntityOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(listDataRelationshipsForEntityOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(listDataRelationshipsForEntityOptionsModel.limit(), Long.valueOf("10"));
     assertEquals(listDataRelationshipsForEntityOptionsModel.sourceInclude(), java.util.Arrays.asList("all"));
     assertEquals(listDataRelationshipsForEntityOptionsModel.targetInclude(), java.util.Arrays.asList("all"));
   }

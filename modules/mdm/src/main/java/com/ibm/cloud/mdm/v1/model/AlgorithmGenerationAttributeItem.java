@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -40,6 +41,11 @@ public class AlgorithmGenerationAttributeItem extends GenericModel {
     private List<String> matchingFields;
     private List<String> postFilterMethods;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmGenerationAttributeItem instance.
+     *
+     * @param algorithmGenerationAttributeItem the instance to initialize the Builder with
+     */
     private Builder(AlgorithmGenerationAttributeItem algorithmGenerationAttributeItem) {
       this.overallScoreContribution = algorithmGenerationAttributeItem.overallScoreContribution;
       this.attributes = algorithmGenerationAttributeItem.attributes;
@@ -72,9 +78,9 @@ public class AlgorithmGenerationAttributeItem extends GenericModel {
     }
 
     /**
-     * Adds an attributes to attributes.
+     * Adds a new element to attributes.
      *
-     * @param attributes the new attributes
+     * @param attributes the new element to be added
      * @return the AlgorithmGenerationAttributeItem builder
      */
     public Builder addAttributes(String attributes) {
@@ -88,9 +94,9 @@ public class AlgorithmGenerationAttributeItem extends GenericModel {
     }
 
     /**
-     * Adds an matchingFields to matchingFields.
+     * Adds a new element to matchingFields.
      *
-     * @param matchingFields the new matchingFields
+     * @param matchingFields the new element to be added
      * @return the AlgorithmGenerationAttributeItem builder
      */
     public Builder addMatchingFields(String matchingFields) {
@@ -104,9 +110,9 @@ public class AlgorithmGenerationAttributeItem extends GenericModel {
     }
 
     /**
-     * Adds an postFilterMethods to postFilterMethods.
+     * Adds a new element to postFilterMethods.
      *
-     * @param postFilterMethods the new postFilterMethods
+     * @param postFilterMethods the new element to be added
      * @return the AlgorithmGenerationAttributeItem builder
      */
     public Builder addPostFilterMethods(String postFilterMethods) {

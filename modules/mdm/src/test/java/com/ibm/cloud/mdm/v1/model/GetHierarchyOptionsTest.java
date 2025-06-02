@@ -34,21 +34,21 @@ public class GetHierarchyOptionsTest {
     GetHierarchyOptions getHierarchyOptionsModel = new GetHierarchyOptions.Builder()
       .id(Long.valueOf("26"))
       .hierarchyType("testString")
-      .fromLevel(Long.valueOf("26"))
-      .toLevel(Long.valueOf("26"))
+      .fromLevel(Long.valueOf("0"))
+      .toLevel(Long.valueOf("0"))
       .includedAssociations("testString")
       .orphanNodesOnly("false")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("200"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .build();
     assertEquals(getHierarchyOptionsModel.id(), Long.valueOf("26"));
     assertEquals(getHierarchyOptionsModel.hierarchyType(), "testString");
-    assertEquals(getHierarchyOptionsModel.fromLevel(), Long.valueOf("26"));
-    assertEquals(getHierarchyOptionsModel.toLevel(), Long.valueOf("26"));
+    assertEquals(getHierarchyOptionsModel.fromLevel(), Long.valueOf("0"));
+    assertEquals(getHierarchyOptionsModel.toLevel(), Long.valueOf("0"));
     assertEquals(getHierarchyOptionsModel.includedAssociations(), "testString");
     assertEquals(getHierarchyOptionsModel.orphanNodesOnly(), "false");
-    assertEquals(getHierarchyOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(getHierarchyOptionsModel.limit(), Long.valueOf("200"));
+    assertEquals(getHierarchyOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(getHierarchyOptionsModel.limit(), Long.valueOf("10"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

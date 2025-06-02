@@ -45,10 +45,10 @@ public class ReplaceModelSetResourceOptionsTest {
 
     ReplaceModelSetResourceOptions replaceModelSetResourceOptionsModel = new ReplaceModelSetResourceOptions.Builder()
       .resourceName("testString")
-      .requestBody(new java.util.HashMap<String, SetResourceEntry>() { { put("foo", setResourceEntryModel); } })
+      .requestBody(java.util.Collections.singletonMap("key1", setResourceEntryModel))
       .build();
     assertEquals(replaceModelSetResourceOptionsModel.resourceName(), "testString");
-    assertEquals(replaceModelSetResourceOptionsModel.requestBody(), new java.util.HashMap<String, SetResourceEntry>() { { put("foo", setResourceEntryModel); } });
+    assertEquals(replaceModelSetResourceOptionsModel.requestBody(), java.util.Collections.singletonMap("key1", setResourceEntryModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

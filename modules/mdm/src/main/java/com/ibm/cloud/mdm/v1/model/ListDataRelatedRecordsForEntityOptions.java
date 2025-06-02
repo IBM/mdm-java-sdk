@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -44,6 +45,11 @@ public class ListDataRelatedRecordsForEntityOptions extends GenericModel {
     private List<String> exclude;
     private Boolean includeTotalCount;
 
+    /**
+     * Instantiates a new Builder from an existing ListDataRelatedRecordsForEntityOptions instance.
+     *
+     * @param listDataRelatedRecordsForEntityOptions the instance to initialize the Builder with
+     */
     private Builder(ListDataRelatedRecordsForEntityOptions listDataRelatedRecordsForEntityOptions) {
       this.id = listDataRelatedRecordsForEntityOptions.id;
       this.recordType = listDataRelatedRecordsForEntityOptions.recordType;
@@ -84,9 +90,9 @@ public class ListDataRelatedRecordsForEntityOptions extends GenericModel {
     }
 
     /**
-     * Adds an include to include.
+     * Adds a new element to include.
      *
-     * @param include the new include
+     * @param include the new element to be added
      * @return the ListDataRelatedRecordsForEntityOptions builder
      */
     public Builder addInclude(String include) {
@@ -100,9 +106,9 @@ public class ListDataRelatedRecordsForEntityOptions extends GenericModel {
     }
 
     /**
-     * Adds an exclude to exclude.
+     * Adds a new element to exclude.
      *
-     * @param exclude the new exclude
+     * @param exclude the new element to be added
      * @return the ListDataRelatedRecordsForEntityOptions builder
      */
     public Builder addExclude(String exclude) {

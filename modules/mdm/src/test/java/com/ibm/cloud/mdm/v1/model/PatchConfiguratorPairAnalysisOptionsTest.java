@@ -35,8 +35,8 @@ public class PatchConfiguratorPairAnalysisOptionsTest {
       .recordType("testString")
       .entityType("testString")
       .pairOffset(Long.valueOf("13"))
-      .tunedConfig(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .baseConfig(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .tunedConfig(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .baseConfig(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .pairGenJobId("b221364e-b98c-11ec-8422-0242ac120007")
       .tuningJobId("b221364e-b98c-11ec-8422-0242ac1200664")
       .status("Completed")
@@ -44,8 +44,8 @@ public class PatchConfiguratorPairAnalysisOptionsTest {
     assertEquals(patchConfiguratorPairAnalysisOptionsModel.recordType(), "testString");
     assertEquals(patchConfiguratorPairAnalysisOptionsModel.entityType(), "testString");
     assertEquals(patchConfiguratorPairAnalysisOptionsModel.pairOffset(), Long.valueOf("13"));
-    assertEquals(patchConfiguratorPairAnalysisOptionsModel.tunedConfig(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(patchConfiguratorPairAnalysisOptionsModel.baseConfig(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(patchConfiguratorPairAnalysisOptionsModel.tunedConfig(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(patchConfiguratorPairAnalysisOptionsModel.baseConfig(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(patchConfiguratorPairAnalysisOptionsModel.pairGenJobId(), "b221364e-b98c-11ec-8422-0242ac120007");
     assertEquals(patchConfiguratorPairAnalysisOptionsModel.tuningJobId(), "b221364e-b98c-11ec-8422-0242ac1200664");
     assertEquals(patchConfiguratorPairAnalysisOptionsModel.status(), "Completed");

@@ -33,15 +33,15 @@ public class UpdatePairAnalysisTest {
   public void testUpdatePairAnalysis() throws Throwable {
     UpdatePairAnalysis updatePairAnalysisModel = new UpdatePairAnalysis.Builder()
       .pairOffset(Long.valueOf("13"))
-      .tunedConfig(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .baseConfig(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .tunedConfig(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .baseConfig(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .pairGenJobId("b221364e-b98c-11ec-8422-0242ac120007")
       .tuningJobId("b221364e-b98c-11ec-8422-0242ac1200664")
       .status("Completed")
       .build();
     assertEquals(updatePairAnalysisModel.pairOffset(), Long.valueOf("13"));
-    assertEquals(updatePairAnalysisModel.tunedConfig(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(updatePairAnalysisModel.baseConfig(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updatePairAnalysisModel.tunedConfig(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(updatePairAnalysisModel.baseConfig(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updatePairAnalysisModel.pairGenJobId(), "b221364e-b98c-11ec-8422-0242ac120007");
     assertEquals(updatePairAnalysisModel.tuningJobId(), "b221364e-b98c-11ec-8422-0242ac1200664");
     assertEquals(updatePairAnalysisModel.status(), "Completed");
@@ -51,6 +51,8 @@ public class UpdatePairAnalysisTest {
     UpdatePairAnalysis updatePairAnalysisModelNew = TestUtilities.deserialize(json, UpdatePairAnalysis.class);
     assertTrue(updatePairAnalysisModelNew instanceof UpdatePairAnalysis);
     assertEquals(updatePairAnalysisModelNew.pairOffset(), Long.valueOf("13"));
+    assertEquals(updatePairAnalysisModelNew.tunedConfig().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
+    assertEquals(updatePairAnalysisModelNew.baseConfig().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
     assertEquals(updatePairAnalysisModelNew.pairGenJobId(), "b221364e-b98c-11ec-8422-0242ac120007");
     assertEquals(updatePairAnalysisModelNew.tuningJobId(), "b221364e-b98c-11ec-8422-0242ac1200664");
     assertEquals(updatePairAnalysisModelNew.status(), "Completed");

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -32,6 +33,11 @@ public class PreviewDataEntityGivenRecordsOptions extends GenericModel {
     private String entityType;
     private List<Double> recordIds;
 
+    /**
+     * Instantiates a new Builder from an existing PreviewDataEntityGivenRecordsOptions instance.
+     *
+     * @param previewDataEntityGivenRecordsOptions the instance to initialize the Builder with
+     */
     private Builder(PreviewDataEntityGivenRecordsOptions previewDataEntityGivenRecordsOptions) {
       this.entityType = previewDataEntityGivenRecordsOptions.entityType;
       this.recordIds = previewDataEntityGivenRecordsOptions.recordIds;
@@ -64,9 +70,9 @@ public class PreviewDataEntityGivenRecordsOptions extends GenericModel {
     }
 
     /**
-     * Adds an recordIds to recordIds.
+     * Adds a new element to recordIds.
      *
-     * @param recordIds the new recordIds
+     * @param recordIds the new element to be added
      * @return the PreviewDataEntityGivenRecordsOptions builder
      */
     public Builder addRecordIds(Double recordIds) {

@@ -13,8 +13,10 @@
 
 package com.ibm.cloud.mdm.v1.model;
 
-import com.ibm.cloud.mdm.v1.model.DataQualityIssue;
+import com.ibm.cloud.mdm.v1.model.DataQualityIssueEntities;
 import com.ibm.cloud.mdm.v1.model.GetDataQualityIssues;
+import com.ibm.cloud.mdm.v1.model.MatchingDataQualityIssue;
+import com.ibm.cloud.mdm.v1.model.ResolutionPrediction;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

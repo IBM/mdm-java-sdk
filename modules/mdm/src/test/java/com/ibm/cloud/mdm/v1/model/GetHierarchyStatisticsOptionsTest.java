@@ -35,14 +35,14 @@ public class GetHierarchyStatisticsOptionsTest {
       .hierarchyType("testString")
       .metrics("established_hierarchies")
       .id(Long.valueOf("26"))
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("200"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .build();
     assertEquals(getHierarchyStatisticsOptionsModel.hierarchyType(), "testString");
     assertEquals(getHierarchyStatisticsOptionsModel.metrics(), "established_hierarchies");
     assertEquals(getHierarchyStatisticsOptionsModel.id(), Long.valueOf("26"));
-    assertEquals(getHierarchyStatisticsOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(getHierarchyStatisticsOptionsModel.limit(), Long.valueOf("200"));
+    assertEquals(getHierarchyStatisticsOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(getHierarchyStatisticsOptionsModel.limit(), Long.valueOf("10"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

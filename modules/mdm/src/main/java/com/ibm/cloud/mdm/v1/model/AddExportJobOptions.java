@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.Map;
@@ -33,6 +34,11 @@ public class AddExportJobOptions extends GenericModel {
     private Map<String, String> exportJobs;
     private String exportsId;
 
+    /**
+     * Instantiates a new Builder from an existing AddExportJobOptions instance.
+     *
+     * @param addExportJobOptions the instance to initialize the Builder with
+     */
     private Builder(AddExportJobOptions addExportJobOptions) {
       this.id = addExportJobOptions.id;
       this.exportJobs = addExportJobOptions.exportJobs;

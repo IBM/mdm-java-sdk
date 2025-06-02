@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -36,6 +37,11 @@ public class ListMatchingRemediationWorkflowOptions extends GenericModel {
     private Long limit;
     private Long offset;
 
+    /**
+     * Instantiates a new Builder from an existing ListMatchingRemediationWorkflowOptions instance.
+     *
+     * @param listMatchingRemediationWorkflowOptions the instance to initialize the Builder with
+     */
     private Builder(ListMatchingRemediationWorkflowOptions listMatchingRemediationWorkflowOptions) {
       this.entityType = listMatchingRemediationWorkflowOptions.entityType;
       this.entities = listMatchingRemediationWorkflowOptions.entities;
@@ -68,9 +74,9 @@ public class ListMatchingRemediationWorkflowOptions extends GenericModel {
     }
 
     /**
-     * Adds an entities to entities.
+     * Adds a new element to entities.
      *
-     * @param entities the new entities
+     * @param entities the new element to be added
      * @return the ListMatchingRemediationWorkflowOptions builder
      */
     public Builder addEntities(String entities) {

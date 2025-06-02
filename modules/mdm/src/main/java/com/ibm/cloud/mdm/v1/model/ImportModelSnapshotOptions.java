@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.List;
@@ -42,6 +43,11 @@ public class ImportModelSnapshotOptions extends GenericModel {
     private Map<String, Map<String, SetResourceEntry>> setResources;
     private CompositeRules compositeRules;
 
+    /**
+     * Instantiates a new Builder from an existing ImportModelSnapshotOptions instance.
+     *
+     * @param importModelSnapshotOptions the instance to initialize the Builder with
+     */
     private Builder(ImportModelSnapshotOptions importModelSnapshotOptions) {
       this.algorithms = importModelSnapshotOptions.algorithms;
       this.compareSpecResources = importModelSnapshotOptions.compareSpecResources;

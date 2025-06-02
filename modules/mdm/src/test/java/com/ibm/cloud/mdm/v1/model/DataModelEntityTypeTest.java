@@ -53,14 +53,14 @@ public class DataModelEntityTypeTest {
       .xDefault(true)
       .persistCompView(true)
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .type("testString")
       .build();
     assertEquals(dataModelEntityTypeModel.xDefault(), Boolean.valueOf(true));
     assertEquals(dataModelEntityTypeModel.persistCompView(), Boolean.valueOf(true));
     assertEquals(dataModelEntityTypeModel.description(), "testString");
-    assertEquals(dataModelEntityTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelEntityTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelEntityTypeModel.label(), "testString");
     assertEquals(dataModelEntityTypeModel.type(), "testString");
 

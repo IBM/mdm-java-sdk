@@ -35,10 +35,10 @@ public class CompositeRulesRecordTypeTest {
   public void testCompositeRulesRecordType() throws Throwable {
     CompositeRulesSubRuleType compositeRulesSubRuleTypeModel = new CompositeRulesSubRuleType.Builder()
       .type("testString")
-      .params(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .params(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(compositeRulesSubRuleTypeModel.type(), "testString");
-    assertEquals(compositeRulesSubRuleTypeModel.params(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(compositeRulesSubRuleTypeModel.params(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     CompositeRulesRule compositeRulesRuleModel = new CompositeRulesRule.Builder()
       .sources(java.util.Arrays.asList("testString"))
@@ -56,13 +56,13 @@ public class CompositeRulesRecordTypeTest {
     assertEquals(compositeRulesRuleModel.choices(), java.util.Arrays.asList("testString"));
 
     CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .recordTypeRule(compositeRulesRuleModel)
-      .entityRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .entityRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .build();
-    assertEquals(compositeRulesRecordTypeModel.attributeRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
+    assertEquals(compositeRulesRecordTypeModel.attributeRules(), java.util.Collections.singletonMap("key1", compositeRulesRuleModel));
     assertEquals(compositeRulesRecordTypeModel.recordTypeRule(), compositeRulesRuleModel);
-    assertEquals(compositeRulesRecordTypeModel.entityRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
+    assertEquals(compositeRulesRecordTypeModel.entityRules(), java.util.Collections.singletonMap("key1", compositeRulesRuleModel));
 
     String json = TestUtilities.serialize(compositeRulesRecordTypeModel);
 

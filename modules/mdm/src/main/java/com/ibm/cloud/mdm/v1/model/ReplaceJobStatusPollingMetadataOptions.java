@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -39,6 +40,11 @@ public class ReplaceJobStatusPollingMetadataOptions extends GenericModel {
     private String recordType;
     private String entityType;
 
+    /**
+     * Instantiates a new Builder from an existing ReplaceJobStatusPollingMetadataOptions instance.
+     *
+     * @param replaceJobStatusPollingMetadataOptions the instance to initialize the Builder with
+     */
     private Builder(ReplaceJobStatusPollingMetadataOptions replaceJobStatusPollingMetadataOptions) {
       this.id = replaceJobStatusPollingMetadataOptions.id;
       this.recordNumber1 = replaceJobStatusPollingMetadataOptions.recordNumber1;

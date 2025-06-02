@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -65,6 +66,11 @@ public class SearchFilter extends GenericModel {
     private List<String> values;
     private List<String> dataQualityIssues;
 
+    /**
+     * Instantiates a new Builder from an existing SearchFilter instance.
+     *
+     * @param searchFilter the instance to initialize the Builder with
+     */
     private Builder(SearchFilter searchFilter) {
       this.type = searchFilter.type;
       this.values = searchFilter.values;
@@ -96,9 +102,9 @@ public class SearchFilter extends GenericModel {
     }
 
     /**
-     * Adds an values to values.
+     * Adds a new element to values.
      *
-     * @param values the new values
+     * @param values the new element to be added
      * @return the SearchFilter builder
      */
     public Builder addValues(String values) {
@@ -112,9 +118,9 @@ public class SearchFilter extends GenericModel {
     }
 
     /**
-     * Adds an dataQualityIssues to dataQualityIssues.
+     * Adds a new element to dataQualityIssues.
      *
-     * @param dataQualityIssues the new dataQualityIssues
+     * @param dataQualityIssues the new element to be added
      * @return the SearchFilter builder
      */
     public Builder addDataQualityIssues(String dataQualityIssues) {

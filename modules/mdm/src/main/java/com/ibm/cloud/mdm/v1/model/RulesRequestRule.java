@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -37,6 +38,11 @@ public class RulesRequestRule extends GenericModel {
     private String description;
     private List<String> recordNumbers;
 
+    /**
+     * Instantiates a new Builder from an existing RulesRequestRule instance.
+     *
+     * @param rulesRequestRule the instance to initialize the Builder with
+     */
     private Builder(RulesRequestRule rulesRequestRule) {
       this.ruleType = rulesRequestRule.ruleType;
       this.description = rulesRequestRule.description;
@@ -72,9 +78,9 @@ public class RulesRequestRule extends GenericModel {
     }
 
     /**
-     * Adds an recordNumbers to recordNumbers.
+     * Adds a new element to recordNumbers.
      *
-     * @param recordNumbers the new recordNumbers
+     * @param recordNumbers the new element to be added
      * @return the RulesRequestRule builder
      */
     public Builder addRecordNumbers(String recordNumbers) {

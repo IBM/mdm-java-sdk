@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -38,6 +39,11 @@ public class ResiliencyRulesRecord extends GenericModel {
     private ResiliencyRulesDelete delete;
     private ResiliencyRulesManualUnlink manualUnlink;
 
+    /**
+     * Instantiates a new Builder from an existing ResiliencyRulesRecord instance.
+     *
+     * @param resiliencyRulesRecord the instance to initialize the Builder with
+     */
     private Builder(ResiliencyRulesRecord resiliencyRulesRecord) {
       this.add = resiliencyRulesRecord.add;
       this.update = resiliencyRulesRecord.update;

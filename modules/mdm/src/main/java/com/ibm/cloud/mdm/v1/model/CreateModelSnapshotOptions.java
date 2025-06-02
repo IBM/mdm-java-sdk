@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class CreateModelSnapshotOptions extends GenericModel {
 
   protected SnapshotSummary snapshotSummary;
   protected Map<String, Object> matchSettings;
-  protected List<Object> mappingPatterns;
+  protected List<Map<String, Object>> mappingPatterns;
 
   /**
    * Builder.
@@ -33,8 +34,13 @@ public class CreateModelSnapshotOptions extends GenericModel {
   public static class Builder {
     private SnapshotSummary snapshotSummary;
     private Map<String, Object> matchSettings;
-    private List<Object> mappingPatterns;
+    private List<Map<String, Object>> mappingPatterns;
 
+    /**
+     * Instantiates a new Builder from an existing CreateModelSnapshotOptions instance.
+     *
+     * @param createModelSnapshotOptions the instance to initialize the Builder with
+     */
     private Builder(CreateModelSnapshotOptions createModelSnapshotOptions) {
       this.snapshotSummary = createModelSnapshotOptions.snapshotSummary;
       this.matchSettings = createModelSnapshotOptions.matchSettings;
@@ -68,16 +74,16 @@ public class CreateModelSnapshotOptions extends GenericModel {
     }
 
     /**
-     * Adds an mappingPatterns to mappingPatterns.
+     * Adds a new element to mappingPatterns.
      *
-     * @param mappingPatterns the new mappingPatterns
+     * @param mappingPatterns the new element to be added
      * @return the CreateModelSnapshotOptions builder
      */
-    public Builder addMappingPatterns(Object mappingPatterns) {
+    public Builder addMappingPatterns(Map<String, Object> mappingPatterns) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(mappingPatterns,
         "mappingPatterns cannot be null");
       if (this.mappingPatterns == null) {
-        this.mappingPatterns = new ArrayList<Object>();
+        this.mappingPatterns = new ArrayList<Map<String, Object>>();
       }
       this.mappingPatterns.add(mappingPatterns);
       return this;
@@ -112,7 +118,7 @@ public class CreateModelSnapshotOptions extends GenericModel {
      * @param mappingPatterns the mappingPatterns
      * @return the CreateModelSnapshotOptions builder
      */
-    public Builder mappingPatterns(List<Object> mappingPatterns) {
+    public Builder mappingPatterns(List<Map<String, Object>> mappingPatterns) {
       this.mappingPatterns = mappingPatterns;
       return this;
     }
@@ -168,7 +174,7 @@ public class CreateModelSnapshotOptions extends GenericModel {
    *
    * @return the mappingPatterns
    */
-  public List<Object> mappingPatterns() {
+  public List<Map<String, Object>> mappingPatterns() {
     return mappingPatterns;
   }
 }

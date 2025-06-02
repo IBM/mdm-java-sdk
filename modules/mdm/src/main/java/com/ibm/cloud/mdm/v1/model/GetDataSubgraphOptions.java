@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -35,6 +36,11 @@ public class GetDataSubgraphOptions extends GenericModel {
     private Long distance;
     private Map<String, List<String>> include;
 
+    /**
+     * Instantiates a new Builder from an existing GetDataSubgraphOptions instance.
+     *
+     * @param getDataSubgraphOptions the instance to initialize the Builder with
+     */
     private Builder(GetDataSubgraphOptions getDataSubgraphOptions) {
       this.vertexIds = getDataSubgraphOptions.vertexIds;
       this.distance = getDataSubgraphOptions.distance;
@@ -66,9 +72,9 @@ public class GetDataSubgraphOptions extends GenericModel {
     }
 
     /**
-     * Adds an vertexIds to vertexIds.
+     * Adds a new element to vertexIds.
      *
-     * @param vertexIds the new vertexIds
+     * @param vertexIds the new element to be added
      * @return the GetDataSubgraphOptions builder
      */
     public Builder addVertexIds(String vertexIds) {

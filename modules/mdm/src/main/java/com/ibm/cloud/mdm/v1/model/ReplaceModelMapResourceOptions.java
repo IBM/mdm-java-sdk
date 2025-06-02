@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.List;
@@ -32,6 +33,11 @@ public class ReplaceModelMapResourceOptions extends GenericModel {
     private String resourceName;
     private Map<String, List<MapResourceEntry>> requestBody;
 
+    /**
+     * Instantiates a new Builder from an existing ReplaceModelMapResourceOptions instance.
+     *
+     * @param replaceModelMapResourceOptions the instance to initialize the Builder with
+     */
     private Builder(ReplaceModelMapResourceOptions replaceModelMapResourceOptions) {
       this.resourceName = replaceModelMapResourceOptions.resourceName;
       this.requestBody = replaceModelMapResourceOptions.requestBody;

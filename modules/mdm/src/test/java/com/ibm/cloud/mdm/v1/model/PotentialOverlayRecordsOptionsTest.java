@@ -33,15 +33,15 @@ public class PotentialOverlayRecordsOptionsTest {
   public void testPotentialOverlayRecordsOptions() throws Throwable {
     PotentialOverlayRecordsOptions potentialOverlayRecordsOptionsModel = new PotentialOverlayRecordsOptions.Builder()
       .id(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
-      .offset(Long.valueOf("26"))
+      .limit(Long.valueOf("10"))
+      .offset(Long.valueOf("0"))
       .sortDescend(true)
       .hideUnmodifiedAttrs(false)
       .fullUpdate(true)
       .build();
     assertEquals(potentialOverlayRecordsOptionsModel.id(), Long.valueOf("26"));
-    assertEquals(potentialOverlayRecordsOptionsModel.limit(), Long.valueOf("50"));
-    assertEquals(potentialOverlayRecordsOptionsModel.offset(), Long.valueOf("26"));
+    assertEquals(potentialOverlayRecordsOptionsModel.limit(), Long.valueOf("10"));
+    assertEquals(potentialOverlayRecordsOptionsModel.offset(), Long.valueOf("0"));
     assertEquals(potentialOverlayRecordsOptionsModel.sortDescend(), Boolean.valueOf(true));
     assertEquals(potentialOverlayRecordsOptionsModel.hideUnmodifiedAttrs(), Boolean.valueOf(false));
     assertEquals(potentialOverlayRecordsOptionsModel.fullUpdate(), Boolean.valueOf(true));

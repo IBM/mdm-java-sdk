@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -87,6 +88,11 @@ public class Expression extends GenericModel {
     private String operation;
     private List<Expression> expressions;
 
+    /**
+     * Instantiates a new Builder from an existing Expression instance.
+     *
+     * @param expression the instance to initialize the Builder with
+     */
     private Builder(Expression expression) {
       this.property = expression.property;
       this.condition = expression.condition;
@@ -113,9 +119,9 @@ public class Expression extends GenericModel {
     }
 
     /**
-     * Adds an expressions to expressions.
+     * Adds a new element to expressions.
      *
-     * @param expressions the new expressions
+     * @param expressions the new element to be added
      * @return the Expression builder
      */
     public Builder addExpressions(Expression expressions) {

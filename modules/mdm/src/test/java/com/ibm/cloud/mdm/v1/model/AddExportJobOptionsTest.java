@@ -33,11 +33,11 @@ public class AddExportJobOptionsTest {
   public void testAddExportJobOptions() throws Throwable {
     AddExportJobOptions addExportJobOptionsModel = new AddExportJobOptions.Builder()
       .id("testString")
-      .exportJobs(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
+      .exportJobs(java.util.Collections.singletonMap("key1", "testString"))
       .exportsId("testString")
       .build();
     assertEquals(addExportJobOptionsModel.id(), "testString");
-    assertEquals(addExportJobOptionsModel.exportJobs(), new java.util.HashMap<String, String>() { { put("foo", "testString"); } });
+    assertEquals(addExportJobOptionsModel.exportJobs(), java.util.Collections.singletonMap("key1", "testString"));
     assertEquals(addExportJobOptionsModel.exportsId(), "testString");
   }
 

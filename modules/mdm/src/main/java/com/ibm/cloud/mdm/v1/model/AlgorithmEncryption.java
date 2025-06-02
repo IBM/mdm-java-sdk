@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -39,6 +40,11 @@ public class AlgorithmEncryption extends GenericModel {
     private Boolean enabled;
     private List<String> pubKey;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmEncryption instance.
+     *
+     * @param algorithmEncryption the instance to initialize the Builder with
+     */
     private Builder(AlgorithmEncryption algorithmEncryption) {
       this.subType = algorithmEncryption.subType;
       this.type = algorithmEncryption.type;
@@ -77,9 +83,9 @@ public class AlgorithmEncryption extends GenericModel {
     }
 
     /**
-     * Adds an pubKey to pubKey.
+     * Adds a new element to pubKey.
      *
-     * @param pubKey the new pubKey
+     * @param pubKey the new element to be added
      * @return the AlgorithmEncryption builder
      */
     public Builder addPubKey(String pubKey) {

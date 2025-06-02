@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -29,6 +30,11 @@ public class GetAllSettingsOptions extends GenericModel {
     private Long offset;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing GetAllSettingsOptions instance.
+     *
+     * @param getAllSettingsOptions the instance to initialize the Builder with
+     */
     private Builder(GetAllSettingsOptions getAllSettingsOptions) {
       this.offset = getAllSettingsOptions.offset;
       this.limit = getAllSettingsOptions.limit;

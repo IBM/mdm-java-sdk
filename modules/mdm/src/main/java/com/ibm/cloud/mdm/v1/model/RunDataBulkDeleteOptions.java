@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -78,6 +79,11 @@ public class RunDataBulkDeleteOptions extends GenericModel {
     private Long batchSize;
     private Long retryCount;
 
+    /**
+     * Instantiates a new Builder from an existing RunDataBulkDeleteOptions instance.
+     *
+     * @param runDataBulkDeleteOptions the instance to initialize the Builder with
+     */
     private Builder(RunDataBulkDeleteOptions runDataBulkDeleteOptions) {
       this.deleteType = runDataBulkDeleteOptions.deleteType;
       this.deleteTarget = runDataBulkDeleteOptions.deleteTarget;
@@ -118,9 +124,9 @@ public class RunDataBulkDeleteOptions extends GenericModel {
     }
 
     /**
-     * Adds an collectionIds to collectionIds.
+     * Adds a new element to collectionIds.
      *
-     * @param collectionIds the new collectionIds
+     * @param collectionIds the new element to be added
      * @return the RunDataBulkDeleteOptions builder
      */
     public Builder addCollectionIds(String collectionIds) {

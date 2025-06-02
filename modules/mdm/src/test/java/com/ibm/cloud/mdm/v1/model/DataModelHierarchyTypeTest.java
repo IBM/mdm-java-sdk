@@ -53,16 +53,16 @@ public class DataModelHierarchyTypeTest {
       .nodeType("testString")
       .nodeRelationshipType("testString")
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
-      .nodeAssociations(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .nodeAssociations(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(dataModelHierarchyTypeModel.nodeType(), "testString");
     assertEquals(dataModelHierarchyTypeModel.nodeRelationshipType(), "testString");
     assertEquals(dataModelHierarchyTypeModel.description(), "testString");
-    assertEquals(dataModelHierarchyTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelHierarchyTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelHierarchyTypeModel.label(), "testString");
-    assertEquals(dataModelHierarchyTypeModel.nodeAssociations(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(dataModelHierarchyTypeModel.nodeAssociations(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     String json = TestUtilities.serialize(dataModelHierarchyTypeModel);
 
@@ -72,6 +72,6 @@ public class DataModelHierarchyTypeTest {
     assertEquals(dataModelHierarchyTypeModelNew.nodeRelationshipType(), "testString");
     assertEquals(dataModelHierarchyTypeModelNew.description(), "testString");
     assertEquals(dataModelHierarchyTypeModelNew.label(), "testString");
-    assertEquals(dataModelHierarchyTypeModelNew.nodeAssociations().toString(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } }.toString());
+    assertEquals(dataModelHierarchyTypeModelNew.nodeAssociations().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
   }
 }

@@ -35,46 +35,46 @@ public class DataGroupTest {
   public void testDataGroup() throws Throwable {
     NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
     assertEquals(nodeWithAttributesModel.type(), "record");
-    assertEquals(nodeWithAttributesModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(nodeWithAttributesModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(nodeWithAttributesModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(nodeWithAttributesModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(nodeWithAttributesModel.typeName(), "testString");
     assertEquals(nodeWithAttributesModel.isBlockedForUpdate(), Boolean.valueOf(true));
     assertEquals(nodeWithAttributesModel.isQuarantined(), Boolean.valueOf(true));
 
     DataRelationship dataRelationshipModel = new DataRelationship.Builder()
       .type("relationship")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .source(nodeWithAttributesModel)
       .target(nodeWithAttributesModel)
       .build();
     assertEquals(dataRelationshipModel.type(), "relationship");
-    assertEquals(dataRelationshipModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(dataRelationshipModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataRelationshipModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(dataRelationshipModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(dataRelationshipModel.typeName(), "testString");
     assertEquals(dataRelationshipModel.source(), nodeWithAttributesModel);
     assertEquals(dataRelationshipModel.target(), nodeWithAttributesModel);
 
     DataGroup dataGroupModel = new DataGroup.Builder()
       .type("group")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .groupAssociations(java.util.Arrays.asList(dataRelationshipModel))
       .groupNumber(Long.valueOf("26"))
       .memberCount(Long.valueOf("26"))
       .build();
     assertEquals(dataGroupModel.type(), "group");
-    assertEquals(dataGroupModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(dataGroupModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataGroupModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(dataGroupModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(dataGroupModel.typeName(), "testString");
     assertEquals(dataGroupModel.groupAssociations(), java.util.Arrays.asList(dataRelationshipModel));
     assertEquals(dataGroupModel.groupNumber(), Long.valueOf("26"));
@@ -85,6 +85,8 @@ public class DataGroupTest {
     DataGroup dataGroupModelNew = TestUtilities.deserialize(json, DataGroup.class);
     assertTrue(dataGroupModelNew instanceof DataGroup);
     assertEquals(dataGroupModelNew.type(), "group");
+    assertEquals(dataGroupModelNew.attributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
+    assertEquals(dataGroupModelNew.systemAttributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
     assertEquals(dataGroupModelNew.typeName(), "testString");
     assertEquals(dataGroupModelNew.groupNumber(), Long.valueOf("26"));
     assertEquals(dataGroupModelNew.memberCount(), Long.valueOf("26"));

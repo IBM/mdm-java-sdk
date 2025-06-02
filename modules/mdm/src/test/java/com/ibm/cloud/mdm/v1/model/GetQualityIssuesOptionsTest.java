@@ -35,16 +35,16 @@ public class GetQualityIssuesOptionsTest {
       .issueType("testString")
       .type("testString")
       .typeName("testString")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .includeTotalCount(true)
       .includeTotalCountWithoutTasks(false)
       .build();
     assertEquals(getQualityIssuesOptionsModel.issueType(), "testString");
     assertEquals(getQualityIssuesOptionsModel.type(), "testString");
     assertEquals(getQualityIssuesOptionsModel.typeName(), "testString");
-    assertEquals(getQualityIssuesOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(getQualityIssuesOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(getQualityIssuesOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(getQualityIssuesOptionsModel.limit(), Long.valueOf("10"));
     assertEquals(getQualityIssuesOptionsModel.includeTotalCount(), Boolean.valueOf(true));
     assertEquals(getQualityIssuesOptionsModel.includeTotalCountWithoutTasks(), Boolean.valueOf(false));
   }

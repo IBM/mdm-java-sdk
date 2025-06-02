@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -37,6 +38,11 @@ public class ListDataRelatedRecordsForRecordOptions extends GenericModel {
     private Long offset;
     private Boolean includeTotalCount;
 
+    /**
+     * Instantiates a new Builder from an existing ListDataRelatedRecordsForRecordOptions instance.
+     *
+     * @param listDataRelatedRecordsForRecordOptions the instance to initialize the Builder with
+     */
     private Builder(ListDataRelatedRecordsForRecordOptions listDataRelatedRecordsForRecordOptions) {
       this.id = listDataRelatedRecordsForRecordOptions.id;
       this.recordType = listDataRelatedRecordsForRecordOptions.recordType;

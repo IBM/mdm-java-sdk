@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -37,6 +38,11 @@ public class ProcessRequestAssetSourceDetailsCatalog extends GenericModel {
     private String cosApiKey;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing ProcessRequestAssetSourceDetailsCatalog instance.
+     *
+     * @param processRequestAssetSourceDetailsCatalog the instance to initialize the Builder with
+     */
     private Builder(ProcessRequestAssetSourceDetailsCatalog processRequestAssetSourceDetailsCatalog) {
       this.cosEndpoint = processRequestAssetSourceDetailsCatalog.cosEndpoint;
       this.cosBucketName = processRequestAssetSourceDetailsCatalog.cosBucketName;

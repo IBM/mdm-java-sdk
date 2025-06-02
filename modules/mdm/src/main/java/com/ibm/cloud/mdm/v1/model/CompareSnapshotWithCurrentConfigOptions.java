@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class CompareSnapshotWithCurrentConfigOptions extends GenericModel {
   protected Map<String, Object> matchSettings;
   protected Map<String, Object> compositeRules;
   protected Map<String, Object> algorithms;
-  protected List<Object> mappingPatterns;
+  protected List<Map<String, Object>> mappingPatterns;
 
   /**
    * Builder.
@@ -37,8 +38,13 @@ public class CompareSnapshotWithCurrentConfigOptions extends GenericModel {
     private Map<String, Object> matchSettings;
     private Map<String, Object> compositeRules;
     private Map<String, Object> algorithms;
-    private List<Object> mappingPatterns;
+    private List<Map<String, Object>> mappingPatterns;
 
+    /**
+     * Instantiates a new Builder from an existing CompareSnapshotWithCurrentConfigOptions instance.
+     *
+     * @param compareSnapshotWithCurrentConfigOptions the instance to initialize the Builder with
+     */
     private Builder(CompareSnapshotWithCurrentConfigOptions compareSnapshotWithCurrentConfigOptions) {
       this.dataModel = compareSnapshotWithCurrentConfigOptions.dataModel;
       this.matchSettings = compareSnapshotWithCurrentConfigOptions.matchSettings;
@@ -63,16 +69,16 @@ public class CompareSnapshotWithCurrentConfigOptions extends GenericModel {
     }
 
     /**
-     * Adds an mappingPatterns to mappingPatterns.
+     * Adds a new element to mappingPatterns.
      *
-     * @param mappingPatterns the new mappingPatterns
+     * @param mappingPatterns the new element to be added
      * @return the CompareSnapshotWithCurrentConfigOptions builder
      */
-    public Builder addMappingPatterns(Object mappingPatterns) {
+    public Builder addMappingPatterns(Map<String, Object> mappingPatterns) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(mappingPatterns,
         "mappingPatterns cannot be null");
       if (this.mappingPatterns == null) {
-        this.mappingPatterns = new ArrayList<Object>();
+        this.mappingPatterns = new ArrayList<Map<String, Object>>();
       }
       this.mappingPatterns.add(mappingPatterns);
       return this;
@@ -129,7 +135,7 @@ public class CompareSnapshotWithCurrentConfigOptions extends GenericModel {
      * @param mappingPatterns the mappingPatterns
      * @return the CompareSnapshotWithCurrentConfigOptions builder
      */
-    public Builder mappingPatterns(List<Object> mappingPatterns) {
+    public Builder mappingPatterns(List<Map<String, Object>> mappingPatterns) {
       this.mappingPatterns = mappingPatterns;
       return this;
     }
@@ -205,7 +211,7 @@ public class CompareSnapshotWithCurrentConfigOptions extends GenericModel {
    *
    * @return the mappingPatterns
    */
-  public List<Object> mappingPatterns() {
+  public List<Map<String, Object>> mappingPatterns() {
     return mappingPatterns;
   }
 }

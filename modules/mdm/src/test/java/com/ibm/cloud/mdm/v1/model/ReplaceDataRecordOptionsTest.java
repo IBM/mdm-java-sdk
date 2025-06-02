@@ -34,17 +34,17 @@ public class ReplaceDataRecordOptionsTest {
     ReplaceDataRecordOptions replaceDataRecordOptionsModel = new ReplaceDataRecordOptions.Builder()
       .id(Long.valueOf("26"))
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
     assertEquals(replaceDataRecordOptionsModel.id(), Long.valueOf("26"));
     assertEquals(replaceDataRecordOptionsModel.type(), "record");
-    assertEquals(replaceDataRecordOptionsModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(replaceDataRecordOptionsModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(replaceDataRecordOptionsModel.typeName(), "testString");
-    assertEquals(replaceDataRecordOptionsModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(replaceDataRecordOptionsModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(replaceDataRecordOptionsModel.isBlockedForUpdate(), Boolean.valueOf(true));
     assertEquals(replaceDataRecordOptionsModel.isQuarantined(), Boolean.valueOf(true));
   }

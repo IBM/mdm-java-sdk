@@ -35,16 +35,16 @@ public class HierarchyMemberSearchOptionsTest {
       .id(Long.valueOf("26"))
       .hierarchyType("testString")
       .searchQuery("testString")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("200"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .include(java.util.Arrays.asList("legal_name.given_name"))
       .exclude(java.util.Arrays.asList("legal_name.given_name"))
       .build();
     assertEquals(hierarchyMemberSearchOptionsModel.id(), Long.valueOf("26"));
     assertEquals(hierarchyMemberSearchOptionsModel.hierarchyType(), "testString");
     assertEquals(hierarchyMemberSearchOptionsModel.searchQuery(), "testString");
-    assertEquals(hierarchyMemberSearchOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(hierarchyMemberSearchOptionsModel.limit(), Long.valueOf("200"));
+    assertEquals(hierarchyMemberSearchOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(hierarchyMemberSearchOptionsModel.limit(), Long.valueOf("10"));
     assertEquals(hierarchyMemberSearchOptionsModel.include(), java.util.Arrays.asList("legal_name.given_name"));
     assertEquals(hierarchyMemberSearchOptionsModel.exclude(), java.util.Arrays.asList("legal_name.given_name"));
   }

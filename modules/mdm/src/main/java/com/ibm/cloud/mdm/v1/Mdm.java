@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.53.0-9710cac3-20220713-193508
+ * IBM OpenAPI SDK Code Generator Version: 3.104.0-b4a47c49-20250418-184351
  */
 
 package com.ibm.cloud.mdm.v1;
@@ -135,6 +135,7 @@ import com.ibm.cloud.mdm.v1.model.GetDataRelationshipForRecordOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataRelationshipOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataStorageMetadataOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataSubgraphOptions;
+import com.ibm.cloud.mdm.v1.model.GetDefaultMatchingFields;
 import com.ibm.cloud.mdm.v1.model.GetDefaultMatchingFieldsOptions;
 import com.ibm.cloud.mdm.v1.model.GetEntityClusters;
 import com.ibm.cloud.mdm.v1.model.GetEntityConfidenceMetricsOptions;
@@ -340,8 +341,14 @@ import java.util.Map.Entry;
  */
 public class Mdm extends BaseService {
 
+  /**
+   * Default service name used when configuring the `Mdm` client.
+   */
   public static final String DEFAULT_SERVICE_NAME = "mdm";
 
+  /**
+   * Default service endpoint URL.
+   */
   public static final String DEFAULT_SERVICE_URL = "https://api.dataplatform.cloud.ibm.com:443";
 
   private String crn;
@@ -6395,9 +6402,9 @@ public class Mdm extends BaseService {
    * * This service retrieves the default matching fields only for the known attribute types.
    *
    * @param getDefaultMatchingFieldsOptions the {@link GetDefaultMatchingFieldsOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a void result
+   * @return a {@link ServiceCall} with a result of type {@link GetDefaultMatchingFields}
    */
-  public ServiceCall<Void> getDefaultMatchingFields(GetDefaultMatchingFieldsOptions getDefaultMatchingFieldsOptions) {
+  public ServiceCall<GetDefaultMatchingFields> getDefaultMatchingFields(GetDefaultMatchingFieldsOptions getDefaultMatchingFieldsOptions) {
     RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/mdm/v1/data_model/default_matching_fields"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("mdm", "v1", "getDefaultMatchingFields");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
@@ -6405,7 +6412,8 @@ public class Mdm extends BaseService {
     }
     builder.header("Accept", "application/json");
     builder.query("crn", String.valueOf(this.crn));
-    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    ResponseConverter<GetDefaultMatchingFields> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<GetDefaultMatchingFields>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -6414,9 +6422,9 @@ public class Mdm extends BaseService {
    *
    * * This service retrieves the default matching fields only for the known attribute types.
    *
-   * @return a {@link ServiceCall} with a void result
+   * @return a {@link ServiceCall} with a result of type {@link GetDefaultMatchingFields}
    */
-  public ServiceCall<Void> getDefaultMatchingFields() {
+  public ServiceCall<GetDefaultMatchingFields> getDefaultMatchingFields() {
     return getDefaultMatchingFields(null);
   }
 

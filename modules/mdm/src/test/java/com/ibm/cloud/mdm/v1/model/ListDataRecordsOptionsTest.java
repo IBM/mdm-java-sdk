@@ -32,12 +32,12 @@ public class ListDataRecordsOptionsTest {
   @Test
   public void testListDataRecordsOptions() throws Throwable {
     ListDataRecordsOptions listDataRecordsOptionsModel = new ListDataRecordsOptions.Builder()
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .recordtype("testString")
       .build();
-    assertEquals(listDataRecordsOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(listDataRecordsOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(listDataRecordsOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(listDataRecordsOptionsModel.limit(), Long.valueOf("10"));
     assertEquals(listDataRecordsOptionsModel.recordtype(), "testString");
   }
 }

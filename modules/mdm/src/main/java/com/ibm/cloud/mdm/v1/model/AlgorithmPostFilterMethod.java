@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -36,6 +37,11 @@ public class AlgorithmPostFilterMethod extends GenericModel {
     private List<AlgorithmPostFilterMethodInput> inputs;
     private String label;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmPostFilterMethod instance.
+     *
+     * @param algorithmPostFilterMethod the instance to initialize the Builder with
+     */
     private Builder(AlgorithmPostFilterMethod algorithmPostFilterMethod) {
       this.filterRecipe = algorithmPostFilterMethod.filterRecipe;
       this.inputs = algorithmPostFilterMethod.inputs;
@@ -71,9 +77,9 @@ public class AlgorithmPostFilterMethod extends GenericModel {
     }
 
     /**
-     * Adds an filterRecipe to filterRecipe.
+     * Adds a new element to filterRecipe.
      *
-     * @param filterRecipe the new filterRecipe
+     * @param filterRecipe the new element to be added
      * @return the AlgorithmPostFilterMethod builder
      */
     public Builder addFilterRecipe(AlgorithmPostFilterStep filterRecipe) {
@@ -87,9 +93,9 @@ public class AlgorithmPostFilterMethod extends GenericModel {
     }
 
     /**
-     * Adds an inputs to inputs.
+     * Adds a new element to inputs.
      *
-     * @param inputs the new inputs
+     * @param inputs the new element to be added
      * @return the AlgorithmPostFilterMethod builder
      */
     public Builder addInputs(AlgorithmPostFilterMethodInput inputs) {

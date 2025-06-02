@@ -33,16 +33,16 @@ public class CompositeRulesSubRuleTypeTest {
   public void testCompositeRulesSubRuleType() throws Throwable {
     CompositeRulesSubRuleType compositeRulesSubRuleTypeModel = new CompositeRulesSubRuleType.Builder()
       .type("testString")
-      .params(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .params(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(compositeRulesSubRuleTypeModel.type(), "testString");
-    assertEquals(compositeRulesSubRuleTypeModel.params(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(compositeRulesSubRuleTypeModel.params(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     String json = TestUtilities.serialize(compositeRulesSubRuleTypeModel);
 
     CompositeRulesSubRuleType compositeRulesSubRuleTypeModelNew = TestUtilities.deserialize(json, CompositeRulesSubRuleType.class);
     assertTrue(compositeRulesSubRuleTypeModelNew instanceof CompositeRulesSubRuleType);
     assertEquals(compositeRulesSubRuleTypeModelNew.type(), "testString");
-    assertEquals(compositeRulesSubRuleTypeModelNew.params().toString(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } }.toString());
+    assertEquals(compositeRulesSubRuleTypeModelNew.params().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
   }
 }

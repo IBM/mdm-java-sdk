@@ -99,7 +99,7 @@ public class ReplaceModelInstanceMetadataOptionsTest {
       .projects(java.util.Arrays.asList(instanceMetadataProjectModel))
       .workflowConfigurationId("testString")
       .generateConnectedDataAsset(true)
-      .workflows(new java.util.HashMap<String, InstanceMetadataWorkflow>() { { put("foo", instanceMetadataWorkflowModel); } })
+      .workflows(java.util.Collections.singletonMap("key1", instanceMetadataWorkflowModel))
       .label("testString")
       .cosEndpoint("testString")
       .modeOfOperation("testString")
@@ -116,7 +116,7 @@ public class ReplaceModelInstanceMetadataOptionsTest {
     assertEquals(replaceModelInstanceMetadataOptionsModel.projects(), java.util.Arrays.asList(instanceMetadataProjectModel));
     assertEquals(replaceModelInstanceMetadataOptionsModel.workflowConfigurationId(), "testString");
     assertEquals(replaceModelInstanceMetadataOptionsModel.generateConnectedDataAsset(), Boolean.valueOf(true));
-    assertEquals(replaceModelInstanceMetadataOptionsModel.workflows(), new java.util.HashMap<String, InstanceMetadataWorkflow>() { { put("foo", instanceMetadataWorkflowModel); } });
+    assertEquals(replaceModelInstanceMetadataOptionsModel.workflows(), java.util.Collections.singletonMap("key1", instanceMetadataWorkflowModel));
     assertEquals(replaceModelInstanceMetadataOptionsModel.label(), "testString");
     assertEquals(replaceModelInstanceMetadataOptionsModel.cosEndpoint(), "testString");
     assertEquals(replaceModelInstanceMetadataOptionsModel.modeOfOperation(), "testString");

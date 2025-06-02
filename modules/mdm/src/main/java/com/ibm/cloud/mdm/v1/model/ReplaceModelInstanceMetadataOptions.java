@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -61,6 +62,11 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     private String jobProjectId;
     private String workflowTypeId;
 
+    /**
+     * Instantiates a new Builder from an existing ReplaceModelInstanceMetadataOptions instance.
+     *
+     * @param replaceModelInstanceMetadataOptions the instance to initialize the Builder with
+     */
     private Builder(ReplaceModelInstanceMetadataOptions replaceModelInstanceMetadataOptions) {
       this.projects = replaceModelInstanceMetadataOptions.projects;
       this.workflowConfigurationId = replaceModelInstanceMetadataOptions.workflowConfigurationId;
@@ -96,9 +102,9 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Adds an projects to projects.
+     * Adds a new element to projects.
      *
-     * @param projects the new projects
+     * @param projects the new element to be added
      * @return the ReplaceModelInstanceMetadataOptions builder
      */
     public Builder addProjects(InstanceMetadataProject projects) {
@@ -112,9 +118,9 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Adds an streamConnection to streamConnection.
+     * Adds a new element to streamConnection.
      *
-     * @param streamConnection the new streamConnection
+     * @param streamConnection the new element to be added
      * @return the ReplaceModelInstanceMetadataOptions builder
      */
     public Builder addStreamConnection(InstanceMetadataStreamConnection streamConnection) {
@@ -128,9 +134,9 @@ public class ReplaceModelInstanceMetadataOptions extends GenericModel {
     }
 
     /**
-     * Adds an catalogs to catalogs.
+     * Adds a new element to catalogs.
      *
-     * @param catalogs the new catalogs
+     * @param catalogs the new element to be added
      * @return the ReplaceModelInstanceMetadataOptions builder
      */
     public Builder addCatalogs(InstanceMetadataCatalog catalogs) {

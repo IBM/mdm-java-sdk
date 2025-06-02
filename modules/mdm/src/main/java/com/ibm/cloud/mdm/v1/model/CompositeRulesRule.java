@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -42,6 +43,11 @@ public class CompositeRulesRule extends GenericModel {
     private List<CompositeRulesSubRuleType> filters;
     private List<String> choices;
 
+    /**
+     * Instantiates a new Builder from an existing CompositeRulesRule instance.
+     *
+     * @param compositeRulesRule the instance to initialize the Builder with
+     */
     private Builder(CompositeRulesRule compositeRulesRule) {
       this.sources = compositeRulesRule.sources;
       this.limit = compositeRulesRule.limit;
@@ -67,9 +73,9 @@ public class CompositeRulesRule extends GenericModel {
     }
 
     /**
-     * Adds an sources to sources.
+     * Adds a new element to sources.
      *
-     * @param sources the new sources
+     * @param sources the new element to be added
      * @return the CompositeRulesRule builder
      */
     public Builder addSources(String sources) {
@@ -83,9 +89,9 @@ public class CompositeRulesRule extends GenericModel {
     }
 
     /**
-     * Adds an exclude to exclude.
+     * Adds a new element to exclude.
      *
-     * @param exclude the new exclude
+     * @param exclude the new element to be added
      * @return the CompositeRulesRule builder
      */
     public Builder addExclude(String exclude) {
@@ -99,9 +105,9 @@ public class CompositeRulesRule extends GenericModel {
     }
 
     /**
-     * Adds an sortBy to sortBy.
+     * Adds a new element to sortBy.
      *
-     * @param sortBy the new sortBy
+     * @param sortBy the new element to be added
      * @return the CompositeRulesRule builder
      */
     public Builder addSortBy(CompositeRulesSubRuleType sortBy) {
@@ -115,9 +121,9 @@ public class CompositeRulesRule extends GenericModel {
     }
 
     /**
-     * Adds an filters to filters.
+     * Adds a new element to filters.
      *
-     * @param filters the new filters
+     * @param filters the new element to be added
      * @return the CompositeRulesRule builder
      */
     public Builder addFilters(CompositeRulesSubRuleType filters) {
@@ -131,9 +137,9 @@ public class CompositeRulesRule extends GenericModel {
     }
 
     /**
-     * Adds an choices to choices.
+     * Adds a new element to choices.
      *
-     * @param choices the new choices
+     * @param choices the new element to be added
      * @return the CompositeRulesRule builder
      */
     public Builder addChoices(String choices) {

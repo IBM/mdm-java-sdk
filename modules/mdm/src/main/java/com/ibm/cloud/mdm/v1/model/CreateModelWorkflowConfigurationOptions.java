@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -34,6 +35,11 @@ public class CreateModelWorkflowConfigurationOptions extends GenericModel {
     private List<ConfigureWorkflowWorkflow> workflows;
     private String workflowTemplateName;
 
+    /**
+     * Instantiates a new Builder from an existing CreateModelWorkflowConfigurationOptions instance.
+     *
+     * @param createModelWorkflowConfigurationOptions the instance to initialize the Builder with
+     */
     private Builder(CreateModelWorkflowConfigurationOptions createModelWorkflowConfigurationOptions) {
       this.workflowConfigurationName = createModelWorkflowConfigurationOptions.workflowConfigurationName;
       this.workflows = createModelWorkflowConfigurationOptions.workflows;
@@ -56,9 +62,9 @@ public class CreateModelWorkflowConfigurationOptions extends GenericModel {
     }
 
     /**
-     * Adds an workflows to workflows.
+     * Adds a new element to workflows.
      *
-     * @param workflows the new workflows
+     * @param workflows the new element to be added
      * @return the CreateModelWorkflowConfigurationOptions builder
      */
     public Builder addWorkflows(ConfigureWorkflowWorkflow workflows) {

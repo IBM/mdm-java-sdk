@@ -33,16 +33,16 @@ public class CreateDataRecordOptionsTest {
   public void testCreateDataRecordOptions() throws Throwable {
     CreateDataRecordOptions createDataRecordOptionsModel = new CreateDataRecordOptions.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
     assertEquals(createDataRecordOptionsModel.type(), "record");
-    assertEquals(createDataRecordOptionsModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(createDataRecordOptionsModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(createDataRecordOptionsModel.typeName(), "testString");
-    assertEquals(createDataRecordOptionsModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(createDataRecordOptionsModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(createDataRecordOptionsModel.isBlockedForUpdate(), Boolean.valueOf(true));
     assertEquals(createDataRecordOptionsModel.isQuarantined(), Boolean.valueOf(true));
   }

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.List;
@@ -36,6 +37,8 @@ public class GetSingleRemediationWorkflow extends GenericModel {
   protected String type;
   @SerializedName("last_updated_date")
   protected String lastUpdatedDate;
+
+  protected GetSingleRemediationWorkflow() { }
 
   /**
    * Gets the issueActions.

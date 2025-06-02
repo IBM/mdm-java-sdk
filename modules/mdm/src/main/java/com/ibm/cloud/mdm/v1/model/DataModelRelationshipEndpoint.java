@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -44,6 +45,11 @@ public class DataModelRelationshipEndpoint extends GenericModel {
     private List<String> entityTypes;
     private List<String> recordTypes;
 
+    /**
+     * Instantiates a new Builder from an existing DataModelRelationshipEndpoint instance.
+     *
+     * @param dataModelRelationshipEndpoint the instance to initialize the Builder with
+     */
     private Builder(DataModelRelationshipEndpoint dataModelRelationshipEndpoint) {
       this.hierarchyTypes = dataModelRelationshipEndpoint.hierarchyTypes;
       this.nodeTypes = dataModelRelationshipEndpoint.nodeTypes;
@@ -68,9 +74,9 @@ public class DataModelRelationshipEndpoint extends GenericModel {
     }
 
     /**
-     * Adds an hierarchyTypes to hierarchyTypes.
+     * Adds a new element to hierarchyTypes.
      *
-     * @param hierarchyTypes the new hierarchyTypes
+     * @param hierarchyTypes the new element to be added
      * @return the DataModelRelationshipEndpoint builder
      */
     public Builder addHierarchyTypes(String hierarchyTypes) {
@@ -84,9 +90,9 @@ public class DataModelRelationshipEndpoint extends GenericModel {
     }
 
     /**
-     * Adds an nodeTypes to nodeTypes.
+     * Adds a new element to nodeTypes.
      *
-     * @param nodeTypes the new nodeTypes
+     * @param nodeTypes the new element to be added
      * @return the DataModelRelationshipEndpoint builder
      */
     public Builder addNodeTypes(String nodeTypes) {
@@ -100,9 +106,9 @@ public class DataModelRelationshipEndpoint extends GenericModel {
     }
 
     /**
-     * Adds an groupTypes to groupTypes.
+     * Adds a new element to groupTypes.
      *
-     * @param groupTypes the new groupTypes
+     * @param groupTypes the new element to be added
      * @return the DataModelRelationshipEndpoint builder
      */
     public Builder addGroupTypes(String groupTypes) {
@@ -116,9 +122,9 @@ public class DataModelRelationshipEndpoint extends GenericModel {
     }
 
     /**
-     * Adds an entityTypes to entityTypes.
+     * Adds a new element to entityTypes.
      *
-     * @param entityTypes the new entityTypes
+     * @param entityTypes the new element to be added
      * @return the DataModelRelationshipEndpoint builder
      */
     public Builder addEntityTypes(String entityTypes) {
@@ -132,9 +138,9 @@ public class DataModelRelationshipEndpoint extends GenericModel {
     }
 
     /**
-     * Adds an recordTypes to recordTypes.
+     * Adds a new element to recordTypes.
      *
-     * @param recordTypes the new recordTypes
+     * @param recordTypes the new element to be added
      * @return the DataModelRelationshipEndpoint builder
      */
     public Builder addRecordTypes(String recordTypes) {

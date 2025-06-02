@@ -51,18 +51,21 @@ public class RelationshipDiscoveryRulesUserRulesTest {
     assertEquals(relationshipDiscoveryRulesBuilderNodeModel.recordType(), "testString");
     assertEquals(relationshipDiscoveryRulesBuilderNodeModel.hierarchyType(), "testString");
 
-    CriteriaGeneric criteriaGenericModel = new CriteriaGeneric();
+    CriteriaGeneric criteriaGenericModel = new CriteriaGeneric.Builder()
+      .add("foo", "testString")
+      .build();
+    assertEquals(criteriaGenericModel.get("foo"), "testString");
 
     RelationshipDiscoveryRulesBuilderEdge relationshipDiscoveryRulesBuilderEdgeModel = new RelationshipDiscoveryRulesBuilderEdge.Builder()
       .endNode(Long.valueOf("26"))
       .relationshipType("testString")
       .startNode(Long.valueOf("26"))
-      .filters(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
+      .filters(java.util.Collections.singletonMap("key1", "testString"))
       .build();
     assertEquals(relationshipDiscoveryRulesBuilderEdgeModel.endNode(), Long.valueOf("26"));
     assertEquals(relationshipDiscoveryRulesBuilderEdgeModel.relationshipType(), "testString");
     assertEquals(relationshipDiscoveryRulesBuilderEdgeModel.startNode(), Long.valueOf("26"));
-    assertEquals(relationshipDiscoveryRulesBuilderEdgeModel.filters(), new java.util.HashMap<String, String>() { { put("foo", "testString"); } });
+    assertEquals(relationshipDiscoveryRulesBuilderEdgeModel.filters(), java.util.Collections.singletonMap("key1", "testString"));
 
     RelationshipDiscoveryRulesBuilderOrderByItem relationshipDiscoveryRulesBuilderOrderByItemModel = new RelationshipDiscoveryRulesBuilderOrderByItem.Builder()
       .node(Long.valueOf("26"))
@@ -79,25 +82,25 @@ public class RelationshipDiscoveryRulesUserRulesTest {
       .criteria(criteriaGenericModel)
       .edges(java.util.Arrays.asList(relationshipDiscoveryRulesBuilderEdgeModel))
       .orderBy(java.util.Arrays.asList(relationshipDiscoveryRulesBuilderOrderByItemModel))
-      .constants(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .constants(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(relationshipDiscoveryRulesBuilderModel.nodes(), java.util.Arrays.asList(relationshipDiscoveryRulesBuilderNodeModel));
     assertEquals(relationshipDiscoveryRulesBuilderModel.returnNodes(), java.util.Arrays.asList(Long.valueOf("26")));
     assertEquals(relationshipDiscoveryRulesBuilderModel.criteria(), criteriaGenericModel);
     assertEquals(relationshipDiscoveryRulesBuilderModel.edges(), java.util.Arrays.asList(relationshipDiscoveryRulesBuilderEdgeModel));
     assertEquals(relationshipDiscoveryRulesBuilderModel.orderBy(), java.util.Arrays.asList(relationshipDiscoveryRulesBuilderOrderByItemModel));
-    assertEquals(relationshipDiscoveryRulesBuilderModel.constants(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(relationshipDiscoveryRulesBuilderModel.constants(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     RelationshipDiscoveryRulesRulesBuilderWrapper relationshipDiscoveryRulesRulesBuilderWrapperModel = new RelationshipDiscoveryRulesRulesBuilderWrapper.Builder()
-      .hierarchyTypes(new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } })
-      .groupTypes(new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } })
-      .entityTypes(new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } })
-      .recordTypes(new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } })
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel))
+      .entityTypes(java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel))
+      .recordTypes(java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel))
       .build();
-    assertEquals(relationshipDiscoveryRulesRulesBuilderWrapperModel.hierarchyTypes(), new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } });
-    assertEquals(relationshipDiscoveryRulesRulesBuilderWrapperModel.groupTypes(), new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } });
-    assertEquals(relationshipDiscoveryRulesRulesBuilderWrapperModel.entityTypes(), new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } });
-    assertEquals(relationshipDiscoveryRulesRulesBuilderWrapperModel.recordTypes(), new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } });
+    assertEquals(relationshipDiscoveryRulesRulesBuilderWrapperModel.hierarchyTypes(), java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel));
+    assertEquals(relationshipDiscoveryRulesRulesBuilderWrapperModel.groupTypes(), java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel));
+    assertEquals(relationshipDiscoveryRulesRulesBuilderWrapperModel.entityTypes(), java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel));
+    assertEquals(relationshipDiscoveryRulesRulesBuilderWrapperModel.recordTypes(), java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel));
 
     RelationshipDiscoveryRulesHierarchyUserRules relationshipDiscoveryRulesHierarchyUserRulesModel = new RelationshipDiscoveryRulesHierarchyUserRules.Builder()
       .parent(relationshipDiscoveryRulesRulesBuilderWrapperModel)

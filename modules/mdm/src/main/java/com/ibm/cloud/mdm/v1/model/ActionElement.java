@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.Map;
@@ -34,6 +35,11 @@ public class ActionElement extends GenericModel {
     private String actionType;
     private Map<String, Object> actionValues;
 
+    /**
+     * Instantiates a new Builder from an existing ActionElement instance.
+     *
+     * @param actionElement the instance to initialize the Builder with
+     */
     private Builder(ActionElement actionElement) {
       this.actionType = actionElement.actionType;
       this.actionValues = actionElement.actionValues;

@@ -32,10 +32,10 @@ public class GetAllSettingsOptionsTest {
   @Test
   public void testGetAllSettingsOptions() throws Throwable {
     GetAllSettingsOptions getAllSettingsOptionsModel = new GetAllSettingsOptions.Builder()
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .build();
-    assertEquals(getAllSettingsOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(getAllSettingsOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(getAllSettingsOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(getAllSettingsOptionsModel.limit(), Long.valueOf("10"));
   }
 }

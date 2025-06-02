@@ -34,33 +34,33 @@ public class ReplaceDataRelationshipOptionsTest {
   public void testReplaceDataRelationshipOptions() throws Throwable {
     NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
     assertEquals(nodeWithAttributesModel.type(), "record");
-    assertEquals(nodeWithAttributesModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(nodeWithAttributesModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(nodeWithAttributesModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(nodeWithAttributesModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(nodeWithAttributesModel.typeName(), "testString");
     assertEquals(nodeWithAttributesModel.isBlockedForUpdate(), Boolean.valueOf(true));
     assertEquals(nodeWithAttributesModel.isQuarantined(), Boolean.valueOf(true));
 
     ReplaceDataRelationshipOptions replaceDataRelationshipOptionsModel = new ReplaceDataRelationshipOptions.Builder()
       .id("testString")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .type("relationship")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .source(nodeWithAttributesModel)
       .target(nodeWithAttributesModel)
       .build();
     assertEquals(replaceDataRelationshipOptionsModel.id(), "testString");
-    assertEquals(replaceDataRelationshipOptionsModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(replaceDataRelationshipOptionsModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(replaceDataRelationshipOptionsModel.typeName(), "testString");
     assertEquals(replaceDataRelationshipOptionsModel.type(), "relationship");
-    assertEquals(replaceDataRelationshipOptionsModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(replaceDataRelationshipOptionsModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(replaceDataRelationshipOptionsModel.source(), nodeWithAttributesModel);
     assertEquals(replaceDataRelationshipOptionsModel.target(), nodeWithAttributesModel);
   }
