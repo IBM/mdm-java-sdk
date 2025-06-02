@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -27,6 +28,11 @@ public class GetMatchingClusterDetailsOptions extends GenericModel {
   public static class Builder {
     private String clusterId;
 
+    /**
+     * Instantiates a new Builder from an existing GetMatchingClusterDetailsOptions instance.
+     *
+     * @param getMatchingClusterDetailsOptions the instance to initialize the Builder with
+     */
     private Builder(GetMatchingClusterDetailsOptions getMatchingClusterDetailsOptions) {
       this.clusterId = getMatchingClusterDetailsOptions.clusterId;
     }

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * A single read-only entity type.
+ *
+ * This type supports additional properties of type Object.
  */
 public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
 
@@ -55,6 +58,11 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
     private Map<String, AlgorithmGenerationSourceLevelThreshold> sourceLevelThresholds;
     private Map<String, Object> dynamicProperties;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmGenerationEntityType instance.
+     *
+     * @param algorithmGenerationEntityType the instance to initialize the Builder with
+     */
     private Builder(AlgorithmGenerationEntityType algorithmGenerationEntityType) {
       this.glueThreshold = algorithmGenerationEntityType.glueThreshold;
       this.recordFilter = algorithmGenerationEntityType.recordFilter;
@@ -90,9 +98,9 @@ public class AlgorithmGenerationEntityType extends DynamicModel<Object> {
     }
 
     /**
-     * Adds an matchingAttributes to matchingAttributes.
+     * Adds a new element to matchingAttributes.
      *
-     * @param matchingAttributes the new matchingAttributes
+     * @param matchingAttributes the new element to be added
      * @return the AlgorithmGenerationEntityType builder
      */
     public Builder addMatchingAttributes(AlgorithmGenerationAttributeItem matchingAttributes) {

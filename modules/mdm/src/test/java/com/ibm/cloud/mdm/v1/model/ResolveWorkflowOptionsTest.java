@@ -45,11 +45,11 @@ public class ResolveWorkflowOptionsTest {
     Action actionModel = new Action.Builder()
       .actionType("testString")
       .entities(java.util.Arrays.asList(actionEntityModel))
-      .actionValues(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .actionValues(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(actionModel.actionType(), "testString");
     assertEquals(actionModel.entities(), java.util.Arrays.asList(actionEntityModel));
-    assertEquals(actionModel.actionValues(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(actionModel.actionValues(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     ResolveWorkflowOptions resolveWorkflowOptionsModel = new ResolveWorkflowOptions.Builder()
       .workflowId("testString")

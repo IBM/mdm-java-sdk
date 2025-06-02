@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -36,6 +37,11 @@ public class CompareSpecResourceFeatureCategory extends GenericModel {
     private List<String> fields;
     private String equivalencyMapResource;
 
+    /**
+     * Instantiates a new Builder from an existing CompareSpecResourceFeatureCategory instance.
+     *
+     * @param compareSpecResourceFeatureCategory the instance to initialize the Builder with
+     */
     private Builder(CompareSpecResourceFeatureCategory compareSpecResourceFeatureCategory) {
       this.features = compareSpecResourceFeatureCategory.features;
       this.fields = compareSpecResourceFeatureCategory.fields;
@@ -58,9 +64,9 @@ public class CompareSpecResourceFeatureCategory extends GenericModel {
     }
 
     /**
-     * Adds an features to features.
+     * Adds a new element to features.
      *
-     * @param features the new features
+     * @param features the new element to be added
      * @return the CompareSpecResourceFeatureCategory builder
      */
     public Builder addFeatures(String features) {
@@ -74,9 +80,9 @@ public class CompareSpecResourceFeatureCategory extends GenericModel {
     }
 
     /**
-     * Adds an fields to fields.
+     * Adds a new element to fields.
      *
-     * @param fields the new fields
+     * @param fields the new element to be added
      * @return the CompareSpecResourceFeatureCategory builder
      */
     public Builder addFields(String fields) {

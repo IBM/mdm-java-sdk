@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -41,6 +42,11 @@ public class DataModelAttributeType extends GenericModel {
     private String classification;
     private Map<String, DataModelField> fields;
 
+    /**
+     * Instantiates a new Builder from an existing DataModelAttributeType instance.
+     *
+     * @param dataModelAttributeType the instance to initialize the Builder with
+     */
     private Builder(DataModelAttributeType dataModelAttributeType) {
       this.matchingTypes = dataModelAttributeType.matchingTypes;
       this.description = dataModelAttributeType.description;
@@ -76,9 +82,9 @@ public class DataModelAttributeType extends GenericModel {
     }
 
     /**
-     * Adds an matchingTypes to matchingTypes.
+     * Adds a new element to matchingTypes.
      *
-     * @param matchingTypes the new matchingTypes
+     * @param matchingTypes the new element to be added
      * @return the DataModelAttributeType builder
      */
     public Builder addMatchingTypes(String matchingTypes) {
@@ -175,7 +181,7 @@ public class DataModelAttributeType extends GenericModel {
    * Gets the matchingTypes.
    *
    * Collection of matching types, a subset of: PERSONNAME, ORGNAME, GENDER, DATE, EMAIL, SOCIALMEDIA, ADDRESS, PHONE,
-   * NATIONALIDENTIFIER, OTHERIDENTIFIER, VECTOR and PAYMENTCARDNUMBER.
+   * NATIONALIDENTIFIER, OTHERIDENTIFIER and PAYMENTCARDNUMBER.
    *
    * @return the matchingTypes
    */

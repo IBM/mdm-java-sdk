@@ -34,17 +34,17 @@ public class HierarchyBrokenBranchesOptionsTest {
     HierarchyBrokenBranchesOptions hierarchyBrokenBranchesOptionsModel = new HierarchyBrokenBranchesOptions.Builder()
       .id(Long.valueOf("26"))
       .hierarchyType("testString")
-      .levels(Long.valueOf("26"))
+      .levels(Long.valueOf("1"))
       .includedAssociations("testString")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("200"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .build();
     assertEquals(hierarchyBrokenBranchesOptionsModel.id(), Long.valueOf("26"));
     assertEquals(hierarchyBrokenBranchesOptionsModel.hierarchyType(), "testString");
-    assertEquals(hierarchyBrokenBranchesOptionsModel.levels(), Long.valueOf("26"));
+    assertEquals(hierarchyBrokenBranchesOptionsModel.levels(), Long.valueOf("1"));
     assertEquals(hierarchyBrokenBranchesOptionsModel.includedAssociations(), "testString");
-    assertEquals(hierarchyBrokenBranchesOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(hierarchyBrokenBranchesOptionsModel.limit(), Long.valueOf("200"));
+    assertEquals(hierarchyBrokenBranchesOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(hierarchyBrokenBranchesOptionsModel.limit(), Long.valueOf("10"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -55,6 +56,11 @@ public class AssetMappingPatternSuggestion extends GenericModel {
     private List<AssetMapping> assetMappings;
     private String mappingPatternLastUpdatedDate;
 
+    /**
+     * Instantiates a new Builder from an existing AssetMappingPatternSuggestion instance.
+     *
+     * @param assetMappingPatternSuggestion the instance to initialize the Builder with
+     */
     private Builder(AssetMappingPatternSuggestion assetMappingPatternSuggestion) {
       this.mappingPatternId = assetMappingPatternSuggestion.mappingPatternId;
       this.mappingPatternHash = assetMappingPatternSuggestion.mappingPatternHash;
@@ -83,9 +89,9 @@ public class AssetMappingPatternSuggestion extends GenericModel {
     }
 
     /**
-     * Adds an assets to assets.
+     * Adds a new element to assets.
      *
-     * @param assets the new assets
+     * @param assets the new element to be added
      * @return the AssetMappingPatternSuggestion builder
      */
     public Builder addAssets(AssetForAssetMapping assets) {
@@ -99,9 +105,9 @@ public class AssetMappingPatternSuggestion extends GenericModel {
     }
 
     /**
-     * Adds an assetMappings to assetMappings.
+     * Adds a new element to assetMappings.
      *
-     * @param assetMappings the new assetMappings
+     * @param assetMappings the new element to be added
      * @return the AssetMappingPatternSuggestion builder
      */
     public Builder addAssetMappings(AssetMapping assetMappings) {

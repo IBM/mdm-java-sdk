@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -40,6 +41,11 @@ public class ListDataRelationshipsForRecordOptions extends GenericModel {
     private List<String> sourceInclude;
     private List<String> targetInclude;
 
+    /**
+     * Instantiates a new Builder from an existing ListDataRelationshipsForRecordOptions instance.
+     *
+     * @param listDataRelationshipsForRecordOptions the instance to initialize the Builder with
+     */
     private Builder(ListDataRelationshipsForRecordOptions listDataRelationshipsForRecordOptions) {
       this.id = listDataRelationshipsForRecordOptions.id;
       this.relationshipTypes = listDataRelationshipsForRecordOptions.relationshipTypes;
@@ -74,9 +80,9 @@ public class ListDataRelationshipsForRecordOptions extends GenericModel {
     }
 
     /**
-     * Adds an relationshipTypes to relationshipTypes.
+     * Adds a new element to relationshipTypes.
      *
-     * @param relationshipTypes the new relationshipTypes
+     * @param relationshipTypes the new element to be added
      * @return the ListDataRelationshipsForRecordOptions builder
      */
     public Builder addRelationshipTypes(String relationshipTypes) {
@@ -90,9 +96,9 @@ public class ListDataRelationshipsForRecordOptions extends GenericModel {
     }
 
     /**
-     * Adds an sourceInclude to sourceInclude.
+     * Adds a new element to sourceInclude.
      *
-     * @param sourceInclude the new sourceInclude
+     * @param sourceInclude the new element to be added
      * @return the ListDataRelationshipsForRecordOptions builder
      */
     public Builder addSourceInclude(String sourceInclude) {
@@ -106,9 +112,9 @@ public class ListDataRelationshipsForRecordOptions extends GenericModel {
     }
 
     /**
-     * Adds an targetInclude to targetInclude.
+     * Adds a new element to targetInclude.
      *
-     * @param targetInclude the new targetInclude
+     * @param targetInclude the new element to be added
      * @return the ListDataRelationshipsForRecordOptions builder
      */
     public Builder addTargetInclude(String targetInclude) {

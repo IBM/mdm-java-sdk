@@ -33,14 +33,14 @@ public class EventSubscriptionTest {
   @Test
   public void testEventSubscription() throws Throwable {
     EventSubscriptionStreamConnection eventSubscriptionStreamConnectionModel = new EventSubscriptionStreamConnection.Builder()
-      .streamConnectionProperties(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .streamConnectionProperties(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .streamType("testString")
       .assetScope("testString")
       .topic("testString")
       .assetId("testString")
       .containerId("testString")
       .build();
-    assertEquals(eventSubscriptionStreamConnectionModel.streamConnectionProperties(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(eventSubscriptionStreamConnectionModel.streamConnectionProperties(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(eventSubscriptionStreamConnectionModel.streamType(), "testString");
     assertEquals(eventSubscriptionStreamConnectionModel.assetScope(), "testString");
     assertEquals(eventSubscriptionStreamConnectionModel.topic(), "testString");

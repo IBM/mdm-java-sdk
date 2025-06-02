@@ -39,61 +39,61 @@ public class SyncUpdateRequestDeletionsTest {
   public void testSyncUpdateRequestDeletions() throws Throwable {
     DataRecord dataRecordModel = new DataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
     assertEquals(dataRecordModel.type(), "record");
-    assertEquals(dataRecordModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(dataRecordModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataRecordModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(dataRecordModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(dataRecordModel.typeName(), "testString");
     assertEquals(dataRecordModel.isBlockedForUpdate(), Boolean.valueOf(true));
     assertEquals(dataRecordModel.isQuarantined(), Boolean.valueOf(true));
 
     NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
     assertEquals(nodeWithAttributesModel.type(), "record");
-    assertEquals(nodeWithAttributesModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(nodeWithAttributesModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(nodeWithAttributesModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(nodeWithAttributesModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(nodeWithAttributesModel.typeName(), "testString");
     assertEquals(nodeWithAttributesModel.isBlockedForUpdate(), Boolean.valueOf(true));
     assertEquals(nodeWithAttributesModel.isQuarantined(), Boolean.valueOf(true));
 
     DataRelationship dataRelationshipModel = new DataRelationship.Builder()
       .type("relationship")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .source(nodeWithAttributesModel)
       .target(nodeWithAttributesModel)
       .build();
     assertEquals(dataRelationshipModel.type(), "relationship");
-    assertEquals(dataRelationshipModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(dataRelationshipModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataRelationshipModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(dataRelationshipModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(dataRelationshipModel.typeName(), "testString");
     assertEquals(dataRelationshipModel.source(), nodeWithAttributesModel);
     assertEquals(dataRelationshipModel.target(), nodeWithAttributesModel);
 
     DataGroup dataGroupModel = new DataGroup.Builder()
       .type("group")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .groupAssociations(java.util.Arrays.asList(dataRelationshipModel))
       .groupNumber(Long.valueOf("26"))
       .memberCount(Long.valueOf("26"))
       .build();
     assertEquals(dataGroupModel.type(), "group");
-    assertEquals(dataGroupModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(dataGroupModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataGroupModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(dataGroupModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(dataGroupModel.typeName(), "testString");
     assertEquals(dataGroupModel.groupAssociations(), java.util.Arrays.asList(dataRelationshipModel));
     assertEquals(dataGroupModel.groupNumber(), Long.valueOf("26"));
@@ -101,35 +101,35 @@ public class SyncUpdateRequestDeletionsTest {
 
     DataNode dataNodeModel = new DataNode.Builder()
       .type("node")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .referenceId("testString")
       .build();
     assertEquals(dataNodeModel.type(), "node");
-    assertEquals(dataNodeModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(dataNodeModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataNodeModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(dataNodeModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(dataNodeModel.typeName(), "testString");
     assertEquals(dataNodeModel.referenceId(), "testString");
 
     DataHierarchy dataHierarchyModel = new DataHierarchy.Builder()
       .type("hierarchy")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .referenceId("testString")
       .nodes(java.util.Arrays.asList(dataNodeModel))
       .relationships(java.util.Arrays.asList(dataRelationshipModel))
-      .associatedObjects(java.util.Arrays.asList(TestUtilities.createMockMap()))
+      .associatedObjects(java.util.Arrays.asList(java.util.Collections.singletonMap("anyKey", "anyValue")))
       .build();
     assertEquals(dataHierarchyModel.type(), "hierarchy");
-    assertEquals(dataHierarchyModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(dataHierarchyModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataHierarchyModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(dataHierarchyModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(dataHierarchyModel.typeName(), "testString");
     assertEquals(dataHierarchyModel.referenceId(), "testString");
     assertEquals(dataHierarchyModel.nodes(), java.util.Arrays.asList(dataNodeModel));
     assertEquals(dataHierarchyModel.relationships(), java.util.Arrays.asList(dataRelationshipModel));
-    assertEquals(dataHierarchyModel.associatedObjects(), java.util.Arrays.asList(TestUtilities.createMockMap()));
+    assertEquals(dataHierarchyModel.associatedObjects(), java.util.Arrays.asList(java.util.Collections.singletonMap("anyKey", "anyValue")));
 
     SyncUpdateRequestDeletions syncUpdateRequestDeletionsModel = new SyncUpdateRequestDeletions.Builder()
       .records(java.util.Arrays.asList(dataRecordModel))

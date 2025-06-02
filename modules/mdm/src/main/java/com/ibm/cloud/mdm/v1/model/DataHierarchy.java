@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class DataHierarchy extends GenericModel {
   protected List<DataNode> nodes;
   protected List<DataRelationship> relationships;
   @SerializedName("associated_objects")
-  protected List<Object> associatedObjects;
+  protected List<Map<String, Object>> associatedObjects;
 
   /**
    * Builder.
@@ -54,8 +55,13 @@ public class DataHierarchy extends GenericModel {
     private String referenceId;
     private List<DataNode> nodes;
     private List<DataRelationship> relationships;
-    private List<Object> associatedObjects;
+    private List<Map<String, Object>> associatedObjects;
 
+    /**
+     * Instantiates a new Builder from an existing DataHierarchy instance.
+     *
+     * @param dataHierarchy the instance to initialize the Builder with
+     */
     private Builder(DataHierarchy dataHierarchy) {
       this.type = dataHierarchy.type;
       this.attributes = dataHierarchy.attributes;
@@ -96,9 +102,9 @@ public class DataHierarchy extends GenericModel {
     }
 
     /**
-     * Adds an nodes to nodes.
+     * Adds a new element to nodes.
      *
-     * @param nodes the new nodes
+     * @param nodes the new element to be added
      * @return the DataHierarchy builder
      */
     public Builder addNodes(DataNode nodes) {
@@ -112,9 +118,9 @@ public class DataHierarchy extends GenericModel {
     }
 
     /**
-     * Adds an relationships to relationships.
+     * Adds a new element to relationships.
      *
-     * @param relationships the new relationships
+     * @param relationships the new element to be added
      * @return the DataHierarchy builder
      */
     public Builder addRelationships(DataRelationship relationships) {
@@ -128,16 +134,16 @@ public class DataHierarchy extends GenericModel {
     }
 
     /**
-     * Adds an associatedObjects to associatedObjects.
+     * Adds a new element to associatedObjects.
      *
-     * @param associatedObjects the new associatedObjects
+     * @param associatedObjects the new element to be added
      * @return the DataHierarchy builder
      */
-    public Builder addAssociatedObjects(Object associatedObjects) {
+    public Builder addAssociatedObjects(Map<String, Object> associatedObjects) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(associatedObjects,
         "associatedObjects cannot be null");
       if (this.associatedObjects == null) {
-        this.associatedObjects = new ArrayList<Object>();
+        this.associatedObjects = new ArrayList<Map<String, Object>>();
       }
       this.associatedObjects.add(associatedObjects);
       return this;
@@ -229,7 +235,7 @@ public class DataHierarchy extends GenericModel {
      * @param associatedObjects the associatedObjects
      * @return the DataHierarchy builder
      */
-    public Builder associatedObjects(List<Object> associatedObjects) {
+    public Builder associatedObjects(List<Map<String, Object>> associatedObjects) {
       this.associatedObjects = associatedObjects;
       return this;
     }
@@ -356,7 +362,7 @@ public class DataHierarchy extends GenericModel {
    *
    * @return the associatedObjects
    */
-  public List<Object> associatedObjects() {
+  public List<Map<String, Object>> associatedObjects() {
     return associatedObjects;
   }
 }

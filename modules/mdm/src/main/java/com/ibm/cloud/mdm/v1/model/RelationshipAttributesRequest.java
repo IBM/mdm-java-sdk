@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -35,6 +36,11 @@ public class RelationshipAttributesRequest extends GenericModel {
     private String relationshipType;
     private List<String> attributeNames;
 
+    /**
+     * Instantiates a new Builder from an existing RelationshipAttributesRequest instance.
+     *
+     * @param relationshipAttributesRequest the instance to initialize the Builder with
+     */
     private Builder(RelationshipAttributesRequest relationshipAttributesRequest) {
       this.relationshipType = relationshipAttributesRequest.relationshipType;
       this.attributeNames = relationshipAttributesRequest.attributeNames;
@@ -56,9 +62,9 @@ public class RelationshipAttributesRequest extends GenericModel {
     }
 
     /**
-     * Adds an attributeNames to attributeNames.
+     * Adds a new element to attributeNames.
      *
-     * @param attributeNames the new attributeNames
+     * @param attributeNames the new element to be added
      * @return the RelationshipAttributesRequest builder
      */
     public Builder addAttributeNames(String attributeNames) {

@@ -43,8 +43,8 @@ public class ReplaceModelComparespecResourceOptionsTest {
 
     ReplaceModelComparespecResourceOptions replaceModelComparespecResourceOptionsModel = new ReplaceModelComparespecResourceOptions.Builder()
       .resourceName("testString")
-      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
-      .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
+      .featureCategories(java.util.Collections.singletonMap("key1", compareSpecResourceFeatureCategoryModel))
+      .featureCoefficients(java.util.Collections.singletonMap("key1", Float.valueOf("36.0")))
       .typoDistance(Float.valueOf("36.0"))
       .similarCharactersEnabled(true)
       .similarCharactersMapResource("testString")
@@ -53,8 +53,8 @@ public class ReplaceModelComparespecResourceOptionsTest {
       .similarCharactersDistance(Float.valueOf("36.0"))
       .build();
     assertEquals(replaceModelComparespecResourceOptionsModel.resourceName(), "testString");
-    assertEquals(replaceModelComparespecResourceOptionsModel.featureCategories(), new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } });
-    assertEquals(replaceModelComparespecResourceOptionsModel.featureCoefficients(), new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } });
+    assertEquals(replaceModelComparespecResourceOptionsModel.featureCategories(), java.util.Collections.singletonMap("key1", compareSpecResourceFeatureCategoryModel));
+    assertEquals(replaceModelComparespecResourceOptionsModel.featureCoefficients(), java.util.Collections.singletonMap("key1", Float.valueOf("36.0")));
     assertEquals(replaceModelComparespecResourceOptionsModel.typoDistance(), Float.valueOf("36.0"));
     assertEquals(replaceModelComparespecResourceOptionsModel.similarCharactersEnabled(), Boolean.valueOf(true));
     assertEquals(replaceModelComparespecResourceOptionsModel.similarCharactersMapResource(), "testString");

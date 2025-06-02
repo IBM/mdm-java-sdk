@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -35,6 +36,11 @@ public class RecordAttributesRequest extends GenericModel {
     private String recordType;
     private List<String> attributeNames;
 
+    /**
+     * Instantiates a new Builder from an existing RecordAttributesRequest instance.
+     *
+     * @param recordAttributesRequest the instance to initialize the Builder with
+     */
     private Builder(RecordAttributesRequest recordAttributesRequest) {
       this.recordType = recordAttributesRequest.recordType;
       this.attributeNames = recordAttributesRequest.attributeNames;
@@ -56,9 +62,9 @@ public class RecordAttributesRequest extends GenericModel {
     }
 
     /**
-     * Adds an attributeNames to attributeNames.
+     * Adds a new element to attributeNames.
      *
-     * @param attributeNames the new attributeNames
+     * @param attributeNames the new element to be added
      * @return the RecordAttributesRequest builder
      */
     public Builder addAttributeNames(String attributeNames) {

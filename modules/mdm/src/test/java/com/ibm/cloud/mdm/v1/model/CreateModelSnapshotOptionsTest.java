@@ -47,12 +47,12 @@ public class CreateModelSnapshotOptionsTest {
 
     CreateModelSnapshotOptions createModelSnapshotOptionsModel = new CreateModelSnapshotOptions.Builder()
       .snapshotSummary(snapshotSummaryModel)
-      .matchSettings(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .mappingPatterns(java.util.Arrays.asList(TestUtilities.createMockMap()))
+      .matchSettings(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .mappingPatterns(java.util.Arrays.asList(java.util.Collections.singletonMap("anyKey", "anyValue")))
       .build();
     assertEquals(createModelSnapshotOptionsModel.snapshotSummary(), snapshotSummaryModel);
-    assertEquals(createModelSnapshotOptionsModel.matchSettings(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
-    assertEquals(createModelSnapshotOptionsModel.mappingPatterns(), java.util.Arrays.asList(TestUtilities.createMockMap()));
+    assertEquals(createModelSnapshotOptionsModel.matchSettings(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(createModelSnapshotOptionsModel.mappingPatterns(), java.util.Arrays.asList(java.util.Collections.singletonMap("anyKey", "anyValue")));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

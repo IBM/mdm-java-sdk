@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.Map;
@@ -54,6 +55,11 @@ public class DataRecord extends GenericModel {
     private Boolean isBlockedForUpdate;
     private Boolean isQuarantined;
 
+    /**
+     * Instantiates a new Builder from an existing DataRecord instance.
+     *
+     * @param dataRecord the instance to initialize the Builder with
+     */
     private Builder(DataRecord dataRecord) {
       this.type = dataRecord.type;
       this.attributes = dataRecord.attributes;

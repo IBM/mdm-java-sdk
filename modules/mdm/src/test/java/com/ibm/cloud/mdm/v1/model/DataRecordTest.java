@@ -33,15 +33,15 @@ public class DataRecordTest {
   public void testDataRecord() throws Throwable {
     DataRecord dataRecordModel = new DataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
     assertEquals(dataRecordModel.type(), "record");
-    assertEquals(dataRecordModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(dataRecordModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataRecordModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(dataRecordModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(dataRecordModel.typeName(), "testString");
     assertEquals(dataRecordModel.isBlockedForUpdate(), Boolean.valueOf(true));
     assertEquals(dataRecordModel.isQuarantined(), Boolean.valueOf(true));
@@ -51,6 +51,8 @@ public class DataRecordTest {
     DataRecord dataRecordModelNew = TestUtilities.deserialize(json, DataRecord.class);
     assertTrue(dataRecordModelNew instanceof DataRecord);
     assertEquals(dataRecordModelNew.type(), "record");
+    assertEquals(dataRecordModelNew.attributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
+    assertEquals(dataRecordModelNew.systemAttributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
     assertEquals(dataRecordModelNew.typeName(), "testString");
     assertEquals(dataRecordModelNew.isBlockedForUpdate(), Boolean.valueOf(true));
     assertEquals(dataRecordModelNew.isQuarantined(), Boolean.valueOf(true));

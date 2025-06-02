@@ -46,11 +46,11 @@ public class PatchMatchingRemediationWorkflowOptionsTest {
     PatchMatchingRemediationWorkflowOptions patchMatchingRemediationWorkflowOptionsModel = new PatchMatchingRemediationWorkflowOptions.Builder()
       .workflowId("cd4431f4-505b-11ed-bdc3-0242ac120002")
       .issueActions(java.util.Arrays.asList(issueRemediationActionsRequestModel))
-      .bulkAction(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .bulkAction(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(patchMatchingRemediationWorkflowOptionsModel.workflowId(), "cd4431f4-505b-11ed-bdc3-0242ac120002");
     assertEquals(patchMatchingRemediationWorkflowOptionsModel.issueActions(), java.util.Arrays.asList(issueRemediationActionsRequestModel));
-    assertEquals(patchMatchingRemediationWorkflowOptionsModel.bulkAction(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(patchMatchingRemediationWorkflowOptionsModel.bulkAction(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

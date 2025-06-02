@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -30,6 +31,11 @@ public class UIworkspace extends GenericModel {
   public static class Builder {
     private List<UIHistory> history;
 
+    /**
+     * Instantiates a new Builder from an existing UIworkspace instance.
+     *
+     * @param uIworkspace the instance to initialize the Builder with
+     */
     private Builder(UIworkspace uIworkspace) {
       this.history = uIworkspace.history;
     }
@@ -50,9 +56,9 @@ public class UIworkspace extends GenericModel {
     }
 
     /**
-     * Adds an history to history.
+     * Adds a new element to history.
      *
-     * @param history the new history
+     * @param history the new element to be added
      * @return the UIworkspace builder
      */
     public Builder addHistory(UIHistory history) {

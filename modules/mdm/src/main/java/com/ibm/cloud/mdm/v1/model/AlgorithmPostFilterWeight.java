@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -32,6 +33,11 @@ public class AlgorithmPostFilterWeight extends GenericModel {
     private List<Long> distances;
     private List<Float> values;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmPostFilterWeight instance.
+     *
+     * @param algorithmPostFilterWeight the instance to initialize the Builder with
+     */
     private Builder(AlgorithmPostFilterWeight algorithmPostFilterWeight) {
       this.distances = algorithmPostFilterWeight.distances;
       this.values = algorithmPostFilterWeight.values;
@@ -64,9 +70,9 @@ public class AlgorithmPostFilterWeight extends GenericModel {
     }
 
     /**
-     * Adds an distances to distances.
+     * Adds a new element to distances.
      *
-     * @param distances the new distances
+     * @param distances the new element to be added
      * @return the AlgorithmPostFilterWeight builder
      */
     public Builder addDistances(Long distances) {
@@ -80,9 +86,9 @@ public class AlgorithmPostFilterWeight extends GenericModel {
     }
 
     /**
-     * Adds an values to values.
+     * Adds a new element to values.
      *
-     * @param values the new values
+     * @param values the new element to be added
      * @return the AlgorithmPostFilterWeight builder
      */
     public Builder addValues(Float values) {

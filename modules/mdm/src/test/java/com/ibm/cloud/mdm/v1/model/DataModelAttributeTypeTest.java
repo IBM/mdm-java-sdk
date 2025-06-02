@@ -48,13 +48,13 @@ public class DataModelAttributeTypeTest {
       .description("testString")
       .label("testString")
       .classification("testString")
-      .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
+      .fields(java.util.Collections.singletonMap("key1", dataModelFieldModel))
       .build();
     assertEquals(dataModelAttributeTypeModel.matchingTypes(), java.util.Arrays.asList("testString"));
     assertEquals(dataModelAttributeTypeModel.description(), "testString");
     assertEquals(dataModelAttributeTypeModel.label(), "testString");
     assertEquals(dataModelAttributeTypeModel.classification(), "testString");
-    assertEquals(dataModelAttributeTypeModel.fields(), new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } });
+    assertEquals(dataModelAttributeTypeModel.fields(), java.util.Collections.singletonMap("key1", dataModelFieldModel));
 
     String json = TestUtilities.serialize(dataModelAttributeTypeModel);
 

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ import com.ibm.cloud.sdk.core.service.model.DynamicModel;
 
 /**
  * A single bucket generator.
+ *
+ * This type supports additional properties of type Object.
  */
 public class AlgorithmBucketGenerator extends DynamicModel<Object> {
 
@@ -52,6 +55,11 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
     private String label;
     private Map<String, Object> dynamicProperties;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmBucketGenerator instance.
+     *
+     * @param algorithmBucketGenerator the instance to initialize the Builder with
+     */
     private Builder(AlgorithmBucketGenerator algorithmBucketGenerator) {
       this.bucketGroupRecipe = algorithmBucketGenerator.bucketGroupRecipe;
       this.inputs = algorithmBucketGenerator.inputs;
@@ -88,9 +96,9 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
     }
 
     /**
-     * Adds an bucketGroupRecipe to bucketGroupRecipe.
+     * Adds a new element to bucketGroupRecipe.
      *
-     * @param bucketGroupRecipe the new bucketGroupRecipe
+     * @param bucketGroupRecipe the new element to be added
      * @return the AlgorithmBucketGenerator builder
      */
     public Builder addBucketGroupRecipe(AlgorithmBucketGroupStep bucketGroupRecipe) {
@@ -104,9 +112,9 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
     }
 
     /**
-     * Adds an inputs to inputs.
+     * Adds a new element to inputs.
      *
-     * @param inputs the new inputs
+     * @param inputs the new element to be added
      * @return the AlgorithmBucketGenerator builder
      */
     public Builder addInputs(AlgorithmInput inputs) {
@@ -120,9 +128,9 @@ public class AlgorithmBucketGenerator extends DynamicModel<Object> {
     }
 
     /**
-     * Adds an bucketRecipe to bucketRecipe.
+     * Adds a new element to bucketRecipe.
      *
-     * @param bucketRecipe the new bucketRecipe
+     * @param bucketRecipe the new element to be added
      * @return the AlgorithmBucketGenerator builder
      */
     public Builder addBucketRecipe(AlgorithmBucketStep bucketRecipe) {

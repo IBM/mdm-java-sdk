@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class Snapshot extends GenericModel {
   @SerializedName("relationship_discovery_rules")
   protected Map<String, RelationshipDiscoveryRules> relationshipDiscoveryRules;
   @SerializedName("mapping_patterns")
-  protected List<Object> mappingPatterns;
+  protected List<Map<String, Object>> mappingPatterns;
   @SerializedName("data_model")
   protected DataModel dataModel;
   @SerializedName("map_resources")
@@ -42,6 +43,8 @@ public class Snapshot extends GenericModel {
   protected SnapshotSummary snapshotSummary;
   @SerializedName("match_settings")
   protected Map<String, Object> matchSettings;
+
+  protected Snapshot() { }
 
   /**
    * Gets the algorithms.
@@ -84,7 +87,7 @@ public class Snapshot extends GenericModel {
    *
    * @return the mappingPatterns
    */
-  public List<Object> getMappingPatterns() {
+  public List<Map<String, Object>> getMappingPatterns() {
     return mappingPatterns;
   }
 

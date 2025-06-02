@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -42,6 +43,11 @@ public class SearchQuery extends GenericModel {
     private List<Expression> expressions;
     private String operation;
 
+    /**
+     * Instantiates a new Builder from an existing SearchQuery instance.
+     *
+     * @param searchQuery the instance to initialize the Builder with
+     */
     private Builder(SearchQuery searchQuery) {
       this.expressions = searchQuery.expressions;
       this.operation = searchQuery.operation;
@@ -72,9 +78,9 @@ public class SearchQuery extends GenericModel {
     }
 
     /**
-     * Adds an expressions to expressions.
+     * Adds a new element to expressions.
      *
-     * @param expressions the new expressions
+     * @param expressions the new element to be added
      * @return the SearchQuery builder
      */
     public Builder addExpressions(Expression expressions) {

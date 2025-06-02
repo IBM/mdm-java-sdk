@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.Map;
@@ -45,6 +46,11 @@ public class ReplaceConfiguratorConfigDataModelOptions extends GenericModel {
     private Map<String, DataModelGroupType> groupTypes;
     private String isModelPublished;
 
+    /**
+     * Instantiates a new Builder from an existing ReplaceConfiguratorConfigDataModelOptions instance.
+     *
+     * @param replaceConfiguratorConfigDataModelOptions the instance to initialize the Builder with
+     */
     private Builder(ReplaceConfiguratorConfigDataModelOptions replaceConfiguratorConfigDataModelOptions) {
       this.systemProperties = replaceConfiguratorConfigDataModelOptions.systemProperties;
       this.attributeTypes = replaceConfiguratorConfigDataModelOptions.attributeTypes;

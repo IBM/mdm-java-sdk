@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -70,6 +71,11 @@ public class SearchDataOptions extends GenericModel {
     private List<String> include;
     private List<String> exclude;
 
+    /**
+     * Instantiates a new Builder from an existing SearchDataOptions instance.
+     *
+     * @param searchDataOptions the instance to initialize the Builder with
+     */
     private Builder(SearchDataOptions searchDataOptions) {
       this.searchType = searchDataOptions.searchType;
       this.query = searchDataOptions.query;
@@ -97,9 +103,9 @@ public class SearchDataOptions extends GenericModel {
     }
 
     /**
-     * Adds an filters to filters.
+     * Adds a new element to filters.
      *
-     * @param filters the new filters
+     * @param filters the new element to be added
      * @return the SearchDataOptions builder
      */
     public Builder addFilters(SearchFilter filters) {
@@ -113,9 +119,9 @@ public class SearchDataOptions extends GenericModel {
     }
 
     /**
-     * Adds an include to include.
+     * Adds a new element to include.
      *
-     * @param include the new include
+     * @param include the new element to be added
      * @return the SearchDataOptions builder
      */
     public Builder addInclude(String include) {
@@ -129,9 +135,9 @@ public class SearchDataOptions extends GenericModel {
     }
 
     /**
-     * Adds an exclude to exclude.
+     * Adds a new element to exclude.
      *
-     * @param exclude the new exclude
+     * @param exclude the new element to be added
      * @return the SearchDataOptions builder
      */
     public Builder addExclude(String exclude) {

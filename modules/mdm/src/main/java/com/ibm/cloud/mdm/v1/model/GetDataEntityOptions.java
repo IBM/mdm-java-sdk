@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -34,6 +35,11 @@ public class GetDataEntityOptions extends GenericModel {
     private List<String> include;
     private List<String> exclude;
 
+    /**
+     * Instantiates a new Builder from an existing GetDataEntityOptions instance.
+     *
+     * @param getDataEntityOptions the instance to initialize the Builder with
+     */
     private Builder(GetDataEntityOptions getDataEntityOptions) {
       this.id = getDataEntityOptions.id;
       this.include = getDataEntityOptions.include;
@@ -65,9 +71,9 @@ public class GetDataEntityOptions extends GenericModel {
     }
 
     /**
-     * Adds an include to include.
+     * Adds a new element to include.
      *
-     * @param include the new include
+     * @param include the new element to be added
      * @return the GetDataEntityOptions builder
      */
     public Builder addInclude(String include) {
@@ -81,9 +87,9 @@ public class GetDataEntityOptions extends GenericModel {
     }
 
     /**
-     * Adds an exclude to exclude.
+     * Adds a new element to exclude.
      *
-     * @param exclude the new exclude
+     * @param exclude the new element to be added
      * @return the GetDataEntityOptions builder
      */
     public Builder addExclude(String exclude) {

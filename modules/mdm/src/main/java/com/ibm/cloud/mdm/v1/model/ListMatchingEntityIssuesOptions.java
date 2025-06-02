@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -38,6 +39,11 @@ public class ListMatchingEntityIssuesOptions extends GenericModel {
     private Long offset;
     private Boolean fetchTotalCount;
 
+    /**
+     * Instantiates a new Builder from an existing ListMatchingEntityIssuesOptions instance.
+     *
+     * @param listMatchingEntityIssuesOptions the instance to initialize the Builder with
+     */
     private Builder(ListMatchingEntityIssuesOptions listMatchingEntityIssuesOptions) {
       this.entityType = listMatchingEntityIssuesOptions.entityType;
       this.entities = listMatchingEntityIssuesOptions.entities;
@@ -71,9 +77,9 @@ public class ListMatchingEntityIssuesOptions extends GenericModel {
     }
 
     /**
-     * Adds an entities to entities.
+     * Adds a new element to entities.
      *
-     * @param entities the new entities
+     * @param entities the new element to be added
      * @return the ListMatchingEntityIssuesOptions builder
      */
     public Builder addEntities(String entities) {

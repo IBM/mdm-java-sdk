@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -23,6 +24,8 @@ public class JsonUISettingsResponse extends GenericModel {
   @SerializedName("ui_settings")
   protected UISettings uiSettings;
   protected Metadata metadata;
+
+  protected JsonUISettingsResponse() { }
 
   /**
    * Gets the uiSettings.

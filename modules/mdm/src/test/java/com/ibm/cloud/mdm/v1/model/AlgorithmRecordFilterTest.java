@@ -40,9 +40,9 @@ public class AlgorithmRecordFilterTest {
     assertEquals(algorithmSingleCriteriaModel.disallowed(), java.util.Arrays.asList("testString"));
 
     AlgorithmRecordFilter algorithmRecordFilterModel = new AlgorithmRecordFilter.Builder()
-      .criteria(new java.util.HashMap<String, AlgorithmSingleCriteria>() { { put("foo", algorithmSingleCriteriaModel); } })
+      .criteria(java.util.Collections.singletonMap("key1", algorithmSingleCriteriaModel))
       .build();
-    assertEquals(algorithmRecordFilterModel.criteria(), new java.util.HashMap<String, AlgorithmSingleCriteria>() { { put("foo", algorithmSingleCriteriaModel); } });
+    assertEquals(algorithmRecordFilterModel.criteria(), java.util.Collections.singletonMap("key1", algorithmSingleCriteriaModel));
 
     String json = TestUtilities.serialize(algorithmRecordFilterModel);
 

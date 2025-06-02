@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -34,6 +35,11 @@ public class PatchConfiguratorConfigurationAssetOptions extends GenericModel {
     private String assetStatus;
     private List<AssetMapping> assetMappings;
 
+    /**
+     * Instantiates a new Builder from an existing PatchConfiguratorConfigurationAssetOptions instance.
+     *
+     * @param patchConfiguratorConfigurationAssetOptions the instance to initialize the Builder with
+     */
     private Builder(PatchConfiguratorConfigurationAssetOptions patchConfiguratorConfigurationAssetOptions) {
       this.assetId = patchConfiguratorConfigurationAssetOptions.assetId;
       this.assetStatus = patchConfiguratorConfigurationAssetOptions.assetStatus;
@@ -65,9 +71,9 @@ public class PatchConfiguratorConfigurationAssetOptions extends GenericModel {
     }
 
     /**
-     * Adds an assetMappings to assetMappings.
+     * Adds a new element to assetMappings.
      *
-     * @param assetMappings the new assetMappings
+     * @param assetMappings the new element to be added
      * @return the PatchConfiguratorConfigurationAssetOptions builder
      */
     public Builder addAssetMappings(AssetMapping assetMappings) {

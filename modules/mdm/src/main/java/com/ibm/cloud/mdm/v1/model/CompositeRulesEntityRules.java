@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -45,6 +46,11 @@ public class CompositeRulesEntityRules extends GenericModel {
     private List<String> choices;
     private Boolean singleValues;
 
+    /**
+     * Instantiates a new Builder from an existing CompositeRulesEntityRules instance.
+     *
+     * @param compositeRulesEntityRules the instance to initialize the Builder with
+     */
     private Builder(CompositeRulesEntityRules compositeRulesEntityRules) {
       this.attributeRules = compositeRulesEntityRules.attributeRules;
       this.sources = compositeRulesEntityRules.sources;
@@ -70,9 +76,9 @@ public class CompositeRulesEntityRules extends GenericModel {
     }
 
     /**
-     * Adds an sources to sources.
+     * Adds a new element to sources.
      *
-     * @param sources the new sources
+     * @param sources the new element to be added
      * @return the CompositeRulesEntityRules builder
      */
     public Builder addSources(String sources) {
@@ -86,9 +92,9 @@ public class CompositeRulesEntityRules extends GenericModel {
     }
 
     /**
-     * Adds an sortBy to sortBy.
+     * Adds a new element to sortBy.
      *
-     * @param sortBy the new sortBy
+     * @param sortBy the new element to be added
      * @return the CompositeRulesEntityRules builder
      */
     public Builder addSortBy(CompositeRulesSubRuleType sortBy) {
@@ -102,9 +108,9 @@ public class CompositeRulesEntityRules extends GenericModel {
     }
 
     /**
-     * Adds an filters to filters.
+     * Adds a new element to filters.
      *
-     * @param filters the new filters
+     * @param filters the new element to be added
      * @return the CompositeRulesEntityRules builder
      */
     public Builder addFilters(CompositeRulesSubRuleType filters) {
@@ -118,9 +124,9 @@ public class CompositeRulesEntityRules extends GenericModel {
     }
 
     /**
-     * Adds an choices to choices.
+     * Adds a new element to choices.
      *
-     * @param choices the new choices
+     * @param choices the new element to be added
      * @return the CompositeRulesEntityRules builder
      */
     public Builder addChoices(String choices) {

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -33,6 +34,11 @@ public class ActionEntity extends GenericModel {
     private String typeName;
     private String number;
 
+    /**
+     * Instantiates a new Builder from an existing ActionEntity instance.
+     *
+     * @param actionEntity the instance to initialize the Builder with
+     */
     private Builder(ActionEntity actionEntity) {
       this.type = actionEntity.type;
       this.typeName = actionEntity.typeName;

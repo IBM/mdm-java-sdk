@@ -113,15 +113,15 @@ public class AlgorithmEntityTypeTest {
     assertEquals(algorithmSingleCriteriaModel.disallowed(), java.util.Arrays.asList("testString"));
 
     AlgorithmRecordFilter algorithmRecordFilterModel = new AlgorithmRecordFilter.Builder()
-      .criteria(new java.util.HashMap<String, AlgorithmSingleCriteria>() { { put("foo", algorithmSingleCriteriaModel); } })
+      .criteria(java.util.Collections.singletonMap("key1", algorithmSingleCriteriaModel))
       .build();
-    assertEquals(algorithmRecordFilterModel.criteria(), new java.util.HashMap<String, AlgorithmSingleCriteria>() { { put("foo", algorithmSingleCriteriaModel); } });
+    assertEquals(algorithmRecordFilterModel.criteria(), java.util.Collections.singletonMap("key1", algorithmSingleCriteriaModel));
 
     AlgorithmSourceLevelThreshold algorithmSourceLevelThresholdModel = new AlgorithmSourceLevelThreshold.Builder()
-      .srcxsrc(new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } })
+      .srcxsrc(java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))))
       .xDefault(java.util.Arrays.asList(Float.valueOf("36.0")))
       .build();
-    assertEquals(algorithmSourceLevelThresholdModel.srcxsrc(), new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } });
+    assertEquals(algorithmSourceLevelThresholdModel.srcxsrc(), java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))));
     assertEquals(algorithmSourceLevelThresholdModel.xDefault(), java.util.Arrays.asList(Float.valueOf("36.0")));
 
     AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
@@ -199,22 +199,22 @@ public class AlgorithmEntityTypeTest {
 
     AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
       .glueThreshold(Float.valueOf("36.0"))
-      .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
+      .bucketGenerators(java.util.Collections.singletonMap("key1", algorithmBucketGeneratorModel))
       .recordFilter(algorithmRecordFilterModel)
       .clericalReviewThreshold(Float.valueOf("36.0"))
       .autoLinkThreshold(Float.valueOf("36.0"))
-      .sourceLevelThresholds(new java.util.HashMap<String, AlgorithmSourceLevelThreshold>() { { put("foo", algorithmSourceLevelThresholdModel); } })
-      .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
-      .postFilterMethods(new java.util.HashMap<String, AlgorithmPostFilterMethod>() { { put("foo", algorithmPostFilterMethodModel); } })
+      .sourceLevelThresholds(java.util.Collections.singletonMap("key1", algorithmSourceLevelThresholdModel))
+      .compareMethods(java.util.Collections.singletonMap("key1", algorithmCompareMethodModel))
+      .postFilterMethods(java.util.Collections.singletonMap("key1", algorithmPostFilterMethodModel))
       .build();
     assertEquals(algorithmEntityTypeModel.glueThreshold(), Float.valueOf("36.0"));
-    assertEquals(algorithmEntityTypeModel.bucketGenerators(), new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } });
+    assertEquals(algorithmEntityTypeModel.bucketGenerators(), java.util.Collections.singletonMap("key1", algorithmBucketGeneratorModel));
     assertEquals(algorithmEntityTypeModel.recordFilter(), algorithmRecordFilterModel);
     assertEquals(algorithmEntityTypeModel.clericalReviewThreshold(), Float.valueOf("36.0"));
     assertEquals(algorithmEntityTypeModel.autoLinkThreshold(), Float.valueOf("36.0"));
-    assertEquals(algorithmEntityTypeModel.sourceLevelThresholds(), new java.util.HashMap<String, AlgorithmSourceLevelThreshold>() { { put("foo", algorithmSourceLevelThresholdModel); } });
-    assertEquals(algorithmEntityTypeModel.compareMethods(), new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } });
-    assertEquals(algorithmEntityTypeModel.postFilterMethods(), new java.util.HashMap<String, AlgorithmPostFilterMethod>() { { put("foo", algorithmPostFilterMethodModel); } });
+    assertEquals(algorithmEntityTypeModel.sourceLevelThresholds(), java.util.Collections.singletonMap("key1", algorithmSourceLevelThresholdModel));
+    assertEquals(algorithmEntityTypeModel.compareMethods(), java.util.Collections.singletonMap("key1", algorithmCompareMethodModel));
+    assertEquals(algorithmEntityTypeModel.postFilterMethods(), java.util.Collections.singletonMap("key1", algorithmPostFilterMethodModel));
 
     String json = TestUtilities.serialize(algorithmEntityTypeModel);
 

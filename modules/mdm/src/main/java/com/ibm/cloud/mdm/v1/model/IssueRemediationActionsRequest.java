@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -38,6 +39,11 @@ public class IssueRemediationActionsRequest extends GenericModel {
     private String decision;
     private List<String> records;
 
+    /**
+     * Instantiates a new Builder from an existing IssueRemediationActionsRequest instance.
+     *
+     * @param issueRemediationActionsRequest the instance to initialize the Builder with
+     */
     private Builder(IssueRemediationActionsRequest issueRemediationActionsRequest) {
       this.comments = issueRemediationActionsRequest.comments;
       this.issueId = issueRemediationActionsRequest.issueId;
@@ -61,9 +67,9 @@ public class IssueRemediationActionsRequest extends GenericModel {
     }
 
     /**
-     * Adds an records to records.
+     * Adds a new element to records.
      *
-     * @param records the new records
+     * @param records the new element to be added
      * @return the IssueRemediationActionsRequest builder
      */
     public Builder addRecords(String records) {

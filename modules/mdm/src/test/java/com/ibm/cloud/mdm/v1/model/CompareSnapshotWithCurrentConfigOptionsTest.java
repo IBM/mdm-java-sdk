@@ -32,16 +32,16 @@ public class CompareSnapshotWithCurrentConfigOptionsTest {
   @Test
   public void testCompareSnapshotWithCurrentConfigOptions() throws Throwable {
     CompareSnapshotWithCurrentConfigOptions compareSnapshotWithCurrentConfigOptionsModel = new CompareSnapshotWithCurrentConfigOptions.Builder()
-      .dataModel(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .matchSettings(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .compositeRules(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .algorithms(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .mappingPatterns(java.util.Arrays.asList(TestUtilities.createMockMap()))
+      .dataModel(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .matchSettings(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .compositeRules(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .algorithms(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .mappingPatterns(java.util.Arrays.asList(java.util.Collections.singletonMap("anyKey", "anyValue")))
       .build();
-    assertEquals(compareSnapshotWithCurrentConfigOptionsModel.dataModel(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(compareSnapshotWithCurrentConfigOptionsModel.matchSettings(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(compareSnapshotWithCurrentConfigOptionsModel.compositeRules(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(compareSnapshotWithCurrentConfigOptionsModel.algorithms(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(compareSnapshotWithCurrentConfigOptionsModel.mappingPatterns(), java.util.Arrays.asList(TestUtilities.createMockMap()));
+    assertEquals(compareSnapshotWithCurrentConfigOptionsModel.dataModel(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(compareSnapshotWithCurrentConfigOptionsModel.matchSettings(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(compareSnapshotWithCurrentConfigOptionsModel.compositeRules(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(compareSnapshotWithCurrentConfigOptionsModel.algorithms(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(compareSnapshotWithCurrentConfigOptionsModel.mappingPatterns(), java.util.Arrays.asList(java.util.Collections.singletonMap("anyKey", "anyValue")));
   }
 }

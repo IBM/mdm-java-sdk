@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -31,6 +32,11 @@ public class RelationshipDiscoveryRulesGeneratedRules extends GenericModel {
     private RelationshipDiscoveryRulesRelationshipGeneratedRules relationship;
     private RelationshipDiscoveryRulesGroupGeneratedRules group;
 
+    /**
+     * Instantiates a new Builder from an existing RelationshipDiscoveryRulesGeneratedRules instance.
+     *
+     * @param relationshipDiscoveryRulesGeneratedRules the instance to initialize the Builder with
+     */
     private Builder(RelationshipDiscoveryRulesGeneratedRules relationshipDiscoveryRulesGeneratedRules) {
       this.hierarchy = relationshipDiscoveryRulesGeneratedRules.hierarchy;
       this.relationship = relationshipDiscoveryRulesGeneratedRules.relationship;

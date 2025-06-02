@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -27,6 +28,11 @@ public class GetModelComparespecResourceOptions extends GenericModel {
   public static class Builder {
     private String resourceName;
 
+    /**
+     * Instantiates a new Builder from an existing GetModelComparespecResourceOptions instance.
+     *
+     * @param getModelComparespecResourceOptions the instance to initialize the Builder with
+     */
     private Builder(GetModelComparespecResourceOptions getModelComparespecResourceOptions) {
       this.resourceName = getModelComparespecResourceOptions.resourceName;
     }

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -53,6 +54,11 @@ public class CreateConfiguratorProcessOptions extends GenericModel {
     private Boolean doForceEntitySync;
     private String reportJobList;
 
+    /**
+     * Instantiates a new Builder from an existing CreateConfiguratorProcessOptions instance.
+     *
+     * @param createConfiguratorProcessOptions the instance to initialize the Builder with
+     */
     private Builder(CreateConfiguratorProcessOptions createConfiguratorProcessOptions) {
       this.processName = createConfiguratorProcessOptions.processName;
       this.recordType = createConfiguratorProcessOptions.recordType;

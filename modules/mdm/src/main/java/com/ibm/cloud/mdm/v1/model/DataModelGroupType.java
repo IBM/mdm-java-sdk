@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -42,6 +43,11 @@ public class DataModelGroupType extends GenericModel {
     private Map<String, DataModelAttribute> attributes;
     private String label;
 
+    /**
+     * Instantiates a new Builder from an existing DataModelGroupType instance.
+     *
+     * @param dataModelGroupType the instance to initialize the Builder with
+     */
     private Builder(DataModelGroupType dataModelGroupType) {
       this.memberLimit = dataModelGroupType.memberLimit;
       this.groupAssociations = dataModelGroupType.groupAssociations;
@@ -66,9 +72,9 @@ public class DataModelGroupType extends GenericModel {
     }
 
     /**
-     * Adds an groupAssociations to groupAssociations.
+     * Adds a new element to groupAssociations.
      *
-     * @param groupAssociations the new groupAssociations
+     * @param groupAssociations the new element to be added
      * @return the DataModelGroupType builder
      */
     public Builder addGroupAssociations(String groupAssociations) {

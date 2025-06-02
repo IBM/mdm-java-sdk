@@ -34,19 +34,19 @@ public class ReplaceDataEntityOptionsTest {
     ReplaceDataEntityOptions replaceDataEntityOptionsModel = new ReplaceDataEntityOptions.Builder()
       .id("testString")
       .type("entity")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .recordCount(Long.valueOf("26"))
       .includesCompositeView(true)
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(replaceDataEntityOptionsModel.id(), "testString");
     assertEquals(replaceDataEntityOptionsModel.type(), "entity");
-    assertEquals(replaceDataEntityOptionsModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(replaceDataEntityOptionsModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(replaceDataEntityOptionsModel.typeName(), "testString");
     assertEquals(replaceDataEntityOptionsModel.recordCount(), Long.valueOf("26"));
     assertEquals(replaceDataEntityOptionsModel.includesCompositeView(), Boolean.valueOf(true));
-    assertEquals(replaceDataEntityOptionsModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(replaceDataEntityOptionsModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

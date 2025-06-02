@@ -37,26 +37,26 @@ public class ReplaceConfiguratorConfigurationMetadataOptionsTest {
       .jobId("testString")
       .status("testString")
       .pairOffset(Long.valueOf("26"))
-      .tunedConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .currentConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .tunedConfiguration(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .currentConfiguration(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(configurationMetadataEntityModel.jobId(), "testString");
     assertEquals(configurationMetadataEntityModel.status(), "testString");
     assertEquals(configurationMetadataEntityModel.pairOffset(), Long.valueOf("26"));
-    assertEquals(configurationMetadataEntityModel.tunedConfiguration(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(configurationMetadataEntityModel.currentConfiguration(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(configurationMetadataEntityModel.tunedConfiguration(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(configurationMetadataEntityModel.currentConfiguration(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     ReplaceConfiguratorConfigurationMetadataOptions replaceConfiguratorConfigurationMetadataOptionsModel = new ReplaceConfiguratorConfigurationMetadataOptions.Builder()
       .name("testString")
       .description("testString")
       .projectId("0e4bb17d-4871-40a5-b5a1-55b2866fe000")
       .catalogId("ee1de5f6-54da-4246-95bc-7bc282151000")
-      .pairAnalysis(new java.util.HashMap<String, Map<String, ConfigurationMetadataEntity>>() { { put("foo", new java.util.HashMap<String, ConfigurationMetadataEntity>() { { put("foo", configurationMetadataEntityModel); } }); } })
+      .pairAnalysis(java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", configurationMetadataEntityModel)))
       .build();
     assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.name(), "testString");
     assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.description(), "testString");
     assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.projectId(), "0e4bb17d-4871-40a5-b5a1-55b2866fe000");
     assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.catalogId(), "ee1de5f6-54da-4246-95bc-7bc282151000");
-    assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.pairAnalysis(), new java.util.HashMap<String, Map<String, ConfigurationMetadataEntity>>() { { put("foo", new java.util.HashMap<String, ConfigurationMetadataEntity>() { { put("foo", configurationMetadataEntityModel); } }); } });
+    assertEquals(replaceConfiguratorConfigurationMetadataOptionsModel.pairAnalysis(), java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", configurationMetadataEntityModel)));
   }
 }

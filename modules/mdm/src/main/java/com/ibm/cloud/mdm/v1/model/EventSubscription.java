@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -60,6 +61,11 @@ public class EventSubscription extends GenericModel {
     private String createdDate;
     private String lastUpdateDate;
 
+    /**
+     * Instantiates a new Builder from an existing EventSubscription instance.
+     *
+     * @param eventSubscription the instance to initialize the Builder with
+     */
     private Builder(EventSubscription eventSubscription) {
       this.subscriptionId = eventSubscription.subscriptionId;
       this.filter = eventSubscription.filter;
@@ -103,9 +109,9 @@ public class EventSubscription extends GenericModel {
     }
 
     /**
-     * Adds an filter to filter.
+     * Adds a new element to filter.
      *
-     * @param filter the new filter
+     * @param filter the new element to be added
      * @return the EventSubscription builder
      */
     public Builder addFilter(String filter) {

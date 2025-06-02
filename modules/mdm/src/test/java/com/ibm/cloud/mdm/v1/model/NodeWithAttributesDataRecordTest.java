@@ -33,15 +33,15 @@ public class NodeWithAttributesDataRecordTest {
   public void testNodeWithAttributesDataRecord() throws Throwable {
     NodeWithAttributesDataRecord nodeWithAttributesDataRecordModel = new NodeWithAttributesDataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
     assertEquals(nodeWithAttributesDataRecordModel.type(), "record");
-    assertEquals(nodeWithAttributesDataRecordModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(nodeWithAttributesDataRecordModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(nodeWithAttributesDataRecordModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(nodeWithAttributesDataRecordModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(nodeWithAttributesDataRecordModel.typeName(), "testString");
     assertEquals(nodeWithAttributesDataRecordModel.isBlockedForUpdate(), Boolean.valueOf(true));
     assertEquals(nodeWithAttributesDataRecordModel.isQuarantined(), Boolean.valueOf(true));
@@ -51,6 +51,8 @@ public class NodeWithAttributesDataRecordTest {
     NodeWithAttributesDataRecord nodeWithAttributesDataRecordModelNew = TestUtilities.deserialize(json, NodeWithAttributesDataRecord.class);
     assertTrue(nodeWithAttributesDataRecordModelNew instanceof NodeWithAttributesDataRecord);
     assertEquals(nodeWithAttributesDataRecordModelNew.type(), "record");
+    assertEquals(nodeWithAttributesDataRecordModelNew.attributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
+    assertEquals(nodeWithAttributesDataRecordModelNew.systemAttributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
     assertEquals(nodeWithAttributesDataRecordModelNew.typeName(), "testString");
     assertEquals(nodeWithAttributesDataRecordModelNew.isBlockedForUpdate(), Boolean.valueOf(true));
     assertEquals(nodeWithAttributesDataRecordModelNew.isQuarantined(), Boolean.valueOf(true));

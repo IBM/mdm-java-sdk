@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -38,6 +39,11 @@ public class SetResourceEntry extends GenericModel {
     private String dataType;
     private String category;
 
+    /**
+     * Instantiates a new Builder from an existing SetResourceEntry instance.
+     *
+     * @param setResourceEntry the instance to initialize the Builder with
+     */
     private Builder(SetResourceEntry setResourceEntry) {
       this.regex = setResourceEntry.regex;
       this.values = setResourceEntry.values;
@@ -61,9 +67,9 @@ public class SetResourceEntry extends GenericModel {
     }
 
     /**
-     * Adds an regex to regex.
+     * Adds a new element to regex.
      *
-     * @param regex the new regex
+     * @param regex the new element to be added
      * @return the SetResourceEntry builder
      */
     public Builder addRegex(String regex) {
@@ -77,9 +83,9 @@ public class SetResourceEntry extends GenericModel {
     }
 
     /**
-     * Adds an values to values.
+     * Adds a new element to values.
      *
-     * @param values the new values
+     * @param values the new element to be added
      * @return the SetResourceEntry builder
      */
     public Builder addValues(String values) {

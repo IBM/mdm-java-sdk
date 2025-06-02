@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -20,41 +21,46 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DataModelGroupTypeSystemProperties extends GenericModel {
 
+  @SerializedName("group_id")
+  protected DataModelSystemProperty groupId;
   @SerializedName("created_user")
   protected DataModelSystemProperty createdUser;
   @SerializedName("group_number")
   protected DataModelSystemProperty groupNumber;
-  @SerializedName("group_id")
-  protected DataModelSystemProperty groupId;
   @SerializedName("last_updated_user")
   protected DataModelSystemProperty lastUpdatedUser;
-  @SerializedName("group_source")
-  protected DataModelSystemProperty groupSource;
   @SerializedName("created_date")
   protected DataModelSystemProperty createdDate;
   @SerializedName("last_updated_date")
   protected DataModelSystemProperty lastUpdatedDate;
+  @SerializedName("group_source")
+  protected DataModelSystemProperty groupSource;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private DataModelSystemProperty groupId;
     private DataModelSystemProperty createdUser;
     private DataModelSystemProperty groupNumber;
-    private DataModelSystemProperty groupId;
     private DataModelSystemProperty lastUpdatedUser;
-    private DataModelSystemProperty groupSource;
     private DataModelSystemProperty createdDate;
     private DataModelSystemProperty lastUpdatedDate;
+    private DataModelSystemProperty groupSource;
 
+    /**
+     * Instantiates a new Builder from an existing DataModelGroupTypeSystemProperties instance.
+     *
+     * @param dataModelGroupTypeSystemProperties the instance to initialize the Builder with
+     */
     private Builder(DataModelGroupTypeSystemProperties dataModelGroupTypeSystemProperties) {
+      this.groupId = dataModelGroupTypeSystemProperties.groupId;
       this.createdUser = dataModelGroupTypeSystemProperties.createdUser;
       this.groupNumber = dataModelGroupTypeSystemProperties.groupNumber;
-      this.groupId = dataModelGroupTypeSystemProperties.groupId;
       this.lastUpdatedUser = dataModelGroupTypeSystemProperties.lastUpdatedUser;
-      this.groupSource = dataModelGroupTypeSystemProperties.groupSource;
       this.createdDate = dataModelGroupTypeSystemProperties.createdDate;
       this.lastUpdatedDate = dataModelGroupTypeSystemProperties.lastUpdatedDate;
+      this.groupSource = dataModelGroupTypeSystemProperties.groupSource;
     }
 
     /**
@@ -70,6 +76,17 @@ public class DataModelGroupTypeSystemProperties extends GenericModel {
      */
     public DataModelGroupTypeSystemProperties build() {
       return new DataModelGroupTypeSystemProperties(this);
+    }
+
+    /**
+     * Set the groupId.
+     *
+     * @param groupId the groupId
+     * @return the DataModelGroupTypeSystemProperties builder
+     */
+    public Builder groupId(DataModelSystemProperty groupId) {
+      this.groupId = groupId;
+      return this;
     }
 
     /**
@@ -95,17 +112,6 @@ public class DataModelGroupTypeSystemProperties extends GenericModel {
     }
 
     /**
-     * Set the groupId.
-     *
-     * @param groupId the groupId
-     * @return the DataModelGroupTypeSystemProperties builder
-     */
-    public Builder groupId(DataModelSystemProperty groupId) {
-      this.groupId = groupId;
-      return this;
-    }
-
-    /**
      * Set the lastUpdatedUser.
      *
      * @param lastUpdatedUser the lastUpdatedUser
@@ -113,17 +119,6 @@ public class DataModelGroupTypeSystemProperties extends GenericModel {
      */
     public Builder lastUpdatedUser(DataModelSystemProperty lastUpdatedUser) {
       this.lastUpdatedUser = lastUpdatedUser;
-      return this;
-    }
-
-    /**
-     * Set the groupSource.
-     *
-     * @param groupSource the groupSource
-     * @return the DataModelGroupTypeSystemProperties builder
-     */
-    public Builder groupSource(DataModelSystemProperty groupSource) {
-      this.groupSource = groupSource;
       return this;
     }
 
@@ -148,18 +143,29 @@ public class DataModelGroupTypeSystemProperties extends GenericModel {
       this.lastUpdatedDate = lastUpdatedDate;
       return this;
     }
+
+    /**
+     * Set the groupSource.
+     *
+     * @param groupSource the groupSource
+     * @return the DataModelGroupTypeSystemProperties builder
+     */
+    public Builder groupSource(DataModelSystemProperty groupSource) {
+      this.groupSource = groupSource;
+      return this;
+    }
   }
 
   protected DataModelGroupTypeSystemProperties() { }
 
   protected DataModelGroupTypeSystemProperties(Builder builder) {
+    groupId = builder.groupId;
     createdUser = builder.createdUser;
     groupNumber = builder.groupNumber;
-    groupId = builder.groupId;
     lastUpdatedUser = builder.lastUpdatedUser;
-    groupSource = builder.groupSource;
     createdDate = builder.createdDate;
     lastUpdatedDate = builder.lastUpdatedDate;
+    groupSource = builder.groupSource;
   }
 
   /**
@@ -169,6 +175,17 @@ public class DataModelGroupTypeSystemProperties extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the groupId.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the groupId
+   */
+  public DataModelSystemProperty groupId() {
+    return groupId;
   }
 
   /**
@@ -194,17 +211,6 @@ public class DataModelGroupTypeSystemProperties extends GenericModel {
   }
 
   /**
-   * Gets the groupId.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the groupId
-   */
-  public DataModelSystemProperty groupId() {
-    return groupId;
-  }
-
-  /**
    * Gets the lastUpdatedUser.
    *
    * Defines metadata of a system property.
@@ -213,17 +219,6 @@ public class DataModelGroupTypeSystemProperties extends GenericModel {
    */
   public DataModelSystemProperty lastUpdatedUser() {
     return lastUpdatedUser;
-  }
-
-  /**
-   * Gets the groupSource.
-   *
-   * Defines metadata of a system property.
-   *
-   * @return the groupSource
-   */
-  public DataModelSystemProperty groupSource() {
-    return groupSource;
   }
 
   /**
@@ -246,6 +241,17 @@ public class DataModelGroupTypeSystemProperties extends GenericModel {
    */
   public DataModelSystemProperty lastUpdatedDate() {
     return lastUpdatedDate;
+  }
+
+  /**
+   * Gets the groupSource.
+   *
+   * Defines metadata of a system property.
+   *
+   * @return the groupSource
+   */
+  public DataModelSystemProperty groupSource() {
+    return groupSource;
   }
 }
 

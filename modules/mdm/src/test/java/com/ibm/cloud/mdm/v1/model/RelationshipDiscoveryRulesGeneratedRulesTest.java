@@ -36,15 +36,15 @@ public class RelationshipDiscoveryRulesGeneratedRulesTest {
   @Test
   public void testRelationshipDiscoveryRulesGeneratedRules() throws Throwable {
     RelationshipDiscoveryRulesGeneratedRulesWrapper relationshipDiscoveryRulesGeneratedRulesWrapperModel = new RelationshipDiscoveryRulesGeneratedRulesWrapper.Builder()
-      .hierarchyTypes(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
-      .groupTypes(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
-      .entityTypes(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
-      .recordTypes(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", "testString"))
+      .groupTypes(java.util.Collections.singletonMap("key1", "testString"))
+      .entityTypes(java.util.Collections.singletonMap("key1", "testString"))
+      .recordTypes(java.util.Collections.singletonMap("key1", "testString"))
       .build();
-    assertEquals(relationshipDiscoveryRulesGeneratedRulesWrapperModel.hierarchyTypes(), new java.util.HashMap<String, String>() { { put("foo", "testString"); } });
-    assertEquals(relationshipDiscoveryRulesGeneratedRulesWrapperModel.groupTypes(), new java.util.HashMap<String, String>() { { put("foo", "testString"); } });
-    assertEquals(relationshipDiscoveryRulesGeneratedRulesWrapperModel.entityTypes(), new java.util.HashMap<String, String>() { { put("foo", "testString"); } });
-    assertEquals(relationshipDiscoveryRulesGeneratedRulesWrapperModel.recordTypes(), new java.util.HashMap<String, String>() { { put("foo", "testString"); } });
+    assertEquals(relationshipDiscoveryRulesGeneratedRulesWrapperModel.hierarchyTypes(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(relationshipDiscoveryRulesGeneratedRulesWrapperModel.groupTypes(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(relationshipDiscoveryRulesGeneratedRulesWrapperModel.entityTypes(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(relationshipDiscoveryRulesGeneratedRulesWrapperModel.recordTypes(), java.util.Collections.singletonMap("key1", "testString"));
 
     RelationshipDiscoveryRulesHierarchyGeneratedRules relationshipDiscoveryRulesHierarchyGeneratedRulesModel = new RelationshipDiscoveryRulesHierarchyGeneratedRules.Builder()
       .parent(relationshipDiscoveryRulesGeneratedRulesWrapperModel)

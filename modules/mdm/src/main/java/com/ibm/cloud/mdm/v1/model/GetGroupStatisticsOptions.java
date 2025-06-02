@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -30,6 +31,11 @@ public class GetGroupStatisticsOptions extends GenericModel {
   public static class Builder {
     private List<String> groupTypes;
 
+    /**
+     * Instantiates a new Builder from an existing GetGroupStatisticsOptions instance.
+     *
+     * @param getGroupStatisticsOptions the instance to initialize the Builder with
+     */
     private Builder(GetGroupStatisticsOptions getGroupStatisticsOptions) {
       this.groupTypes = getGroupStatisticsOptions.groupTypes;
     }
@@ -50,9 +56,9 @@ public class GetGroupStatisticsOptions extends GenericModel {
     }
 
     /**
-     * Adds an groupTypes to groupTypes.
+     * Adds a new element to groupTypes.
      *
-     * @param groupTypes the new groupTypes
+     * @param groupTypes the new element to be added
      * @return the GetGroupStatisticsOptions builder
      */
     public Builder addGroupTypes(String groupTypes) {

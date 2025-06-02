@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -32,6 +33,11 @@ public class SuggestConfiguratorDataMappingsOptions extends GenericModel {
     private String recordType;
     private List<DataMapping> columns;
 
+    /**
+     * Instantiates a new Builder from an existing SuggestConfiguratorDataMappingsOptions instance.
+     *
+     * @param suggestConfiguratorDataMappingsOptions the instance to initialize the Builder with
+     */
     private Builder(SuggestConfiguratorDataMappingsOptions suggestConfiguratorDataMappingsOptions) {
       this.recordType = suggestConfiguratorDataMappingsOptions.recordType;
       this.columns = suggestConfiguratorDataMappingsOptions.columns;
@@ -62,9 +68,9 @@ public class SuggestConfiguratorDataMappingsOptions extends GenericModel {
     }
 
     /**
-     * Adds an columns to columns.
+     * Adds a new element to columns.
      *
-     * @param columns the new columns
+     * @param columns the new element to be added
      * @return the SuggestConfiguratorDataMappingsOptions builder
      */
     public Builder addColumns(DataMapping columns) {

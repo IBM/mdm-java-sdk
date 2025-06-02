@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -29,6 +30,11 @@ public class DataModelAttributeTypeSystemProperties extends GenericModel {
   public static class Builder {
     private DataModelSystemProperty attributeLastUpdated;
 
+    /**
+     * Instantiates a new Builder from an existing DataModelAttributeTypeSystemProperties instance.
+     *
+     * @param dataModelAttributeTypeSystemProperties the instance to initialize the Builder with
+     */
     private Builder(DataModelAttributeTypeSystemProperties dataModelAttributeTypeSystemProperties) {
       this.attributeLastUpdated = dataModelAttributeTypeSystemProperties.attributeLastUpdated;
     }

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1;
 
 import com.ibm.cloud.mdm.v1.Mdm;
@@ -178,6 +179,7 @@ import com.ibm.cloud.mdm.v1.model.DataModelSystemProperties;
 import com.ibm.cloud.mdm.v1.model.DataModelSystemProperty;
 import com.ibm.cloud.mdm.v1.model.DataNode;
 import com.ibm.cloud.mdm.v1.model.DataQualityIssue;
+import com.ibm.cloud.mdm.v1.model.DataQualityIssueEntities;
 import com.ibm.cloud.mdm.v1.model.DataRecord;
 import com.ibm.cloud.mdm.v1.model.DataRecordResponse;
 import com.ibm.cloud.mdm.v1.model.DataRecordsForEntityPager;
@@ -275,6 +277,7 @@ import com.ibm.cloud.mdm.v1.model.GetDataRelationshipForRecordOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataRelationshipOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataStorageMetadataOptions;
 import com.ibm.cloud.mdm.v1.model.GetDataSubgraphOptions;
+import com.ibm.cloud.mdm.v1.model.GetDefaultMatchingFields;
 import com.ibm.cloud.mdm.v1.model.GetDefaultMatchingFieldsOptions;
 import com.ibm.cloud.mdm.v1.model.GetEntityClusters;
 import com.ibm.cloud.mdm.v1.model.GetEntityClustersCluster;
@@ -394,6 +397,7 @@ import com.ibm.cloud.mdm.v1.model.MatchAttribute;
 import com.ibm.cloud.mdm.v1.model.MatchEntityCountStats;
 import com.ibm.cloud.mdm.v1.model.MatchEntitySizeStats;
 import com.ibm.cloud.mdm.v1.model.MatchStatistics;
+import com.ibm.cloud.mdm.v1.model.MatchingDataQualityIssue;
 import com.ibm.cloud.mdm.v1.model.MatchingJobStatusPollingMetadata;
 import com.ibm.cloud.mdm.v1.model.Metadata;
 import com.ibm.cloud.mdm.v1.model.ModelValidateResponse;
@@ -589,7 +593,6 @@ import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.security.Authenticator;
 import com.ibm.cloud.sdk.core.security.NoAuthAuthenticator;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.sdk.core.util.EnvironmentUtils;
 import com.ibm.cloud.sdk.core.util.RequestUtils;
 import java.io.IOException;
 import java.io.InputStream;
@@ -600,10 +603,6 @@ import java.util.Map;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.testng.PowerMockTestCase;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -612,9 +611,7 @@ import static org.testng.Assert.*;
 /**
  * Unit test class for the Mdm service.
  */
-@PrepareForTest({ EnvironmentUtils.class })
-@PowerMockIgnore({"javax.net.ssl.*", "org.mockito.*"})
-public class MdmTest extends PowerMockTestCase {
+public class MdmTest {
 
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
@@ -642,7 +639,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetConfiguratorConfigDataModelWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"mapKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"is_model_published\": \"isModelPublished\", \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}";
+    String mockResponseBody = "{\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"anyKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"label_for_relationship\": \"labelForRelationship\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"is_model_published\": \"isModelPublished\", \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}";
     String getConfiguratorConfigDataModelPath = "/mdm/v1/config_data_model";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -685,7 +682,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceConfiguratorConfigDataModelWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"mapKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"is_model_published\": \"isModelPublished\", \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}";
+    String mockResponseBody = "{\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"anyKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"label_for_relationship\": \"labelForRelationship\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"is_model_published\": \"isModelPublished\", \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}";
     String replaceConfiguratorConfigDataModelPath = "/mdm/v1/config_data_model";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -732,13 +729,13 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelGroupTypeSystemProperties model
     DataModelGroupTypeSystemProperties dataModelGroupTypeSystemPropertiesModel = new DataModelGroupTypeSystemProperties.Builder()
+      .groupId(dataModelSystemPropertyModel)
       .createdUser(dataModelSystemPropertyModel)
       .groupNumber(dataModelSystemPropertyModel)
-      .groupId(dataModelSystemPropertyModel)
       .lastUpdatedUser(dataModelSystemPropertyModel)
-      .groupSource(dataModelSystemPropertyModel)
       .createdDate(dataModelSystemPropertyModel)
       .lastUpdatedDate(dataModelSystemPropertyModel)
+      .groupSource(dataModelSystemPropertyModel)
       .build();
 
     // Construct an instance of the DataModelEntityTypeSystemProperties model
@@ -812,7 +809,7 @@ public class MdmTest extends PowerMockTestCase {
       .description("testString")
       .label("testString")
       .classification("testString")
-      .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
+      .fields(java.util.Collections.singletonMap("key1", dataModelFieldModel))
       .build();
 
     // Construct an instance of the DataModelRelationshipEndpoint model
@@ -846,10 +843,11 @@ public class MdmTest extends PowerMockTestCase {
       .internal(true)
       .labelFromSource("testString")
       .labelFromTarget("testString")
+      .labelForRelationship("testString")
       .directional(true)
       .description("testString")
       .rules(java.util.Arrays.asList(dataModelRelationshipRuleModel))
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .cardinality("testString")
@@ -861,16 +859,16 @@ public class MdmTest extends PowerMockTestCase {
       .xDefault(true)
       .persistCompView(true)
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .type("testString")
       .build();
 
     // Construct an instance of the DataModelRecordType model
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", dataModelEntityTypeModel))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
 
@@ -879,15 +877,15 @@ public class MdmTest extends PowerMockTestCase {
       .nodeType("testString")
       .nodeRelationshipType("testString")
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
-      .nodeAssociations(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .nodeAssociations(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the DataModelNodeType model
     DataModelNodeType dataModelNodeTypeModel = new DataModelNodeType.Builder()
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .build();
@@ -897,20 +895,20 @@ public class MdmTest extends PowerMockTestCase {
       .memberLimit(Long.valueOf("26"))
       .groupAssociations(java.util.Arrays.asList("testString"))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
 
     // Construct an instance of the ReplaceConfiguratorConfigDataModelOptions model
     ReplaceConfiguratorConfigDataModelOptions replaceConfiguratorConfigDataModelOptionsModel = new ReplaceConfiguratorConfigDataModelOptions.Builder()
       .systemProperties(dataModelSystemPropertiesModel)
-      .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
-      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
+      .attributeTypes(java.util.Collections.singletonMap("key1", dataModelAttributeTypeModel))
+      .relationshipTypes(java.util.Collections.singletonMap("key1", dataModelRelationshipTypeModel))
       .locale("testString")
-      .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
-      .hierarchyTypes(new java.util.HashMap<String, DataModelHierarchyType>() { { put("foo", dataModelHierarchyTypeModel); } })
-      .nodeTypes(new java.util.HashMap<String, DataModelNodeType>() { { put("foo", dataModelNodeTypeModel); } })
-      .groupTypes(new java.util.HashMap<String, DataModelGroupType>() { { put("foo", dataModelGroupTypeModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", dataModelRecordTypeModel))
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", dataModelHierarchyTypeModel))
+      .nodeTypes(java.util.Collections.singletonMap("key1", dataModelNodeTypeModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", dataModelGroupTypeModel))
       .isModelPublished("testString")
       .build();
 
@@ -1319,7 +1317,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListConfiguratorPairAnalysisWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"pair_offset\": 12, \"tuned_config\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"base_config\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"pair_gen_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"tuning_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"status\": \"Completed\", \"record_type\": \"person\", \"entity_type\": \"person_entity\"}";
+    String mockResponseBody = "{\"pair_offset\": 12, \"tuned_config\": {\"anyKey\": \"anyValue\"}, \"base_config\": {\"anyKey\": \"anyValue\"}, \"pair_gen_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"tuning_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"status\": \"Completed\", \"record_type\": \"person\", \"entity_type\": \"person_entity\"}";
     String listConfiguratorPairAnalysisPath = "/mdm/v1/pair_analysis";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -1362,7 +1360,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testAddConfiguratorPairAnalysisWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"pair_offset\": 12, \"tuned_config\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"base_config\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"pair_gen_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"tuning_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"status\": \"Completed\", \"record_type\": \"person\", \"entity_type\": \"person_entity\"}";
+    String mockResponseBody = "{\"pair_offset\": 12, \"tuned_config\": {\"anyKey\": \"anyValue\"}, \"base_config\": {\"anyKey\": \"anyValue\"}, \"pair_gen_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"tuning_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"status\": \"Completed\", \"record_type\": \"person\", \"entity_type\": \"person_entity\"}";
     String addConfiguratorPairAnalysisPath = "/mdm/v1/pair_analysis";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -1372,8 +1370,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the AddConfiguratorPairAnalysisOptions model
     AddConfiguratorPairAnalysisOptions addConfiguratorPairAnalysisOptionsModel = new AddConfiguratorPairAnalysisOptions.Builder()
       .pairOffset(Long.valueOf("1"))
-      .tunedConfig(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .baseConfig(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .tunedConfig(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .baseConfig(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .pairGenJobId("121")
       .tuningJobId("121")
       .status("Completed")
@@ -1456,7 +1454,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testPatchConfiguratorPairAnalysisWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"pair_offset\": 13, \"tuned_config\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"base_config\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"pair_gen_job_id\": \"b221364e-b98c-11ec-8422-0242ac120007\", \"tuning_job_id\": \"b221364e-b98c-11ec-8422-0242ac1200664\", \"status\": \"Completed\"}";
+    String mockResponseBody = "{\"pair_offset\": 13, \"tuned_config\": {\"anyKey\": \"anyValue\"}, \"base_config\": {\"anyKey\": \"anyValue\"}, \"pair_gen_job_id\": \"b221364e-b98c-11ec-8422-0242ac120007\", \"tuning_job_id\": \"b221364e-b98c-11ec-8422-0242ac1200664\", \"status\": \"Completed\"}";
     String patchConfiguratorPairAnalysisPath = "/mdm/v1/pair_analysis";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -1468,8 +1466,8 @@ public class MdmTest extends PowerMockTestCase {
       .recordType("testString")
       .entityType("testString")
       .pairOffset(Long.valueOf("1"))
-      .tunedConfig(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .baseConfig(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .tunedConfig(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .baseConfig(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .pairGenJobId("121")
       .tuningJobId("121")
       .status("Completed")
@@ -1517,7 +1515,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetConfiguratorPairAnalysisWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"pair_offset\": 12, \"tuned_config\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"base_config\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"pair_gen_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"tuning_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"status\": \"Completed\", \"record_type\": \"person\", \"entity_type\": \"person_entity\"}";
+    String mockResponseBody = "{\"pair_offset\": 12, \"tuned_config\": {\"anyKey\": \"anyValue\"}, \"base_config\": {\"anyKey\": \"anyValue\"}, \"pair_gen_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"tuning_job_id\": \"b221364e-b98c-11ec-8422-0242ac120002\", \"status\": \"Completed\", \"record_type\": \"person\", \"entity_type\": \"person_entity\"}";
     String getConfiguratorPairAnalysisPath = "/mdm/v1/pair_analysis/data";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -1806,7 +1804,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetConfiguratorConfigurationMetadataWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"name\": \"name\", \"description\": \"description\", \"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"pair_analysis\": {\"mapKey\": {\"mapKey\": {\"job_id\": \"jobId\", \"status\": \"status\", \"pair_offset\": 10, \"tuned_configuration\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"current_configuration\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}}";
+    String mockResponseBody = "{\"name\": \"name\", \"description\": \"description\", \"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"pair_analysis\": {\"mapKey\": {\"mapKey\": {\"job_id\": \"jobId\", \"status\": \"status\", \"pair_offset\": 10, \"tuned_configuration\": {\"anyKey\": \"anyValue\"}, \"current_configuration\": {\"anyKey\": \"anyValue\"}}}}}";
     String getConfiguratorConfigurationMetadataPath = "/mdm/v1/configuration_metadata";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -1849,7 +1847,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceConfiguratorConfigurationMetadataWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"name\": \"name\", \"description\": \"description\", \"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"pair_analysis\": {\"mapKey\": {\"mapKey\": {\"job_id\": \"jobId\", \"status\": \"status\", \"pair_offset\": 10, \"tuned_configuration\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"current_configuration\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}}";
+    String mockResponseBody = "{\"name\": \"name\", \"description\": \"description\", \"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"pair_analysis\": {\"mapKey\": {\"mapKey\": {\"job_id\": \"jobId\", \"status\": \"status\", \"pair_offset\": 10, \"tuned_configuration\": {\"anyKey\": \"anyValue\"}, \"current_configuration\": {\"anyKey\": \"anyValue\"}}}}}";
     String replaceConfiguratorConfigurationMetadataPath = "/mdm/v1/configuration_metadata";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -1861,8 +1859,8 @@ public class MdmTest extends PowerMockTestCase {
       .jobId("testString")
       .status("testString")
       .pairOffset(Long.valueOf("26"))
-      .tunedConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .currentConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .tunedConfiguration(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .currentConfiguration(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the ReplaceConfiguratorConfigurationMetadataOptions model
@@ -1871,7 +1869,7 @@ public class MdmTest extends PowerMockTestCase {
       .description("sample configuration metadata")
       .projectId("52a72453-597c-4fb3-a518-c815225e3ea9")
       .catalogId("8a3cc967-81c4-49a3-86a2-208059819b24")
-      .pairAnalysis(new java.util.HashMap<String, Map<String, ConfigurationMetadataEntity>>() { { put("foo", new java.util.HashMap<String, ConfigurationMetadataEntity>() { { put("foo", configurationMetadataEntityModel); } }); } })
+      .pairAnalysis(java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", configurationMetadataEntityModel)))
       .build();
 
     // Invoke replaceConfiguratorConfigurationMetadata() with a valid options model and verify the result
@@ -1907,7 +1905,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testUpdateConfiguratorConfigurationMetadataWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"name\": \"name\", \"description\": \"description\", \"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"pair_analysis\": {\"mapKey\": {\"mapKey\": {\"job_id\": \"jobId\", \"status\": \"status\", \"pair_offset\": 10, \"tuned_configuration\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"current_configuration\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}}";
+    String mockResponseBody = "{\"name\": \"name\", \"description\": \"description\", \"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"pair_analysis\": {\"mapKey\": {\"mapKey\": {\"job_id\": \"jobId\", \"status\": \"status\", \"pair_offset\": 10, \"tuned_configuration\": {\"anyKey\": \"anyValue\"}, \"current_configuration\": {\"anyKey\": \"anyValue\"}}}}}";
     String updateConfiguratorConfigurationMetadataPath = "/mdm/v1/configuration_metadata";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -1919,8 +1917,8 @@ public class MdmTest extends PowerMockTestCase {
       .jobId("testString")
       .status("testString")
       .pairOffset(Long.valueOf("26"))
-      .tunedConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .currentConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .tunedConfiguration(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .currentConfiguration(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the UpdateConfiguratorConfigurationMetadataOptions model
@@ -1929,7 +1927,7 @@ public class MdmTest extends PowerMockTestCase {
       .description("sample configuration metadata")
       .projectId("52a72453-597c-4fb3-a518-c815225e3ea9")
       .catalogId("8a3cc967-81c4-49a3-86a2-208059819b24")
-      .pairAnalysis(new java.util.HashMap<String, Map<String, ConfigurationMetadataEntity>>() { { put("foo", new java.util.HashMap<String, ConfigurationMetadataEntity>() { { put("foo", configurationMetadataEntityModel); } }); } })
+      .pairAnalysis(java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", configurationMetadataEntityModel)))
       .build();
 
     // Invoke updateConfiguratorConfigurationMetadata() with a valid options model and verify the result
@@ -1965,7 +1963,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testRegenerateExistingMappingPatternIdWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"name\": \"name\", \"description\": \"description\", \"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"pair_analysis\": {\"mapKey\": {\"mapKey\": {\"job_id\": \"jobId\", \"status\": \"status\", \"pair_offset\": 10, \"tuned_configuration\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"current_configuration\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}}";
+    String mockResponseBody = "{\"name\": \"name\", \"description\": \"description\", \"project_id\": \"0e4bb17d-4871-40a5-b5a1-55b2866fe000\", \"catalog_id\": \"ee1de5f6-54da-4246-95bc-7bc282151000\", \"id\": \"0e4bb17d-4871-40a5-b5a1-0000000\", \"last_update_date\": \"lastUpdateDate\", \"created_date\": \"createdDate\", \"pair_analysis\": {\"mapKey\": {\"mapKey\": {\"job_id\": \"jobId\", \"status\": \"status\", \"pair_offset\": 10, \"tuned_configuration\": {\"anyKey\": \"anyValue\"}, \"current_configuration\": {\"anyKey\": \"anyValue\"}}}}}";
     String regenerateExistingMappingPatternIdPath = "/mdm/v1/configuration_metadata/regenerate_mapping_pattern_id";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -2472,7 +2470,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetSnapshotByIdWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"algorithms\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"compare_spec_resources\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"data_model\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"map_resources\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"set_resources\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"composite_rules\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"snapshot_summary\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"match_settings\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"mapping_patterns\": [{\"anyKey\": \"anyValue\"}]}";
+    String mockResponseBody = "{\"algorithms\": {\"anyKey\": \"anyValue\"}, \"compare_spec_resources\": {\"anyKey\": \"anyValue\"}, \"data_model\": {\"anyKey\": \"anyValue\"}, \"map_resources\": {\"anyKey\": \"anyValue\"}, \"set_resources\": {\"anyKey\": \"anyValue\"}, \"composite_rules\": {\"anyKey\": \"anyValue\"}, \"snapshot_summary\": {\"anyKey\": \"anyValue\"}, \"match_settings\": {\"anyKey\": \"anyValue\"}, \"mapping_patterns\": [{\"anyKey\": \"anyValue\"}]}";
     String getSnapshotByIdPath = "/mdm/v1/snapshots/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -2578,7 +2576,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testDeleteSnapshotByIdWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"algorithms\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"compare_spec_resources\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"data_model\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"map_resources\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"set_resources\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"composite_rules\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"snapshot_summary\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"match_settings\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"mapping_patterns\": [{\"anyKey\": \"anyValue\"}]}";
+    String mockResponseBody = "{\"algorithms\": {\"anyKey\": \"anyValue\"}, \"compare_spec_resources\": {\"anyKey\": \"anyValue\"}, \"data_model\": {\"anyKey\": \"anyValue\"}, \"map_resources\": {\"anyKey\": \"anyValue\"}, \"set_resources\": {\"anyKey\": \"anyValue\"}, \"composite_rules\": {\"anyKey\": \"anyValue\"}, \"snapshot_summary\": {\"anyKey\": \"anyValue\"}, \"match_settings\": {\"anyKey\": \"anyValue\"}, \"mapping_patterns\": [{\"anyKey\": \"anyValue\"}]}";
     String deleteSnapshotByIdPath = "/mdm/v1/snapshots/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -2722,7 +2720,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testCompareSnapshotWithCurrentConfigWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"data_model\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"match_settings\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"composite_rules\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"snapshot_summary\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"compatibility_result\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}";
+    String mockResponseBody = "{\"data_model\": {\"anyKey\": \"anyValue\"}, \"match_settings\": {\"anyKey\": \"anyValue\"}, \"composite_rules\": {\"anyKey\": \"anyValue\"}, \"snapshot_summary\": {\"anyKey\": \"anyValue\"}, \"compatibility_result\": {\"anyKey\": \"anyValue\"}}";
     String compareSnapshotWithCurrentConfigPath = "/mdm/v1/snapshots/compare";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -2731,11 +2729,11 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CompareSnapshotWithCurrentConfigOptions model
     CompareSnapshotWithCurrentConfigOptions compareSnapshotWithCurrentConfigOptionsModel = new CompareSnapshotWithCurrentConfigOptions.Builder()
-      .dataModel(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .matchSettings(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .compositeRules(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .algorithms(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .mappingPatterns(java.util.Arrays.asList(TestUtilities.createMockMap()))
+      .dataModel(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .matchSettings(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .compositeRules(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .algorithms(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .mappingPatterns(java.util.Arrays.asList(java.util.Collections.singletonMap("anyKey", "anyValue")))
       .build();
 
     // Invoke compareSnapshotWithCurrentConfig() with a valid options model and verify the result
@@ -3331,7 +3329,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testPreviewDataEntityGivenRecordsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"entity\": {\"id\": \"id\", \"type\": \"entity\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_count\": 11, \"includes_composite_view\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"entity\": {\"id\": \"id\", \"type\": \"entity\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_count\": 11, \"includes_composite_view\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String previewDataEntityGivenRecordsPath = "/mdm/v1/entities";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -3385,7 +3383,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRecordsForEntityWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"workflows\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"workflow_type\": \"workflowType\", \"last_updated_user\": \"lastUpdatedUser\", \"last_updated_date\": 15, \"entities\": [{\"mapKey\": {\"anyKey\": \"anyValue\"}}], \"actions\": [{\"action_type\": \"actionType\", \"action_values\": {\"mapKey\": \"anyValue\"}}]}]}";
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"workflows\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"workflow_type\": \"workflowType\", \"last_updated_user\": \"lastUpdatedUser\", \"last_updated_date\": 15, \"entities\": [{\"anyKey\": \"anyValue\"}], \"actions\": [{\"action_type\": \"actionType\", \"action_values\": {\"anyKey\": \"anyValue\"}}]}]}";
     String listDataRecordsForEntityPath = "/mdm/v1/entities/testString/records";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -3396,7 +3394,7 @@ public class MdmTest extends PowerMockTestCase {
     ListDataRecordsForEntityOptions listDataRecordsForEntityOptionsModel = new ListDataRecordsForEntityOptions.Builder()
       .id("testString")
       .limit(Long.valueOf("10"))
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .include(java.util.Arrays.asList("legal_name.given_name"))
       .exclude(java.util.Arrays.asList("legal_name.given_name"))
       .includeTotalCount(true)
@@ -3420,7 +3418,7 @@ public class MdmTest extends PowerMockTestCase {
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(query.get("include"), RequestUtils.join(java.util.Arrays.asList("legal_name.given_name"), ","));
     assertEquals(query.get("exclude"), RequestUtils.join(java.util.Arrays.asList("legal_name.given_name"), ","));
     assertEquals(Boolean.valueOf(query.get("include_total_count")), Boolean.valueOf(true));
@@ -3447,8 +3445,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRecordsForEntityWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -3484,8 +3482,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRecordsForEntityWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -3517,7 +3515,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetDataEntityWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"entity\": {\"id\": \"id\", \"type\": \"entity\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_count\": 11, \"includes_composite_view\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"entity\": {\"id\": \"id\", \"type\": \"entity\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_count\": 11, \"includes_composite_view\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String getDataEntityPath = "/mdm/v1/entities/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -3573,7 +3571,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceDataEntityWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"entity\": {\"id\": \"id\", \"type\": \"entity\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_count\": 11, \"includes_composite_view\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"entity\": {\"id\": \"id\", \"type\": \"entity\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_count\": 11, \"includes_composite_view\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String replaceDataEntityPath = "/mdm/v1/entities/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -3584,11 +3582,11 @@ public class MdmTest extends PowerMockTestCase {
     ReplaceDataEntityOptions replaceDataEntityOptionsModel = new ReplaceDataEntityOptions.Builder()
       .id("testString")
       .type("entity")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("person_entity")
       .recordCount(Long.valueOf("26"))
       .includesCompositeView(true)
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Invoke replaceDataEntity() with a valid options model and verify the result
@@ -3631,7 +3629,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelationshipsForEntityWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}]}";
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}]}";
     String listDataRelationshipsForEntityPath = "/mdm/v1/entities/testString/relationships";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -3643,7 +3641,7 @@ public class MdmTest extends PowerMockTestCase {
       .id("testString")
       .relationshipTypes(java.util.Arrays.asList("testString"))
       .includeRecordRelationships("false")
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .limit(Long.valueOf("10"))
       .sourceInclude(java.util.Arrays.asList("all"))
       .targetInclude(java.util.Arrays.asList("all"))
@@ -3668,7 +3666,7 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("relationship_types"), RequestUtils.join(java.util.Arrays.asList("testString"), ","));
     assertEquals(query.get("include_record_relationships"), "false");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(query.get("source_include"), RequestUtils.join(java.util.Arrays.asList("all"), ","));
     assertEquals(query.get("target_include"), RequestUtils.join(java.util.Arrays.asList("all"), ","));
@@ -3695,8 +3693,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelationshipsForEntityWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -3733,8 +3731,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelationshipsForEntityWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -3767,7 +3765,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelatedRecordsForEntityWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"related_records\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}]}";
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"related_records\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}]}";
     String listDataRelatedRecordsForEntityPath = "/mdm/v1/entities/testString/related_records";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -3780,7 +3778,7 @@ public class MdmTest extends PowerMockTestCase {
       .recordType("testString")
       .relationshipType("testString")
       .limit(Long.valueOf("10"))
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .include(java.util.Arrays.asList("legal_name.given_name"))
       .exclude(java.util.Arrays.asList("legal_name.given_name"))
       .includeTotalCount(true)
@@ -3806,7 +3804,7 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("record_type"), "testString");
     assertEquals(query.get("relationship_type"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(query.get("include"), RequestUtils.join(java.util.Arrays.asList("legal_name.given_name"), ","));
     assertEquals(query.get("exclude"), RequestUtils.join(java.util.Arrays.asList("legal_name.given_name"), ","));
     assertEquals(Boolean.valueOf(query.get("include_total_count")), Boolean.valueOf(true));
@@ -3833,8 +3831,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelatedRecordsForEntityWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
-    String mockResponsePage2 = "{\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
+    String mockResponsePage2 = "{\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -3872,8 +3870,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelatedRecordsForEntityWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
-    String mockResponsePage2 = "{\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
+    String mockResponsePage2 = "{\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -3916,7 +3914,7 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the ListDataExportsOptions model
     ListDataExportsOptions listDataExportsOptionsModel = new ListDataExportsOptions.Builder()
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .limit(Long.valueOf("10"))
       .includeExpired(true)
       .build();
@@ -3938,7 +3936,7 @@ public class MdmTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(Boolean.valueOf(query.get("include_expired")), Boolean.valueOf(true));
   }
@@ -4172,9 +4170,9 @@ public class MdmTest extends PowerMockTestCase {
     // Invoke getDataExportDownload() with a valid options model and verify the result
     Response<InputStream> response = mdmService.getDataExportDownload(getDataExportDownloadOptionsModel).execute();
     assertNotNull(response);
-    InputStream responseObj = response.getResult();
-    assertNotNull(responseObj);
-    responseObj.close();
+    try (InputStream responseObj = response.getResult();) {
+      assertNotNull(responseObj);
+    }
 
     // Verify the contents of the request sent to the mock server
     RecordedRequest request = server.takeRequest();
@@ -4271,7 +4269,7 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the GetAllExportJobsOptions model
     GetAllExportJobsOptions getAllExportJobsOptionsModel = new GetAllExportJobsOptions.Builder()
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .limit(Long.valueOf("10"))
       .build();
 
@@ -4292,7 +4290,7 @@ public class MdmTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
   }
 
@@ -4434,7 +4432,7 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the AddExportJobOptions model
     AddExportJobOptions addExportJobOptionsModel = new AddExportJobOptions.Builder()
       .id("testString")
-      .exportJobs(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
+      .exportJobs(java.util.Collections.singletonMap("key1", "testString"))
       .exportsId("testString")
       .build();
 
@@ -4532,7 +4530,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetGroupWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"group\": {\"id\": \"id\", \"type\": \"group\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"group_associations\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"group_number\": 11, \"member_count\": 11}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"group\": {\"id\": \"id\", \"type\": \"group\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"group_associations\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"group_number\": 11, \"member_count\": 11}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String getGroupPath = "/mdm/v1/groups/26";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -4544,8 +4542,8 @@ public class MdmTest extends PowerMockTestCase {
       .id(Long.valueOf("26"))
       .groupType("testString")
       .includedAssociations("none")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .computeMemberCount(true)
       .build();
 
@@ -4568,8 +4566,8 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("group_type"), "testString");
     assertEquals(query.get("included_associations"), "none");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("50"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(Boolean.valueOf(query.get("compute_member_count")), Boolean.valueOf(true));
   }
 
@@ -4594,7 +4592,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testPutGroupWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"group\": {\"id\": \"id\", \"type\": \"group\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"group_associations\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"group_number\": 11, \"member_count\": 11}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"group\": {\"id\": \"id\", \"type\": \"group\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"group_associations\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"group_number\": 11, \"member_count\": 11}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String putGroupPath = "/mdm/v1/groups/26";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -4604,8 +4602,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the NodeWithAttributesDataRecord model
     NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
@@ -4614,8 +4612,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataRelationship model
     DataRelationship dataRelationshipModel = new DataRelationship.Builder()
       .type("relationship")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .source(nodeWithAttributesModel)
       .target(nodeWithAttributesModel)
@@ -4625,9 +4623,9 @@ public class MdmTest extends PowerMockTestCase {
     PutGroupOptions putGroupOptionsModel = new PutGroupOptions.Builder()
       .id(Long.valueOf("26"))
       .type("group")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .groupAssociations(java.util.Arrays.asList(dataRelationshipModel))
       .groupNumber(Long.valueOf("26"))
       .memberCount(Long.valueOf("26"))
@@ -4726,7 +4724,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetAllGroupsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"group\": {\"id\": \"id\", \"type\": \"group\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"group_associations\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"group_number\": 11, \"member_count\": 11}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"group\": {\"id\": \"id\", \"type\": \"group\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"group_associations\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"group_number\": 11, \"member_count\": 11}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String getAllGroupsPath = "/mdm/v1/groups/by_associated_object/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -4738,8 +4736,8 @@ public class MdmTest extends PowerMockTestCase {
       .id("testString")
       .type("testString")
       .typeName("testString")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .includeTotalCount(false)
       .build();
 
@@ -4762,8 +4760,8 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("type"), "testString");
     assertEquals(query.get("type_name"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("50"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(Boolean.valueOf(query.get("include_total_count")), Boolean.valueOf(false));
   }
 
@@ -4788,7 +4786,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testCreateGroupWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"group\": {\"id\": \"id\", \"type\": \"group\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"group_associations\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"group_number\": 11, \"member_count\": 11}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"group\": {\"id\": \"id\", \"type\": \"group\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"group_associations\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"group_number\": 11, \"member_count\": 11}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String createGroupPath = "/mdm/v1/groups";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -4798,8 +4796,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the NodeWithAttributesDataRecord model
     NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
@@ -4808,8 +4806,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataRelationship model
     DataRelationship dataRelationshipModel = new DataRelationship.Builder()
       .type("relationship")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("generic_group_relationship")
       .source(nodeWithAttributesModel)
       .target(nodeWithAttributesModel)
@@ -4818,9 +4816,9 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the CreateGroupOptions model
     CreateGroupOptions createGroupOptionsModel = new CreateGroupOptions.Builder()
       .type("group")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("generic_group")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .groupAssociations(java.util.Arrays.asList(dataRelationshipModel))
       .groupNumber(Long.valueOf("26"))
       .memberCount(Long.valueOf("26"))
@@ -4912,7 +4910,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetAllHierarchyWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"hierarchy\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
+    String mockResponseBody = "{\"hierarchy\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
     String getAllHierarchyPath = "/mdm/v1/hierarchies/by_associated_object/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -4924,8 +4922,8 @@ public class MdmTest extends PowerMockTestCase {
       .id("testString")
       .type("testString")
       .typeName("testString")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("200"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .includeTotalCount(false)
       .nodeCentricView(false)
       .build();
@@ -4949,8 +4947,8 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("type"), "testString");
     assertEquals(query.get("type_name"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("200"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(Boolean.valueOf(query.get("include_total_count")), Boolean.valueOf(false));
     assertEquals(Boolean.valueOf(query.get("node_centric_view")), Boolean.valueOf(false));
   }
@@ -4976,7 +4974,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetHierarchyWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"hierarchy\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
+    String mockResponseBody = "{\"hierarchy\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
     String getHierarchyPath = "/mdm/v1/hierarchies/26";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -4987,12 +4985,12 @@ public class MdmTest extends PowerMockTestCase {
     GetHierarchyOptions getHierarchyOptionsModel = new GetHierarchyOptions.Builder()
       .id(Long.valueOf("26"))
       .hierarchyType("testString")
-      .fromLevel(Long.valueOf("26"))
-      .toLevel(Long.valueOf("26"))
+      .fromLevel(Long.valueOf("0"))
+      .toLevel(Long.valueOf("0"))
       .includedAssociations("testString")
       .orphanNodesOnly("false")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("200"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .build();
 
     // Invoke getHierarchy() with a valid options model and verify the result
@@ -5013,12 +5011,12 @@ public class MdmTest extends PowerMockTestCase {
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("hierarchy_type"), "testString");
-    assertEquals(Long.valueOf(query.get("from_level")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("to_level")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("from_level")), Long.valueOf("0"));
+    assertEquals(Long.valueOf(query.get("to_level")), Long.valueOf("0"));
     assertEquals(query.get("included_associations"), "testString");
     assertEquals(query.get("orphan_nodes_only"), "false");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("200"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
   }
 
   // Test the getHierarchy operation with and without retries enabled
@@ -5095,7 +5093,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testUpdateDataHierarchyWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"patch_hierarchy\": {\"upserts\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"deletions\": {\"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}]}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"patch_hierarchy\": {\"upserts\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"deletions\": {\"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}]}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String updateDataHierarchyPath = "/mdm/v1/hierarchies/26";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -5105,8 +5103,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataNode model
     DataNode dataNodeModel = new DataNode.Builder()
       .type("node")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("hierarchy_node")
       .referenceId("11")
       .build();
@@ -5114,8 +5112,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the NodeWithAttributesDataRecord model
     NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("hierarchy_node")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
@@ -5124,8 +5122,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataRelationship model
     DataRelationship dataRelationshipModel = new DataRelationship.Builder()
       .type("relationship")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("hierarchy_node_relationship")
       .source(nodeWithAttributesModel)
       .target(nodeWithAttributesModel)
@@ -5134,13 +5132,13 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the PatchHierarchyUpserts model
     PatchHierarchyUpserts patchHierarchyUpsertsModel = new PatchHierarchyUpserts.Builder()
       .type("hierarchy")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("generic_hierarchy")
       .referenceId("testString")
       .nodes(java.util.Arrays.asList(dataNodeModel))
       .relationships(java.util.Arrays.asList(dataRelationshipModel))
-      .associatedObjects(java.util.Arrays.asList(TestUtilities.createMockMap()))
+      .associatedObjects(java.util.Arrays.asList(java.util.Collections.singletonMap("anyKey", "anyValue")))
       .build();
 
     // Construct an instance of the PatchHierarchyDeletions model
@@ -5198,7 +5196,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetHierarchyConfigurationWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"hierarchy_statistics\": {\"mapKey\": {\"established_hierarchies\": 22, \"instance_statistics\": [{\"id\": \"id\", \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"member_count\": 11, \"member_relationship_count\": 23, \"orphan_node_count\": 15}]}}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
+    String mockResponseBody = "{\"hierarchy_statistics\": {\"mapKey\": {\"established_hierarchies\": 22, \"instance_statistics\": [{\"id\": \"id\", \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"attributes\": {\"anyKey\": \"anyValue\"}, \"member_count\": 11, \"member_relationship_count\": 23, \"orphan_node_count\": 15}]}}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
     String getHierarchyConfigurationPath = "/mdm/v1/hierarchies/26/configuration";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -5362,7 +5360,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testHierarchyBrokenBranchesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"hierarchy_broken_branches\": [{\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}], \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
+    String mockResponseBody = "{\"hierarchy_broken_branches\": [{\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}], \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
     String hierarchyBrokenBranchesPath = "/mdm/v1/hierarchies/26/broken_branches";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -5373,9 +5371,9 @@ public class MdmTest extends PowerMockTestCase {
     HierarchyBrokenBranchesOptions hierarchyBrokenBranchesOptionsModel = new HierarchyBrokenBranchesOptions.Builder()
       .id(Long.valueOf("26"))
       .hierarchyType("testString")
-      .levels(Long.valueOf("26"))
+      .levels(Long.valueOf("1"))
       .includedAssociations("testString")
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .limit(Long.valueOf("10"))
       .build();
 
@@ -5397,9 +5395,9 @@ public class MdmTest extends PowerMockTestCase {
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("hierarchy_type"), "testString");
-    assertEquals(Long.valueOf(query.get("levels")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("levels")), Long.valueOf("1"));
     assertEquals(query.get("included_associations"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
   }
 
@@ -5424,8 +5422,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testHierarchyBrokenBranchesWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"hierarchy_broken_branches\":[{\"id\":\"id\",\"type\":\"hierarchy\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\",\"nodes\":[{\"id\":\"id\",\"type\":\"node\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\"}],\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"associated_objects\":[{\"anyKey\":\"anyValue\"}]}],\"limit\":1}";
-    String mockResponsePage2 = "{\"total_count\":2,\"hierarchy_broken_branches\":[{\"id\":\"id\",\"type\":\"hierarchy\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\",\"nodes\":[{\"id\":\"id\",\"type\":\"node\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\"}],\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"associated_objects\":[{\"anyKey\":\"anyValue\"}]}],\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"hierarchy_broken_branches\":[{\"id\":\"id\",\"type\":\"hierarchy\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\",\"nodes\":[{\"id\":\"id\",\"type\":\"node\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\"}],\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"associated_objects\":[{\"anyKey\":\"anyValue\"}]}],\"limit\":1}";
+    String mockResponsePage2 = "{\"total_count\":2,\"hierarchy_broken_branches\":[{\"id\":\"id\",\"type\":\"hierarchy\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\",\"nodes\":[{\"id\":\"id\",\"type\":\"node\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\"}],\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"associated_objects\":[{\"anyKey\":\"anyValue\"}]}],\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -5442,7 +5440,7 @@ public class MdmTest extends PowerMockTestCase {
     HierarchyBrokenBranchesOptions hierarchyBrokenBranchesOptions = new HierarchyBrokenBranchesOptions.Builder()
       .id(Long.valueOf("26"))
       .hierarchyType("testString")
-      .levels(Long.valueOf("26"))
+      .levels(Long.valueOf("1"))
       .includedAssociations("testString")
       .limit(Long.valueOf("10"))
       .build();
@@ -5461,8 +5459,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testHierarchyBrokenBranchesWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"hierarchy_broken_branches\":[{\"id\":\"id\",\"type\":\"hierarchy\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\",\"nodes\":[{\"id\":\"id\",\"type\":\"node\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\"}],\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"associated_objects\":[{\"anyKey\":\"anyValue\"}]}],\"limit\":1}";
-    String mockResponsePage2 = "{\"total_count\":2,\"hierarchy_broken_branches\":[{\"id\":\"id\",\"type\":\"hierarchy\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\",\"nodes\":[{\"id\":\"id\",\"type\":\"node\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\"}],\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"associated_objects\":[{\"anyKey\":\"anyValue\"}]}],\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"hierarchy_broken_branches\":[{\"id\":\"id\",\"type\":\"hierarchy\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\",\"nodes\":[{\"id\":\"id\",\"type\":\"node\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\"}],\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"associated_objects\":[{\"anyKey\":\"anyValue\"}]}],\"limit\":1}";
+    String mockResponsePage2 = "{\"total_count\":2,\"hierarchy_broken_branches\":[{\"id\":\"id\",\"type\":\"hierarchy\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\",\"nodes\":[{\"id\":\"id\",\"type\":\"node\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"reference_id\":\"referenceId\"}],\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"associated_objects\":[{\"anyKey\":\"anyValue\"}]}],\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -5479,7 +5477,7 @@ public class MdmTest extends PowerMockTestCase {
     HierarchyBrokenBranchesOptions hierarchyBrokenBranchesOptions = new HierarchyBrokenBranchesOptions.Builder()
       .id(Long.valueOf("26"))
       .hierarchyType("testString")
-      .levels(Long.valueOf("26"))
+      .levels(Long.valueOf("1"))
       .includedAssociations("testString")
       .limit(Long.valueOf("10"))
       .build();
@@ -5494,7 +5492,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetHierarchyNodeCentricViewWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"hierarchy\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
+    String mockResponseBody = "{\"hierarchy\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
     String getHierarchyNodeCentricViewPath = "/mdm/v1/hierarchies/26/centric_view";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -5508,11 +5506,11 @@ public class MdmTest extends PowerMockTestCase {
       .type("testString")
       .typeName("testString")
       .centricId("testString")
-      .parentLevels(Long.valueOf("26"))
-      .childrenLevels(Long.valueOf("26"))
+      .parentLevels(Long.valueOf("0"))
+      .childrenLevels(Long.valueOf("0"))
       .includedAssociations("testString")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("200"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .includeTotalCount(false)
       .build();
 
@@ -5537,11 +5535,11 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("type"), "testString");
     assertEquals(query.get("type_name"), "testString");
     assertEquals(query.get("centric_id"), "testString");
-    assertEquals(Long.valueOf(query.get("parent_levels")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("children_levels")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("parent_levels")), Long.valueOf("0"));
+    assertEquals(Long.valueOf(query.get("children_levels")), Long.valueOf("0"));
     assertEquals(query.get("included_associations"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("200"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(Boolean.valueOf(query.get("include_total_count")), Boolean.valueOf(false));
   }
 
@@ -5566,7 +5564,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testCreateDataHierarchyWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"hierarchy\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
+    String mockResponseBody = "{\"hierarchy\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
     String createDataHierarchyPath = "/mdm/v1/hierarchies";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -5576,8 +5574,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataNode model
     DataNode dataNodeModel = new DataNode.Builder()
       .type("node")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("hierarchy_node")
       .referenceId("1")
       .build();
@@ -5585,8 +5583,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the NodeWithAttributesDataRecord model
     NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("generic_hierarchy")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
@@ -5595,8 +5593,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataRelationship model
     DataRelationship dataRelationshipModel = new DataRelationship.Builder()
       .type("relationship")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("hierarchy_node_relationship")
       .source(nodeWithAttributesModel)
       .target(nodeWithAttributesModel)
@@ -5605,13 +5603,13 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the CreateDataHierarchyOptions model
     CreateDataHierarchyOptions createDataHierarchyOptionsModel = new CreateDataHierarchyOptions.Builder()
       .type("hierarchy")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("generic_hierarchy")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .referenceId("100")
       .nodes(java.util.Arrays.asList(dataNodeModel))
       .relationships(java.util.Arrays.asList(dataRelationshipModel))
-      .associatedObjects(java.util.Arrays.asList(TestUtilities.createMockMap()))
+      .associatedObjects(java.util.Arrays.asList(java.util.Collections.singletonMap("anyKey", "anyValue")))
       .build();
 
     // Invoke createDataHierarchy() with a valid options model and verify the result
@@ -5708,7 +5706,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testHierarchyMemberSearchWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"hierarchy\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
+    String mockResponseBody = "{\"hierarchy\": {\"id\": \"id\", \"type\": \"hierarchy\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\", \"nodes\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}], \"associated_objects\": [{\"anyKey\": \"anyValue\"}]}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
     String hierarchyMemberSearchPath = "/mdm/v1/hierarchies/26/member_search";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -5720,8 +5718,8 @@ public class MdmTest extends PowerMockTestCase {
       .id(Long.valueOf("26"))
       .hierarchyType("testString")
       .searchQuery("testString")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("200"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .include(java.util.Arrays.asList("legal_name.given_name"))
       .exclude(java.util.Arrays.asList("legal_name.given_name"))
       .build();
@@ -5745,8 +5743,8 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("hierarchy_type"), "testString");
     assertEquals(query.get("search_query"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("200"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(query.get("include"), RequestUtils.join(java.util.Arrays.asList("legal_name.given_name"), ","));
     assertEquals(query.get("exclude"), RequestUtils.join(java.util.Arrays.asList("legal_name.given_name"), ","));
   }
@@ -5772,7 +5770,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetHierarchyStatisticsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"hierarchy_statistics\": {\"mapKey\": {\"established_hierarchies\": 22, \"instance_statistics\": [{\"id\": \"id\", \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"member_count\": 11, \"member_relationship_count\": 23, \"orphan_node_count\": 15}]}}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
+    String mockResponseBody = "{\"hierarchy_statistics\": {\"mapKey\": {\"established_hierarchies\": 22, \"instance_statistics\": [{\"id\": \"id\", \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"attributes\": {\"anyKey\": \"anyValue\"}, \"member_count\": 11, \"member_relationship_count\": 23, \"orphan_node_count\": 15}]}}, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"offset\": 6, \"limit\": 5, \"total_count\": 10}";
     String getHierarchyStatisticsPath = "/mdm/v1/hierarchies/statistics";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -5784,8 +5782,8 @@ public class MdmTest extends PowerMockTestCase {
       .hierarchyType("testString")
       .metrics("established_hierarchies")
       .id(Long.valueOf("26"))
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("200"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .build();
 
     // Invoke getHierarchyStatistics() with a valid options model and verify the result
@@ -5808,8 +5806,8 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("hierarchy_type"), "testString");
     assertEquals(query.get("metrics"), "established_hierarchies");
     assertEquals(Long.valueOf(query.get("id")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("200"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
   }
 
   // Test the getHierarchyStatistics operation with and without retries enabled
@@ -5842,7 +5840,7 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the ListDataJobsOptions model
     ListDataJobsOptions listDataJobsOptionsModel = new ListDataJobsOptions.Builder()
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .limit(Long.valueOf("10"))
       .status("not_started")
       .type("bulk_load")
@@ -5865,7 +5863,7 @@ public class MdmTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(query.get("status"), "not_started");
     assertEquals(query.get("type"), "bulk_load");
@@ -6118,8 +6116,8 @@ public class MdmTest extends PowerMockTestCase {
       .issueType("testString")
       .type("record")
       .typeName("person")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .includeTotalCount(true)
       .includeTotalCountWithoutTasks(false)
       .build();
@@ -6142,8 +6140,8 @@ public class MdmTest extends PowerMockTestCase {
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("issue_type"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
-    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("50"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(Boolean.valueOf(query.get("include_total_count")), Boolean.valueOf(true));
     assertEquals(Boolean.valueOf(query.get("include_total_count_without_tasks")), Boolean.valueOf(false));
   }
@@ -6169,7 +6167,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelatedRecordsForRecordWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"related_records\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}]}";
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"related_records\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}]}";
     String listDataRelatedRecordsForRecordPath = "/mdm/v1/records/26/related_records";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -6182,7 +6180,7 @@ public class MdmTest extends PowerMockTestCase {
       .recordType("person")
       .relationshipType("process_purpose")
       .limit(Long.valueOf("10"))
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .includeTotalCount(true)
       .build();
 
@@ -6206,7 +6204,7 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("record_type"), "person");
     assertEquals(query.get("relationship_type"), "process_purpose");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(Boolean.valueOf(query.get("include_total_count")), Boolean.valueOf(true));
   }
 
@@ -6231,8 +6229,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelatedRecordsForRecordWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
-    String mockResponsePage2 = "{\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
+    String mockResponsePage2 = "{\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -6268,8 +6266,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelatedRecordsForRecordWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
-    String mockResponsePage2 = "{\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
+    String mockResponsePage2 = "{\"total_count\":2,\"related_records\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}],\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -6301,7 +6299,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataEntitiesForRecordWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"entities\": [{\"id\": \"id\", \"type\": \"entity\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_count\": 11, \"includes_composite_view\": false}]}";
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"entities\": [{\"id\": \"id\", \"type\": \"entity\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_count\": 11, \"includes_composite_view\": false}]}";
     String listDataEntitiesForRecordPath = "/mdm/v1/records/26/entities";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -6312,7 +6310,7 @@ public class MdmTest extends PowerMockTestCase {
     ListDataEntitiesForRecordOptions listDataEntitiesForRecordOptionsModel = new ListDataEntitiesForRecordOptions.Builder()
       .id(Long.valueOf("26"))
       .limit(Long.valueOf("10"))
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .include(java.util.Arrays.asList("legal_name.given_name"))
       .exclude(java.util.Arrays.asList("legal_name.given_name"))
       .build();
@@ -6335,7 +6333,7 @@ public class MdmTest extends PowerMockTestCase {
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(query.get("include"), RequestUtils.join(java.util.Arrays.asList("legal_name.given_name"), ","));
     assertEquals(query.get("exclude"), RequestUtils.join(java.util.Arrays.asList("legal_name.given_name"), ","));
   }
@@ -6361,8 +6359,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataEntitiesForRecordWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"entities\":[{\"id\":\"id\",\"type\":\"entity\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_count\":11,\"includes_composite_view\":false}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"entities\":[{\"id\":\"id\",\"type\":\"entity\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_count\":11,\"includes_composite_view\":false}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"entities\":[{\"id\":\"id\",\"type\":\"entity\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_count\":11,\"includes_composite_view\":false}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"entities\":[{\"id\":\"id\",\"type\":\"entity\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_count\":11,\"includes_composite_view\":false}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -6397,8 +6395,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataEntitiesForRecordWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"entities\":[{\"id\":\"id\",\"type\":\"entity\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_count\":11,\"includes_composite_view\":false}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"entities\":[{\"id\":\"id\",\"type\":\"entity\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_count\":11,\"includes_composite_view\":false}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"entities\":[{\"id\":\"id\",\"type\":\"entity\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_count\":11,\"includes_composite_view\":false}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"entities\":[{\"id\":\"id\",\"type\":\"entity\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_count\":11,\"includes_composite_view\":false}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -6429,7 +6427,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testPotentialOverlayRecordsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"accumulated_update_reqs\": [{\"update_sequence\": 14, \"update_value\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"operation_strategy\": \"put\", \"caused_overlay\": false, \"updated_attributes\": [\"updatedAttributes\"], \"deleted_attributes\": [\"deletedAttributes\"], \"newly_added_attributes\": [\"newlyAddedAttributes\"]}], \"accumulated_update_count\": 22}";
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"accumulated_update_reqs\": [{\"update_sequence\": 14, \"update_value\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"operation_strategy\": \"put\", \"caused_overlay\": false, \"updated_attributes\": [\"updatedAttributes\"], \"deleted_attributes\": [\"deletedAttributes\"], \"newly_added_attributes\": [\"newlyAddedAttributes\"]}], \"accumulated_update_count\": 22}";
     String potentialOverlayRecordsPath = "/mdm/v1/records/26/accumulated_updates";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -6440,7 +6438,7 @@ public class MdmTest extends PowerMockTestCase {
     PotentialOverlayRecordsOptions potentialOverlayRecordsOptionsModel = new PotentialOverlayRecordsOptions.Builder()
       .id(Long.valueOf("26"))
       .limit(Long.valueOf("10"))
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .sortDescend(true)
       .hideUnmodifiedAttrs(false)
       .fullUpdate(true)
@@ -6464,7 +6462,7 @@ public class MdmTest extends PowerMockTestCase {
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(Boolean.valueOf(query.get("sort_descend")), Boolean.valueOf(true));
     assertEquals(Boolean.valueOf(query.get("hide_unmodified_attrs")), Boolean.valueOf(false));
     assertEquals(Boolean.valueOf(query.get("full_update")), Boolean.valueOf(true));
@@ -6491,8 +6489,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testPotentialOverlayRecordsWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"accumulated_update_reqs\":[{\"update_sequence\":14,\"update_value\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"operation_strategy\":\"put\",\"caused_overlay\":false,\"updated_attributes\":[\"updatedAttributes\"],\"deleted_attributes\":[\"deletedAttributes\"],\"newly_added_attributes\":[\"newlyAddedAttributes\"]}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"accumulated_update_reqs\":[{\"update_sequence\":14,\"update_value\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"operation_strategy\":\"put\",\"caused_overlay\":false,\"updated_attributes\":[\"updatedAttributes\"],\"deleted_attributes\":[\"deletedAttributes\"],\"newly_added_attributes\":[\"newlyAddedAttributes\"]}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"accumulated_update_reqs\":[{\"update_sequence\":14,\"update_value\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"operation_strategy\":\"put\",\"caused_overlay\":false,\"updated_attributes\":[\"updatedAttributes\"],\"deleted_attributes\":[\"deletedAttributes\"],\"newly_added_attributes\":[\"newlyAddedAttributes\"]}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"accumulated_update_reqs\":[{\"update_sequence\":14,\"update_value\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"operation_strategy\":\"put\",\"caused_overlay\":false,\"updated_attributes\":[\"updatedAttributes\"],\"deleted_attributes\":[\"deletedAttributes\"],\"newly_added_attributes\":[\"newlyAddedAttributes\"]}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -6528,8 +6526,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testPotentialOverlayRecordsWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"accumulated_update_reqs\":[{\"update_sequence\":14,\"update_value\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"operation_strategy\":\"put\",\"caused_overlay\":false,\"updated_attributes\":[\"updatedAttributes\"],\"deleted_attributes\":[\"deletedAttributes\"],\"newly_added_attributes\":[\"newlyAddedAttributes\"]}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"accumulated_update_reqs\":[{\"update_sequence\":14,\"update_value\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"operation_strategy\":\"put\",\"caused_overlay\":false,\"updated_attributes\":[\"updatedAttributes\"],\"deleted_attributes\":[\"deletedAttributes\"],\"newly_added_attributes\":[\"newlyAddedAttributes\"]}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"accumulated_update_reqs\":[{\"update_sequence\":14,\"update_value\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"operation_strategy\":\"put\",\"caused_overlay\":false,\"updated_attributes\":[\"updatedAttributes\"],\"deleted_attributes\":[\"deletedAttributes\"],\"newly_added_attributes\":[\"newlyAddedAttributes\"]}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"accumulated_update_reqs\":[{\"update_sequence\":14,\"update_value\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"operation_strategy\":\"put\",\"caused_overlay\":false,\"updated_attributes\":[\"updatedAttributes\"],\"deleted_attributes\":[\"deletedAttributes\"],\"newly_added_attributes\":[\"newlyAddedAttributes\"]}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -6561,7 +6559,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelationshipsForRecordWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}]}";
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"relationships\": [{\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}]}";
     String listDataRelationshipsForRecordPath = "/mdm/v1/records/26/relationships";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -6572,7 +6570,7 @@ public class MdmTest extends PowerMockTestCase {
     ListDataRelationshipsForRecordOptions listDataRelationshipsForRecordOptionsModel = new ListDataRelationshipsForRecordOptions.Builder()
       .id(Long.valueOf("26"))
       .relationshipTypes(java.util.Arrays.asList("preference_association"))
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .limit(Long.valueOf("10"))
       .sourceInclude(java.util.Arrays.asList("all"))
       .targetInclude(java.util.Arrays.asList("all"))
@@ -6596,7 +6594,7 @@ public class MdmTest extends PowerMockTestCase {
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("relationship_types"), RequestUtils.join(java.util.Arrays.asList("preference_association"), ","));
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(query.get("source_include"), RequestUtils.join(java.util.Arrays.asList("all"), ","));
     assertEquals(query.get("target_include"), RequestUtils.join(java.util.Arrays.asList("all"), ","));
@@ -6623,8 +6621,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelationshipsForRecordWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -6660,8 +6658,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRelationshipsForRecordWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"relationships\":[{\"id\":\"id\",\"type\":\"relationship\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"source\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false},\"target\":{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"record_number\":12,\"entity_count\":11,\"is_blocked_for_update\":true,\"is_quarantined\":false}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -6693,7 +6691,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetDataRecordWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String getDataRecordPath = "/mdm/v1/records/26";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -6749,7 +6747,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceDataRecordWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String replaceDataRecordPath = "/mdm/v1/records/26";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -6760,9 +6758,9 @@ public class MdmTest extends PowerMockTestCase {
     ReplaceDataRecordOptions replaceDataRecordOptionsModel = new ReplaceDataRecordOptions.Builder()
       .id(Long.valueOf("26"))
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("person")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
@@ -6858,7 +6856,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testPatchDataRecordWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String patchDataRecordPath = "/mdm/v1/records/26";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -6869,9 +6867,9 @@ public class MdmTest extends PowerMockTestCase {
     PatchDataRecordOptions patchDataRecordOptionsModel = new PatchDataRecordOptions.Builder()
       .id(Long.valueOf("26"))
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
@@ -6916,7 +6914,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRecordsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"workflows\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"workflow_type\": \"workflowType\", \"last_updated_user\": \"lastUpdatedUser\", \"last_updated_date\": 15, \"entities\": [{\"mapKey\": {\"anyKey\": \"anyValue\"}}], \"actions\": [{\"action_type\": \"actionType\", \"action_values\": {\"mapKey\": \"anyValue\"}}]}]}";
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"workflows\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"workflow_type\": \"workflowType\", \"last_updated_user\": \"lastUpdatedUser\", \"last_updated_date\": 15, \"entities\": [{\"anyKey\": \"anyValue\"}], \"actions\": [{\"action_type\": \"actionType\", \"action_values\": {\"anyKey\": \"anyValue\"}}]}]}";
     String listDataRecordsPath = "/mdm/v1/records";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -6925,7 +6923,7 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the ListDataRecordsOptions model
     ListDataRecordsOptions listDataRecordsOptionsModel = new ListDataRecordsOptions.Builder()
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .limit(Long.valueOf("10"))
       .recordtype("testString")
       .build();
@@ -6947,7 +6945,7 @@ public class MdmTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(query.get("recordtype"), "testString");
   }
@@ -6966,8 +6964,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRecordsWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -7000,8 +6998,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListDataRecordsWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -7030,7 +7028,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testCreateDataRecordWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String createDataRecordPath = "/mdm/v1/records";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -7040,9 +7038,9 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the CreateDataRecordOptions model
     CreateDataRecordOptions createDataRecordOptionsModel = new CreateDataRecordOptions.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("person")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
@@ -7087,7 +7085,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetDataRecordParamsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"record\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String getDataRecordParamsPath = "/mdm/v1/records/bysourceid";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -7146,7 +7144,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetDataRelationshipForRecordWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String getDataRelationshipForRecordPath = "/mdm/v1/records/26/relationships/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -7203,7 +7201,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testCreateDataRelationshipWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String createDataRelationshipPath = "/mdm/v1/relationships";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -7213,8 +7211,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the NodeWithAttributesDataRecord model
     NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
@@ -7222,10 +7220,10 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CreateDataRelationshipOptions model
     CreateDataRelationshipOptions createDataRelationshipOptionsModel = new CreateDataRelationshipOptions.Builder()
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .type("relationship")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .source(nodeWithAttributesModel)
       .target(nodeWithAttributesModel)
       .build();
@@ -7270,7 +7268,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetDataRelationshipWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String getDataRelationshipPath = "/mdm/v1/relationships/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -7328,7 +7326,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceDataRelationshipWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
+    String mockResponseBody = "{\"relationship\": {\"id\": \"id\", \"type\": \"relationship\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"source\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}, \"target\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}}, \"metadata\": {\"id\": \"id\", \"href\": \"href\", \"updated_at\": \"updatedAt\"}}";
     String replaceDataRelationshipPath = "/mdm/v1/relationships/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -7338,8 +7336,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the NodeWithAttributesDataRecord model
     NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
@@ -7348,10 +7346,10 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the ReplaceDataRelationshipOptions model
     ReplaceDataRelationshipOptions replaceDataRelationshipOptionsModel = new ReplaceDataRelationshipOptions.Builder()
       .id("testString")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .type("relationship")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .source(nodeWithAttributesModel)
       .target(nodeWithAttributesModel)
       .build();
@@ -7489,7 +7487,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testSearchDataWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"results\": [{\"id\": \"id\", \"type\": \"node\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"reference_id\": \"referenceId\"}], \"is_exact_count\": true, \"stats\": {\"record_types\": [{\"key\": \"key\", \"size\": 4}], \"entity_types\": [{\"key\": \"key\", \"size\": 4}], \"sources\": [{\"key\": \"key\", \"size\": 4}]}}";
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"results\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"record_number\": 12, \"entity_count\": 11, \"is_blocked_for_update\": true, \"is_quarantined\": false}], \"is_exact_count\": true, \"stats\": {\"record_types\": [{\"key\": \"key\", \"size\": 4}], \"entity_types\": [{\"key\": \"key\", \"size\": 4}], \"sources\": [{\"key\": \"key\", \"size\": 4}]}}";
     String searchDataPath = "/mdm/v1/search";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -7525,8 +7523,8 @@ public class MdmTest extends PowerMockTestCase {
       .query(searchQueryModel)
       .filters(java.util.Arrays.asList(searchFilterModel))
       .returnType("results")
-      .limit(Long.valueOf("50"))
-      .offset(Long.valueOf("26"))
+      .limit(Long.valueOf("10"))
+      .offset(Long.valueOf("0"))
       .include(java.util.Arrays.asList("legal_name.given_name"))
       .exclude(java.util.Arrays.asList("legal_name.given_name"))
       .build();
@@ -7549,8 +7547,8 @@ public class MdmTest extends PowerMockTestCase {
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("return_type"), "results");
-    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("50"));
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(query.get("include"), RequestUtils.join(java.util.Arrays.asList("legal_name.given_name"), ","));
     assertEquals(query.get("exclude"), RequestUtils.join(java.util.Arrays.asList("legal_name.given_name"), ","));
   }
@@ -7713,8 +7711,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the UiMemberLabelSettings model
     UiMemberLabelSettings uiMemberLabelSettingsModel = new UiMemberLabelSettings.Builder()
-      .recordTypes(new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } })
-      .entityTypes(new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel))
+      .entityTypes(java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel))
       .build();
 
     // Construct an instance of the UiLabelSettings model
@@ -7750,11 +7748,11 @@ public class MdmTest extends PowerMockTestCase {
     UpdateSettingsOptions updateSettingsOptionsModel = new UpdateSettingsOptions.Builder()
       .id("testString")
       .use(true)
-      .recordTypes(new java.util.HashMap<String, UIRecordType>() { { put("foo", uiRecordTypeModel); } })
-      .groupTypes(new java.util.HashMap<String, UIGroupType>() { { put("foo", uiGroupTypeModel); } })
-      .entityTypes(new java.util.HashMap<String, UIEntityType>() { { put("foo", uiEntityTypeModel); } })
-      .attributeTypes(new java.util.HashMap<String, UIAttributeType>() { { put("foo", uiAttributeTypeModel); } })
-      .hierarchyTypes(new java.util.HashMap<String, UiHierarchyType>() { { put("foo", uiHierarchyTypeModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", uiRecordTypeModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", uiGroupTypeModel))
+      .entityTypes(java.util.Collections.singletonMap("key1", uiEntityTypeModel))
+      .attributeTypes(java.util.Collections.singletonMap("key1", uiAttributeTypeModel))
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", uiHierarchyTypeModel))
       .workspace(uIworkspaceModel)
       .settingsId("testString")
       .build();
@@ -7943,8 +7941,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the UiMemberLabelSettings model
     UiMemberLabelSettings uiMemberLabelSettingsModel = new UiMemberLabelSettings.Builder()
-      .recordTypes(new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } })
-      .entityTypes(new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel))
+      .entityTypes(java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel))
       .build();
 
     // Construct an instance of the UiLabelSettings model
@@ -7980,11 +7978,11 @@ public class MdmTest extends PowerMockTestCase {
     UpdateSettings0Options updateSettings0OptionsModel = new UpdateSettings0Options.Builder()
       .id("testString")
       .use(true)
-      .recordTypes(new java.util.HashMap<String, UIRecordType>() { { put("foo", uiRecordTypeModel); } })
-      .groupTypes(new java.util.HashMap<String, UIGroupType>() { { put("foo", uiGroupTypeModel); } })
-      .entityTypes(new java.util.HashMap<String, UIEntityType>() { { put("foo", uiEntityTypeModel); } })
-      .attributeTypes(new java.util.HashMap<String, UIAttributeType>() { { put("foo", uiAttributeTypeModel); } })
-      .hierarchyTypes(new java.util.HashMap<String, UiHierarchyType>() { { put("foo", uiHierarchyTypeModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", uiRecordTypeModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", uiGroupTypeModel))
+      .entityTypes(java.util.Collections.singletonMap("key1", uiEntityTypeModel))
+      .attributeTypes(java.util.Collections.singletonMap("key1", uiAttributeTypeModel))
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", uiHierarchyTypeModel))
       .workspace(uIworkspaceModel)
       .settingsId("testString")
       .build();
@@ -8038,7 +8036,7 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the GetAllSettingsOptions model
     GetAllSettingsOptions getAllSettingsOptionsModel = new GetAllSettingsOptions.Builder()
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .limit(Long.valueOf("10"))
       .build();
 
@@ -8059,7 +8057,7 @@ public class MdmTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     assertEquals(query.get("crn"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
   }
 
@@ -8230,7 +8228,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetDataSubgraphWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"vertices\": [{\"id\": \"id\", \"type\": \"record\", \"type_name\": \"typeName\", \"display_name\": \"displayName\", \"is_global\": true, \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"is_blocked_for_update\": true, \"is_quarantined\": false}], \"edges\": [{\"id\": \"id\", \"type\": \"relationship\", \"type_name\": \"typeName\", \"source_id\": \"sourceId\", \"target_id\": \"targetId\", \"display_name\": \"displayName\"}]}";
+    String mockResponseBody = "{\"vertices\": [{\"id\": \"id\", \"type\": \"record\", \"type_name\": \"typeName\", \"display_name\": \"displayName\", \"is_global\": true, \"attributes\": {\"anyKey\": \"anyValue\"}, \"is_blocked_for_update\": true, \"is_quarantined\": false}], \"edges\": [{\"id\": \"id\", \"type\": \"relationship\", \"type_name\": \"typeName\", \"source_id\": \"sourceId\", \"target_id\": \"targetId\", \"display_name\": \"displayName\"}]}";
     String getDataSubgraphPath = "/mdm/v1/subgraph";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -8241,7 +8239,7 @@ public class MdmTest extends PowerMockTestCase {
     GetDataSubgraphOptions getDataSubgraphOptionsModel = new GetDataSubgraphOptions.Builder()
       .vertexIds(java.util.Arrays.asList("testString"))
       .distance(Long.valueOf("0"))
-      .include(new java.util.HashMap<String, List<String>>() { { put("foo", java.util.Arrays.asList("testString")); } })
+      .include(java.util.Collections.singletonMap("key1", java.util.Arrays.asList("testString")))
       .build();
 
     // Invoke getDataSubgraph() with a valid options model and verify the result
@@ -8293,8 +8291,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataRecord model
     DataRecord dataRecordModel = new DataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
@@ -8303,8 +8301,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the NodeWithAttributesDataRecord model
     NodeWithAttributesDataRecord nodeWithAttributesModel = new NodeWithAttributesDataRecord.Builder()
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .isBlockedForUpdate(true)
       .isQuarantined(true)
@@ -8313,8 +8311,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataRelationship model
     DataRelationship dataRelationshipModel = new DataRelationship.Builder()
       .type("relationship")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .source(nodeWithAttributesModel)
       .target(nodeWithAttributesModel)
@@ -8323,8 +8321,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataGroup model
     DataGroup dataGroupModel = new DataGroup.Builder()
       .type("group")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .groupAssociations(java.util.Arrays.asList(dataRelationshipModel))
       .groupNumber(Long.valueOf("26"))
@@ -8334,8 +8332,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataNode model
     DataNode dataNodeModel = new DataNode.Builder()
       .type("node")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .referenceId("testString")
       .build();
@@ -8343,13 +8341,13 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the DataHierarchy model
     DataHierarchy dataHierarchyModel = new DataHierarchy.Builder()
       .type("hierarchy")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .referenceId("testString")
       .nodes(java.util.Arrays.asList(dataNodeModel))
       .relationships(java.util.Arrays.asList(dataRelationshipModel))
-      .associatedObjects(java.util.Arrays.asList(TestUtilities.createMockMap()))
+      .associatedObjects(java.util.Arrays.asList(java.util.Collections.singletonMap("anyKey", "anyValue")))
       .build();
 
     // Construct an instance of the SyncUpdateRequestUpserts model
@@ -8412,7 +8410,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetAllWorkflowWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"workflows\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"workflow_type\": \"workflowType\", \"last_updated_user\": \"lastUpdatedUser\", \"last_updated_date\": 15, \"entities\": [{\"mapKey\": {\"anyKey\": \"anyValue\"}}], \"actions\": [{\"action_type\": \"actionType\", \"action_values\": {\"mapKey\": \"anyValue\"}}]}]}";
+    String mockResponseBody = "{\"offset\": 6, \"limit\": 5, \"total_count\": 10, \"first\": {\"href\": \"href\"}, \"last\": {\"href\": \"href\"}, \"previous\": {\"href\": \"href\"}, \"next\": {\"href\": \"href\"}, \"workflows\": [{\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"workflow_type\": \"workflowType\", \"last_updated_user\": \"lastUpdatedUser\", \"last_updated_date\": 15, \"entities\": [{\"anyKey\": \"anyValue\"}], \"actions\": [{\"action_type\": \"actionType\", \"action_values\": {\"anyKey\": \"anyValue\"}}]}]}";
     String getAllWorkflowPath = "/mdm/v1/workflows";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -8423,7 +8421,7 @@ public class MdmTest extends PowerMockTestCase {
     GetAllWorkflowOptions getAllWorkflowOptionsModel = new GetAllWorkflowOptions.Builder()
       .workflowType("potential_overlay")
       .recordNumber("testString")
-      .offset(Long.valueOf("26"))
+      .offset(Long.valueOf("0"))
       .limit(Long.valueOf("10"))
       .build();
 
@@ -8446,7 +8444,7 @@ public class MdmTest extends PowerMockTestCase {
     assertEquals(query.get("crn"), "testString");
     assertEquals(query.get("workflow_type"), "potential_overlay");
     assertEquals(query.get("record_number"), "testString");
-    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("26"));
+    assertEquals(Long.valueOf(query.get("offset")), Long.valueOf("0"));
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
   }
 
@@ -8471,8 +8469,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetAllWorkflowWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -8506,8 +8504,8 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetAllWorkflowWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"system_attributes\":{\"mapKey\":{\"anyKey\":\"anyValue\"}},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"mapKey\":{\"anyKey\":\"anyValue\"}}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"mapKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?offset=1\"},\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"workflows\":[{\"id\":\"id\",\"type\":\"record\",\"attributes\":{\"anyKey\":\"anyValue\"},\"system_attributes\":{\"anyKey\":\"anyValue\"},\"type_name\":\"typeName\",\"workflow_type\":\"workflowType\",\"last_updated_user\":\"lastUpdatedUser\",\"last_updated_date\":15,\"entities\":[{\"anyKey\":\"anyValue\"}],\"actions\":[{\"action_type\":\"actionType\",\"action_values\":{\"anyKey\":\"anyValue\"}}]}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -8537,7 +8535,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetWorkflowWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"workflow\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"system_attributes\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}, \"type_name\": \"typeName\", \"workflow_type\": \"workflowType\", \"last_updated_user\": \"lastUpdatedUser\", \"last_updated_date\": 15, \"entities\": [{\"mapKey\": {\"anyKey\": \"anyValue\"}}], \"actions\": [{\"action_type\": \"actionType\", \"action_values\": {\"mapKey\": \"anyValue\"}}]}}";
+    String mockResponseBody = "{\"workflow\": {\"id\": \"id\", \"type\": \"record\", \"attributes\": {\"anyKey\": \"anyValue\"}, \"system_attributes\": {\"anyKey\": \"anyValue\"}, \"type_name\": \"typeName\", \"workflow_type\": \"workflowType\", \"last_updated_user\": \"lastUpdatedUser\", \"last_updated_date\": 15, \"entities\": [{\"anyKey\": \"anyValue\"}], \"actions\": [{\"action_type\": \"actionType\", \"action_values\": {\"anyKey\": \"anyValue\"}}]}}";
     String getWorkflowPath = "/mdm/v1/workflows/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -8653,7 +8651,7 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the ActionElement model
     ActionElement actionElementModel = new ActionElement.Builder()
       .actionType("update")
-      .actionValues(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .actionValues(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the PatchWorkflowOptions model
@@ -8704,7 +8702,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetWorkflowStatisticsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"workflow_stats\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}";
+    String mockResponseBody = "{\"workflow_stats\": {\"anyKey\": \"anyValue\"}}";
     String getWorkflowStatisticsPath = "/mdm/v1/workflows/stastics";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -8776,7 +8774,7 @@ public class MdmTest extends PowerMockTestCase {
     Action actionModel = new Action.Builder()
       .actionType("update")
       .entities(java.util.Arrays.asList(actionEntityModel))
-      .actionValues(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .actionValues(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the ResolveWorkflowOptions model
@@ -9453,7 +9451,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetMatchingRemediationWorkflowWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"issue_actions\": [{\"comments\": \"comments\", \"issue_id\": \"issueId\", \"decision\": \"decision\", \"last_update_user\": \"lastUpdateUser\", \"records\": [\"records\"], \"last_update_date\": \"lastUpdateDate\"}], \"resolution_recommendation\": {\"probability\": 11, \"action\": \"action\"}, \"entities\": [\"entities\"], \"last_updated_user\": \"lastUpdatedUser\", \"bulk_action\": {\"mapKey\": \"anyValue\"}, \"id\": \"id\", \"type\": \"type\", \"last_updated_date\": \"lastUpdatedDate\"}";
+    String mockResponseBody = "{\"issue_actions\": [{\"comments\": \"comments\", \"issue_id\": \"issueId\", \"decision\": \"decision\", \"last_update_user\": \"lastUpdateUser\", \"records\": [\"records\"], \"last_update_date\": \"lastUpdateDate\"}], \"resolution_recommendation\": {\"probability\": 11, \"action\": \"action\"}, \"entities\": [\"entities\"], \"last_updated_user\": \"lastUpdatedUser\", \"bulk_action\": {\"anyKey\": \"anyValue\"}, \"id\": \"id\", \"type\": \"type\", \"last_updated_date\": \"lastUpdatedDate\"}";
     String getMatchingRemediationWorkflowPath = "/mdm/v1/data_quality/remediation_workflows/cd4431f4-505b-11ed-bdc3-0242ac120002";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -9558,7 +9556,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testPatchMatchingRemediationWorkflowWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"issue_actions\": [{\"comments\": \"comments\", \"issue_id\": \"issueId\", \"decision\": \"decision\", \"last_update_user\": \"lastUpdateUser\", \"records\": [\"records\"], \"last_update_date\": \"lastUpdateDate\"}], \"resolution_recommendation\": {\"probability\": 11, \"action\": \"action\"}, \"entities\": [\"entities\"], \"last_updated_user\": \"lastUpdatedUser\", \"bulk_action\": {\"mapKey\": \"anyValue\"}, \"id\": \"id\", \"type\": \"type\", \"last_updated_date\": \"lastUpdatedDate\"}";
+    String mockResponseBody = "{\"issue_actions\": [{\"comments\": \"comments\", \"issue_id\": \"issueId\", \"decision\": \"decision\", \"last_update_user\": \"lastUpdateUser\", \"records\": [\"records\"], \"last_update_date\": \"lastUpdateDate\"}], \"resolution_recommendation\": {\"probability\": 11, \"action\": \"action\"}, \"entities\": [\"entities\"], \"last_updated_user\": \"lastUpdatedUser\", \"bulk_action\": {\"anyKey\": \"anyValue\"}, \"id\": \"id\", \"type\": \"type\", \"last_updated_date\": \"lastUpdatedDate\"}";
     String patchMatchingRemediationWorkflowPath = "/mdm/v1/data_quality/remediation_workflows/cd4431f4-505b-11ed-bdc3-0242ac120002";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -9577,7 +9575,7 @@ public class MdmTest extends PowerMockTestCase {
     PatchMatchingRemediationWorkflowOptions patchMatchingRemediationWorkflowOptionsModel = new PatchMatchingRemediationWorkflowOptions.Builder()
       .workflowId("cd4431f4-505b-11ed-bdc3-0242ac120002")
       .issueActions(java.util.Arrays.asList(issueRemediationActionsRequestModel))
-      .bulkAction(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .bulkAction(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Invoke patchMatchingRemediationWorkflow() with a valid options model and verify the result
@@ -9675,7 +9673,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListMatchingEntityIssuesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"next\": {\"mapKey\": \"anyValue\"}, \"last\": {\"mapKey\": \"anyValue\"}, \"previous\": {\"mapKey\": \"anyValue\"}, \"offset\": 6, \"total_count\": 10, \"limit\": 5, \"issues\": [{\"issue_type\": \"issueType\", \"type\": \"type\", \"type_name\": \"typeName\", \"id\": \"id\", \"number\": \"number\", \"created_at\": \"createdAt\"}], \"first\": {\"mapKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"next\": {\"anyKey\": \"anyValue\"}, \"last\": {\"anyKey\": \"anyValue\"}, \"previous\": {\"anyKey\": \"anyValue\"}, \"offset\": 6, \"total_count\": 10, \"limit\": 5, \"issues\": [{\"entity_type\": \"entityType\", \"entities\": [{\"record_number\": \"recordNumber\", \"entity_id\": \"entityId\"}], \"resolution_prediction\": {\"probability\": 11, \"action\": \"action\"}, \"created_at\": \"createdAt\", \"id\": \"id\", \"type\": \"type\"}], \"first\": {\"anyKey\": \"anyValue\"}}";
     String listMatchingEntityIssuesPath = "/mdm/v1/data_quality/issues";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -9736,7 +9734,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListMatchingRemediationWorkflowWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"next\": {\"mapKey\": \"anyValue\"}, \"last\": {\"mapKey\": \"anyValue\"}, \"previous\": {\"mapKey\": \"anyValue\"}, \"offset\": 6, \"total_count\": 10, \"limit\": 5, \"workflows\": [{\"issue_actions\": [{\"comments\": \"comments\", \"issue_id\": \"issueId\", \"decision\": \"decision\", \"last_update_user\": \"lastUpdateUser\", \"records\": [\"records\"], \"last_update_date\": \"lastUpdateDate\"}], \"resolution_recommendation\": {\"probability\": 11, \"action\": \"action\"}, \"entities\": [\"entities\"], \"last_updated_user\": \"lastUpdatedUser\", \"bulk_action\": {\"mapKey\": \"anyValue\"}, \"id\": \"id\", \"type\": \"type\", \"last_updated_date\": \"lastUpdatedDate\"}], \"first\": {\"mapKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"next\": {\"anyKey\": \"anyValue\"}, \"last\": {\"anyKey\": \"anyValue\"}, \"previous\": {\"anyKey\": \"anyValue\"}, \"offset\": 6, \"total_count\": 10, \"limit\": 5, \"workflows\": [{\"issue_actions\": [{\"comments\": \"comments\", \"issue_id\": \"issueId\", \"decision\": \"decision\", \"last_update_user\": \"lastUpdateUser\", \"records\": [\"records\"], \"last_update_date\": \"lastUpdateDate\"}], \"resolution_recommendation\": {\"probability\": 11, \"action\": \"action\"}, \"entities\": [\"entities\"], \"last_updated_user\": \"lastUpdatedUser\", \"bulk_action\": {\"anyKey\": \"anyValue\"}, \"id\": \"id\", \"type\": \"type\", \"last_updated_date\": \"lastUpdatedDate\"}], \"first\": {\"anyKey\": \"anyValue\"}}";
     String listMatchingRemediationWorkflowPath = "/mdm/v1/data_quality/remediation_workflows";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -9929,7 +9927,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testCompareMatchingIndexWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"score\": 5, \"comparison_post_filter_methods\": [{\"score\": 5, \"distances\": {\"mapKey\": \"anyValue\"}, \"name\": \"name\"}], \"score_category\": \"scoreCategory\", \"record_number2\": 13, \"record_number1\": 13, \"compare_methods\": [{\"score\": 5, \"methods\": [{\"score\": 5, \"method\": 6, \"comparisons\": [{\"score\": 5, \"types\": [\"types\"], \"distance\": 8, \"feature_vector\": {\"mapKey\": \"anyValue\"}, \"values\": [\"values\"], \"details\": {\"mapKey\": \"anyValue\"}}]}], \"name\": \"name\"}], \"potential_overlay_triggers\": {\"triggers\": [\"triggers\"]}, \"is_potential_overlay\": true}";
+    String mockResponseBody = "{\"score\": 5, \"comparison_post_filter_methods\": [{\"score\": 5, \"distances\": {\"anyKey\": \"anyValue\"}, \"name\": \"name\"}], \"score_category\": \"scoreCategory\", \"record_number2\": 13, \"record_number1\": 13, \"compare_methods\": [{\"score\": 5, \"methods\": [{\"score\": 5, \"method\": 6, \"comparisons\": [{\"score\": 5, \"types\": [\"types\"], \"distance\": 8, \"feature_vector\": {\"anyKey\": \"anyValue\"}, \"values\": [\"values\"], \"details\": {\"anyKey\": \"anyValue\"}}]}], \"name\": \"name\"}], \"potential_overlay_triggers\": {\"triggers\": [\"triggers\"]}, \"is_potential_overlay\": true}";
     String compareMatchingIndexPath = "/mdm/v1/compare";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -10008,7 +10006,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListMatchingClusterRecordsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"next\": {\"mapKey\": \"anyValue\"}, \"last\": {\"mapKey\": \"anyValue\"}, \"previous\": {\"mapKey\": \"anyValue\"}, \"offset\": 6, \"total_count\": 10, \"members\": [\"members\"], \"limit\": 5, \"first\": {\"mapKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"next\": {\"anyKey\": \"anyValue\"}, \"last\": {\"anyKey\": \"anyValue\"}, \"previous\": {\"anyKey\": \"anyValue\"}, \"offset\": 6, \"total_count\": 10, \"members\": [\"members\"], \"limit\": 5, \"first\": {\"anyKey\": \"anyValue\"}}";
     String listMatchingClusterRecordsPath = "/mdm/v1/clusters/entity_type-123456789-0/records";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -10064,7 +10062,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetMatchingJobInfoWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"summary\": {\"mapKey\": \"anyValue\"}, \"image\": \"image\", \"job_name\": \"jobName\", \"last_updated_at\": \"lastUpdatedAt\", \"created_at\": \"createdAt\", \"started_at\": \"startedAt\", \"id\": \"id\", \"status\": \"status\"}";
+    String mockResponseBody = "{\"summary\": {\"anyKey\": \"anyValue\"}, \"image\": \"image\", \"job_name\": \"jobName\", \"last_updated_at\": \"lastUpdatedAt\", \"created_at\": \"createdAt\", \"started_at\": \"startedAt\", \"id\": \"id\", \"status\": \"status\"}";
     String getMatchingJobInfoPath = "/mdm/v1/matching_jobs/95364";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -10176,7 +10174,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testBatchCompareMatchingIndexWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"comparison_details\": [{\"score\": 5, \"comparison_post_filter_methods\": [{\"score\": 5, \"distances\": {\"mapKey\": \"anyValue\"}, \"name\": \"name\"}], \"score_category\": \"scoreCategory\", \"record_number2\": 13, \"record_number1\": 13, \"compare_methods\": [{\"score\": 5, \"methods\": [{\"score\": 5, \"method\": 6, \"comparisons\": [{\"score\": 5, \"types\": [\"types\"], \"distance\": 8, \"feature_vector\": {\"mapKey\": \"anyValue\"}, \"values\": [\"values\"], \"details\": {\"mapKey\": \"anyValue\"}}]}], \"name\": \"name\"}], \"potential_overlay_triggers\": {\"triggers\": [\"triggers\"]}, \"is_potential_overlay\": true}]}";
+    String mockResponseBody = "{\"comparison_details\": [{\"score\": 5, \"comparison_post_filter_methods\": [{\"score\": 5, \"distances\": {\"anyKey\": \"anyValue\"}, \"name\": \"name\"}], \"score_category\": \"scoreCategory\", \"record_number2\": 13, \"record_number1\": 13, \"compare_methods\": [{\"score\": 5, \"methods\": [{\"score\": 5, \"method\": 6, \"comparisons\": [{\"score\": 5, \"types\": [\"types\"], \"distance\": 8, \"feature_vector\": {\"anyKey\": \"anyValue\"}, \"values\": [\"values\"], \"details\": {\"anyKey\": \"anyValue\"}}]}], \"name\": \"name\"}], \"potential_overlay_triggers\": {\"triggers\": [\"triggers\"]}, \"is_potential_overlay\": true}]}";
     String batchCompareMatchingIndexPath = "/mdm/v1/batch_compare";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -10240,7 +10238,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetMatchingClusterDetailsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"cluster_id\": \"clusterId\", \"anomaly\": false, \"records_count\": 12, \"entity_id\": \"entityId\", \"explanation\": {\"mapKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"cluster_id\": \"clusterId\", \"anomaly\": false, \"records_count\": 12, \"entity_id\": \"entityId\", \"explanation\": {\"anyKey\": \"anyValue\"}}";
     String getMatchingClusterDetailsPath = "/mdm/v1/clusters/entity_type-123456789-0";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -10404,7 +10402,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testSearchMatchingIndexWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"records\": [{\"record_id\": \"recordId\", \"score\": 5, \"comparison_post_filter_methods\": [{\"score\": 5, \"distances\": {\"mapKey\": \"anyValue\"}, \"name\": \"name\"}], \"record_number\": \"recordNumber\", \"record_source\": \"recordSource\", \"compare_methods\": [{\"score\": 5, \"methods\": [{\"score\": 5, \"method\": 6, \"comparisons\": [{\"score\": 5, \"types\": [\"types\"], \"distance\": 8, \"feature_vector\": {\"mapKey\": \"anyValue\"}, \"values\": [\"values\"], \"details\": {\"mapKey\": \"anyValue\"}}]}], \"name\": \"name\"}]}]}";
+    String mockResponseBody = "{\"records\": [{\"record_id\": \"recordId\", \"score\": 5, \"comparison_post_filter_methods\": [{\"score\": 5, \"distances\": {\"anyKey\": \"anyValue\"}, \"name\": \"name\"}], \"record_number\": \"recordNumber\", \"record_source\": \"recordSource\", \"compare_methods\": [{\"score\": 5, \"methods\": [{\"score\": 5, \"method\": 6, \"comparisons\": [{\"score\": 5, \"types\": [\"types\"], \"distance\": 8, \"feature_vector\": {\"anyKey\": \"anyValue\"}, \"values\": [\"values\"], \"details\": {\"anyKey\": \"anyValue\"}}]}], \"name\": \"name\"}]}]}";
     String searchMatchingIndexPath = "/mdm/v1/probabilistic_search";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -10534,7 +10532,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListMatchingEntityClustersWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"next\": {\"mapKey\": \"anyValue\"}, \"last\": {\"mapKey\": \"anyValue\"}, \"previous\": {\"mapKey\": \"anyValue\"}, \"offset\": 6, \"total_count\": 10, \"limit\": 5, \"results\": [{\"cluster_id\": \"clusterId\", \"anomaly\": false, \"records_count\": 12}], \"first\": {\"mapKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"next\": {\"anyKey\": \"anyValue\"}, \"last\": {\"anyKey\": \"anyValue\"}, \"previous\": {\"anyKey\": \"anyValue\"}, \"offset\": 6, \"total_count\": 10, \"limit\": 5, \"results\": [{\"cluster_id\": \"clusterId\", \"anomaly\": false, \"records_count\": 12}], \"first\": {\"anyKey\": \"anyValue\"}}";
     String listMatchingEntityClustersPath = "/mdm/v1/entities/entity_type-123456789/clusters";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -10765,7 +10763,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testListMatchingBucketDetailsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"mapKey\": {\"is_large\": false, \"candidate_records_count\": 21, \"bucket_group\": 11, \"member_records\": [\"memberRecords\"], \"contributing_prehashed_value\": \"contributingPrehashedValue\", \"contributing_attributes_derived_data\": {\"mapKey\": \"anyValue\"}}}";
+    String mockResponseBody = "{\"mapKey\": {\"is_large\": false, \"candidate_records_count\": 21, \"bucket_group\": 11, \"member_records\": [\"memberRecords\"], \"contributing_prehashed_value\": \"contributingPrehashedValue\", \"contributing_attributes_derived_data\": {\"anyKey\": \"anyValue\"}}}";
     String listMatchingBucketDetailsPath = "/mdm/v1/bucket_details";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -10821,7 +10819,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testCompareMatchingEntityClustersWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"comparison\": {\"mapKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"comparison\": {\"anyKey\": \"anyValue\"}}";
     String compareMatchingEntityClustersPath = "/mdm/v1/clusters/compare";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -11101,12 +11099,12 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmRecordFilter model
     AlgorithmRecordFilter algorithmRecordFilterModel = new AlgorithmRecordFilter.Builder()
-      .criteria(new java.util.HashMap<String, AlgorithmSingleCriteria>() { { put("foo", algorithmSingleCriteriaModel); } })
+      .criteria(java.util.Collections.singletonMap("key1", algorithmSingleCriteriaModel))
       .build();
 
     // Construct an instance of the AlgorithmSourceLevelThreshold model
     AlgorithmSourceLevelThreshold algorithmSourceLevelThresholdModel = new AlgorithmSourceLevelThreshold.Builder()
-      .srcxsrc(new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } })
+      .srcxsrc(java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))))
       .xDefault(java.util.Arrays.asList(Float.valueOf("36.0")))
       .build();
 
@@ -11167,21 +11165,21 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the AlgorithmEntityType model
     AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
       .glueThreshold(Float.valueOf("36.0"))
-      .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
+      .bucketGenerators(java.util.Collections.singletonMap("key1", algorithmBucketGeneratorModel))
       .recordFilter(algorithmRecordFilterModel)
       .clericalReviewThreshold(Float.valueOf("36.0"))
       .autoLinkThreshold(Float.valueOf("36.0"))
-      .sourceLevelThresholds(new java.util.HashMap<String, AlgorithmSourceLevelThreshold>() { { put("foo", algorithmSourceLevelThresholdModel); } })
-      .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
-      .postFilterMethods(new java.util.HashMap<String, AlgorithmPostFilterMethod>() { { put("foo", algorithmPostFilterMethodModel); } })
+      .sourceLevelThresholds(java.util.Collections.singletonMap("key1", algorithmSourceLevelThresholdModel))
+      .compareMethods(java.util.Collections.singletonMap("key1", algorithmCompareMethodModel))
+      .postFilterMethods(java.util.Collections.singletonMap("key1", algorithmPostFilterMethodModel))
       .build();
 
     // Construct an instance of the ReplaceModelAlgorithmOptions model
     ReplaceModelAlgorithmOptions replaceModelAlgorithmOptionsModel = new ReplaceModelAlgorithmOptions.Builder()
       .recordType("testString")
-      .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
+      .standardizers(java.util.Collections.singletonMap("key1", algorithmStandardizerModel))
       .encryption(algorithmEncryptionModel)
-      .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", algorithmEntityTypeModel))
       .locale("testString")
       .bucketGroupBitLength(Long.valueOf("26"))
       .build();
@@ -11241,7 +11239,7 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmGenerationRecordFilter model
     AlgorithmGenerationRecordFilter algorithmGenerationRecordFilterModel = new AlgorithmGenerationRecordFilter.Builder()
-      .criteria(new java.util.HashMap<String, AlgorithmGenerationSingleCriteria>() { { put("foo", algorithmGenerationSingleCriteriaModel); } })
+      .criteria(java.util.Collections.singletonMap("key1", algorithmGenerationSingleCriteriaModel))
       .build();
 
     // Construct an instance of the AlgorithmGenerationAttributeItem model
@@ -11254,7 +11252,7 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmGenerationSourceLevelThreshold model
     AlgorithmGenerationSourceLevelThreshold algorithmGenerationSourceLevelThresholdModel = new AlgorithmGenerationSourceLevelThreshold.Builder()
-      .srcxsrc(new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } })
+      .srcxsrc(java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))))
       .xDefault(java.util.Arrays.asList(Float.valueOf("36.0")))
       .build();
 
@@ -11265,14 +11263,14 @@ public class MdmTest extends PowerMockTestCase {
       .clericalReviewThreshold(Float.valueOf("0"))
       .matchingAttributes(java.util.Arrays.asList(algorithmGenerationAttributeItemModel))
       .autoLinkThreshold(Float.valueOf("0"))
-      .sourceLevelThresholds(new java.util.HashMap<String, AlgorithmGenerationSourceLevelThreshold>() { { put("foo", algorithmGenerationSourceLevelThresholdModel); } })
+      .sourceLevelThresholds(java.util.Collections.singletonMap("key1", algorithmGenerationSourceLevelThresholdModel))
       .add("foo", "testString")
       .build();
 
     // Construct an instance of the GenerateModelAlgorithmOptions model
     GenerateModelAlgorithmOptions generateModelAlgorithmOptionsModel = new GenerateModelAlgorithmOptions.Builder()
       .recordType("testString")
-      .requestBody(new java.util.HashMap<String, AlgorithmGenerationEntityType>() { { put("foo", algorithmGenerationEntityTypeModel); } })
+      .requestBody(java.util.Collections.singletonMap("key1", algorithmGenerationEntityTypeModel))
       .build();
 
     // Invoke generateModelAlgorithm() with a valid options model and verify the result
@@ -11397,12 +11395,12 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmRecordFilter model
     AlgorithmRecordFilter algorithmRecordFilterModel = new AlgorithmRecordFilter.Builder()
-      .criteria(new java.util.HashMap<String, AlgorithmSingleCriteria>() { { put("foo", algorithmSingleCriteriaModel); } })
+      .criteria(java.util.Collections.singletonMap("key1", algorithmSingleCriteriaModel))
       .build();
 
     // Construct an instance of the AlgorithmSourceLevelThreshold model
     AlgorithmSourceLevelThreshold algorithmSourceLevelThresholdModel = new AlgorithmSourceLevelThreshold.Builder()
-      .srcxsrc(new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } })
+      .srcxsrc(java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))))
       .xDefault(java.util.Arrays.asList(Float.valueOf("36.0")))
       .build();
 
@@ -11463,21 +11461,21 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the AlgorithmEntityType model
     AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
       .glueThreshold(Float.valueOf("36.0"))
-      .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
+      .bucketGenerators(java.util.Collections.singletonMap("key1", algorithmBucketGeneratorModel))
       .recordFilter(algorithmRecordFilterModel)
       .clericalReviewThreshold(Float.valueOf("36.0"))
       .autoLinkThreshold(Float.valueOf("36.0"))
-      .sourceLevelThresholds(new java.util.HashMap<String, AlgorithmSourceLevelThreshold>() { { put("foo", algorithmSourceLevelThresholdModel); } })
-      .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
-      .postFilterMethods(new java.util.HashMap<String, AlgorithmPostFilterMethod>() { { put("foo", algorithmPostFilterMethodModel); } })
+      .sourceLevelThresholds(java.util.Collections.singletonMap("key1", algorithmSourceLevelThresholdModel))
+      .compareMethods(java.util.Collections.singletonMap("key1", algorithmCompareMethodModel))
+      .postFilterMethods(java.util.Collections.singletonMap("key1", algorithmPostFilterMethodModel))
       .build();
 
     // Construct an instance of the UpdateModelAlgorithmOptions model
     UpdateModelAlgorithmOptions updateModelAlgorithmOptionsModel = new UpdateModelAlgorithmOptions.Builder()
       .recordType("testString")
-      .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
+      .standardizers(java.util.Collections.singletonMap("key1", algorithmStandardizerModel))
       .encryption(algorithmEncryptionModel)
-      .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", algorithmEntityTypeModel))
       .locale("testString")
       .bucketGroupBitLength(Long.valueOf("26"))
       .build();
@@ -11591,8 +11589,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the ReplaceModelComparespecResourceOptions model
     ReplaceModelComparespecResourceOptions replaceModelComparespecResourceOptionsModel = new ReplaceModelComparespecResourceOptions.Builder()
       .resourceName("testString")
-      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
-      .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
+      .featureCategories(java.util.Collections.singletonMap("key1", compareSpecResourceFeatureCategoryModel))
+      .featureCoefficients(java.util.Collections.singletonMap("key1", Float.valueOf("36.0")))
       .typoDistance(Float.valueOf("36.0"))
       .similarCharactersEnabled(true)
       .similarCharactersMapResource("testString")
@@ -11684,7 +11682,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetModelCompositeRulesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"rules\": {\"global\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"sources\": [\"sources\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"], \"single_values\": true}}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"record_type_rule\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}}}}, \"locale\": \"locale\"}";
+    String mockResponseBody = "{\"rules\": {\"global\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"sources\": [\"sources\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"], \"single_values\": true}}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"record_type_rule\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}}}}, \"locale\": \"locale\"}";
     String getModelCompositeRulesPath = "/mdm/v1/composite_rules";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -11727,7 +11725,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceModelCompositeRulesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"composite_rules\": {\"rules\": {\"global\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"sources\": [\"sources\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"], \"single_values\": true}}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"record_type_rule\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}}}}, \"locale\": \"locale\"}}";
+    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"composite_rules\": {\"rules\": {\"global\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"sources\": [\"sources\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"], \"single_values\": true}}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"record_type_rule\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}}}}, \"locale\": \"locale\"}}";
     String replaceModelCompositeRulesPath = "/mdm/v1/composite_rules";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -11737,7 +11735,7 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the CompositeRulesSubRuleType model
     CompositeRulesSubRuleType compositeRulesSubRuleTypeModel = new CompositeRulesSubRuleType.Builder()
       .type("testString")
-      .params(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .params(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the CompositeRulesRule model
@@ -11752,7 +11750,7 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CompositeRulesEntityRules model
     CompositeRulesEntityRules compositeRulesEntityRulesModel = new CompositeRulesEntityRules.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .sources(java.util.Arrays.asList("testString"))
       .sortBy(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
       .filters(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
@@ -11762,16 +11760,16 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CompositeRulesRecordType model
     CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .recordTypeRule(compositeRulesRuleModel)
-      .entityRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .entityRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .build();
 
     // Construct an instance of the CompositeRulesRules model
     CompositeRulesRules compositeRulesRulesModel = new CompositeRulesRules.Builder()
       .global(compositeRulesRuleModel)
-      .entityRules(new java.util.HashMap<String, CompositeRulesEntityRules>() { { put("foo", compositeRulesEntityRulesModel); } })
-      .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })
+      .entityRules(java.util.Collections.singletonMap("key1", compositeRulesEntityRulesModel))
+      .recordTypes(java.util.Collections.singletonMap("key1", compositeRulesRecordTypeModel))
       .build();
 
     // Construct an instance of the ReplaceModelCompositeRulesOptions model
@@ -11813,7 +11811,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetModelDataModelWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"mapKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}";
+    String mockResponseBody = "{\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"anyKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"label_for_relationship\": \"labelForRelationship\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}";
     String getModelDataModelPath = "/mdm/v1/data_model";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -11859,7 +11857,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceModelDataModelWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"data_model\": {\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"mapKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}}";
+    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"data_model\": {\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"anyKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"label_for_relationship\": \"labelForRelationship\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}}";
     String replaceModelDataModelPath = "/mdm/v1/data_model";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -11906,13 +11904,13 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelGroupTypeSystemProperties model
     DataModelGroupTypeSystemProperties dataModelGroupTypeSystemPropertiesModel = new DataModelGroupTypeSystemProperties.Builder()
+      .groupId(dataModelSystemPropertyModel)
       .createdUser(dataModelSystemPropertyModel)
       .groupNumber(dataModelSystemPropertyModel)
-      .groupId(dataModelSystemPropertyModel)
       .lastUpdatedUser(dataModelSystemPropertyModel)
-      .groupSource(dataModelSystemPropertyModel)
       .createdDate(dataModelSystemPropertyModel)
       .lastUpdatedDate(dataModelSystemPropertyModel)
+      .groupSource(dataModelSystemPropertyModel)
       .build();
 
     // Construct an instance of the DataModelEntityTypeSystemProperties model
@@ -11986,7 +11984,7 @@ public class MdmTest extends PowerMockTestCase {
       .description("testString")
       .label("testString")
       .classification("testString")
-      .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
+      .fields(java.util.Collections.singletonMap("key1", dataModelFieldModel))
       .build();
 
     // Construct an instance of the DataModelRelationshipEndpoint model
@@ -12020,10 +12018,11 @@ public class MdmTest extends PowerMockTestCase {
       .internal(true)
       .labelFromSource("testString")
       .labelFromTarget("testString")
+      .labelForRelationship("testString")
       .directional(true)
       .description("testString")
       .rules(java.util.Arrays.asList(dataModelRelationshipRuleModel))
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .cardinality("testString")
@@ -12035,16 +12034,16 @@ public class MdmTest extends PowerMockTestCase {
       .xDefault(true)
       .persistCompView(true)
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .type("testString")
       .build();
 
     // Construct an instance of the DataModelRecordType model
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", dataModelEntityTypeModel))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
 
@@ -12053,15 +12052,15 @@ public class MdmTest extends PowerMockTestCase {
       .nodeType("testString")
       .nodeRelationshipType("testString")
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
-      .nodeAssociations(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .nodeAssociations(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the DataModelNodeType model
     DataModelNodeType dataModelNodeTypeModel = new DataModelNodeType.Builder()
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .build();
@@ -12071,20 +12070,20 @@ public class MdmTest extends PowerMockTestCase {
       .memberLimit(Long.valueOf("26"))
       .groupAssociations(java.util.Arrays.asList("testString"))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
 
     // Construct an instance of the ReplaceModelDataModelOptions model
     ReplaceModelDataModelOptions replaceModelDataModelOptionsModel = new ReplaceModelDataModelOptions.Builder()
       .systemProperties(dataModelSystemPropertiesModel)
-      .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
-      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
+      .attributeTypes(java.util.Collections.singletonMap("key1", dataModelAttributeTypeModel))
+      .relationshipTypes(java.util.Collections.singletonMap("key1", dataModelRelationshipTypeModel))
       .locale("testString")
-      .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
-      .hierarchyTypes(new java.util.HashMap<String, DataModelHierarchyType>() { { put("foo", dataModelHierarchyTypeModel); } })
-      .nodeTypes(new java.util.HashMap<String, DataModelNodeType>() { { put("foo", dataModelNodeTypeModel); } })
-      .groupTypes(new java.util.HashMap<String, DataModelGroupType>() { { put("foo", dataModelGroupTypeModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", dataModelRecordTypeModel))
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", dataModelHierarchyTypeModel))
+      .nodeTypes(java.util.Collections.singletonMap("key1", dataModelNodeTypeModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", dataModelGroupTypeModel))
       .build();
 
     // Invoke replaceModelDataModel() with a valid options model and verify the result
@@ -12127,7 +12126,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testUpdateModelDataModelWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"data_model\": {\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"mapKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}}";
+    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"data_model\": {\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"anyKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"label_for_relationship\": \"labelForRelationship\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}}";
     String updateModelDataModelPath = "/mdm/v1/data_model";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -12174,13 +12173,13 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelGroupTypeSystemProperties model
     DataModelGroupTypeSystemProperties dataModelGroupTypeSystemPropertiesModel = new DataModelGroupTypeSystemProperties.Builder()
+      .groupId(dataModelSystemPropertyModel)
       .createdUser(dataModelSystemPropertyModel)
       .groupNumber(dataModelSystemPropertyModel)
-      .groupId(dataModelSystemPropertyModel)
       .lastUpdatedUser(dataModelSystemPropertyModel)
-      .groupSource(dataModelSystemPropertyModel)
       .createdDate(dataModelSystemPropertyModel)
       .lastUpdatedDate(dataModelSystemPropertyModel)
+      .groupSource(dataModelSystemPropertyModel)
       .build();
 
     // Construct an instance of the DataModelEntityTypeSystemProperties model
@@ -12254,7 +12253,7 @@ public class MdmTest extends PowerMockTestCase {
       .description("testString")
       .label("testString")
       .classification("testString")
-      .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
+      .fields(java.util.Collections.singletonMap("key1", dataModelFieldModel))
       .build();
 
     // Construct an instance of the DataModelRelationshipEndpoint model
@@ -12288,10 +12287,11 @@ public class MdmTest extends PowerMockTestCase {
       .internal(true)
       .labelFromSource("testString")
       .labelFromTarget("testString")
+      .labelForRelationship("testString")
       .directional(true)
       .description("testString")
       .rules(java.util.Arrays.asList(dataModelRelationshipRuleModel))
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .cardinality("testString")
@@ -12303,16 +12303,16 @@ public class MdmTest extends PowerMockTestCase {
       .xDefault(true)
       .persistCompView(true)
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .type("testString")
       .build();
 
     // Construct an instance of the DataModelRecordType model
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", dataModelEntityTypeModel))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
 
@@ -12321,15 +12321,15 @@ public class MdmTest extends PowerMockTestCase {
       .nodeType("testString")
       .nodeRelationshipType("testString")
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
-      .nodeAssociations(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .nodeAssociations(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the DataModelNodeType model
     DataModelNodeType dataModelNodeTypeModel = new DataModelNodeType.Builder()
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .build();
@@ -12339,20 +12339,20 @@ public class MdmTest extends PowerMockTestCase {
       .memberLimit(Long.valueOf("26"))
       .groupAssociations(java.util.Arrays.asList("testString"))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
 
     // Construct an instance of the UpdateModelDataModelOptions model
     UpdateModelDataModelOptions updateModelDataModelOptionsModel = new UpdateModelDataModelOptions.Builder()
       .systemProperties(dataModelSystemPropertiesModel)
-      .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
-      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
+      .attributeTypes(java.util.Collections.singletonMap("key1", dataModelAttributeTypeModel))
+      .relationshipTypes(java.util.Collections.singletonMap("key1", dataModelRelationshipTypeModel))
       .locale("testString")
-      .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
-      .hierarchyTypes(new java.util.HashMap<String, DataModelHierarchyType>() { { put("foo", dataModelHierarchyTypeModel); } })
-      .nodeTypes(new java.util.HashMap<String, DataModelNodeType>() { { put("foo", dataModelNodeTypeModel); } })
-      .groupTypes(new java.util.HashMap<String, DataModelGroupType>() { { put("foo", dataModelGroupTypeModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", dataModelRecordTypeModel))
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", dataModelHierarchyTypeModel))
+      .nodeTypes(java.util.Collections.singletonMap("key1", dataModelNodeTypeModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", dataModelGroupTypeModel))
       .build();
 
     // Invoke updateModelDataModel() with a valid options model and verify the result
@@ -12395,9 +12395,10 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetDefaultMatchingFieldsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "";
+    String mockResponseBody = "{}";
     String getDefaultMatchingFieldsPath = "/mdm/v1/data_model/default_matching_fields";
     server.enqueue(new MockResponse()
+      .setHeader("Content-type", "application/json")
       .setResponseCode(200)
       .setBody(mockResponseBody));
 
@@ -12405,10 +12406,10 @@ public class MdmTest extends PowerMockTestCase {
     GetDefaultMatchingFieldsOptions getDefaultMatchingFieldsOptionsModel = new GetDefaultMatchingFieldsOptions();
 
     // Invoke getDefaultMatchingFields() with a valid options model and verify the result
-    Response<Void> response = mdmService.getDefaultMatchingFields(getDefaultMatchingFieldsOptionsModel).execute();
+    Response<GetDefaultMatchingFields> response = mdmService.getDefaultMatchingFields(getDefaultMatchingFieldsOptionsModel).execute();
     assertNotNull(response);
-    Void responseObj = response.getResult();
-    assertNull(responseObj);
+    GetDefaultMatchingFields responseObj = response.getResult();
+    assertNotNull(responseObj);
 
     // Verify the contents of the request sent to the mock server
     RecordedRequest request = server.takeRequest();
@@ -12437,7 +12438,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetModelEventSubscriptionsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"event_subscriptions\": [{\"subscription_id\": \"subscriptionId\", \"filter\": [\"filter\"], \"event_type\": \"eventType\", \"created_user\": \"createdUser\", \"last_update_user\": \"lastUpdateUser\", \"stream_connection\": {\"stream_connection_properties\": {\"mapKey\": \"anyValue\"}, \"stream_type\": \"streamType\", \"asset_scope\": \"assetScope\", \"topic\": \"topic\", \"asset_id\": \"assetId\", \"container_id\": \"containerId\"}, \"subscription_description\": \"subscriptionDescription\", \"subscription_name\": \"subscriptionName\", \"active\": true, \"created_date\": \"createdDate\", \"last_update_date\": \"lastUpdateDate\"}]}";
+    String mockResponseBody = "{\"event_subscriptions\": [{\"subscription_id\": \"subscriptionId\", \"filter\": [\"filter\"], \"event_type\": \"eventType\", \"created_user\": \"createdUser\", \"last_update_user\": \"lastUpdateUser\", \"stream_connection\": {\"stream_connection_properties\": {\"anyKey\": \"anyValue\"}, \"stream_type\": \"streamType\", \"asset_scope\": \"assetScope\", \"topic\": \"topic\", \"asset_id\": \"assetId\", \"container_id\": \"containerId\"}, \"subscription_description\": \"subscriptionDescription\", \"subscription_name\": \"subscriptionName\", \"active\": true, \"created_date\": \"createdDate\", \"last_update_date\": \"lastUpdateDate\"}]}";
     String getModelEventSubscriptionsPath = "/mdm/v1/event_subscription";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -12487,7 +12488,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceModelEventSubscriptionWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"subscription_id\": \"subscriptionId\", \"filter\": [\"filter\"], \"event_type\": \"eventType\", \"created_user\": \"createdUser\", \"last_update_user\": \"lastUpdateUser\", \"stream_connection\": {\"stream_connection_properties\": {\"mapKey\": \"anyValue\"}, \"stream_type\": \"streamType\", \"asset_scope\": \"assetScope\", \"topic\": \"topic\", \"asset_id\": \"assetId\", \"container_id\": \"containerId\"}, \"subscription_description\": \"subscriptionDescription\", \"subscription_name\": \"subscriptionName\", \"active\": true, \"created_date\": \"createdDate\", \"last_update_date\": \"lastUpdateDate\"}";
+    String mockResponseBody = "{\"subscription_id\": \"subscriptionId\", \"filter\": [\"filter\"], \"event_type\": \"eventType\", \"created_user\": \"createdUser\", \"last_update_user\": \"lastUpdateUser\", \"stream_connection\": {\"stream_connection_properties\": {\"anyKey\": \"anyValue\"}, \"stream_type\": \"streamType\", \"asset_scope\": \"assetScope\", \"topic\": \"topic\", \"asset_id\": \"assetId\", \"container_id\": \"containerId\"}, \"subscription_description\": \"subscriptionDescription\", \"subscription_name\": \"subscriptionName\", \"active\": true, \"created_date\": \"createdDate\", \"last_update_date\": \"lastUpdateDate\"}";
     String replaceModelEventSubscriptionPath = "/mdm/v1/event_subscription";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -12496,7 +12497,7 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the EventSubscriptionStreamConnection model
     EventSubscriptionStreamConnection eventSubscriptionStreamConnectionModel = new EventSubscriptionStreamConnection.Builder()
-      .streamConnectionProperties(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .streamConnectionProperties(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .streamType("testString")
       .assetScope("testString")
       .topic("testString")
@@ -12559,7 +12560,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testDeleteModelEventSubscriptionWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"mapKey\": {\"anyKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"anyKey\": \"anyValue\"}";
     String deleteModelEventSubscriptionPath = "/mdm/v1/event_subscription/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -12708,7 +12709,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testDeleteModelFlowWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"mapKey\": {\"anyKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"anyKey\": \"anyValue\"}";
     String deleteModelFlowPath = "/mdm/v1/flows/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -12934,8 +12935,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the ReplaceModelGovernanceMetadataOptions model
     ReplaceModelGovernanceMetadataOptions replaceModelGovernanceMetadataOptionsModel = new ReplaceModelGovernanceMetadataOptions.Builder()
-      .entityTypes(new java.util.HashMap<String, GovernanceMetadataEntityType>() { { put("foo", governanceMetadataEntityTypeModel); } })
-      .recordTypes(new java.util.HashMap<String, GovernanceMetadataRecordType>() { { put("foo", governanceMetadataRecordTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", governanceMetadataEntityTypeModel))
+      .recordTypes(java.util.Collections.singletonMap("key1", governanceMetadataRecordTypeModel))
       .build();
 
     // Invoke replaceModelGovernanceMetadata() with a valid options model and verify the result
@@ -13072,7 +13073,7 @@ public class MdmTest extends PowerMockTestCase {
       .projects(java.util.Arrays.asList(instanceMetadataProjectModel))
       .workflowConfigurationId("testString")
       .generateConnectedDataAsset(true)
-      .workflows(new java.util.HashMap<String, InstanceMetadataWorkflow>() { { put("foo", instanceMetadataWorkflowModel); } })
+      .workflows(java.util.Collections.singletonMap("key1", instanceMetadataWorkflowModel))
       .label("testString")
       .cosEndpoint("testString")
       .modeOfOperation("testString")
@@ -13192,7 +13193,7 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the ReplaceModelMapResourceOptions model
     ReplaceModelMapResourceOptions replaceModelMapResourceOptionsModel = new ReplaceModelMapResourceOptions.Builder()
       .resourceName("testString")
-      .requestBody(new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", java.util.Arrays.asList(mapResourceEntryModel)); } })
+      .requestBody(java.util.Collections.singletonMap("key1", java.util.Arrays.asList(mapResourceEntryModel)))
       .build();
 
     // Invoke replaceModelMapResource() with a valid options model and verify the result
@@ -13406,12 +13407,12 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmRecordFilter model
     AlgorithmRecordFilter algorithmRecordFilterModel = new AlgorithmRecordFilter.Builder()
-      .criteria(new java.util.HashMap<String, AlgorithmSingleCriteria>() { { put("foo", algorithmSingleCriteriaModel); } })
+      .criteria(java.util.Collections.singletonMap("key1", algorithmSingleCriteriaModel))
       .build();
 
     // Construct an instance of the AlgorithmSourceLevelThreshold model
     AlgorithmSourceLevelThreshold algorithmSourceLevelThresholdModel = new AlgorithmSourceLevelThreshold.Builder()
-      .srcxsrc(new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } })
+      .srcxsrc(java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))))
       .xDefault(java.util.Arrays.asList(Float.valueOf("36.0")))
       .build();
 
@@ -13472,20 +13473,20 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the AlgorithmEntityType model
     AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
       .glueThreshold(Float.valueOf("36.0"))
-      .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
+      .bucketGenerators(java.util.Collections.singletonMap("key1", algorithmBucketGeneratorModel))
       .recordFilter(algorithmRecordFilterModel)
       .clericalReviewThreshold(Float.valueOf("36.0"))
       .autoLinkThreshold(Float.valueOf("36.0"))
-      .sourceLevelThresholds(new java.util.HashMap<String, AlgorithmSourceLevelThreshold>() { { put("foo", algorithmSourceLevelThresholdModel); } })
-      .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
-      .postFilterMethods(new java.util.HashMap<String, AlgorithmPostFilterMethod>() { { put("foo", algorithmPostFilterMethodModel); } })
+      .sourceLevelThresholds(java.util.Collections.singletonMap("key1", algorithmSourceLevelThresholdModel))
+      .compareMethods(java.util.Collections.singletonMap("key1", algorithmCompareMethodModel))
+      .postFilterMethods(java.util.Collections.singletonMap("key1", algorithmPostFilterMethodModel))
       .build();
 
     // Construct an instance of the Algorithm model
     Algorithm algorithmModel = new Algorithm.Builder()
-      .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
+      .standardizers(java.util.Collections.singletonMap("key1", algorithmStandardizerModel))
       .encryption(algorithmEncryptionModel)
-      .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", algorithmEntityTypeModel))
       .locale("testString")
       .bucketGroupBitLength(Long.valueOf("26"))
       .build();
@@ -13499,13 +13500,13 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CompareSpecResource model
     CompareSpecResource compareSpecResourceModel = new CompareSpecResource.Builder()
-      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
+      .featureCategories(java.util.Collections.singletonMap("key1", compareSpecResourceFeatureCategoryModel))
       .typoDistance(Float.valueOf("36.0"))
       .similarCharactersEnabled(true)
       .similarCharactersMapResource("testString")
       .rawEditDistanceEnabled(true)
       .maxGeoDistance(Float.valueOf("36.0"))
-      .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
+      .featureCoefficients(java.util.Collections.singletonMap("key1", Float.valueOf("36.0")))
       .similarCharactersDistance(Float.valueOf("36.0"))
       .build();
 
@@ -13525,15 +13526,15 @@ public class MdmTest extends PowerMockTestCase {
       .nodeType("testString")
       .nodeRelationshipType("testString")
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
-      .nodeAssociations(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .nodeAssociations(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the DataModelNodeType model
     DataModelNodeType dataModelNodeTypeModel = new DataModelNodeType.Builder()
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .build();
@@ -13578,13 +13579,13 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelGroupTypeSystemProperties model
     DataModelGroupTypeSystemProperties dataModelGroupTypeSystemPropertiesModel = new DataModelGroupTypeSystemProperties.Builder()
+      .groupId(dataModelSystemPropertyModel)
       .createdUser(dataModelSystemPropertyModel)
       .groupNumber(dataModelSystemPropertyModel)
-      .groupId(dataModelSystemPropertyModel)
       .lastUpdatedUser(dataModelSystemPropertyModel)
-      .groupSource(dataModelSystemPropertyModel)
       .createdDate(dataModelSystemPropertyModel)
       .lastUpdatedDate(dataModelSystemPropertyModel)
+      .groupSource(dataModelSystemPropertyModel)
       .build();
 
     // Construct an instance of the DataModelEntityTypeSystemProperties model
@@ -13658,7 +13659,7 @@ public class MdmTest extends PowerMockTestCase {
       .description("testString")
       .label("testString")
       .classification("testString")
-      .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
+      .fields(java.util.Collections.singletonMap("key1", dataModelFieldModel))
       .build();
 
     // Construct an instance of the DataModelGroupType model
@@ -13666,7 +13667,7 @@ public class MdmTest extends PowerMockTestCase {
       .memberLimit(Long.valueOf("26"))
       .groupAssociations(java.util.Arrays.asList("testString"))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
 
@@ -13690,10 +13691,11 @@ public class MdmTest extends PowerMockTestCase {
       .internal(true)
       .labelFromSource("testString")
       .labelFromTarget("testString")
+      .labelForRelationship("testString")
       .directional(true)
       .description("testString")
       .rules(java.util.Arrays.asList(dataModelRelationshipRuleModel))
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .cardinality("testString")
@@ -13705,29 +13707,29 @@ public class MdmTest extends PowerMockTestCase {
       .xDefault(true)
       .persistCompView(true)
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .type("testString")
       .build();
 
     // Construct an instance of the DataModelRecordType model
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", dataModelEntityTypeModel))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
 
     // Construct an instance of the DataModel model
     DataModel dataModelModel = new DataModel.Builder()
-      .hierarchyTypes(new java.util.HashMap<String, DataModelHierarchyType>() { { put("foo", dataModelHierarchyTypeModel); } })
-      .nodeTypes(new java.util.HashMap<String, DataModelNodeType>() { { put("foo", dataModelNodeTypeModel); } })
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", dataModelHierarchyTypeModel))
+      .nodeTypes(java.util.Collections.singletonMap("key1", dataModelNodeTypeModel))
       .systemProperties(dataModelSystemPropertiesModel)
-      .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
-      .groupTypes(new java.util.HashMap<String, DataModelGroupType>() { { put("foo", dataModelGroupTypeModel); } })
-      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
+      .attributeTypes(java.util.Collections.singletonMap("key1", dataModelAttributeTypeModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", dataModelGroupTypeModel))
+      .relationshipTypes(java.util.Collections.singletonMap("key1", dataModelRelationshipTypeModel))
       .locale("testString")
-      .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", dataModelRecordTypeModel))
       .build();
 
     // Construct an instance of the MapResourceEntry model
@@ -13751,7 +13753,7 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the CompositeRulesSubRuleType model
     CompositeRulesSubRuleType compositeRulesSubRuleTypeModel = new CompositeRulesSubRuleType.Builder()
       .type("testString")
-      .params(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .params(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the CompositeRulesRule model
@@ -13766,7 +13768,7 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CompositeRulesEntityRules model
     CompositeRulesEntityRules compositeRulesEntityRulesModel = new CompositeRulesEntityRules.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .sources(java.util.Arrays.asList("testString"))
       .sortBy(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
       .filters(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
@@ -13776,16 +13778,16 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CompositeRulesRecordType model
     CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .recordTypeRule(compositeRulesRuleModel)
-      .entityRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .entityRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .build();
 
     // Construct an instance of the CompositeRulesRules model
     CompositeRulesRules compositeRulesRulesModel = new CompositeRulesRules.Builder()
       .global(compositeRulesRuleModel)
-      .entityRules(new java.util.HashMap<String, CompositeRulesEntityRules>() { { put("foo", compositeRulesEntityRulesModel); } })
-      .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })
+      .entityRules(java.util.Collections.singletonMap("key1", compositeRulesEntityRulesModel))
+      .recordTypes(java.util.Collections.singletonMap("key1", compositeRulesRecordTypeModel))
       .build();
 
     // Construct an instance of the CompositeRules model
@@ -13796,11 +13798,11 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the ValidateModelSnapshotOptions model
     ValidateModelSnapshotOptions validateModelSnapshotOptionsModel = new ValidateModelSnapshotOptions.Builder()
-      .algorithms(new java.util.HashMap<String, Algorithm>() { { put("foo", algorithmModel); } })
-      .compareSpecResources(new java.util.HashMap<String, CompareSpecResource>() { { put("foo", compareSpecResourceModel); } })
+      .algorithms(java.util.Collections.singletonMap("key1", algorithmModel))
+      .compareSpecResources(java.util.Collections.singletonMap("key1", compareSpecResourceModel))
       .dataModel(dataModelModel)
-      .mapResources(new java.util.HashMap<String, Map<String, List<MapResourceEntry>>>() { { put("foo", new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", java.util.Arrays.asList(mapResourceEntryModel)); } }); } })
-      .setResources(new java.util.HashMap<String, Map<String, SetResourceEntry>>() { { put("foo", new java.util.HashMap<String, SetResourceEntry>() { { put("foo", setResourceEntryModel); } }); } })
+      .mapResources(java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", java.util.Arrays.asList(mapResourceEntryModel))))
+      .setResources(java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", setResourceEntryModel)))
       .compositeRules(compositeRulesModel)
       .build();
 
@@ -13844,7 +13846,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetModelResiliencyRulesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"link_resiliency_rules\": {\"records\": {\"mapKey\": {\"add\": {\"join_existing_entity\": \"joinExistingEntity\", \"merge_entities\": \"mergeEntities\"}, \"update\": {\"original_entity_split\": \"originalEntitySplit\", \"record_becoming_singleton\": \"recordBecomingSingleton\", \"join_existing_entity\": \"joinExistingEntity\", \"merge_entities\": \"mergeEntities\"}, \"manual_link\": {\"merge_entities\": false}, \"delete\": {\"original_entity_split\": \"originalEntitySplit\", \"singleton_entity_deletion\": \"singletonEntityDeletion\"}, \"manual_unlink\": {\"original_entity_split\": false, \"record_becoming_singleton\": false}}}, \"entities\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}";
+    String mockResponseBody = "{\"link_resiliency_rules\": {\"records\": {\"mapKey\": {\"add\": {\"join_existing_entity\": \"joinExistingEntity\", \"merge_entities\": \"mergeEntities\"}, \"update\": {\"original_entity_split\": \"originalEntitySplit\", \"record_becoming_singleton\": \"recordBecomingSingleton\", \"join_existing_entity\": \"joinExistingEntity\", \"merge_entities\": \"mergeEntities\"}, \"manual_link\": {\"merge_entities\": false}, \"delete\": {\"original_entity_split\": \"originalEntitySplit\", \"singleton_entity_deletion\": \"singletonEntityDeletion\"}, \"manual_unlink\": {\"original_entity_split\": false, \"record_becoming_singleton\": false}}}, \"entities\": {\"anyKey\": \"anyValue\"}}}";
     String getModelResiliencyRulesPath = "/mdm/v1/resiliency_rules";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -13887,7 +13889,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testReplaceModelResiliencyRulesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"link_resiliency_rules\": {\"records\": {\"mapKey\": {\"add\": {\"join_existing_entity\": \"joinExistingEntity\", \"merge_entities\": \"mergeEntities\"}, \"update\": {\"original_entity_split\": \"originalEntitySplit\", \"record_becoming_singleton\": \"recordBecomingSingleton\", \"join_existing_entity\": \"joinExistingEntity\", \"merge_entities\": \"mergeEntities\"}, \"manual_link\": {\"merge_entities\": false}, \"delete\": {\"original_entity_split\": \"originalEntitySplit\", \"singleton_entity_deletion\": \"singletonEntityDeletion\"}, \"manual_unlink\": {\"original_entity_split\": false, \"record_becoming_singleton\": false}}}, \"entities\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}";
+    String mockResponseBody = "{\"link_resiliency_rules\": {\"records\": {\"mapKey\": {\"add\": {\"join_existing_entity\": \"joinExistingEntity\", \"merge_entities\": \"mergeEntities\"}, \"update\": {\"original_entity_split\": \"originalEntitySplit\", \"record_becoming_singleton\": \"recordBecomingSingleton\", \"join_existing_entity\": \"joinExistingEntity\", \"merge_entities\": \"mergeEntities\"}, \"manual_link\": {\"merge_entities\": false}, \"delete\": {\"original_entity_split\": \"originalEntitySplit\", \"singleton_entity_deletion\": \"singletonEntityDeletion\"}, \"manual_unlink\": {\"original_entity_split\": false, \"record_becoming_singleton\": false}}}, \"entities\": {\"anyKey\": \"anyValue\"}}}";
     String replaceModelResiliencyRulesPath = "/mdm/v1/resiliency_rules";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -13936,8 +13938,8 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the ResiliencyRulesLinkResiliencyRules model
     ResiliencyRulesLinkResiliencyRules resiliencyRulesLinkResiliencyRulesModel = new ResiliencyRulesLinkResiliencyRules.Builder()
-      .records(new java.util.HashMap<String, ResiliencyRulesRecord>() { { put("foo", resiliencyRulesRecordModel); } })
-      .entities(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .records(java.util.Collections.singletonMap("key1", resiliencyRulesRecordModel))
+      .entities(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the ReplaceModelResiliencyRulesOptions model
@@ -14091,7 +14093,7 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the ReplaceModelSetResourceOptions model
     ReplaceModelSetResourceOptions replaceModelSetResourceOptionsModel = new ReplaceModelSetResourceOptions.Builder()
       .resourceName("testString")
-      .requestBody(new java.util.HashMap<String, SetResourceEntry>() { { put("foo", setResourceEntryModel); } })
+      .requestBody(java.util.Collections.singletonMap("key1", setResourceEntryModel))
       .build();
 
     // Invoke replaceModelSetResource() with a valid options model and verify the result
@@ -14134,7 +14136,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testImportModelSnapshotWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"snapshot\": {\"algorithms\": {\"mapKey\": {\"standardizers\": {\"mapKey\": {\"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"standardizer_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\"}], \"label\": \"label\"}}, \"encryption\": {\"sub_type\": \"subType\", \"type\": \"type\", \"enabled\": false, \"pub_key\": [\"pubKey\"]}, \"entity_types\": {\"mapKey\": {\"glue_threshold\": 13, \"bucket_generators\": {\"mapKey\": {\"bucket_group_recipe\": [{\"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"fields\": [[\"fields\"]], \"order\": false}], \"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"maximum_bucket_size\": 17, \"bucket_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\", \"order\": false}], \"label\": \"label\"}}, \"record_filter\": {\"criteria\": {\"mapKey\": {\"allowed\": [\"allowed\"], \"disallowed\": [\"disallowed\"]}}}, \"clerical_review_threshold\": 23, \"auto_link_threshold\": 17, \"source_level_thresholds\": {\"mapKey\": {\"srcxsrc\": {\"mapKey\": [5]}, \"default\": [8]}}, \"compare_methods\": {\"mapKey\": {\"methods\": [{\"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"compare_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\"}]}], \"overall_score_contribution\": true, \"label\": \"label\", \"weights\": [7]}}, \"post_filter_methods\": {\"mapKey\": {\"filter_recipe\": [{\"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"weights\": [{\"distances\": [9], \"values\": [6]}], \"filter_resource\": \"filterResource\", \"max_distance\": 11}], \"inputs\": [{\"compare_method\": \"compareMethod\"}], \"label\": \"label\"}}}}, \"locale\": \"locale\", \"bucket_group_bit_length\": 20}}, \"compare_spec_resources\": {\"mapKey\": {\"feature_categories\": {\"mapKey\": {\"features\": [\"features\"], \"fields\": [\"fields\"], \"equivalency_map_resource\": \"equivalencyMapResource\"}}, \"typo_distance\": 12, \"similar_characters_enabled\": true, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"raw_edit_distance_enabled\": true, \"max_geo_distance\": 14, \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25}}, \"relationship_discovery_rules\": {\"mapKey\": {\"relationship_type\": \"relationshipType\", \"user_rules\": {\"hierarchy\": {\"parent\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}, \"child\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}}, \"relationship\": {\"source\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}, \"target\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}}, \"group\": {\"member\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}}}, \"technical_rules\": {\"dropped_index\": [\"droppedIndex\"], \"required_index\": [\"requiredIndex\"], \"type\": \"type\", \"generated_rules\": {\"hierarchy\": {\"parent\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}, \"child\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}, \"relationship\": {\"source\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}, \"target\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}, \"group\": {\"member\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}}}}}, \"data_model\": {\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"mapKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}, \"map_resources\": {\"mapKey\": {\"mapKey\": [{\"regex\": [\"regex\"], \"values\": [\"values\"], \"data_type\": \"dataType\", \"category\": \"category\", \"cardinality\": \"cardinality\", \"key\": \"key\"}]}}, \"set_resources\": {\"mapKey\": {\"mapKey\": {\"regex\": [\"regex\"], \"values\": [\"values\"], \"data_type\": \"dataType\", \"category\": \"category\"}}}, \"composite_rules\": {\"rules\": {\"global\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"sources\": [\"sources\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"], \"single_values\": true}}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"record_type_rule\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}}}}, \"locale\": \"locale\"}}}";
+    String mockResponseBody = "{\"flow_state\": \"flowState\", \"flow_id\": \"flowId\", \"snapshot\": {\"algorithms\": {\"mapKey\": {\"standardizers\": {\"mapKey\": {\"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"standardizer_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\"}], \"label\": \"label\"}}, \"encryption\": {\"sub_type\": \"subType\", \"type\": \"type\", \"enabled\": false, \"pub_key\": [\"pubKey\"]}, \"entity_types\": {\"mapKey\": {\"glue_threshold\": 13, \"bucket_generators\": {\"mapKey\": {\"bucket_group_recipe\": [{\"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"fields\": [[\"fields\"]], \"order\": false}], \"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"maximum_bucket_size\": 17, \"bucket_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\", \"order\": false}], \"label\": \"label\"}}, \"record_filter\": {\"criteria\": {\"mapKey\": {\"allowed\": [\"allowed\"], \"disallowed\": [\"disallowed\"]}}}, \"clerical_review_threshold\": 23, \"auto_link_threshold\": 17, \"source_level_thresholds\": {\"mapKey\": {\"srcxsrc\": {\"mapKey\": [5]}, \"default\": [8]}}, \"compare_methods\": {\"mapKey\": {\"methods\": [{\"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"compare_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\"}]}], \"overall_score_contribution\": true, \"label\": \"label\", \"weights\": [7]}}, \"post_filter_methods\": {\"mapKey\": {\"filter_recipe\": [{\"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"weights\": [{\"distances\": [9], \"values\": [6]}], \"filter_resource\": \"filterResource\", \"max_distance\": 11}], \"inputs\": [{\"compare_method\": \"compareMethod\"}], \"label\": \"label\"}}}}, \"locale\": \"locale\", \"bucket_group_bit_length\": 20}}, \"compare_spec_resources\": {\"mapKey\": {\"feature_categories\": {\"mapKey\": {\"features\": [\"features\"], \"fields\": [\"fields\"], \"equivalency_map_resource\": \"equivalencyMapResource\"}}, \"typo_distance\": 12, \"similar_characters_enabled\": true, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"raw_edit_distance_enabled\": true, \"max_geo_distance\": 14, \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25}}, \"relationship_discovery_rules\": {\"mapKey\": {\"relationship_type\": \"relationshipType\", \"user_rules\": {\"hierarchy\": {\"parent\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}}, \"child\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}}}, \"relationship\": {\"source\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}}, \"target\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}}}, \"group\": {\"member\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}}}}, \"technical_rules\": {\"dropped_index\": [\"droppedIndex\"], \"required_index\": [\"requiredIndex\"], \"type\": \"type\", \"generated_rules\": {\"hierarchy\": {\"parent\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}, \"child\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}, \"relationship\": {\"source\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}, \"target\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}, \"group\": {\"member\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}}}}}, \"data_model\": {\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"anyKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"label_for_relationship\": \"labelForRelationship\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}, \"map_resources\": {\"mapKey\": {\"mapKey\": [{\"regex\": [\"regex\"], \"values\": [\"values\"], \"data_type\": \"dataType\", \"category\": \"category\", \"cardinality\": \"cardinality\", \"key\": \"key\"}]}}, \"set_resources\": {\"mapKey\": {\"mapKey\": {\"regex\": [\"regex\"], \"values\": [\"values\"], \"data_type\": \"dataType\", \"category\": \"category\"}}}, \"composite_rules\": {\"rules\": {\"global\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"sources\": [\"sources\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"], \"single_values\": true}}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"record_type_rule\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}}}}, \"locale\": \"locale\"}}}";
     String importModelSnapshotPath = "/mdm/v1/import_model_snapshot";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -14216,12 +14218,12 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the AlgorithmRecordFilter model
     AlgorithmRecordFilter algorithmRecordFilterModel = new AlgorithmRecordFilter.Builder()
-      .criteria(new java.util.HashMap<String, AlgorithmSingleCriteria>() { { put("foo", algorithmSingleCriteriaModel); } })
+      .criteria(java.util.Collections.singletonMap("key1", algorithmSingleCriteriaModel))
       .build();
 
     // Construct an instance of the AlgorithmSourceLevelThreshold model
     AlgorithmSourceLevelThreshold algorithmSourceLevelThresholdModel = new AlgorithmSourceLevelThreshold.Builder()
-      .srcxsrc(new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } })
+      .srcxsrc(java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))))
       .xDefault(java.util.Arrays.asList(Float.valueOf("36.0")))
       .build();
 
@@ -14282,20 +14284,20 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the AlgorithmEntityType model
     AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
       .glueThreshold(Float.valueOf("36.0"))
-      .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
+      .bucketGenerators(java.util.Collections.singletonMap("key1", algorithmBucketGeneratorModel))
       .recordFilter(algorithmRecordFilterModel)
       .clericalReviewThreshold(Float.valueOf("36.0"))
       .autoLinkThreshold(Float.valueOf("36.0"))
-      .sourceLevelThresholds(new java.util.HashMap<String, AlgorithmSourceLevelThreshold>() { { put("foo", algorithmSourceLevelThresholdModel); } })
-      .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
-      .postFilterMethods(new java.util.HashMap<String, AlgorithmPostFilterMethod>() { { put("foo", algorithmPostFilterMethodModel); } })
+      .sourceLevelThresholds(java.util.Collections.singletonMap("key1", algorithmSourceLevelThresholdModel))
+      .compareMethods(java.util.Collections.singletonMap("key1", algorithmCompareMethodModel))
+      .postFilterMethods(java.util.Collections.singletonMap("key1", algorithmPostFilterMethodModel))
       .build();
 
     // Construct an instance of the Algorithm model
     Algorithm algorithmModel = new Algorithm.Builder()
-      .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
+      .standardizers(java.util.Collections.singletonMap("key1", algorithmStandardizerModel))
       .encryption(algorithmEncryptionModel)
-      .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", algorithmEntityTypeModel))
       .locale("testString")
       .bucketGroupBitLength(Long.valueOf("26"))
       .build();
@@ -14309,13 +14311,13 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CompareSpecResource model
     CompareSpecResource compareSpecResourceModel = new CompareSpecResource.Builder()
-      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
+      .featureCategories(java.util.Collections.singletonMap("key1", compareSpecResourceFeatureCategoryModel))
       .typoDistance(Float.valueOf("36.0"))
       .similarCharactersEnabled(true)
       .similarCharactersMapResource("testString")
       .rawEditDistanceEnabled(true)
       .maxGeoDistance(Float.valueOf("36.0"))
-      .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
+      .featureCoefficients(java.util.Collections.singletonMap("key1", Float.valueOf("36.0")))
       .similarCharactersDistance(Float.valueOf("36.0"))
       .build();
 
@@ -14328,14 +14330,16 @@ public class MdmTest extends PowerMockTestCase {
       .build();
 
     // Construct an instance of the CriteriaGeneric model
-    CriteriaGeneric criteriaGenericModel = new CriteriaGeneric();
+    CriteriaGeneric criteriaGenericModel = new CriteriaGeneric.Builder()
+      .add("foo", "testString")
+      .build();
 
     // Construct an instance of the RelationshipDiscoveryRulesBuilderEdge model
     RelationshipDiscoveryRulesBuilderEdge relationshipDiscoveryRulesBuilderEdgeModel = new RelationshipDiscoveryRulesBuilderEdge.Builder()
       .endNode(Long.valueOf("26"))
       .relationshipType("testString")
       .startNode(Long.valueOf("26"))
-      .filters(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
+      .filters(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
     // Construct an instance of the RelationshipDiscoveryRulesBuilderOrderByItem model
@@ -14352,15 +14356,15 @@ public class MdmTest extends PowerMockTestCase {
       .criteria(criteriaGenericModel)
       .edges(java.util.Arrays.asList(relationshipDiscoveryRulesBuilderEdgeModel))
       .orderBy(java.util.Arrays.asList(relationshipDiscoveryRulesBuilderOrderByItemModel))
-      .constants(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .constants(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the RelationshipDiscoveryRulesRulesBuilderWrapper model
     RelationshipDiscoveryRulesRulesBuilderWrapper relationshipDiscoveryRulesRulesBuilderWrapperModel = new RelationshipDiscoveryRulesRulesBuilderWrapper.Builder()
-      .hierarchyTypes(new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } })
-      .groupTypes(new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } })
-      .entityTypes(new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } })
-      .recordTypes(new java.util.HashMap<String, RelationshipDiscoveryRulesBuilder>() { { put("foo", relationshipDiscoveryRulesBuilderModel); } })
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel))
+      .entityTypes(java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel))
+      .recordTypes(java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesBuilderModel))
       .build();
 
     // Construct an instance of the RelationshipDiscoveryRulesHierarchyUserRules model
@@ -14389,10 +14393,10 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the RelationshipDiscoveryRulesGeneratedRulesWrapper model
     RelationshipDiscoveryRulesGeneratedRulesWrapper relationshipDiscoveryRulesGeneratedRulesWrapperModel = new RelationshipDiscoveryRulesGeneratedRulesWrapper.Builder()
-      .hierarchyTypes(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
-      .groupTypes(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
-      .entityTypes(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
-      .recordTypes(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", "testString"))
+      .groupTypes(java.util.Collections.singletonMap("key1", "testString"))
+      .entityTypes(java.util.Collections.singletonMap("key1", "testString"))
+      .recordTypes(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
     // Construct an instance of the RelationshipDiscoveryRulesHierarchyGeneratedRules model
@@ -14450,15 +14454,15 @@ public class MdmTest extends PowerMockTestCase {
       .nodeType("testString")
       .nodeRelationshipType("testString")
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
-      .nodeAssociations(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .nodeAssociations(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the DataModelNodeType model
     DataModelNodeType dataModelNodeTypeModel = new DataModelNodeType.Builder()
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .build();
@@ -14503,13 +14507,13 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the DataModelGroupTypeSystemProperties model
     DataModelGroupTypeSystemProperties dataModelGroupTypeSystemPropertiesModel = new DataModelGroupTypeSystemProperties.Builder()
+      .groupId(dataModelSystemPropertyModel)
       .createdUser(dataModelSystemPropertyModel)
       .groupNumber(dataModelSystemPropertyModel)
-      .groupId(dataModelSystemPropertyModel)
       .lastUpdatedUser(dataModelSystemPropertyModel)
-      .groupSource(dataModelSystemPropertyModel)
       .createdDate(dataModelSystemPropertyModel)
       .lastUpdatedDate(dataModelSystemPropertyModel)
+      .groupSource(dataModelSystemPropertyModel)
       .build();
 
     // Construct an instance of the DataModelEntityTypeSystemProperties model
@@ -14583,7 +14587,7 @@ public class MdmTest extends PowerMockTestCase {
       .description("testString")
       .label("testString")
       .classification("testString")
-      .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
+      .fields(java.util.Collections.singletonMap("key1", dataModelFieldModel))
       .build();
 
     // Construct an instance of the DataModelGroupType model
@@ -14591,7 +14595,7 @@ public class MdmTest extends PowerMockTestCase {
       .memberLimit(Long.valueOf("26"))
       .groupAssociations(java.util.Arrays.asList("testString"))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
 
@@ -14615,10 +14619,11 @@ public class MdmTest extends PowerMockTestCase {
       .internal(true)
       .labelFromSource("testString")
       .labelFromTarget("testString")
+      .labelForRelationship("testString")
       .directional(true)
       .description("testString")
       .rules(java.util.Arrays.asList(dataModelRelationshipRuleModel))
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .cardinality("testString")
@@ -14630,29 +14635,29 @@ public class MdmTest extends PowerMockTestCase {
       .xDefault(true)
       .persistCompView(true)
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .type("testString")
       .build();
 
     // Construct an instance of the DataModelRecordType model
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", dataModelEntityTypeModel))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
 
     // Construct an instance of the DataModel model
     DataModel dataModelModel = new DataModel.Builder()
-      .hierarchyTypes(new java.util.HashMap<String, DataModelHierarchyType>() { { put("foo", dataModelHierarchyTypeModel); } })
-      .nodeTypes(new java.util.HashMap<String, DataModelNodeType>() { { put("foo", dataModelNodeTypeModel); } })
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", dataModelHierarchyTypeModel))
+      .nodeTypes(java.util.Collections.singletonMap("key1", dataModelNodeTypeModel))
       .systemProperties(dataModelSystemPropertiesModel)
-      .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
-      .groupTypes(new java.util.HashMap<String, DataModelGroupType>() { { put("foo", dataModelGroupTypeModel); } })
-      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
+      .attributeTypes(java.util.Collections.singletonMap("key1", dataModelAttributeTypeModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", dataModelGroupTypeModel))
+      .relationshipTypes(java.util.Collections.singletonMap("key1", dataModelRelationshipTypeModel))
       .locale("testString")
-      .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", dataModelRecordTypeModel))
       .build();
 
     // Construct an instance of the MapResourceEntry model
@@ -14676,7 +14681,7 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the CompositeRulesSubRuleType model
     CompositeRulesSubRuleType compositeRulesSubRuleTypeModel = new CompositeRulesSubRuleType.Builder()
       .type("testString")
-      .params(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .params(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the CompositeRulesRule model
@@ -14691,7 +14696,7 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CompositeRulesEntityRules model
     CompositeRulesEntityRules compositeRulesEntityRulesModel = new CompositeRulesEntityRules.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .sources(java.util.Arrays.asList("testString"))
       .sortBy(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
       .filters(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
@@ -14701,16 +14706,16 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the CompositeRulesRecordType model
     CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .recordTypeRule(compositeRulesRuleModel)
-      .entityRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .entityRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .build();
 
     // Construct an instance of the CompositeRulesRules model
     CompositeRulesRules compositeRulesRulesModel = new CompositeRulesRules.Builder()
       .global(compositeRulesRuleModel)
-      .entityRules(new java.util.HashMap<String, CompositeRulesEntityRules>() { { put("foo", compositeRulesEntityRulesModel); } })
-      .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })
+      .entityRules(java.util.Collections.singletonMap("key1", compositeRulesEntityRulesModel))
+      .recordTypes(java.util.Collections.singletonMap("key1", compositeRulesRecordTypeModel))
       .build();
 
     // Construct an instance of the CompositeRules model
@@ -14721,12 +14726,12 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the ImportModelSnapshotOptions model
     ImportModelSnapshotOptions importModelSnapshotOptionsModel = new ImportModelSnapshotOptions.Builder()
-      .algorithms(new java.util.HashMap<String, Algorithm>() { { put("foo", algorithmModel); } })
-      .compareSpecResources(new java.util.HashMap<String, CompareSpecResource>() { { put("foo", compareSpecResourceModel); } })
-      .relationshipDiscoveryRules(new java.util.HashMap<String, RelationshipDiscoveryRules>() { { put("foo", relationshipDiscoveryRulesModel); } })
+      .algorithms(java.util.Collections.singletonMap("key1", algorithmModel))
+      .compareSpecResources(java.util.Collections.singletonMap("key1", compareSpecResourceModel))
+      .relationshipDiscoveryRules(java.util.Collections.singletonMap("key1", relationshipDiscoveryRulesModel))
       .dataModel(dataModelModel)
-      .mapResources(new java.util.HashMap<String, Map<String, List<MapResourceEntry>>>() { { put("foo", new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", java.util.Arrays.asList(mapResourceEntryModel)); } }); } })
-      .setResources(new java.util.HashMap<String, Map<String, SetResourceEntry>>() { { put("foo", new java.util.HashMap<String, SetResourceEntry>() { { put("foo", setResourceEntryModel); } }); } })
+      .mapResources(java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", java.util.Arrays.asList(mapResourceEntryModel))))
+      .setResources(java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", setResourceEntryModel)))
       .compositeRules(compositeRulesModel)
       .build();
 
@@ -14763,7 +14768,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetModelSnapshotWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"algorithms\": {\"mapKey\": {\"standardizers\": {\"mapKey\": {\"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"standardizer_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\"}], \"label\": \"label\"}}, \"encryption\": {\"sub_type\": \"subType\", \"type\": \"type\", \"enabled\": false, \"pub_key\": [\"pubKey\"]}, \"entity_types\": {\"mapKey\": {\"glue_threshold\": 13, \"bucket_generators\": {\"mapKey\": {\"bucket_group_recipe\": [{\"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"fields\": [[\"fields\"]], \"order\": false}], \"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"maximum_bucket_size\": 17, \"bucket_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\", \"order\": false}], \"label\": \"label\"}}, \"record_filter\": {\"criteria\": {\"mapKey\": {\"allowed\": [\"allowed\"], \"disallowed\": [\"disallowed\"]}}}, \"clerical_review_threshold\": 23, \"auto_link_threshold\": 17, \"source_level_thresholds\": {\"mapKey\": {\"srcxsrc\": {\"mapKey\": [5]}, \"default\": [8]}}, \"compare_methods\": {\"mapKey\": {\"methods\": [{\"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"compare_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\"}]}], \"overall_score_contribution\": true, \"label\": \"label\", \"weights\": [7]}}, \"post_filter_methods\": {\"mapKey\": {\"filter_recipe\": [{\"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"weights\": [{\"distances\": [9], \"values\": [6]}], \"filter_resource\": \"filterResource\", \"max_distance\": 11}], \"inputs\": [{\"compare_method\": \"compareMethod\"}], \"label\": \"label\"}}}}, \"locale\": \"locale\", \"bucket_group_bit_length\": 20}}, \"compare_spec_resources\": {\"mapKey\": {\"feature_categories\": {\"mapKey\": {\"features\": [\"features\"], \"fields\": [\"fields\"], \"equivalency_map_resource\": \"equivalencyMapResource\"}}, \"typo_distance\": 12, \"similar_characters_enabled\": true, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"raw_edit_distance_enabled\": true, \"max_geo_distance\": 14, \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25}}, \"relationship_discovery_rules\": {\"mapKey\": {\"relationship_type\": \"relationshipType\", \"user_rules\": {\"hierarchy\": {\"parent\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}, \"child\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}}, \"relationship\": {\"source\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}, \"target\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}}, \"group\": {\"member\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"mapKey\": {\"anyKey\": \"anyValue\"}}}}}}}, \"technical_rules\": {\"dropped_index\": [\"droppedIndex\"], \"required_index\": [\"requiredIndex\"], \"type\": \"type\", \"generated_rules\": {\"hierarchy\": {\"parent\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}, \"child\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}, \"relationship\": {\"source\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}, \"target\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}, \"group\": {\"member\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}}}}}, \"mapping_patterns\": [{\"anyKey\": \"anyValue\"}], \"data_model\": {\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"mapKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}, \"map_resources\": {\"mapKey\": {\"mapKey\": [{\"regex\": [\"regex\"], \"values\": [\"values\"], \"data_type\": \"dataType\", \"category\": \"category\", \"cardinality\": \"cardinality\", \"key\": \"key\"}]}}, \"set_resources\": {\"mapKey\": {\"mapKey\": {\"regex\": [\"regex\"], \"values\": [\"values\"], \"data_type\": \"dataType\", \"category\": \"category\"}}}, \"composite_rules\": {\"rules\": {\"global\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"sources\": [\"sources\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"], \"single_values\": true}}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"record_type_rule\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"mapKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}}}}, \"locale\": \"locale\"}, \"snapshot_summary\": {\"created_time\": \"createdTime\", \"name\": \"name\", \"description\": \"description\", \"id\": \"id\", \"user\": \"user\"}, \"match_settings\": {\"mapKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"algorithms\": {\"mapKey\": {\"standardizers\": {\"mapKey\": {\"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"standardizer_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\"}], \"label\": \"label\"}}, \"encryption\": {\"sub_type\": \"subType\", \"type\": \"type\", \"enabled\": false, \"pub_key\": [\"pubKey\"]}, \"entity_types\": {\"mapKey\": {\"glue_threshold\": 13, \"bucket_generators\": {\"mapKey\": {\"bucket_group_recipe\": [{\"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"fields\": [[\"fields\"]], \"order\": false}], \"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"maximum_bucket_size\": 17, \"bucket_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\", \"order\": false}], \"label\": \"label\"}}, \"record_filter\": {\"criteria\": {\"mapKey\": {\"allowed\": [\"allowed\"], \"disallowed\": [\"disallowed\"]}}}, \"clerical_review_threshold\": 23, \"auto_link_threshold\": 17, \"source_level_thresholds\": {\"mapKey\": {\"srcxsrc\": {\"mapKey\": [5]}, \"default\": [8]}}, \"compare_methods\": {\"mapKey\": {\"methods\": [{\"inputs\": [{\"attributes\": [\"attributes\"], \"fields\": [\"fields\"], \"encrypted_fields\": [\"encryptedFields\"]}], \"compare_recipe\": [{\"comparison_resource\": \"comparisonResource\", \"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"set_resource\": \"setResource\", \"fields\": [\"fields\"], \"map_resource\": \"mapResource\"}]}], \"overall_score_contribution\": true, \"label\": \"label\", \"weights\": [7]}}, \"post_filter_methods\": {\"mapKey\": {\"filter_recipe\": [{\"method\": \"method\", \"inputs\": [6], \"label\": \"label\", \"weights\": [{\"distances\": [9], \"values\": [6]}], \"filter_resource\": \"filterResource\", \"max_distance\": 11}], \"inputs\": [{\"compare_method\": \"compareMethod\"}], \"label\": \"label\"}}}}, \"locale\": \"locale\", \"bucket_group_bit_length\": 20}}, \"compare_spec_resources\": {\"mapKey\": {\"feature_categories\": {\"mapKey\": {\"features\": [\"features\"], \"fields\": [\"fields\"], \"equivalency_map_resource\": \"equivalencyMapResource\"}}, \"typo_distance\": 12, \"similar_characters_enabled\": true, \"similar_characters_map_resource\": \"similarCharactersMapResource\", \"raw_edit_distance_enabled\": true, \"max_geo_distance\": 14, \"feature_coefficients\": {\"mapKey\": 5}, \"similar_characters_distance\": 25}}, \"relationship_discovery_rules\": {\"mapKey\": {\"relationship_type\": \"relationshipType\", \"user_rules\": {\"hierarchy\": {\"parent\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}}, \"child\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}}}, \"relationship\": {\"source\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}}, \"target\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}}}, \"group\": {\"member\": {\"hierarchy_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"group_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"entity_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}, \"record_types\": {\"mapKey\": {\"nodes\": [{\"entity_type\": \"entityType\", \"group_type\": \"groupType\", \"record_type\": \"recordType\", \"hierarchy_type\": \"hierarchyType\"}], \"return_nodes\": [11], \"criteria\": {}, \"edges\": [{\"end_node\": 7, \"relationship_type\": \"relationshipType\", \"start_node\": 9, \"filters\": {\"mapKey\": \"inner\"}}], \"order_by\": [{\"node\": 4, \"attribute\": \"attribute\", \"direction\": \"direction\"}], \"constants\": {\"anyKey\": \"anyValue\"}}}}}}, \"technical_rules\": {\"dropped_index\": [\"droppedIndex\"], \"required_index\": [\"requiredIndex\"], \"type\": \"type\", \"generated_rules\": {\"hierarchy\": {\"parent\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}, \"child\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}, \"relationship\": {\"source\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}, \"target\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}, \"group\": {\"member\": {\"hierarchy_types\": {\"mapKey\": \"inner\"}, \"group_types\": {\"mapKey\": \"inner\"}, \"entity_types\": {\"mapKey\": \"inner\"}, \"record_types\": {\"mapKey\": \"inner\"}}}}}}}, \"mapping_patterns\": [{\"anyKey\": \"anyValue\"}], \"data_model\": {\"hierarchy_types\": {\"mapKey\": {\"node_type\": \"nodeType\", \"node_relationship_type\": \"nodeRelationshipType\", \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"node_associations\": {\"anyKey\": \"anyValue\"}}}, \"node_types\": {\"mapKey\": {\"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\"}}, \"system_properties\": {\"hierarchy_types\": {\"hierarchy_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"hierarchy_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"node_types\": {\"node_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"context_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"attribute_types\": {\"attribute_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"group_types\": {\"group_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"group_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"entity_types\": {\"record_count\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"link_last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"entity_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"relationship_types\": {\"from_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"from_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_type\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"to_record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"relationship_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}, \"version\": \"version\", \"record_types\": {\"collection_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_id\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_last_updated\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_user\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_number\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"created_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"last_updated_date\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}, \"record_source\": {\"settable\": true, \"indexed\": false, \"editable\": true, \"deprecated\": true, \"data_type\": \"dataType\", \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}, \"attribute_types\": {\"mapKey\": {\"matching_types\": [\"matchingTypes\"], \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\", \"fields\": {\"mapKey\": {\"indexed\": false, \"description\": \"description\", \"label\": \"label\", \"classification\": \"classification\"}}}}, \"group_types\": {\"mapKey\": {\"member_limit\": 11, \"group_associations\": [\"groupAssociations\"], \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}, \"relationship_types\": {\"mapKey\": {\"internal\": true, \"label_from_source\": \"labelFromSource\", \"label_from_target\": \"labelFromTarget\", \"label_for_relationship\": \"labelForRelationship\", \"directional\": false, \"description\": \"description\", \"rules\": [{\"source\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}, \"target\": {\"hierarchy_types\": [\"hierarchyTypes\"], \"node_types\": [\"nodeTypes\"], \"group_types\": [\"groupTypes\"], \"entity_types\": [\"entityTypes\"], \"record_types\": [\"recordTypes\"]}}], \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\", \"discovery_enabled\": true}}, \"locale\": \"locale\", \"record_types\": {\"mapKey\": {\"entity_types\": {\"mapKey\": {\"default\": true, \"persist_comp_view\": false, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\", \"type\": \"type\"}}, \"description\": \"description\", \"attributes\": {\"mapKey\": {\"indexed\": false, \"matching_type\": \"matchingType\", \"description\": \"description\", \"attribute_type\": \"attributeType\", \"label\": \"label\", \"classification\": \"classification\", \"cardinality\": \"cardinality\"}}, \"label\": \"label\"}}}, \"map_resources\": {\"mapKey\": {\"mapKey\": [{\"regex\": [\"regex\"], \"values\": [\"values\"], \"data_type\": \"dataType\", \"category\": \"category\", \"cardinality\": \"cardinality\", \"key\": \"key\"}]}}, \"set_resources\": {\"mapKey\": {\"mapKey\": {\"regex\": [\"regex\"], \"values\": [\"values\"], \"data_type\": \"dataType\", \"category\": \"category\"}}}, \"composite_rules\": {\"rules\": {\"global\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"sources\": [\"sources\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"], \"single_values\": true}}, \"record_types\": {\"mapKey\": {\"attribute_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}, \"record_type_rule\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}, \"entity_rules\": {\"mapKey\": {\"sources\": [\"sources\"], \"limit\": 5, \"exclude\": [\"exclude\"], \"sort_by\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"filters\": [{\"type\": \"type\", \"params\": {\"anyKey\": \"anyValue\"}}], \"choices\": [\"choices\"]}}}}}, \"locale\": \"locale\"}, \"snapshot_summary\": {\"created_time\": \"createdTime\", \"name\": \"name\", \"description\": \"description\", \"id\": \"id\", \"user\": \"user\"}, \"match_settings\": {\"anyKey\": \"anyValue\"}}";
     String getModelSnapshotPath = "/mdm/v1/model_snapshots/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -14871,7 +14876,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testDeleteModelSnapshotWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"mapKey\": {\"anyKey\": \"anyValue\"}}";
+    String mockResponseBody = "{\"anyKey\": \"anyValue\"}";
     String deleteModelSnapshotPath = "/mdm/v1/model_snapshots/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -14990,8 +14995,8 @@ public class MdmTest extends PowerMockTestCase {
     // Construct an instance of the CreateModelSnapshotOptions model
     CreateModelSnapshotOptions createModelSnapshotOptionsModel = new CreateModelSnapshotOptions.Builder()
       .snapshotSummary(snapshotSummaryModel)
-      .matchSettings(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .mappingPatterns(java.util.Arrays.asList(TestUtilities.createMockMap()))
+      .matchSettings(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .mappingPatterns(java.util.Arrays.asList(java.util.Collections.singletonMap("anyKey", "anyValue")))
       .build();
 
     // Invoke createModelSnapshot() with a valid options model and verify the result
@@ -15088,7 +15093,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testGetModelWorkflowsConfigurationWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"auto_create_tasks\": false, \"description\": \"description\", \"applicable_data_types\": {\"mapKey\": \"anyValue\"}, \"custom_tags\": {\"mapKey\": \"anyValue\"}, \"max_accumulated_updates\": 21, \"trigger_operator\": {\"hierarchy_types\": {\"mapKey\": \"anyValue\"}, \"entity_types\": {\"mapKey\": \"anyValue\"}, \"record_types\": {\"mapKey\": {\"name\": \"name\", \"entity_types\": {\"mapKey\": {\"triggers\": {\"mapKey\": \"anyValue\"}}}, \"excluded_sources\": [\"excludedSources\"], \"included_sources\": [\"includedSources\"], \"workflow_configurations\": {\"default\": {\"mapKey\": \"anyValue\"}, \"source_based\": {\"mapKey\": \"anyValue\"}}, \"max_tasks\": 8, \"status\": \"status\"}}}}";
+    String mockResponseBody = "{\"auto_create_tasks\": false, \"description\": \"description\", \"applicable_data_types\": {\"anyKey\": \"anyValue\"}, \"custom_tags\": {\"anyKey\": \"anyValue\"}, \"max_accumulated_updates\": 21, \"trigger_operator\": {\"hierarchy_types\": {\"anyKey\": \"anyValue\"}, \"entity_types\": {\"anyKey\": \"anyValue\"}, \"record_types\": {\"mapKey\": {\"name\": \"name\", \"entity_types\": {\"mapKey\": {\"triggers\": {\"anyKey\": \"anyValue\"}}}, \"excluded_sources\": [\"excludedSources\"], \"included_sources\": [\"includedSources\"], \"workflow_configurations\": {\"default\": {\"anyKey\": \"anyValue\"}, \"source_based\": {\"anyKey\": \"anyValue\"}}, \"max_tasks\": 8, \"status\": \"status\"}}}}";
     String getModelWorkflowsConfigurationPath = "/mdm/v1/workflows_configuration/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -15140,7 +15145,7 @@ public class MdmTest extends PowerMockTestCase {
   @Test
   public void testPutModelWorkflowsConfigurationWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"auto_create_tasks\": false, \"description\": \"description\", \"applicable_data_types\": {\"mapKey\": \"anyValue\"}, \"custom_tags\": {\"mapKey\": \"anyValue\"}, \"max_accumulated_updates\": 21, \"trigger_operator\": {\"hierarchy_types\": {\"mapKey\": \"anyValue\"}, \"entity_types\": {\"mapKey\": \"anyValue\"}, \"record_types\": {\"mapKey\": {\"name\": \"name\", \"entity_types\": {\"mapKey\": {\"triggers\": {\"mapKey\": \"anyValue\"}}}, \"excluded_sources\": [\"excludedSources\"], \"included_sources\": [\"includedSources\"], \"workflow_configurations\": {\"default\": {\"mapKey\": \"anyValue\"}, \"source_based\": {\"mapKey\": \"anyValue\"}}, \"max_tasks\": 8, \"status\": \"status\"}}}}";
+    String mockResponseBody = "{\"auto_create_tasks\": false, \"description\": \"description\", \"applicable_data_types\": {\"anyKey\": \"anyValue\"}, \"custom_tags\": {\"anyKey\": \"anyValue\"}, \"max_accumulated_updates\": 21, \"trigger_operator\": {\"hierarchy_types\": {\"anyKey\": \"anyValue\"}, \"entity_types\": {\"anyKey\": \"anyValue\"}, \"record_types\": {\"mapKey\": {\"name\": \"name\", \"entity_types\": {\"mapKey\": {\"triggers\": {\"anyKey\": \"anyValue\"}}}, \"excluded_sources\": [\"excludedSources\"], \"included_sources\": [\"includedSources\"], \"workflow_configurations\": {\"default\": {\"anyKey\": \"anyValue\"}, \"source_based\": {\"anyKey\": \"anyValue\"}}, \"max_tasks\": 8, \"status\": \"status\"}}}}";
     String putModelWorkflowsConfigurationPath = "/mdm/v1/workflows_configuration/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -15149,19 +15154,19 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the WorkflowConfigurationRecordEntityTypeOperator model
     WorkflowConfigurationRecordEntityTypeOperator workflowConfigurationRecordEntityTypeOperatorModel = new WorkflowConfigurationRecordEntityTypeOperator.Builder()
-      .triggers(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .triggers(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the WorkflowConfigurationWorkflowConfigurations model
     WorkflowConfigurationWorkflowConfigurations workflowConfigurationWorkflowConfigurationsModel = new WorkflowConfigurationWorkflowConfigurations.Builder()
-      .xDefault(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .sourceBased(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .xDefault(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .sourceBased(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
 
     // Construct an instance of the WorkflowConfigurationRecordTypeTriggerOperator model
     WorkflowConfigurationRecordTypeTriggerOperator workflowConfigurationRecordTypeTriggerOperatorModel = new WorkflowConfigurationRecordTypeTriggerOperator.Builder()
       .name("testString")
-      .entityTypes(new java.util.HashMap<String, WorkflowConfigurationRecordEntityTypeOperator>() { { put("foo", workflowConfigurationRecordEntityTypeOperatorModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", workflowConfigurationRecordEntityTypeOperatorModel))
       .excludedSources(java.util.Arrays.asList("testString"))
       .includedSources(java.util.Arrays.asList("testString"))
       .workflowConfigurations(workflowConfigurationWorkflowConfigurationsModel)
@@ -15171,18 +15176,18 @@ public class MdmTest extends PowerMockTestCase {
 
     // Construct an instance of the WorkflowConfigurationTriggerOperator model
     WorkflowConfigurationTriggerOperator workflowConfigurationTriggerOperatorModel = new WorkflowConfigurationTriggerOperator.Builder()
-      .hierarchyTypes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .entityTypes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
-      .recordTypes(new java.util.HashMap<String, WorkflowConfigurationRecordTypeTriggerOperator>() { { put("foo", workflowConfigurationRecordTypeTriggerOperatorModel); } })
+      .hierarchyTypes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .entityTypes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .recordTypes(java.util.Collections.singletonMap("key1", workflowConfigurationRecordTypeTriggerOperatorModel))
       .build();
 
     // Construct an instance of the PutModelWorkflowsConfigurationOptions model
     PutModelWorkflowsConfigurationOptions putModelWorkflowsConfigurationOptionsModel = new PutModelWorkflowsConfigurationOptions.Builder()
       .workflowType("testString")
       .autoCreateTasks(true)
-      .applicableDataTypes(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .applicableDataTypes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .description("testString")
-      .customTags(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .customTags(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .maxAccumulatedUpdates(Long.valueOf("26"))
       .triggerOperator(workflowConfigurationTriggerOperatorModel)
       .build();
@@ -15245,17 +15250,9 @@ public class MdmTest extends PowerMockTestCase {
     mdmService = null;
   }
 
-  // Creates a mock set of environment variables that are returned by EnvironmentUtils.getenv()
-  private Map<String, String> getTestProcessEnvironment() {
-    Map<String, String> env = new HashMap<>();
-    env.put("TESTSERVICE_AUTH_TYPE", "noAuth");
-    return env;
-  }
-
   // Constructs an instance of the service to be used by the tests
   public void constructClientService() {
-    PowerMockito.spy(EnvironmentUtils.class);
-    PowerMockito.when(EnvironmentUtils.getenv()).thenReturn(getTestProcessEnvironment());
+    System.setProperty("TESTSERVICE_AUTH_TYPE", "noAuth");
     final String serviceName = "testService";
     // set mock values for global params
     String crn = "testString";

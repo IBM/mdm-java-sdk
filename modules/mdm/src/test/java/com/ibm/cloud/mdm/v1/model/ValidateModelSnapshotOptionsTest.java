@@ -189,15 +189,15 @@ public class ValidateModelSnapshotOptionsTest {
     assertEquals(algorithmSingleCriteriaModel.disallowed(), java.util.Arrays.asList("testString"));
 
     AlgorithmRecordFilter algorithmRecordFilterModel = new AlgorithmRecordFilter.Builder()
-      .criteria(new java.util.HashMap<String, AlgorithmSingleCriteria>() { { put("foo", algorithmSingleCriteriaModel); } })
+      .criteria(java.util.Collections.singletonMap("key1", algorithmSingleCriteriaModel))
       .build();
-    assertEquals(algorithmRecordFilterModel.criteria(), new java.util.HashMap<String, AlgorithmSingleCriteria>() { { put("foo", algorithmSingleCriteriaModel); } });
+    assertEquals(algorithmRecordFilterModel.criteria(), java.util.Collections.singletonMap("key1", algorithmSingleCriteriaModel));
 
     AlgorithmSourceLevelThreshold algorithmSourceLevelThresholdModel = new AlgorithmSourceLevelThreshold.Builder()
-      .srcxsrc(new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } })
+      .srcxsrc(java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))))
       .xDefault(java.util.Arrays.asList(Float.valueOf("36.0")))
       .build();
-    assertEquals(algorithmSourceLevelThresholdModel.srcxsrc(), new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } });
+    assertEquals(algorithmSourceLevelThresholdModel.srcxsrc(), java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))));
     assertEquals(algorithmSourceLevelThresholdModel.xDefault(), java.util.Arrays.asList(Float.valueOf("36.0")));
 
     AlgorithmCompareStep algorithmCompareStepModel = new AlgorithmCompareStep.Builder()
@@ -275,33 +275,33 @@ public class ValidateModelSnapshotOptionsTest {
 
     AlgorithmEntityType algorithmEntityTypeModel = new AlgorithmEntityType.Builder()
       .glueThreshold(Float.valueOf("36.0"))
-      .bucketGenerators(new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } })
+      .bucketGenerators(java.util.Collections.singletonMap("key1", algorithmBucketGeneratorModel))
       .recordFilter(algorithmRecordFilterModel)
       .clericalReviewThreshold(Float.valueOf("36.0"))
       .autoLinkThreshold(Float.valueOf("36.0"))
-      .sourceLevelThresholds(new java.util.HashMap<String, AlgorithmSourceLevelThreshold>() { { put("foo", algorithmSourceLevelThresholdModel); } })
-      .compareMethods(new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } })
-      .postFilterMethods(new java.util.HashMap<String, AlgorithmPostFilterMethod>() { { put("foo", algorithmPostFilterMethodModel); } })
+      .sourceLevelThresholds(java.util.Collections.singletonMap("key1", algorithmSourceLevelThresholdModel))
+      .compareMethods(java.util.Collections.singletonMap("key1", algorithmCompareMethodModel))
+      .postFilterMethods(java.util.Collections.singletonMap("key1", algorithmPostFilterMethodModel))
       .build();
     assertEquals(algorithmEntityTypeModel.glueThreshold(), Float.valueOf("36.0"));
-    assertEquals(algorithmEntityTypeModel.bucketGenerators(), new java.util.HashMap<String, AlgorithmBucketGenerator>() { { put("foo", algorithmBucketGeneratorModel); } });
+    assertEquals(algorithmEntityTypeModel.bucketGenerators(), java.util.Collections.singletonMap("key1", algorithmBucketGeneratorModel));
     assertEquals(algorithmEntityTypeModel.recordFilter(), algorithmRecordFilterModel);
     assertEquals(algorithmEntityTypeModel.clericalReviewThreshold(), Float.valueOf("36.0"));
     assertEquals(algorithmEntityTypeModel.autoLinkThreshold(), Float.valueOf("36.0"));
-    assertEquals(algorithmEntityTypeModel.sourceLevelThresholds(), new java.util.HashMap<String, AlgorithmSourceLevelThreshold>() { { put("foo", algorithmSourceLevelThresholdModel); } });
-    assertEquals(algorithmEntityTypeModel.compareMethods(), new java.util.HashMap<String, AlgorithmCompareMethod>() { { put("foo", algorithmCompareMethodModel); } });
-    assertEquals(algorithmEntityTypeModel.postFilterMethods(), new java.util.HashMap<String, AlgorithmPostFilterMethod>() { { put("foo", algorithmPostFilterMethodModel); } });
+    assertEquals(algorithmEntityTypeModel.sourceLevelThresholds(), java.util.Collections.singletonMap("key1", algorithmSourceLevelThresholdModel));
+    assertEquals(algorithmEntityTypeModel.compareMethods(), java.util.Collections.singletonMap("key1", algorithmCompareMethodModel));
+    assertEquals(algorithmEntityTypeModel.postFilterMethods(), java.util.Collections.singletonMap("key1", algorithmPostFilterMethodModel));
 
     Algorithm algorithmModel = new Algorithm.Builder()
-      .standardizers(new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } })
+      .standardizers(java.util.Collections.singletonMap("key1", algorithmStandardizerModel))
       .encryption(algorithmEncryptionModel)
-      .entityTypes(new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", algorithmEntityTypeModel))
       .locale("testString")
       .bucketGroupBitLength(Long.valueOf("26"))
       .build();
-    assertEquals(algorithmModel.standardizers(), new java.util.HashMap<String, AlgorithmStandardizer>() { { put("foo", algorithmStandardizerModel); } });
+    assertEquals(algorithmModel.standardizers(), java.util.Collections.singletonMap("key1", algorithmStandardizerModel));
     assertEquals(algorithmModel.encryption(), algorithmEncryptionModel);
-    assertEquals(algorithmModel.entityTypes(), new java.util.HashMap<String, AlgorithmEntityType>() { { put("foo", algorithmEntityTypeModel); } });
+    assertEquals(algorithmModel.entityTypes(), java.util.Collections.singletonMap("key1", algorithmEntityTypeModel));
     assertEquals(algorithmModel.locale(), "testString");
     assertEquals(algorithmModel.bucketGroupBitLength(), Long.valueOf("26"));
 
@@ -315,22 +315,22 @@ public class ValidateModelSnapshotOptionsTest {
     assertEquals(compareSpecResourceFeatureCategoryModel.equivalencyMapResource(), "testString");
 
     CompareSpecResource compareSpecResourceModel = new CompareSpecResource.Builder()
-      .featureCategories(new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } })
+      .featureCategories(java.util.Collections.singletonMap("key1", compareSpecResourceFeatureCategoryModel))
       .typoDistance(Float.valueOf("36.0"))
       .similarCharactersEnabled(true)
       .similarCharactersMapResource("testString")
       .rawEditDistanceEnabled(true)
       .maxGeoDistance(Float.valueOf("36.0"))
-      .featureCoefficients(new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } })
+      .featureCoefficients(java.util.Collections.singletonMap("key1", Float.valueOf("36.0")))
       .similarCharactersDistance(Float.valueOf("36.0"))
       .build();
-    assertEquals(compareSpecResourceModel.featureCategories(), new java.util.HashMap<String, CompareSpecResourceFeatureCategory>() { { put("foo", compareSpecResourceFeatureCategoryModel); } });
+    assertEquals(compareSpecResourceModel.featureCategories(), java.util.Collections.singletonMap("key1", compareSpecResourceFeatureCategoryModel));
     assertEquals(compareSpecResourceModel.typoDistance(), Float.valueOf("36.0"));
     assertEquals(compareSpecResourceModel.similarCharactersEnabled(), Boolean.valueOf(true));
     assertEquals(compareSpecResourceModel.similarCharactersMapResource(), "testString");
     assertEquals(compareSpecResourceModel.rawEditDistanceEnabled(), Boolean.valueOf(true));
     assertEquals(compareSpecResourceModel.maxGeoDistance(), Float.valueOf("36.0"));
-    assertEquals(compareSpecResourceModel.featureCoefficients(), new java.util.HashMap<String, Float>() { { put("foo", Float.valueOf("36.0")); } });
+    assertEquals(compareSpecResourceModel.featureCoefficients(), java.util.Collections.singletonMap("key1", Float.valueOf("36.0")));
     assertEquals(compareSpecResourceModel.similarCharactersDistance(), Float.valueOf("36.0"));
 
     DataModelAttribute dataModelAttributeModel = new DataModelAttribute.Builder()
@@ -354,25 +354,25 @@ public class ValidateModelSnapshotOptionsTest {
       .nodeType("testString")
       .nodeRelationshipType("testString")
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
-      .nodeAssociations(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .nodeAssociations(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(dataModelHierarchyTypeModel.nodeType(), "testString");
     assertEquals(dataModelHierarchyTypeModel.nodeRelationshipType(), "testString");
     assertEquals(dataModelHierarchyTypeModel.description(), "testString");
-    assertEquals(dataModelHierarchyTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelHierarchyTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelHierarchyTypeModel.label(), "testString");
-    assertEquals(dataModelHierarchyTypeModel.nodeAssociations(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(dataModelHierarchyTypeModel.nodeAssociations(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     DataModelNodeType dataModelNodeTypeModel = new DataModelNodeType.Builder()
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .build();
     assertEquals(dataModelNodeTypeModel.description(), "testString");
-    assertEquals(dataModelNodeTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelNodeTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelNodeTypeModel.label(), "testString");
     assertEquals(dataModelNodeTypeModel.classification(), "testString");
 
@@ -433,21 +433,21 @@ public class ValidateModelSnapshotOptionsTest {
     assertEquals(dataModelAttributeTypeSystemPropertiesModel.attributeLastUpdated(), dataModelSystemPropertyModel);
 
     DataModelGroupTypeSystemProperties dataModelGroupTypeSystemPropertiesModel = new DataModelGroupTypeSystemProperties.Builder()
+      .groupId(dataModelSystemPropertyModel)
       .createdUser(dataModelSystemPropertyModel)
       .groupNumber(dataModelSystemPropertyModel)
-      .groupId(dataModelSystemPropertyModel)
       .lastUpdatedUser(dataModelSystemPropertyModel)
-      .groupSource(dataModelSystemPropertyModel)
       .createdDate(dataModelSystemPropertyModel)
       .lastUpdatedDate(dataModelSystemPropertyModel)
+      .groupSource(dataModelSystemPropertyModel)
       .build();
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupId(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.createdUser(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.groupNumber(), dataModelSystemPropertyModel);
-    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupId(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.lastUpdatedUser(), dataModelSystemPropertyModel);
-    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.createdDate(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.lastUpdatedDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupSource(), dataModelSystemPropertyModel);
 
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
       .recordCount(dataModelSystemPropertyModel)
@@ -559,25 +559,25 @@ public class ValidateModelSnapshotOptionsTest {
       .description("testString")
       .label("testString")
       .classification("testString")
-      .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
+      .fields(java.util.Collections.singletonMap("key1", dataModelFieldModel))
       .build();
     assertEquals(dataModelAttributeTypeModel.matchingTypes(), java.util.Arrays.asList("testString"));
     assertEquals(dataModelAttributeTypeModel.description(), "testString");
     assertEquals(dataModelAttributeTypeModel.label(), "testString");
     assertEquals(dataModelAttributeTypeModel.classification(), "testString");
-    assertEquals(dataModelAttributeTypeModel.fields(), new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } });
+    assertEquals(dataModelAttributeTypeModel.fields(), java.util.Collections.singletonMap("key1", dataModelFieldModel));
 
     DataModelGroupType dataModelGroupTypeModel = new DataModelGroupType.Builder()
       .memberLimit(Long.valueOf("26"))
       .groupAssociations(java.util.Arrays.asList("testString"))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
     assertEquals(dataModelGroupTypeModel.memberLimit(), Long.valueOf("26"));
     assertEquals(dataModelGroupTypeModel.groupAssociations(), java.util.Arrays.asList("testString"));
     assertEquals(dataModelGroupTypeModel.description(), "testString");
-    assertEquals(dataModelGroupTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelGroupTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelGroupTypeModel.label(), "testString");
 
     DataModelRelationshipEndpoint dataModelRelationshipEndpointModel = new DataModelRelationshipEndpoint.Builder()
@@ -604,10 +604,11 @@ public class ValidateModelSnapshotOptionsTest {
       .internal(true)
       .labelFromSource("testString")
       .labelFromTarget("testString")
+      .labelForRelationship("testString")
       .directional(true)
       .description("testString")
       .rules(java.util.Arrays.asList(dataModelRelationshipRuleModel))
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .cardinality("testString")
@@ -616,10 +617,11 @@ public class ValidateModelSnapshotOptionsTest {
     assertEquals(dataModelRelationshipTypeModel.internal(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModel.labelFromSource(), "testString");
     assertEquals(dataModelRelationshipTypeModel.labelFromTarget(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.labelForRelationship(), "testString");
     assertEquals(dataModelRelationshipTypeModel.directional(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModel.description(), "testString");
     assertEquals(dataModelRelationshipTypeModel.rules(), java.util.Arrays.asList(dataModelRelationshipRuleModel));
-    assertEquals(dataModelRelationshipTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelRelationshipTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelRelationshipTypeModel.label(), "testString");
     assertEquals(dataModelRelationshipTypeModel.classification(), "testString");
     assertEquals(dataModelRelationshipTypeModel.cardinality(), "testString");
@@ -629,46 +631,46 @@ public class ValidateModelSnapshotOptionsTest {
       .xDefault(true)
       .persistCompView(true)
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .type("testString")
       .build();
     assertEquals(dataModelEntityTypeModel.xDefault(), Boolean.valueOf(true));
     assertEquals(dataModelEntityTypeModel.persistCompView(), Boolean.valueOf(true));
     assertEquals(dataModelEntityTypeModel.description(), "testString");
-    assertEquals(dataModelEntityTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelEntityTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelEntityTypeModel.label(), "testString");
     assertEquals(dataModelEntityTypeModel.type(), "testString");
 
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", dataModelEntityTypeModel))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
-    assertEquals(dataModelRecordTypeModel.entityTypes(), new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } });
+    assertEquals(dataModelRecordTypeModel.entityTypes(), java.util.Collections.singletonMap("key1", dataModelEntityTypeModel));
     assertEquals(dataModelRecordTypeModel.description(), "testString");
-    assertEquals(dataModelRecordTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelRecordTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelRecordTypeModel.label(), "testString");
 
     DataModel dataModelModel = new DataModel.Builder()
-      .hierarchyTypes(new java.util.HashMap<String, DataModelHierarchyType>() { { put("foo", dataModelHierarchyTypeModel); } })
-      .nodeTypes(new java.util.HashMap<String, DataModelNodeType>() { { put("foo", dataModelNodeTypeModel); } })
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", dataModelHierarchyTypeModel))
+      .nodeTypes(java.util.Collections.singletonMap("key1", dataModelNodeTypeModel))
       .systemProperties(dataModelSystemPropertiesModel)
-      .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
-      .groupTypes(new java.util.HashMap<String, DataModelGroupType>() { { put("foo", dataModelGroupTypeModel); } })
-      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
+      .attributeTypes(java.util.Collections.singletonMap("key1", dataModelAttributeTypeModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", dataModelGroupTypeModel))
+      .relationshipTypes(java.util.Collections.singletonMap("key1", dataModelRelationshipTypeModel))
       .locale("testString")
-      .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", dataModelRecordTypeModel))
       .build();
-    assertEquals(dataModelModel.hierarchyTypes(), new java.util.HashMap<String, DataModelHierarchyType>() { { put("foo", dataModelHierarchyTypeModel); } });
-    assertEquals(dataModelModel.nodeTypes(), new java.util.HashMap<String, DataModelNodeType>() { { put("foo", dataModelNodeTypeModel); } });
+    assertEquals(dataModelModel.hierarchyTypes(), java.util.Collections.singletonMap("key1", dataModelHierarchyTypeModel));
+    assertEquals(dataModelModel.nodeTypes(), java.util.Collections.singletonMap("key1", dataModelNodeTypeModel));
     assertEquals(dataModelModel.systemProperties(), dataModelSystemPropertiesModel);
-    assertEquals(dataModelModel.attributeTypes(), new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } });
-    assertEquals(dataModelModel.groupTypes(), new java.util.HashMap<String, DataModelGroupType>() { { put("foo", dataModelGroupTypeModel); } });
-    assertEquals(dataModelModel.relationshipTypes(), new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } });
+    assertEquals(dataModelModel.attributeTypes(), java.util.Collections.singletonMap("key1", dataModelAttributeTypeModel));
+    assertEquals(dataModelModel.groupTypes(), java.util.Collections.singletonMap("key1", dataModelGroupTypeModel));
+    assertEquals(dataModelModel.relationshipTypes(), java.util.Collections.singletonMap("key1", dataModelRelationshipTypeModel));
     assertEquals(dataModelModel.locale(), "testString");
-    assertEquals(dataModelModel.recordTypes(), new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } });
+    assertEquals(dataModelModel.recordTypes(), java.util.Collections.singletonMap("key1", dataModelRecordTypeModel));
 
     MapResourceEntry mapResourceEntryModel = new MapResourceEntry.Builder()
       .regex(java.util.Arrays.asList("testString"))
@@ -698,10 +700,10 @@ public class ValidateModelSnapshotOptionsTest {
 
     CompositeRulesSubRuleType compositeRulesSubRuleTypeModel = new CompositeRulesSubRuleType.Builder()
       .type("testString")
-      .params(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .params(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(compositeRulesSubRuleTypeModel.type(), "testString");
-    assertEquals(compositeRulesSubRuleTypeModel.params(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(compositeRulesSubRuleTypeModel.params(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     CompositeRulesRule compositeRulesRuleModel = new CompositeRulesRule.Builder()
       .sources(java.util.Arrays.asList("testString"))
@@ -719,14 +721,14 @@ public class ValidateModelSnapshotOptionsTest {
     assertEquals(compositeRulesRuleModel.choices(), java.util.Arrays.asList("testString"));
 
     CompositeRulesEntityRules compositeRulesEntityRulesModel = new CompositeRulesEntityRules.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .sources(java.util.Arrays.asList("testString"))
       .sortBy(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
       .filters(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
       .choices(java.util.Arrays.asList("testString"))
       .singleValues(true)
       .build();
-    assertEquals(compositeRulesEntityRulesModel.attributeRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
+    assertEquals(compositeRulesEntityRulesModel.attributeRules(), java.util.Collections.singletonMap("key1", compositeRulesRuleModel));
     assertEquals(compositeRulesEntityRulesModel.sources(), java.util.Arrays.asList("testString"));
     assertEquals(compositeRulesEntityRulesModel.sortBy(), java.util.Arrays.asList(compositeRulesSubRuleTypeModel));
     assertEquals(compositeRulesEntityRulesModel.filters(), java.util.Arrays.asList(compositeRulesSubRuleTypeModel));
@@ -734,22 +736,22 @@ public class ValidateModelSnapshotOptionsTest {
     assertEquals(compositeRulesEntityRulesModel.singleValues(), Boolean.valueOf(true));
 
     CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .recordTypeRule(compositeRulesRuleModel)
-      .entityRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .entityRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .build();
-    assertEquals(compositeRulesRecordTypeModel.attributeRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
+    assertEquals(compositeRulesRecordTypeModel.attributeRules(), java.util.Collections.singletonMap("key1", compositeRulesRuleModel));
     assertEquals(compositeRulesRecordTypeModel.recordTypeRule(), compositeRulesRuleModel);
-    assertEquals(compositeRulesRecordTypeModel.entityRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
+    assertEquals(compositeRulesRecordTypeModel.entityRules(), java.util.Collections.singletonMap("key1", compositeRulesRuleModel));
 
     CompositeRulesRules compositeRulesRulesModel = new CompositeRulesRules.Builder()
       .global(compositeRulesRuleModel)
-      .entityRules(new java.util.HashMap<String, CompositeRulesEntityRules>() { { put("foo", compositeRulesEntityRulesModel); } })
-      .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })
+      .entityRules(java.util.Collections.singletonMap("key1", compositeRulesEntityRulesModel))
+      .recordTypes(java.util.Collections.singletonMap("key1", compositeRulesRecordTypeModel))
       .build();
     assertEquals(compositeRulesRulesModel.global(), compositeRulesRuleModel);
-    assertEquals(compositeRulesRulesModel.entityRules(), new java.util.HashMap<String, CompositeRulesEntityRules>() { { put("foo", compositeRulesEntityRulesModel); } });
-    assertEquals(compositeRulesRulesModel.recordTypes(), new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } });
+    assertEquals(compositeRulesRulesModel.entityRules(), java.util.Collections.singletonMap("key1", compositeRulesEntityRulesModel));
+    assertEquals(compositeRulesRulesModel.recordTypes(), java.util.Collections.singletonMap("key1", compositeRulesRecordTypeModel));
 
     CompositeRules compositeRulesModel = new CompositeRules.Builder()
       .rules(compositeRulesRulesModel)
@@ -759,18 +761,18 @@ public class ValidateModelSnapshotOptionsTest {
     assertEquals(compositeRulesModel.locale(), "testString");
 
     ValidateModelSnapshotOptions validateModelSnapshotOptionsModel = new ValidateModelSnapshotOptions.Builder()
-      .algorithms(new java.util.HashMap<String, Algorithm>() { { put("foo", algorithmModel); } })
-      .compareSpecResources(new java.util.HashMap<String, CompareSpecResource>() { { put("foo", compareSpecResourceModel); } })
+      .algorithms(java.util.Collections.singletonMap("key1", algorithmModel))
+      .compareSpecResources(java.util.Collections.singletonMap("key1", compareSpecResourceModel))
       .dataModel(dataModelModel)
-      .mapResources(new java.util.HashMap<String, Map<String, List<MapResourceEntry>>>() { { put("foo", new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", java.util.Arrays.asList(mapResourceEntryModel)); } }); } })
-      .setResources(new java.util.HashMap<String, Map<String, SetResourceEntry>>() { { put("foo", new java.util.HashMap<String, SetResourceEntry>() { { put("foo", setResourceEntryModel); } }); } })
+      .mapResources(java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", java.util.Arrays.asList(mapResourceEntryModel))))
+      .setResources(java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", setResourceEntryModel)))
       .compositeRules(compositeRulesModel)
       .build();
-    assertEquals(validateModelSnapshotOptionsModel.algorithms(), new java.util.HashMap<String, Algorithm>() { { put("foo", algorithmModel); } });
-    assertEquals(validateModelSnapshotOptionsModel.compareSpecResources(), new java.util.HashMap<String, CompareSpecResource>() { { put("foo", compareSpecResourceModel); } });
+    assertEquals(validateModelSnapshotOptionsModel.algorithms(), java.util.Collections.singletonMap("key1", algorithmModel));
+    assertEquals(validateModelSnapshotOptionsModel.compareSpecResources(), java.util.Collections.singletonMap("key1", compareSpecResourceModel));
     assertEquals(validateModelSnapshotOptionsModel.dataModel(), dataModelModel);
-    assertEquals(validateModelSnapshotOptionsModel.mapResources(), new java.util.HashMap<String, Map<String, List<MapResourceEntry>>>() { { put("foo", new java.util.HashMap<String, List<MapResourceEntry>>() { { put("foo", java.util.Arrays.asList(mapResourceEntryModel)); } }); } });
-    assertEquals(validateModelSnapshotOptionsModel.setResources(), new java.util.HashMap<String, Map<String, SetResourceEntry>>() { { put("foo", new java.util.HashMap<String, SetResourceEntry>() { { put("foo", setResourceEntryModel); } }); } });
+    assertEquals(validateModelSnapshotOptionsModel.mapResources(), java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", java.util.Arrays.asList(mapResourceEntryModel))));
+    assertEquals(validateModelSnapshotOptionsModel.setResources(), java.util.Collections.singletonMap("key1", java.util.Collections.singletonMap("key1", setResourceEntryModel)));
     assertEquals(validateModelSnapshotOptionsModel.compositeRules(), compositeRulesModel);
   }
 

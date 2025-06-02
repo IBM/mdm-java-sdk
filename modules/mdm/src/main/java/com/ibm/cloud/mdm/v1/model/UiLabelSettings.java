@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -47,6 +48,11 @@ public class UiLabelSettings extends GenericModel {
     private UiCustomEnabledLabelSetting hierarchyLabel;
     private UiMemberLabelSettings memberLabel;
 
+    /**
+     * Instantiates a new Builder from an existing UiLabelSettings instance.
+     *
+     * @param uiLabelSettings the instance to initialize the Builder with
+     */
     private Builder(UiLabelSettings uiLabelSettings) {
       this.label = uiLabelSettings.label;
       this.searchResultAttributes = uiLabelSettings.searchResultAttributes;
@@ -73,9 +79,9 @@ public class UiLabelSettings extends GenericModel {
     }
 
     /**
-     * Adds an label to label.
+     * Adds a new element to label.
      *
-     * @param label the new label
+     * @param label the new element to be added
      * @return the UiLabelSettings builder
      */
     public Builder addLabel(UIAttribute label) {
@@ -89,9 +95,9 @@ public class UiLabelSettings extends GenericModel {
     }
 
     /**
-     * Adds an searchResultAttributes to searchResultAttributes.
+     * Adds a new element to searchResultAttributes.
      *
-     * @param searchResultAttributes the new searchResultAttributes
+     * @param searchResultAttributes the new element to be added
      * @return the UiLabelSettings builder
      */
     public Builder addSearchResultAttributes(String searchResultAttributes) {
@@ -105,9 +111,9 @@ public class UiLabelSettings extends GenericModel {
     }
 
     /**
-     * Adds an attributeGroups to attributeGroups.
+     * Adds a new element to attributeGroups.
      *
-     * @param attributeGroups the new attributeGroups
+     * @param attributeGroups the new element to be added
      * @return the UiLabelSettings builder
      */
     public Builder addAttributeGroups(UIAttributeGroup attributeGroups) {
@@ -121,9 +127,9 @@ public class UiLabelSettings extends GenericModel {
     }
 
     /**
-     * Adds an cards to cards.
+     * Adds a new element to cards.
      *
-     * @param cards the new cards
+     * @param cards the new element to be added
      * @return the UiLabelSettings builder
      */
     public Builder addCards(UICard cards) {

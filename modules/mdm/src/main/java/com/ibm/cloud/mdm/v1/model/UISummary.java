@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -32,6 +33,11 @@ public class UISummary extends GenericModel {
     private String label;
     private List<List<String>> attributes;
 
+    /**
+     * Instantiates a new Builder from an existing UISummary instance.
+     *
+     * @param uiSummary the instance to initialize the Builder with
+     */
     private Builder(UISummary uiSummary) {
       this.label = uiSummary.label;
       this.attributes = uiSummary.attributes;
@@ -53,9 +59,9 @@ public class UISummary extends GenericModel {
     }
 
     /**
-     * Adds an attributes to attributes.
+     * Adds a new element to attributes.
      *
-     * @param attributes the new attributes
+     * @param attributes the new element to be added
      * @return the UISummary builder
      */
     public Builder addAttributes(List<String> attributes) {

@@ -163,11 +163,11 @@ public class UpdateSettings0OptionsTest {
     assertEquals(uiCustomEnabledLabelSettingModel.isCustomLabelEnabled(), Boolean.valueOf(true));
 
     UiMemberLabelSettings uiMemberLabelSettingsModel = new UiMemberLabelSettings.Builder()
-      .recordTypes(new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } })
-      .entityTypes(new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel))
+      .entityTypes(java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel))
       .build();
-    assertEquals(uiMemberLabelSettingsModel.recordTypes(), new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } });
-    assertEquals(uiMemberLabelSettingsModel.entityTypes(), new java.util.HashMap<String, UiCustomEnabledLabelSetting>() { { put("foo", uiCustomEnabledLabelSettingModel); } });
+    assertEquals(uiMemberLabelSettingsModel.recordTypes(), java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel));
+    assertEquals(uiMemberLabelSettingsModel.entityTypes(), java.util.Collections.singletonMap("key1", uiCustomEnabledLabelSettingModel));
 
     UiLabelSettings uiLabelSettingsModel = new UiLabelSettings.Builder()
       .label(java.util.Arrays.asList(uiAttributeModel))
@@ -210,21 +210,21 @@ public class UpdateSettings0OptionsTest {
     UpdateSettings0Options updateSettings0OptionsModel = new UpdateSettings0Options.Builder()
       .id("testString")
       .use(true)
-      .recordTypes(new java.util.HashMap<String, UIRecordType>() { { put("foo", uiRecordTypeModel); } })
-      .groupTypes(new java.util.HashMap<String, UIGroupType>() { { put("foo", uiGroupTypeModel); } })
-      .entityTypes(new java.util.HashMap<String, UIEntityType>() { { put("foo", uiEntityTypeModel); } })
-      .attributeTypes(new java.util.HashMap<String, UIAttributeType>() { { put("foo", uiAttributeTypeModel); } })
-      .hierarchyTypes(new java.util.HashMap<String, UiHierarchyType>() { { put("foo", uiHierarchyTypeModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", uiRecordTypeModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", uiGroupTypeModel))
+      .entityTypes(java.util.Collections.singletonMap("key1", uiEntityTypeModel))
+      .attributeTypes(java.util.Collections.singletonMap("key1", uiAttributeTypeModel))
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", uiHierarchyTypeModel))
       .workspace(uIworkspaceModel)
       .settingsId("testString")
       .build();
     assertEquals(updateSettings0OptionsModel.id(), "testString");
     assertEquals(updateSettings0OptionsModel.use(), Boolean.valueOf(true));
-    assertEquals(updateSettings0OptionsModel.recordTypes(), new java.util.HashMap<String, UIRecordType>() { { put("foo", uiRecordTypeModel); } });
-    assertEquals(updateSettings0OptionsModel.groupTypes(), new java.util.HashMap<String, UIGroupType>() { { put("foo", uiGroupTypeModel); } });
-    assertEquals(updateSettings0OptionsModel.entityTypes(), new java.util.HashMap<String, UIEntityType>() { { put("foo", uiEntityTypeModel); } });
-    assertEquals(updateSettings0OptionsModel.attributeTypes(), new java.util.HashMap<String, UIAttributeType>() { { put("foo", uiAttributeTypeModel); } });
-    assertEquals(updateSettings0OptionsModel.hierarchyTypes(), new java.util.HashMap<String, UiHierarchyType>() { { put("foo", uiHierarchyTypeModel); } });
+    assertEquals(updateSettings0OptionsModel.recordTypes(), java.util.Collections.singletonMap("key1", uiRecordTypeModel));
+    assertEquals(updateSettings0OptionsModel.groupTypes(), java.util.Collections.singletonMap("key1", uiGroupTypeModel));
+    assertEquals(updateSettings0OptionsModel.entityTypes(), java.util.Collections.singletonMap("key1", uiEntityTypeModel));
+    assertEquals(updateSettings0OptionsModel.attributeTypes(), java.util.Collections.singletonMap("key1", uiAttributeTypeModel));
+    assertEquals(updateSettings0OptionsModel.hierarchyTypes(), java.util.Collections.singletonMap("key1", uiHierarchyTypeModel));
     assertEquals(updateSettings0OptionsModel.workspace(), uIworkspaceModel);
     assertEquals(updateSettings0OptionsModel.settingsId(), "testString");
   }

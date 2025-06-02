@@ -33,15 +33,15 @@ public class NodeWithAttributesDataEntityTest {
   public void testNodeWithAttributesDataEntity() throws Throwable {
     NodeWithAttributesDataEntity nodeWithAttributesDataEntityModel = new NodeWithAttributesDataEntity.Builder()
       .type("entity")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .recordCount(Long.valueOf("26"))
       .includesCompositeView(true)
       .build();
     assertEquals(nodeWithAttributesDataEntityModel.type(), "entity");
-    assertEquals(nodeWithAttributesDataEntityModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(nodeWithAttributesDataEntityModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(nodeWithAttributesDataEntityModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(nodeWithAttributesDataEntityModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(nodeWithAttributesDataEntityModel.typeName(), "testString");
     assertEquals(nodeWithAttributesDataEntityModel.recordCount(), Long.valueOf("26"));
     assertEquals(nodeWithAttributesDataEntityModel.includesCompositeView(), Boolean.valueOf(true));
@@ -51,6 +51,8 @@ public class NodeWithAttributesDataEntityTest {
     NodeWithAttributesDataEntity nodeWithAttributesDataEntityModelNew = TestUtilities.deserialize(json, NodeWithAttributesDataEntity.class);
     assertTrue(nodeWithAttributesDataEntityModelNew instanceof NodeWithAttributesDataEntity);
     assertEquals(nodeWithAttributesDataEntityModelNew.type(), "entity");
+    assertEquals(nodeWithAttributesDataEntityModelNew.attributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
+    assertEquals(nodeWithAttributesDataEntityModelNew.systemAttributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
     assertEquals(nodeWithAttributesDataEntityModelNew.typeName(), "testString");
     assertEquals(nodeWithAttributesDataEntityModelNew.recordCount(), Long.valueOf("26"));
     assertEquals(nodeWithAttributesDataEntityModelNew.includesCompositeView(), Boolean.valueOf(true));

@@ -35,12 +35,12 @@ public class RelationshipDiscoveryRulesBuilderEdgeTest {
       .endNode(Long.valueOf("26"))
       .relationshipType("testString")
       .startNode(Long.valueOf("26"))
-      .filters(new java.util.HashMap<String, String>() { { put("foo", "testString"); } })
+      .filters(java.util.Collections.singletonMap("key1", "testString"))
       .build();
     assertEquals(relationshipDiscoveryRulesBuilderEdgeModel.endNode(), Long.valueOf("26"));
     assertEquals(relationshipDiscoveryRulesBuilderEdgeModel.relationshipType(), "testString");
     assertEquals(relationshipDiscoveryRulesBuilderEdgeModel.startNode(), Long.valueOf("26"));
-    assertEquals(relationshipDiscoveryRulesBuilderEdgeModel.filters(), new java.util.HashMap<String, String>() { { put("foo", "testString"); } });
+    assertEquals(relationshipDiscoveryRulesBuilderEdgeModel.filters(), java.util.Collections.singletonMap("key1", "testString"));
 
     String json = TestUtilities.serialize(relationshipDiscoveryRulesBuilderEdgeModel);
 

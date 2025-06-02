@@ -32,10 +32,10 @@ public class GetAllExportJobsOptionsTest {
   @Test
   public void testGetAllExportJobsOptions() throws Throwable {
     GetAllExportJobsOptions getAllExportJobsOptionsModel = new GetAllExportJobsOptions.Builder()
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .build();
-    assertEquals(getAllExportJobsOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(getAllExportJobsOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(getAllExportJobsOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(getAllExportJobsOptionsModel.limit(), Long.valueOf("10"));
   }
 }

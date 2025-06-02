@@ -32,12 +32,12 @@ public class ListDataExportsOptionsTest {
   @Test
   public void testListDataExportsOptions() throws Throwable {
     ListDataExportsOptions listDataExportsOptionsModel = new ListDataExportsOptions.Builder()
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .includeExpired(true)
       .build();
-    assertEquals(listDataExportsOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(listDataExportsOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(listDataExportsOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(listDataExportsOptionsModel.limit(), Long.valueOf("10"));
     assertEquals(listDataExportsOptionsModel.includeExpired(), Boolean.valueOf(true));
   }
 }

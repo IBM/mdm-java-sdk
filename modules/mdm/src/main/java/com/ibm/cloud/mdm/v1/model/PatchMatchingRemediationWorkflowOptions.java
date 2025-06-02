@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -35,6 +36,11 @@ public class PatchMatchingRemediationWorkflowOptions extends GenericModel {
     private List<IssueRemediationActionsRequest> issueActions;
     private Map<String, Object> bulkAction;
 
+    /**
+     * Instantiates a new Builder from an existing PatchMatchingRemediationWorkflowOptions instance.
+     *
+     * @param patchMatchingRemediationWorkflowOptions the instance to initialize the Builder with
+     */
     private Builder(PatchMatchingRemediationWorkflowOptions patchMatchingRemediationWorkflowOptions) {
       this.workflowId = patchMatchingRemediationWorkflowOptions.workflowId;
       this.issueActions = patchMatchingRemediationWorkflowOptions.issueActions;
@@ -66,9 +72,9 @@ public class PatchMatchingRemediationWorkflowOptions extends GenericModel {
     }
 
     /**
-     * Adds an issueActions to issueActions.
+     * Adds a new element to issueActions.
      *
-     * @param issueActions the new issueActions
+     * @param issueActions the new element to be added
      * @return the PatchMatchingRemediationWorkflowOptions builder
      */
     public Builder addIssueActions(IssueRemediationActionsRequest issueActions) {

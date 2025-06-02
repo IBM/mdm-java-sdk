@@ -35,15 +35,15 @@ public class ListDataRelatedRecordsForRecordOptionsTest {
       .id(Long.valueOf("26"))
       .recordType("person")
       .relationshipType("process_purpose")
-      .limit(Long.valueOf("50"))
-      .offset(Long.valueOf("26"))
+      .limit(Long.valueOf("10"))
+      .offset(Long.valueOf("0"))
       .includeTotalCount(true)
       .build();
     assertEquals(listDataRelatedRecordsForRecordOptionsModel.id(), Long.valueOf("26"));
     assertEquals(listDataRelatedRecordsForRecordOptionsModel.recordType(), "person");
     assertEquals(listDataRelatedRecordsForRecordOptionsModel.relationshipType(), "process_purpose");
-    assertEquals(listDataRelatedRecordsForRecordOptionsModel.limit(), Long.valueOf("50"));
-    assertEquals(listDataRelatedRecordsForRecordOptionsModel.offset(), Long.valueOf("26"));
+    assertEquals(listDataRelatedRecordsForRecordOptionsModel.limit(), Long.valueOf("10"));
+    assertEquals(listDataRelatedRecordsForRecordOptionsModel.offset(), Long.valueOf("0"));
     assertEquals(listDataRelatedRecordsForRecordOptionsModel.includeTotalCount(), Boolean.valueOf(true));
   }
 

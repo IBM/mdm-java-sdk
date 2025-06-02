@@ -34,11 +34,11 @@ public class GetDataSubgraphOptionsTest {
     GetDataSubgraphOptions getDataSubgraphOptionsModel = new GetDataSubgraphOptions.Builder()
       .vertexIds(java.util.Arrays.asList("testString"))
       .distance(Long.valueOf("0"))
-      .include(new java.util.HashMap<String, List<String>>() { { put("foo", java.util.Arrays.asList("testString")); } })
+      .include(java.util.Collections.singletonMap("key1", java.util.Arrays.asList("testString")))
       .build();
     assertEquals(getDataSubgraphOptionsModel.vertexIds(), java.util.Arrays.asList("testString"));
     assertEquals(getDataSubgraphOptionsModel.distance(), Long.valueOf("0"));
-    assertEquals(getDataSubgraphOptionsModel.include(), new java.util.HashMap<String, List<String>>() { { put("foo", java.util.Arrays.asList("testString")); } });
+    assertEquals(getDataSubgraphOptionsModel.include(), java.util.Collections.singletonMap("key1", java.util.Arrays.asList("testString")));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

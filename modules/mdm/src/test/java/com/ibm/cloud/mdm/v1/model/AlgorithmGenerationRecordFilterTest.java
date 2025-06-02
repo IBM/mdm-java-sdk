@@ -40,9 +40,9 @@ public class AlgorithmGenerationRecordFilterTest {
     assertEquals(algorithmGenerationSingleCriteriaModel.disallowed(), java.util.Arrays.asList("testString"));
 
     AlgorithmGenerationRecordFilter algorithmGenerationRecordFilterModel = new AlgorithmGenerationRecordFilter.Builder()
-      .criteria(new java.util.HashMap<String, AlgorithmGenerationSingleCriteria>() { { put("foo", algorithmGenerationSingleCriteriaModel); } })
+      .criteria(java.util.Collections.singletonMap("key1", algorithmGenerationSingleCriteriaModel))
       .build();
-    assertEquals(algorithmGenerationRecordFilterModel.criteria(), new java.util.HashMap<String, AlgorithmGenerationSingleCriteria>() { { put("foo", algorithmGenerationSingleCriteriaModel); } });
+    assertEquals(algorithmGenerationRecordFilterModel.criteria(), java.util.Collections.singletonMap("key1", algorithmGenerationSingleCriteriaModel));
 
     String json = TestUtilities.serialize(algorithmGenerationRecordFilterModel);
 

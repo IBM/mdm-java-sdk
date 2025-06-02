@@ -34,17 +34,17 @@ public class PatchDataRecordOptionsTest {
     PatchDataRecordOptions patchDataRecordOptionsModel = new PatchDataRecordOptions.Builder()
       .id(Long.valueOf("26"))
       .type("record")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .isBlockedForUpdate(true)
       .isQuarantined(true)
       .build();
     assertEquals(patchDataRecordOptionsModel.id(), Long.valueOf("26"));
     assertEquals(patchDataRecordOptionsModel.type(), "record");
-    assertEquals(patchDataRecordOptionsModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(patchDataRecordOptionsModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(patchDataRecordOptionsModel.typeName(), "testString");
-    assertEquals(patchDataRecordOptionsModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(patchDataRecordOptionsModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(patchDataRecordOptionsModel.isBlockedForUpdate(), Boolean.valueOf(true));
     assertEquals(patchDataRecordOptionsModel.isQuarantined(), Boolean.valueOf(true));
   }

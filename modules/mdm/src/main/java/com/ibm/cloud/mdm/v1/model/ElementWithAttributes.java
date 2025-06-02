@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.List;
@@ -42,7 +43,6 @@ public class ElementWithAttributes extends GenericModel {
     discriminatorMapping.put("entity", ElementWithAttributesDataEntity.class);
     discriminatorMapping.put("group", ElementWithAttributesDataGroup.class);
   }
-
   /**
    * The type of the element.
    */
@@ -87,7 +87,7 @@ public class ElementWithAttributes extends GenericModel {
   protected List<DataNode> nodes;
   protected List<DataRelationship> relationships;
   @SerializedName("associated_objects")
-  protected List<Object> associatedObjects;
+  protected List<Map<String, Object>> associatedObjects;
   @SerializedName("group_associations")
   protected List<DataRelationship> groupAssociations;
   @SerializedName("group_number")
@@ -95,8 +95,7 @@ public class ElementWithAttributes extends GenericModel {
   @SerializedName("member_count")
   protected Long memberCount;
 
-  protected ElementWithAttributes() {
-  }
+  protected ElementWithAttributes() { }
 
   /**
    * Gets the type.
@@ -281,7 +280,7 @@ public class ElementWithAttributes extends GenericModel {
    *
    * @return the associatedObjects
    */
-  public List<Object> getAssociatedObjects() {
+  public List<Map<String, Object>> getAssociatedObjects() {
     return associatedObjects;
   }
 

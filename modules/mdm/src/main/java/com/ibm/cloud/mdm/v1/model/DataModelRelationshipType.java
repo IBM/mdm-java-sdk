@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class DataModelRelationshipType extends GenericModel {
   protected String labelFromSource;
   @SerializedName("label_from_target")
   protected String labelFromTarget;
+  @SerializedName("label_for_relationship")
+  protected String labelForRelationship;
   protected Boolean directional;
   protected String description;
   protected List<DataModelRelationshipRule> rules;
@@ -46,6 +49,7 @@ public class DataModelRelationshipType extends GenericModel {
     private Boolean internal;
     private String labelFromSource;
     private String labelFromTarget;
+    private String labelForRelationship;
     private Boolean directional;
     private String description;
     private List<DataModelRelationshipRule> rules;
@@ -55,10 +59,16 @@ public class DataModelRelationshipType extends GenericModel {
     private String cardinality;
     private Boolean discoveryEnabled;
 
+    /**
+     * Instantiates a new Builder from an existing DataModelRelationshipType instance.
+     *
+     * @param dataModelRelationshipType the instance to initialize the Builder with
+     */
     private Builder(DataModelRelationshipType dataModelRelationshipType) {
       this.internal = dataModelRelationshipType.internal;
       this.labelFromSource = dataModelRelationshipType.labelFromSource;
       this.labelFromTarget = dataModelRelationshipType.labelFromTarget;
+      this.labelForRelationship = dataModelRelationshipType.labelForRelationship;
       this.directional = dataModelRelationshipType.directional;
       this.description = dataModelRelationshipType.description;
       this.rules = dataModelRelationshipType.rules;
@@ -94,9 +104,9 @@ public class DataModelRelationshipType extends GenericModel {
     }
 
     /**
-     * Adds an rules to rules.
+     * Adds a new element to rules.
      *
-     * @param rules the new rules
+     * @param rules the new element to be added
      * @return the DataModelRelationshipType builder
      */
     public Builder addRules(DataModelRelationshipRule rules) {
@@ -139,6 +149,17 @@ public class DataModelRelationshipType extends GenericModel {
      */
     public Builder labelFromTarget(String labelFromTarget) {
       this.labelFromTarget = labelFromTarget;
+      return this;
+    }
+
+    /**
+     * Set the labelForRelationship.
+     *
+     * @param labelForRelationship the labelForRelationship
+     * @return the DataModelRelationshipType builder
+     */
+    public Builder labelForRelationship(String labelForRelationship) {
+      this.labelForRelationship = labelForRelationship;
       return this;
     }
 
@@ -240,6 +261,7 @@ public class DataModelRelationshipType extends GenericModel {
     internal = builder.internal;
     labelFromSource = builder.labelFromSource;
     labelFromTarget = builder.labelFromTarget;
+    labelForRelationship = builder.labelForRelationship;
     directional = builder.directional;
     description = builder.description;
     rules = builder.rules;
@@ -290,6 +312,17 @@ public class DataModelRelationshipType extends GenericModel {
    */
   public String labelFromTarget() {
     return labelFromTarget;
+  }
+
+  /**
+   * Gets the labelForRelationship.
+   *
+   * User defined translatable label for bidirectional relationship.
+   *
+   * @return the labelForRelationship
+   */
+  public String labelForRelationship() {
+    return labelForRelationship;
   }
 
   /**

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -43,6 +44,11 @@ public class AlgorithmPostFilterStep extends GenericModel {
     private String filterResource;
     private Long maxDistance;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmPostFilterStep instance.
+     *
+     * @param algorithmPostFilterStep the instance to initialize the Builder with
+     */
     private Builder(AlgorithmPostFilterStep algorithmPostFilterStep) {
       this.method = algorithmPostFilterStep.method;
       this.inputs = algorithmPostFilterStep.inputs;
@@ -83,9 +89,9 @@ public class AlgorithmPostFilterStep extends GenericModel {
     }
 
     /**
-     * Adds an inputs to inputs.
+     * Adds a new element to inputs.
      *
-     * @param inputs the new inputs
+     * @param inputs the new element to be added
      * @return the AlgorithmPostFilterStep builder
      */
     public Builder addInputs(Long inputs) {
@@ -99,9 +105,9 @@ public class AlgorithmPostFilterStep extends GenericModel {
     }
 
     /**
-     * Adds an weights to weights.
+     * Adds a new element to weights.
      *
-     * @param weights the new weights
+     * @param weights the new element to be added
      * @return the AlgorithmPostFilterStep builder
      */
     public Builder addWeights(AlgorithmPostFilterWeight weights) {

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -36,6 +37,11 @@ public class StartBulkWorkflowRequestFilter extends GenericModel {
     private List<String> values;
     private String type;
 
+    /**
+     * Instantiates a new Builder from an existing StartBulkWorkflowRequestFilter instance.
+     *
+     * @param startBulkWorkflowRequestFilter the instance to initialize the Builder with
+     */
     private Builder(StartBulkWorkflowRequestFilter startBulkWorkflowRequestFilter) {
       this.dataQualityIssues = startBulkWorkflowRequestFilter.dataQualityIssues;
       this.values = startBulkWorkflowRequestFilter.values;
@@ -67,9 +73,9 @@ public class StartBulkWorkflowRequestFilter extends GenericModel {
     }
 
     /**
-     * Adds an dataQualityIssues to dataQualityIssues.
+     * Adds a new element to dataQualityIssues.
      *
-     * @param dataQualityIssues the new dataQualityIssues
+     * @param dataQualityIssues the new element to be added
      * @return the StartBulkWorkflowRequestFilter builder
      */
     public Builder addDataQualityIssues(String dataQualityIssues) {
@@ -83,9 +89,9 @@ public class StartBulkWorkflowRequestFilter extends GenericModel {
     }
 
     /**
-     * Adds an values to values.
+     * Adds a new element to values.
      *
-     * @param values the new values
+     * @param values the new element to be added
      * @return the StartBulkWorkflowRequestFilter builder
      */
     public Builder addValues(String values) {

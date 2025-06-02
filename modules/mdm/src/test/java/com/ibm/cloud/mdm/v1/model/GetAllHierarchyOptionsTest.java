@@ -35,16 +35,16 @@ public class GetAllHierarchyOptionsTest {
       .id("testString")
       .type("testString")
       .typeName("testString")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("200"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .includeTotalCount(false)
       .nodeCentricView(false)
       .build();
     assertEquals(getAllHierarchyOptionsModel.id(), "testString");
     assertEquals(getAllHierarchyOptionsModel.type(), "testString");
     assertEquals(getAllHierarchyOptionsModel.typeName(), "testString");
-    assertEquals(getAllHierarchyOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(getAllHierarchyOptionsModel.limit(), Long.valueOf("200"));
+    assertEquals(getAllHierarchyOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(getAllHierarchyOptionsModel.limit(), Long.valueOf("10"));
     assertEquals(getAllHierarchyOptionsModel.includeTotalCount(), Boolean.valueOf(false));
     assertEquals(getAllHierarchyOptionsModel.nodeCentricView(), Boolean.valueOf(false));
   }

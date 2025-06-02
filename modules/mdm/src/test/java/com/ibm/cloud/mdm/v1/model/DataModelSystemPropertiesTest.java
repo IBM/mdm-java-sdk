@@ -96,21 +96,21 @@ public class DataModelSystemPropertiesTest {
     assertEquals(dataModelAttributeTypeSystemPropertiesModel.attributeLastUpdated(), dataModelSystemPropertyModel);
 
     DataModelGroupTypeSystemProperties dataModelGroupTypeSystemPropertiesModel = new DataModelGroupTypeSystemProperties.Builder()
+      .groupId(dataModelSystemPropertyModel)
       .createdUser(dataModelSystemPropertyModel)
       .groupNumber(dataModelSystemPropertyModel)
-      .groupId(dataModelSystemPropertyModel)
       .lastUpdatedUser(dataModelSystemPropertyModel)
-      .groupSource(dataModelSystemPropertyModel)
       .createdDate(dataModelSystemPropertyModel)
       .lastUpdatedDate(dataModelSystemPropertyModel)
+      .groupSource(dataModelSystemPropertyModel)
       .build();
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupId(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.createdUser(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.groupNumber(), dataModelSystemPropertyModel);
-    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupId(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.lastUpdatedUser(), dataModelSystemPropertyModel);
-    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.createdDate(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.lastUpdatedDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupSource(), dataModelSystemPropertyModel);
 
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
       .recordCount(dataModelSystemPropertyModel)

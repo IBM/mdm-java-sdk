@@ -72,25 +72,25 @@ public class DataModelTest {
       .nodeType("testString")
       .nodeRelationshipType("testString")
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
-      .nodeAssociations(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .nodeAssociations(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(dataModelHierarchyTypeModel.nodeType(), "testString");
     assertEquals(dataModelHierarchyTypeModel.nodeRelationshipType(), "testString");
     assertEquals(dataModelHierarchyTypeModel.description(), "testString");
-    assertEquals(dataModelHierarchyTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelHierarchyTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelHierarchyTypeModel.label(), "testString");
-    assertEquals(dataModelHierarchyTypeModel.nodeAssociations(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(dataModelHierarchyTypeModel.nodeAssociations(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     DataModelNodeType dataModelNodeTypeModel = new DataModelNodeType.Builder()
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .build();
     assertEquals(dataModelNodeTypeModel.description(), "testString");
-    assertEquals(dataModelNodeTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelNodeTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelNodeTypeModel.label(), "testString");
     assertEquals(dataModelNodeTypeModel.classification(), "testString");
 
@@ -151,21 +151,21 @@ public class DataModelTest {
     assertEquals(dataModelAttributeTypeSystemPropertiesModel.attributeLastUpdated(), dataModelSystemPropertyModel);
 
     DataModelGroupTypeSystemProperties dataModelGroupTypeSystemPropertiesModel = new DataModelGroupTypeSystemProperties.Builder()
+      .groupId(dataModelSystemPropertyModel)
       .createdUser(dataModelSystemPropertyModel)
       .groupNumber(dataModelSystemPropertyModel)
-      .groupId(dataModelSystemPropertyModel)
       .lastUpdatedUser(dataModelSystemPropertyModel)
-      .groupSource(dataModelSystemPropertyModel)
       .createdDate(dataModelSystemPropertyModel)
       .lastUpdatedDate(dataModelSystemPropertyModel)
+      .groupSource(dataModelSystemPropertyModel)
       .build();
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupId(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.createdUser(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.groupNumber(), dataModelSystemPropertyModel);
-    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupId(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.lastUpdatedUser(), dataModelSystemPropertyModel);
-    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.createdDate(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.lastUpdatedDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupSource(), dataModelSystemPropertyModel);
 
     DataModelEntityTypeSystemProperties dataModelEntityTypeSystemPropertiesModel = new DataModelEntityTypeSystemProperties.Builder()
       .recordCount(dataModelSystemPropertyModel)
@@ -277,25 +277,25 @@ public class DataModelTest {
       .description("testString")
       .label("testString")
       .classification("testString")
-      .fields(new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } })
+      .fields(java.util.Collections.singletonMap("key1", dataModelFieldModel))
       .build();
     assertEquals(dataModelAttributeTypeModel.matchingTypes(), java.util.Arrays.asList("testString"));
     assertEquals(dataModelAttributeTypeModel.description(), "testString");
     assertEquals(dataModelAttributeTypeModel.label(), "testString");
     assertEquals(dataModelAttributeTypeModel.classification(), "testString");
-    assertEquals(dataModelAttributeTypeModel.fields(), new java.util.HashMap<String, DataModelField>() { { put("foo", dataModelFieldModel); } });
+    assertEquals(dataModelAttributeTypeModel.fields(), java.util.Collections.singletonMap("key1", dataModelFieldModel));
 
     DataModelGroupType dataModelGroupTypeModel = new DataModelGroupType.Builder()
       .memberLimit(Long.valueOf("26"))
       .groupAssociations(java.util.Arrays.asList("testString"))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
     assertEquals(dataModelGroupTypeModel.memberLimit(), Long.valueOf("26"));
     assertEquals(dataModelGroupTypeModel.groupAssociations(), java.util.Arrays.asList("testString"));
     assertEquals(dataModelGroupTypeModel.description(), "testString");
-    assertEquals(dataModelGroupTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelGroupTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelGroupTypeModel.label(), "testString");
 
     DataModelRelationshipEndpoint dataModelRelationshipEndpointModel = new DataModelRelationshipEndpoint.Builder()
@@ -322,10 +322,11 @@ public class DataModelTest {
       .internal(true)
       .labelFromSource("testString")
       .labelFromTarget("testString")
+      .labelForRelationship("testString")
       .directional(true)
       .description("testString")
       .rules(java.util.Arrays.asList(dataModelRelationshipRuleModel))
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .classification("testString")
       .cardinality("testString")
@@ -334,10 +335,11 @@ public class DataModelTest {
     assertEquals(dataModelRelationshipTypeModel.internal(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModel.labelFromSource(), "testString");
     assertEquals(dataModelRelationshipTypeModel.labelFromTarget(), "testString");
+    assertEquals(dataModelRelationshipTypeModel.labelForRelationship(), "testString");
     assertEquals(dataModelRelationshipTypeModel.directional(), Boolean.valueOf(true));
     assertEquals(dataModelRelationshipTypeModel.description(), "testString");
     assertEquals(dataModelRelationshipTypeModel.rules(), java.util.Arrays.asList(dataModelRelationshipRuleModel));
-    assertEquals(dataModelRelationshipTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelRelationshipTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelRelationshipTypeModel.label(), "testString");
     assertEquals(dataModelRelationshipTypeModel.classification(), "testString");
     assertEquals(dataModelRelationshipTypeModel.cardinality(), "testString");
@@ -347,46 +349,46 @@ public class DataModelTest {
       .xDefault(true)
       .persistCompView(true)
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .type("testString")
       .build();
     assertEquals(dataModelEntityTypeModel.xDefault(), Boolean.valueOf(true));
     assertEquals(dataModelEntityTypeModel.persistCompView(), Boolean.valueOf(true));
     assertEquals(dataModelEntityTypeModel.description(), "testString");
-    assertEquals(dataModelEntityTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelEntityTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelEntityTypeModel.label(), "testString");
     assertEquals(dataModelEntityTypeModel.type(), "testString");
 
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", dataModelEntityTypeModel))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
-    assertEquals(dataModelRecordTypeModel.entityTypes(), new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } });
+    assertEquals(dataModelRecordTypeModel.entityTypes(), java.util.Collections.singletonMap("key1", dataModelEntityTypeModel));
     assertEquals(dataModelRecordTypeModel.description(), "testString");
-    assertEquals(dataModelRecordTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelRecordTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelRecordTypeModel.label(), "testString");
 
     DataModel dataModelModel = new DataModel.Builder()
-      .hierarchyTypes(new java.util.HashMap<String, DataModelHierarchyType>() { { put("foo", dataModelHierarchyTypeModel); } })
-      .nodeTypes(new java.util.HashMap<String, DataModelNodeType>() { { put("foo", dataModelNodeTypeModel); } })
+      .hierarchyTypes(java.util.Collections.singletonMap("key1", dataModelHierarchyTypeModel))
+      .nodeTypes(java.util.Collections.singletonMap("key1", dataModelNodeTypeModel))
       .systemProperties(dataModelSystemPropertiesModel)
-      .attributeTypes(new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } })
-      .groupTypes(new java.util.HashMap<String, DataModelGroupType>() { { put("foo", dataModelGroupTypeModel); } })
-      .relationshipTypes(new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } })
+      .attributeTypes(java.util.Collections.singletonMap("key1", dataModelAttributeTypeModel))
+      .groupTypes(java.util.Collections.singletonMap("key1", dataModelGroupTypeModel))
+      .relationshipTypes(java.util.Collections.singletonMap("key1", dataModelRelationshipTypeModel))
       .locale("testString")
-      .recordTypes(new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } })
+      .recordTypes(java.util.Collections.singletonMap("key1", dataModelRecordTypeModel))
       .build();
-    assertEquals(dataModelModel.hierarchyTypes(), new java.util.HashMap<String, DataModelHierarchyType>() { { put("foo", dataModelHierarchyTypeModel); } });
-    assertEquals(dataModelModel.nodeTypes(), new java.util.HashMap<String, DataModelNodeType>() { { put("foo", dataModelNodeTypeModel); } });
+    assertEquals(dataModelModel.hierarchyTypes(), java.util.Collections.singletonMap("key1", dataModelHierarchyTypeModel));
+    assertEquals(dataModelModel.nodeTypes(), java.util.Collections.singletonMap("key1", dataModelNodeTypeModel));
     assertEquals(dataModelModel.systemProperties(), dataModelSystemPropertiesModel);
-    assertEquals(dataModelModel.attributeTypes(), new java.util.HashMap<String, DataModelAttributeType>() { { put("foo", dataModelAttributeTypeModel); } });
-    assertEquals(dataModelModel.groupTypes(), new java.util.HashMap<String, DataModelGroupType>() { { put("foo", dataModelGroupTypeModel); } });
-    assertEquals(dataModelModel.relationshipTypes(), new java.util.HashMap<String, DataModelRelationshipType>() { { put("foo", dataModelRelationshipTypeModel); } });
+    assertEquals(dataModelModel.attributeTypes(), java.util.Collections.singletonMap("key1", dataModelAttributeTypeModel));
+    assertEquals(dataModelModel.groupTypes(), java.util.Collections.singletonMap("key1", dataModelGroupTypeModel));
+    assertEquals(dataModelModel.relationshipTypes(), java.util.Collections.singletonMap("key1", dataModelRelationshipTypeModel));
     assertEquals(dataModelModel.locale(), "testString");
-    assertEquals(dataModelModel.recordTypes(), new java.util.HashMap<String, DataModelRecordType>() { { put("foo", dataModelRecordTypeModel); } });
+    assertEquals(dataModelModel.recordTypes(), java.util.Collections.singletonMap("key1", dataModelRecordTypeModel));
 
     String json = TestUtilities.serialize(dataModelModel);
 

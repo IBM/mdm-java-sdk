@@ -70,8 +70,8 @@ public class SearchDataOptionsTest {
       .query(searchQueryModel)
       .filters(java.util.Arrays.asList(searchFilterModel))
       .returnType("results")
-      .limit(Long.valueOf("50"))
-      .offset(Long.valueOf("26"))
+      .limit(Long.valueOf("10"))
+      .offset(Long.valueOf("0"))
       .include(java.util.Arrays.asList("legal_name.given_name"))
       .exclude(java.util.Arrays.asList("legal_name.given_name"))
       .build();
@@ -79,8 +79,8 @@ public class SearchDataOptionsTest {
     assertEquals(searchDataOptionsModel.query(), searchQueryModel);
     assertEquals(searchDataOptionsModel.filters(), java.util.Arrays.asList(searchFilterModel));
     assertEquals(searchDataOptionsModel.returnType(), "results");
-    assertEquals(searchDataOptionsModel.limit(), Long.valueOf("50"));
-    assertEquals(searchDataOptionsModel.offset(), Long.valueOf("26"));
+    assertEquals(searchDataOptionsModel.limit(), Long.valueOf("10"));
+    assertEquals(searchDataOptionsModel.offset(), Long.valueOf("0"));
     assertEquals(searchDataOptionsModel.include(), java.util.Arrays.asList("legal_name.given_name"));
     assertEquals(searchDataOptionsModel.exclude(), java.util.Arrays.asList("legal_name.given_name"));
   }

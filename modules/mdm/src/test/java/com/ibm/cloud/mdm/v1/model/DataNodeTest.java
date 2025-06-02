@@ -33,14 +33,14 @@ public class DataNodeTest {
   public void testDataNode() throws Throwable {
     DataNode dataNodeModel = new DataNode.Builder()
       .type("node")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .referenceId("testString")
       .build();
     assertEquals(dataNodeModel.type(), "node");
-    assertEquals(dataNodeModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(dataNodeModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataNodeModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(dataNodeModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(dataNodeModel.typeName(), "testString");
     assertEquals(dataNodeModel.referenceId(), "testString");
 
@@ -49,6 +49,8 @@ public class DataNodeTest {
     DataNode dataNodeModelNew = TestUtilities.deserialize(json, DataNode.class);
     assertTrue(dataNodeModelNew instanceof DataNode);
     assertEquals(dataNodeModelNew.type(), "node");
+    assertEquals(dataNodeModelNew.attributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
+    assertEquals(dataNodeModelNew.systemAttributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
     assertEquals(dataNodeModelNew.typeName(), "testString");
     assertEquals(dataNodeModelNew.referenceId(), "testString");
   }

@@ -18,7 +18,6 @@ import com.ibm.cloud.mdm.v1.model.DataSearchResultsFirst;
 import com.ibm.cloud.mdm.v1.model.DataSearchResultsLast;
 import com.ibm.cloud.mdm.v1.model.DataSearchResultsNext;
 import com.ibm.cloud.mdm.v1.model.DataSearchResultsPrevious;
-import com.ibm.cloud.mdm.v1.model.DataSearchResultsStats;
 import com.ibm.cloud.mdm.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -44,6 +43,5 @@ public class DataSearchResultsTest {
     assertNull(dataSearchResultsModel.getLast());
     assertNull(dataSearchResultsModel.getPrevious());
     assertNull(dataSearchResultsModel.getNext());
-    assertNull(dataSearchResultsModel.getStats());
   }
 }

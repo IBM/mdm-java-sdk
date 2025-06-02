@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -50,6 +51,11 @@ public class UICard extends GenericModel {
     private List<String> tableAttributes;
     private String entityType;
 
+    /**
+     * Instantiates a new Builder from an existing UICard instance.
+     *
+     * @param uiCard the instance to initialize the Builder with
+     */
     private Builder(UICard uiCard) {
       this.label = uiCard.label;
       this.recordType = uiCard.recordType;
@@ -77,9 +83,9 @@ public class UICard extends GenericModel {
     }
 
     /**
-     * Adds an keyMappings to keyMappings.
+     * Adds a new element to keyMappings.
      *
-     * @param keyMappings the new keyMappings
+     * @param keyMappings the new element to be added
      * @return the UICard builder
      */
     public Builder addKeyMappings(UIKeyMapping keyMappings) {
@@ -93,9 +99,9 @@ public class UICard extends GenericModel {
     }
 
     /**
-     * Adds an tableAttributes to tableAttributes.
+     * Adds a new element to tableAttributes.
      *
-     * @param tableAttributes the new tableAttributes
+     * @param tableAttributes the new element to be added
      * @return the UICard builder
      */
     public Builder addTableAttributes(String tableAttributes) {

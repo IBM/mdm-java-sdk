@@ -54,26 +54,26 @@ public class DataModelRecordTypeTest {
       .xDefault(true)
       .persistCompView(true)
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .type("testString")
       .build();
     assertEquals(dataModelEntityTypeModel.xDefault(), Boolean.valueOf(true));
     assertEquals(dataModelEntityTypeModel.persistCompView(), Boolean.valueOf(true));
     assertEquals(dataModelEntityTypeModel.description(), "testString");
-    assertEquals(dataModelEntityTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelEntityTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelEntityTypeModel.label(), "testString");
     assertEquals(dataModelEntityTypeModel.type(), "testString");
 
     DataModelRecordType dataModelRecordTypeModel = new DataModelRecordType.Builder()
-      .entityTypes(new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", dataModelEntityTypeModel))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
-    assertEquals(dataModelRecordTypeModel.entityTypes(), new java.util.HashMap<String, DataModelEntityType>() { { put("foo", dataModelEntityTypeModel); } });
+    assertEquals(dataModelRecordTypeModel.entityTypes(), java.util.Collections.singletonMap("key1", dataModelEntityTypeModel));
     assertEquals(dataModelRecordTypeModel.description(), "testString");
-    assertEquals(dataModelRecordTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelRecordTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelRecordTypeModel.label(), "testString");
 
     String json = TestUtilities.serialize(dataModelRecordTypeModel);

@@ -48,11 +48,11 @@ public class GovernanceMetadataTest {
     assertEquals(governanceMetadataRecordTypeModel.assetId(), "testString");
 
     GovernanceMetadata governanceMetadataModel = new GovernanceMetadata.Builder()
-      .entityTypes(new java.util.HashMap<String, GovernanceMetadataEntityType>() { { put("foo", governanceMetadataEntityTypeModel); } })
-      .recordTypes(new java.util.HashMap<String, GovernanceMetadataRecordType>() { { put("foo", governanceMetadataRecordTypeModel); } })
+      .entityTypes(java.util.Collections.singletonMap("key1", governanceMetadataEntityTypeModel))
+      .recordTypes(java.util.Collections.singletonMap("key1", governanceMetadataRecordTypeModel))
       .build();
-    assertEquals(governanceMetadataModel.entityTypes(), new java.util.HashMap<String, GovernanceMetadataEntityType>() { { put("foo", governanceMetadataEntityTypeModel); } });
-    assertEquals(governanceMetadataModel.recordTypes(), new java.util.HashMap<String, GovernanceMetadataRecordType>() { { put("foo", governanceMetadataRecordTypeModel); } });
+    assertEquals(governanceMetadataModel.entityTypes(), java.util.Collections.singletonMap("key1", governanceMetadataEntityTypeModel));
+    assertEquals(governanceMetadataModel.recordTypes(), java.util.Collections.singletonMap("key1", governanceMetadataRecordTypeModel));
 
     String json = TestUtilities.serialize(governanceMetadataModel);
 

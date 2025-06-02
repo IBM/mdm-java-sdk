@@ -33,15 +33,15 @@ public class DataEntityTest {
   public void testDataEntity() throws Throwable {
     DataEntity dataEntityModel = new DataEntity.Builder()
       .type("entity")
-      .attributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .systemAttributes(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .attributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .systemAttributes(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .typeName("testString")
       .recordCount(Long.valueOf("26"))
       .includesCompositeView(true)
       .build();
     assertEquals(dataEntityModel.type(), "entity");
-    assertEquals(dataEntityModel.attributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(dataEntityModel.systemAttributes(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(dataEntityModel.attributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(dataEntityModel.systemAttributes(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(dataEntityModel.typeName(), "testString");
     assertEquals(dataEntityModel.recordCount(), Long.valueOf("26"));
     assertEquals(dataEntityModel.includesCompositeView(), Boolean.valueOf(true));
@@ -51,6 +51,8 @@ public class DataEntityTest {
     DataEntity dataEntityModelNew = TestUtilities.deserialize(json, DataEntity.class);
     assertTrue(dataEntityModelNew instanceof DataEntity);
     assertEquals(dataEntityModelNew.type(), "entity");
+    assertEquals(dataEntityModelNew.attributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
+    assertEquals(dataEntityModelNew.systemAttributes().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
     assertEquals(dataEntityModelNew.typeName(), "testString");
     assertEquals(dataEntityModelNew.recordCount(), Long.valueOf("26"));
     assertEquals(dataEntityModelNew.includesCompositeView(), Boolean.valueOf(true));

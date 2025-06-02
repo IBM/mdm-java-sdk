@@ -52,32 +52,32 @@ public class DataModelGroupTypeSystemPropertiesTest {
     assertEquals(dataModelSystemPropertyModel.classification(), "testString");
 
     DataModelGroupTypeSystemProperties dataModelGroupTypeSystemPropertiesModel = new DataModelGroupTypeSystemProperties.Builder()
+      .groupId(dataModelSystemPropertyModel)
       .createdUser(dataModelSystemPropertyModel)
       .groupNumber(dataModelSystemPropertyModel)
-      .groupId(dataModelSystemPropertyModel)
       .lastUpdatedUser(dataModelSystemPropertyModel)
-      .groupSource(dataModelSystemPropertyModel)
       .createdDate(dataModelSystemPropertyModel)
       .lastUpdatedDate(dataModelSystemPropertyModel)
+      .groupSource(dataModelSystemPropertyModel)
       .build();
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupId(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.createdUser(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.groupNumber(), dataModelSystemPropertyModel);
-    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupId(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.lastUpdatedUser(), dataModelSystemPropertyModel);
-    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupSource(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.createdDate(), dataModelSystemPropertyModel);
     assertEquals(dataModelGroupTypeSystemPropertiesModel.lastUpdatedDate(), dataModelSystemPropertyModel);
+    assertEquals(dataModelGroupTypeSystemPropertiesModel.groupSource(), dataModelSystemPropertyModel);
 
     String json = TestUtilities.serialize(dataModelGroupTypeSystemPropertiesModel);
 
     DataModelGroupTypeSystemProperties dataModelGroupTypeSystemPropertiesModelNew = TestUtilities.deserialize(json, DataModelGroupTypeSystemProperties.class);
     assertTrue(dataModelGroupTypeSystemPropertiesModelNew instanceof DataModelGroupTypeSystemProperties);
+    assertEquals(dataModelGroupTypeSystemPropertiesModelNew.groupId().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelGroupTypeSystemPropertiesModelNew.createdUser().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelGroupTypeSystemPropertiesModelNew.groupNumber().toString(), dataModelSystemPropertyModel.toString());
-    assertEquals(dataModelGroupTypeSystemPropertiesModelNew.groupId().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelGroupTypeSystemPropertiesModelNew.lastUpdatedUser().toString(), dataModelSystemPropertyModel.toString());
-    assertEquals(dataModelGroupTypeSystemPropertiesModelNew.groupSource().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelGroupTypeSystemPropertiesModelNew.createdDate().toString(), dataModelSystemPropertyModel.toString());
     assertEquals(dataModelGroupTypeSystemPropertiesModelNew.lastUpdatedDate().toString(), dataModelSystemPropertyModel.toString());
+    assertEquals(dataModelGroupTypeSystemPropertiesModelNew.groupSource().toString(), dataModelSystemPropertyModel.toString());
   }
 }

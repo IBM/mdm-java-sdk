@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -68,6 +69,11 @@ public class DataLoadStructure extends GenericModel {
     private String groupAssociationsProperties;
     private DataLoadProperties groupAssociationsPropertiesContents;
 
+    /**
+     * Instantiates a new Builder from an existing DataLoadStructure instance.
+     *
+     * @param dataLoadStructure the instance to initialize the Builder with
+     */
     private Builder(DataLoadStructure dataLoadStructure) {
       this.recordPath = dataLoadStructure.recordPath;
       this.recordProperties = dataLoadStructure.recordProperties;

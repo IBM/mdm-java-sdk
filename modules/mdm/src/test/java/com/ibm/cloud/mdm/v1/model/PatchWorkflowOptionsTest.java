@@ -34,10 +34,10 @@ public class PatchWorkflowOptionsTest {
   public void testPatchWorkflowOptions() throws Throwable {
     ActionElement actionElementModel = new ActionElement.Builder()
       .actionType("testString")
-      .actionValues(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .actionValues(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(actionElementModel.actionType(), "testString");
-    assertEquals(actionElementModel.actionValues(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(actionElementModel.actionValues(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     PatchWorkflowOptions patchWorkflowOptionsModel = new PatchWorkflowOptions.Builder()
       .workflowId("testString")

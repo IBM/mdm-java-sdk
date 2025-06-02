@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -33,6 +34,11 @@ public class InstanceMetadataConfiguration extends GenericModel {
     private String name;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceMetadataConfiguration instance.
+     *
+     * @param instanceMetadataConfiguration the instance to initialize the Builder with
+     */
     private Builder(InstanceMetadataConfiguration instanceMetadataConfiguration) {
       this.typeId = instanceMetadataConfiguration.typeId;
       this.name = instanceMetadataConfiguration.name;

@@ -33,17 +33,17 @@ public class ActionElementTest {
   public void testActionElement() throws Throwable {
     ActionElement actionElementModel = new ActionElement.Builder()
       .actionType("testString")
-      .actionValues(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .actionValues(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(actionElementModel.actionType(), "testString");
-    assertEquals(actionElementModel.actionValues(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(actionElementModel.actionValues(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     String json = TestUtilities.serialize(actionElementModel);
 
     ActionElement actionElementModelNew = TestUtilities.deserialize(json, ActionElement.class);
     assertTrue(actionElementModelNew instanceof ActionElement);
     assertEquals(actionElementModelNew.actionType(), "testString");
-    assertEquals(actionElementModelNew.actionValues().toString(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } }.toString());
+    assertEquals(actionElementModelNew.actionValues().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

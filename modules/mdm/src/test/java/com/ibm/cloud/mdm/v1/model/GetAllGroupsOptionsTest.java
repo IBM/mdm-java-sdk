@@ -35,15 +35,15 @@ public class GetAllGroupsOptionsTest {
       .id("testString")
       .type("testString")
       .typeName("testString")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .includeTotalCount(false)
       .build();
     assertEquals(getAllGroupsOptionsModel.id(), "testString");
     assertEquals(getAllGroupsOptionsModel.type(), "testString");
     assertEquals(getAllGroupsOptionsModel.typeName(), "testString");
-    assertEquals(getAllGroupsOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(getAllGroupsOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(getAllGroupsOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(getAllGroupsOptionsModel.limit(), Long.valueOf("10"));
     assertEquals(getAllGroupsOptionsModel.includeTotalCount(), Boolean.valueOf(false));
   }
 

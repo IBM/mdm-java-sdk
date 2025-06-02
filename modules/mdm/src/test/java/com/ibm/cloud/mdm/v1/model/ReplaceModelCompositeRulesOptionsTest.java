@@ -38,10 +38,10 @@ public class ReplaceModelCompositeRulesOptionsTest {
   public void testReplaceModelCompositeRulesOptions() throws Throwable {
     CompositeRulesSubRuleType compositeRulesSubRuleTypeModel = new CompositeRulesSubRuleType.Builder()
       .type("testString")
-      .params(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .params(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(compositeRulesSubRuleTypeModel.type(), "testString");
-    assertEquals(compositeRulesSubRuleTypeModel.params(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(compositeRulesSubRuleTypeModel.params(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     CompositeRulesRule compositeRulesRuleModel = new CompositeRulesRule.Builder()
       .sources(java.util.Arrays.asList("testString"))
@@ -59,14 +59,14 @@ public class ReplaceModelCompositeRulesOptionsTest {
     assertEquals(compositeRulesRuleModel.choices(), java.util.Arrays.asList("testString"));
 
     CompositeRulesEntityRules compositeRulesEntityRulesModel = new CompositeRulesEntityRules.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .sources(java.util.Arrays.asList("testString"))
       .sortBy(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
       .filters(java.util.Arrays.asList(compositeRulesSubRuleTypeModel))
       .choices(java.util.Arrays.asList("testString"))
       .singleValues(true)
       .build();
-    assertEquals(compositeRulesEntityRulesModel.attributeRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
+    assertEquals(compositeRulesEntityRulesModel.attributeRules(), java.util.Collections.singletonMap("key1", compositeRulesRuleModel));
     assertEquals(compositeRulesEntityRulesModel.sources(), java.util.Arrays.asList("testString"));
     assertEquals(compositeRulesEntityRulesModel.sortBy(), java.util.Arrays.asList(compositeRulesSubRuleTypeModel));
     assertEquals(compositeRulesEntityRulesModel.filters(), java.util.Arrays.asList(compositeRulesSubRuleTypeModel));
@@ -74,22 +74,22 @@ public class ReplaceModelCompositeRulesOptionsTest {
     assertEquals(compositeRulesEntityRulesModel.singleValues(), Boolean.valueOf(true));
 
     CompositeRulesRecordType compositeRulesRecordTypeModel = new CompositeRulesRecordType.Builder()
-      .attributeRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .attributeRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .recordTypeRule(compositeRulesRuleModel)
-      .entityRules(new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } })
+      .entityRules(java.util.Collections.singletonMap("key1", compositeRulesRuleModel))
       .build();
-    assertEquals(compositeRulesRecordTypeModel.attributeRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
+    assertEquals(compositeRulesRecordTypeModel.attributeRules(), java.util.Collections.singletonMap("key1", compositeRulesRuleModel));
     assertEquals(compositeRulesRecordTypeModel.recordTypeRule(), compositeRulesRuleModel);
-    assertEquals(compositeRulesRecordTypeModel.entityRules(), new java.util.HashMap<String, CompositeRulesRule>() { { put("foo", compositeRulesRuleModel); } });
+    assertEquals(compositeRulesRecordTypeModel.entityRules(), java.util.Collections.singletonMap("key1", compositeRulesRuleModel));
 
     CompositeRulesRules compositeRulesRulesModel = new CompositeRulesRules.Builder()
       .global(compositeRulesRuleModel)
-      .entityRules(new java.util.HashMap<String, CompositeRulesEntityRules>() { { put("foo", compositeRulesEntityRulesModel); } })
-      .recordTypes(new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } })
+      .entityRules(java.util.Collections.singletonMap("key1", compositeRulesEntityRulesModel))
+      .recordTypes(java.util.Collections.singletonMap("key1", compositeRulesRecordTypeModel))
       .build();
     assertEquals(compositeRulesRulesModel.global(), compositeRulesRuleModel);
-    assertEquals(compositeRulesRulesModel.entityRules(), new java.util.HashMap<String, CompositeRulesEntityRules>() { { put("foo", compositeRulesEntityRulesModel); } });
-    assertEquals(compositeRulesRulesModel.recordTypes(), new java.util.HashMap<String, CompositeRulesRecordType>() { { put("foo", compositeRulesRecordTypeModel); } });
+    assertEquals(compositeRulesRulesModel.entityRules(), java.util.Collections.singletonMap("key1", compositeRulesEntityRulesModel));
+    assertEquals(compositeRulesRulesModel.recordTypes(), java.util.Collections.singletonMap("key1", compositeRulesRecordTypeModel));
 
     ReplaceModelCompositeRulesOptions replaceModelCompositeRulesOptionsModel = new ReplaceModelCompositeRulesOptions.Builder()
       .rules(compositeRulesRulesModel)

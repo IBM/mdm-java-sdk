@@ -35,8 +35,8 @@ public class ListDataRelatedRecordsForEntityOptionsTest {
       .id("testString")
       .recordType("testString")
       .relationshipType("testString")
-      .limit(Long.valueOf("50"))
-      .offset(Long.valueOf("26"))
+      .limit(Long.valueOf("10"))
+      .offset(Long.valueOf("0"))
       .include(java.util.Arrays.asList("legal_name.given_name"))
       .exclude(java.util.Arrays.asList("legal_name.given_name"))
       .includeTotalCount(true)
@@ -44,8 +44,8 @@ public class ListDataRelatedRecordsForEntityOptionsTest {
     assertEquals(listDataRelatedRecordsForEntityOptionsModel.id(), "testString");
     assertEquals(listDataRelatedRecordsForEntityOptionsModel.recordType(), "testString");
     assertEquals(listDataRelatedRecordsForEntityOptionsModel.relationshipType(), "testString");
-    assertEquals(listDataRelatedRecordsForEntityOptionsModel.limit(), Long.valueOf("50"));
-    assertEquals(listDataRelatedRecordsForEntityOptionsModel.offset(), Long.valueOf("26"));
+    assertEquals(listDataRelatedRecordsForEntityOptionsModel.limit(), Long.valueOf("10"));
+    assertEquals(listDataRelatedRecordsForEntityOptionsModel.offset(), Long.valueOf("0"));
     assertEquals(listDataRelatedRecordsForEntityOptionsModel.include(), java.util.Arrays.asList("legal_name.given_name"));
     assertEquals(listDataRelatedRecordsForEntityOptionsModel.exclude(), java.util.Arrays.asList("legal_name.given_name"));
     assertEquals(listDataRelatedRecordsForEntityOptionsModel.includeTotalCount(), Boolean.valueOf(true));

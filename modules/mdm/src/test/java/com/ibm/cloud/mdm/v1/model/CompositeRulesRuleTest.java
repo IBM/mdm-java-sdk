@@ -34,10 +34,10 @@ public class CompositeRulesRuleTest {
   public void testCompositeRulesRule() throws Throwable {
     CompositeRulesSubRuleType compositeRulesSubRuleTypeModel = new CompositeRulesSubRuleType.Builder()
       .type("testString")
-      .params(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .params(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(compositeRulesSubRuleTypeModel.type(), "testString");
-    assertEquals(compositeRulesSubRuleTypeModel.params(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(compositeRulesSubRuleTypeModel.params(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     CompositeRulesRule compositeRulesRuleModel = new CompositeRulesRule.Builder()
       .sources(java.util.Arrays.asList("testString"))

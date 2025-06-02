@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -32,6 +33,11 @@ public class AlgorithmSingleCriteria extends GenericModel {
     private List<String> allowed;
     private List<String> disallowed;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmSingleCriteria instance.
+     *
+     * @param algorithmSingleCriteria the instance to initialize the Builder with
+     */
     private Builder(AlgorithmSingleCriteria algorithmSingleCriteria) {
       this.allowed = algorithmSingleCriteria.allowed;
       this.disallowed = algorithmSingleCriteria.disallowed;
@@ -53,9 +59,9 @@ public class AlgorithmSingleCriteria extends GenericModel {
     }
 
     /**
-     * Adds an allowed to allowed.
+     * Adds a new element to allowed.
      *
-     * @param allowed the new allowed
+     * @param allowed the new element to be added
      * @return the AlgorithmSingleCriteria builder
      */
     public Builder addAllowed(String allowed) {
@@ -69,9 +75,9 @@ public class AlgorithmSingleCriteria extends GenericModel {
     }
 
     /**
-     * Adds an disallowed to disallowed.
+     * Adds a new element to disallowed.
      *
-     * @param disallowed the new disallowed
+     * @param disallowed the new element to be added
      * @return the AlgorithmSingleCriteria builder
      */
     public Builder addDisallowed(String disallowed) {

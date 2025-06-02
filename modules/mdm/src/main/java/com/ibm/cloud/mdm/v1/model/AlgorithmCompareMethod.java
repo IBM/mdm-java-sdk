@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -38,6 +39,11 @@ public class AlgorithmCompareMethod extends GenericModel {
     private String label;
     private List<Float> weights;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmCompareMethod instance.
+     *
+     * @param algorithmCompareMethod the instance to initialize the Builder with
+     */
     private Builder(AlgorithmCompareMethod algorithmCompareMethod) {
       this.methods = algorithmCompareMethod.methods;
       this.overallScoreContribution = algorithmCompareMethod.overallScoreContribution;
@@ -70,9 +76,9 @@ public class AlgorithmCompareMethod extends GenericModel {
     }
 
     /**
-     * Adds an methods to methods.
+     * Adds a new element to methods.
      *
-     * @param methods the new methods
+     * @param methods the new element to be added
      * @return the AlgorithmCompareMethod builder
      */
     public Builder addMethods(AlgorithmMethods methods) {
@@ -86,9 +92,9 @@ public class AlgorithmCompareMethod extends GenericModel {
     }
 
     /**
-     * Adds an weights to weights.
+     * Adds a new element to weights.
      *
-     * @param weights the new weights
+     * @param weights the new element to be added
      * @return the AlgorithmCompareMethod builder
      */
     public Builder addWeights(Float weights) {

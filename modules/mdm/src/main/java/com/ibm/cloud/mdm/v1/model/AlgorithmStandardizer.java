@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -36,6 +37,11 @@ public class AlgorithmStandardizer extends GenericModel {
     private List<AlgorithmStandardizerStep> standardizerRecipe;
     private String label;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmStandardizer instance.
+     *
+     * @param algorithmStandardizer the instance to initialize the Builder with
+     */
     private Builder(AlgorithmStandardizer algorithmStandardizer) {
       this.inputs = algorithmStandardizer.inputs;
       this.standardizerRecipe = algorithmStandardizer.standardizerRecipe;
@@ -71,9 +77,9 @@ public class AlgorithmStandardizer extends GenericModel {
     }
 
     /**
-     * Adds an inputs to inputs.
+     * Adds a new element to inputs.
      *
-     * @param inputs the new inputs
+     * @param inputs the new element to be added
      * @return the AlgorithmStandardizer builder
      */
     public Builder addInputs(AlgorithmInput inputs) {
@@ -87,9 +93,9 @@ public class AlgorithmStandardizer extends GenericModel {
     }
 
     /**
-     * Adds an standardizerRecipe to standardizerRecipe.
+     * Adds a new element to standardizerRecipe.
      *
-     * @param standardizerRecipe the new standardizerRecipe
+     * @param standardizerRecipe the new element to be added
      * @return the AlgorithmStandardizer builder
      */
     public Builder addStandardizerRecipe(AlgorithmStandardizerStep standardizerRecipe) {

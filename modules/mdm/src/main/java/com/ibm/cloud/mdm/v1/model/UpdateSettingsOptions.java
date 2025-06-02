@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.Map;
@@ -45,6 +46,11 @@ public class UpdateSettingsOptions extends GenericModel {
     private UIworkspace workspace;
     private String settingsId;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateSettingsOptions instance.
+     *
+     * @param updateSettingsOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateSettingsOptions updateSettingsOptions) {
       this.id = updateSettingsOptions.id;
       this.use = updateSettingsOptions.use;

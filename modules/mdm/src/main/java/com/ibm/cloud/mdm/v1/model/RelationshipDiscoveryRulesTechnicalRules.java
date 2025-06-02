@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -40,6 +41,11 @@ public class RelationshipDiscoveryRulesTechnicalRules extends GenericModel {
     private String type;
     private RelationshipDiscoveryRulesGeneratedRules generatedRules;
 
+    /**
+     * Instantiates a new Builder from an existing RelationshipDiscoveryRulesTechnicalRules instance.
+     *
+     * @param relationshipDiscoveryRulesTechnicalRules the instance to initialize the Builder with
+     */
     private Builder(RelationshipDiscoveryRulesTechnicalRules relationshipDiscoveryRulesTechnicalRules) {
       this.droppedIndex = relationshipDiscoveryRulesTechnicalRules.droppedIndex;
       this.requiredIndex = relationshipDiscoveryRulesTechnicalRules.requiredIndex;
@@ -78,9 +84,9 @@ public class RelationshipDiscoveryRulesTechnicalRules extends GenericModel {
     }
 
     /**
-     * Adds an droppedIndex to droppedIndex.
+     * Adds a new element to droppedIndex.
      *
-     * @param droppedIndex the new droppedIndex
+     * @param droppedIndex the new element to be added
      * @return the RelationshipDiscoveryRulesTechnicalRules builder
      */
     public Builder addDroppedIndex(String droppedIndex) {
@@ -94,9 +100,9 @@ public class RelationshipDiscoveryRulesTechnicalRules extends GenericModel {
     }
 
     /**
-     * Adds an requiredIndex to requiredIndex.
+     * Adds a new element to requiredIndex.
      *
-     * @param requiredIndex the new requiredIndex
+     * @param requiredIndex the new element to be added
      * @return the RelationshipDiscoveryRulesTechnicalRules builder
      */
     public Builder addRequiredIndex(String requiredIndex) {

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -36,6 +37,11 @@ public class StartBulkWorkflowRequestSearchCriteria extends GenericModel {
     private List<StartBulkWorkflowRequestFilter> filters;
     private String searchType;
 
+    /**
+     * Instantiates a new Builder from an existing StartBulkWorkflowRequestSearchCriteria instance.
+     *
+     * @param startBulkWorkflowRequestSearchCriteria the instance to initialize the Builder with
+     */
     private Builder(StartBulkWorkflowRequestSearchCriteria startBulkWorkflowRequestSearchCriteria) {
       this.query = startBulkWorkflowRequestSearchCriteria.query;
       this.filters = startBulkWorkflowRequestSearchCriteria.filters;
@@ -71,9 +77,9 @@ public class StartBulkWorkflowRequestSearchCriteria extends GenericModel {
     }
 
     /**
-     * Adds an filters to filters.
+     * Adds a new element to filters.
      *
-     * @param filters the new filters
+     * @param filters the new element to be added
      * @return the StartBulkWorkflowRequestSearchCriteria builder
      */
     public Builder addFilters(StartBulkWorkflowRequestFilter filters) {

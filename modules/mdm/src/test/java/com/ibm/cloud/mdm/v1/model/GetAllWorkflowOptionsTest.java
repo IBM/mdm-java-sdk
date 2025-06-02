@@ -34,13 +34,13 @@ public class GetAllWorkflowOptionsTest {
     GetAllWorkflowOptions getAllWorkflowOptionsModel = new GetAllWorkflowOptions.Builder()
       .workflowType("potential_overlay")
       .recordNumber("testString")
-      .offset(Long.valueOf("26"))
-      .limit(Long.valueOf("50"))
+      .offset(Long.valueOf("0"))
+      .limit(Long.valueOf("10"))
       .build();
     assertEquals(getAllWorkflowOptionsModel.workflowType(), "potential_overlay");
     assertEquals(getAllWorkflowOptionsModel.recordNumber(), "testString");
-    assertEquals(getAllWorkflowOptionsModel.offset(), Long.valueOf("26"));
-    assertEquals(getAllWorkflowOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(getAllWorkflowOptionsModel.offset(), Long.valueOf("0"));
+    assertEquals(getAllWorkflowOptionsModel.limit(), Long.valueOf("10"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

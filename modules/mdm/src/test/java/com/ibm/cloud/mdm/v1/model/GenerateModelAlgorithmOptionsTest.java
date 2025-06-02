@@ -44,9 +44,9 @@ public class GenerateModelAlgorithmOptionsTest {
     assertEquals(algorithmGenerationSingleCriteriaModel.disallowed(), java.util.Arrays.asList("testString"));
 
     AlgorithmGenerationRecordFilter algorithmGenerationRecordFilterModel = new AlgorithmGenerationRecordFilter.Builder()
-      .criteria(new java.util.HashMap<String, AlgorithmGenerationSingleCriteria>() { { put("foo", algorithmGenerationSingleCriteriaModel); } })
+      .criteria(java.util.Collections.singletonMap("key1", algorithmGenerationSingleCriteriaModel))
       .build();
-    assertEquals(algorithmGenerationRecordFilterModel.criteria(), new java.util.HashMap<String, AlgorithmGenerationSingleCriteria>() { { put("foo", algorithmGenerationSingleCriteriaModel); } });
+    assertEquals(algorithmGenerationRecordFilterModel.criteria(), java.util.Collections.singletonMap("key1", algorithmGenerationSingleCriteriaModel));
 
     AlgorithmGenerationAttributeItem algorithmGenerationAttributeItemModel = new AlgorithmGenerationAttributeItem.Builder()
       .overallScoreContribution(true)
@@ -60,10 +60,10 @@ public class GenerateModelAlgorithmOptionsTest {
     assertEquals(algorithmGenerationAttributeItemModel.postFilterMethods(), java.util.Arrays.asList("testString"));
 
     AlgorithmGenerationSourceLevelThreshold algorithmGenerationSourceLevelThresholdModel = new AlgorithmGenerationSourceLevelThreshold.Builder()
-      .srcxsrc(new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } })
+      .srcxsrc(java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))))
       .xDefault(java.util.Arrays.asList(Float.valueOf("36.0")))
       .build();
-    assertEquals(algorithmGenerationSourceLevelThresholdModel.srcxsrc(), new java.util.HashMap<String, List<Float>>() { { put("foo", java.util.Arrays.asList(Float.valueOf("36.0"))); } });
+    assertEquals(algorithmGenerationSourceLevelThresholdModel.srcxsrc(), java.util.Collections.singletonMap("key1", java.util.Arrays.asList(Float.valueOf("36.0"))));
     assertEquals(algorithmGenerationSourceLevelThresholdModel.xDefault(), java.util.Arrays.asList(Float.valueOf("36.0")));
 
     AlgorithmGenerationEntityType algorithmGenerationEntityTypeModel = new AlgorithmGenerationEntityType.Builder()
@@ -72,7 +72,7 @@ public class GenerateModelAlgorithmOptionsTest {
       .clericalReviewThreshold(Float.valueOf("0"))
       .matchingAttributes(java.util.Arrays.asList(algorithmGenerationAttributeItemModel))
       .autoLinkThreshold(Float.valueOf("0"))
-      .sourceLevelThresholds(new java.util.HashMap<String, AlgorithmGenerationSourceLevelThreshold>() { { put("foo", algorithmGenerationSourceLevelThresholdModel); } })
+      .sourceLevelThresholds(java.util.Collections.singletonMap("key1", algorithmGenerationSourceLevelThresholdModel))
       .add("foo", "testString")
       .build();
     assertEquals(algorithmGenerationEntityTypeModel.getGlueThreshold(), Float.valueOf("36.0"));
@@ -80,15 +80,15 @@ public class GenerateModelAlgorithmOptionsTest {
     assertEquals(algorithmGenerationEntityTypeModel.getClericalReviewThreshold(), Float.valueOf("0"));
     assertEquals(algorithmGenerationEntityTypeModel.getMatchingAttributes(), java.util.Arrays.asList(algorithmGenerationAttributeItemModel));
     assertEquals(algorithmGenerationEntityTypeModel.getAutoLinkThreshold(), Float.valueOf("0"));
-    assertEquals(algorithmGenerationEntityTypeModel.getSourceLevelThresholds(), new java.util.HashMap<String, AlgorithmGenerationSourceLevelThreshold>() { { put("foo", algorithmGenerationSourceLevelThresholdModel); } });
+    assertEquals(algorithmGenerationEntityTypeModel.getSourceLevelThresholds(), java.util.Collections.singletonMap("key1", algorithmGenerationSourceLevelThresholdModel));
     assertEquals(algorithmGenerationEntityTypeModel.get("foo"), "testString");
 
     GenerateModelAlgorithmOptions generateModelAlgorithmOptionsModel = new GenerateModelAlgorithmOptions.Builder()
       .recordType("testString")
-      .requestBody(new java.util.HashMap<String, AlgorithmGenerationEntityType>() { { put("foo", algorithmGenerationEntityTypeModel); } })
+      .requestBody(java.util.Collections.singletonMap("key1", algorithmGenerationEntityTypeModel))
       .build();
     assertEquals(generateModelAlgorithmOptionsModel.recordType(), "testString");
-    assertEquals(generateModelAlgorithmOptionsModel.requestBody(), new java.util.HashMap<String, AlgorithmGenerationEntityType>() { { put("foo", algorithmGenerationEntityTypeModel); } });
+    assertEquals(generateModelAlgorithmOptionsModel.requestBody(), java.util.Collections.singletonMap("key1", algorithmGenerationEntityTypeModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -35,14 +35,14 @@ public class ConfigurationMetadataEntityTest {
       .jobId("testString")
       .status("testString")
       .pairOffset(Long.valueOf("26"))
-      .tunedConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .currentConfiguration(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .tunedConfiguration(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .currentConfiguration(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(configurationMetadataEntityModel.jobId(), "testString");
     assertEquals(configurationMetadataEntityModel.status(), "testString");
     assertEquals(configurationMetadataEntityModel.pairOffset(), Long.valueOf("26"));
-    assertEquals(configurationMetadataEntityModel.tunedConfiguration(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(configurationMetadataEntityModel.currentConfiguration(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(configurationMetadataEntityModel.tunedConfiguration(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(configurationMetadataEntityModel.currentConfiguration(), java.util.Collections.singletonMap("anyKey", "anyValue"));
 
     String json = TestUtilities.serialize(configurationMetadataEntityModel);
 
@@ -51,5 +51,7 @@ public class ConfigurationMetadataEntityTest {
     assertEquals(configurationMetadataEntityModelNew.jobId(), "testString");
     assertEquals(configurationMetadataEntityModelNew.status(), "testString");
     assertEquals(configurationMetadataEntityModelNew.pairOffset(), Long.valueOf("26"));
+    assertEquals(configurationMetadataEntityModelNew.tunedConfiguration().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
+    assertEquals(configurationMetadataEntityModelNew.currentConfiguration().toString(), java.util.Collections.singletonMap("anyKey", "anyValue").toString());
   }
 }

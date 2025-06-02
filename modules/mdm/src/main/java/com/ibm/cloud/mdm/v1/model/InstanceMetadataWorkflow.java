@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -30,6 +31,11 @@ public class InstanceMetadataWorkflow extends GenericModel {
   public static class Builder {
     private List<InstanceMetadataConfiguration> configurations;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceMetadataWorkflow instance.
+     *
+     * @param instanceMetadataWorkflow the instance to initialize the Builder with
+     */
     private Builder(InstanceMetadataWorkflow instanceMetadataWorkflow) {
       this.configurations = instanceMetadataWorkflow.configurations;
     }
@@ -50,9 +56,9 @@ public class InstanceMetadataWorkflow extends GenericModel {
     }
 
     /**
-     * Adds an configurations to configurations.
+     * Adds a new element to configurations.
      *
-     * @param configurations the new configurations
+     * @param configurations the new element to be added
      * @return the InstanceMetadataWorkflow builder
      */
     public Builder addConfigurations(InstanceMetadataConfiguration configurations) {

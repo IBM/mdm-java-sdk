@@ -33,15 +33,15 @@ public class ListDataRecordsForEntityOptionsTest {
   public void testListDataRecordsForEntityOptions() throws Throwable {
     ListDataRecordsForEntityOptions listDataRecordsForEntityOptionsModel = new ListDataRecordsForEntityOptions.Builder()
       .id("testString")
-      .limit(Long.valueOf("50"))
-      .offset(Long.valueOf("26"))
+      .limit(Long.valueOf("10"))
+      .offset(Long.valueOf("0"))
       .include(java.util.Arrays.asList("legal_name.given_name"))
       .exclude(java.util.Arrays.asList("legal_name.given_name"))
       .includeTotalCount(true)
       .build();
     assertEquals(listDataRecordsForEntityOptionsModel.id(), "testString");
-    assertEquals(listDataRecordsForEntityOptionsModel.limit(), Long.valueOf("50"));
-    assertEquals(listDataRecordsForEntityOptionsModel.offset(), Long.valueOf("26"));
+    assertEquals(listDataRecordsForEntityOptionsModel.limit(), Long.valueOf("10"));
+    assertEquals(listDataRecordsForEntityOptionsModel.offset(), Long.valueOf("0"));
     assertEquals(listDataRecordsForEntityOptionsModel.include(), java.util.Arrays.asList("legal_name.given_name"));
     assertEquals(listDataRecordsForEntityOptionsModel.exclude(), java.util.Arrays.asList("legal_name.given_name"));
     assertEquals(listDataRecordsForEntityOptionsModel.includeTotalCount(), Boolean.valueOf(true));

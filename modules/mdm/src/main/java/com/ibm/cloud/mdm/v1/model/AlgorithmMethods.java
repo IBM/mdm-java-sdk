@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -34,6 +35,11 @@ public class AlgorithmMethods extends GenericModel {
     private List<AlgorithmInput> inputs;
     private List<AlgorithmCompareStep> compareRecipe;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmMethods instance.
+     *
+     * @param algorithmMethods the instance to initialize the Builder with
+     */
     private Builder(AlgorithmMethods algorithmMethods) {
       this.inputs = algorithmMethods.inputs;
       this.compareRecipe = algorithmMethods.compareRecipe;
@@ -55,9 +61,9 @@ public class AlgorithmMethods extends GenericModel {
     }
 
     /**
-     * Adds an inputs to inputs.
+     * Adds a new element to inputs.
      *
-     * @param inputs the new inputs
+     * @param inputs the new element to be added
      * @return the AlgorithmMethods builder
      */
     public Builder addInputs(AlgorithmInput inputs) {
@@ -71,9 +77,9 @@ public class AlgorithmMethods extends GenericModel {
     }
 
     /**
-     * Adds an compareRecipe to compareRecipe.
+     * Adds a new element to compareRecipe.
      *
-     * @param compareRecipe the new compareRecipe
+     * @param compareRecipe the new element to be added
      * @return the AlgorithmMethods builder
      */
     public Builder addCompareRecipe(AlgorithmCompareStep compareRecipe) {

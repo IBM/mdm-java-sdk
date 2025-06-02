@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -34,6 +35,11 @@ public class PatchWorkflowOptions extends GenericModel {
     private String workflowType;
     private List<ActionElement> actions;
 
+    /**
+     * Instantiates a new Builder from an existing PatchWorkflowOptions instance.
+     *
+     * @param patchWorkflowOptions the instance to initialize the Builder with
+     */
     private Builder(PatchWorkflowOptions patchWorkflowOptions) {
       this.workflowId = patchWorkflowOptions.workflowId;
       this.workflowType = patchWorkflowOptions.workflowType;
@@ -69,9 +75,9 @@ public class PatchWorkflowOptions extends GenericModel {
     }
 
     /**
-     * Adds an actions to actions.
+     * Adds a new element to actions.
      *
-     * @param actions the new actions
+     * @param actions the new element to be added
      * @return the PatchWorkflowOptions builder
      */
     public Builder addActions(ActionElement actions) {

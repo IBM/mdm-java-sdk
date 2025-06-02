@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.mdm.v1.model;
 
 import java.util.ArrayList;
@@ -35,6 +36,11 @@ public class AlgorithmSourceLevelThreshold extends GenericModel {
     private Map<String, List<Float>> srcxsrc;
     private List<Float> xDefault;
 
+    /**
+     * Instantiates a new Builder from an existing AlgorithmSourceLevelThreshold instance.
+     *
+     * @param algorithmSourceLevelThreshold the instance to initialize the Builder with
+     */
     private Builder(AlgorithmSourceLevelThreshold algorithmSourceLevelThreshold) {
       this.srcxsrc = algorithmSourceLevelThreshold.srcxsrc;
       this.xDefault = algorithmSourceLevelThreshold.xDefault;
@@ -56,9 +62,9 @@ public class AlgorithmSourceLevelThreshold extends GenericModel {
     }
 
     /**
-     * Adds an xDefault to xDefault.
+     * Adds a new element to xDefault.
      *
-     * @param xDefault the new xDefault
+     * @param xDefault the new element to be added
      * @return the AlgorithmSourceLevelThreshold builder
      */
     public Builder addXDefault(Float xDefault) {

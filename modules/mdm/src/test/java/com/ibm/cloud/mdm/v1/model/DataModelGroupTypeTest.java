@@ -53,13 +53,13 @@ public class DataModelGroupTypeTest {
       .memberLimit(Long.valueOf("26"))
       .groupAssociations(java.util.Arrays.asList("testString"))
       .description("testString")
-      .attributes(new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } })
+      .attributes(java.util.Collections.singletonMap("key1", dataModelAttributeModel))
       .label("testString")
       .build();
     assertEquals(dataModelGroupTypeModel.memberLimit(), Long.valueOf("26"));
     assertEquals(dataModelGroupTypeModel.groupAssociations(), java.util.Arrays.asList("testString"));
     assertEquals(dataModelGroupTypeModel.description(), "testString");
-    assertEquals(dataModelGroupTypeModel.attributes(), new java.util.HashMap<String, DataModelAttribute>() { { put("foo", dataModelAttributeModel); } });
+    assertEquals(dataModelGroupTypeModel.attributes(), java.util.Collections.singletonMap("key1", dataModelAttributeModel));
     assertEquals(dataModelGroupTypeModel.label(), "testString");
 
     String json = TestUtilities.serialize(dataModelGroupTypeModel);
