@@ -37,9 +37,8 @@
     </dependencies>
     <developers>
         <developer>
-            <name>IBM Cloud DevX SDK Development</name>
-            <email>devxsdk@us.ibm.com</email>
-            <url>https://www.ibm.com/</url>
+            <name>Linghao Yu</name>
+            <email>linghao.yu@ibm.com</email>
         </developer>
     </developers>
 </project>
